@@ -1,0 +1,1258 @@
+import 'package:flutter/material.dart';
+
+/// Supported locales for the app
+class AppLocalizations {
+  final Locale locale;
+
+  AppLocalizations(this.locale);
+
+  static AppLocalizations? of(BuildContext context) {
+    return Localizations.of<AppLocalizations>(context, AppLocalizations);
+  }
+
+  static const LocalizationsDelegate<AppLocalizations> delegate =
+      _AppLocalizationsDelegate();
+
+  static const List<Locale> supportedLocales = [
+    Locale('en'),
+    Locale('uk'),
+    Locale('es'),
+    Locale('de'),
+    Locale('fr'),
+    Locale('pl'),
+  ];
+
+  // Translations map
+  static final Map<String, Map<String, String>> _localizedValues = {
+    'en': _en,
+    'uk': _uk,
+    'es': _es,
+    'de': _de,
+    'fr': _fr,
+    'pl': _pl,
+  };
+
+  String get(String key) {
+    return _localizedValues[locale.languageCode]?[key] ?? 
+           _localizedValues['en']?[key] ?? 
+           key;
+  }
+
+  // English
+  static const Map<String, String> _en = {
+    // Common
+    'app_name': 'CodeLearn',
+    'loading': 'Loading...',
+    'error': 'Error',
+    'success': 'Success',
+    'cancel': 'Cancel',
+    'save': 'Save',
+    'delete': 'Delete',
+    'confirm': 'Confirm',
+    'ok': 'OK',
+    'yes': 'Yes',
+    'no': 'No',
+    'back': 'Back',
+    'next': 'Next',
+    'skip': 'Skip',
+    'done': 'Done',
+    'retry': 'Retry',
+    'coming_soon': 'Coming soon!',
+    
+    // Auth
+    'login': 'Login',
+    'register': 'Register',
+    'logout': 'Logout',
+    'email': 'Email',
+    'password': 'Password',
+    'confirm_password': 'Confirm Password',
+    'full_name': 'Full Name',
+    'create_account': 'Create Account',
+    'sign_in': 'Sign In',
+    'sign_up': 'Sign Up',
+    'forgot_password': 'Forgot Password?',
+    'already_have_account': 'Already have an account?',
+    'dont_have_account': "Don't have an account?",
+    'start_coding_journey': 'Start your coding journey today',
+    'welcome_back': 'Welcome back! 👋',
+    'skip_auth_debug': 'Skip Auth (Debug)',
+    
+    // Validation
+    'enter_email': 'Please enter your email',
+    'enter_password': 'Please enter a password',
+    'enter_name': 'Please enter your name',
+    'invalid_email': 'Please enter a valid email',
+    'password_too_short': 'Password must be at least 6 characters',
+    'passwords_not_match': 'Passwords do not match',
+    'name_too_short': 'Name must be at least 2 characters',
+    
+    // Home
+    'start_journey': 'Start Your Journey',
+    'continue_learning': 'Continue Learning',
+    'level': 'Level',
+    
+    // Courses
+    'courses': 'Courses',
+    'choose_learning_path': 'Choose your learning path',
+    'python': 'Python',
+    'python_desc': 'Learn the fundamentals of Python programming',
+    'javascript': 'JavaScript',
+    'javascript_desc': 'Master modern JavaScript and ES6+',
+    'html_css': 'HTML/CSS',
+    'html_css_desc': 'Build beautiful websites with HTML and CSS',
+    'react': 'React',
+    'react_desc': 'Create interactive UIs with React',
+    'sql': 'SQL',
+    'sql_desc': 'Master database queries with SQL',
+    'all_courses': 'All Courses',
+    'my_courses': 'My Courses',
+    'course_progress': 'Course Progress',
+    'lessons_count': 'lessons',
+    'start_course': 'Start Course',
+    'continue_course': 'Continue Course',
+    
+    // Lessons
+    'lesson': 'Lesson',
+    'lessons': 'Lessons',
+    'complete_lesson': 'Complete Lesson',
+    'start_lesson': 'Start Lesson',
+    'next_lesson': 'Next Lesson',
+    'lesson_completed': 'Lesson Complete!',
+    'xp_earned': 'XP Earned',
+    'theory': 'Theory',
+    'quiz': 'Quiz',
+    'code': 'Code',
+    'no_theory': 'No theory available',
+    'no_quiz': 'No quiz available',
+    'no_coding_challenge': 'No coding challenge',
+    'continue': 'Continue',
+    'continue_to_coding': 'Continue to Coding Challenge',
+    'quiz_completed': 'Quiz Completed! 🎉',
+    'keep_practicing': 'Keep Practicing!',
+    'next_question': 'Next Question',
+    'finish_quiz': 'Finish Quiz',
+    
+    // Code Challenge
+    'run_code': 'Run Code',
+    'submit': 'Submit',
+    'test_passed': 'Test Passed!',
+    'test_failed': 'Test Failed',
+    'try_again': 'Try Again',
+    'show_hint': 'Show Hint',
+    'reset_code': 'Reset Code',
+    'check_answer': 'Check Answer',
+    
+    // Progress
+    'progress': 'Progress',
+    'your_progress': 'Your Progress',
+    'keep_up_work': 'Keep up the great work!',
+    'total_xp': 'Total XP',
+    'current_streak': 'Current Streak',
+    'days': 'days',
+    'completed': 'Completed',
+    'in_progress': 'In Progress',
+    'not_started': 'Not Started',
+    
+    // Achievements
+    'achievements': 'Achievements',
+    'unlocked': 'Unlocked',
+    'locked': 'Locked',
+    'first_steps': 'First Steps',
+    'first_steps_desc': 'Complete your first lesson',
+    'code_warrior': 'Code Warrior',
+    'code_warrior_desc': 'Complete 10 lessons',
+    'python_master': 'Python Master',
+    'python_master_desc': 'Complete all Python lessons',
+    'js_guru': 'JS Guru',
+    'js_guru_desc': 'Complete all JavaScript lessons',
+    'web_wizard': 'Web Wizard',
+    'web_wizard_desc': 'Complete all HTML/CSS lessons',
+    'streak_master': 'Streak Master',
+    'streak_master_desc': 'Maintain a 7-day streak',
+    'xp_hunter': 'XP Hunter',
+    'xp_hunter_desc': 'Earn 1000 total XP',
+    'centurion': 'Centurion',
+    'centurion_desc': 'Reach level 100',
+    
+    // Profile
+    'profile': 'Profile',
+    'edit_profile': 'Edit Profile',
+    'settings': 'Settings',
+    'statistics': 'Statistics',
+    'member_since': 'Member since',
+    'your_stats': 'Your Stats',
+    'learning_languages': 'Learning Languages',
+    'total_lessons': 'Total Lessons',
+    'view_all_achievements': 'View All Achievements',
+    'learning_history': 'Learning History',
+    'help_support': 'Help & Support',
+    'welcome_back_emoji': 'Welcome back! 👋',
+    
+    // Settings
+    'account': 'Account',
+    'change_password': 'Change Password',
+    'preferences': 'Preferences',
+    'theme': 'Theme',
+    'dark_mode': 'Dark Mode',
+    'light_mode': 'Light Mode',
+    'notifications': 'Notifications',
+    'language': 'Language',
+    'data_privacy': 'Data & Privacy',
+    'download_data': 'Download My Data',
+    'clear_cache': 'Clear Cache',
+    'about': 'About',
+    'version': 'Version',
+    'terms_of_service': 'Terms of Service',
+    'privacy_policy': 'Privacy Policy',
+    'danger_zone': 'Danger Zone',
+    'delete_account': 'Delete Account',
+    'delete_account_warning': 'This action cannot be undone. All your data will be permanently deleted.',
+    'clear_cache_confirm': 'Are you sure you want to clear the cache?',
+    'logout_confirm': 'Are you sure you want to logout?',
+    
+    // Navigation
+    'home': 'Home',
+    'learn': 'Learn',
+    'practice': 'Practice',
+    
+    // Home screen specific
+    'your_courses': 'Your Courses',
+    'browse_all_courses': 'Browse All Courses',
+    'lessons_completed_suffix': 'lessons completed',
+    
+    // Onboarding
+    'onboarding_title_1': 'Learn to Code',
+    'onboarding_desc_1': 'Master programming with interactive lessons',
+    'onboarding_title_2': 'Practice Daily',
+    'onboarding_desc_2': 'Build coding habits with daily challenges',
+    'onboarding_title_3': 'Track Progress',
+    'onboarding_desc_3': 'See your growth with detailed statistics',
+    'onboarding_title_4': 'Join the Community',
+    'onboarding_desc_4': 'Connect with learners worldwide',
+    'get_started': 'Get Started',
+    
+    // Common messages
+    'sign_in_to_continue': 'Sign in to continue learning',
+    'error_prefix': 'Error: ',
+    'error_saving_progress': 'Error saving progress: ',
+  };
+
+  // Ukrainian
+  static const Map<String, String> _uk = {
+    // Common
+    'app_name': 'CodeLearn',
+    'loading': 'Завантаження...',
+    'error': 'Помилка',
+    'success': 'Успіх',
+    'cancel': 'Скасувати',
+    'save': 'Зберегти',
+    'delete': 'Видалити',
+    'confirm': 'Підтвердити',
+    'ok': 'ОК',
+    'yes': 'Так',
+    'no': 'Ні',
+    'back': 'Назад',
+    'next': 'Далі',
+    'skip': 'Пропустити',
+    'done': 'Готово',
+    'retry': 'Повторити',
+    'coming_soon': 'Скоро буде!',
+    
+    // Auth
+    'login': 'Увійти',
+    'register': 'Реєстрація',
+    'logout': 'Вийти',
+    'email': 'Електронна пошта',
+    'password': 'Пароль',
+    'confirm_password': 'Підтвердіть пароль',
+    'full_name': 'Повне ім\'я',
+    'create_account': 'Створити акаунт',
+    'sign_in': 'Увійти',
+    'sign_up': 'Зареєструватись',
+    'forgot_password': 'Забули пароль?',
+    'already_have_account': 'Вже маєте акаунт?',
+    'dont_have_account': 'Немає акаунту?',
+    'start_coding_journey': 'Розпочніть свою подорож у програмування',
+    'welcome_back': 'З поверненням! 👋',
+    'skip_auth_debug': 'Пропустити авторизацію',
+    
+    // Validation
+    'enter_email': 'Введіть email',
+    'enter_password': 'Введіть пароль',
+    'enter_name': 'Введіть ім\'я',
+    'invalid_email': 'Введіть дійсний email',
+    'password_too_short': 'Пароль має містити щонайменше 6 символів',
+    'passwords_not_match': 'Паролі не збігаються',
+    'name_too_short': 'Ім\'я має містити щонайменше 2 символи',
+    
+    // Home
+    'start_journey': 'Почніть свою подорож',
+    'continue_learning': 'Продовжити навчання',
+    'level': 'Рівень',
+    
+    // Courses
+    'courses': 'Курси',
+    'choose_learning_path': 'Оберіть свій шлях навчання',
+    'python': 'Python',
+    'python_desc': 'Вивчіть основи програмування на Python',
+    'javascript': 'JavaScript',
+    'javascript_desc': 'Опануйте сучасний JavaScript та ES6+',
+    'html_css': 'HTML/CSS',
+    'html_css_desc': 'Створюйте красиві веб-сайти з HTML та CSS',
+    'react': 'React',
+    'react_desc': 'Створюйте інтерактивні інтерфейси з React',
+    'sql': 'SQL',
+    'sql_desc': 'Опануйте запити до баз даних за допомогою SQL',
+    'all_courses': 'Всі курси',
+    'my_courses': 'Мої курси',
+    'course_progress': 'Прогрес курсу',
+    'lessons_count': 'уроків',
+    'start_course': 'Почати курс',
+    'continue_course': 'Продовжити курс',
+    
+    // Lessons
+    'lesson': 'Урок',
+    'lessons': 'Уроки',
+    'complete_lesson': 'Завершити урок',
+    'start_lesson': 'Почати урок',
+    'next_lesson': 'Наступний урок',
+    'lesson_completed': 'Урок завершено!',
+    'xp_earned': 'Отримано XP',
+    'theory': 'Теорія',
+    'quiz': 'Тест',
+    'code': 'Код',
+    'no_theory': 'Немає теорії',
+    'no_quiz': 'Немає тесту',
+    'no_coding_challenge': 'Немає завдання з кодування',
+    'continue': 'Продовжити',
+    'continue_to_coding': 'Перейти до завдання з кодування',
+    'quiz_completed': 'Тест завершено! 🎉',
+    'keep_practicing': 'Продовжуйте практикуватись!',
+    'next_question': 'Наступне питання',
+    'finish_quiz': 'Завершити тест',
+    
+    // Code Challenge
+    'run_code': 'Запустити код',
+    'submit': 'Відправити',
+    'test_passed': 'Тест пройдено!',
+    'test_failed': 'Тест не пройдено',
+    'try_again': 'Спробувати ще раз',
+    'show_hint': 'Показати підказку',
+    'reset_code': 'Скинути код',
+    'check_answer': 'Перевірити відповідь',
+    
+    // Progress
+    'progress': 'Прогрес',
+    'your_progress': 'Ваш прогрес',
+    'keep_up_work': 'Продовжуйте у тому ж дусі!',
+    'total_xp': 'Всього XP',
+    'current_streak': 'Поточна серія',
+    'days': 'днів',
+    'completed': 'Завершено',
+    'in_progress': 'В процесі',
+    'not_started': 'Не розпочато',
+    
+    // Achievements
+    'achievements': 'Досягнення',
+    'unlocked': 'Відкрито',
+    'locked': 'Заблоковано',
+    'first_steps': 'Перші кроки',
+    'first_steps_desc': 'Завершіть перший урок',
+    'code_warrior': 'Воїн коду',
+    'code_warrior_desc': 'Завершіть 10 уроків',
+    'python_master': 'Майстер Python',
+    'python_master_desc': 'Завершіть всі уроки Python',
+    'js_guru': 'Гуру JS',
+    'js_guru_desc': 'Завершіть всі уроки JavaScript',
+    'web_wizard': 'Чарівник веб-розробки',
+    'web_wizard_desc': 'Завершіть всі уроки HTML/CSS',
+    'streak_master': 'Майстер серій',
+    'streak_master_desc': 'Підтримуйте 7-денну серію',
+    'xp_hunter': 'Мисливець за XP',
+    'xp_hunter_desc': 'Заробіть 1000 XP',
+    'centurion': 'Центуріон',
+    'centurion_desc': 'Досягніть 100 рівня',
+    
+    // Profile
+    'profile': 'Профіль',
+    'edit_profile': 'Редагувати профіль',
+    'settings': 'Налаштування',
+    'statistics': 'Статистика',
+    'member_since': 'Учасник з',
+    'your_stats': 'Ваша статистика',
+    'learning_languages': 'Мови, що вивчаються',
+    'total_lessons': 'Всього уроків',
+    'view_all_achievements': 'Переглянути всі досягнення',
+    'learning_history': 'Історія навчання',
+    'help_support': 'Допомога та підтримка',
+    'welcome_back_emoji': 'З поверненням! 👋',
+    
+    // Settings
+    'account': 'Акаунт',
+    'change_password': 'Змінити пароль',
+    'preferences': 'Налаштування',
+    'theme': 'Тема',
+    'dark_mode': 'Темний режим',
+    'light_mode': 'Світлий режим',
+    'notifications': 'Сповіщення',
+    'language': 'Мова',
+    'data_privacy': 'Дані та конфіденційність',
+    'download_data': 'Завантажити мої дані',
+    'clear_cache': 'Очистити кеш',
+    'about': 'Про додаток',
+    'version': 'Версія',
+    'terms_of_service': 'Умови використання',
+    'privacy_policy': 'Політика конфіденційності',
+    'danger_zone': 'Небезпечна зона',
+    'delete_account': 'Видалити акаунт',
+    'delete_account_warning': 'Цю дію не можна скасувати. Всі ваші дані будуть назавжди видалені.',
+    'clear_cache_confirm': 'Ви впевнені, що хочете очистити кеш?',
+    'logout_confirm': 'Ви впевнені, що хочете вийти?',
+    
+    // Navigation
+    'home': 'Головна',
+    'learn': 'Навчання',
+    'practice': 'Практика',
+    
+    // Home screen specific
+    'your_courses': 'Ваші курси',
+    'browse_all_courses': 'Переглянути всі курси',
+    'lessons_completed_suffix': 'уроків завершено',
+    
+    // Onboarding
+    'onboarding_title_1': 'Вчіться програмувати',
+    'onboarding_desc_1': 'Опануйте програмування за допомогою інтерактивних уроків',
+    'onboarding_title_2': 'Практикуйте щодня',
+    'onboarding_desc_2': 'Формуйте звички програмування з щоденними завданнями',
+    'onboarding_title_3': 'Відстежуйте прогрес',
+    'onboarding_desc_3': 'Спостерігайте за своїм ростом з детальною статистикою',
+    'onboarding_title_4': 'Приєднуйтесь до спільноти',
+    'onboarding_desc_4': 'Спілкуйтесь з учнями з усього світу',
+    'get_started': 'Почати',
+    
+    // Common messages
+    'sign_in_to_continue': 'Увійдіть, щоб продовжити навчання',
+    'error_prefix': 'Помилка: ',
+    'error_saving_progress': 'Помилка збереження прогресу: ',
+  };
+
+  // Spanish
+  static const Map<String, String> _es = {
+    // Common
+    'app_name': 'CodeLearn',
+    'loading': 'Cargando...',
+    'error': 'Error',
+    'success': 'Éxito',
+    'cancel': 'Cancelar',
+    'save': 'Guardar',
+    'delete': 'Eliminar',
+    'confirm': 'Confirmar',
+    'ok': 'OK',
+    'yes': 'Sí',
+    'no': 'No',
+    'back': 'Atrás',
+    'next': 'Siguiente',
+    'skip': 'Saltar',
+    'done': 'Hecho',
+    'retry': 'Reintentar',
+    'coming_soon': '¡Próximamente!',
+    
+    // Auth
+    'login': 'Iniciar sesión',
+    'register': 'Registrarse',
+    'logout': 'Cerrar sesión',
+    'email': 'Correo electrónico',
+    'password': 'Contraseña',
+    'confirm_password': 'Confirmar contraseña',
+    'full_name': 'Nombre completo',
+    'create_account': 'Crear cuenta',
+    'sign_in': 'Iniciar sesión',
+    'sign_up': 'Registrarse',
+    'forgot_password': '¿Olvidaste tu contraseña?',
+    'already_have_account': '¿Ya tienes una cuenta?',
+    'dont_have_account': '¿No tienes una cuenta?',
+    'start_coding_journey': 'Comienza tu viaje de programación hoy',
+    'welcome_back': '¡Bienvenido de nuevo! 👋',
+    'skip_auth_debug': 'Omitir autenticación (Debug)',
+    
+    // Validation
+    'enter_email': 'Por favor ingresa tu correo electrónico',
+    'enter_password': 'Por favor ingresa una contraseña',
+    'enter_name': 'Por favor ingresa tu nombre',
+    'invalid_email': 'Por favor ingresa un correo electrónico válido',
+    'password_too_short': 'La contraseña debe tener al menos 6 caracteres',
+    'passwords_not_match': 'Las contraseñas no coinciden',
+    'name_too_short': 'El nombre debe tener al menos 2 caracteres',
+    
+    // Home
+    'start_journey': 'Comienza tu viaje',
+    'continue_learning': 'Continuar aprendiendo',
+    'level': 'Nivel',
+    
+    // Courses
+    'courses': 'Cursos',
+    'choose_learning_path': 'Elige tu ruta de aprendizaje',
+    'python': 'Python',
+    'python_desc': 'Aprende los fundamentos de programación en Python',
+    'javascript': 'JavaScript',
+    'javascript_desc': 'Domina JavaScript moderno y ES6+',
+    'html_css': 'HTML/CSS',
+    'html_css_desc': 'Construye sitios web hermosos con HTML y CSS',
+    'react': 'React',
+    'react_desc': 'Crea interfaces interactivas con React',
+    'sql': 'SQL',
+    'sql_desc': 'Domina las consultas de bases de datos con SQL',
+    'all_courses': 'Todos los cursos',
+    'my_courses': 'Mis cursos',
+    'course_progress': 'Progreso del curso',
+    'lessons_count': 'lecciones',
+    'start_course': 'Comenzar curso',
+    'continue_course': 'Continuar curso',
+    
+    // Lessons
+    'lesson': 'Lección',
+    'lessons': 'Lecciones',
+    'complete_lesson': 'Completar lección',
+    'start_lesson': 'Comenzar lección',
+    'next_lesson': 'Siguiente lección',
+    'lesson_completed': '¡Lección completada!',
+    'xp_earned': 'XP ganada',
+    'theory': 'Teoría',
+    'quiz': 'Cuestionario',
+    'code': 'Código',
+    'no_theory': 'No hay teoría disponible',
+    'no_quiz': 'No hay cuestionario disponible',
+    'no_coding_challenge': 'No hay desafío de código',
+    'continue': 'Continuar',
+    'continue_to_coding': 'Continuar al desafío de código',
+    'quiz_completed': '¡Cuestionario completado! 🎉',
+    'keep_practicing': '¡Sigue practicando!',
+    'next_question': 'Siguiente pregunta',
+    'finish_quiz': 'Terminar cuestionario',
+    
+    // Code Challenge
+    'run_code': 'Ejecutar código',
+    'submit': 'Enviar',
+    'test_passed': '¡Prueba superada!',
+    'test_failed': 'Prueba fallida',
+    'try_again': 'Intentar de nuevo',
+    'show_hint': 'Mostrar pista',
+    'reset_code': 'Reiniciar código',
+    'check_answer': 'Comprobar respuesta',
+    
+    // Progress
+    'progress': 'Progreso',
+    'your_progress': 'Tu progreso',
+    'keep_up_work': '¡Sigue con el gran trabajo!',
+    'total_xp': 'XP total',
+    'current_streak': 'Racha actual',
+    'days': 'días',
+    'completed': 'Completado',
+    'in_progress': 'En progreso',
+    'not_started': 'No iniciado',
+    
+    // Achievements
+    'achievements': 'Logros',
+    'unlocked': 'Desbloqueado',
+    'locked': 'Bloqueado',
+    'first_steps': 'Primeros pasos',
+    'first_steps_desc': 'Completa tu primera lección',
+    'code_warrior': 'Guerrero del código',
+    'code_warrior_desc': 'Completa 10 lecciones',
+    'python_master': 'Maestro de Python',
+    'python_master_desc': 'Completa todas las lecciones de Python',
+    'js_guru': 'Gurú de JS',
+    'js_guru_desc': 'Completa todas las lecciones de JavaScript',
+    'web_wizard': 'Mago web',
+    'web_wizard_desc': 'Completa todas las lecciones de HTML/CSS',
+    'streak_master': 'Maestro de rachas',
+    'streak_master_desc': 'Mantén una racha de 7 días',
+    'xp_hunter': 'Cazador de XP',
+    'xp_hunter_desc': 'Gana 1000 XP en total',
+    'centurion': 'Centurión',
+    'centurion_desc': 'Alcanza el nivel 100',
+    
+    // Profile
+    'profile': 'Perfil',
+    'edit_profile': 'Editar perfil',
+    'settings': 'Configuración',
+    'statistics': 'Estadísticas',
+    'member_since': 'Miembro desde',
+    'your_stats': 'Tus estadísticas',
+    'learning_languages': 'Lenguajes de aprendizaje',
+    'total_lessons': 'Lecciones totales',
+    'view_all_achievements': 'Ver todos los logros',
+    'learning_history': 'Historial de aprendizaje',
+    'help_support': 'Ayuda y soporte',
+    'welcome_back_emoji': '¡Bienvenido de nuevo! 👋',
+    
+    // Settings
+    'account': 'Cuenta',
+    'change_password': 'Cambiar contraseña',
+    'preferences': 'Preferencias',
+    'theme': 'Tema',
+    'dark_mode': 'Modo oscuro',
+    'light_mode': 'Modo claro',
+    'notifications': 'Notificaciones',
+    'language': 'Idioma',
+    'data_privacy': 'Datos y privacidad',
+    'download_data': 'Descargar mis datos',
+    'clear_cache': 'Limpiar caché',
+    'about': 'Acerca de',
+    'version': 'Versión',
+    'terms_of_service': 'Términos de servicio',
+    'privacy_policy': 'Política de privacidad',
+    'danger_zone': 'Zona de peligro',
+    'delete_account': 'Eliminar cuenta',
+    'delete_account_warning': 'Esta acción no se puede deshacer. Todos tus datos se eliminarán permanentemente.',
+    'clear_cache_confirm': '¿Estás seguro de que deseas limpiar la caché?',
+    'logout_confirm': '¿Estás seguro de que deseas cerrar sesión?',
+    
+    // Navigation
+    'home': 'Inicio',
+    'learn': 'Aprender',
+    'practice': 'Practicar',
+    
+    // Home screen specific
+    'your_courses': 'Tus cursos',
+    'browse_all_courses': 'Ver todos los cursos',
+    'lessons_completed_suffix': 'lecciones completadas',
+    
+    // Onboarding
+    'onboarding_title_1': 'Aprende a programar',
+    'onboarding_desc_1': 'Domina la programación con lecciones interactivas',
+    'onboarding_title_2': 'Practica a diario',
+    'onboarding_desc_2': 'Crea hábitos de codificación con desafíos diarios',
+    'onboarding_title_3': 'Rastrea tu progreso',
+    'onboarding_desc_3': 'Ve tu crecimiento con estadísticas detalladas',
+    'onboarding_title_4': 'Únete a la comunidad',
+    'onboarding_desc_4': 'Conecta con estudiantes de todo el mundo',
+    'get_started': 'Comenzar',
+    
+    // Common messages
+    'sign_in_to_continue': 'Inicia sesión para continuar aprendiendo',
+    'error_prefix': 'Error: ',
+    'error_saving_progress': 'Error al guardar el progreso: ',
+  };
+
+  // German
+  static const Map<String, String> _de = {
+    // Common
+    'app_name': 'CodeLearn',
+    'loading': 'Laden...',
+    'error': 'Fehler',
+    'success': 'Erfolg',
+    'cancel': 'Abbrechen',
+    'save': 'Speichern',
+    'delete': 'Löschen',
+    'confirm': 'Bestätigen',
+    'ok': 'OK',
+    'yes': 'Ja',
+    'no': 'Nein',
+    'back': 'Zurück',
+    'next': 'Weiter',
+    'skip': 'Überspringen',
+    'done': 'Fertig',
+    'retry': 'Wiederholen',
+    'coming_soon': 'Demnächst!',
+    
+    // Auth
+    'login': 'Anmelden',
+    'register': 'Registrieren',
+    'logout': 'Abmelden',
+    'email': 'E-Mail',
+    'password': 'Passwort',
+    'confirm_password': 'Passwort bestätigen',
+    'full_name': 'Vollständiger Name',
+    'create_account': 'Konto erstellen',
+    'sign_in': 'Anmelden',
+    'sign_up': 'Registrieren',
+    'forgot_password': 'Passwort vergessen?',
+    'already_have_account': 'Hast du bereits ein Konto?',
+    'dont_have_account': 'Hast du noch kein Konto?',
+    'start_coding_journey': 'Beginne heute deine Programmierreise',
+    'welcome_back': 'Willkommen zurück! 👋',
+    'skip_auth_debug': 'Authentifizierung überspringen (Debug)',
+    
+    // Validation
+    'enter_email': 'Bitte gib deine E-Mail-Adresse ein',
+    'enter_password': 'Bitte gib ein Passwort ein',
+    'enter_name': 'Bitte gib deinen Namen ein',
+    'invalid_email': 'Bitte gib eine gültige E-Mail-Adresse ein',
+    'password_too_short': 'Das Passwort muss mindestens 6 Zeichen lang sein',
+    'passwords_not_match': 'Die Passwörter stimmen nicht überein',
+    'name_too_short': 'Der Name muss mindestens 2 Zeichen lang sein',
+    
+    // Home
+    'start_journey': 'Beginne deine Reise',
+    'continue_learning': 'Weiterlernen',
+    'level': 'Level',
+    
+    // Courses
+    'courses': 'Kurse',
+    'choose_learning_path': 'Wähle deinen Lernpfad',
+    'python': 'Python',
+    'python_desc': 'Lerne die Grundlagen der Python-Programmierung',
+    'javascript': 'JavaScript',
+    'javascript_desc': 'Beherrsche modernes JavaScript und ES6+',
+    'html_css': 'HTML/CSS',
+    'html_css_desc': 'Erstelle schöne Websites mit HTML und CSS',
+    'react': 'React',
+    'react_desc': 'Erstelle interaktive Benutzeroberflächen mit React',
+    'sql': 'SQL',
+    'sql_desc': 'Beherrsche Datenbankabfragen mit SQL',
+    'all_courses': 'Alle Kurse',
+    'my_courses': 'Meine Kurse',
+    'course_progress': 'Kursfortschritt',
+    'lessons_count': 'Lektionen',
+    'start_course': 'Kurs starten',
+    'continue_course': 'Kurs fortsetzen',
+    
+    // Lessons
+    'lesson': 'Lektion',
+    'lessons': 'Lektionen',
+    'complete_lesson': 'Lektion abschließen',
+    'start_lesson': 'Lektion starten',
+    'next_lesson': 'Nächste Lektion',
+    'lesson_completed': 'Lektion abgeschlossen!',
+    'xp_earned': 'XP verdient',
+    'theory': 'Theorie',
+    'quiz': 'Quiz',
+    'code': 'Code',
+    'no_theory': 'Keine Theorie verfügbar',
+    'no_quiz': 'Kein Quiz verfügbar',
+    'no_coding_challenge': 'Keine Programmieraufgabe',
+    'continue': 'Fortfahren',
+    'continue_to_coding': 'Zur Programmieraufgabe',
+    'quiz_completed': 'Quiz abgeschlossen! 🎉',
+    'keep_practicing': 'Weiter üben!',
+    'next_question': 'Nächste Frage',
+    'finish_quiz': 'Quiz beenden',
+    
+    // Code Challenge
+    'run_code': 'Code ausführen',
+    'submit': 'Absenden',
+    'test_passed': 'Test bestanden!',
+    'test_failed': 'Test fehlgeschlagen',
+    'try_again': 'Erneut versuchen',
+    'show_hint': 'Hinweis anzeigen',
+    'reset_code': 'Code zurücksetzen',
+    'check_answer': 'Antwort überprüfen',
+    
+    // Progress
+    'progress': 'Fortschritt',
+    'your_progress': 'Dein Fortschritt',
+    'keep_up_work': 'Mach weiter so!',
+    'total_xp': 'Gesamt-XP',
+    'current_streak': 'Aktuelle Serie',
+    'days': 'Tage',
+    'completed': 'Abgeschlossen',
+    'in_progress': 'In Bearbeitung',
+    'not_started': 'Nicht begonnen',
+    
+    // Achievements
+    'achievements': 'Erfolge',
+    'unlocked': 'Freigeschaltet',
+    'locked': 'Gesperrt',
+    'first_steps': 'Erste Schritte',
+    'first_steps_desc': 'Schließe deine erste Lektion ab',
+    'code_warrior': 'Code-Krieger',
+    'code_warrior_desc': 'Schließe 10 Lektionen ab',
+    'python_master': 'Python-Meister',
+    'python_master_desc': 'Schließe alle Python-Lektionen ab',
+    'js_guru': 'JS-Guru',
+    'js_guru_desc': 'Schließe alle JavaScript-Lektionen ab',
+    'web_wizard': 'Web-Zauberer',
+    'web_wizard_desc': 'Schließe alle HTML/CSS-Lektionen ab',
+    'streak_master': 'Serien-Meister',
+    'streak_master_desc': 'Halte eine 7-Tage-Serie aufrecht',
+    'xp_hunter': 'XP-Jäger',
+    'xp_hunter_desc': 'Verdiene insgesamt 1000 XP',
+    'centurion': 'Zenturio',
+    'centurion_desc': 'Erreiche Level 100',
+    
+    // Profile
+    'profile': 'Profil',
+    'edit_profile': 'Profil bearbeiten',
+    'settings': 'Einstellungen',
+    'statistics': 'Statistiken',
+    'member_since': 'Mitglied seit',
+    'your_stats': 'Deine Statistiken',
+    'learning_languages': 'Lernsprachen',
+    'total_lessons': 'Gesamte Lektionen',
+    'view_all_achievements': 'Alle Erfolge ansehen',
+    'learning_history': 'Lernverlauf',
+    'help_support': 'Hilfe & Support',
+    'welcome_back_emoji': 'Willkommen zurück! 👋',
+    
+    // Settings
+    'account': 'Konto',
+    'change_password': 'Passwort ändern',
+    'preferences': 'Einstellungen',
+    'theme': 'Thema',
+    'dark_mode': 'Dunkelmodus',
+    'light_mode': 'Hellmodus',
+    'notifications': 'Benachrichtigungen',
+    'language': 'Sprache',
+    'data_privacy': 'Daten & Datenschutz',
+    'download_data': 'Meine Daten herunterladen',
+    'clear_cache': 'Cache leeren',
+    'about': 'Über',
+    'version': 'Version',
+    'terms_of_service': 'Nutzungsbedingungen',
+    'privacy_policy': 'Datenschutzrichtlinie',
+    'danger_zone': 'Gefahrenzone',
+    'delete_account': 'Konto löschen',
+    'delete_account_warning': 'Diese Aktion kann nicht rückgängig gemacht werden. Alle deine Daten werden dauerhaft gelöscht.',
+    'clear_cache_confirm': 'Bist du sicher, dass du den Cache leeren möchtest?',
+    'logout_confirm': 'Bist du sicher, dass du dich abmelden möchtest?',
+    
+    // Navigation
+    'home': 'Startseite',
+    'learn': 'Lernen',
+    'practice': 'Üben',
+    
+    // Home screen specific
+    'your_courses': 'Deine Kurse',
+    'browse_all_courses': 'Alle Kurse durchsuchen',
+    'lessons_completed_suffix': 'Lektionen abgeschlossen',
+    
+    // Onboarding
+    'onboarding_title_1': 'Programmieren lernen',
+    'onboarding_desc_1': 'Beherrsche das Programmieren mit interaktiven Lektionen',
+    'onboarding_title_2': 'Täglich üben',
+    'onboarding_desc_2': 'Bilde Programmiergewohnheiten mit täglichen Herausforderungen',
+    'onboarding_title_3': 'Fortschritt verfolgen',
+    'onboarding_desc_3': 'Sieh dein Wachstum mit detaillierten Statistiken',
+    'onboarding_title_4': 'Der Community beitreten',
+    'onboarding_desc_4': 'Vernetze dich mit Lernenden weltweit',
+    'get_started': 'Loslegen',
+    
+    // Common messages
+    'sign_in_to_continue': 'Melde dich an, um weiterzulernen',
+    'error_prefix': 'Fehler: ',
+    'error_saving_progress': 'Fehler beim Speichern des Fortschritts: ',
+  };
+
+  // French
+  static const Map<String, String> _fr = {
+    // Common
+    'app_name': 'CodeLearn',
+    'loading': 'Chargement...',
+    'error': 'Erreur',
+    'success': 'Succès',
+    'cancel': 'Annuler',
+    'save': 'Enregistrer',
+    'delete': 'Supprimer',
+    'confirm': 'Confirmer',
+    'ok': 'OK',
+    'yes': 'Oui',
+    'no': 'Non',
+    'back': 'Retour',
+    'next': 'Suivant',
+    'skip': 'Passer',
+    'done': 'Terminé',
+    'retry': 'Réessayer',
+    'coming_soon': 'Bientôt disponible !',
+    
+    // Auth
+    'login': 'Connexion',
+    'register': "S'inscrire",
+    'logout': 'Déconnexion',
+    'email': 'E-mail',
+    'password': 'Mot de passe',
+    'confirm_password': 'Confirmer le mot de passe',
+    'full_name': 'Nom complet',
+    'create_account': 'Créer un compte',
+    'sign_in': 'Se connecter',
+    'sign_up': "S'inscrire",
+    'forgot_password': 'Mot de passe oublié ?',
+    'already_have_account': 'Vous avez déjà un compte ?',
+    'dont_have_account': "Vous n'avez pas de compte ?",
+    'start_coding_journey': 'Commencez votre parcours de programmation aujourd\'hui',
+    'welcome_back': 'Bon retour ! 👋',
+    'skip_auth_debug': 'Ignorer l\'authentification (Debug)',
+    
+    // Validation
+    'enter_email': 'Veuillez entrer votre e-mail',
+    'enter_password': 'Veuillez entrer un mot de passe',
+    'enter_name': 'Veuillez entrer votre nom',
+    'invalid_email': 'Veuillez entrer un e-mail valide',
+    'password_too_short': 'Le mot de passe doit contenir au moins 6 caractères',
+    'passwords_not_match': 'Les mots de passe ne correspondent pas',
+    'name_too_short': 'Le nom doit contenir au moins 2 caractères',
+    
+    // Home
+    'start_journey': 'Commencez votre parcours',
+    'continue_learning': 'Continuer l\'apprentissage',
+    'level': 'Niveau',
+    
+    // Courses
+    'courses': 'Cours',
+    'choose_learning_path': 'Choisissez votre parcours d\'apprentissage',
+    'python': 'Python',
+    'python_desc': 'Apprenez les bases de la programmation Python',
+    'javascript': 'JavaScript',
+    'javascript_desc': 'Maîtrisez le JavaScript moderne et ES6+',
+    'html_css': 'HTML/CSS',
+    'html_css_desc': 'Créez de beaux sites web avec HTML et CSS',
+    'react': 'React',
+    'react_desc': 'Créez des interfaces interactives avec React',
+    'sql': 'SQL',
+    'sql_desc': 'Maîtrisez les requêtes de base de données avec SQL',
+    'all_courses': 'Tous les cours',
+    'my_courses': 'Mes cours',
+    'course_progress': 'Progression du cours',
+    'lessons_count': 'leçons',
+    'start_course': 'Commencer le cours',
+    'continue_course': 'Continuer le cours',
+    
+    // Lessons
+    'lesson': 'Leçon',
+    'lessons': 'Leçons',
+    'complete_lesson': 'Terminer la leçon',
+    'start_lesson': 'Commencer la leçon',
+    'next_lesson': 'Leçon suivante',
+    'lesson_completed': 'Leçon terminée !',
+    'xp_earned': 'XP gagné',
+    'theory': 'Théorie',
+    'quiz': 'Quiz',
+    'code': 'Code',
+    'no_theory': 'Aucune théorie disponible',
+    'no_quiz': 'Aucun quiz disponible',
+    'no_coding_challenge': 'Aucun défi de code',
+    'continue': 'Continuer',
+    'continue_to_coding': 'Continuer vers le défi de code',
+    'quiz_completed': 'Quiz terminé ! 🎉',
+    'keep_practicing': 'Continuez à pratiquer !',
+    'next_question': 'Question suivante',
+    'finish_quiz': 'Terminer le quiz',
+    
+    // Code Challenge
+    'run_code': 'Exécuter le code',
+    'submit': 'Soumettre',
+    'test_passed': 'Test réussi !',
+    'test_failed': 'Test échoué',
+    'try_again': 'Réessayer',
+    'show_hint': 'Afficher l\'indice',
+    'reset_code': 'Réinitialiser le code',
+    'check_answer': 'Vérifier la réponse',
+    
+    // Progress
+    'progress': 'Progrès',
+    'your_progress': 'Votre progression',
+    'keep_up_work': 'Continuez comme ça !',
+    'total_xp': 'XP total',
+    'current_streak': 'Série actuelle',
+    'days': 'jours',
+    'completed': 'Terminé',
+    'in_progress': 'En cours',
+    'not_started': 'Non commencé',
+    
+    // Achievements
+    'achievements': 'Réalisations',
+    'unlocked': 'Déverrouillé',
+    'locked': 'Verrouillé',
+    'first_steps': 'Premiers pas',
+    'first_steps_desc': 'Terminez votre première leçon',
+    'code_warrior': 'Guerrier du code',
+    'code_warrior_desc': 'Terminez 10 leçons',
+    'python_master': 'Maître Python',
+    'python_master_desc': 'Terminez toutes les leçons Python',
+    'js_guru': 'Gourou JS',
+    'js_guru_desc': 'Terminez toutes les leçons JavaScript',
+    'web_wizard': 'Magicien du web',
+    'web_wizard_desc': 'Terminez toutes les leçons HTML/CSS',
+    'streak_master': 'Maître des séries',
+    'streak_master_desc': 'Maintenez une série de 7 jours',
+    'xp_hunter': 'Chasseur de XP',
+    'xp_hunter_desc': 'Gagnez 1000 XP au total',
+    'centurion': 'Centurion',
+    'centurion_desc': 'Atteignez le niveau 100',
+    
+    // Profile
+    'profile': 'Profil',
+    'edit_profile': 'Modifier le profil',
+    'settings': 'Paramètres',
+    'statistics': 'Statistiques',
+    'member_since': 'Membre depuis',
+    'your_stats': 'Vos statistiques',
+    'learning_languages': 'Langages d\'apprentissage',
+    'total_lessons': 'Leçons totales',
+    'view_all_achievements': 'Voir toutes les réalisations',
+    'learning_history': 'Historique d\'apprentissage',
+    'help_support': 'Aide et support',
+    'welcome_back_emoji': 'Bon retour ! 👋',
+    
+    // Settings
+    'account': 'Compte',
+    'change_password': 'Changer le mot de passe',
+    'preferences': 'Préférences',
+    'theme': 'Thème',
+    'dark_mode': 'Mode sombre',
+    'light_mode': 'Mode clair',
+    'notifications': 'Notifications',
+    'language': 'Langue',
+    'data_privacy': 'Données et confidentialité',
+    'download_data': 'Télécharger mes données',
+    'clear_cache': 'Vider le cache',
+    'about': 'À propos',
+    'version': 'Version',
+    'terms_of_service': 'Conditions d\'utilisation',
+    'privacy_policy': 'Politique de confidentialité',
+    'danger_zone': 'Zone dangereuse',
+    'delete_account': 'Supprimer le compte',
+    'delete_account_warning': 'Cette action est irréversible. Toutes vos données seront définitivement supprimées.',
+    'clear_cache_confirm': 'Êtes-vous sûr de vouloir vider le cache ?',
+    'logout_confirm': 'Êtes-vous sûr de vouloir vous déconnecter ?',
+    
+    // Navigation
+    'home': 'Accueil',
+    'learn': 'Apprendre',
+    'practice': 'Pratiquer',
+    
+    // Home screen specific
+    'your_courses': 'Vos cours',
+    'browse_all_courses': 'Parcourir tous les cours',
+    'lessons_completed_suffix': 'leçons terminées',
+    
+    // Onboarding
+    'onboarding_title_1': 'Apprendre à coder',
+    'onboarding_desc_1': 'Maîtrisez la programmation avec des leçons interactives',
+    'onboarding_title_2': 'Pratiquer quotidiennement',
+    'onboarding_desc_2': 'Développez des habitudes de codage avec des défis quotidiens',
+    'onboarding_title_3': 'Suivre la progression',
+    'onboarding_desc_3': 'Voyez votre croissance avec des statistiques détaillées',
+    'onboarding_title_4': 'Rejoindre la communauté',
+    'onboarding_desc_4': 'Connectez-vous avec des apprenants du monde entier',
+    'get_started': 'Commencer',
+    
+    // Common messages
+    'sign_in_to_continue': 'Connectez-vous pour continuer l\'apprentissage',
+    'error_prefix': 'Erreur : ',
+    'error_saving_progress': 'Erreur lors de l\'enregistrement de la progression : ',
+  };
+
+  // Polish
+  static const Map<String, String> _pl = {
+    // Common
+    'app_name': 'CodeLearn',
+    'loading': 'Ładowanie...',
+    'error': 'Błąd',
+    'success': 'Sukces',
+    'cancel': 'Anuluj',
+    'save': 'Zapisz',
+    'delete': 'Usuń',
+    'confirm': 'Potwierdź',
+    'ok': 'OK',
+    'yes': 'Tak',
+    'no': 'Nie',
+    'back': 'Wstecz',
+    'next': 'Dalej',
+    'skip': 'Pomiń',
+    'done': 'Gotowe',
+    'retry': 'Spróbuj ponownie',
+    'coming_soon': 'Wkrótce!',
+    
+    // Auth
+    'login': 'Zaloguj się',
+    'register': 'Zarejestruj się',
+    'logout': 'Wyloguj się',
+    'email': 'E-mail',
+    'password': 'Hasło',
+    'confirm_password': 'Potwierdź hasło',
+    'full_name': 'Pełne imię',
+    'create_account': 'Utwórz konto',
+    'sign_in': 'Zaloguj się',
+    'sign_up': 'Zarejestruj się',
+    'forgot_password': 'Zapomniałeś hasła?',
+    'already_have_account': 'Masz już konto?',
+    'dont_have_account': 'Nie masz konta?',
+    'start_coding_journey': 'Rozpocznij swoją przygodę z programowaniem już dziś',
+    'welcome_back': 'Witaj ponownie! 👋',
+    'skip_auth_debug': 'Pomiń uwierzytelnianie (Debug)',
+    
+    // Validation
+    'enter_email': 'Proszę podać adres e-mail',
+    'enter_password': 'Proszę podać hasło',
+    'enter_name': 'Proszę podać imię',
+    'invalid_email': 'Proszę podać prawidłowy adres e-mail',
+    'password_too_short': 'Hasło musi mieć co najmniej 6 znaków',
+    'passwords_not_match': 'Hasła nie są identyczne',
+    'name_too_short': 'Imię musi mieć co najmniej 2 znaki',
+    
+    // Home
+    'start_journey': 'Rozpocznij swoją podróż',
+    'continue_learning': 'Kontynuuj naukę',
+    'level': 'Poziom',
+    
+    // Courses
+    'courses': 'Kursy',
+    'choose_learning_path': 'Wybierz swoją ścieżkę nauki',
+    'python': 'Python',
+    'python_desc': 'Naucz się podstaw programowania w Pythonie',
+    'javascript': 'JavaScript',
+    'javascript_desc': 'Opanuj nowoczesny JavaScript i ES6+',
+    'html_css': 'HTML/CSS',
+    'html_css_desc': 'Twórz piękne strony internetowe z HTML i CSS',
+    'react': 'React',
+    'react_desc': 'Twórz interaktywne interfejsy z React',
+    'sql': 'SQL',
+    'sql_desc': 'Opanuj zapytania bazodanowe z SQL',
+    'all_courses': 'Wszystkie kursy',
+    'my_courses': 'Moje kursy',
+    'course_progress': 'Postęp kursu',
+    'lessons_count': 'lekcji',
+    'start_course': 'Rozpocznij kurs',
+    'continue_course': 'Kontynuuj kurs',
+    
+    // Lessons
+    'lesson': 'Lekcja',
+    'lessons': 'Lekcje',
+    'complete_lesson': 'Zakończ lekcję',
+    'start_lesson': 'Rozpocznij lekcję',
+    'next_lesson': 'Następna lekcja',
+    'lesson_completed': 'Lekcja ukończona!',
+    'xp_earned': 'Zdobyte XP',
+    'theory': 'Teoria',
+    'quiz': 'Quiz',
+    'code': 'Kod',
+    'no_theory': 'Brak dostępnej teorii',
+    'no_quiz': 'Brak dostępnego quizu',
+    'no_coding_challenge': 'Brak wyzwania kodowania',
+    'continue': 'Kontynuuj',
+    'continue_to_coding': 'Przejdź do wyzwania kodowania',
+    'quiz_completed': 'Quiz ukończony! 🎉',
+    'keep_practicing': 'Ćwicz dalej!',
+    'next_question': 'Następne pytanie',
+    'finish_quiz': 'Zakończ quiz',
+    
+    // Code Challenge
+    'run_code': 'Uruchom kod',
+    'submit': 'Wyślij',
+    'test_passed': 'Test zaliczony!',
+    'test_failed': 'Test niezaliczony',
+    'try_again': 'Spróbuj ponownie',
+    'show_hint': 'Pokaż wskazówkę',
+    'reset_code': 'Zresetuj kod',
+    'check_answer': 'Sprawdź odpowiedź',
+    
+    // Progress
+    'progress': 'Postęp',
+    'your_progress': 'Twój postęp',
+    'keep_up_work': 'Tak trzymaj!',
+    'total_xp': 'Łączne XP',
+    'current_streak': 'Aktualna seria',
+    'days': 'dni',
+    'completed': 'Ukończone',
+    'in_progress': 'W trakcie',
+    'not_started': 'Nie rozpoczęto',
+    
+    // Achievements
+    'achievements': 'Osiągnięcia',
+    'unlocked': 'Odblokowane',
+    'locked': 'Zablokowane',
+    'first_steps': 'Pierwsze kroki',
+    'first_steps_desc': 'Ukończ swoją pierwszą lekcję',
+    'code_warrior': 'Wojownik kodu',
+    'code_warrior_desc': 'Ukończ 10 lekcji',
+    'python_master': 'Mistrz Pythona',
+    'python_master_desc': 'Ukończ wszystkie lekcje Pythona',
+    'js_guru': 'Guru JS',
+    'js_guru_desc': 'Ukończ wszystkie lekcje JavaScript',
+    'web_wizard': 'Czarodziej webowy',
+    'web_wizard_desc': 'Ukończ wszystkie lekcje HTML/CSS',
+    'streak_master': 'Mistrz serii',
+    'streak_master_desc': 'Utrzymaj 7-dniową serię',
+    'xp_hunter': 'Łowca XP',
+    'xp_hunter_desc': 'Zdobądź łącznie 1000 XP',
+    'centurion': 'Centurion',
+    'centurion_desc': 'Osiągnij poziom 100',
+    
+    // Profile
+    'profile': 'Profil',
+    'edit_profile': 'Edytuj profil',
+    'settings': 'Ustawienia',
+    'statistics': 'Statystyki',
+    'member_since': 'Członek od',
+    'your_stats': 'Twoje statystyki',
+    'learning_languages': 'Języki programowania',
+    'total_lessons': 'Łączna liczba lekcji',
+    'view_all_achievements': 'Zobacz wszystkie osiągnięcia',
+    'learning_history': 'Historia nauki',
+    'help_support': 'Pomoc i wsparcie',
+    'welcome_back_emoji': 'Witaj ponownie! 👋',
+    
+    // Settings
+    'account': 'Konto',
+    'change_password': 'Zmień hasło',
+    'preferences': 'Preferencje',
+    'theme': 'Motyw',
+    'dark_mode': 'Tryb ciemny',
+    'light_mode': 'Tryb jasny',
+    'notifications': 'Powiadomienia',
+    'language': 'Język',
+    'data_privacy': 'Dane i prywatność',
+    'download_data': 'Pobierz moje dane',
+    'clear_cache': 'Wyczyść pamięć podręczną',
+    'about': 'O aplikacji',
+    'version': 'Wersja',
+    'terms_of_service': 'Warunki korzystania',
+    'privacy_policy': 'Polityka prywatności',
+    'danger_zone': 'Strefa niebezpieczna',
+    'delete_account': 'Usuń konto',
+    'delete_account_warning': 'Ta akcja jest nieodwracalna. Wszystkie twoje dane zostaną trwale usunięte.',
+    'clear_cache_confirm': 'Czy na pewno chcesz wyczyścić pamięć podręczną?',
+    'logout_confirm': 'Czy na pewno chcesz się wylogować?',
+    
+    // Navigation
+    'home': 'Strona główna',
+    'learn': 'Nauka',
+    'practice': 'Ćwiczenia',
+    
+    // Home screen specific
+    'your_courses': 'Twoje kursy',
+    'browse_all_courses': 'Przeglądaj wszystkie kursy',
+    'lessons_completed_suffix': 'ukończonych lekcji',
+    
+    // Onboarding
+    'onboarding_title_1': 'Naucz się programować',
+    'onboarding_desc_1': 'Opanuj programowanie dzięki interaktywnym lekcjom',
+    'onboarding_title_2': 'Ćwicz codziennie',
+    'onboarding_desc_2': 'Buduj nawyki programowania dzięki codziennym wyzwaniom',
+    'onboarding_title_3': 'Śledź postępy',
+    'onboarding_desc_3': 'Zobacz swój rozwój dzięki szczegółowym statystykom',
+    'onboarding_title_4': 'Dołącz do społeczności',
+    'onboarding_desc_4': 'Połącz się z uczniami z całego świata',
+    'get_started': 'Rozpocznij',
+    
+    // Common messages
+    'sign_in_to_continue': 'Zaloguj się, aby kontynuować naukę',
+    'error_prefix': 'Błąd: ',
+    'error_saving_progress': 'Błąd podczas zapisywania postępu: ',
+  };
+}
+
+class _AppLocalizationsDelegate
+    extends LocalizationsDelegate<AppLocalizations> {
+  const _AppLocalizationsDelegate();
+
+  @override
+  bool isSupported(Locale locale) {
+    return ['en', 'uk', 'es', 'de', 'fr', 'pl'].contains(locale.languageCode);
+  }
+
+  @override
+  Future<AppLocalizations> load(Locale locale) async {
+    return AppLocalizations(locale);
+  }
+
+  @override
+  bool shouldReload(_AppLocalizationsDelegate old) => false;
+}
+
+// Extension for easy access
+extension LocalizationsExtension on BuildContext {
+  AppLocalizations get l10n => AppLocalizations.of(this)!;
+  String tr(String key) => AppLocalizations.of(this)?.get(key) ?? key;
+}

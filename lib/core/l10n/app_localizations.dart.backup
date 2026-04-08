@@ -1,0 +1,630 @@
+import 'package:flutter/material.dart';
+
+/// Supported locales for the app
+class AppLocalizations {
+  final Locale locale;
+
+  AppLocalizations(this.locale);
+
+  static AppLocalizations? of(BuildContext context) {
+    return Localizations.of<AppLocalizations>(context, AppLocalizations);
+  }
+
+  static const LocalizationsDelegate<AppLocalizations> delegate =
+      _AppLocalizationsDelegate();
+
+  static const List<Locale> supportedLocales = [
+    Locale('en'),
+    Locale('uk'),
+    Locale('es'),
+    Locale('de'),
+    Locale('fr'),
+    Locale('pl'),
+  ];
+
+  // Translations map
+  static final Map<String, Map<String, String>> _localizedValues = {
+    'en': _en,
+    'uk': _uk,
+    'es': _es,
+    'de': _de,
+    'fr': _fr,
+    'pl': _pl,
+  };
+
+  String get(String key) {
+    return _localizedValues[locale.languageCode]?[key] ?? 
+           _localizedValues['en']?[key] ?? 
+           key;
+  }
+
+  // English
+  static const Map<String, String> _en = {
+    // Common
+    'app_name': 'CodeLearn',
+    'loading': 'Loading...',
+    'error': 'Error',
+    'success': 'Success',
+    'cancel': 'Cancel',
+    'save': 'Save',
+    'delete': 'Delete',
+    'confirm': 'Confirm',
+    'ok': 'OK',
+    'yes': 'Yes',
+    'no': 'No',
+    'back': 'Back',
+    'next': 'Next',
+    'skip': 'Skip',
+    'done': 'Done',
+    'retry': 'Retry',
+    'coming_soon': 'Coming soon!',
+    
+    // Auth
+    'login': 'Login',
+    'register': 'Register',
+    'logout': 'Logout',
+    'email': 'Email',
+    'password': 'Password',
+    'confirm_password': 'Confirm Password',
+    'full_name': 'Full Name',
+    'create_account': 'Create Account',
+    'sign_in': 'Sign In',
+    'sign_up': 'Sign Up',
+    'forgot_password': 'Forgot Password?',
+    'already_have_account': 'Already have an account?',
+    'dont_have_account': "Don't have an account?",
+    'start_coding_journey': 'Start your coding journey today',
+    'welcome_back': 'Welcome back! 👋',
+    'skip_auth_debug': 'Skip Auth (Debug)',
+    
+    // Validation
+    'enter_email': 'Please enter your email',
+    'enter_password': 'Please enter a password',
+    'enter_name': 'Please enter your name',
+    'invalid_email': 'Please enter a valid email',
+    'password_too_short': 'Password must be at least 6 characters',
+    'passwords_not_match': 'Passwords do not match',
+    'name_too_short': 'Name must be at least 2 characters',
+    
+    // Home
+    'start_journey': 'Start Your Journey',
+    'continue_learning': 'Continue Learning',
+    'level': 'Level',
+    
+    // Courses
+    'courses': 'Courses',
+    'choose_learning_path': 'Choose your learning path',
+    'python': 'Python',
+    'python_desc': 'Learn the fundamentals of Python programming',
+    'javascript': 'JavaScript',
+    'javascript_desc': 'Master modern JavaScript and ES6+',
+    'html_css': 'HTML/CSS',
+    'html_css_desc': 'Build beautiful websites with HTML and CSS',
+    'react': 'React',
+    'react_desc': 'Create interactive UIs with React',
+    'sql': 'SQL',
+    'sql_desc': 'Master database queries with SQL',
+    'all_courses': 'All Courses',
+    'my_courses': 'My Courses',
+    'course_progress': 'Course Progress',
+    'lessons_count': 'lessons',
+    'start_course': 'Start Course',
+    'continue_course': 'Continue Course',
+    
+    // Lessons
+    'lesson': 'Lesson',
+    'lessons': 'Lessons',
+    'complete_lesson': 'Complete Lesson',
+    'start_lesson': 'Start Lesson',
+    'next_lesson': 'Next Lesson',
+    'lesson_completed': 'Lesson Complete!',
+    'xp_earned': 'XP Earned',
+    'theory': 'Theory',
+    'quiz': 'Quiz',
+    'code': 'Code',
+    'no_theory': 'No theory available',
+    'no_quiz': 'No quiz available',
+    'no_coding_challenge': 'No coding challenge',
+    'continue': 'Continue',
+    'continue_to_coding': 'Continue to Coding Challenge',
+    'quiz_completed': 'Quiz Completed! 🎉',
+    'keep_practicing': 'Keep Practicing!',
+    'next_question': 'Next Question',
+    'finish_quiz': 'Finish Quiz',
+    
+    // Code Challenge
+    'run_code': 'Run Code',
+    'submit': 'Submit',
+    'test_passed': 'Test Passed!',
+    'test_failed': 'Test Failed',
+    'try_again': 'Try Again',
+    'show_hint': 'Show Hint',
+    'reset_code': 'Reset Code',
+    'check_answer': 'Check Answer',
+    
+    // Progress
+    'progress': 'Progress',
+    'your_progress': 'Your Progress',
+    'keep_up_work': 'Keep up the great work!',
+    'total_xp': 'Total XP',
+    'current_streak': 'Current Streak',
+    'days': 'days',
+    'completed': 'Completed',
+    'in_progress': 'In Progress',
+    'not_started': 'Not Started',
+    
+    // Achievements
+    'achievements': 'Achievements',
+    'unlocked': 'Unlocked',
+    'locked': 'Locked',
+    'first_steps': 'First Steps',
+    'first_steps_desc': 'Complete your first lesson',
+    'code_warrior': 'Code Warrior',
+    'code_warrior_desc': 'Complete 10 lessons',
+    'python_master': 'Python Master',
+    'python_master_desc': 'Complete all Python lessons',
+    'js_guru': 'JS Guru',
+    'js_guru_desc': 'Complete all JavaScript lessons',
+    'web_wizard': 'Web Wizard',
+    'web_wizard_desc': 'Complete all HTML/CSS lessons',
+    'streak_master': 'Streak Master',
+    'streak_master_desc': 'Maintain a 7-day streak',
+    'xp_hunter': 'XP Hunter',
+    'xp_hunter_desc': 'Earn 1000 total XP',
+    'centurion': 'Centurion',
+    'centurion_desc': 'Reach level 100',
+    
+    // Profile
+    'profile': 'Profile',
+    'edit_profile': 'Edit Profile',
+    'settings': 'Settings',
+    'statistics': 'Statistics',
+    'member_since': 'Member since',
+    'your_stats': 'Your Stats',
+    'learning_languages': 'Learning Languages',
+    'total_lessons': 'Total Lessons',
+    'view_all_achievements': 'View All Achievements',
+    'learning_history': 'Learning History',
+    'help_support': 'Help & Support',
+    'welcome_back_emoji': 'Welcome back! 👋',
+    
+    // Settings
+    'account': 'Account',
+    'change_password': 'Change Password',
+    'preferences': 'Preferences',
+    'theme': 'Theme',
+    'dark_mode': 'Dark Mode',
+    'light_mode': 'Light Mode',
+    'notifications': 'Notifications',
+    'language': 'Language',
+    'data_privacy': 'Data & Privacy',
+    'download_data': 'Download My Data',
+    'clear_cache': 'Clear Cache',
+    'about': 'About',
+    'version': 'Version',
+    'terms_of_service': 'Terms of Service',
+    'privacy_policy': 'Privacy Policy',
+    'danger_zone': 'Danger Zone',
+    'delete_account': 'Delete Account',
+    'delete_account_warning': 'This action cannot be undone. All your data will be permanently deleted.',
+    'clear_cache_confirm': 'Are you sure you want to clear the cache?',
+    'logout_confirm': 'Are you sure you want to logout?',
+    
+    // Navigation
+    'home': 'Home',
+    'learn': 'Learn',
+    'practice': 'Practice',
+    
+    // Home screen specific
+    'your_courses': 'Your Courses',
+    'browse_all_courses': 'Browse All Courses',
+    'lessons_completed_suffix': 'lessons completed',
+    
+    // Onboarding
+    'onboarding_title_1': 'Learn to Code',
+    'onboarding_desc_1': 'Master programming with interactive lessons',
+    'onboarding_title_2': 'Practice Daily',
+    'onboarding_desc_2': 'Build coding habits with daily challenges',
+    'onboarding_title_3': 'Track Progress',
+    'onboarding_desc_3': 'See your growth with detailed statistics',
+    'onboarding_title_4': 'Join the Community',
+    'onboarding_desc_4': 'Connect with learners worldwide',
+    'get_started': 'Get Started',
+    
+    // Common messages
+    'sign_in_to_continue': 'Sign in to continue learning',
+    'error_prefix': 'Error: ',
+    'error_saving_progress': 'Error saving progress: ',
+  };
+
+  // Ukrainian
+  static const Map<String, String> _uk = {
+    // Common
+    'app_name': 'CodeLearn',
+    'loading': 'Завантаження...',
+    'error': 'Помилка',
+    'success': 'Успіх',
+    'cancel': 'Скасувати',
+    'save': 'Зберегти',
+    'delete': 'Видалити',
+    'confirm': 'Підтвердити',
+    'ok': 'ОК',
+    'yes': 'Так',
+    'no': 'Ні',
+    'back': 'Назад',
+    'next': 'Далі',
+    'skip': 'Пропустити',
+    'done': 'Готово',
+    'retry': 'Повторити',
+    'coming_soon': 'Скоро буде!',
+    
+    // Auth
+    'login': 'Увійти',
+    'register': 'Реєстрація',
+    'logout': 'Вийти',
+    'email': 'Електронна пошта',
+    'password': 'Пароль',
+    'confirm_password': 'Підтвердіть пароль',
+    'full_name': 'Повне ім\'я',
+    'create_account': 'Створити акаунт',
+    'sign_in': 'Увійти',
+    'sign_up': 'Зареєструватись',
+    'forgot_password': 'Забули пароль?',
+    'already_have_account': 'Вже маєте акаунт?',
+    'dont_have_account': 'Немає акаунту?',
+    'start_coding_journey': 'Розпочніть свою подорож у програмування',
+    'welcome_back': 'З поверненням! 👋',
+    'skip_auth_debug': 'Пропустити авторизацію',
+    
+    // Validation
+    'enter_email': 'Введіть email',
+    'enter_password': 'Введіть пароль',
+    'enter_name': 'Введіть ваше ім\'я',
+    'invalid_email': 'Введіть коректний email',
+    'password_too_short': 'Пароль має бути мінімум 6 символів',
+    'passwords_not_match': 'Паролі не співпадають',
+    'name_too_short': 'Ім\'я має бути мінімум 2 символи',
+    
+    // Home
+    'start_journey': 'Почати навчання',
+    'continue_learning': 'Продовжити навчання',
+    'level': 'Рівень',
+    
+    // Courses
+    'courses': 'Курси',
+    'choose_learning_path': 'Виберіть свій шлях навчання',
+    'python': 'Python',
+    'python_desc': 'Вивчіть основи програмування на Python',
+    'javascript': 'JavaScript',
+    'javascript_desc': 'Опануйте сучасний JavaScript та ES6+',
+    'html_css': 'HTML/CSS',
+    'html_css_desc': 'Створюйте красиві веб-сайти з HTML та CSS',
+    'react': 'React',
+    'react_desc': 'Створюйте інтерактивні інтерфейси з React',
+    'sql': 'SQL',
+    'sql_desc': 'Опануйте запити до баз даних з SQL',
+    'all_courses': 'Всі курси',
+    'my_courses': 'Мої курси',
+    'course_progress': 'Прогрес курсу',
+    'lessons_count': 'уроків',
+    'start_course': 'Почати курс',
+    'continue_course': 'Продовжити курс',
+    
+    // Lessons
+    'lesson': 'Урок',
+    'lessons': 'Уроки',
+    'complete_lesson': 'Завершити урок',
+    'start_lesson': 'Почати урок',
+    'next_lesson': 'Наступний урок',
+    'lesson_completed': 'Урок завершено!',
+    'xp_earned': 'Отримано XP',
+    'theory': 'Теорія',
+    'quiz': 'Квіз',
+    'code': 'Код',
+    'no_theory': 'Теорія недоступна',
+    'no_quiz': 'Квіз недоступний',
+    'no_coding_challenge': 'Завдання з коду недоступне',
+    'continue': 'Продовжити',
+    'continue_to_coding': 'Продовжити до завдання з коду',
+    'quiz_completed': 'Квіз завершено! 🎉',
+    'keep_practicing': 'Продовжуй практикуватись!',
+    'next_question': 'Наступне питання',
+    'finish_quiz': 'Завершити квіз',
+    
+    // Code Challenge
+    'run_code': 'Запустити код',
+    'submit': 'Відправити',
+    'test_passed': 'Тест пройдено!',
+    'test_failed': 'Тест не пройдено',
+    'try_again': 'Спробувати знову',
+    'show_hint': 'Показати підказку',
+    'reset_code': 'Скинути код',
+    'check_answer': 'Перевірити відповідь',
+    
+    // Progress
+    'progress': 'Прогрес',
+    'your_progress': 'Ваш прогрес',
+    'keep_up_work': 'Продовжуйте в тому ж дусі!',
+    'total_xp': 'Загальний XP',
+    'current_streak': 'Поточна серія',
+    'days': 'днів',
+    'completed': 'Завершено',
+    'in_progress': 'В процесі',
+    'not_started': 'Не розпочато',
+    
+    // Achievements
+    'achievements': 'Досягнення',
+    'unlocked': 'Відкрито',
+    'locked': 'Заблоковано',
+    'first_steps': 'Перші кроки',
+    'first_steps_desc': 'Завершіть перший урок',
+    'code_warrior': 'Воїн коду',
+    'code_warrior_desc': 'Завершіть 10 уроків',
+    'python_master': 'Майстер Python',
+    'python_master_desc': 'Завершіть всі уроки Python',
+    'js_guru': 'Гуру JS',
+    'js_guru_desc': 'Завершіть всі уроки JavaScript',
+    'web_wizard': 'Веб-чарівник',
+    'web_wizard_desc': 'Завершіть всі уроки HTML/CSS',
+    'streak_master': 'Майстер серій',
+    'streak_master_desc': 'Підтримуйте 7-денну серію',
+    'xp_hunter': 'Мисливець XP',
+    'xp_hunter_desc': 'Заробіть 1000 XP',
+    'centurion': 'Центуріон',
+    'centurion_desc': 'Досягніть 100 рівня',
+    
+    // Profile
+    'profile': 'Профіль',
+    'edit_profile': 'Редагувати профіль',
+    'settings': 'Налаштування',
+    'statistics': 'Статистика',
+    'member_since': 'Учасник з',
+    'your_stats': 'Ваша статистика',
+    'learning_languages': 'Мови програмування',
+    'total_lessons': 'Всього уроків',
+    'view_all_achievements': 'Переглянути всі досягнення',
+    'learning_history': 'Історія навчання',
+    'help_support': 'Допомога та підтримка',
+    'welcome_back_emoji': 'З поверненням! 👋',
+    
+    // Settings
+    'account': 'Акаунт',
+    'change_password': 'Змінити пароль',
+    'preferences': 'Налаштування',
+    'theme': 'Тема',
+    'dark_mode': 'Темна тема',
+    'light_mode': 'Світла тема',
+    'notifications': 'Сповіщення',
+    'language': 'Мова',
+    'data_privacy': 'Дані та приватність',
+    'download_data': 'Завантажити мої дані',
+    'clear_cache': 'Очистити кеш',
+    'about': 'Про додаток',
+    'version': 'Версія',
+    'terms_of_service': 'Умови використання',
+    'privacy_policy': 'Політика конфіденційності',
+    'danger_zone': 'Небезпечна зона',
+    'delete_account': 'Видалити акаунт',
+    'delete_account_warning': 'Цю дію неможливо скасувати. Всі ваші дані будуть видалені назавжди.',
+    'clear_cache_confirm': 'Ви впевнені, що хочете очистити кеш?',
+    'logout_confirm': 'Ви впевнені, що хочете вийти?',
+    
+    // Navigation
+    'home': 'Головна',
+    'learn': 'Навчання',
+    'practice': 'Практика',
+    
+    // Home screen specific
+    'your_courses': 'Ваші курси',
+    'browse_all_courses': 'Переглянути всі курси',
+    'lessons_completed_suffix': 'уроків завершено',
+    
+    // Onboarding
+    'onboarding_title_1': 'Вчіться програмувати',
+    'onboarding_desc_1': 'Опануйте програмування з інтерактивними уроками',
+    'onboarding_title_2': 'Практикуйтесь щодня',
+    'onboarding_desc_2': 'Формуйте звички програмування з щоденними завданнями',
+    'onboarding_title_3': 'Відстежуйте прогрес',
+    'onboarding_desc_3': 'Бачте свій ріст з детальною статистикою',
+    'onboarding_title_4': 'Приєднуйтесь до спільноти',
+    'onboarding_desc_4': 'Знайомтесь з учнями з усього світу',
+    'get_started': 'Розпочати',
+    
+    // Common messages
+    'sign_in_to_continue': 'Увійдіть, щоб продовжити навчання',
+    'error_prefix': 'Помилка: ',
+    'error_saving_progress': 'Помилка збереження прогресу: ',
+  };
+
+  // Spanish
+  static const Map<String, String> _es = {
+    'app_name': 'CodeLearn',
+    'loading': 'Cargando...',
+    'error': 'Error',
+    'success': 'Éxito',
+    'cancel': 'Cancelar',
+    'save': 'Guardar',
+    'delete': 'Eliminar',
+    'confirm': 'Confirmar',
+    'ok': 'OK',
+    'login': 'Iniciar sesión',
+    'register': 'Registrarse',
+    'logout': 'Cerrar sesión',
+    'email': 'Correo electrónico',
+    'password': 'Contraseña',
+    'confirm_password': 'Confirmar contraseña',
+    'full_name': 'Nombre completo',
+    'create_account': 'Crear cuenta',
+    'sign_in': 'Iniciar sesión',
+    'sign_up': 'Registrarse',
+    'welcome_back': '¡Bienvenido de nuevo! 👋',
+    'your_courses': 'Tus cursos',
+    'browse_all_courses': 'Ver todos los cursos',
+    'lessons_completed': 'lecciones completadas',
+    'level': 'Nivel',
+    'courses': 'Cursos',
+    'lesson': 'Lección',
+    'lessons': 'Lecciones',
+    'complete_lesson': 'Completar lección',
+    'progress': 'Progreso',
+    'achievements': 'Logros',
+    'profile': 'Perfil',
+    'settings': 'Configuración',
+    'home': 'Inicio',
+    'learn': 'Aprender',
+    'practice': 'Practicar',
+    'get_started': 'Comenzar',
+    'coming_soon': '¡Próximamente!',
+    'language': 'Idioma',
+  };
+
+  // German
+  static const Map<String, String> _de = {
+    'app_name': 'CodeLearn',
+    'loading': 'Laden...',
+    'error': 'Fehler',
+    'success': 'Erfolg',
+    'cancel': 'Abbrechen',
+    'save': 'Speichern',
+    'delete': 'Löschen',
+    'confirm': 'Bestätigen',
+    'ok': 'OK',
+    'login': 'Anmelden',
+    'register': 'Registrieren',
+    'logout': 'Abmelden',
+    'email': 'E-Mail',
+    'password': 'Passwort',
+    'confirm_password': 'Passwort bestätigen',
+    'full_name': 'Vollständiger Name',
+    'create_account': 'Konto erstellen',
+    'sign_in': 'Anmelden',
+    'sign_up': 'Registrieren',
+    'welcome_back': 'Willkommen zurück! 👋',
+    'your_courses': 'Deine Kurse',
+    'browse_all_courses': 'Alle Kurse durchsuchen',
+    'lessons_completed': 'Lektionen abgeschlossen',
+    'level': 'Level',
+    'courses': 'Kurse',
+    'lesson': 'Lektion',
+    'lessons': 'Lektionen',
+    'complete_lesson': 'Lektion abschließen',
+    'progress': 'Fortschritt',
+    'achievements': 'Erfolge',
+    'profile': 'Profil',
+    'settings': 'Einstellungen',
+    'home': 'Startseite',
+    'learn': 'Lernen',
+    'practice': 'Üben',
+    'get_started': 'Loslegen',
+    'coming_soon': 'Demnächst!',
+    'language': 'Sprache',
+  };
+
+  // French
+  static const Map<String, String> _fr = {
+    'app_name': 'CodeLearn',
+    'loading': 'Chargement...',
+    'error': 'Erreur',
+    'success': 'Succès',
+    'cancel': 'Annuler',
+    'save': 'Enregistrer',
+    'delete': 'Supprimer',
+    'confirm': 'Confirmer',
+    'ok': 'OK',
+    'login': 'Connexion',
+    'register': "S'inscrire",
+    'logout': 'Déconnexion',
+    'email': 'E-mail',
+    'password': 'Mot de passe',
+    'confirm_password': 'Confirmer le mot de passe',
+    'full_name': 'Nom complet',
+    'create_account': 'Créer un compte',
+    'sign_in': 'Se connecter',
+    'sign_up': "S'inscrire",
+    'welcome_back': 'Bon retour! 👋',
+    'your_courses': 'Vos cours',
+    'browse_all_courses': 'Parcourir tous les cours',
+    'lessons_completed': 'leçons terminées',
+    'level': 'Niveau',
+    'courses': 'Cours',
+    'lesson': 'Leçon',
+    'lessons': 'Leçons',
+    'complete_lesson': 'Terminer la leçon',
+    'progress': 'Progrès',
+    'achievements': 'Réalisations',
+    'profile': 'Profil',
+    'settings': 'Paramètres',
+    'home': 'Accueil',
+    'learn': 'Apprendre',
+    'practice': 'Pratiquer',
+    'get_started': 'Commencer',
+    'coming_soon': 'Bientôt disponible!',
+    'language': 'Langue',
+  };
+
+  // Polish
+  static const Map<String, String> _pl = {
+    'app_name': 'CodeLearn',
+    'loading': 'Ładowanie...',
+    'error': 'Błąd',
+    'success': 'Sukces',
+    'cancel': 'Anuluj',
+    'save': 'Zapisz',
+    'delete': 'Usuń',
+    'confirm': 'Potwierdź',
+    'ok': 'OK',
+    'login': 'Zaloguj się',
+    'register': 'Zarejestruj się',
+    'logout': 'Wyloguj się',
+    'email': 'E-mail',
+    'password': 'Hasło',
+    'confirm_password': 'Potwierdź hasło',
+    'full_name': 'Pełne imię',
+    'create_account': 'Utwórz konto',
+    'sign_in': 'Zaloguj się',
+    'sign_up': 'Zarejestruj się',
+    'welcome_back': 'Witaj ponownie! 👋',
+    'your_courses': 'Twoje kursy',
+    'browse_all_courses': 'Przeglądaj wszystkie kursy',
+    'lessons_completed': 'ukończonych lekcji',
+    'level': 'Poziom',
+    'courses': 'Kursy',
+    'lesson': 'Lekcja',
+    'lessons': 'Lekcje',
+    'complete_lesson': 'Zakończ lekcję',
+    'progress': 'Postęp',
+    'achievements': 'Osiągnięcia',
+    'profile': 'Profil',
+    'settings': 'Ustawienia',
+    'home': 'Strona główna',
+    'learn': 'Nauka',
+    'practice': 'Ćwiczenia',
+    'get_started': 'Rozpocznij',
+    'coming_soon': 'Wkrótce!',
+    'language': 'Język',
+  };
+}
+
+class _AppLocalizationsDelegate
+    extends LocalizationsDelegate<AppLocalizations> {
+  const _AppLocalizationsDelegate();
+
+  @override
+  bool isSupported(Locale locale) {
+    return ['en', 'uk', 'es', 'de', 'fr', 'pl'].contains(locale.languageCode);
+  }
+
+  @override
+  Future<AppLocalizations> load(Locale locale) async {
+    return AppLocalizations(locale);
+  }
+
+  @override
+  bool shouldReload(_AppLocalizationsDelegate old) => false;
+}
+
+// Extension for easy access
+extension LocalizationsExtension on BuildContext {
+  AppLocalizations get l10n => AppLocalizations.of(this)!;
+  String tr(String key) => AppLocalizations.of(this)?.get(key) ?? key;
+}

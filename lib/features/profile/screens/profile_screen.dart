@@ -1,0 +1,568 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import '../../auth/providers/auth_provider.dart';
+import '../../progress/providers/progress_provider.dart';
+import '../../progress/services/xp_system.dart';
+import '../../../shared/widgets/level_progress_widget.dart';
+import '../../../shared/widgets/streak_widgets.dart';
+import '../../../shared/widgets/language_stats_card.dart';
+import '../../../shared/widgets/quick_access_card.dart';
+import '../../../core/l10n/app_localizations.dart';
+
+class ProfileScreen extends ConsumerWidget {
+  const ProfileScreen({super.key});
+
+  // Safe helper to get initial letter
+  String _getInitial(String? displayName, String? email) {
+    if (displayName != null && displayName.isNotEmpty) {
+      return displayName.substring(0, 1).toUpperCase();
+    }
+    if (email != null && email.isNotEmpty) {
+      return email.substring(0, 1).toUpperCase();
+    }
+    return 'U';
+  }
+
+  // Safe helper to get display name
+  String _getDisplayName(String? displayName) {
+    if (displayName != null && displayName.isNotEmpty) {
+      return displayName;
+    }
+    return 'User';
+  }
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final authState = ref.watch(authStateProvider);
+    final currentUser = authState.maybeWhen(
+      data: (user) => user,
+      orElse: () => null,
+    );
+    final progressAsync = ref.watch(allUserProgressProvider);
+    final levelInfoAsync = ref.watch(levelInfoProvider);
+    final userDataAsync = ref.watch(userDataProvider(currentUser?.uid ?? ''));
+
+    return Scaffold(
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Color(0xFF0A0E27),
+              Color(0xFF1A1F3A),
+              Color(0xFF0D1B3A),
+            ],
+          ),
+        ),
+        child: SafeArea(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              children: [
+                // Header
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      AppLocalizations.of(context)?.get('profile') ?? 'Profile',
+                      style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                    )
+                        .animate()
+                        .fadeIn(duration: 600.ms)
+                        .slideY(begin: 0.3, end: 0),
+                    IconButton(
+                      icon: const Icon(Icons.settings, color: Colors.white70),
+                      onPressed: () {
+                        context.push('/settings');
+                      },
+                    ).animate(delay: 200.ms).fadeIn(),
+                  ],
+                ),
+                const SizedBox(height: 32),
+
+                // Profile Card
+                Container(
+                  padding: const EdgeInsets.all(24),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        const Color(0xFF1A1F3A).withOpacity(0.8),
+                        const Color(0xFF242B4A).withOpacity(0.6),
+                      ],
+                    ),
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(
+                      color: Colors.white.withOpacity(0.1),
+                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      // Avatar
+                      Container(
+                        width: 100,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: [Color(0xFF0066FF), Color(0xFF8B5CF6)],
+                          ),
+                          shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(
+                              color: const Color(0xFF0066FF).withOpacity(0.4),
+                              blurRadius: 30,
+                              offset: const Offset(0, 15),
+                            ),
+                          ],
+                        ),
+                        child: Center(
+                          child: Text(
+                            _getInitial(currentUser?.displayName, currentUser?.email),
+                            style: const TextStyle(
+                              fontSize: 48,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      )
+                          .animate(delay: 300.ms)
+                          .scale(duration: 600.ms, curve: Curves.elasticOut),
+                      const SizedBox(height: 20),
+
+                      // Name
+                      Text(
+                        _getDisplayName(currentUser?.displayName),
+                        style: const TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ).animate(delay: 400.ms).fadeIn(),
+
+                      // Email
+                      const SizedBox(height: 8),
+                      Text(
+                        currentUser?.email?.isNotEmpty == true 
+                            ? currentUser!.email! 
+                            : 'user@example.com',
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: Colors.white60,
+                        ),
+                      ).animate(delay: 500.ms).fadeIn(),
+                      
+                      // Level Badge
+                      const SizedBox(height: 16),
+                      levelInfoAsync.when(
+                        data: (levelInfo) => Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                          decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                              colors: [Color(0xFF0066FF), Color(0xFF8B5CF6)],
+                            ),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                levelInfo.badge,
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                              const SizedBox(width: 8),
+                              Text(
+                                'Level ${levelInfo.level} - ${levelInfo.title}',
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ).animate(delay: 550.ms).fadeIn().scale(),
+                        loading: () => const SizedBox(height: 36),
+                        error: (_, __) => const SizedBox(),
+                      ),
+                    ],
+                  ),
+                )
+                    .animate(delay: 200.ms)
+                    .fadeIn(duration: 600.ms)
+                    .slideY(begin: 0.3, end: 0),
+
+                const SizedBox(height: 24),
+                
+                // Level Progress Widget
+                levelInfoAsync.when(
+                  data: (levelInfo) => LevelProgressWidget(levelInfo: levelInfo)
+                      .animate(delay: 350.ms)
+                      .fadeIn()
+                      .slideY(begin: 0.3, end: 0),
+                  loading: () => const SizedBox(height: 100),
+                  error: (_, __) => const SizedBox(),
+                ),
+
+                const SizedBox(height: 24),
+
+                // Stats - use userDataAsync for XP and streak, progressAsync for completed lessons count
+                userDataAsync.when(
+                  data: (userData) {
+                    return progressAsync.when(
+                      data: (courseProgressList) {
+                        // Count total completed lessons from all courses
+                        final totalCompleted = courseProgressList
+                            .fold<int>(0, (sum, cp) => sum + cp.completedLessons.length);
+                        
+                        return Row(
+                          children: [
+                            Expanded(
+                              child: _StatBox(
+                                icon: Icons.star,
+                                label: AppLocalizations.of(context)?.get('total_xp') ?? 'Total XP',
+                                value: '${userData?.totalXP ?? 0}',
+                                gradient: const [Color(0xFFF59E0B), Color(0xFFFBBF24)],
+                              ),
+                            ),
+                            const SizedBox(width: 12),
+                            Expanded(
+                              child: _StatBox(
+                                icon: Icons.local_fire_department,
+                                label: AppLocalizations.of(context)?.get('current_streak') ?? 'Streak',
+                                value: '${userData?.currentStreak ?? 0}',
+                                gradient: const [Color(0xFFEF4444), Color(0xFFF97316)],
+                              ),
+                            ),
+                            const SizedBox(width: 12),
+                            Expanded(
+                              child: _StatBox(
+                                icon: Icons.check_circle,
+                                label: AppLocalizations.of(context)?.get('completed') ?? 'Completed',
+                                value: '$totalCompleted',
+                                gradient: const [Color(0xFF10B981), Color(0xFF34D399)],
+                              ),
+                            ),
+                          ],
+                        );
+                      },
+                      loading: () => const Center(child: CircularProgressIndicator()),
+                      error: (_, __) => const SizedBox(),
+                    );
+                  },
+                  loading: () => const Center(child: CircularProgressIndicator()),
+                  error: (_, __) => const SizedBox(),
+                ).animate(delay: 600.ms).fadeIn().slideY(begin: 0.3, end: 0),
+
+                const SizedBox(height: 24),
+
+                // Streak Calendar (compact)
+                userDataAsync.when(
+                  data: (userData) => StreakIndicator(
+                    days: userData?.currentStreak ?? 0,
+                  ).animate(delay: 700.ms).fadeIn().slideY(begin: 0.3, end: 0),
+                  loading: () => const SizedBox(),
+                  error: (_, __) => const SizedBox(),
+                ),
+
+                const SizedBox(height: 16),
+
+                // Language Stats
+                progressAsync.when(
+                  data: (courseProgressList) {
+                    // Count lessons per language
+                    int pythonLessons = 0;
+                    int jsLessons = 0;
+                    int htmlCssLessons = 0;
+                    int reactLessons = 0;
+                    int sqlLessons = 0;
+                    
+                    for (var cp in courseProgressList) {
+                      if (cp.courseId == 'python' || cp.courseId == 'python-basics') {
+                        pythonLessons = cp.completedLessons.length;
+                      } else if (cp.courseId == 'javascript' || cp.courseId == 'javascript-basics') {
+                        jsLessons = cp.completedLessons.length;
+                      } else if (cp.courseId == 'htmlcss' || cp.courseId == 'html-css-basics') {
+                        htmlCssLessons = cp.completedLessons.length;
+                      } else if (cp.courseId == 'react') {
+                        reactLessons = cp.completedLessons.length;
+                      } else if (cp.courseId == 'sql') {
+                        sqlLessons = cp.completedLessons.length;
+                      }
+                    }
+                    
+                    final totalCompleted = pythonLessons + jsLessons + htmlCssLessons + reactLessons + sqlLessons;
+                    
+                    return LanguageStatsCard(
+                      pythonLessons: pythonLessons,
+                      jsLessons: jsLessons,
+                      htmlCssLessons: htmlCssLessons,
+                      reactLessons: reactLessons,
+                      sqlLessons: sqlLessons,
+                      totalLessons: totalCompleted,
+                    );
+                  },
+                  loading: () => const SizedBox(),
+                  error: (_, __) => const SizedBox(),
+                ),
+
+                const SizedBox(height: 24),
+
+                // Quick Access to Courses
+                progressAsync.when(
+                  data: (courseProgressList) {
+                    final courses = [
+                      {
+                        'id': 'python-basics',
+                        'title': 'Python',
+                        'emoji': '🐍',
+                        'color': Colors.blue,
+                        'completed': courseProgressList
+                            .firstWhere((cp) => cp.courseId == 'python-basics',
+                                orElse: () => CourseProgress(
+                                    courseId: 'python-basics',
+                                    completedLessons: [],
+                                    totalXP: 0))
+                            .completedLessons
+                            .length,
+                        'total': 10,
+                      },
+                      {
+                        'id': 'javascript-basics',
+                        'title': 'JavaScript',
+                        'emoji': '🌐',
+                        'color': Colors.yellow.shade700,
+                        'completed': courseProgressList
+                            .firstWhere((cp) => cp.courseId == 'javascript-basics',
+                                orElse: () => CourseProgress(
+                                    courseId: 'javascript-basics',
+                                    completedLessons: [],
+                                    totalXP: 0))
+                            .completedLessons
+                            .length,
+                        'total': 10,
+                      },
+                      {
+                        'id': 'html-css-basics',
+                        'title': 'HTML/CSS',
+                        'emoji': '🎨',
+                        'color': Colors.orange,
+                        'completed': courseProgressList
+                            .firstWhere((cp) => cp.courseId == 'html-css-basics',
+                                orElse: () => CourseProgress(
+                                    courseId: 'html-css-basics',
+                                    completedLessons: [],
+                                    totalXP: 0))
+                            .completedLessons
+                            .length,
+                        'total': 10,
+                      },
+                    ];
+                    
+                    // Filter to show only in-progress courses
+                    final inProgressCourses = courses
+                        .where((c) => c['completed'] as int > 0 && c['completed'] != c['total'])
+                        .toList();
+                    
+                    if (inProgressCourses.isEmpty) {
+                      return const SizedBox.shrink();
+                    }
+                    
+                    return QuickAccessSection(
+                      courses: inProgressCourses,
+                      onCourseTap: (courseId) => context.push('/courses/$courseId'),
+                    ).animate(delay: 800.ms).fadeIn().slideY(begin: 0.2, end: 0);
+                  },
+                  loading: () => const SizedBox(),
+                  error: (_, __) => const SizedBox(),
+                ),
+
+                const SizedBox(height: 24),
+
+                // Menu Items
+                _MenuItem(
+                  icon: Icons.emoji_events,
+                  title: AppLocalizations.of(context)?.get('achievements') ?? 'Achievements',
+                  onTap: () => context.push('/achievements'),
+                ),
+                const SizedBox(height: 12),
+                _MenuItem(
+                  icon: Icons.settings_outlined,
+                  title: AppLocalizations.of(context)?.get('settings') ?? 'Settings',
+                  onTap: () => context.push('/settings'),
+                ),
+                const SizedBox(height: 12),
+                _MenuItem(
+                  icon: Icons.history,
+                  title: AppLocalizations.of(context)?.get('learning_history') ?? 'Learning History',
+                  onTap: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text(AppLocalizations.of(context)?.get('coming_soon') ?? 'Coming soon!')),
+                    );
+                  },
+                ),
+                const SizedBox(height: 12),
+                _MenuItem(
+                  icon: Icons.help_outline,
+                  title: AppLocalizations.of(context)?.get('help_support') ?? 'Help & Support',
+                  onTap: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text(AppLocalizations.of(context)?.get('coming_soon') ?? 'Coming soon!')),
+                    );
+                  },
+                ),
+                const SizedBox(height: 12),
+                _MenuItem(
+                  icon: Icons.logout,
+                  title: AppLocalizations.of(context)?.get('logout') ?? 'Logout',
+                  color: Colors.red,
+                  onTap: () async {
+                    try {
+                      await ref.read(authActionsProvider).signOut();
+                      if (context.mounted) {
+                        context.go('/onboarding');
+                      }
+                    } catch (e) {
+                      if (context.mounted) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Logout failed. Please try again'),
+                            backgroundColor: Colors.red,
+                          ),
+                        );
+                      }
+                    }
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _StatBox extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final String value;
+  final List<Color> gradient;
+
+  const _StatBox({
+    required this.icon,
+    required this.label,
+    required this.value,
+    required this.gradient,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(colors: gradient),
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: gradient[0].withOpacity(0.3),
+            blurRadius: 20,
+            offset: const Offset(0, 10),
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          Icon(icon, color: Colors.white, size: 32),
+          const SizedBox(height: 12),
+          Text(
+            value,
+            style: const TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            label,
+            style: const TextStyle(
+              fontSize: 12,
+              color: Colors.white70,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _MenuItem extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final Color? color;
+  final VoidCallback onTap;
+
+  const _MenuItem({
+    required this.icon,
+    required this.title,
+    this.color,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final itemColor = color ?? Colors.white;
+
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            const Color(0xFF1A1F3A).withOpacity(0.6),
+            const Color(0xFF242B4A).withOpacity(0.4),
+          ],
+        ),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: Colors.white.withOpacity(0.1),
+        ),
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(16),
+          onTap: onTap,
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Row(
+              children: [
+                Icon(icon, color: itemColor),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: itemColor,
+                    ),
+                  ),
+                ),
+                Icon(Icons.chevron_right, color: itemColor.withOpacity(0.5)),
+              ],
+            ),
+          ),
+        ),
+      ),
+    ).animate(delay: 700.ms).fadeIn().slideX(begin: -0.2, end: 0);
+  }
+}
