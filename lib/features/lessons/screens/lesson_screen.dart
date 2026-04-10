@@ -897,6 +897,8 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final isSQLChallenge = widget.challenge.language.toLowerCase() == 'sql';
+
     return SingleChildScrollView(
       padding: const EdgeInsets.all(24),
       child: Column(
@@ -919,6 +921,43 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
               height: 1.5,
             ),
           ),
+          if (isSQLChallenge) ...[
+            const SizedBox(height: 16),
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: const Color(0xFF0D1117),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: widget.courseColor.withValues(alpha: 0.3),
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Sample tables',
+                    style: TextStyle(
+                      color: widget.courseColor,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 13,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  SelectableText(
+                    _sqlTablesPreview(),
+                    style: TextStyle(
+                      color: Colors.grey.shade300,
+                      fontFamily: 'monospace',
+                      fontSize: 12,
+                      height: 1.45,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
           const SizedBox(height: 24),
 
           // Code Editor with syntax highlighting and autocomplete
@@ -1150,10 +1189,20 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
       bool passed = false;
       String? expectedHint;
 
+      if (isSQL && result is _SQLResult) {
+        setState(() {
+          _isRunning = false;
+          _output = result.output;
+          _hasError = result.hasError;
+          _testsPassed = result.passed;
+        });
+        return;
+      }
+
       if (result.hasError) {
         setState(() {
           _isRunning = false;
-          _output = result.error!;
+          _output = result.error ?? result.output;
           _hasError = true;
           _testsPassed = false;
         });
@@ -1207,10 +1256,8 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
   // SQL validation - validates SQL syntax and compares with expected output
   dynamic _validateSQL(String code) {
     final testCases = widget.challenge.testCases;
-    final normalizedCode = code.trim().toUpperCase().replaceAll(
-      RegExp(r'\s+'),
-      ' ',
-    );
+    final sanitizedCode = _stripSQLComments(code).trim();
+    final normalizedCode = _normalizeSQL(sanitizedCode);
 
     // Basic SQL syntax validation
     final validKeywords = [
@@ -1264,26 +1311,33 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
     };
 
     for (final typo in typos.entries) {
-      if (normalizedCode.contains(typo.key)) {
+      final typoRegex = RegExp(r'\b' + RegExp.escape(typo.key) + r'\b');
+      if (typoRegex.hasMatch(normalizedCode)) {
         return _SQLResult(
           output:
-              '❌ Typo detected: "${typo.key}" should be "${typo.value}"\n\nYour query:\n$code',
+              '❌ Typo detected: "${typo.key}" should be "${typo.value}"\n\nYour query:\n${sanitizedCode.isEmpty ? code.trim() : sanitizedCode}',
           hasError: true,
+          passed: false,
         );
       }
     }
 
     for (final testCase in testCases) {
-      final expectedNormalized = testCase.expectedOutput
-          .trim()
-          .toUpperCase()
-          .replaceAll(RegExp(r'\s+'), ' ');
+      final expectedNormalized = _normalizeSQL(
+        _stripSQLComments(testCase.expectedOutput),
+      );
 
       // Check if code matches expected (case-insensitive, whitespace-normalized)
       if (normalizedCode == expectedNormalized) {
+        final resultPreview = _sqlResultPreviewForExpected(
+          expectedNormalized: expectedNormalized,
+          testCase: testCase,
+        );
         return _SQLResult(
-          output: '✅ Query is correct!\n\n$code',
+          output:
+              '✅ Query is correct!\n\nQuery:\n$sanitizedCode\n\nResult:\n$resultPreview',
           hasError: false,
+          passed: true,
         );
       }
 
@@ -1297,9 +1351,15 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
 
       if (expectedParts.length == codeParts.length &&
           expectedParts.every((p) => normalizedCode.contains(p))) {
+        final resultPreview = _sqlResultPreviewForExpected(
+          expectedNormalized: expectedNormalized,
+          testCase: testCase,
+        );
         return _SQLResult(
-          output: '✅ Query is correct!\n\n$code',
+          output:
+              '✅ Query is correct!\n\nQuery:\n$sanitizedCode\n\nResult:\n$resultPreview',
           hasError: false,
+          passed: true,
         );
       }
     }
@@ -1308,12 +1368,152 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
     if (testCases.isNotEmpty) {
       final expected = testCases.first.expectedOutput;
       return _SQLResult(
-        output: '$code\n\n💡 Hint: Expected structure:\n$expected',
+        output:
+            '${sanitizedCode.isEmpty ? code.trim() : sanitizedCode}\n\n💡 Hint: Expected structure:\n$expected',
         hasError: false,
+        passed: false,
       );
     }
 
-    return _SQLResult(output: code, hasError: false);
+    return _SQLResult(
+      output: sanitizedCode.isEmpty ? code.trim() : sanitizedCode,
+      hasError: false,
+      passed: true,
+    );
+  }
+
+  String _stripSQLComments(String sql) {
+    final withoutBlockComments = sql.replaceAll(
+      RegExp(r'/\*[\s\S]*?\*/', multiLine: true),
+      ' ',
+    );
+
+    return withoutBlockComments
+        .split('\n')
+        .map((line) {
+          final inlineCommentIndex = line.indexOf('--');
+          if (inlineCommentIndex == -1) return line;
+          return line.substring(0, inlineCommentIndex);
+        })
+        .join('\n');
+  }
+
+  String _normalizeSQL(String sql) {
+    return sql.trim().toUpperCase().replaceAll(RegExp(r'\s+'), ' ');
+  }
+
+  String _sqlTablesPreview() {
+    return '''products
+id | name        | category     | price
+1  | Keyboard    | Electronics  | 49.99
+2  | Mouse       | Electronics  | 29.99
+3  | Notebook    | Office       | 9.99
+4  | Headphones  | Electronics  | 79.99
+5  | Coffee Mug  | Home         | 12.50
+6  | Monitor     | Electronics  | 199.99
+
+users
+id | name   | email                | role
+1  | John   | john@gmail.com       | user
+2  | Julia  | julia@gmail.com      | user
+3  | Alice  | alice@yahoo.com      | admin
+4  | Mark   | mark@outlook.com     | user
+
+orders
+id | user_id | amount
+1  | 1       | 120.00
+2  | 1       | 75.50
+3  | 3       | 250.00''';
+  }
+
+  String _sqlResultPreviewForExpected({
+    required String expectedNormalized,
+    required TestCase testCase,
+  }) {
+    final providedPreview = testCase.input.trim();
+    if (providedPreview.isNotEmpty) {
+      return providedPreview;
+    }
+
+    if (expectedNormalized.startsWith('SELECT * FROM PRODUCTS')) {
+      return '''id | name        | category     | price
+1  | Keyboard    | Electronics  | 49.99
+2  | Mouse       | Electronics  | 29.99
+3  | Notebook    | Office       | 9.99
+4  | Headphones  | Electronics  | 79.99
+5  | Coffee Mug  | Home         | 12.50
+6  | Monitor     | Electronics  | 199.99''';
+    }
+
+    if (expectedNormalized.contains(
+      'SELECT NAME, PRICE FROM PRODUCTS WHERE PRICE <= 50',
+    )) {
+      return '''name       | price
+Keyboard   | 49.99
+Mouse      | 29.99
+Notebook   | 9.99
+Coffee Mug | 12.50''';
+    }
+
+    if (expectedNormalized.contains(
+      "SELECT * FROM USERS WHERE NAME LIKE 'J%' AND EMAIL LIKE '%GMAIL%'",
+    )) {
+      return '''id | name  | email            | role
+1  | John  | john@gmail.com  | user
+2  | Julia | julia@gmail.com | user''';
+    }
+
+    if (expectedNormalized.contains(
+      'SELECT NAME, PRICE FROM PRODUCTS ORDER BY PRICE DESC LIMIT 5',
+    )) {
+      return '''name        | price
+Monitor     | 199.99
+Headphones  | 79.99
+Keyboard    | 49.99
+Mouse       | 29.99
+Coffee Mug  | 12.50''';
+    }
+
+    if (expectedNormalized.contains(
+      'SELECT COUNT(*) AS TOTAL_ORDERS, SUM(AMOUNT) AS TOTAL_AMOUNT, AVG(AMOUNT) AS AVG_AMOUNT FROM ORDERS',
+    )) {
+      return '''total_orders | total_amount | avg_amount
+3            | 445.50       | 148.50''';
+    }
+
+    if (expectedNormalized.contains(
+      'SELECT CATEGORY, COUNT(*) AS PRODUCT_COUNT FROM PRODUCTS GROUP BY CATEGORY HAVING COUNT(*) > 5 ORDER BY PRODUCT_COUNT DESC',
+    )) {
+      return '''category     | product_count
+Electronics | 7''';
+    }
+
+    if (expectedNormalized.contains(
+      'SELECT O.ID, U.NAME, O.AMOUNT FROM ORDERS O INNER JOIN USERS U ON O.USER_ID = U.ID',
+    )) {
+      return '''id | name  | amount
+1  | John  | 120.00
+2  | John  | 75.50
+3  | Alice | 250.00''';
+    }
+
+    if (expectedNormalized.contains(
+      'SELECT U.NAME, U.EMAIL FROM USERS U LEFT JOIN ORDERS O ON U.ID = O.USER_ID WHERE O.ID IS NULL',
+    )) {
+      return '''name  | email
+Julia | julia@gmail.com
+Mark  | mark@outlook.com''';
+    }
+
+    if (expectedNormalized.startsWith('INSERT INTO PRODUCTS')) {
+      return '1 row inserted.';
+    }
+
+    if (expectedNormalized.startsWith('CREATE TABLE CUSTOMERS')) {
+      return 'Table "customers" created.';
+    }
+
+    return 'Query validated successfully.';
   }
 }
 
@@ -1332,7 +1532,13 @@ class _ExecutionResult {
 class _SQLResult {
   final String output;
   final bool hasError;
+  final bool passed;
   final String? error;
 
-  _SQLResult({required this.output, required this.hasError, this.error});
+  _SQLResult({
+    required this.output,
+    required this.hasError,
+    required this.passed,
+    this.error,
+  });
 }
