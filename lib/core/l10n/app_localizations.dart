@@ -1,10 +1,18 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import 'language_catalog.dart';
 
 /// Supported locales for the app
 class AppLocalizations {
   final Locale locale;
+  final Map<String, String> _translations;
 
-  AppLocalizations(this.locale);
+  AppLocalizations._(this.locale, this._translations);
+
+  static const String fallbackLanguageCode = 'en';
 
   static AppLocalizations? of(BuildContext context) {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
@@ -13,14 +21,7 @@ class AppLocalizations {
   static const LocalizationsDelegate<AppLocalizations> delegate =
       _AppLocalizationsDelegate();
 
-  static const List<Locale> supportedLocales = [
-    Locale('en'),
-    Locale('uk'),
-    Locale('es'),
-    Locale('de'),
-    Locale('fr'),
-    Locale('pl'),
-  ];
+  static final Map<String, Map<String, String>> _assetTranslationCache = {};
 
   // Translations map
   static final Map<String, Map<String, String>> _localizedValues = {
@@ -32,10 +33,85 @@ class AppLocalizations {
     'pl': _pl,
   };
 
+  static Future<AppLocalizations> load(Locale locale) async {
+    final translations = Map<String, String>.from(
+      _localizedValues[fallbackLanguageCode] ?? const <String, String>{},
+    );
+
+    final staticLocaleTranslations = _localizedValues[locale.languageCode];
+    if (staticLocaleTranslations != null) {
+      translations.addAll(staticLocaleTranslations);
+    }
+
+    final languageAssetTranslations = await _loadAssetTranslations(
+      locale.languageCode,
+    );
+    if (languageAssetTranslations.isNotEmpty) {
+      translations.addAll(languageAssetTranslations);
+    }
+
+    final localeTag = localeToLanguageTag(locale);
+    if (localeTag.toLowerCase() != locale.languageCode.toLowerCase()) {
+      final localeAssetTranslations = await _loadAssetTranslations(localeTag);
+      if (localeAssetTranslations.isNotEmpty) {
+        translations.addAll(localeAssetTranslations);
+      }
+    }
+
+    return AppLocalizations._(locale, translations);
+  }
+
+  static Future<Map<String, String>> _loadAssetTranslations(
+    String localeTag,
+  ) async {
+    final normalizedTag = localeTag.replaceAll('_', '-');
+    final cached = _assetTranslationCache[normalizedTag];
+    if (cached != null) {
+      return cached;
+    }
+
+    try {
+      final rawJson = await rootBundle.loadString(
+        'assets/l10n/$normalizedTag.json',
+      );
+      final decoded = jsonDecode(rawJson);
+
+      if (decoded is! Map) {
+        debugPrint(
+          'Localization file for "$normalizedTag" must be a JSON object.',
+        );
+        const emptyTranslations = <String, String>{};
+        _assetTranslationCache[normalizedTag] = emptyTranslations;
+        return emptyTranslations;
+      }
+
+      final translations = <String, String>{};
+      decoded.forEach((key, value) {
+        if (key is String && value is String) {
+          translations[key] = value;
+        }
+      });
+
+      final immutableTranslations = Map<String, String>.unmodifiable(
+        translations,
+      );
+      _assetTranslationCache[normalizedTag] = immutableTranslations;
+      return immutableTranslations;
+    } on FlutterError catch (error) {
+      debugPrint('No runtime localization asset for "$normalizedTag": $error');
+    } on FormatException catch (error) {
+      debugPrint('Invalid localization JSON for "$normalizedTag": $error');
+    }
+
+    const emptyTranslations = <String, String>{};
+    _assetTranslationCache[normalizedTag] = emptyTranslations;
+    return emptyTranslations;
+  }
+
   String get(String key) {
-    return _localizedValues[locale.languageCode]?[key] ?? 
-           _localizedValues['en']?[key] ?? 
-           key;
+    return _translations[key] ??
+        _localizedValues[fallbackLanguageCode]?[key] ??
+        key;
   }
 
   // English
@@ -209,6 +285,10 @@ class AppLocalizations {
     'delete_account_warning': 'This action cannot be undone. All your data will be permanently deleted.',
     'clear_cache_confirm': 'Are you sure you want to clear the cache?',
     'logout_confirm': 'Are you sure you want to logout?',
+    'choose_language_subtitle': 'Choose your interface language',
+    'search_language': 'Search language',
+    'no_languages_found': 'No languages found',
+    'language_changed': 'Language updated',
     
     // Navigation
     'home': 'Home',
@@ -408,6 +488,10 @@ class AppLocalizations {
     'delete_account_warning': 'Цю дію не можна скасувати. Всі ваші дані будуть назавжди видалені.',
     'clear_cache_confirm': 'Ви впевнені, що хочете очистити кеш?',
     'logout_confirm': 'Ви впевнені, що хочете вийти?',
+    'choose_language_subtitle': 'Оберіть мову інтерфейсу',
+    'search_language': 'Пошук мови',
+    'no_languages_found': 'Мов не знайдено',
+    'language_changed': 'Мову оновлено',
     
     // Navigation
     'home': 'Головна',
@@ -607,6 +691,10 @@ class AppLocalizations {
     'delete_account_warning': 'Esta acción no se puede deshacer. Todos tus datos se eliminarán permanentemente.',
     'clear_cache_confirm': '¿Estás seguro de que deseas limpiar la caché?',
     'logout_confirm': '¿Estás seguro de que deseas cerrar sesión?',
+    'choose_language_subtitle': 'Elige el idioma de la interfaz',
+    'search_language': 'Buscar idioma',
+    'no_languages_found': 'No se encontraron idiomas',
+    'language_changed': 'Idioma actualizado',
     
     // Navigation
     'home': 'Inicio',
@@ -806,6 +894,10 @@ class AppLocalizations {
     'delete_account_warning': 'Diese Aktion kann nicht rückgängig gemacht werden. Alle deine Daten werden dauerhaft gelöscht.',
     'clear_cache_confirm': 'Bist du sicher, dass du den Cache leeren möchtest?',
     'logout_confirm': 'Bist du sicher, dass du dich abmelden möchtest?',
+    'choose_language_subtitle': 'Wähle die Sprache der Benutzeroberfläche',
+    'search_language': 'Sprache suchen',
+    'no_languages_found': 'Keine Sprachen gefunden',
+    'language_changed': 'Sprache aktualisiert',
     
     // Navigation
     'home': 'Startseite',
@@ -1005,6 +1097,10 @@ class AppLocalizations {
     'delete_account_warning': 'Cette action est irréversible. Toutes vos données seront définitivement supprimées.',
     'clear_cache_confirm': 'Êtes-vous sûr de vouloir vider le cache ?',
     'logout_confirm': 'Êtes-vous sûr de vouloir vous déconnecter ?',
+    'choose_language_subtitle': 'Choisissez la langue de l’interface',
+    'search_language': 'Rechercher une langue',
+    'no_languages_found': 'Aucune langue trouvée',
+    'language_changed': 'Langue mise à jour',
     
     // Navigation
     'home': 'Accueil',
@@ -1204,6 +1300,10 @@ class AppLocalizations {
     'delete_account_warning': 'Ta akcja jest nieodwracalna. Wszystkie twoje dane zostaną trwale usunięte.',
     'clear_cache_confirm': 'Czy na pewno chcesz wyczyścić pamięć podręczną?',
     'logout_confirm': 'Czy na pewno chcesz się wylogować?',
+    'choose_language_subtitle': 'Wybierz język interfejsu',
+    'search_language': 'Szukaj języka',
+    'no_languages_found': 'Nie znaleziono języków',
+    'language_changed': 'Język zaktualizowano',
     
     // Navigation
     'home': 'Strona główna',
@@ -1239,12 +1339,12 @@ class _AppLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) {
-    return ['en', 'uk', 'es', 'de', 'fr', 'pl'].contains(locale.languageCode);
+    return true;
   }
 
   @override
   Future<AppLocalizations> load(Locale locale) async {
-    return AppLocalizations(locale);
+    return AppLocalizations.load(locale);
   }
 
   @override

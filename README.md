@@ -163,6 +163,17 @@ service cloud.firestore {
 }
 ```
 
+### Localization Packs
+The app now loads language metadata and translation packs from JSON assets:
+
+- `assets/l10n/languages.json` — language list for the picker (`code`, `name`, `nativeName`, `flag`)
+- `assets/l10n/<locale>.json` — locale key/value translations (for example: `it.json`, `ja.json`)
+
+To add a new language without code changes:
+1. Create `assets/l10n/<locale>.json` with translated keys.
+2. Add the locale entry to `assets/l10n/languages.json`.
+3. Run `flutter pub get` (or restart hot reload) so assets are refreshed.
+
 ## 🛠️ Tech Stack
 
 | Category | Technology |

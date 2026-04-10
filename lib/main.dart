@@ -5,6 +5,7 @@ import 'core/config/firebase_config.dart';
 import 'core/theme/app_theme.dart';
 import 'core/utils/app_router.dart';
 import 'core/l10n/app_localizations.dart';
+import 'core/l10n/language_catalog.dart';
 import 'core/l10n/locale_provider.dart';
 
 void main() async {
@@ -27,7 +28,12 @@ class CodeBattleApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final locale = ref.watch(localeProvider);
+    final selectedLocale = ref.watch(localeProvider);
+    final supportedLocalesAsync = ref.watch(supportedLocalesProvider);
+    final supportedLocales =
+        supportedLocalesAsync.valueOrNull ??
+        LanguageCatalog.fallbackSupportedLocales;
+    final locale = resolveSupportedLocale(selectedLocale, supportedLocales);
     
     return MaterialApp.router(
       title: 'CodeLearn',
@@ -39,7 +45,7 @@ class CodeBattleApp extends ConsumerWidget {
       
       // Localization
       locale: locale,
-      supportedLocales: AppLocalizations.supportedLocales,
+      supportedLocales: supportedLocales,
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
