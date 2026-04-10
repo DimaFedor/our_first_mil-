@@ -18,7 +18,6 @@ class SettingsScreen extends ConsumerWidget {
     final isDarkTheme = theme.brightness == Brightness.dark;
     final currentLocale = ref.watch(localeProvider);
     final themeMode = ref.watch(appThemeModeProvider);
-    final isDarkMode = themeMode == ThemeMode.dark;
     final availableLanguages =
         ref.watch(availableLanguagesProvider).valueOrNull ??
         LanguageCatalog.fallbackLanguages;
@@ -121,24 +120,9 @@ class SettingsScreen extends ConsumerWidget {
                       context,
                       icon: Icons.dark_mode_outlined,
                       title: context.tr('theme'),
-                      subtitle: isDarkMode
-                          ? context.tr('dark_mode')
-                          : context.tr('light_mode'),
-                      onTap: () {
-                        ref
-                            .read(appThemeModeProvider.notifier)
-                            .toggleThemeMode();
-                      },
+                      subtitle: _themeModeLabel(context, themeMode),
+                      onTap: () => _showThemeDialog(context),
                       index: 2,
-                      showArrow: false,
-                      trailing: Switch(
-                        value: isDarkMode,
-                        onChanged: (_) {
-                          ref
-                              .read(appThemeModeProvider.notifier)
-                              .toggleThemeMode();
-                        },
-                      ),
                     ),
                     _buildSettingItem(
                       context,
@@ -365,6 +349,26 @@ class SettingsScreen extends ConsumerWidget {
     );
   }
 
+  void _showThemeDialog(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      useSafeArea: true,
+      backgroundColor: Colors.transparent,
+      builder: (_) => const _ThemePickerSheet(),
+    );
+  }
+
+  String _themeModeLabel(BuildContext context, ThemeMode themeMode) {
+    switch (themeMode) {
+      case ThemeMode.light:
+        return context.tr('light_mode');
+      case ThemeMode.dark:
+        return context.tr('dark_mode');
+      case ThemeMode.system:
+        return context.tr('system_theme');
+    }
+  }
+
   LanguageOption _resolveCurrentLanguage(
     List<LanguageOption> languages,
     Locale currentLocale,
@@ -539,7 +543,7 @@ class _LanguagePickerSheetState extends ConsumerState<_LanguagePickerSheet> {
           decoration: BoxDecoration(
             color: const Color(0xFF1A1F3A),
             borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
-            border: Border.all(color: Colors.white.withOpacity(0.08)),
+            border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
           ),
           child: Column(
             children: [
@@ -548,7 +552,7 @@ class _LanguagePickerSheetState extends ConsumerState<_LanguagePickerSheet> {
                 width: 42,
                 height: 4,
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.35),
+                  color: Colors.white.withValues(alpha: 0.35),
                   borderRadius: BorderRadius.circular(2),
                 ),
               ),
@@ -579,7 +583,7 @@ class _LanguagePickerSheetState extends ConsumerState<_LanguagePickerSheet> {
                           Text(
                             context.tr('choose_language_subtitle'),
                             style: TextStyle(
-                              color: Colors.white.withOpacity(0.65),
+                              color: Colors.white.withValues(alpha: 0.65),
                               fontSize: 13,
                             ),
                           ),
@@ -601,10 +605,12 @@ class _LanguagePickerSheetState extends ConsumerState<_LanguagePickerSheet> {
                   style: const TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                     hintText: context.tr('search_language'),
-                    hintStyle: TextStyle(color: Colors.white.withOpacity(0.5)),
+                    hintStyle: TextStyle(
+                      color: Colors.white.withValues(alpha: 0.5),
+                    ),
                     prefixIcon: Icon(
                       Icons.search_rounded,
-                      color: Colors.white.withOpacity(0.7),
+                      color: Colors.white.withValues(alpha: 0.7),
                     ),
                     filled: true,
                     fillColor: const Color(0xFF101730),
@@ -633,7 +639,9 @@ class _LanguagePickerSheetState extends ConsumerState<_LanguagePickerSheet> {
                       child: Text(
                         '${context.tr('error')}: $error',
                         textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.white.withOpacity(0.8)),
+                        style: TextStyle(
+                          color: Colors.white.withValues(alpha: 0.8),
+                        ),
                       ),
                     ),
                   ),
@@ -651,7 +659,7 @@ class _LanguagePickerSheetState extends ConsumerState<_LanguagePickerSheet> {
                         child: Text(
                           context.tr('no_languages_found'),
                           style: TextStyle(
-                            color: Colors.white.withOpacity(0.75),
+                            color: Colors.white.withValues(alpha: 0.75),
                           ),
                         ),
                       );
@@ -730,22 +738,216 @@ class _LanguagePickerSheetState extends ConsumerState<_LanguagePickerSheet> {
     return 1;
   }
 
-  Future<void> _onLanguageSelected(
-    BuildContext context,
-    LanguageOption language,
-  ) async {
-    await ref.read(localeProvider.notifier).setLanguageCode(language.code);
-
-    if (!mounted) {
-      return;
-    }
-
+  void _onLanguageSelected(BuildContext context, LanguageOption language) {
+    ref.read(localeProvider.notifier).setLanguageCode(language.code);
     Navigator.of(context).pop();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text('${language.flag} ${context.tr('language_changed')}'),
       ),
     );
+  }
+}
+
+class _ThemePickerSheet extends ConsumerStatefulWidget {
+  const _ThemePickerSheet();
+
+  @override
+  ConsumerState<_ThemePickerSheet> createState() => _ThemePickerSheetState();
+}
+
+class _ThemePickerSheetState extends ConsumerState<_ThemePickerSheet> {
+  @override
+  Widget build(BuildContext context) {
+    final currentThemeMode = ref.watch(appThemeModeProvider);
+    final theme = Theme.of(context);
+    final isDarkTheme = theme.brightness == Brightness.dark;
+
+    return Container(
+      decoration: BoxDecoration(
+        color: isDarkTheme ? const Color(0xFF1A1F3A) : Colors.white,
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+        border: Border.all(
+          color: isDarkTheme
+              ? Colors.white.withValues(alpha: 0.08)
+              : const Color(0xFFD6E2FF),
+        ),
+      ),
+      child: SafeArea(
+        top: false,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const SizedBox(height: 12),
+            Container(
+              width: 42,
+              height: 4,
+              decoration: BoxDecoration(
+                color: isDarkTheme
+                    ? Colors.white.withValues(alpha: 0.35)
+                    : Colors.black.withValues(alpha: 0.15),
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
+            const SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                children: [
+                  const Icon(
+                    Icons.dark_mode_rounded,
+                    color: Colors.blueAccent,
+                    size: 24,
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          context.tr('theme'),
+                          style: TextStyle(
+                            color: isDarkTheme ? Colors.white : Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          context.tr('system_theme'),
+                          style: TextStyle(
+                            color: isDarkTheme
+                                ? Colors.white.withValues(alpha: 0.65)
+                                : Colors.black.withValues(alpha: 0.55),
+                            fontSize: 13,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
+            _themeOptionTile(
+              context: context,
+              theme: theme,
+              isDarkTheme: isDarkTheme,
+              title: context.tr('system_theme'),
+              icon: Icons.brightness_auto_rounded,
+              isSelected: currentThemeMode == ThemeMode.system,
+              onTap: () => _selectThemeMode(context, ThemeMode.system),
+            ),
+            _themeOptionTile(
+              context: context,
+              theme: theme,
+              isDarkTheme: isDarkTheme,
+              title: context.tr('light_mode'),
+              icon: Icons.light_mode_rounded,
+              isSelected: currentThemeMode == ThemeMode.light,
+              onTap: () => _selectThemeMode(context, ThemeMode.light),
+            ),
+            _themeOptionTile(
+              context: context,
+              theme: theme,
+              isDarkTheme: isDarkTheme,
+              title: context.tr('dark_mode'),
+              icon: Icons.dark_mode_rounded,
+              isSelected: currentThemeMode == ThemeMode.dark,
+              onTap: () => _selectThemeMode(context, ThemeMode.dark),
+            ),
+            const SizedBox(height: 20),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _themeOptionTile({
+    required BuildContext context,
+    required ThemeData theme,
+    required bool isDarkTheme,
+    required String title,
+    required IconData icon,
+    required bool isSelected,
+    required VoidCallback onTap,
+  }) {
+    final borderColor = isSelected
+        ? Colors.blue.shade300
+        : (isDarkTheme
+              ? Colors.white.withValues(alpha: 0.08)
+              : const Color(0xFFD6E2FF));
+    final tileColor = isSelected
+        ? null
+        : (isDarkTheme ? const Color(0xFF101730) : const Color(0xFFF7FAFF));
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(16),
+          child: Ink(
+            decoration: BoxDecoration(
+              gradient: isSelected
+                  ? const LinearGradient(
+                      colors: [Color(0xFF2D4FFF), Color(0xFF1F2C66)],
+                    )
+                  : null,
+              color: tileColor,
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: borderColor),
+              boxShadow: isSelected
+                  ? [
+                      BoxShadow(
+                        color: Colors.blue.withValues(alpha: 0.24),
+                        blurRadius: 14,
+                        offset: const Offset(0, 6),
+                      ),
+                    ]
+                  : null,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+              child: Row(
+                children: [
+                  Icon(
+                    icon,
+                    color: isSelected ? Colors.white : Colors.blueAccent,
+                    size: 22,
+                  ),
+                  const SizedBox(width: 14),
+                  Expanded(
+                    child: Text(
+                      title,
+                      style: TextStyle(
+                        color: isSelected
+                            ? Colors.white
+                            : theme.colorScheme.onSurface,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                  if (isSelected)
+                    const Icon(
+                      Icons.check_circle_rounded,
+                      color: Colors.white,
+                      size: 20,
+                    ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _selectThemeMode(BuildContext context, ThemeMode mode) {
+    ref.read(appThemeModeProvider.notifier).setThemeMode(mode);
+    Navigator.of(context).pop();
   }
 }
 
@@ -764,13 +966,13 @@ class _LanguageTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final borderColor = isSelected
         ? Colors.blue.shade300
-        : Colors.white.withOpacity(0.12);
+        : Colors.white.withValues(alpha: 0.12);
     final textColor = isSelected
         ? Colors.white
-        : Colors.white.withOpacity(0.92);
+        : Colors.white.withValues(alpha: 0.92);
     final subtitleColor = isSelected
-        ? Colors.white.withOpacity(0.85)
-        : Colors.white.withOpacity(0.62);
+        ? Colors.white.withValues(alpha: 0.85)
+        : Colors.white.withValues(alpha: 0.62);
 
     return Material(
       color: Colors.transparent,
@@ -791,7 +993,7 @@ class _LanguageTile extends StatelessWidget {
             boxShadow: isSelected
                 ? [
                     BoxShadow(
-                      color: Colors.blue.withOpacity(0.24),
+                      color: Colors.blue.withValues(alpha: 0.24),
                       blurRadius: 14,
                       offset: const Offset(0, 6),
                     ),
@@ -841,7 +1043,7 @@ class _LanguageTile extends StatelessWidget {
                       : Icon(
                           Icons.circle_outlined,
                           key: const ValueKey('not-selected'),
-                          color: Colors.white.withOpacity(0.3),
+                          color: Colors.white.withValues(alpha: 0.3),
                           size: 20,
                         ),
                 ),

@@ -1,3 +1,5 @@
+import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,7 +14,9 @@ final languageCatalogProvider = Provider<LanguageCatalog>((ref) {
   return const LanguageCatalog();
 });
 
-final availableLanguagesProvider = FutureProvider<List<LanguageOption>>((ref) async {
+final availableLanguagesProvider = FutureProvider<List<LanguageOption>>((
+  ref,
+) async {
   final catalog = ref.watch(languageCatalogProvider);
   return catalog.loadLanguages();
 });
@@ -26,9 +30,16 @@ final supportedLocalesProvider = FutureProvider<List<Locale>>((ref) async {
 
 class LocaleNotifier extends StateNotifier<Locale> {
   static const _localeKey = 'app_locale';
-  
-  LocaleNotifier() : super(const Locale('en')) {
+
+  LocaleNotifier() : super(_initialLocale()) {
     _loadSavedLocale();
+  }
+
+  static Locale _initialLocale() {
+    return resolveSupportedLocale(
+      ui.PlatformDispatcher.instance.locale,
+      LanguageCatalog.fallbackSupportedLocales,
+    );
   }
 
   Future<void> _loadSavedLocale() async {

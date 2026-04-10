@@ -1448,6 +1448,8 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
               '❌ Typo detected: "${typo.key}" should be "${typo.value}"\n\nYour query:\n${sanitizedCode.isEmpty ? code.trim() : sanitizedCode}',
           hasError: true,
           passed: false,
+          error:
+              '❌ Typo detected: "${typo.key}" should be "${typo.value}"\n\nYour query:\n${sanitizedCode.isEmpty ? code.trim() : sanitizedCode}',
         );
       }
     }
@@ -1645,18 +1647,6 @@ Mark  | mark@outlook.com''';
 
     return 'Query validated successfully.';
   }
-}
-
-class _ExecutionResult {
-  final String output;
-  final bool hasError;
-  final bool passed;
-
-  _ExecutionResult({
-    required this.output,
-    required this.hasError,
-    required this.passed,
-  });
 }
 
 class _SQLResult {

@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../../core/services/firestore_service.dart';
 import '../../../core/services/cache_service.dart';
+import '../../../core/services/engagement_notification_service.dart';
 import '../../auth/providers/auth_provider.dart';
 import '../../achievements/models/achievement_model.dart';
 import '../../achievements/providers/achievement_provider.dart';
@@ -59,6 +60,11 @@ final progressServiceProvider = Provider<FirestoreService>((ref) {
 final cacheServiceProvider = Provider<CacheService>((ref) {
   return CacheService();
 });
+
+final engagementNotificationServiceProvider =
+    Provider<EngagementNotificationService>((ref) {
+      return EngagementNotificationService.instance;
+    });
 
 // User Progress Stream Provider with Offline Support
 final userProgressProvider = StreamProvider.family<CourseProgress?, String>((
@@ -144,6 +150,9 @@ final allUserProgressProvider = StreamProvider((ref) {
 final progressActionsProvider = Provider<ProgressActions>((ref) {
   final firestoreService = ref.watch(progressServiceProvider);
   final cacheService = ref.watch(cacheServiceProvider);
+  final engagementNotifications = ref.watch(
+    engagementNotificationServiceProvider,
+  );
   final user = ref.watch(currentUserProvider);
   final achievementActions = ref.watch(achievementActionsProvider);
   return ProgressActions(
@@ -151,6 +160,7 @@ final progressActionsProvider = Provider<ProgressActions>((ref) {
     cacheService,
     user?.uid,
     achievementActions,
+    engagementNotifications,
   );
 });
 
@@ -159,12 +169,14 @@ class ProgressActions {
   final CacheService _cacheService;
   final String? _userId;
   final AchievementActions _achievementActions;
+  final EngagementNotificationService _engagementNotifications;
 
   ProgressActions(
     this._firestoreService,
     this._cacheService,
     this._userId,
     this._achievementActions,
+    this._engagementNotifications,
   );
 
   Future<List<Achievement>> completeLesson({
@@ -230,11 +242,22 @@ class ProgressActions {
     await _cacheService.markSynced();
 
     // Check for achievements and return newly unlocked ones
-    return _achievementActions.checkAndUnlockAchievements(
-      totalLessons: totalLessonsCount,
+    final unlockedAchievements = await _achievementActions
+        .checkAndUnlockAchievements(
+          totalLessons: totalLessonsCount,
+          currentStreak: currentStreak,
+          totalXP: effectiveTotalXP,
+        );
+
+    await _engagementNotifications.onLessonCompleted(
+      userId: userId,
       currentStreak: currentStreak,
+      totalLessons: totalLessonsCount,
       totalXP: effectiveTotalXP,
+      unlockedAchievements: unlockedAchievements,
     );
+
+    return unlockedAchievements;
   }
 
   Future<bool> isLessonCompleted(String courseId, String lessonId) async {

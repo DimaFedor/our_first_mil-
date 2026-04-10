@@ -43,18 +43,20 @@ class AppLocalizations {
       translations.addAll(staticLocaleTranslations);
     }
 
-    final languageAssetTranslations = await _loadAssetTranslations(
-      locale.languageCode,
-    );
-    if (languageAssetTranslations.isNotEmpty) {
-      translations.addAll(languageAssetTranslations);
-    }
+    if (locale.languageCode.toLowerCase() != fallbackLanguageCode) {
+      final languageAssetTranslations = await _loadAssetTranslations(
+        locale.languageCode,
+      );
+      if (languageAssetTranslations.isNotEmpty) {
+        translations.addAll(languageAssetTranslations);
+      }
 
-    final localeTag = localeToLanguageTag(locale);
-    if (localeTag.toLowerCase() != locale.languageCode.toLowerCase()) {
-      final localeAssetTranslations = await _loadAssetTranslations(localeTag);
-      if (localeAssetTranslations.isNotEmpty) {
-        translations.addAll(localeAssetTranslations);
+      final localeTag = localeToLanguageTag(locale);
+      if (localeTag.toLowerCase() != locale.languageCode.toLowerCase()) {
+        final localeAssetTranslations = await _loadAssetTranslations(localeTag);
+        if (localeAssetTranslations.isNotEmpty) {
+          translations.addAll(localeAssetTranslations);
+        }
       }
     }
 
@@ -306,6 +308,7 @@ class AppLocalizations {
     'change_password': 'Change Password',
     'preferences': 'Preferences',
     'theme': 'Theme',
+    'system_theme': 'System',
     'dark_mode': 'Dark Mode',
     'light_mode': 'Light Mode',
     'notifications': 'Notifications',
@@ -547,6 +550,7 @@ class AppLocalizations {
     'change_password': 'Змінити пароль',
     'preferences': 'Налаштування',
     'theme': 'Тема',
+    'system_theme': 'Системна тема',
     'dark_mode': 'Темний режим',
     'light_mode': 'Світлий режим',
     'notifications': 'Сповіщення',
@@ -790,6 +794,7 @@ class AppLocalizations {
     'change_password': 'Cambiar contraseña',
     'preferences': 'Preferencias',
     'theme': 'Tema',
+    'system_theme': 'Sistema',
     'dark_mode': 'Modo oscuro',
     'light_mode': 'Modo claro',
     'notifications': 'Notificaciones',
@@ -1031,6 +1036,7 @@ class AppLocalizations {
     'change_password': 'Passwort ändern',
     'preferences': 'Einstellungen',
     'theme': 'Thema',
+    'system_theme': 'System',
     'dark_mode': 'Dunkelmodus',
     'light_mode': 'Hellmodus',
     'notifications': 'Benachrichtigungen',
@@ -1276,6 +1282,7 @@ class AppLocalizations {
     'change_password': 'Changer le mot de passe',
     'preferences': 'Préférences',
     'theme': 'Thème',
+    'system_theme': 'Système',
     'dark_mode': 'Mode sombre',
     'light_mode': 'Mode clair',
     'notifications': 'Notifications',
@@ -1522,6 +1529,7 @@ class AppLocalizations {
     'change_password': 'Zmień hasło',
     'preferences': 'Preferencje',
     'theme': 'Motyw',
+    'system_theme': 'System',
     'dark_mode': 'Tryb ciemny',
     'light_mode': 'Tryb jasny',
     'notifications': 'Powiadomienia',

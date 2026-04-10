@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/l10n/app_localizations.dart';
+import '../../core/services/engagement_notification_service.dart';
+import '../../features/auth/models/user_model.dart';
+import '../../features/auth/providers/auth_provider.dart';
 import '../../features/courses/screens/courses_screen.dart';
 import '../../features/home/home_screen.dart';
 import '../../features/profile/screens/profile_screen.dart';
+import '../../features/progress/providers/progress_provider.dart';
 import '../../features/progress/screens/progress_screen.dart';
 
 // Current tab provider
 final currentTabProvider = StateProvider<int>((ref) => 0);
 
-class MainNavigationScreen extends ConsumerWidget {
+class MainNavigationScreen extends ConsumerStatefulWidget {
   const MainNavigationScreen({super.key});
 
   static final List<Widget> _screens = [
@@ -20,27 +24,50 @@ class MainNavigationScreen extends ConsumerWidget {
   ];
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<MainNavigationScreen> createState() =>
+      _MainNavigationScreenState();
+}
+
+class _MainNavigationScreenState extends ConsumerState<MainNavigationScreen> {
+  String _lastNotificationSyncSignature = '';
+
+  @override
+  Widget build(BuildContext context) {
+    final userId = ref.watch(currentUserUidProvider);
+    final userDataAsync = userId == null
+        ? const AsyncValue<UserModel?>.data(null)
+        : ref.watch(userDataProvider(userId));
+    final allProgressAsync = ref.watch(allUserProgressProvider);
+
+    _syncEngagementNotifications(
+      userId: userId,
+      userData: userDataAsync.valueOrNull,
+      allProgress: allProgressAsync.valueOrNull,
+    );
+
     final currentTab = ref.watch(currentTabProvider);
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
       body: IndexedStack(
         index: currentTab,
-        children: _screens,
+        children: MainNavigationScreen._screens,
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [
-              const Color(0xFF1A1F3A).withOpacity(0.95),
-              const Color(0xFF0A0E27).withOpacity(0.98),
-            ],
+            colors: isDarkTheme
+                ? [
+                    const Color(0xFF1A1F3A).withValues(alpha: 0.95),
+                    const Color(0xFF0A0E27).withValues(alpha: 0.98),
+                  ]
+                : const [Color(0xFFFFFFFF), Color(0xFFF2F6FF)],
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.3),
+              color: Colors.black.withValues(alpha: 0.15),
               blurRadius: 20,
               offset: const Offset(0, -5),
             ),
@@ -61,21 +88,25 @@ class MainNavigationScreen extends ConsumerWidget {
                 ),
                 _NavBarItem(
                   icon: Icons.school_rounded,
-                  label: AppLocalizations.of(context)?.get('courses') ?? 'Courses',
+                  label:
+                      AppLocalizations.of(context)?.get('courses') ?? 'Courses',
                   index: 1,
                   isSelected: currentTab == 1,
                   onTap: () => ref.read(currentTabProvider.notifier).state = 1,
                 ),
                 _NavBarItem(
                   icon: Icons.trending_up_rounded,
-                  label: AppLocalizations.of(context)?.get('progress') ?? 'Progress',
+                  label:
+                      AppLocalizations.of(context)?.get('progress') ??
+                      'Progress',
                   index: 2,
                   isSelected: currentTab == 2,
                   onTap: () => ref.read(currentTabProvider.notifier).state = 2,
                 ),
                 _NavBarItem(
                   icon: Icons.person_rounded,
-                  label: AppLocalizations.of(context)?.get('profile') ?? 'Profile',
+                  label:
+                      AppLocalizations.of(context)?.get('profile') ?? 'Profile',
                   index: 3,
                   isSelected: currentTab == 3,
                   onTap: () => ref.read(currentTabProvider.notifier).state = 3,
@@ -85,6 +116,32 @@ class MainNavigationScreen extends ConsumerWidget {
           ),
         ),
       ),
+    );
+  }
+
+  void _syncEngagementNotifications({
+    required String? userId,
+    required UserModel? userData,
+    required List<CourseProgress>? allProgress,
+  }) {
+    if (userId == null || userData == null || allProgress == null) return;
+
+    final totalLessons = allProgress.fold<int>(
+      0,
+      (sum, course) => sum + course.completedLessons.length,
+    );
+    final lastActiveMillis = userData.lastActive?.millisecondsSinceEpoch ?? 0;
+    final signature =
+        '$userId|${userData.currentStreak}|${userData.totalXP}|$totalLessons|$lastActiveMillis';
+    if (signature == _lastNotificationSyncSignature) return;
+    _lastNotificationSyncSignature = signature;
+
+    EngagementNotificationService.instance.refreshForUser(
+      userId: userId,
+      currentStreak: userData.currentStreak,
+      totalLessons: totalLessons,
+      totalXP: userData.totalXP,
+      lastActive: userData.lastActive,
     );
   }
 }
@@ -106,6 +163,9 @@ class _NavBarItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final onSurface = Theme.of(context).colorScheme.onSurface;
+    final unselectedColor = onSurface.withValues(alpha: 0.65);
+
     return Expanded(
       child: GestureDetector(
         onTap: onTap,
@@ -126,7 +186,7 @@ class _NavBarItem extends StatelessWidget {
             children: [
               Icon(
                 icon,
-                color: isSelected ? Colors.white : Colors.white60,
+                color: isSelected ? Colors.white : unselectedColor,
                 size: 20,
               ),
               const SizedBox(height: 1),
@@ -136,9 +196,11 @@ class _NavBarItem extends StatelessWidget {
                   child: Text(
                     label,
                     style: TextStyle(
-                      color: isSelected ? Colors.white : Colors.white60,
+                      color: isSelected ? Colors.white : unselectedColor,
                       fontSize: 10,
-                      fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+                      fontWeight: isSelected
+                          ? FontWeight.w600
+                          : FontWeight.normal,
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.clip,
