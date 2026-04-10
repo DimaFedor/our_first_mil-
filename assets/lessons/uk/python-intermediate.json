@@ -1,0 +1,525 @@
+{
+  "courseId": "python-intermediate",
+  "lessons": [
+    {
+      "id": "python_int_lesson_1",
+      "courseId": "python-intermediate",
+      "moduleId": "oop",
+      "title": "Класи та об'єкти",
+      "description": "Опануйте об’єктно-орієнтоване програмування на Python",
+      "theorySlides": [
+        {
+          "title": "Що таке ООП? 🏗️",
+          "content": "Об’єктно-орієнтоване програмування організовує код в об’єкти – пакети даних і функцій.\n\nКлючові поняття:\n• **Клас**: план для створення об’єктів\n• **Об’єкт**: екземпляр класу\n• **Атрибути**: дані, що зберігаються в об’єкті\n• **Методи**: функції, які належать об’єкту",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Навіщо використовувати ООП? 💡",
+          "content": "Переваги ООП:\n\n✅ **Модульність** - код організований у самодостатні блоки\n✅ **Повторне використання** - створіть один раз, використовуйте багато разів\n✅ **Ремонтопридатність** - легко оновлювати та виправляти\n✅ **Моделювання реального світу** - об’єкти представляють реальні речі",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Створення класу",
+          "content": "Використовуйте ключове слово class, щоб визначити проект.",
+          "codeSnippet": "class Dog:\n    def __init__(self, name, breed):\n        self.name = name\n        self.breed = breed\n    \n    def bark(self):\n        return f\"{self.name} says Woof!\"\n\nmy_dog = Dog(\"Buddy\", \"Golden Retriever\")\nprint(my_dog.bark())",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Сам параметр 🔑",
+          "content": "**self** посилається на поточний екземпляр класу.\n\nЦе дозволяє:\n• Атрибути доступу: self.name\n• Методи виклику: self.bark()\n• Відрізняти екземпляр від змінних класу",
+          "codeSnippet": "class Person:\n    def __init__(self, name):\n        self.name = name  # Instance attribute\n    \n    def greet(self):\n        return f\"Hi, I am {self.name}\"",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Для чого використовується __init__?",
+            "options": [
+              "Ініціалізація атрибутів об'єкта",
+              "Видалити об'єкт",
+              "Об'єкт друку",
+              "Імпорт модулів"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "__init__ — це конструктор, який встановлює початковий стан під час створення об’єкта.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що означає «я»?",
+            "options": [
+              "Сам клас",
+              "Поточний екземпляр",
+              "Батьківський клас",
+              "Глобальна змінна"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "self посилається на поточний екземпляр класу, який створюється або використовується.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Як створити об’єкт із класу Dog?",
+            "options": [
+              "Dog.new()",
+              "нова собака()",
+              "собака()",
+              "створити собаку"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "У Python ви створюєте об’єкти, викликаючи назву класу як функцію: Dog()",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Створіть клас автомобіля",
+        "description": "Створіть клас автомобіля:\n1. У __init__ збережіть бренд у self.brand\n2. У describe() поверніть «Brand: X», де X — це бренд\n\nОчікуваний вихід: Бренд: Toyota",
+        "starterCode": "class Car:\n    def __init__(self, brand):\n        # Step 1: Store brand in self.brand\n        self.brand = # your code\n    \n    def describe(self):\n        # Step 2: Return \"Brand: {brand}\"\n        return # your code\n\ncar = Car(\"Toyota\")\nprint(car.describe())",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Brand: Toyota",
+            "isHidden": false
+          }
+        ],
+        "hint": "Крок 1: self.brand = бренд\nКрок 2: поверніть f\"Бренд: {self.brand}\"",
+        "solution": "class Car:\n    def __init__(self, brand):\n        self.brand = brand\n    \n    def describe(self):\n        return f\"Brand: {self.brand}\"\n\ncar = Car(\"Toyota\")\nprint(car.describe())",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 0
+    },
+    {
+      "id": "python_int_lesson_2",
+      "courseId": "python-intermediate",
+      "moduleId": "oop",
+      "title": "Спадщина",
+      "description": "Дізнайтеся, як повторно використовувати код із успадкуванням класів",
+      "theorySlides": [
+        {
+          "title": "Що таке спадщина? 🌳",
+          "content": "Спадкування дозволяє класу успадковувати атрибути та методи від іншого класу.\n\nТермінологія:\n• **Батьківський/базовий клас**: клас, який успадковується\n• **Дочірній/похідний клас**: клас, який успадковує\n• **Перевизначити**: замінити батьківський метод на дочірній",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Чому саме спадщина? 🎯",
+          "content": "Переваги:\n\n✅ **СУХИЙ** - Не повторюйся\n✅ **Ієрархія** - моделюйте реальні відносини\n✅ **Розширити** - Додайте функції, не змінюючи оригінал\n✅ **Поліморфізм** - Той самий інтерфейс, інша поведінка",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Створення дочірніх класів",
+          "content": "Передайте батьківський клас у дужках.",
+          "codeSnippet": "class Animal:\n    def __init__(self, name):\n        self.name = name\n\nclass Cat(Animal):\n    def speak(self):\n        return f\"{self.name} says Meow!\"\n\ncat = Cat(\"Whiskers\")\nprint(cat.speak())",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Використання super() 🦸",
+          "content": "super() викликає методи батьківського класу.",
+          "codeSnippet": "class Animal:\n    def __init__(self, name):\n        self.name = name\n\nclass Dog(Animal):\n    def __init__(self, name, breed):\n        super().__init__(name)  # Call parent __init__\n        self.breed = breed\n\ndog = Dog(\"Max\", \"Labrador\")\nprint(dog.name, dog.breed)",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Що робить super()?",
+            "options": [
+              "Створює новий об'єкт",
+              "Викликає методи батьківського класу",
+              "Видаляє клас",
+              "Робить код швидшим"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "super() дозволяє викликати методи з батьківського класу.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Як створити дочірній клас?",
+            "options": [
+              "клас Child розширює Parent",
+              "клас Child(Parent)",
+              "клас Дитина: Батько",
+              "Child = Parent.extend()"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "У Python помістіть назву батьківського класу в дужки: class Child(Parent)",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що таке перевизначення методу?",
+            "options": [
+              "Видалення методу",
+              "Перевизначення батьківського методу в дочірньому",
+              "Виклик методу двічі",
+              "Зробити метод приватним"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Перевизначення означає визначення методу в дочірньому класі з тим самим іменем, що й у батьківського, для заміни поведінки.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Створити студентський клас",
+        "description": "Створити клас студента, який успадковує від особи з атрибутом оцінки.",
+        "starterCode": "class Person:\n    def __init__(self, name):\n        self.name = name\n\nclass Student(Person):\n    def __init__(self, name, grade):\n        # Use super() and add grade\n        pass\n    \n    def info(self):\n        # Return \"Name: X, Grade: Y\"\n        pass\n\ns = Student(\"Alex\", 10)\nprint(s.info())",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Name: Alex, Grade: 10",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте super().__init__(name), а потім self.grade = grade",
+        "solution": "class Person:\n    def __init__(self, name):\n        self.name = name\n\nclass Student(Person):\n    def __init__(self, name, grade):\n        super().__init__(name)\n        self.grade = grade\n    \n    def info(self):\n        return f\"Name: {self.name}, Grade: {self.grade}\"\n\ns = Student(\"Alex\", 10)\nprint(s.info())",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 1
+    },
+    {
+      "id": "python_int_lesson_3",
+      "courseId": "python-intermediate",
+      "moduleId": "advanced",
+      "title": "Розуміння списку",
+      "description": "Напишіть елегантний код Pythonic",
+      "theorySlides": [
+        {
+          "title": "Розуміння списку ✨",
+          "content": "Розуміння списків забезпечує стислий спосіб створення списків.\n\nСинтаксис: [вираз для елемента в iterable]\nЗ фільтром: [вираз для елемента в ітерованій умові if]",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Навіщо розуміння списків? 🚀",
+          "content": "Переваги:\n\n✅ **Читабельність** - чіткий намір одним рядком\n✅ **Швидко** - Ефективніше, ніж цикли\n✅ **Pythonic** - «Шлях Python»\n✅ **Гнучкий** - фільтруйте та трансформуйте разом",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Основні приклади",
+          "content": "Перетворення та фільтрація даних в одному рядку.",
+          "codeSnippet": "# Squares of 1-5\nsquares = [x**2 for x in range(1, 6)]\nprint(squares)  # [1, 4, 9, 16, 25]\n\n# Even numbers only\nevens = [x for x in range(10) if x % 2 == 0]\nprint(evens)  # [0, 2, 4, 6, 8]",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Вкладені розуміння 🔄",
+          "content": "Створюйте 2D структури або зводьте списки.",
+          "codeSnippet": "# Flatten a 2D list\nmatrix = [[1, 2], [3, 4], [5, 6]]\nflat = [num for row in matrix for num in row]\nprint(flat)  # [1, 2, 3, 4, 5, 6]\n\n# Create multiplication table\ntable = [[i*j for j in range(1,4)] for i in range(1,4)]\n# [[1,2,3], [2,4,6], [3,6,9]]",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Що таке [x*2 для x у [1,2,3]]?",
+            "options": [
+              "[1,2,3]",
+              "[2,4,6]",
+              "[1,4,9]",
+              "Помилка"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Кожен елемент множиться на 2.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що повертає [x for x in range(5) if x > 2]?",
+            "options": [
+              "[0,1,2]",
+              "[3,4]",
+              "[2,3,4]",
+              "[0,1,2,3,4]"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Тільки значення більше 2 проходять фільтр: 3 і 4.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що еквівалентно: result = []; для x в елементах: result.append(x*2)?",
+            "options": [
+              "[x*2 в елементах]",
+              "[x*2 для x в елементах]",
+              "[для x в елементах: x*2]",
+              "items.map(x*2)"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Синтаксис розуміння списку: [вираз для елемента в iterable]",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Квадрати евенів",
+        "description": "Створіть список квадратів парних чисел від 1 до 10.",
+        "starterCode": "# Create squares of even numbers 1-10\n# Expected: [4, 16, 36, 64, 100]\nsquares = # Your code\nprint(squares)",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "[4, 16, 36, 64, 100]",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте, якщо x % 2 == 0 і x**2",
+        "solution": "squares = [x**2 for x in range(1, 11) if x % 2 == 0]\nprint(squares)",
+        "xpReward": 15
+      },
+      "xpReward": 25,
+      "order": 2
+    },
+    {
+      "id": "python_int_lesson_4",
+      "courseId": "python-intermediate",
+      "moduleId": "advanced",
+      "title": "Лямбда-функції",
+      "description": "Створення анонімних функцій",
+      "theorySlides": [
+        {
+          "title": "Лямбда-функції ⚡",
+          "content": "Лямбда-функції — це невеликі анонімні функції.\n\nСинтаксис: лямбда-аргументи: вираз\n\nІдеально підходить для коротких одноразових заходів.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Лямбда проти звичайних функцій 🆚",
+          "content": "Порівняння:\n\n**Звичайна функція:**\ndef add(a, b):\n    повернути a + b\n\n**Лямбда-функція:**\nдодати = лямбда a, b: a + b\n\nВикористовуйте лямбда для простих одноразових операцій.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Лямбда з sorted()",
+          "content": "Сортування за допомогою спеціальних ключів.",
+          "codeSnippet": "students = [(\"Alice\", 85), (\"Bob\", 92), (\"Charlie\", 78)]\n\n# Sort by grade (second element)\nsorted_students = sorted(students, key=lambda s: s[1])\nprint(sorted_students)",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Лямбда з map() і filter() 🔧",
+          "content": "Використовуйте лямбда з інструментами функціонального програмування.",
+          "codeSnippet": "numbers = [1, 2, 3, 4, 5]\n\n# Double each number\ndoubled = list(map(lambda x: x*2, numbers))\n# [2, 4, 6, 8, 10]\n\n# Keep only evens\nevens = list(filter(lambda x: x%2==0, numbers))\n# [2, 4]",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Виправити лямбда, щоб додати два числа?",
+            "options": [
+              "лямбда: a+b",
+              "лямбда a,b: a+b",
+              "def лямбда(a,b)",
+              "a,b => a+b"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Синтаксис: параметри лямбда: вираз",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що можуть містити лямбда-функції?",
+            "options": [
+              "Кілька заяв",
+              "Один вираз",
+              "Цикли та блоки if/else",
+              "Визначення класів"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Лямбда-функції можуть містити лише один вираз, а не кілька операторів.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що повертає map(lambda x: x**2, [1,2,3])?",
+            "options": [
+              "[1,2,3]",
+              "[1,4,9]",
+              "6",
+              "Помилка"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "map() застосовує лямбда до кожного елемента: 1²=1, 2²=4, 3²=9",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Сортувати за довжиною",
+        "description": "Сортуйте слова за довжиною за допомогою лямбда.",
+        "starterCode": "words = [\"python\", \"is\", \"awesome\"]\n# Sort by length\nresult = sorted(words, key=# your lambda)\nprint(result)",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "['is', 'python', 'awesome']",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте лямбда w: len(w)",
+        "solution": "words = [\"python\", \"is\", \"awesome\"]\nresult = sorted(words, key=lambda w: len(w))\nprint(result)",
+        "xpReward": 15
+      },
+      "xpReward": 25,
+      "order": 3
+    },
+    {
+      "id": "python_int_lesson_5",
+      "courseId": "python-intermediate",
+      "moduleId": "errors",
+      "title": "Обробка винятків",
+      "description": "Витончено поводьтеся з помилками",
+      "theorySlides": [
+        {
+          "title": "Спробуйте/крім 🛡️",
+          "content": "Обробляйте помилки без збою програми.\n\nПоширені винятки:\n• ValueError - неправильний тип значення\n• TypeError - неправильна операція над типом\n• ZeroDivisionError - поділити на нуль\n• FileNotFoundError - відсутній файл",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Навіщо обробляти винятки? 💡",
+          "content": "Переваги:\n\n✅ **Витончена помилка** - програма не аварійно завершує роботу\n✅ **Зручний** - Показуйте корисні повідомлення про помилки\n✅ **Відновлення** - Спробуйте альтернативні підходи\n✅ **Ведення журналу** - Відстежуйте помилки для налагодження",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Базовий синтаксис",
+          "content": "Загорніть ризикований код у try/except.",
+          "codeSnippet": "try:\n    result = 10 / 0\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero!\")\nfinally:\n    print(\"This always runs\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Численні винятки 🎯",
+          "content": "Обробляйте різні помилки по-різному.",
+          "codeSnippet": "try:\n    value = int(input(\"Enter number: \"))\n    result = 100 / value\nexcept ValueError:\n    print(\"Not a valid number!\")\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero!\")\nexcept Exception as e:\n    print(f\"Unknown error: {e}\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Який блок працює завжди?",
+            "options": [
+              "спробувати",
+              "крім",
+              "нарешті",
+              "підняти"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "finally завжди виконується, незалежно від винятків.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Як ви ловите БУДЬ-ЯКИЙ виняток?",
+            "options": [
+              "крім:",
+              "крім усіх:",
+              "крім *:",
+              "зловити:"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Голе \"except:\" вловлює всі винятки (хоча \"except Exception:\" є кращим).",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що робить \"рейз\"?",
+            "options": [
+              "Перехопити виняток",
+              "Створити/викинути виняток",
+              "Помилка друку",
+              "Вийти з програми"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "raise створює та викидає виняток, який можна перехопити за допомогою try/except.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Безпечний відділ",
+        "description": "Створіть safe_divide, який повертає \"Error\" у разі помилки.",
+        "starterCode": "def safe_divide(a, b):\n    # Return result or \"Error\"\n    pass\n\nprint(safe_divide(10, 2))\nprint(safe_divide(10, 0))",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "5.0\nError",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте try/except ZeroDivisionError",
+        "solution": "def safe_divide(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return \"Error\"\n\nprint(safe_divide(10, 2))\nprint(safe_divide(10, 0))",
+        "xpReward": 15
+      },
+      "xpReward": 25,
+      "order": 4
+    }
+  ]
+}

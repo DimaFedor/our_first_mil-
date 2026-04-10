@@ -1,0 +1,399 @@
+{
+  "courseId": "htmlcss-intermediate",
+  "lessons": [
+    {
+      "id": "htmlcss_int_lesson_1",
+      "courseId": "htmlcss-intermediate",
+      "moduleId": "layout",
+      "title": "Flexbox Layout",
+      "description": "Master flexible box layout",
+      "theorySlides": [
+        {
+          "title": "What is Flexbox? 📦",
+          "content": "Flexbox is a one-dimensional layout method for rows or columns.\n\nKey properties:\n• display: flex\n• justify-content (main axis)\n• align-items (cross axis)\n• flex-direction",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Flexbox Axes 🎯",
+          "content": "Two axes in flexbox:\n\n**Main Axis** - Direction items flow (row/column)\n• justify-content controls this\n\n**Cross Axis** - Perpendicular to main\n• align-items controls this",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Centering with Flexbox",
+          "content": "Center items easily.",
+          "codeSnippet": ".container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100vh;\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Flex Item Properties 🔧",
+          "content": "Control individual items:",
+          "codeSnippet": ".item {\n  flex-grow: 1;    /* Can grow */\n  flex-shrink: 0;  /* Won't shrink */\n  flex-basis: 200px; /* Starting size */\n  \n  /* Shorthand: flex: grow shrink basis */\n  flex: 1 0 200px;\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Which property centers on main axis?",
+            "options": [
+              "align-items",
+              "justify-content",
+              "flex-direction",
+              "flex-wrap"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "justify-content controls main axis alignment.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does flex-direction: column do?",
+            "options": [
+              "Items side by side",
+              "Items stacked vertically",
+              "Makes columns equal",
+              "Hides items"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "column changes the main axis to vertical, stacking items top to bottom.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does flex: 1 mean?",
+            "options": [
+              "Fixed width of 1px",
+              "Item takes equal share of space",
+              "Only 1 item visible",
+              "Error"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "flex: 1 means flex-grow: 1, allowing the item to grow and fill available space.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Center a Box",
+        "description": "Center a div using flexbox.",
+        "starterCode": ".container {\n  height: 200px;\n  /* Add flexbox centering */\n}",
+        "language": "css",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "display: flex; justify-content: center; align-items: center;",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use display: flex with justify-content and align-items center",
+        "solution": ".container {\n  height: 200px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 0
+    },
+    {
+      "id": "htmlcss_int_lesson_2",
+      "courseId": "htmlcss-intermediate",
+      "moduleId": "layout",
+      "title": "CSS Grid",
+      "description": "Create two-dimensional layouts",
+      "theorySlides": [
+        {
+          "title": "CSS Grid 🔲",
+          "content": "CSS Grid creates layouts with rows AND columns.\n\nKey properties:\n• grid-template-columns\n• grid-template-rows\n• gap\n• fr unit (fraction)",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Grid vs Flexbox 🆚",
+          "content": "When to use which:\n\n**Grid:** 2D layouts (rows AND columns)\n• Page layouts\n• Card grids\n• Complex structures\n\n**Flexbox:** 1D layouts (row OR column)\n• Navigation bars\n• Centering\n• Single row/column",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Responsive Grid",
+          "content": "Create responsive grids.",
+          "codeSnippet": ".grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));\n  gap: 16px;\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Grid Areas 🗺️",
+          "content": "Name areas for visual layouts.",
+          "codeSnippet": ".layout {\n  display: grid;\n  grid-template-areas:\n    \"header header\"\n    \"sidebar main\"\n    \"footer footer\";\n  grid-template-columns: 200px 1fr;\n}\n\n.header { grid-area: header; }\n.sidebar { grid-area: sidebar; }",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What does 1fr mean?",
+            "options": [
+              "1 pixel",
+              "1 fraction of space",
+              "1 frame",
+              "1 row"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "fr is a fraction unit for available space.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does auto-fit do in repeat()?",
+            "options": [
+              "Fixed columns",
+              "Fills row with as many columns as fit",
+              "Single column",
+              "Error"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "auto-fit creates as many columns as can fit in the available space.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which creates a 2x2 grid?",
+            "options": [
+              "grid: 2x2",
+              "grid-template: 2 2",
+              "grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr",
+              "columns: 2; rows: 2"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Define both columns and rows with grid-template-columns and grid-template-rows.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Create 3-Column Grid",
+        "description": "Create equal 3-column grid with gap.",
+        "starterCode": ".grid {\n  /* Create 3 equal columns with 16px gap */\n}",
+        "language": "css",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use repeat(3, 1fr) for 3 equal columns",
+        "solution": ".grid {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 16px;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 1
+    },
+    {
+      "id": "htmlcss_int_lesson_3",
+      "courseId": "htmlcss-intermediate",
+      "moduleId": "modern",
+      "title": "CSS Variables",
+      "description": "Use custom properties for maintainable CSS",
+      "theorySlides": [
+        {
+          "title": "CSS Variables ✨",
+          "content": "Store and reuse values throughout your stylesheet.\n\nDefine with --name, use with var(--name)",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Example",
+          "content": "Define colors and spacing.",
+          "codeSnippet": ":root {\n  --primary: #0066ff;\n  --spacing: 16px;\n}\n\n.button {\n  background: var(--primary);\n  padding: var(--spacing);\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "How to define a CSS variable?",
+            "options": [
+              "$var: value",
+              "@var: value",
+              "--var: value",
+              "var = value"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "CSS variables use double-dash prefix.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Define and Use Variable",
+        "description": "Create --primary color and use it.",
+        "starterCode": ":root {\n  /* Define --primary as #0066ff */\n}\n\n.btn {\n  /* Use --primary for background */\n}",
+        "language": "css",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "--primary: #0066ff; background: var(--primary);",
+            "isHidden": false
+          }
+        ],
+        "hint": "Define in :root, use with var()",
+        "solution": ":root {\n  --primary: #0066ff;\n}\n\n.btn {\n  background: var(--primary);\n}",
+        "xpReward": 15
+      },
+      "xpReward": 25,
+      "order": 2
+    },
+    {
+      "id": "htmlcss_int_lesson_4",
+      "courseId": "htmlcss-intermediate",
+      "moduleId": "animations",
+      "title": "CSS Animations",
+      "description": "Create smooth animations",
+      "theorySlides": [
+        {
+          "title": "CSS Animations 🎬",
+          "content": "Two types:\n• **Transitions**: Between two states\n• **Keyframes**: Multi-step animations",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Keyframes",
+          "content": "Define animation steps.",
+          "codeSnippet": "@keyframes fadeIn {\n  from { opacity: 0; }\n  to { opacity: 1; }\n}\n\n.element {\n  animation: fadeIn 0.5s ease;\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What does infinite do?",
+            "options": [
+              "Runs faster",
+              "Loops forever",
+              "Increases size",
+              "Pauses"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "infinite makes the animation repeat forever.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Pulse Animation",
+        "description": "Create a pulse animation that scales 1 to 1.1.",
+        "starterCode": "@keyframes pulse {\n  /* 0%: scale(1), 50%: scale(1.1), 100%: scale(1) */\n}\n\n.box {\n  animation: pulse 1s infinite;\n}",
+        "language": "css",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); }",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use transform: scale() at each keyframe",
+        "solution": "@keyframes pulse {\n  0% { transform: scale(1); }\n  50% { transform: scale(1.1); }\n  100% { transform: scale(1); }\n}\n\n.box {\n  animation: pulse 1s infinite;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 3
+    },
+    {
+      "id": "htmlcss_int_lesson_5",
+      "courseId": "htmlcss-intermediate",
+      "moduleId": "responsive",
+      "title": "Media Queries",
+      "description": "Build responsive layouts",
+      "theorySlides": [
+        {
+          "title": "Responsive Design 📱",
+          "content": "Apply different styles based on screen size.\n\nBreakpoints:\n• Mobile: < 768px\n• Tablet: 768px - 1024px\n• Desktop: > 1024px",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Mobile First",
+          "content": "Start with mobile, add desktop styles.",
+          "codeSnippet": ".container {\n  padding: 16px;\n}\n\n@media (min-width: 768px) {\n  .container {\n    padding: 32px;\n    max-width: 1200px;\n  }\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is mobile-first?",
+            "options": [
+              "Only support mobile",
+              "Write mobile CSS first, add desktop",
+              "Test mobile first",
+              "Ignore desktop"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Mobile-first uses base styles for mobile, media queries for larger screens.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Responsive Grid",
+        "description": "Create grid that is 1 column on mobile, 2 on tablet (768px+).",
+        "starterCode": ".grid {\n  display: grid;\n  grid-template-columns: 1fr;\n}\n\n/* Add media query for 768px+ */",
+        "language": "css",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "@media (min-width: 768px) { .grid { grid-template-columns: 1fr 1fr; } }",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use @media (min-width: 768px)",
+        "solution": ".grid {\n  display: grid;\n  grid-template-columns: 1fr;\n}\n\n@media (min-width: 768px) {\n  .grid {\n    grid-template-columns: 1fr 1fr;\n  }\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 4
+    }
+  ]
+}

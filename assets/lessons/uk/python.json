@@ -1,0 +1,1207 @@
+{
+  "courseId": "python",
+  "lessons": [
+    {
+      "id": "python_lesson_1",
+      "courseId": "python",
+      "moduleId": "basics",
+      "title": "Ласкаво просимо до Python",
+      "description": "Ваші перші кроки у світ програмування на Python",
+      "theorySlides": [
+        {
+          "title": "Що таке Python? 🐍",
+          "content": "Python є однією з найпопулярніших мов програмування у світі. Його використовують такі компанії, як Google, Netflix і Instagram, для створення дивовижного програмного забезпечення.\n\nPython відомий тим, що:\n• Легко читати та писати\n• Потужний, але простий\n• Ідеально підходить для новачків\n• Використовується всюди: веб-розробка, наука про дані, ШІ тощо!",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Чому варто вибрати Python?",
+          "content": "Python був розроблений, щоб бути простим і читабельним. На відміну від інших мов програмування, які використовують багато символів і дужок, Python використовує прості англійські слова.\n\nПовноваження Python:\n🌐 Веб-сайти (Instagram, Pinterest)\n🤖 ШІ та машинне навчання (Tesla, Spotify)\n📊 Аналіз даних (рекомендації Netflix)\n🎮 Ігри (Цивілізація IV)",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Ваша перша програма на Python",
+          "content": "Кожен програміст починає з \"Hello, World!\" - проста програма, яка виводить текст на екран.",
+          "codeSnippet": "print(\"Hello, World!\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Що робить Python особливим порівняно з іншими мовами програмування?",
+            "options": [
+              "Його легко читати і писати",
+              "Він працює лише на Windows",
+              "Це найшвидша мова",
+              "Він може лише створювати ігри"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Головною перевагою Python є його читабельність і простота, що робить його ідеальним для початківців і водночас достатньо потужним для експертів.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яка команда відображає текст у Python?",
+            "options": [
+              "показати()",
+              "дисплей()",
+              "друкувати()",
+              "написати()"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Функція print() використовується для відображення вихідного тексту в Python.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Які знаки пунктуації мають бути навколо тексту в print()?",
+            "options": [
+              "Квадратні дужки []",
+              "Фігурні дужки {}",
+              "Лапки \"\" або ''",
+              "дужки ()"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Текст (рядки) у Python має бути взятий у лапки - одинарні '' або подвійні \"\".",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яка компанія використовує Python?",
+            "options": [
+              "Google",
+              "Netflix",
+              "Instagram",
+              "Все перераховане вище"
+            ],
+            "correctAnswerIndex": 3,
+            "explanation": "Python використовують багато великих компаній, зокрема Google, Netflix, Instagram, Spotify тощо!",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Скажи привіт!",
+        "description": "Напишіть програму, яка відображає \"Привіт, Python!\" на екран.",
+        "starterCode": "# Write your code below\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Hello, Python!",
+            "isHidden": false
+          }
+        ],
+        "hint": "Для відображення тексту використовуйте функцію print(). Не забувайте брати текст у лапки!",
+        "solution": "print(\"Hello, Python!\")",
+        "xpReward": 15
+      },
+      "xpReward": 15,
+      "order": 0
+    },
+    {
+      "id": "python_lesson_2",
+      "courseId": "python",
+      "moduleId": "basics",
+      "title": "Змінні - Зберігання інформації",
+      "description": "Дізнайтеся, як зберігати та використовувати дані у своїх програмах",
+      "theorySlides": [
+        {
+          "title": "Що таке змінні? 📦",
+          "content": "Подумайте про змінні, як про позначені коробки, які зберігають інформацію. У ці вікна можна вводити різні типи даних і використовувати їх пізніше.\n\nНаприклад:\n• Поле з написом \"ім'я\" може містити \"Аліса\"\n• Поле з позначкою «вік» може містити 25\n• Поле з міткою \"is_student\" може містити True",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Створення змінних",
+          "content": "У Python створити змінну надзвичайно просто! Ви просто пишете назву, знак рівності та значення.",
+          "codeSnippet": "name = \"Alex\"\nage = 20\nheight = 5.8\nis_student = True",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Типи даних",
+          "content": "Python автоматично розуміє різні типи даних:\n\n• Текст (рядок): \"Hello\", \"Python\", \"123 Main St\"\n• Числа (цілі): 5, 42, -10, 0\n• Десяткові числа (Float): 3.14, 2.5, -1.2\n• True/False (Boolean): True, False",
+          "codeSnippet": "message = \"Welcome!\"  # Text\nscore = 100          # Whole number\nprice = 19.99        # Decimal\nis_open = True       # True/False",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Використання змінних",
+          "content": "Створивши змінну, ви можете використовувати її будь-де у своїй програмі, написавши її ім’я.",
+          "codeSnippet": "player_name = \"Maya\"\npoints = 150\n\nprint(\"Player:\", player_name)\nprint(\"Points:\", points)\nprint(\"Great job\", player_name, \"!\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Як створити змінну під назвою \"score\" зі значенням 100?",
+            "options": [
+              "створити рахунок = 100",
+              "бал = 100",
+              "змінна оцінка = 100",
+              "оцінка := 100"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "У Python ви створюєте змінні за допомогою оператора присвоювання (=). Просто напишіть: бал = 100",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який тип даних є \"Hello World\"?",
+            "options": [
+              "Ціле число",
+              "Поплавок",
+              "Рядок",
+              "Логічний"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Текст у лапках називається рядком. \"Hello World\" є рядком, оскільки він містить текстові символи.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яке з них є правильним ім'ям змінної?",
+            "options": [
+              "2ім'я",
+              "мій вік",
+              "player_score",
+              "друкувати"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Імена змінних можуть містити літери, цифри та символи підкреслення, але не можуть починатися з цифри або містити дефіси.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яке значення х після: х = 5; х = 10?",
+            "options": [
+              "5",
+              "10",
+              "15",
+              "Помилка"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Змінні можна перепризначати. Друге призначення (x = 10) замінює перше значення.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який тип значення True?",
+            "options": [
+              "Рядок",
+              "Ціле число",
+              "Логічний",
+              "Поплавок"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "True і False є логічними значеннями, вони представляють стани так/ні або увімкнено/вимкнено.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Особиста інформаційна картка",
+        "description": "Створіть дві змінні:\n• ім'я = \"Олексій\"\n• вік = 25\n\nПотім роздрукуйте кожен в окремих рядках:\nІм'я: Алекс\nВік: 25",
+        "starterCode": "# Step 1: Create variables\nname = # add \"Alex\" here\nage = # add 25 here\n\n# Step 2: Print them\nprint(\"Name:\", name)\nprint(\"Age:\", age)",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Name: Alex\nAge: 25",
+            "isHidden": false
+          }
+        ],
+        "hint": "Замініть коментарі значеннями: ім’я = «Олексій» (у лапках для тексту) і вік = 25 (без лапок для чисел).",
+        "solution": "name = \"Alex\"\nage = 25\n\nprint(\"Name:\", name)\nprint(\"Age:\", age)",
+        "xpReward": 15
+      },
+      "xpReward": 20,
+      "order": 1
+    },
+    {
+      "id": "python_lesson_3",
+      "courseId": "python",
+      "moduleId": "basics",
+      "title": "Математика в Python",
+      "description": "Навчіться обчислювати та працювати з числами",
+      "theorySlides": [
+        {
+          "title": "Python — чудовий калькулятор! 🔢",
+          "content": "Python може виконувати всі основні математичні операції та багато іншого. Ви можете використовувати його як потужний калькулятор!",
+          "codeSnippet": "print(5 + 3)    # Addition: 8\nprint(10 - 4)   # Subtraction: 6\nprint(6 * 7)    # Multiplication: 42\nprint(15 / 3)   # Division: 5.0",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Математика зі змінними",
+          "content": "Ви можете використовувати змінні в математичних операціях, роблячи свої обчислення динамічними та придатними для повторного використання.",
+          "codeSnippet": "price = 25\nquantity = 3\ntotal = price * quantity\n\nprint(\"Total cost:\", total)  # Total cost: 75",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Спеціальні математичні операції",
+          "content": "Python має деякі спеціальні математичні оператори, які дійсно корисні:",
+          "codeSnippet": "print(10 ** 2)   # Power: 10 squared = 100\nprint(17 // 5)   # Floor division: 3\nprint(17 % 5)    # Modulo (remainder): 2",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Оновлення змінних",
+          "content": "Ви можете змінити значення змінної, присвоївши їй нове значення. Ви навіть можете використовувати поточне значення змінної, щоб обчислити нове!",
+          "codeSnippet": "score = 100\nprint(\"Current score:\", score)\n\nscore = score + 50  # Add 50 points\nprint(\"New score:\", score)\n\n# Shortcut: score += 50 does the same thing",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Що дорівнює 10 ** 3 у Python?",
+            "options": [
+              "30",
+              "103",
+              "1000",
+              "13"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "** — оператор потужності. 10 ** 3 означає 10 у ступені 3, тобто 10 × 10 × 10 = 1000.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Якщо x = 5, чому x += 3 дорівнює x?",
+            "options": [
+              "5",
+              "8",
+              "3",
+              "53"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "x += 3 — це скорочення x = x + 3. Отже, якщо x починається з 5, воно стає 5 + 3 = 8.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що робить оператор %?",
+            "options": [
+              "Розраховує відсоток",
+              "Знаходить остачу після ділення",
+              "Множить на 100",
+              "Перетворює в десяткову систему"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Оператор % (по модулю) повертає залишок після ділення. Наприклад, 17 % 5 = 2.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що таке 15 // 4 у Python?",
+            "options": [
+              "3.75",
+              "3",
+              "4",
+              "3.7"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "// є поверховим діленням - воно ділить і округлює до найближчого цілого числа. 15/4 = 3,75, але 15 // 4 = 3.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який оператор має найвищий пріоритет (виконується першим)?",
+            "options": [
+              "+ (доповнення)",
+              "* (множення)",
+              "** (потужність)",
+              "- (віднімання)"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Python виконує математичний порядок операцій: спочатку обчислюється ** (потужність), потім * і /, потім + і -.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Обчисліть площу кола",
+        "description": "Дано радіус, обчисліть площу кола за формулою: площа = 3,14 * радіус * радіус",
+        "starterCode": "# Given radius\nradius = 5\n\n# Calculate area (use 3.14 for pi)\narea = \n\nprint(\"Area:\", area)",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Area: 78.5",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте формулу: площа = 3,14 * радіус * радіус. Пам’ятайте, що радіус * радіус – це те саме, що радіус ** 2.",
+        "solution": "radius = 5\narea = 3.14 * radius * radius\nprint(\"Area:\", area)",
+        "xpReward": 15
+      },
+      "xpReward": 20,
+      "order": 2
+    },
+    {
+      "id": "python_lesson_4",
+      "courseId": "python",
+      "moduleId": "basics",
+      "title": "Робота з текстом",
+      "description": "Освоїти маніпуляції з текстом і рядкові операції",
+      "theorySlides": [
+        {
+          "title": "Струни потужні! 📝",
+          "content": "У програмуванні текст називають «рядком», оскільки він схожий на рядок символів, пов’язаних разом. Python має багато інструментів для роботи з текстом.",
+          "codeSnippet": "message = \"Hello, World!\"\nname = \"Python\"\nsentence = \"Learning \" + name + \" is fun!\"",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Об'єднання тексту (конкатенація)",
+          "content": "Ви можете об’єднувати рядки за допомогою оператора +, як і додавання чисел!",
+          "codeSnippet": "first_name = \"John\"\nlast_name = \"Doe\"\nfull_name = first_name + \" \" + last_name\n\nprint(full_name)  # John Doe",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Корисні рядкові методи",
+          "content": "Рядки постачаються з вбудованими «методами» — спеціальними функціями, які можуть їх трансформувати:",
+          "codeSnippet": "text = \"Hello World\"\n\nprint(text.upper())     # HELLO WORLD\nprint(text.lower())     # hello world\nprint(text.title())     # Hello World\nprint(len(text))        # 11 (length)",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Фа-струни: сучасний шлях",
+          "content": "F-рядки є найелегантнішим способом поєднання тексту та змінних у Python:",
+          "codeSnippet": "name = \"Alice\"\nage = 30\nscore = 95.5\n\n# Old way:\nmessage1 = \"Hi \" + name + \", you are \" + str(age)\n\n# F-string way (modern):\nmessage2 = f\"Hi {name}, you are {age} years old!\"\nmessage3 = f\"Your score is {score}%\"",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Як поєднати \"Hello\" і \"World\" з пробілом між ними?",
+            "options": [
+              "«Привіт» + «Світ»",
+              "\"Привіт\" + \" \" + \"Світ\"",
+              "\"Привіт\" & \" \" & \"Світ\"",
+              "\"Привіт\" * \"Світ\""
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Щоб поєднати рядки з пробілом, використовуйте: \"Hello\" + \" \" + \"World\", що дає \"Hello World\".",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що повертає \"python\".upper()?",
+            "options": [
+              "\"PYTHON\"",
+              "\"Python\"",
+              "\"пітон\"",
+              "Помилка"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Метод .upper() перетворює всі літери на великі, тому \"python\" стає \"PYTHON\".",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що таке f-рядок?",
+            "options": [
+              "\"Привіт\" + ім'я",
+              "f\"Привіт, {name}\"",
+              "\"Привіт, {name}\"",
+              "\"Привіт, %s\" % name"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "F-рядки починаються з f і використовують синтаксис {variable_name}: f\"Привіт, {name}\"",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що повертає len(\"Python\")?",
+            "options": [
+              "5",
+              "6",
+              "7",
+              "Помилка"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "len() повертає кількість символів у рядку. «Python» має 6 символів.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Як отримати перший символ тексту = \"Привіт\"?",
+            "options": [
+              "text.first()",
+              "текст[0]",
+              "текст[1]",
+              "text.get(0)"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Використовуйте квадратні дужки з індексом. У Python індексація починається з 0, тому текст[0] є першим символом.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Створення імені користувача",
+        "description": "Створіть ім’я користувача, поєднавши ім’я, літеру прізвища та рік народження.",
+        "starterCode": "first_name = \"john\"\nlast_name = \"doe\"\nbirth_year = 1995\n\n# Create username: firstname + first letter of lastname + year\n# Example: john + d + 1995 = \"johnd1995\"\nusername = \n\nprint(username)",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "johnd1995",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте конкатенацію рядків (+) або f-рядок. Щоб отримати першу літеру прізвища, використовуйте last_name[0]. Перетворіть birth_year на рядок за допомогою str().",
+        "solution": "first_name = \"john\"\nlast_name = \"doe\"\nbirth_year = 1995\n\nusername = first_name + last_name[0] + str(birth_year)\nprint(username)",
+        "xpReward": 15
+      },
+      "xpReward": 25,
+      "order": 3
+    },
+    {
+      "id": "python_lesson_5",
+      "courseId": "python",
+      "moduleId": "control_flow",
+      "title": "Прийняття рішень",
+      "description": "Дізнайтеся, як програми роблять вибір за допомогою операторів if",
+      "theorySlides": [
+        {
+          "title": "Програми, які думають! 🤔",
+          "content": "Справжні програми повинні приймати рішення на основі різних ситуацій. Оператор «if» дозволяє вашій програмі вибрати, що робити.\n\nПодумайте про це так:\n«Якщо йде дощ, візьміть з собою парасольку»\n«ЯКЩО високий бал, покажи привітання»",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Базовий оператор If",
+          "content": "Інструкція if перевіряє, чи щось вірно, а потім запускає код, лише якщо це так:",
+          "codeSnippet": "age = 18\n\nif age >= 18:\n    print(\"You can vote!\")\n    print(\"Welcome to adulthood!\")\n\nprint(\"This always runs\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Якщо-Інакше: два варіанти",
+          "content": "Використовуйте else для обробки випадку, коли умова хибна:",
+          "codeSnippet": "temperature = 25\n\nif temperature > 30:\n    print(\"It's hot! Stay hydrated.\")\nelse:\n    print(\"Nice weather today!\")\n    print(\"Perfect for a walk.\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Кілька умов",
+          "content": "Використовуйте elif (інакше якщо), щоб перевірити кілька умов:",
+          "codeSnippet": "score = 85\n\nif score >= 90:\n    grade = \"A\"\nelif score >= 80:\n    grade = \"B\"\nelif score >= 70:\n    grade = \"C\"\nelse:\n    grade = \"Need more practice\"\n\nprint(f\"Your grade: {grade}\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        },
+        {
+          "title": "Оператори порівняння",
+          "content": "Ці оператори допомагають порівнювати значення:",
+          "codeSnippet": "# Comparison operators\nprint(5 == 5)    # Equal to: True\nprint(5 != 3)    # Not equal: True\nprint(7 > 5)     # Greater than: True\nprint(4 < 8)     # Less than: True\nprint(5 >= 5)    # Greater or equal: True\nprint(3 <= 10)   # Less or equal: True",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 4
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Що станеться, якщо умова в операторі if є хибною?",
+            "options": [
+              "Програма вилітає",
+              "Код всередині блоку if пропускається",
+              "Код все одно працює",
+              "Python показує помилку"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Якщо умова if є хибною, Python пропускає весь код у цьому блоці if.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що робить оператор ==?",
+            "options": [
+              "Призначає значення",
+              "Перевіряє, чи рівні два значення",
+              "Додає два числа",
+              "Друкує значення"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "== перевіряє, чи рівні два значення, і повертає True або False. Не плутайте його з =, який призначає значення.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яке ключове слово використовується для \"інакше\" в Python?",
+            "options": [
+              "інакше",
+              "інше",
+              "потім",
+              "endif"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Ключове слово «else» обробляє випадок, коли умова if є хибною.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що трапиться, якщо жодна умова не є True і немає іншого?",
+            "options": [
+              "Помилка",
+              "Нічого не відбувається",
+              "Збій програми",
+              "Не друкує"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Якщо жодна умова не відповідає і немає блоку else, Python просто пропускає весь оператор if.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який оператор означає «не дорівнює»?",
+            "options": [
+              "<>",
+              "!=",
+              "=/=",
+              "<!="
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "!= перевіряє, чи два значення НЕ є рівними. Приклад: 5 != 3 повертає True.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Перевірка вікової категорії",
+        "description": "Напишіть програму, яка класифікує людей за віком: діти (0-12), підлітки (13-19), дорослі (20-64), літні (65+)",
+        "starterCode": "age = 16\n\n# Write if-elif-else statements to categorize the age\n# Print the appropriate category\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Teen",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте if-elif-else з віковими діапазонами. Перевірте від наймолодшого до найстаршого або використовуйте відповідні оператори порівняння.",
+        "solution": "age = 16\n\nif age <= 12:\n    print(\"Child\")\nelif age <= 19:\n    print(\"Teen\")\nelif age <= 64:\n    print(\"Adult\")\nelse:\n    print(\"Senior\")",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 4
+    },
+    {
+      "id": "python_lesson_6",
+      "courseId": "python",
+      "moduleId": "data-structures",
+      "title": "Робота зі списками",
+      "description": "Навчіться зберігати кілька предметів у впорядкованих колекціях",
+      "theorySlides": [
+        {
+          "title": "Що таке списки? 📝",
+          "content": "Списки дозволяють зберігати кілька елементів в одній змінній. Вони впорядковані, змінні та допускають дублювання значень.\n\nПриклади з реального світу:\n• Список покупок\n• Список відтворення пісень\n• Список високих балів\n• Елементи Todo",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Створення списків",
+          "content": "Списки створюються за допомогою квадратних дужок [], елементи розділяються комами.",
+          "codeSnippet": "fruits = [\"apple\", \"banana\", \"cherry\"]\nnumbers = [1, 2, 3, 4, 5]\nmixed = [1, \"hello\", True, 3.14]\n\nprint(fruits)",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Доступ до елементів списку",
+          "content": "Доступ до елементів за їх індексним номером. Python використовує індексацію від нуля (перший елемент дорівнює 0).",
+          "codeSnippet": "fruits = [\"apple\", \"banana\", \"cherry\"]\n\nprint(fruits[0])   # apple\nprint(fruits[1])   # banana\nprint(fruits[-1])  # cherry (last item)",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Методи списку",
+          "content": "Python надає багато вбудованих методів для зміни списків.",
+          "codeSnippet": "fruits = [\"apple\", \"banana\"]\n\n# Add item\nfruits.append(\"cherry\")\n\n# Remove item\nfruits.remove(\"banana\")\n\n# Sort list\nfruits.sort()\n\nprint(fruits)",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Який індекс має доступ до першого елемента?",
+            "options": [
+              "0",
+              "1",
+              "-1",
+              "перший"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Python використовує індексацію від нуля: індекс 0 є першим елементом.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який метод додає елемент у кінець?",
+            "options": [
+              "додати()",
+              "додати()",
+              "push()",
+              "вставити()"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "append() додає один елемент у кінець списку.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що повертає fruits[-1], якщо fruits = [\"a\", \"b\", \"c\"]?",
+            "options": [
+              "\"а\"",
+              "\"б\"",
+              "\"c\"",
+              "Помилка"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Негативна індексація починається з кінця. -1 – останній елемент, -2 – передостанній тощо.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Як змінити другий елемент у списку?",
+            "options": [
+              "список[2] = значення",
+              "список[1] = значення",
+              "list.set(1, значення)",
+              "list.change(2, значення)"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Другий елемент має індекс 1 (оскільки індексація починається з 0). Щоб змінити його, використовуйте list[1] = value.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Список покупок",
+        "description": "Створіть список із 3 пунктами: «молоко», «хліб», «яйця».\nПотім додайте до списку «вершкове масло».\nНарешті, надрукуйте загальну кількість (має бути 4).",
+        "starterCode": "# Step 1: Create the list\nshopping = [\"milk\", \"bread\", \"eggs\"]\n\n# Step 2: Add \"butter\" using append()\n\n\n# Step 3: Print the count using len()\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "4",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте shopping.append(\"butter\"), щоб додати товар, а потім print(len(shopping)), щоб надрукувати кількість.",
+        "solution": "shopping = [\"milk\", \"bread\", \"eggs\"]\nshopping.append(\"butter\")\nprint(len(shopping))",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 5
+    },
+    {
+      "id": "python_lesson_7",
+      "courseId": "python",
+      "moduleId": "control-flow",
+      "title": "Цикли та ітерація",
+      "description": "Ефективно повторюйте дії за допомогою циклів for і while",
+      "theorySlides": [
+        {
+          "title": "Цикл for 🔄",
+          "content": "Цикли дозволяють повторювати код кілька разів. Цикл for повторює послідовності.",
+          "codeSnippet": "fruits = [\"apple\", \"banana\", \"cherry\"]\n\nfor fruit in fruits:\n    print(fruit)\n\n# Loop through range\nfor i in range(5):\n    print(i)  # 0, 1, 2, 3, 4",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Функція range().",
+          "content": "range() генерує послідовності чисел для циклів.",
+          "codeSnippet": "# range(stop)\nfor i in range(3):\n    print(i)  # 0, 1, 2\n\n# range(start, stop, step)\nfor i in range(0, 10, 2):\n    print(i)  # 0, 2, 4, 6, 8",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Цикл while",
+          "content": "Цикли while тривають, доки умова є True.",
+          "codeSnippet": "count = 0\nwhile count < 5:\n    print(count)\n    count += 1  # Important!",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Що генерує діапазон (3)?",
+            "options": [
+              "0, 1, 2",
+              "1, 2, 3",
+              "0, 1, 2, 3",
+              "1, 2"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "range(3) генерує 0, 1, 2 (до 3, але не включаючи).",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яке ключове слово виходить із циклу?",
+            "options": [
+              "вихід",
+              "перерва",
+              "СТІЙ",
+              "повернення"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "break негайно виходить із поточного циклу.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що генерує діапазон (2, 8, 2)?",
+            "options": [
+              "2, 4, 6",
+              "2, 4, 6, 8",
+              "2, 3, 4, 5, 6, 7",
+              "4, 6"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "діапазон (2, 8, 2) починається з 2, закінчується перед 8, крок 2 → дає 2, 4, 6.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яке ключове слово пропускає до наступної ітерації?",
+            "options": [
+              "наступний",
+              "продовжувати",
+              "пропустити",
+              "пропуск"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "продовження пропускає решту поточної ітерації та переходить до наступної.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що не так з: while True: print(\"Hi\")?",
+            "options": [
+              "Синтаксична помилка",
+              "Нескінченний цикл (працює вічно)",
+              "Нічого не друкує",
+              "Друкує один раз"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Оскільки умова завжди True, цей цикл ніколи не зупиняється - це нескінченний цикл!",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Вивести парні числа",
+        "description": "Вивести всі парні числа від 0 до 10.",
+        "starterCode": "# Print even numbers 0-10\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "0\n2\n4\n6\n8\n10",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте діапазон (0, 11, 2).",
+        "solution": "for i in range(0, 11, 2):\n    print(i)",
+        "xpReward": 15
+      },
+      "xpReward": 35,
+      "order": 6
+    },
+    {
+      "id": "python_lesson_8",
+      "courseId": "python",
+      "moduleId": "data-structures",
+      "title": "словники",
+      "description": "Зберігайте дані в парах ключ-значення",
+      "theorySlides": [
+        {
+          "title": "Що таке словники? 🗂️",
+          "content": "Словники зберігають дані як пари ключ-значення. Кожен ключ унікальний і відповідає значенню.\n\nЯк справжній словник:\nСлово (ключ) → Визначення (значення)\n\nУ програмуванні:\n\"ім'я\" → \"Аліса\"\n\"вік\" → 25",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Створення словників",
+          "content": "Використовуйте фігурні дужки {} з парами ключ:значення.",
+          "codeSnippet": "person = {\n    \"name\": \"Alice\",\n    \"age\": 25,\n    \"city\": \"NYC\"\n}\n\nprint(person[\"name\"])",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Словникові методи",
+          "content": "Корисні прийоми роботи зі словниками.",
+          "codeSnippet": "person = {\"name\": \"Alice\", \"age\": 25}\n\n# Get all keys\nprint(person.keys())\n\n# Get all values\nprint(person.values())\n\n# Check if key exists\nif \"name\" in person:\n    print(\"Found!\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Як отримати доступ до значення словника?",
+            "options": [
+              "dict.key",
+              "dict[\"ключ\"]",
+              "dict(ключ)",
+              "dict->ключ"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Використовуйте позначення в дужках: dict[\"ключ\"].",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який метод повертає всі ключі?",
+            "options": [
+              "get_keys()",
+              "ключі()",
+              "all_keys()",
+              "getKeys()"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Метод keys() повертає всі ключі словника.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що станеться, якщо ви отримаєте доступ до ключа, якого не існує?",
+            "options": [
+              "Не повертає",
+              "Повертає \"\"",
+              "KeyError",
+              "Створює ключ"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Доступ до неіснуючого ключа викликає KeyError. Використовуйте .get(\"key\"), щоб безпечно повернути None.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Чи можуть ключі словника бути списками?",
+            "options": [
+              "так",
+              "немає",
+              "Тільки порожні списки",
+              "Лише маленькі списки"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Ключі словника повинні бути незмінними (незмінними). Списки можуть змінюватися, тому вони не можуть бути ключами.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Запис студента",
+        "description": "Створіть словник з іменем, віком, класом. Надрукуйте назву.",
+        "starterCode": "# Create student dict\nstudent = {}\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Alice",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте синтаксис {\"key\": \"value\"}.",
+        "solution": "student = {\"name\": \"Alice\", \"age\": 20, \"grade\": \"A\"}\nprint(student[\"name\"])",
+        "xpReward": 15
+      },
+      "xpReward": 35,
+      "order": 7
+    },
+    {
+      "id": "python_lesson_9",
+      "courseId": "python",
+      "moduleId": "functions",
+      "title": "Створення функцій",
+      "description": "Напишіть багаторазові блоки коду",
+      "theorySlides": [
+        {
+          "title": "Що таке функції? ⚙️",
+          "content": "Функції — це багаторазово використовувані блоки коду, які виконують певні завдання.\n\nПереваги:\n• Уникайте повторення коду\n• Організація комплексних програм\n• Спростити тестування коду\n• Увімкнути спільний доступ до коду",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Визначення функцій",
+          "content": "Використовуйте ключове слово de для створення функцій.",
+          "codeSnippet": "def greet():\n    print(\"Hello!\")\n\n# Call the function\ngreet()\ngreet()  # Can call multiple times",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Параметри функції",
+          "content": "Функції можуть приймати вхідні значення (параметри).",
+          "codeSnippet": "def greet(name):\n    print(f\"Hello, {name}!\")\n\ngreet(\"Alice\")\ngreet(\"Bob\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Повернуті значення",
+          "content": "Функції можуть повертати значення за допомогою return.",
+          "codeSnippet": "def add(a, b):\n    return a + b\n\nresult = add(5, 3)\nprint(result)  # 8",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Яке ключове слово визначає функцію?",
+            "options": [
+              "функція",
+              "зах",
+              "функц",
+              "визначити"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Ключове слово def визначає функції в Python.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що повертає функція за замовчуванням?",
+            "options": [
+              "0",
+              "Жодного",
+              "Порожній рядок",
+              "Помилка"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Функції без операторів return return None.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що не так із: def greet(name): return f\"Hi {name}\" print(\"Done\")?",
+            "options": [
+              "нічого",
+              "Код після повернення ніколи не виконується",
+              "Синтаксична помилка",
+              "Функція надто довга"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "return негайно виходить із функції. Код після повернення недоступний.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що таке параметри?",
+            "options": [
+              "Повернуті значення",
+              "Вхідні значення, які отримує функція",
+              "Помилки",
+              "Назви функцій"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Параметри — це змінні, які отримують значення під час виклику функції.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Функція калькулятора",
+        "description": "Створіть функцію множення, яка повертає добуток двох чисел.",
+        "starterCode": "def multiply(a, b):\n    # Your code\n    pass\n\nprint(multiply(6, 7))",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "42",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте * та поверніться.",
+        "solution": "def multiply(a, b):\n    return a * b\n\nprint(multiply(6, 7))",
+        "xpReward": 15
+      },
+      "xpReward": 40,
+      "order": 8
+    },
+    {
+      "id": "python_lesson_10",
+      "courseId": "python",
+      "moduleId": "advanced",
+      "title": "Обробка помилок",
+      "description": "Витончено виправляйте помилки у своєму коді",
+      "theorySlides": [
+        {
+          "title": "Що таке винятки? ⚠️",
+          "content": "Виняток становлять помилки, які виникають під час виконання програми.\n\nПоширені винятки:\n• ZeroDivisionError (поділити на 0)\n• ValueError (неправильний тип значення)\n• TypeError (неправильний тип даних)\n• FileNotFoundError (відсутній файл)",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Спробуйте і Крім",
+          "content": "Обробляйте помилки за допомогою блоків try/except, щоб запобігти збоям.",
+          "codeSnippet": "try:\n    result = 10 / 0\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero!\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Кілька винятків",
+          "content": "Обробляйте різні типи помилок окремо.",
+          "codeSnippet": "try:\n    num = int(input(\"Enter number: \"))\n    result = 10 / num\nexcept ValueError:\n    print(\"Invalid number!\")\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero!\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Нарешті Блок",
+          "content": "Код у finally завжди виконується незалежно від того, сталася помилка чи ні.",
+          "codeSnippet": "try:\n    file = open(\"data.txt\")\n    # Do something\nexcept FileNotFoundError:\n    print(\"File not found!\")\nfinally:\n    print(\"Cleanup complete\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Який блок обробляє винятки?",
+            "options": [
+              "зловити",
+              "крім",
+              "помилка",
+              "ручка"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Блок винятків перехоплює та обробляє винятки.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Коли виконується блок finally?",
+            "options": [
+              "Тільки на помилку",
+              "Тільки на успіх",
+              "Завжди",
+              "Ніколи"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "finally завжди виконується, незалежно від помилок.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який виняток виникає при діленні на нуль?",
+            "options": [
+              "ValueError",
+              "TypeError",
+              "ZeroDivisionError",
+              "MathError"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Коли ви намагаєтеся поділити число на нуль, виникає помилка ZeroDivisionError.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Як ви вловлюєте будь-який виняток?",
+            "options": [
+              "крім усіх:",
+              "крім *:",
+              "крім винятку:",
+              "крім помилки:"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "крім винятків: перехоплює більшість винятків. Ви також можете використовувати крім: поодинці, щоб зловити всіх.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Безпечний відділ",
+        "description": "Створіть безпечне ділення, яке ловить ZeroDivisionError і друкує «Неможливо поділити на нуль!»",
+        "starterCode": "# Safe division\ntry:\n    result = 10 / 0\n    # Your code here\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Cannot divide by zero!",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте крім ZeroDivisionError.",
+        "solution": "try:\n    result = 10 / 0\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero!\")",
+        "xpReward": 15
+      },
+      "xpReward": 45,
+      "order": 9
+    }
+  ]
+}

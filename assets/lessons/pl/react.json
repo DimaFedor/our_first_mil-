@@ -1,0 +1,909 @@
+{
+  "courseId": "react",
+  "lessons": [
+    {
+      "id": "react_lesson_1",
+      "courseId": "react",
+      "moduleId": "basics",
+      "title": "Wprowadzenie do Reagowania",
+      "description": "Dowiedz się, czym jest React, podstawy JSX i komponenty",
+      "theorySlides": [
+        {
+          "title": "Co to jest Reaguj? ⚛️",
+          "content": "React to biblioteka JavaScript służąca do tworzenia interfejsów użytkownika. Stworzony przez Facebooka, pozwala budować złożone interfejsy użytkownika z małych elementów wielokrotnego użytku zwanych komponentami.\n\nDlaczego reagować?\n• Architektura oparta na komponentach\n• Wirtualny DOM do szybkich aktualizacji\n• Duży ekosystem i społeczność\n• Używany przez Facebook, Netflix, Instagram",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "JSX – JavaScript XML",
+          "content": "JSX umożliwia pisanie kodu podobnego do HTML w JavaScript:",
+          "codeSnippet": "function Welcome() {\n  const name = \"Sarah\";\n  return (\n    <div>\n      <h1>Hello, {name}!</h1>\n      <p>Welcome to React</p>\n    </div>\n  );\n}\n\n// You can embed JavaScript expressions in curly braces {}",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Twój pierwszy komponent",
+          "content": "Komponenty to elementy interfejsu użytkownika, które można ponownie wykorzystać. Zacznij od prostej funkcji:",
+          "codeSnippet": "function Button() {\n  return <button>Click me!</button>;\n}\n\n// Use it in your app\nfunction App() {\n  return (\n    <div>\n      <h1>My App</h1>\n      <Button />\n    </div>\n  );\n}",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Co to jest Reaguj?",
+            "options": [
+              "Język programowania",
+              "Biblioteka JavaScript do tworzenia interfejsów użytkownika",
+              "Baza danych",
+              "Framework CSS"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "React to biblioteka JavaScript zaprojektowana specjalnie do tworzenia interfejsów użytkownika, a nie pełnego frameworku lub języka.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co oznacza JSX?",
+            "options": [
+              "Rozszerzenie składni Java",
+              "XML JavaScriptu",
+              "Składnia JSON",
+              "Po prostu prosty X"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "JSX oznacza JavaScript XML. Umożliwia pisanie składni podobnej do HTML w JavaScript.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jak osadzić wyrażenia JavaScript w JSX?",
+            "options": [
+              "Użyj nawiasów kwadratowych []",
+              "Użyj nawiasów klamrowych {}",
+              "Użyj nawiasów ()",
+              "Użyj znaków dolara $$"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "W JSX nawiasy klamrowe {} służą do osadzania wyrażeń JavaScript, takich jak {name} lub {2 + 2}.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co to jest komponent React?",
+            "options": [
+              "Plik CSS",
+              "Fragment interfejsu użytkownika wielokrotnego użytku",
+              "Tabela bazy danych",
+              "Serwer WWW"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Komponent React to element interfejsu użytkownika wielokrotnego użytku, który można łączyć z innymi komponentami w celu tworzenia złożonych interfejsów.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Która firma stworzyła React?",
+            "options": [
+              "Google",
+              "Microsoftu",
+              "Facebooku",
+              "Jabłko"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "React został stworzony przez Facebooka (obecnie Meta) i jest używany w wielu ich produktach.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Utwórz komponent powitalny",
+        "description": "Utwórz komponent funkcji, który zwraca element h1 z tekstem „Hello, React!”",
+        "starterCode": "function Greeting() {\n  // Your code here\n}\n",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Hello, React!",
+            "isHidden": false
+          }
+        ],
+        "hint": "Zwróć JSX ze znacznikiem <h1> zawierającym tekst powitania.",
+        "solution": "function Greeting() {\n  return <h1>Hello, React!</h1>;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 15,
+      "order": 0
+    },
+    {
+      "id": "react_lesson_2",
+      "courseId": "react",
+      "moduleId": "basics",
+      "title": "Komponenty i rekwizyty",
+      "description": "Opanuj komponenty funkcjonalne, rekwizyty i kompozycję",
+      "theorySlides": [
+        {
+          "title": "Zrozumienie rekwizytów 📦",
+          "content": "Rekwizyty (właściwości) umożliwiają przekazywanie danych do komponentów, dzięki czemu można je ponownie wykorzystać:\n\n• Rekwizyty są tylko do odczytu\n• Przekazywane jak atrybuty HTML\n• Dostęp w parametrach funkcji\n• Może przekazywać ciągi znaków, liczby, obiekty i funkcje",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Korzystanie z rekwizytów",
+          "content": "Przekaż dane do komponentów za pomocą rekwizytów:",
+          "codeSnippet": "function Welcome(props) {\n  return <h1>Hello, {props.name}!</h1>;\n}\n\n// Destructure props for cleaner code\nfunction Welcome({ name, age }) {\n  return (\n    <div>\n      <h1>Hello, {name}!</h1>\n      <p>You are {age} years old</p>\n    </div>\n  );\n}\n\n// Usage\n<Welcome name=\"John\" age={25} />",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Skład komponentu",
+          "content": "Twórz złożone interfejsy użytkownika, łącząc komponenty:",
+          "codeSnippet": "function Avatar({ src, name }) {\n  return <img src={src} alt={name} />;\n}\n\nfunction UserCard({ user }) {\n  return (\n    <div className=\"card\">\n      <Avatar src={user.avatar} name={user.name} />\n      <h2>{user.name}</h2>\n      <p>{user.email}</p>\n    </div>\n  );\n}",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Czym są rekwizyty w React?",
+            "options": [
+              "Właściwości przekazywane do komponentów",
+              "Zasady stylizacji CSS",
+              "Połączenia z bazami danych",
+              "Komunikaty o błędach"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Rekwizyty to właściwości przekazywane z komponentów nadrzędnych do komponentów podrzędnych w celu udostępniania danych.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Czy możesz modyfikować właściwości wewnątrz komponentu?",
+            "options": [
+              "Tak, kiedykolwiek",
+              "Nie, rekwizyty są tylko do odczytu",
+              "Tylko za specjalnym pozwoleniem",
+              "Tylko w komponentach klasowych"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Rekwizyty są tylko do odczytu. Komponentom nigdy nie wolno modyfikować własnych właściwości — powinny działać jak czyste funkcje.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jak przekazać liczbę jako rekwizyt?",
+            "options": [
+              "<Wiek komponentu=\"25\" />",
+              "<Wiek komponentu={25} />",
+              "<Wiek komponentu=25 />",
+              "<Komponent [wiek]=25 />"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Wartości niebędące ciągami znaków muszą być przekazywane w nawiasach klamrowych: {25} dla liczb, {true} dla wartości logicznych itp.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co to jest skład komponentów?",
+            "options": [
+              "Pisanie CSS dla komponentów",
+              "Tworzenie złożonych interfejsów użytkownika poprzez łączenie prostych komponentów",
+              "Kompilacja kodu React",
+              "Testowanie komponentów"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Kompozycja komponentów to praktyka budowania złożonych interfejsów użytkownika poprzez łączenie prostszych komponentów nadających się do ponownego użycia.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Utwórz kartę użytkownika",
+        "description": "Utwórz komponent UserCard, który akceptuje rekwizyty dotyczące nazwy i adresu e-mail i wyświetla je w elemencie div.",
+        "starterCode": "function UserCard({ name, email }) {\n  // Your code here\n}\n",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "name=\"Alice\",email=\"alice@example.com\"",
+            "expectedOutput": "Alice",
+            "isHidden": false
+          }
+        ],
+        "hint": "Zwróć element div z wyświetloną nazwą i adresem e-mail.",
+        "solution": "function UserCard({ name, email }) {\n  return (\n    <div>\n      <h2>{name}</h2>\n      <p>{email}</p>\n    </div>\n  );\n}",
+        "xpReward": 15
+      },
+      "xpReward": 18,
+      "order": 1
+    },
+    {
+      "id": "react_lesson_3",
+      "courseId": "react",
+      "moduleId": "basics",
+      "title": "Zarządzanie Państwem",
+      "description": "Dowiedz się, jak używać haka stanu, aktualizacji stanu i kontrolowanych komponentów",
+      "theorySlides": [
+        {
+          "title": "Stan zrozumienia 🔄",
+          "content": "Stan to dane, które zmieniają się w czasie. W przeciwieństwie do właściwości, stanem zarządza się w komponencie.\n\nKiedy stan się zmienia:\n• React ponownie renderuje komponent\n• Interfejs użytkownika aktualizuje się automatycznie\n• Interakcje użytkownika mogą modyfikować stan\n\nUżyj haka useState, aby dodać stan!",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Hak useState",
+          "content": "useState zwraca bieżący stan i funkcję aktualizującą:",
+          "codeSnippet": "import { useState } from \"react\";\n\nfunction Counter() {\n  const [count, setCount] = useState(0);\n\n  return (\n    <div>\n      <p>Count: {count}</p>\n      <button onClick={() => setCount(count + 1)}>\n        Increment\n      </button>\n    </div>\n  );\n}",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Kontrolowane komponenty",
+          "content": "Kontroluj wejścia formularza za pomocą stanu:",
+          "codeSnippet": "function NameForm() {\n  const [name, setName] = useState(\"\");\n\n  return (\n    <div>\n      <input\n        type=\"text\"\n        value={name}\n        onChange={(e) => setName(e.target.value)}\n      />\n      <p>Hello, {name}!</p>\n    </div>\n  );\n}",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Co to jest stan w React?",
+            "options": [
+              "Style CSS",
+              "Dane, które mogą zmieniać się w czasie",
+              "Struktura HTML",
+              "Zewnętrzne dane API"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Stan to dane zarządzane w komponencie, które mogą zmieniać się w czasie, powodując ponowne renderowanie po aktualizacji.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co zwraca useState?",
+            "options": [
+              "Tylko wartość stanu",
+              "Tablica zawierająca [stan, setState]",
+              "Obiekt z właściwościami stanu",
+              "Obietnica"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "useState zwraca tablicę zawierającą dwa elementy: aktualną wartość stanu i funkcję umożliwiającą jej aktualizację.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jak zaktualizować stan?",
+            "options": [
+              "Bezpośrednio zmodyfikuj zmienną stanu",
+              "Użyj funkcji setState z useState",
+              "Zmień rekwizyty",
+              "Załaduj ponownie stronę"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Zawsze używaj funkcji setState zwracanej przez useState. Nigdy nie modyfikuj stanu bezpośrednio.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co to jest komponent kontrolowany?",
+            "options": [
+              "Komponent o wielu funkcjach",
+              "Wejście, którego wartość jest kontrolowana przez stan React",
+              "Składnik, którego nie można zmienić",
+              "Komponent w stylu CSS"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Kontrolowany komponent to wejście formularza, którego wartość jest kontrolowana przez stan React za pomocą wartości i właściwości onChange.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co się stanie, gdy stan zostanie zaktualizowany?",
+            "options": [
+              "Nic",
+              "Komponent jest ponownie renderowany",
+              "Strona się odświeża",
+              "Wszystkie komponenty uruchamiają się ponownie"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Po aktualizacji stanu React ponownie renderuje komponent, aby odzwierciedlić nowy stan w interfejsie użytkownika.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Utwórz przycisk przełączający",
+        "description": "Utwórz komponent z przyciskiem, który przełącza między „ON” i „OFF” za pomocą useState.",
+        "starterCode": "import { useState } from \"react\";\n\nfunction Toggle() {\n  // Your code here\n}\n",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "ON",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj useState z wartością logiczną i przełącz ją po kliknięciu przycisku.",
+        "solution": "import { useState } from \"react\";\n\nfunction Toggle() {\n  const [isOn, setIsOn] = useState(false);\n  return (\n    <button onClick={() => setIsOn(!isOn)}>\n      {isOn ? \"ON\" : \"OFF\"}\n    </button>\n  );\n}",
+        "xpReward": 15
+      },
+      "xpReward": 20,
+      "order": 2
+    },
+    {
+      "id": "react_lesson_4",
+      "courseId": "react",
+      "moduleId": "intermediate",
+      "title": "Obsługa zdarzeń",
+      "description": "Opanuj onClick, onChange i obsługę formularzy",
+      "theorySlides": [
+        {
+          "title": "Reaguj na wydarzenia 🖱️",
+          "content": "React obsługuje zdarzenia podobne do HTML, ale z nazewnictwem camelCase:\n\n• onClick (nie onclick)\n• onChange (nie onchange)\n• onSubmit (nie onsubmit)\n\nObsługa zdarzeń to funkcje, a nie ciągi znaków!\n<button onClick={handleClick}> ✅\n<button onClick=\"handleClick()\"> ❌",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Obsługa zdarzeń",
+          "content": "Obsługuj interakcje użytkowników z funkcjami zdarzeń:",
+          "codeSnippet": "function Button() {\n  const handleClick = () => {\n    alert(\"Button clicked!\");\n  };\n\n  // Pass parameters using arrow function\n  const handleClickWithParam = (name) => {\n    alert(`Hello, ${name}!`);\n  };\n\n  return (\n    <div>\n      <button onClick={handleClick}>Click me</button>\n      <button onClick={() => handleClickWithParam(\"Alice\")}>\n        Greet Alice\n      </button>\n    </div>\n  );\n}",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Obsługa formularzy",
+          "content": "Obsługuj przesyłanie formularzy w React:",
+          "codeSnippet": "function LoginForm() {\n  const [email, setEmail] = useState(\"\");\n\n  const handleSubmit = (e) => {\n    e.preventDefault(); // Prevent page reload\n    console.log(\"Submitted:\", email);\n  };\n\n  return (\n    <form onSubmit={handleSubmit}>\n      <input\n        type=\"email\"\n        value={email}\n        onChange={(e) => setEmail(e.target.value)}\n      />\n      <button type=\"submit\">Login</button>\n    </form>\n  );\n}",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Jaki jest właściwy sposób obsługi zdarzenia kliknięcia?",
+            "options": [
+              "<button onclick=\"handleClick\">",
+              "<button onClick={handleClick}>",
+              "<button onClick=\"handleClick()\">",
+              "<button click={handleClick}>"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "React używa camelCase (onClick) i oczekuje odwołania do funkcji, a nie ciągu znaków.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Dlaczego używamy e.preventDefault() w procedurach obsługi formularzy?",
+            "options": [
+              "Aby formularze były szybsze",
+              "Aby zapobiec ponownemu załadowaniu strony domyślnej",
+              "Aby sprawdzić wprowadzone dane",
+              "Aby nadać styl formularzowi"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "e.preventDefault() zatrzymuje domyślne zachowanie przesyłania formularza, które spowodowałoby ponowne załadowanie strony.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jak przekazać parametry do procedury obsługi zdarzeń?",
+            "options": [
+              "onClick={uchwytClick(param)}",
+              "onClick={() => handleClick(param)}",
+              "onClick=\"uchwytKliknięcie(parametr)\"",
+              "onClick[uchwytClick(param)]"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Zawiń wywołanie funkcji w funkcję strzałkową, aby przekazać parametry: onClick={() => handleClick(param)}",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co zapewnia obiekt zdarzenia „e”?",
+            "options": [
+              "Tylko typ zdarzenia",
+              "Informacje o zdarzeniu i elemencie docelowym",
+              "Style CSS",
+              "Rekwizyty komponentów"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Obiekt zdarzenia zawiera szczegółowe informacje na temat zdarzenia, w tym element docelowy, typ zdarzenia i pomocne metody.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Utwórz formularz za pomocą modułu obsługi przesyłania",
+        "description": "Utwórz formularz, który przechwytuje wprowadzoną nazwę i rejestruje ją po przesłaniu. Użyj e.preventDefault().",
+        "starterCode": "import { useState } from \"react\";\n\nfunction NameForm() {\n  const [name, setName] = useState(\"\");\n  // Your code here\n}\n",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "form",
+            "isHidden": false
+          }
+        ],
+        "hint": "Utwórz formularz z procedurą obsługi onSubmit, która zapobiega domyślności i wprowadzaniu danych za pomocą onChange.",
+        "solution": "import { useState } from \"react\";\n\nfunction NameForm() {\n  const [name, setName] = useState(\"\");\n  \n  const handleSubmit = (e) => {\n    e.preventDefault();\n    console.log(name);\n  };\n  \n  return (\n    <form onSubmit={handleSubmit}>\n      <input value={name} onChange={(e) => setName(e.target.value)} />\n      <button type=\"submit\">Submit</button>\n    </form>\n  );\n}",
+        "xpReward": 15
+      },
+      "xpReward": 22,
+      "order": 3
+    },
+    {
+      "id": "react_lesson_5",
+      "courseId": "react",
+      "moduleId": "intermediate",
+      "title": "Listy i klucze",
+      "description": "Renderuj listy za pomocą .map() i zrozum unikalne klucze",
+      "theorySlides": [
+        {
+          "title": "Renderowanie list 📋",
+          "content": "Użyj funkcji .map() JavaScript, aby renderować listy elementów:\n\n• Przekształć dane tablicowe w JSX\n• Każdy przedmiot wymaga unikalnego „kluczowego” rekwizytu\n• Klawisze pomagają React zidentyfikować, które elementy zostały zmienione\n• Klucze powinny być stabilne i unikalne",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Używanie .map() dla list",
+          "content": "Przekształć tablice w elementy React:",
+          "codeSnippet": "function FruitList() {\n  const fruits = [\"Apple\", \"Banana\", \"Orange\"];\n\n  return (\n    <ul>\n      {fruits.map((fruit, index) => (\n        <li key={index}>{fruit}</li>\n      ))}\n    </ul>\n  );\n}\n\n// With objects\nfunction UserList({ users }) {\n  return (\n    <div>\n      {users.map(user => (\n        <div key={user.id}>\n          <h3>{user.name}</h3>\n          <p>{user.email}</p>\n        </div>\n      ))}\n    </div>\n  );\n}",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Zrozumienie kluczy",
+          "content": "Klawisze pomagają React skutecznie identyfikować elementy listy:",
+          "codeSnippet": "// ❌ Bad: Using index (can cause bugs)\nfruits.map((fruit, index) => <li key={index}>{fruit}</li>)\n\n// ✅ Good: Using unique ID\nusers.map(user => <div key={user.id}>{user.name}</div>)\n\n// ✅ Good: If no ID, use unique property\nproducts.map(product => (\n  <div key={product.sku}>{product.name}</div>\n))\n\n// Keys must be unique among siblings, not globally",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Która metoda jest używana do renderowania list w React?",
+            "options": [
+              ".forEach()",
+              ".mapa()",
+              ".filtr()",
+              ".zmniejszyć()"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": ".map() przekształca tablicę w nową tablicę elementów JSX, dzięki czemu idealnie nadaje się do renderowania list.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Dlaczego elementy listy potrzebują kluczowego rekwizytu?",
+            "options": [
+              "Do stylizacji",
+              "Aby pomóc React zidentyfikować, które elementy uległy zmianie",
+              "Aby były klikalne",
+              "To opcjonalne"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Klawisze pomagają React zidentyfikować, które elementy zostały zmienione, dodane lub usunięte, umożliwiając skuteczne aktualizacje.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co wyróżnia dobry klucz?",
+            "options": [
+              "Dowolna liczba losowa",
+              "Indeks tablicy",
+              "Stabilny, unikalny identyfikator, taki jak identyfikator",
+              "Wartość przedmiotu"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Dobre klucze to stabilne i unikalne identyfikatory, takie jak identyfikatory baz danych, a nie indeksy tablicy, które mogą się zmieniać.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Kiedy można używać indeksu jako klucza?",
+            "options": [
+              "Zawsze",
+              "Nigdy",
+              "Tylko jeśli lista jest statyczna i nie można zmienić jej kolejności",
+              "Tylko w przypadku małych list"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Indeks może być używany w ostateczności w przypadku list statycznych, których kolejność nie ulegnie zmianie, ale unikalne identyfikatory są zawsze lepsze.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Czy klucze muszą być globalnie unikalne?",
+            "options": [
+              "Tak, w całej aplikacji",
+              "Nie, tylko wyjątkowy wśród rodzeństwa",
+              "Tak, w całym komponencie",
+              "Nie muszą być wyjątkowe"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Klucze muszą być unikalne tylko wśród rodzeństwa (elementy na tej samej liście), a nie globalnie w całej aplikacji.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Renderuj listę nazw",
+        "description": "Utwórz komponent, który renderuje ul z elementami listy dla każdej nazwy w tablicy.",
+        "starterCode": "function NameList() {\n  const names = [\"Alice\", \"Bob\", \"Charlie\"];\n  // Your code here\n}\n",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Alice",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj .map(), aby przekształcić tablicę nazw na elementy <li> za pomocą kluczy.",
+        "solution": "function NameList() {\n  const names = [\"Alice\", \"Bob\", \"Charlie\"];\n  return (\n    <ul>\n      {names.map((name, index) => (\n        <li key={index}>{name}</li>\n      ))}\n    </ul>\n  );\n}",
+        "xpReward": 15
+      },
+      "xpReward": 20,
+      "order": 4
+    },
+    {
+      "id": "react_lesson_6",
+      "courseId": "react",
+      "moduleId": "intermediate",
+      "title": "Renderowanie warunkowe",
+      "description": "Poznaj operatory trójskładnikowe, operator && i wiele warunków",
+      "theorySlides": [
+        {
+          "title": "Renderowanie warunkowe 🔀",
+          "content": "Pokaż inny interfejs użytkownika w zależności od warunków:\n\n• Operator trójskładnikowy: warunek? prawda: fałsz\n• Operator AND: warunek && <Komponent />\n• Instrukcje if (poza JSX)\n• Wczesne powroty\n\nWybierz odpowiednie podejście do czytelności!",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Operatory trójskładnikowe i operatory AND",
+          "content": "Typowe wzorce renderowania warunkowego:",
+          "codeSnippet": "function Greeting({ isLoggedIn, username }) {\n  // Ternary: show one thing or another\n  return (\n    <div>\n      {isLoggedIn ? (\n        <h1>Welcome back, {username}!</h1>\n      ) : (\n        <h1>Please log in</h1>\n      )}\n    </div>\n  );\n}\n\nfunction Notification({ hasMessages, count }) {\n  // AND: show something or nothing\n  return (\n    <div>\n      {hasMessages && <span>You have {count} messages</span>}\n    </div>\n  );\n}",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Wiele warunków",
+          "content": "Obsługuj złożone warunki za pomocą instrukcji if lub wczesnych zwrotów:",
+          "codeSnippet": "function UserStatus({ user }) {\n  // Early return pattern\n  if (!user) {\n    return <p>No user found</p>;\n  }\n  \n  if (!user.isActive) {\n    return <p>Account inactive</p>;\n  }\n  \n  // Multiple conditions\n  let status;\n  if (user.isPremium) {\n    status = \"Premium Member\";\n  } else if (user.isVerified) {\n    status = \"Verified User\";\n  } else {\n    status = \"Basic User\";\n  }\n  \n  return <p>Status: {status}</p>;\n}",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Jak wygląda operator trójskładnikowy?",
+            "options": [
+              "Jeśli ? wtedy: jeszcze",
+              "stan : schorzenie ? prawda: fałsz",
+              "warunek i wartość",
+              "warunek || wartość"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Operator trójskładnikowy postępuje według wzorca: warunek ? wartośćIfTrue: wartośćIfFalse",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Kiedy należy używać operatora &&?",
+            "options": [
+              "Aby pokazać to czy tamto",
+              "Aby pokazać coś albo nic",
+              "Aby przejść przez tablice",
+              "Aby zaktualizować stan"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Użyj &&, jeśli chcesz coś pokazać tylko wtedy, gdy warunek jest spełniony, w przeciwnym razie nie pokazuj nic.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co to jest wcześniejszy powrót?",
+            "options": [
+              "Zwracanie wielu wartości",
+              "Powrót przed osiągnięciem końca funkcji",
+              "Zwracane tablice",
+              "Powracające obietnice"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Wczesne powroty wychodzą z funkcji przed dotarciem do końca, przydatne przy obsłudze przypadków brzegowych w pierwszej kolejności.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Czy możesz używać instrukcji if w JSX?",
+            "options": [
+              "Tak, bezpośrednio",
+              "Nie, zamiast tego użyj trójskładnikowego lub &&",
+              "Tylko w komponentach klasowych",
+              "Tylko ze specjalną składnią"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Instrukcje if nie mogą być używane bezpośrednio w JSX. Użyj operatorów trójskładnikowych, && lub zdefiniuj zmienne poza JSX.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Warunkowa wiadomość powitalna",
+        "description": "Utwórz komponent wyświetlający komunikat „Witamy!” jeśli isLoggedIn ma wartość true, w przeciwnym razie pokaż „Proszę się zalogować”.",
+        "starterCode": "function WelcomeMessage({ isLoggedIn }) {\n  // Your code here\n}\n",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "isLoggedIn=true",
+            "expectedOutput": "Welcome!",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj operatora trójskładnikowego: isLoggedIn? \"Powitanie!\" : \"Proszę się zalogować\"",
+        "solution": "function WelcomeMessage({ isLoggedIn }) {\n  return (\n    <div>\n      {isLoggedIn ? <p>Welcome!</p> : <p>Please log in</p>}\n    </div>\n  );\n}",
+        "xpReward": 15
+      },
+      "xpReward": 20,
+      "order": 5
+    },
+    {
+      "id": "react_lesson_7",
+      "courseId": "react",
+      "moduleId": "advanced",
+      "title": "użyj haka efektowego",
+      "description": "Opanuj efekty uboczne, czyszczenie i zależności",
+      "theorySlides": [
+        {
+          "title": "Zrozumienie skutków ubocznych 🌊",
+          "content": "Efekty uboczne to operacje wykraczające poza komponent:\n\n• Pobieranie danych z API\n• Konfigurowanie subskrypcji\n• Ręczna zmiana DOM\n• Ustawianie timerów\n\nuseEffect działa po renderowaniu, utrzymując komponent w czystości!",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Korzystanie z useEffect",
+          "content": "useEffect przyjmuje funkcję i opcjonalne zależności:",
+          "codeSnippet": "import { useState, useEffect } from \"react\";\n\nfunction Timer() {\n  const [seconds, setSeconds] = useState(0);\n\n  useEffect(() => {\n    // Runs after every render\n    const interval = setInterval(() => {\n      setSeconds(s => s + 1);\n    }, 1000);\n\n    // Cleanup function\n    return () => clearInterval(interval);\n  }, []); // Empty deps = run once\n\n  return <p>Seconds: {seconds}</p>;\n}",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Tablica zależności",
+          "content": "Kontroluj, kiedy useEffect działa z tablicą zależności:",
+          "codeSnippet": "// Run on every render\nuseEffect(() => {\n  console.log(\"Every render\");\n});\n\n// Run once on mount\nuseEffect(() => {\n  console.log(\"Component mounted\");\n}, []);\n\n// Run when dependencies change\nuseEffect(() => {\n  console.log(\"Count changed:\", count);\n}, [count]);\n\n// Multiple dependencies\nuseEffect(() => {\n  fetchUser(userId, filter);\n}, [userId, filter]);",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Jaki jest efekt uboczny w React?",
+            "options": [
+              "Animacja CSS",
+              "Operacja wpływająca na coś poza komponentem",
+              "Błąd renderowania",
+              "Aktualizacja rekwizytów"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Efekty uboczne to operacje, które wchodzą w interakcję z systemami poza komponentem, takie jak interfejsy API, liczniki czasu lub subskrypcje.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Kiedy działa useEffect?",
+            "options": [
+              "Przed renderowaniem",
+              "Podczas renderowania",
+              "Po renderowaniu",
+              "Nigdy automatycznie"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "useEffect działa po zatwierdzeniu renderowania na ekranie, utrzymując fazę renderowania w czystości.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co oznacza pusta tablica zależności []?",
+            "options": [
+              "Uruchamiaj przy każdym renderowaniu",
+              "Nigdy nie biegaj",
+              "Uruchom raz, gdy komponent zostanie zamontowany",
+              "Uruchom, gdy jakikolwiek stan się zmieni"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Pusta tablica zależności oznacza, że ​​efekt zostanie uruchomiony raz po zamontowaniu komponentu, np. komponentDidMount.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Dlaczego zwracamy funkcję czyszczącą?",
+            "options": [
+              "Aby zaoszczędzić pamięć",
+              "Aby usunąć detektory zdarzeń, wyczyścić liczniki czasu, anulować subskrypcje",
+              "Aby zaktualizować stan",
+              "Jest to opcjonalne i nic nie robi"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Funkcja czyszczenia usuwa skutki uboczne po odmontowaniu komponentu lub przed ponownym uruchomieniem efektu.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co się stanie, jeśli zapomnisz o zależnościach?",
+            "options": [
+              "Nic",
+              "Twój efekt może używać nieaktualnych wartości",
+              "Aplikacja ulega awarii",
+              "Efekty działają szybciej"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Brakujące zależności mogą spowodować, że efekt użyje nieaktualnych wartości. Zawsze uwzględniaj wartości, od których zależy efekt.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Pobierz dane na Mount",
+        "description": "Utwórz komponent, który rejestruje „Pobrane dane” raz podczas montażu za pomocą useEffect.",
+        "starterCode": "import { useEffect } from \"react\";\n\nfunction DataFetcher() {\n  // Your code here\n}\n",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Data fetched",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj useEffect z pustą tablicą zależności, aby uruchomić raz na montowaniu.",
+        "solution": "import { useEffect } from \"react\";\n\nfunction DataFetcher() {\n  useEffect(() => {\n    console.log(\"Data fetched\");\n  }, []);\n  \n  return <div>Check the console</div>;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 25,
+      "order": 6
+    },
+    {
+      "id": "react_lesson_8",
+      "courseId": "react",
+      "moduleId": "advanced",
+      "title": "Tworzenie aplikacji Todo",
+      "description": "Połącz wszystkie koncepcje w funkcjonalną aplikację „todo”.",
+      "theorySlides": [
+        {
+          "title": "Planowanie projektu 🎯",
+          "content": "Stwórzmy aplikację do zrobienia, łączącą wszystko, czego się nauczyłeś:\n\n• Zarządzanie stanem (useState)\n• Obsługa formularzy (zdarzenia)\n• Listy i klucze (.map)\n• Renderowanie warunkowe\n• Skład komponentów\n\nTutaj wszystko się łączy!",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Cała struktura aplikacji",
+          "content": "Podziel aplikację na komponenty:",
+          "codeSnippet": "function TodoApp() {\n  const [todos, setTodos] = useState([]);\n  const [input, setInput] = useState(\"\");\n\n  const addTodo = () => {\n    if (input.trim()) {\n      setTodos([...todos, { id: Date.now(), text: input, done: false }]);\n      setInput(\"\");\n    }\n  };\n\n  const toggleTodo = (id) => {\n    setTodos(todos.map(todo => \n      todo.id === id ? { ...todo, done: !todo.done } : todo\n    ));\n  };\n\n  return (\n    <div>\n      <h1>My Todos</h1>\n      <input value={input} onChange={(e) => setInput(e.target.value)} />\n      <button onClick={addTodo}>Add</button>\n      {/* Todo list here */}\n    </div>\n  );\n}",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Renderowanie elementów do wykonania",
+          "content": "Wyświetl listę rzeczy do zrobienia ze stylem warunkowym:",
+          "codeSnippet": "function TodoApp() {\n  // ... previous code ...\n\n  return (\n    <div>\n      <h1>My Todos</h1>\n      <input value={input} onChange={(e) => setInput(e.target.value)} />\n      <button onClick={addTodo}>Add</button>\n      \n      <ul>\n        {todos.map(todo => (\n          <li\n            key={todo.id}\n            onClick={() => toggleTodo(todo.id)}\n            style={{ textDecoration: todo.done ? \"line-through\" : \"none\" }}\n          >\n            {todo.text}\n          </li>\n        ))}\n      </ul>\n    </div>\n  );\n}",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Dlaczego warto dzielić aplikacje na wiele komponentów?",
+            "options": [
+              "Aby powiększyć pliki",
+              "Ze względu na możliwość ponownego użycia i łatwość konserwacji",
+              "Jest to wymagane przez React",
+              "Żeby było wolniej"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Dzielenie aplikacji na komponenty poprawia możliwość ponownego użycia, łatwość konserwacji i sprawia, że ​​kod jest łatwiejszy do zrozumienia.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jak dodać nowy element do tablicy w stanie?",
+            "options": [
+              "todos.push(nowyprzedmiot)",
+              "setAll([...wszystko, nowyprzedmiot])",
+              "wszystko = [...wszystko, nowyElement]",
+              "setAll(all.push(newItem))"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Użyj operatora spreadu, aby utworzyć nową tablicę: setTodos([...todos, newItem]). Nigdy nie mutuj stanu bezpośrednio.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Do czego przydatna jest funkcja Date.now()?",
+            "options": [
+              "Daty stylizacji",
+              "Generowanie unikalnych identyfikatorów",
+              "Czas formatowania",
+              "Tworzenie kalendarzy"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Date.now() zwraca bieżący znacznik czasu w milisekundach, dzięki czemu jest przydatna do generowania prostych unikalnych identyfikatorów.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jak zaktualizować określony element w tablicy?",
+            "options": [
+              "Zmień to bezpośrednio",
+              "Użyj .map(), aby utworzyć nową tablicę",
+              "Użyj .push()",
+              "Usuń i utwórz ponownie tablicę"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Użyj .map() do iteracji i warunkowej aktualizacji określonego elementu, tworząc nową tablicę bez mutowania stanu.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Utwórz prostą aplikację Todo",
+        "description": "Zbuduj podstawową aplikację do wykonywania zadań z dodatkowymi funkcjami. Wyświetlaj zadania na liście.",
+        "starterCode": "import { useState } from \"react\";\n\nfunction TodoApp() {\n  const [todos, setTodos] = useState([]);\n  const [input, setInput] = useState(\"\");\n  // Your code here\n}\n",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "todo",
+            "isHidden": false
+          }
+        ],
+        "hint": "Utwórz dane wejściowe, przycisk i listę. Użyj stanu, aby zarządzać tablicą zadań i wartością wejściową.",
+        "solution": "import { useState } from \"react\";\n\nfunction TodoApp() {\n  const [todos, setTodos] = useState([]);\n  const [input, setInput] = useState(\"\");\n  \n  const addTodo = () => {\n    if (input.trim()) {\n      setTodos([...todos, { id: Date.now(), text: input }]);\n      setInput(\"\");\n    }\n  };\n  \n  return (\n    <div>\n      <input value={input} onChange={(e) => setInput(e.target.value)} />\n      <button onClick={addTodo}>Add</button>\n      <ul>\n        {todos.map(todo => <li key={todo.id}>{todo.text}</li>)}\n      </ul>\n    </div>\n  );\n}",
+        "xpReward": 15
+      },
+      "xpReward": 25,
+      "order": 7
+    }
+  ]
+}

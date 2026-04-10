@@ -1,0 +1,630 @@
+{
+  "courseId": "sql-intermediate",
+  "lessons": [
+    {
+      "id": "sql_int_lesson_1",
+      "courseId": "sql-intermediate",
+      "moduleId": "joins",
+      "title": "ZŁĄCZENIA SQL",
+      "description": "Łącz dane z wielu tabel",
+      "theorySlides": [
+        {
+          "title": "DOŁĄCZAJ 🔗",
+          "content": "Połącz wiersze z wielu tabel:\n• **INNER JOIN**: Tylko pasujące wiersze\n• **LEWY DOŁĄCZ**: Wszystko po lewej stronie + dopasowanie po prawej\n• **PRAWY DOŁĄCZ**: Wszystko w porządku + dopasowanie w lewo\n• **PEŁNE DOŁĄCZENIE**: Wszystko z obu",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "WEWNĘTRZNE POŁĄCZENIE",
+          "content": "Uzyskaj pasujące rekordy z obu tabel.",
+          "codeSnippet": "SELECT users.name, orders.total\nFROM users\nINNER JOIN orders ON users.id = orders.user_id;\n\n-- Only users WITH orders",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "PRAWO I PEŁNE DOŁĄCZENIE 🔄",
+          "content": "Więcej typów JOIN:\n• **RIGHT JOIN**: Wszystkie prawe wiersze tabeli + dopasowanie po lewej stronie\n• **FULL OUTER JOIN**: Wszystkie wiersze z obu tabel\n• NULL uzupełnia brakujące dopasowania",
+          "codeSnippet": "-- RIGHT JOIN: All orders, even without users\nSELECT users.name, orders.total\nFROM users\nRIGHT JOIN orders ON users.id = orders.user_id;\n\n-- FULL JOIN: All users AND all orders\nSELECT users.name, orders.total\nFROM users\nFULL OUTER JOIN orders ON users.id = orders.user_id;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Wiele DOŁĄCZEŃ 🔗🔗",
+          "content": "Połącz ze sobą wiele tabel:\n• Połącz tyle stołów, ile potrzeba\n• Każde DOŁĄCZENIE dodaje więcej danych\n• Porządek ma znaczenie dla czytelności",
+          "codeSnippet": "SELECT \n  u.name,\n  o.order_date,\n  p.product_name,\n  oi.quantity\nFROM users u\nINNER JOIN orders o ON u.id = o.user_id\nINNER JOIN order_items oi ON o.id = oi.order_id\nINNER JOIN products p ON oi.product_id = p.id;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        },
+        {
+          "title": "DOŁĄCZ DO NAS 🪞",
+          "content": "Dołącz do tabeli samej w sobie:\n• Przydatne w przypadku danych hierarchicznych\n• Porównaj wiersze w tej samej tabeli\n• Należy używać aliasów tabel",
+          "codeSnippet": "-- Find employees and their managers\nSELECT \n  e.name AS employee,\n  m.name AS manager\nFROM employees e\nLEFT JOIN employees m ON e.manager_id = m.id;\n\n-- Find pairs of users from same city\nSELECT a.name, b.name, a.city\nFROM users a\nJOIN users b ON a.city = b.city AND a.id < b.id;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 4
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Który element JOIN obejmuje wszystkie lewe wiersze tabeli?",
+            "options": [
+              "WEWNĘTRZNE POŁĄCZENIE",
+              "LEWO DOŁĄCZ",
+              "PRAWO DOŁĄCZ",
+              "POŁĄCZENIE KRZYŻOWE"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "LEFT JOIN zachowuje wszystkie wiersze z lewej tabeli.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co zwraca FULL OUTER JOIN?",
+            "options": [
+              "Tylko pasujące wiersze",
+              "Wszystkie wiersze z lewej tabeli",
+              "Wszystkie wiersze z prawej tabeli",
+              "Wszystkie wiersze z obu tabel"
+            ],
+            "correctAnswerIndex": 3,
+            "explanation": "FULL OUTER JOIN zwraca wszystkie wiersze z obu tabel, z wartością NULL w przypadku niepasujących wierszy.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Kiedy użyłbyś samodzielnego DOŁĄCZENIA?",
+            "options": [
+              "Aby zduplikować tabelę",
+              "Aby znaleźć relacje hierarchiczne w tej samej tabeli",
+              "Aby usunąć duplikaty",
+              "Aby utworzyć kopię zapasową"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Self JOIN są przydatne w przypadku danych hierarchicznych, takich jak pracownicy/menedżerowie, lub znajdowanie relacji w tej samej tabeli.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Do ilu tabel można DOŁĄCZYĆ w jednym zapytaniu?",
+            "options": [
+              "Tylko 2",
+              "Maksymalnie 5",
+              "Maksymalnie 10",
+              "Tyle, ile potrzeba"
+            ],
+            "correctAnswerIndex": 3,
+            "explanation": "Możesz połączyć w łańcuch dowolną liczbę JOINów, chociaż w przypadku wielu tabel wydajność może się zmniejszyć.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Dołącz do użytkowników i zamówień",
+        "description": "Napisz zapytanie, aby uzyskać:\n• nazwa.użytkownika\n• zamówienia.ogółem\n\nUżyj LEFT JOIN, aby uwzględnić użytkowników, nawet jeśli nie mają oni żadnych zamówień.\n\nStruktura:\nWYBIERZ... OD UŻYTKOWNIKÓW W LEWO DOŁĄCZ DO ZAMÓWIEŃ NA...",
+        "starterCode": "-- Select users.name and orders.total\n-- Use LEFT JOIN to include all users\nSELECT users.name, orders.total\nFROM users\n-- Add LEFT JOIN here\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT users.name, orders.total FROM users LEFT JOIN orders ON users.id = orders.user_id;",
+            "isHidden": false
+          }
+        ],
+        "hint": "Dodaj: LEWO DOŁĄCZ do zamówień ON users.id = zamówienia.user_id",
+        "solution": "SELECT users.name, orders.total\nFROM users\nLEFT JOIN orders ON users.id = orders.user_id;",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 0
+    },
+    {
+      "id": "sql_int_lesson_2",
+      "courseId": "sql-intermediate",
+      "moduleId": "advanced",
+      "title": "Podzapytania",
+      "description": "Zapytania w zapytaniach",
+      "theorySlides": [
+        {
+          "title": "Podzapytania 📦",
+          "content": "Zapytanie zagnieżdżone w innym zapytaniu.\n\nPrzydatne dla:\n• Filtrowanie na podstawie obliczonych wartości\n• Tworzenie tymczasowych zestawów wyników\n• Złożone warunki",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Przykład",
+          "content": "Znajdź ponadprzeciętne wynagrodzenia.",
+          "codeSnippet": "SELECT name, salary\nFROM employees\nWHERE salary > (\n  SELECT AVG(salary) \n  FROM employees\n);",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "W Podzapytaniu 📋",
+          "content": "Sprawdź, czy wartość istnieje na liście:\n• Zwraca TRUE, jeśli wartość pasuje do dowolnego wyniku\n• Alternatywa dla wielu warunków OR\n• Można użyć NOT IN w celu wykluczenia",
+          "codeSnippet": "-- Find users who made orders\nSELECT name FROM users\nWHERE id IN (\n  SELECT DISTINCT user_id FROM orders\n);\n\n-- Find products NOT ordered\nSELECT name FROM products\nWHERE id NOT IN (\n  SELECT product_id FROM order_items\n);",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "ISTNIEJE Podzapytanie ✅",
+          "content": "Sprawdź, czy podzapytanie zwraca jakieś wiersze:\n• Zwraca PRAWDA/FAŁSZ\n• Często szybciej niż IN\n• Używaj do sprawdzania istnienia",
+          "codeSnippet": "-- Find users who have placed orders\nSELECT name FROM users u\nWHERE EXISTS (\n  SELECT 1 FROM orders o\n  WHERE o.user_id = u.id\n);\n\n-- Find categories with no products\nSELECT name FROM categories c\nWHERE NOT EXISTS (\n  SELECT 1 FROM products p\n  WHERE p.category_id = c.id\n);",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        },
+        {
+          "title": "Skorelowane podzapytania 🔄",
+          "content": "Podzapytanie odwołuje się do zapytania zewnętrznego:\n• Wykonuje się raz na zewnętrzny rząd\n• Mocniejszy, ale wolniejszy\n• Używa aliasów tabel zewnętrznych",
+          "codeSnippet": "-- Find employees earning more than dept average\nSELECT name, salary, department_id\nFROM employees e1\nWHERE salary > (\n  SELECT AVG(salary)\n  FROM employees e2\n  WHERE e2.department_id = e1.department_id\n);\n\n-- Find latest order per customer\nSELECT * FROM orders o1\nWHERE order_date = (\n  SELECT MAX(order_date) FROM orders o2\n  WHERE o2.customer_id = o1.customer_id\n);",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 4
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Gdzie mogą pojawiać się podzapytania?",
+            "options": [
+              "Tylko w GDZIE",
+              "Tylko w WYBIERZ",
+              "GDZIE, WYBIERZ, OD",
+              "Tylko w OD"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Podzapytania mogą znajdować się w klauzulach SELECT, FROM lub WHERE.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co zwraca ISTNIEJE?",
+            "options": [
+              "Pasujące rzędy",
+              "Liczba rzędów",
+              "PRAWDA lub FAŁSZ",
+              "NIEWAŻNY"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "EXISTS zwraca PRAWDA, jeśli podzapytanie zwraca jakiekolwiek wiersze, w przeciwnym razie FALSE.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co to jest skorelowane podzapytanie?",
+            "options": [
+              "Podzapytanie z GROUP BY",
+              "Podzapytanie odwołujące się do zapytania zewnętrznego",
+              "Podzapytanie z JOIN",
+              "Podzapytanie z ORDER BY"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Skorelowane podzapytanie odwołuje się do kolumn z zapytania zewnętrznego i jest wykonywane raz w każdym wierszu zewnętrznym.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Kiedy EXISTS jest często lepsze niż IN?",
+            "options": [
+              "Dla małych zbiorów danych",
+              "Podczas sprawdzania, czy istnieją wiersze (nie wartości)",
+              "Do porównań ciągów",
+              "Nigdy"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "EXISTS może działać szybciej, ponieważ zatrzymuje się natychmiast po znalezieniu dopasowania, podczas gdy IN ocenia wszystkie wartości.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Powyżej średniej ceny",
+        "description": "Znajdź produkty wycenione powyżej średniej.",
+        "starterCode": "-- Find products with price > average price\nSELECT name, price\nFROM products\nWHERE price > \n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT name, price FROM products WHERE price > (SELECT AVG(price) FROM products);",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj (WYBIERZ AVG(cena) Z produktów)",
+        "solution": "SELECT name, price\nFROM products\nWHERE price > (SELECT AVG(price) FROM products);",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 1
+    },
+    {
+      "id": "sql_int_lesson_3",
+      "courseId": "sql-intermediate",
+      "moduleId": "aggregation",
+      "title": "GRUPUJ WEDŁUG & POSIADAJĄC",
+      "description": "Agreguj i filtruj grupy",
+      "theorySlides": [
+        {
+          "title": "Grupowanie danych 📊",
+          "content": "GROUP BY grupuje wiersze w celu agregacji.\n\nHAVING grupy filtrów (np. WHERE dla agregatów).\n\nKolejność: GDZIE → GRUPUJ PO → POSIADAJĄ → ZAMÓW BY",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Przykład",
+          "content": "Znajdź kategorie o wysokiej sprzedaży.",
+          "codeSnippet": "SELECT category, SUM(amount) as total\nFROM sales\nGROUP BY category\nHAVING SUM(amount) > 1000\nORDER BY total DESC;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Grupowanie wielu kolumn 📊📊",
+          "content": "Grupuj według wielu kolumn:\n• Tworzy unikalne kombinacje\n• Bardziej szczegółowa agregacja\n• Kolejność kolumn ma znaczenie",
+          "codeSnippet": "-- Sales by category AND year\nSELECT \n  category,\n  YEAR(sale_date) as year,\n  SUM(amount) as total,\n  COUNT(*) as num_sales\nFROM sales\nGROUP BY category, YEAR(sale_date)\nORDER BY category, year;\n\n-- Result: Electronics 2023 5000, Electronics 2024 7000...",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "MIEĆ z wieloma warunkami 🎯",
+          "content": "Grupy filtrów ze złożonymi warunkami:\n• Użyj AND/OR w MIEĆ\n• Można łączyć wiele agregatów\n• Filtruj po grupowaniu",
+          "codeSnippet": "-- Categories with high sales AND many orders\nSELECT \n  category,\n  SUM(amount) as total,\n  COUNT(*) as orders\nFROM sales\nGROUP BY category\nHAVING SUM(amount) > 1000 \n   AND COUNT(*) >= 10;\n\n-- Customers with avg order > 100 but < 500\nSELECT customer_id, AVG(total) as avg_order\nFROM orders\nGROUP BY customer_id\nHAVING AVG(total) BETWEEN 100 AND 500;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        },
+        {
+          "title": "GDZIE + GRUPUJ WEDŁUG + MAJĄC 🔗",
+          "content": "Efektywnie połącz wszystkie klauzule:\n• GDZIE: Filtruj wiersze PRZED grupowaniem\n• GROUP BY: tworzenie grup\n• POSIADAĆ: Filtruj grupy PO agregacji",
+          "codeSnippet": "-- 2024 sales by category, only categories > 5000\nSELECT \n  category,\n  SUM(amount) as total\nFROM sales\nWHERE sale_date >= '2024-01-01'   -- Filter rows first\nGROUP BY category                  -- Then group\nHAVING SUM(amount) > 5000          -- Filter groups\nORDER BY total DESC;\n\n-- Active customers with many orders\nSELECT customer_id, COUNT(*) as orders\nFROM orders\nWHERE status = 'completed'\nGROUP BY customer_id\nHAVING COUNT(*) > 5;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 4
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Różnica między GDZIE a MIEĆ?",
+            "options": [
+              "To samo",
+              "WHERE filtruje wiersze, HAVING filtruje grupy",
+              "POSIADANIE jest szybsze",
+              "WHERE jest przestarzały"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "WHERE filtruje przed grupowaniem, HAVING po.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co się stanie, jeśli grupujesz według wielu kolumn?",
+            "options": [
+              "Występuje błąd",
+              "Używana jest tylko pierwsza kolumna",
+              "Tworzy unikalne kombinacje wszystkich kolumn",
+              "Kolumny zostały scalone"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "GROUP BY wiele kolumn tworzy grupę dla każdej unikalnej kombinacji wartości.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Czy możesz użyć WHERE i HAVING w tym samym zapytaniu?",
+            "options": [
+              "Nie, tylko jeden dozwolony",
+              "Tak, WHERE działa jako pierwsze",
+              "Tak, najpierw działa MIEĆ",
+              "Tylko z podzapytaniami"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Tak! WHERE filtruje wiersze przed grupowaniem, HAVING filtruje grupy po agregacji.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Która kolejność wykonania jest poprawna?",
+            "options": [
+              "WYBIERZ → OD → GDZIE",
+              "OD → GDZIE → GRUPUJ PO → POSIADAJĄCY",
+              "GRUPUJ WEDŁUG → GDZIE → MIEĆ",
+              "POSIADAĆ → GRUPUJ PO → GDZIE"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "SQL wykonuje: FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Klienci o dużej liczbie klientów",
+        "description": "Znajdź klientów z więcej niż 5 zamówieniami.",
+        "starterCode": "-- Find customers with > 5 orders\nSELECT customer_id, COUNT(*) as order_count\nFROM orders\n\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT customer_id, COUNT(*) as order_count FROM orders GROUP BY customer_id HAVING COUNT(*) > 5;",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj GROUP BY i HAVING COUNT(*) > 5",
+        "solution": "SELECT customer_id, COUNT(*) as order_count\nFROM orders\nGROUP BY customer_id\nHAVING COUNT(*) > 5;",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 2
+    },
+    {
+      "id": "sql_int_lesson_4",
+      "courseId": "sql-intermediate",
+      "moduleId": "advanced",
+      "title": "Funkcje okna",
+      "description": "Zaawansowana analityka",
+      "theorySlides": [
+        {
+          "title": "Funkcje okna 🪟",
+          "content": "Wykonaj obliczenia w wierszach:\n• ROW_NUMBER(): Numer kolejny\n• RANK(): Ranking z lukami\n• LAG/LEAD: Poprzedni/następny wiersz\n• SUM() OVER: Suma bieżąca",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Przykład",
+          "content": "Uszereguj pracowników według wynagrodzenia.",
+          "codeSnippet": "SELECT \n  name,\n  salary,\n  ROW_NUMBER() OVER (ORDER BY salary DESC) as rank\nFROM employees;\n\n-- Result: Alex 100k #1, Bob 80k #2...",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Funkcje LAG i LEAD ⏮️⏭️",
+          "content": "Uzyskaj dostęp do wartości poprzedniego/następnego wiersza:\n• **LAG()**: Pobierz wartość z poprzedniego wiersza\n• **LEAD()**: Pobierz wartość z następnego wiersza\n• Idealne do porównań i trendów",
+          "codeSnippet": "SELECT \n  sale_date,\n  amount,\n  LAG(amount) OVER (ORDER BY sale_date) as prev_amount,\n  LEAD(amount) OVER (ORDER BY sale_date) as next_amount,\n  amount - LAG(amount) OVER (ORDER BY sale_date) as change\nFROM sales;\n\n-- Result: Shows each sale with previous and next amounts",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Bieżące sumy 📈",
+          "content": "Oblicz sumy skumulowane:\n• SUM() OVER z ORDER BY\n• Możliwa jest również liczba uruchomień, średnia\n• Resetuje za pomocą PARTITION BY",
+          "codeSnippet": "SELECT \n  order_date,\n  amount,\n  SUM(amount) OVER (ORDER BY order_date) as running_total,\n  COUNT(*) OVER (ORDER BY order_date) as order_num,\n  AVG(amount) OVER (ORDER BY order_date) as running_avg\nFROM orders;\n\n-- Running total per customer\nSELECT customer_id, order_date, amount,\n  SUM(amount) OVER (\n    PARTITION BY customer_id \n    ORDER BY order_date\n  ) as customer_running_total\nFROM orders;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        },
+        {
+          "title": "PODZIAŁ WEDŁUG PRZYKŁADÓW 📊",
+          "content": "Podziel dane na grupy do obliczeń:\n• Podobnie jak GROUP BY, ale zachowuje wszystkie wiersze\n• Każda partycja obliczana osobno\n• Możliwość połączenia z dowolną funkcją okna",
+          "codeSnippet": "-- Rank employees within each department\nSELECT \n  name,\n  department,\n  salary,\n  RANK() OVER (\n    PARTITION BY department \n    ORDER BY salary DESC\n  ) as dept_rank\nFROM employees;\n\n-- Percentage of department total\nSELECT \n  name,\n  department,\n  salary,\n  salary * 100.0 / SUM(salary) OVER (\n    PARTITION BY department\n  ) as pct_of_dept\nFROM employees;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 4
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Do czego służy PARTITION BY?",
+            "options": [
+              "Usuwa partycje",
+              "Grupy funkcji okna",
+              "Tworzy nową tabelę",
+              "Filtruje wiersze"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "PARTITION BY dzieli wiersze na grupy na potrzeby obliczeń okna.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co zwraca LAG()?",
+            "options": [
+              "Wartość następnego wiersza",
+              "Wartość poprzedniego wiersza",
+              "Bieżąca wartość wiersza",
+              "Losowa wartość wiersza"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "LAG() zwraca wartość z poprzedniego wiersza w zestawie wyników.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jak obliczyć sumę bieżącą?",
+            "options": [
+              "GROUP BY z SUM",
+              "SUM() OVER (ZAMÓWIENIE WG daty)",
+              "RUNNING_TOTAL()",
+              "SUMULOWANA_SUMA()"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Funkcja SUM() OVER z opcją ORDER BY oblicza bieżącą sumę, która gromadzi się wiersz po wierszu.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Różnica między ROW_NUMBER a RANK?",
+            "options": [
+              "Bez różnicy",
+              "RANK pomija liczby w przypadku remisów",
+              "ROW_NUMBER pomija liczby",
+              "RANKA zaczyna się od 0"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "RANK nadaje ten sam numer remisom i pomija kolejne numery. ROW_NUMBER jest zawsze sekwencyjny.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Ranking produktów",
+        "description": "Oceń produkty według ceny za pomocą ROW_NUMBER.",
+        "starterCode": "-- Add rank by price (highest = 1)\nSELECT \n  name,\n  price,\n  \nFROM products;",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "ROW_NUMBER() OVER (ORDER BY price DESC) as rank",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj ROW_NUMBER() OVER (ZAMÓW WEDŁUG ceny DESC)",
+        "solution": "SELECT \n  name,\n  price,\n  ROW_NUMBER() OVER (ORDER BY price DESC) as rank\nFROM products;",
+        "xpReward": 15
+      },
+      "xpReward": 35,
+      "order": 3
+    },
+    {
+      "id": "sql_int_lesson_5",
+      "courseId": "sql-intermediate",
+      "moduleId": "performance",
+      "title": "Indeksy i wydajność",
+      "description": "Zoptymalizuj prędkość zapytań",
+      "theorySlides": [
+        {
+          "title": "Indeksy baz danych ⚡",
+          "content": "Indeksy przyspieszają zapytania:\n• Podobnie jak indeks książek - szybkie wyszukiwanie\n• Twórz w często odpytywanych kolumnach\n• Kompromis: wolniejsze zapisy, więcej pamięci",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tworzenie indeksów",
+          "content": "Indeksuj popularne kolumny wyszukiwania.",
+          "codeSnippet": "-- Single column index\nCREATE INDEX idx_email ON users(email);\n\n-- Composite index\nCREATE INDEX idx_name_date \nON orders(customer_name, order_date);\n\n-- Check with EXPLAIN\nEXPLAIN SELECT * FROM users WHERE email = 'test@test.com';",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Indeksy złożone 🔗",
+          "content": "Indeksuj wiele kolumn razem:\n• Kolejność kolumn ma znaczenie!\n• Kolumny skrajnie lewe użyte jako pierwsze\n• Świetne dla wielokolumnowych WHERE/ORDER BY",
+          "codeSnippet": "-- Composite index on (last_name, first_name)\nCREATE INDEX idx_name ON users(last_name, first_name);\n\n-- Uses index (starts with last_name)\nSELECT * FROM users WHERE last_name = 'Smith';\n\n-- Uses index (both columns)\nSELECT * FROM users \nWHERE last_name = 'Smith' AND first_name = 'John';\n\n-- Does NOT use index (missing leftmost column)\nSELECT * FROM users WHERE first_name = 'John';",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "WYJAŚNIJ Analizuj 🔍",
+          "content": "Zrozumienie wykonywania zapytań:\n• Pokazuje, czy używany jest indeks\n• Ujawnia pełne skany tabeli\n• Pomaga zoptymalizować powolne zapytania",
+          "codeSnippet": "-- Basic EXPLAIN\nEXPLAIN SELECT * FROM users WHERE email = 'test@example.com';\n\n-- Shows: type, possible_keys, key, rows scanned\n\n-- EXPLAIN ANALYZE (actual execution)\nEXPLAIN ANALYZE SELECT * FROM orders \nWHERE customer_id = 100 AND status = 'pending';\n\n-- Look for:\n-- ✅ \"Using index\" - Good!\n-- ❌ \"Full table scan\" - Needs index\n-- ❌ \"filesort\" - Consider index on ORDER BY",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        },
+        {
+          "title": "Indeksuj najlepsze praktyki 📋",
+          "content": "Kiedy używać indeksów:\n• Kolumny w GDZIE, DOŁĄCZ, ZAMÓW PRZEZ\n• Kolumny o wysokiej liczności (wiele unikalnych wartości)\n• Klucze obce\n\nUnikaj indeksów na:\n• Często aktualizowane kolumny\n• Małe stoły\n• Niska kardynalność (kilka unikalnych wartości)",
+          "codeSnippet": "-- Good index candidates\nCREATE INDEX idx_order_date ON orders(order_date);\nCREATE INDEX idx_customer_status ON orders(customer_id, status);\nCREATE INDEX idx_product_category ON products(category_id);\n\n-- Check existing indexes\nSHOW INDEX FROM orders;\n\n-- Remove unused index\nDROP INDEX idx_old_unused ON orders;\n\n-- Unique index (also enforces uniqueness)\nCREATE UNIQUE INDEX idx_email ON users(email);",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 4
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Kiedy NIE używać indeksów?",
+            "options": [
+              "Na kluczach podstawowych",
+              "W często aktualizowanych kolumnach",
+              "W kolumnach WHERE",
+              "W kolumnach JOIN"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Częste aktualizacje spowalniają indeksy z powodu konserwacji.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "W indeksie złożonym (A, B, C), które zapytania go używają?",
+            "options": [
+              "Tylko GDZIE A",
+              "GDZIE A, GDZIE A+B, GDZIE A+B+C",
+              "Dowolna kombinacja A, B, C",
+              "Tylko GDZIE A+B+C"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Indeksy złożone działają od lewej do prawej. Aby móc korzystać z indeksu, zapytania muszą zawierać kolumny znajdujące się skrajnie po lewej stronie.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co EXPLAIN pomaga Ci znaleźć?",
+            "options": [
+              "Błędy składniowe",
+              "Brakujące tabele",
+              "Plan wykonania zapytania i użycie indeksu",
+              "Uprawnienia użytkownika"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "EXPLAIN pokazuje, w jaki sposób baza danych wykonuje zapytanie, łącznie z używanymi indeksami.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co to jest „liczność” w kontekście indeksu?",
+            "options": [
+              "Rozmiar indeksu",
+              "Liczba unikalnych wartości",
+              "Szybkość zapytania",
+              "Liczba wierszy tabeli"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Kardynalność to liczba unikalnych wartości. Kolumny o dużej liczności (wiele unikalnych wartości) korzystają najbardziej z indeksów.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Utwórz indeks",
+        "description": "Utwórz indeks w kolumnie kategorii produktów.",
+        "starterCode": "-- Create index on category column\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "CREATE INDEX idx_category ON products(category);",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj CREATE INDEX idx_name ON tabeli (kolumny)",
+        "solution": "CREATE INDEX idx_category ON products(category);",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 4
+    }
+  ]
+}

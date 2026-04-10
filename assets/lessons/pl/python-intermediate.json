@@ -1,0 +1,525 @@
+{
+  "courseId": "python-intermediate",
+  "lessons": [
+    {
+      "id": "python_int_lesson_1",
+      "courseId": "python-intermediate",
+      "moduleId": "oop",
+      "title": "Klasy i obiekty",
+      "description": "Opanuj programowanie obiektowe w Pythonie",
+      "theorySlides": [
+        {
+          "title": "Co to jest OOP? 🏗️",
+          "content": "Programowanie obiektowe organizuje kod w obiekty - pakiety danych i funkcjonalności.\n\nKluczowe pojęcia:\n• **Klasa**: Plan tworzenia obiektów\n• **Obiekt**: Instancja klasy\n• **Atrybuty**: Dane przechowywane w obiekcie\n• **Metody**: Funkcje należące do obiektu",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Dlaczego warto używać OOP? 💡",
+          "content": "Korzyści z OOP:\n\n✅ **Modułowość** – Kod jest zorganizowany w samodzielne jednostki\n✅ **Ponowne użycie** – utwórz raz, użyj wiele razy\n✅ **Łatwość konserwacji** - Łatwa aktualizacja i naprawa\n✅ **Modelowanie w świecie rzeczywistym** – Obiekty reprezentują prawdziwe rzeczy",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Tworzenie klasy",
+          "content": "Użyj słowa kluczowego class, aby zdefiniować plan.",
+          "codeSnippet": "class Dog:\n    def __init__(self, name, breed):\n        self.name = name\n        self.breed = breed\n    \n    def bark(self):\n        return f\"{self.name} says Woof!\"\n\nmy_dog = Dog(\"Buddy\", \"Golden Retriever\")\nprint(my_dog.bark())",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Parametr własny 🔑",
+          "content": "**self** odnosi się do bieżącej instancji klasy.\n\nUmożliwia:\n• Atrybuty dostępu: nazwa.własna\n• Metody wywoływania: self.bark()\n• Odróżnij instancję od zmiennych klasowych",
+          "codeSnippet": "class Person:\n    def __init__(self, name):\n        self.name = name  # Instance attribute\n    \n    def greet(self):\n        return f\"Hi, I am {self.name}\"",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Do czego służy __init__?",
+            "options": [
+              "Zainicjuj atrybuty obiektu",
+              "Usuń obiekt",
+              "Wydrukuj obiekt",
+              "Importuj moduły"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "__init__ to konstruktor, który ustawia stan początkowy podczas tworzenia obiektu.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Do czego odnosi się słowo „ja”?",
+            "options": [
+              "Sama klasa",
+              "Bieżąca instancja",
+              "Klasa nadrzędna",
+              "Zmienna globalna"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "self odnosi się do bieżącej instancji tworzonej lub używanej klasy.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jak utworzyć obiekt z klasy Pies?",
+            "options": [
+              "Pies.nowy()",
+              "nowy pies()",
+              "Pies()",
+              "utwórz psa"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "W Pythonie obiekty tworzysz wywołując nazwę klasy jak funkcję: Dog()",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Utwórz klasę samochodu",
+        "description": "Utwórz klasę samochodu:\n1. W __init__ przechowuj markę w self.brand\n2. W opisie() zwróć „Marka: X”, gdzie X to marka\n\nOczekiwana produkcja: Marka: Toyota",
+        "starterCode": "class Car:\n    def __init__(self, brand):\n        # Step 1: Store brand in self.brand\n        self.brand = # your code\n    \n    def describe(self):\n        # Step 2: Return \"Brand: {brand}\"\n        return # your code\n\ncar = Car(\"Toyota\")\nprint(car.describe())",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Brand: Toyota",
+            "isHidden": false
+          }
+        ],
+        "hint": "Krok 1: self.brand = marka\nKrok 2: zwróć f\"Marka: {self.brand}\"",
+        "solution": "class Car:\n    def __init__(self, brand):\n        self.brand = brand\n    \n    def describe(self):\n        return f\"Brand: {self.brand}\"\n\ncar = Car(\"Toyota\")\nprint(car.describe())",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 0
+    },
+    {
+      "id": "python_int_lesson_2",
+      "courseId": "python-intermediate",
+      "moduleId": "oop",
+      "title": "Dziedzictwo",
+      "description": "Dowiedz się, jak ponownie wykorzystać kod z dziedziczeniem klas",
+      "theorySlides": [
+        {
+          "title": "Co to jest dziedziczenie? 🌳",
+          "content": "Dziedziczenie pozwala klasie dziedziczyć atrybuty i metody z innej klasy.\n\nTerminologia:\n• **Klasa nadrzędna/bazowa**: Klasa, z której jest dziedziczony\n• **Klasa podrzędna/pochodna**: Klasa, która dziedziczy\n• **Zastąp**: Zamień metodę nadrzędną na metodę podrzędną",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Dlaczego dziedziczenie? 🎯",
+          "content": "Korzyści:\n\n✅ **SUSZ** – Nie powtarzaj się\n✅ **Hierarchia** - Modeluj prawdziwe relacje\n✅ **Rozszerz** – Dodaj funkcje bez zmiany oryginału\n✅ **Polimorfizm** – ten sam interfejs, inne zachowanie",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Tworzenie klas podrzędnych",
+          "content": "Podaj klasę nadrzędną w nawiasach.",
+          "codeSnippet": "class Animal:\n    def __init__(self, name):\n        self.name = name\n\nclass Cat(Animal):\n    def speak(self):\n        return f\"{self.name} says Meow!\"\n\ncat = Cat(\"Whiskers\")\nprint(cat.speak())",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Używanie super() 🦸",
+          "content": "super() wywołuje metody klasy nadrzędnej.",
+          "codeSnippet": "class Animal:\n    def __init__(self, name):\n        self.name = name\n\nclass Dog(Animal):\n    def __init__(self, name, breed):\n        super().__init__(name)  # Call parent __init__\n        self.breed = breed\n\ndog = Dog(\"Max\", \"Labrador\")\nprint(dog.name, dog.breed)",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Co robi super()?",
+            "options": [
+              "Tworzy nowy obiekt",
+              "Wywołuje metody klasy nadrzędnej",
+              "Usuwa klasę",
+              "Sprawia, że ​​kod jest szybszy"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "super() umożliwia wywoływanie metod z klasy nadrzędnej.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jak utworzyć klasę podrzędną?",
+            "options": [
+              "klasa Dziecko rozszerza Rodzica",
+              "klasa Dziecko (Rodzic)",
+              "klasa Dziecko: Rodzic",
+              "Dziecko = Rodzic.extend()"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "W Pythonie nazwę klasy nadrzędnej umieść w nawiasie: class Child(Parent)",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co to jest zastępowanie metody?",
+            "options": [
+              "Usuwanie metody",
+              "Redefinicja metody nadrzędnej w podrzędnej",
+              "Dwukrotne wywołanie metody",
+              "Ustawianie metody jako prywatnej"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Zastąpienie oznacza zdefiniowanie metody w klasie podrzędnej o tej samej nazwie co rodzic w celu zastąpienia zachowania.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Utwórz klasę ucznia",
+        "description": "Utwórz klasę Studenta dziedziczącą po Osobie z atrybutem oceny.",
+        "starterCode": "class Person:\n    def __init__(self, name):\n        self.name = name\n\nclass Student(Person):\n    def __init__(self, name, grade):\n        # Use super() and add grade\n        pass\n    \n    def info(self):\n        # Return \"Name: X, Grade: Y\"\n        pass\n\ns = Student(\"Alex\", 10)\nprint(s.info())",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Name: Alex, Grade: 10",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj super().__init__(nazwa), a następnie self.grade = ocena",
+        "solution": "class Person:\n    def __init__(self, name):\n        self.name = name\n\nclass Student(Person):\n    def __init__(self, name, grade):\n        super().__init__(name)\n        self.grade = grade\n    \n    def info(self):\n        return f\"Name: {self.name}, Grade: {self.grade}\"\n\ns = Student(\"Alex\", 10)\nprint(s.info())",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 1
+    },
+    {
+      "id": "python_int_lesson_3",
+      "courseId": "python-intermediate",
+      "moduleId": "advanced",
+      "title": "Lista wyrażeń",
+      "description": "Napisz elegancki kod w języku Python",
+      "theorySlides": [
+        {
+          "title": "Lista wyrażeń ✨",
+          "content": "Rozumienie list zapewnia zwięzły sposób tworzenia list.\n\nSkładnia: [wyrażenie elementu w iterowalności]\nZ filtrem: [wyrażenie elementu w warunku iterowalnym, jeśli]",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Dlaczego wyrażenia listowe? 🚀",
+          "content": "Korzyści:\n\n✅ **Czytelny** – Wyraźny zamiar w jednym wierszu\n✅ **Szybki** - Bardziej wydajny niż pętle\n✅ **Pythonic** – „Sposób Pythona”\n✅ **Elastyczny** – Filtruj i przekształcaj razem",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Podstawowe przykłady",
+          "content": "Przekształcaj i filtruj dane w jednym wierszu.",
+          "codeSnippet": "# Squares of 1-5\nsquares = [x**2 for x in range(1, 6)]\nprint(squares)  # [1, 4, 9, 16, 25]\n\n# Even numbers only\nevens = [x for x in range(10) if x % 2 == 0]\nprint(evens)  # [0, 2, 4, 6, 8]",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Zagnieżdżone wyrażenia 🔄",
+          "content": "Twórz struktury 2D lub spłaszczaj listy.",
+          "codeSnippet": "# Flatten a 2D list\nmatrix = [[1, 2], [3, 4], [5, 6]]\nflat = [num for row in matrix for num in row]\nprint(flat)  # [1, 2, 3, 4, 5, 6]\n\n# Create multiplication table\ntable = [[i*j for j in range(1,4)] for i in range(1,4)]\n# [[1,2,3], [2,4,6], [3,6,9]]",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Co to jest [x*2 dla x w [1,2,3]]?",
+            "options": [
+              "[1,2,3]",
+              "[2,4,6]",
+              "[1,4,9]",
+              "Błąd"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Każdy element jest mnożony przez 2.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co zwraca [x dla x w zakresie (5), jeśli x > 2]?",
+            "options": [
+              "[0,1,2]",
+              "[3,4]",
+              "[2,3,4]",
+              "[0,1,2,3,4]"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Tylko wartości większe od 2 przechodzą przez filtr: 3 i 4.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co jest równoważne: wynik = []; dla x w elementach: wynik.append(x*2)?",
+            "options": [
+              "[x*2 w elementach]",
+              "[x*2 dla x w elementach]",
+              "[dla x w pozycjach: x*2]",
+              "przedmioty.mapa(x*2)"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Składnia rozumienia listy: [wyrażenie elementu w iterowalności]",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Kwadraty parzyste",
+        "description": "Utwórz listę kwadratów liczb parzystych od 1 do 10.",
+        "starterCode": "# Create squares of even numbers 1-10\n# Expected: [4, 16, 36, 64, 100]\nsquares = # Your code\nprint(squares)",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "[4, 16, 36, 64, 100]",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj, jeśli x % 2 == 0 i x**2",
+        "solution": "squares = [x**2 for x in range(1, 11) if x % 2 == 0]\nprint(squares)",
+        "xpReward": 15
+      },
+      "xpReward": 25,
+      "order": 2
+    },
+    {
+      "id": "python_int_lesson_4",
+      "courseId": "python-intermediate",
+      "moduleId": "advanced",
+      "title": "Funkcje lambdy",
+      "description": "Twórz anonimowe funkcje",
+      "theorySlides": [
+        {
+          "title": "Funkcje lambda ⚡",
+          "content": "Funkcje Lambda to małe funkcje anonimowe.\n\nSkładnia: argumenty lambda: wyrażenie\n\nIdealny na krótkie, jednorazowe uroczystości.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Lambda a funkcje regularne 🆚",
+          "content": "Porównanie:\n\n**Zwykła funkcja:**\nzdecydowanie dodaj(a, b):\n    zwróć + b\n\n**Funkcja Lambda:**\nadd = lambda a, b: a + b\n\nUżyj lambda do prostych, jednorazowych operacji.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Lambda z sortowaną()",
+          "content": "Sortuj za pomocą niestandardowych kluczy.",
+          "codeSnippet": "students = [(\"Alice\", 85), (\"Bob\", 92), (\"Charlie\", 78)]\n\n# Sort by grade (second element)\nsorted_students = sorted(students, key=lambda s: s[1])\nprint(sorted_students)",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Lambda z map() i filter() 🔧",
+          "content": "Używaj lambdy z funkcjonalnymi narzędziami programowania.",
+          "codeSnippet": "numbers = [1, 2, 3, 4, 5]\n\n# Double each number\ndoubled = list(map(lambda x: x*2, numbers))\n# [2, 4, 6, 8, 10]\n\n# Keep only evens\nevens = list(filter(lambda x: x%2==0, numbers))\n# [2, 4]",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Poprawna lambda, aby dodać dwie liczby?",
+            "options": [
+              "lambda: a+b",
+              "lambda a,b: a+b",
+              "def lambda(a,b)",
+              "a,b => a+b"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Składnia: parametry lambda: wyrażenie",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co mogą zawierać funkcje lambda?",
+            "options": [
+              "Wiele stwierdzeń",
+              "Pojedyncze wyrażenie",
+              "Pętle i bloki if/else",
+              "Definicje klas"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Funkcje lambda mogą zawierać tylko jedno wyrażenie, a nie wiele instrukcji.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co zwraca map(lambda x: x**2, [1,2,3])?",
+            "options": [
+              "[1,2,3]",
+              "[1,4,9]",
+              "6",
+              "Błąd"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "map() stosuje lambdę do każdego elementu: 1²=1, 2²=4, 3²=9",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Sortuj według długości",
+        "description": "Sortuj słowa według długości za pomocą lambdy.",
+        "starterCode": "words = [\"python\", \"is\", \"awesome\"]\n# Sort by length\nresult = sorted(words, key=# your lambda)\nprint(result)",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "['is', 'python', 'awesome']",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj lambda w: len(w)",
+        "solution": "words = [\"python\", \"is\", \"awesome\"]\nresult = sorted(words, key=lambda w: len(w))\nprint(result)",
+        "xpReward": 15
+      },
+      "xpReward": 25,
+      "order": 3
+    },
+    {
+      "id": "python_int_lesson_5",
+      "courseId": "python-intermediate",
+      "moduleId": "errors",
+      "title": "Obsługa wyjątków",
+      "description": "Obchodź się z błędami z wdziękiem",
+      "theorySlides": [
+        {
+          "title": "Spróbuj/Wyjątek 🛡️",
+          "content": "Obsługuj błędy bez zawieszania programu.\n\nTypowe wyjątki:\n• ValueError - zły typ wartości\n• TypeError - błędna operacja na typie\n• ZeroDivisionError – dzielenie przez zero\n• FileNotFoundError – brakujący plik",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Po co obsługiwać wyjątki? 💡",
+          "content": "Korzyści:\n\n✅ **Ładna porażka** – Aplikacja nie ulega awarii\n✅ **Przyjazny dla użytkownika** - Wyświetlaj pomocne komunikaty o błędach\n✅ **Odzyskiwanie** – wypróbuj alternatywne podejścia\n✅ **Logowanie** — śledzenie błędów w celu debugowania",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Podstawowa składnia",
+          "content": "Zawiń ryzykowny kod w try/except.",
+          "codeSnippet": "try:\n    result = 10 / 0\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero!\")\nfinally:\n    print(\"This always runs\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Wiele wyjątków 🎯",
+          "content": "Obsługuj różne błędy w różny sposób.",
+          "codeSnippet": "try:\n    value = int(input(\"Enter number: \"))\n    result = 100 / value\nexcept ValueError:\n    print(\"Not a valid number!\")\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero!\")\nexcept Exception as e:\n    print(f\"Unknown error: {e}\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Który blok zawsze działa?",
+            "options": [
+              "próbować",
+              "z wyjątkiem",
+              "Wreszcie",
+              "wznosić"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "w końcu zawsze wykonuje się, niezależnie od wyjątków.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jak złapać KAŻDY wyjątek?",
+            "options": [
+              "z wyjątkiem:",
+              "z wyjątkiem wszystkich:",
+              "z wyjątkiem *:",
+              "złapać:"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Samo „z wyjątkiem:” przechwytuje wszystkie wyjątki (chociaż preferowane jest „z wyjątkiem wyjątku:”).",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co oznacza „podniesienie”?",
+            "options": [
+              "Złap wyjątek",
+              "Utwórz/zgłoś wyjątek",
+              "Błąd drukowania",
+              "Wyjdź z programu"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "raise tworzy i zgłasza wyjątek, który można przechwycić metodą try/except.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Bezpieczny Oddział",
+        "description": "Utwórz Safe_divide, który w przypadku niepowodzenia zwróci „Błąd”.",
+        "starterCode": "def safe_divide(a, b):\n    # Return result or \"Error\"\n    pass\n\nprint(safe_divide(10, 2))\nprint(safe_divide(10, 0))",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "5.0\nError",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj try/except ZeroDivisionError",
+        "solution": "def safe_divide(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return \"Error\"\n\nprint(safe_divide(10, 2))\nprint(safe_divide(10, 0))",
+        "xpReward": 15
+      },
+      "xpReward": 25,
+      "order": 4
+    }
+  ]
+}

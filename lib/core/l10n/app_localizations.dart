@@ -134,7 +134,7 @@ class AppLocalizations {
     'done': 'Done',
     'retry': 'Retry',
     'coming_soon': 'Coming soon!',
-    
+
     // Auth
     'login': 'Login',
     'register': 'Register',
@@ -152,7 +152,7 @@ class AppLocalizations {
     'start_coding_journey': 'Start your coding journey today',
     'welcome_back': 'Welcome back! 👋',
     'skip_auth_debug': 'Skip Auth (Debug)',
-    
+
     // Validation
     'enter_email': 'Please enter your email',
     'enter_password': 'Please enter a password',
@@ -161,12 +161,12 @@ class AppLocalizations {
     'password_too_short': 'Password must be at least 6 characters',
     'passwords_not_match': 'Passwords do not match',
     'name_too_short': 'Name must be at least 2 characters',
-    
+
     // Home
     'start_journey': 'Start Your Journey',
     'continue_learning': 'Continue Learning',
     'level': 'Level',
-    
+
     // Courses
     'courses': 'Courses',
     'choose_learning_path': 'Choose your learning path',
@@ -180,13 +180,49 @@ class AppLocalizations {
     'react_desc': 'Create interactive UIs with React',
     'sql': 'SQL',
     'sql_desc': 'Master database queries with SQL',
+    'python_intermediate': 'Python Intermediate',
+    'python_intermediate_desc':
+        'OOP, decorators, generators and advanced patterns',
+    'html_css_intermediate': 'HTML/CSS Intermediate',
+    'html_css_intermediate_desc':
+        'Flexbox, Grid, animations and responsive design',
+    'javascript_intermediate': 'JavaScript Intermediate',
+    'javascript_intermediate_desc':
+        'ES6+, async/await, and functional programming',
+    'sql_intermediate': 'SQL Intermediate',
+    'sql_intermediate_desc': 'JOINs, subqueries, and window functions',
+    'react_intermediate': 'React Intermediate',
+    'react_intermediate_desc': 'Hooks, Context, and performance optimization',
+    'difficulty_beginner': 'Beginner',
+    'difficulty_intermediate': 'Intermediate',
+    'tag_programming': 'Programming',
+    'tag_beginner_friendly': 'Beginner-friendly',
+    'tag_popular': 'Popular',
+    'tag_web_development': 'Web Development',
+    'tag_frontend': 'Frontend',
+    'tag_web_design': 'Web Design',
+    'tag_visual': 'Visual',
+    'tag_framework': 'Framework',
+    'tag_modern': 'Modern',
+    'tag_database': 'Database',
+    'tag_backend': 'Backend',
+    'tag_data': 'Data',
+    'tag_oop': 'OOP',
+    'tag_advanced': 'Advanced',
+    'tag_layout': 'Layout',
+    'tag_responsive': 'Responsive',
+    'tag_es6': 'ES6',
+    'tag_async': 'Async',
+    'tag_analytics': 'Analytics',
+    'tag_hooks': 'Hooks',
+    'tag_state': 'State',
     'all_courses': 'All Courses',
     'my_courses': 'My Courses',
     'course_progress': 'Course Progress',
     'lessons_count': 'lessons',
     'start_course': 'Start Course',
     'continue_course': 'Continue Course',
-    
+
     // Lessons
     'lesson': 'Lesson',
     'lessons': 'Lessons',
@@ -202,12 +238,13 @@ class AppLocalizations {
     'no_quiz': 'No quiz available',
     'no_coding_challenge': 'No coding challenge',
     'continue': 'Continue',
+    'continue_to_quiz': 'Continue to Quiz',
     'continue_to_coding': 'Continue to Coding Challenge',
     'quiz_completed': 'Quiz Completed! 🎉',
     'keep_practicing': 'Keep Practicing!',
     'next_question': 'Next Question',
     'finish_quiz': 'Finish Quiz',
-    
+
     // Code Challenge
     'run_code': 'Run Code',
     'submit': 'Submit',
@@ -217,7 +254,7 @@ class AppLocalizations {
     'show_hint': 'Show Hint',
     'reset_code': 'Reset Code',
     'check_answer': 'Check Answer',
-    
+
     // Progress
     'progress': 'Progress',
     'your_progress': 'Your Progress',
@@ -228,7 +265,7 @@ class AppLocalizations {
     'completed': 'Completed',
     'in_progress': 'In Progress',
     'not_started': 'Not Started',
-    
+
     // Achievements
     'achievements': 'Achievements',
     'unlocked': 'Unlocked',
@@ -249,7 +286,7 @@ class AppLocalizations {
     'xp_hunter_desc': 'Earn 1000 total XP',
     'centurion': 'Centurion',
     'centurion_desc': 'Reach level 100',
-    
+
     // Profile
     'profile': 'Profile',
     'edit_profile': 'Edit Profile',
@@ -263,7 +300,7 @@ class AppLocalizations {
     'learning_history': 'Learning History',
     'help_support': 'Help & Support',
     'welcome_back_emoji': 'Welcome back! 👋',
-    
+
     // Settings
     'account': 'Account',
     'change_password': 'Change Password',
@@ -282,24 +319,25 @@ class AppLocalizations {
     'privacy_policy': 'Privacy Policy',
     'danger_zone': 'Danger Zone',
     'delete_account': 'Delete Account',
-    'delete_account_warning': 'This action cannot be undone. All your data will be permanently deleted.',
+    'delete_account_warning':
+        'This action cannot be undone. All your data will be permanently deleted.',
     'clear_cache_confirm': 'Are you sure you want to clear the cache?',
     'logout_confirm': 'Are you sure you want to logout?',
     'choose_language_subtitle': 'Choose your interface language',
     'search_language': 'Search language',
     'no_languages_found': 'No languages found',
     'language_changed': 'Language updated',
-    
+
     // Navigation
     'home': 'Home',
     'learn': 'Learn',
     'practice': 'Practice',
-    
+
     // Home screen specific
     'your_courses': 'Your Courses',
     'browse_all_courses': 'Browse All Courses',
     'lessons_completed_suffix': 'lessons completed',
-    
+
     // Onboarding
     'onboarding_title_1': 'Learn to Code',
     'onboarding_desc_1': 'Master programming with interactive lessons',
@@ -310,7 +348,7 @@ class AppLocalizations {
     'onboarding_title_4': 'Join the Community',
     'onboarding_desc_4': 'Connect with learners worldwide',
     'get_started': 'Get Started',
-    
+
     // Common messages
     'sign_in_to_continue': 'Sign in to continue learning',
     'error_prefix': 'Error: ',
@@ -337,7 +375,7 @@ class AppLocalizations {
     'done': 'Готово',
     'retry': 'Повторити',
     'coming_soon': 'Скоро буде!',
-    
+
     // Auth
     'login': 'Увійти',
     'register': 'Реєстрація',
@@ -355,7 +393,7 @@ class AppLocalizations {
     'start_coding_journey': 'Розпочніть свою подорож у програмування',
     'welcome_back': 'З поверненням! 👋',
     'skip_auth_debug': 'Пропустити авторизацію',
-    
+
     // Validation
     'enter_email': 'Введіть email',
     'enter_password': 'Введіть пароль',
@@ -364,12 +402,12 @@ class AppLocalizations {
     'password_too_short': 'Пароль має містити щонайменше 6 символів',
     'passwords_not_match': 'Паролі не збігаються',
     'name_too_short': 'Ім\'я має містити щонайменше 2 символи',
-    
+
     // Home
     'start_journey': 'Почніть свою подорож',
     'continue_learning': 'Продовжити навчання',
     'level': 'Рівень',
-    
+
     // Courses
     'courses': 'Курси',
     'choose_learning_path': 'Оберіть свій шлях навчання',
@@ -383,13 +421,49 @@ class AppLocalizations {
     'react_desc': 'Створюйте інтерактивні інтерфейси з React',
     'sql': 'SQL',
     'sql_desc': 'Опануйте запити до баз даних за допомогою SQL',
+    'python_intermediate': 'Python (середній рівень)',
+    'python_intermediate_desc':
+        'ООП, декоратори, генератори та просунуті патерни',
+    'html_css_intermediate': 'HTML/CSS (середній рівень)',
+    'html_css_intermediate_desc':
+        'Flexbox, Grid, анімації та адаптивний дизайн',
+    'javascript_intermediate': 'JavaScript (середній рівень)',
+    'javascript_intermediate_desc':
+        'ES6+, async/await та функціональне програмування',
+    'sql_intermediate': 'SQL (середній рівень)',
+    'sql_intermediate_desc': 'JOIN, підзапити та віконні функції',
+    'react_intermediate': 'React (середній рівень)',
+    'react_intermediate_desc': 'Hooks, Context та оптимізація продуктивності',
+    'difficulty_beginner': 'Початковий',
+    'difficulty_intermediate': 'Середній',
+    'tag_programming': 'Програмування',
+    'tag_beginner_friendly': 'Для початківців',
+    'tag_popular': 'Популярний',
+    'tag_web_development': 'Веб-розробка',
+    'tag_frontend': 'Фронтенд',
+    'tag_web_design': 'Вебдизайн',
+    'tag_visual': 'Візуальний',
+    'tag_framework': 'Фреймворк',
+    'tag_modern': 'Сучасний',
+    'tag_database': 'Бази даних',
+    'tag_backend': 'Бекенд',
+    'tag_data': 'Дані',
+    'tag_oop': 'ООП',
+    'tag_advanced': 'Просунутий',
+    'tag_layout': 'Макети',
+    'tag_responsive': 'Адаптивність',
+    'tag_es6': 'ES6',
+    'tag_async': 'Асинхронність',
+    'tag_analytics': 'Аналітика',
+    'tag_hooks': 'Хуки',
+    'tag_state': 'Стан',
     'all_courses': 'Всі курси',
     'my_courses': 'Мої курси',
     'course_progress': 'Прогрес курсу',
     'lessons_count': 'уроків',
     'start_course': 'Почати курс',
     'continue_course': 'Продовжити курс',
-    
+
     // Lessons
     'lesson': 'Урок',
     'lessons': 'Уроки',
@@ -405,12 +479,13 @@ class AppLocalizations {
     'no_quiz': 'Немає тесту',
     'no_coding_challenge': 'Немає завдання з кодування',
     'continue': 'Продовжити',
+    'continue_to_quiz': 'Перейти до тесту',
     'continue_to_coding': 'Перейти до завдання з кодування',
     'quiz_completed': 'Тест завершено! 🎉',
     'keep_practicing': 'Продовжуйте практикуватись!',
     'next_question': 'Наступне питання',
     'finish_quiz': 'Завершити тест',
-    
+
     // Code Challenge
     'run_code': 'Запустити код',
     'submit': 'Відправити',
@@ -420,7 +495,7 @@ class AppLocalizations {
     'show_hint': 'Показати підказку',
     'reset_code': 'Скинути код',
     'check_answer': 'Перевірити відповідь',
-    
+
     // Progress
     'progress': 'Прогрес',
     'your_progress': 'Ваш прогрес',
@@ -431,7 +506,7 @@ class AppLocalizations {
     'completed': 'Завершено',
     'in_progress': 'В процесі',
     'not_started': 'Не розпочато',
-    
+
     // Achievements
     'achievements': 'Досягнення',
     'unlocked': 'Відкрито',
@@ -452,7 +527,7 @@ class AppLocalizations {
     'xp_hunter_desc': 'Заробіть 1000 XP',
     'centurion': 'Центуріон',
     'centurion_desc': 'Досягніть 100 рівня',
-    
+
     // Profile
     'profile': 'Профіль',
     'edit_profile': 'Редагувати профіль',
@@ -466,7 +541,7 @@ class AppLocalizations {
     'learning_history': 'Історія навчання',
     'help_support': 'Допомога та підтримка',
     'welcome_back_emoji': 'З поверненням! 👋',
-    
+
     // Settings
     'account': 'Акаунт',
     'change_password': 'Змінити пароль',
@@ -485,35 +560,38 @@ class AppLocalizations {
     'privacy_policy': 'Політика конфіденційності',
     'danger_zone': 'Небезпечна зона',
     'delete_account': 'Видалити акаунт',
-    'delete_account_warning': 'Цю дію не можна скасувати. Всі ваші дані будуть назавжди видалені.',
+    'delete_account_warning':
+        'Цю дію не можна скасувати. Всі ваші дані будуть назавжди видалені.',
     'clear_cache_confirm': 'Ви впевнені, що хочете очистити кеш?',
     'logout_confirm': 'Ви впевнені, що хочете вийти?',
     'choose_language_subtitle': 'Оберіть мову інтерфейсу',
     'search_language': 'Пошук мови',
     'no_languages_found': 'Мов не знайдено',
     'language_changed': 'Мову оновлено',
-    
+
     // Navigation
     'home': 'Головна',
     'learn': 'Навчання',
     'practice': 'Практика',
-    
+
     // Home screen specific
     'your_courses': 'Ваші курси',
     'browse_all_courses': 'Переглянути всі курси',
     'lessons_completed_suffix': 'уроків завершено',
-    
+
     // Onboarding
     'onboarding_title_1': 'Вчіться програмувати',
-    'onboarding_desc_1': 'Опануйте програмування за допомогою інтерактивних уроків',
+    'onboarding_desc_1':
+        'Опануйте програмування за допомогою інтерактивних уроків',
     'onboarding_title_2': 'Практикуйте щодня',
     'onboarding_desc_2': 'Формуйте звички програмування з щоденними завданнями',
     'onboarding_title_3': 'Відстежуйте прогрес',
-    'onboarding_desc_3': 'Спостерігайте за своїм ростом з детальною статистикою',
+    'onboarding_desc_3':
+        'Спостерігайте за своїм ростом з детальною статистикою',
     'onboarding_title_4': 'Приєднуйтесь до спільноти',
     'onboarding_desc_4': 'Спілкуйтесь з учнями з усього світу',
     'get_started': 'Почати',
-    
+
     // Common messages
     'sign_in_to_continue': 'Увійдіть, щоб продовжити навчання',
     'error_prefix': 'Помилка: ',
@@ -540,7 +618,7 @@ class AppLocalizations {
     'done': 'Hecho',
     'retry': 'Reintentar',
     'coming_soon': '¡Próximamente!',
-    
+
     // Auth
     'login': 'Iniciar sesión',
     'register': 'Registrarse',
@@ -558,7 +636,7 @@ class AppLocalizations {
     'start_coding_journey': 'Comienza tu viaje de programación hoy',
     'welcome_back': '¡Bienvenido de nuevo! 👋',
     'skip_auth_debug': 'Omitir autenticación (Debug)',
-    
+
     // Validation
     'enter_email': 'Por favor ingresa tu correo electrónico',
     'enter_password': 'Por favor ingresa una contraseña',
@@ -567,12 +645,12 @@ class AppLocalizations {
     'password_too_short': 'La contraseña debe tener al menos 6 caracteres',
     'passwords_not_match': 'Las contraseñas no coinciden',
     'name_too_short': 'El nombre debe tener al menos 2 caracteres',
-    
+
     // Home
     'start_journey': 'Comienza tu viaje',
     'continue_learning': 'Continuar aprendiendo',
     'level': 'Nivel',
-    
+
     // Courses
     'courses': 'Cursos',
     'choose_learning_path': 'Elige tu ruta de aprendizaje',
@@ -586,13 +664,49 @@ class AppLocalizations {
     'react_desc': 'Crea interfaces interactivas con React',
     'sql': 'SQL',
     'sql_desc': 'Domina las consultas de bases de datos con SQL',
+    'python_intermediate': 'Python Intermedio',
+    'python_intermediate_desc':
+        'POO, decoradores, generadores y patrones avanzados',
+    'html_css_intermediate': 'HTML/CSS Intermedio',
+    'html_css_intermediate_desc':
+        'Flexbox, Grid, animaciones y diseño responsivo',
+    'javascript_intermediate': 'JavaScript Intermedio',
+    'javascript_intermediate_desc':
+        'ES6+, async/await y programación funcional',
+    'sql_intermediate': 'SQL Intermedio',
+    'sql_intermediate_desc': 'JOINs, subconsultas y funciones de ventana',
+    'react_intermediate': 'React Intermedio',
+    'react_intermediate_desc': 'Hooks, Context y optimización de rendimiento',
+    'difficulty_beginner': 'Principiante',
+    'difficulty_intermediate': 'Intermedio',
+    'tag_programming': 'Programación',
+    'tag_beginner_friendly': 'Para principiantes',
+    'tag_popular': 'Popular',
+    'tag_web_development': 'Desarrollo web',
+    'tag_frontend': 'Frontend',
+    'tag_web_design': 'Diseño web',
+    'tag_visual': 'Visual',
+    'tag_framework': 'Framework',
+    'tag_modern': 'Moderno',
+    'tag_database': 'Base de datos',
+    'tag_backend': 'Backend',
+    'tag_data': 'Datos',
+    'tag_oop': 'POO',
+    'tag_advanced': 'Avanzado',
+    'tag_layout': 'Maquetación',
+    'tag_responsive': 'Responsivo',
+    'tag_es6': 'ES6',
+    'tag_async': 'Asíncrono',
+    'tag_analytics': 'Analítica',
+    'tag_hooks': 'Hooks',
+    'tag_state': 'Estado',
     'all_courses': 'Todos los cursos',
     'my_courses': 'Mis cursos',
     'course_progress': 'Progreso del curso',
     'lessons_count': 'lecciones',
     'start_course': 'Comenzar curso',
     'continue_course': 'Continuar curso',
-    
+
     // Lessons
     'lesson': 'Lección',
     'lessons': 'Lecciones',
@@ -608,12 +722,13 @@ class AppLocalizations {
     'no_quiz': 'No hay cuestionario disponible',
     'no_coding_challenge': 'No hay desafío de código',
     'continue': 'Continuar',
+    'continue_to_quiz': 'Continuar al cuestionario',
     'continue_to_coding': 'Continuar al desafío de código',
     'quiz_completed': '¡Cuestionario completado! 🎉',
     'keep_practicing': '¡Sigue practicando!',
     'next_question': 'Siguiente pregunta',
     'finish_quiz': 'Terminar cuestionario',
-    
+
     // Code Challenge
     'run_code': 'Ejecutar código',
     'submit': 'Enviar',
@@ -623,7 +738,7 @@ class AppLocalizations {
     'show_hint': 'Mostrar pista',
     'reset_code': 'Reiniciar código',
     'check_answer': 'Comprobar respuesta',
-    
+
     // Progress
     'progress': 'Progreso',
     'your_progress': 'Tu progreso',
@@ -634,7 +749,7 @@ class AppLocalizations {
     'completed': 'Completado',
     'in_progress': 'En progreso',
     'not_started': 'No iniciado',
-    
+
     // Achievements
     'achievements': 'Logros',
     'unlocked': 'Desbloqueado',
@@ -655,7 +770,7 @@ class AppLocalizations {
     'xp_hunter_desc': 'Gana 1000 XP en total',
     'centurion': 'Centurión',
     'centurion_desc': 'Alcanza el nivel 100',
-    
+
     // Profile
     'profile': 'Perfil',
     'edit_profile': 'Editar perfil',
@@ -669,7 +784,7 @@ class AppLocalizations {
     'learning_history': 'Historial de aprendizaje',
     'help_support': 'Ayuda y soporte',
     'welcome_back_emoji': '¡Bienvenido de nuevo! 👋',
-    
+
     // Settings
     'account': 'Cuenta',
     'change_password': 'Cambiar contraseña',
@@ -688,24 +803,25 @@ class AppLocalizations {
     'privacy_policy': 'Política de privacidad',
     'danger_zone': 'Zona de peligro',
     'delete_account': 'Eliminar cuenta',
-    'delete_account_warning': 'Esta acción no se puede deshacer. Todos tus datos se eliminarán permanentemente.',
+    'delete_account_warning':
+        'Esta acción no se puede deshacer. Todos tus datos se eliminarán permanentemente.',
     'clear_cache_confirm': '¿Estás seguro de que deseas limpiar la caché?',
     'logout_confirm': '¿Estás seguro de que deseas cerrar sesión?',
     'choose_language_subtitle': 'Elige el idioma de la interfaz',
     'search_language': 'Buscar idioma',
     'no_languages_found': 'No se encontraron idiomas',
     'language_changed': 'Idioma actualizado',
-    
+
     // Navigation
     'home': 'Inicio',
     'learn': 'Aprender',
     'practice': 'Practicar',
-    
+
     // Home screen specific
     'your_courses': 'Tus cursos',
     'browse_all_courses': 'Ver todos los cursos',
     'lessons_completed_suffix': 'lecciones completadas',
-    
+
     // Onboarding
     'onboarding_title_1': 'Aprende a programar',
     'onboarding_desc_1': 'Domina la programación con lecciones interactivas',
@@ -716,7 +832,7 @@ class AppLocalizations {
     'onboarding_title_4': 'Únete a la comunidad',
     'onboarding_desc_4': 'Conecta con estudiantes de todo el mundo',
     'get_started': 'Comenzar',
-    
+
     // Common messages
     'sign_in_to_continue': 'Inicia sesión para continuar aprendiendo',
     'error_prefix': 'Error: ',
@@ -743,7 +859,7 @@ class AppLocalizations {
     'done': 'Fertig',
     'retry': 'Wiederholen',
     'coming_soon': 'Demnächst!',
-    
+
     // Auth
     'login': 'Anmelden',
     'register': 'Registrieren',
@@ -761,7 +877,7 @@ class AppLocalizations {
     'start_coding_journey': 'Beginne heute deine Programmierreise',
     'welcome_back': 'Willkommen zurück! 👋',
     'skip_auth_debug': 'Authentifizierung überspringen (Debug)',
-    
+
     // Validation
     'enter_email': 'Bitte gib deine E-Mail-Adresse ein',
     'enter_password': 'Bitte gib ein Passwort ein',
@@ -770,12 +886,12 @@ class AppLocalizations {
     'password_too_short': 'Das Passwort muss mindestens 6 Zeichen lang sein',
     'passwords_not_match': 'Die Passwörter stimmen nicht überein',
     'name_too_short': 'Der Name muss mindestens 2 Zeichen lang sein',
-    
+
     // Home
     'start_journey': 'Beginne deine Reise',
     'continue_learning': 'Weiterlernen',
     'level': 'Level',
-    
+
     // Courses
     'courses': 'Kurse',
     'choose_learning_path': 'Wähle deinen Lernpfad',
@@ -789,13 +905,49 @@ class AppLocalizations {
     'react_desc': 'Erstelle interaktive Benutzeroberflächen mit React',
     'sql': 'SQL',
     'sql_desc': 'Beherrsche Datenbankabfragen mit SQL',
+    'python_intermediate': 'Python Mittelstufe',
+    'python_intermediate_desc':
+        'OOP, Decorators, Generatoren und fortgeschrittene Muster',
+    'html_css_intermediate': 'HTML/CSS Mittelstufe',
+    'html_css_intermediate_desc':
+        'Flexbox, Grid, Animationen und responsives Design',
+    'javascript_intermediate': 'JavaScript Mittelstufe',
+    'javascript_intermediate_desc':
+        'ES6+, async/await und funktionale Programmierung',
+    'sql_intermediate': 'SQL Mittelstufe',
+    'sql_intermediate_desc': 'JOINs, Unterabfragen und Fensterfunktionen',
+    'react_intermediate': 'React Mittelstufe',
+    'react_intermediate_desc': 'Hooks, Context und Performance-Optimierung',
+    'difficulty_beginner': 'Anfänger',
+    'difficulty_intermediate': 'Fortgeschritten',
+    'tag_programming': 'Programmierung',
+    'tag_beginner_friendly': 'Einsteigerfreundlich',
+    'tag_popular': 'Beliebt',
+    'tag_web_development': 'Webentwicklung',
+    'tag_frontend': 'Frontend',
+    'tag_web_design': 'Webdesign',
+    'tag_visual': 'Visuell',
+    'tag_framework': 'Framework',
+    'tag_modern': 'Modern',
+    'tag_database': 'Datenbank',
+    'tag_backend': 'Backend',
+    'tag_data': 'Daten',
+    'tag_oop': 'OOP',
+    'tag_advanced': 'Fortgeschritten',
+    'tag_layout': 'Layout',
+    'tag_responsive': 'Responsiv',
+    'tag_es6': 'ES6',
+    'tag_async': 'Asynchron',
+    'tag_analytics': 'Analyse',
+    'tag_hooks': 'Hooks',
+    'tag_state': 'Zustand',
     'all_courses': 'Alle Kurse',
     'my_courses': 'Meine Kurse',
     'course_progress': 'Kursfortschritt',
     'lessons_count': 'Lektionen',
     'start_course': 'Kurs starten',
     'continue_course': 'Kurs fortsetzen',
-    
+
     // Lessons
     'lesson': 'Lektion',
     'lessons': 'Lektionen',
@@ -811,12 +963,13 @@ class AppLocalizations {
     'no_quiz': 'Kein Quiz verfügbar',
     'no_coding_challenge': 'Keine Programmieraufgabe',
     'continue': 'Fortfahren',
+    'continue_to_quiz': 'Weiter zum Quiz',
     'continue_to_coding': 'Zur Programmieraufgabe',
     'quiz_completed': 'Quiz abgeschlossen! 🎉',
     'keep_practicing': 'Weiter üben!',
     'next_question': 'Nächste Frage',
     'finish_quiz': 'Quiz beenden',
-    
+
     // Code Challenge
     'run_code': 'Code ausführen',
     'submit': 'Absenden',
@@ -826,7 +979,7 @@ class AppLocalizations {
     'show_hint': 'Hinweis anzeigen',
     'reset_code': 'Code zurücksetzen',
     'check_answer': 'Antwort überprüfen',
-    
+
     // Progress
     'progress': 'Fortschritt',
     'your_progress': 'Dein Fortschritt',
@@ -837,7 +990,7 @@ class AppLocalizations {
     'completed': 'Abgeschlossen',
     'in_progress': 'In Bearbeitung',
     'not_started': 'Nicht begonnen',
-    
+
     // Achievements
     'achievements': 'Erfolge',
     'unlocked': 'Freigeschaltet',
@@ -858,7 +1011,7 @@ class AppLocalizations {
     'xp_hunter_desc': 'Verdiene insgesamt 1000 XP',
     'centurion': 'Zenturio',
     'centurion_desc': 'Erreiche Level 100',
-    
+
     // Profile
     'profile': 'Profil',
     'edit_profile': 'Profil bearbeiten',
@@ -872,7 +1025,7 @@ class AppLocalizations {
     'learning_history': 'Lernverlauf',
     'help_support': 'Hilfe & Support',
     'welcome_back_emoji': 'Willkommen zurück! 👋',
-    
+
     // Settings
     'account': 'Konto',
     'change_password': 'Passwort ändern',
@@ -891,35 +1044,38 @@ class AppLocalizations {
     'privacy_policy': 'Datenschutzrichtlinie',
     'danger_zone': 'Gefahrenzone',
     'delete_account': 'Konto löschen',
-    'delete_account_warning': 'Diese Aktion kann nicht rückgängig gemacht werden. Alle deine Daten werden dauerhaft gelöscht.',
+    'delete_account_warning':
+        'Diese Aktion kann nicht rückgängig gemacht werden. Alle deine Daten werden dauerhaft gelöscht.',
     'clear_cache_confirm': 'Bist du sicher, dass du den Cache leeren möchtest?',
     'logout_confirm': 'Bist du sicher, dass du dich abmelden möchtest?',
     'choose_language_subtitle': 'Wähle die Sprache der Benutzeroberfläche',
     'search_language': 'Sprache suchen',
     'no_languages_found': 'Keine Sprachen gefunden',
     'language_changed': 'Sprache aktualisiert',
-    
+
     // Navigation
     'home': 'Startseite',
     'learn': 'Lernen',
     'practice': 'Üben',
-    
+
     // Home screen specific
     'your_courses': 'Deine Kurse',
     'browse_all_courses': 'Alle Kurse durchsuchen',
     'lessons_completed_suffix': 'Lektionen abgeschlossen',
-    
+
     // Onboarding
     'onboarding_title_1': 'Programmieren lernen',
-    'onboarding_desc_1': 'Beherrsche das Programmieren mit interaktiven Lektionen',
+    'onboarding_desc_1':
+        'Beherrsche das Programmieren mit interaktiven Lektionen',
     'onboarding_title_2': 'Täglich üben',
-    'onboarding_desc_2': 'Bilde Programmiergewohnheiten mit täglichen Herausforderungen',
+    'onboarding_desc_2':
+        'Bilde Programmiergewohnheiten mit täglichen Herausforderungen',
     'onboarding_title_3': 'Fortschritt verfolgen',
     'onboarding_desc_3': 'Sieh dein Wachstum mit detaillierten Statistiken',
     'onboarding_title_4': 'Der Community beitreten',
     'onboarding_desc_4': 'Vernetze dich mit Lernenden weltweit',
     'get_started': 'Loslegen',
-    
+
     // Common messages
     'sign_in_to_continue': 'Melde dich an, um weiterzulernen',
     'error_prefix': 'Fehler: ',
@@ -946,7 +1102,7 @@ class AppLocalizations {
     'done': 'Terminé',
     'retry': 'Réessayer',
     'coming_soon': 'Bientôt disponible !',
-    
+
     // Auth
     'login': 'Connexion',
     'register': "S'inscrire",
@@ -961,10 +1117,11 @@ class AppLocalizations {
     'forgot_password': 'Mot de passe oublié ?',
     'already_have_account': 'Vous avez déjà un compte ?',
     'dont_have_account': "Vous n'avez pas de compte ?",
-    'start_coding_journey': 'Commencez votre parcours de programmation aujourd\'hui',
+    'start_coding_journey':
+        'Commencez votre parcours de programmation aujourd\'hui',
     'welcome_back': 'Bon retour ! 👋',
     'skip_auth_debug': 'Ignorer l\'authentification (Debug)',
-    
+
     // Validation
     'enter_email': 'Veuillez entrer votre e-mail',
     'enter_password': 'Veuillez entrer un mot de passe',
@@ -973,12 +1130,12 @@ class AppLocalizations {
     'password_too_short': 'Le mot de passe doit contenir au moins 6 caractères',
     'passwords_not_match': 'Les mots de passe ne correspondent pas',
     'name_too_short': 'Le nom doit contenir au moins 2 caractères',
-    
+
     // Home
     'start_journey': 'Commencez votre parcours',
     'continue_learning': 'Continuer l\'apprentissage',
     'level': 'Niveau',
-    
+
     // Courses
     'courses': 'Cours',
     'choose_learning_path': 'Choisissez votre parcours d\'apprentissage',
@@ -992,13 +1149,50 @@ class AppLocalizations {
     'react_desc': 'Créez des interfaces interactives avec React',
     'sql': 'SQL',
     'sql_desc': 'Maîtrisez les requêtes de base de données avec SQL',
+    'python_intermediate': 'Python Intermédiaire',
+    'python_intermediate_desc':
+        'POO, décorateurs, générateurs et patterns avancés',
+    'html_css_intermediate': 'HTML/CSS Intermédiaire',
+    'html_css_intermediate_desc':
+        'Flexbox, Grid, animations et design responsive',
+    'javascript_intermediate': 'JavaScript Intermédiaire',
+    'javascript_intermediate_desc':
+        'ES6+, async/await et programmation fonctionnelle',
+    'sql_intermediate': 'SQL Intermédiaire',
+    'sql_intermediate_desc': 'JOIN, sous-requêtes et fonctions de fenêtre',
+    'react_intermediate': 'React Intermédiaire',
+    'react_intermediate_desc':
+        'Hooks, Context et optimisation des performances',
+    'difficulty_beginner': 'Débutant',
+    'difficulty_intermediate': 'Intermédiaire',
+    'tag_programming': 'Programmation',
+    'tag_beginner_friendly': 'Débutant',
+    'tag_popular': 'Populaire',
+    'tag_web_development': 'Développement web',
+    'tag_frontend': 'Frontend',
+    'tag_web_design': 'Design web',
+    'tag_visual': 'Visuel',
+    'tag_framework': 'Framework',
+    'tag_modern': 'Moderne',
+    'tag_database': 'Base de données',
+    'tag_backend': 'Backend',
+    'tag_data': 'Données',
+    'tag_oop': 'POO',
+    'tag_advanced': 'Avancé',
+    'tag_layout': 'Mise en page',
+    'tag_responsive': 'Responsive',
+    'tag_es6': 'ES6',
+    'tag_async': 'Asynchrone',
+    'tag_analytics': 'Analytique',
+    'tag_hooks': 'Hooks',
+    'tag_state': 'État',
     'all_courses': 'Tous les cours',
     'my_courses': 'Mes cours',
     'course_progress': 'Progression du cours',
     'lessons_count': 'leçons',
     'start_course': 'Commencer le cours',
     'continue_course': 'Continuer le cours',
-    
+
     // Lessons
     'lesson': 'Leçon',
     'lessons': 'Leçons',
@@ -1014,12 +1208,13 @@ class AppLocalizations {
     'no_quiz': 'Aucun quiz disponible',
     'no_coding_challenge': 'Aucun défi de code',
     'continue': 'Continuer',
+    'continue_to_quiz': 'Continuer vers le quiz',
     'continue_to_coding': 'Continuer vers le défi de code',
     'quiz_completed': 'Quiz terminé ! 🎉',
     'keep_practicing': 'Continuez à pratiquer !',
     'next_question': 'Question suivante',
     'finish_quiz': 'Terminer le quiz',
-    
+
     // Code Challenge
     'run_code': 'Exécuter le code',
     'submit': 'Soumettre',
@@ -1029,7 +1224,7 @@ class AppLocalizations {
     'show_hint': 'Afficher l\'indice',
     'reset_code': 'Réinitialiser le code',
     'check_answer': 'Vérifier la réponse',
-    
+
     // Progress
     'progress': 'Progrès',
     'your_progress': 'Votre progression',
@@ -1040,7 +1235,7 @@ class AppLocalizations {
     'completed': 'Terminé',
     'in_progress': 'En cours',
     'not_started': 'Non commencé',
-    
+
     // Achievements
     'achievements': 'Réalisations',
     'unlocked': 'Déverrouillé',
@@ -1061,7 +1256,7 @@ class AppLocalizations {
     'xp_hunter_desc': 'Gagnez 1000 XP au total',
     'centurion': 'Centurion',
     'centurion_desc': 'Atteignez le niveau 100',
-    
+
     // Profile
     'profile': 'Profil',
     'edit_profile': 'Modifier le profil',
@@ -1075,7 +1270,7 @@ class AppLocalizations {
     'learning_history': 'Historique d\'apprentissage',
     'help_support': 'Aide et support',
     'welcome_back_emoji': 'Bon retour ! 👋',
-    
+
     // Settings
     'account': 'Compte',
     'change_password': 'Changer le mot de passe',
@@ -1094,39 +1289,44 @@ class AppLocalizations {
     'privacy_policy': 'Politique de confidentialité',
     'danger_zone': 'Zone dangereuse',
     'delete_account': 'Supprimer le compte',
-    'delete_account_warning': 'Cette action est irréversible. Toutes vos données seront définitivement supprimées.',
+    'delete_account_warning':
+        'Cette action est irréversible. Toutes vos données seront définitivement supprimées.',
     'clear_cache_confirm': 'Êtes-vous sûr de vouloir vider le cache ?',
     'logout_confirm': 'Êtes-vous sûr de vouloir vous déconnecter ?',
     'choose_language_subtitle': 'Choisissez la langue de l’interface',
     'search_language': 'Rechercher une langue',
     'no_languages_found': 'Aucune langue trouvée',
     'language_changed': 'Langue mise à jour',
-    
+
     // Navigation
     'home': 'Accueil',
     'learn': 'Apprendre',
     'practice': 'Pratiquer',
-    
+
     // Home screen specific
     'your_courses': 'Vos cours',
     'browse_all_courses': 'Parcourir tous les cours',
     'lessons_completed_suffix': 'leçons terminées',
-    
+
     // Onboarding
     'onboarding_title_1': 'Apprendre à coder',
-    'onboarding_desc_1': 'Maîtrisez la programmation avec des leçons interactives',
+    'onboarding_desc_1':
+        'Maîtrisez la programmation avec des leçons interactives',
     'onboarding_title_2': 'Pratiquer quotidiennement',
-    'onboarding_desc_2': 'Développez des habitudes de codage avec des défis quotidiens',
+    'onboarding_desc_2':
+        'Développez des habitudes de codage avec des défis quotidiens',
     'onboarding_title_3': 'Suivre la progression',
-    'onboarding_desc_3': 'Voyez votre croissance avec des statistiques détaillées',
+    'onboarding_desc_3':
+        'Voyez votre croissance avec des statistiques détaillées',
     'onboarding_title_4': 'Rejoindre la communauté',
     'onboarding_desc_4': 'Connectez-vous avec des apprenants du monde entier',
     'get_started': 'Commencer',
-    
+
     // Common messages
     'sign_in_to_continue': 'Connectez-vous pour continuer l\'apprentissage',
     'error_prefix': 'Erreur : ',
-    'error_saving_progress': 'Erreur lors de l\'enregistrement de la progression : ',
+    'error_saving_progress':
+        'Erreur lors de l\'enregistrement de la progression : ',
   };
 
   // Polish
@@ -1149,7 +1349,7 @@ class AppLocalizations {
     'done': 'Gotowe',
     'retry': 'Spróbuj ponownie',
     'coming_soon': 'Wkrótce!',
-    
+
     // Auth
     'login': 'Zaloguj się',
     'register': 'Zarejestruj się',
@@ -1164,10 +1364,11 @@ class AppLocalizations {
     'forgot_password': 'Zapomniałeś hasła?',
     'already_have_account': 'Masz już konto?',
     'dont_have_account': 'Nie masz konta?',
-    'start_coding_journey': 'Rozpocznij swoją przygodę z programowaniem już dziś',
+    'start_coding_journey':
+        'Rozpocznij swoją przygodę z programowaniem już dziś',
     'welcome_back': 'Witaj ponownie! 👋',
     'skip_auth_debug': 'Pomiń uwierzytelnianie (Debug)',
-    
+
     // Validation
     'enter_email': 'Proszę podać adres e-mail',
     'enter_password': 'Proszę podać hasło',
@@ -1176,12 +1377,12 @@ class AppLocalizations {
     'password_too_short': 'Hasło musi mieć co najmniej 6 znaków',
     'passwords_not_match': 'Hasła nie są identyczne',
     'name_too_short': 'Imię musi mieć co najmniej 2 znaki',
-    
+
     // Home
     'start_journey': 'Rozpocznij swoją podróż',
     'continue_learning': 'Kontynuuj naukę',
     'level': 'Poziom',
-    
+
     // Courses
     'courses': 'Kursy',
     'choose_learning_path': 'Wybierz swoją ścieżkę nauki',
@@ -1195,13 +1396,49 @@ class AppLocalizations {
     'react_desc': 'Twórz interaktywne interfejsy z React',
     'sql': 'SQL',
     'sql_desc': 'Opanuj zapytania bazodanowe z SQL',
+    'python_intermediate': 'Python Średniozaawansowany',
+    'python_intermediate_desc':
+        'OOP, dekoratory, generatory i zaawansowane wzorce',
+    'html_css_intermediate': 'HTML/CSS Średniozaawansowany',
+    'html_css_intermediate_desc':
+        'Flexbox, Grid, animacje i responsywny design',
+    'javascript_intermediate': 'JavaScript Średniozaawansowany',
+    'javascript_intermediate_desc':
+        'ES6+, async/await i programowanie funkcyjne',
+    'sql_intermediate': 'SQL Średniozaawansowany',
+    'sql_intermediate_desc': 'JOIN-y, podzapytania i funkcje okienkowe',
+    'react_intermediate': 'React Średniozaawansowany',
+    'react_intermediate_desc': 'Hooki, Context i optymalizacja wydajności',
+    'difficulty_beginner': 'Początkujący',
+    'difficulty_intermediate': 'Średniozaawansowany',
+    'tag_programming': 'Programowanie',
+    'tag_beginner_friendly': 'Przyjazny dla początkujących',
+    'tag_popular': 'Popularny',
+    'tag_web_development': 'Tworzenie stron',
+    'tag_frontend': 'Frontend',
+    'tag_web_design': 'Web design',
+    'tag_visual': 'Wizualny',
+    'tag_framework': 'Framework',
+    'tag_modern': 'Nowoczesny',
+    'tag_database': 'Bazy danych',
+    'tag_backend': 'Backend',
+    'tag_data': 'Dane',
+    'tag_oop': 'OOP',
+    'tag_advanced': 'Zaawansowany',
+    'tag_layout': 'Układ',
+    'tag_responsive': 'Responsywny',
+    'tag_es6': 'ES6',
+    'tag_async': 'Asynchroniczny',
+    'tag_analytics': 'Analityka',
+    'tag_hooks': 'Hooki',
+    'tag_state': 'Stan',
     'all_courses': 'Wszystkie kursy',
     'my_courses': 'Moje kursy',
     'course_progress': 'Postęp kursu',
     'lessons_count': 'lekcji',
     'start_course': 'Rozpocznij kurs',
     'continue_course': 'Kontynuuj kurs',
-    
+
     // Lessons
     'lesson': 'Lekcja',
     'lessons': 'Lekcje',
@@ -1217,12 +1454,13 @@ class AppLocalizations {
     'no_quiz': 'Brak dostępnego quizu',
     'no_coding_challenge': 'Brak wyzwania kodowania',
     'continue': 'Kontynuuj',
+    'continue_to_quiz': 'Przejdź do quizu',
     'continue_to_coding': 'Przejdź do wyzwania kodowania',
     'quiz_completed': 'Quiz ukończony! 🎉',
     'keep_practicing': 'Ćwicz dalej!',
     'next_question': 'Następne pytanie',
     'finish_quiz': 'Zakończ quiz',
-    
+
     // Code Challenge
     'run_code': 'Uruchom kod',
     'submit': 'Wyślij',
@@ -1232,7 +1470,7 @@ class AppLocalizations {
     'show_hint': 'Pokaż wskazówkę',
     'reset_code': 'Zresetuj kod',
     'check_answer': 'Sprawdź odpowiedź',
-    
+
     // Progress
     'progress': 'Postęp',
     'your_progress': 'Twój postęp',
@@ -1243,7 +1481,7 @@ class AppLocalizations {
     'completed': 'Ukończone',
     'in_progress': 'W trakcie',
     'not_started': 'Nie rozpoczęto',
-    
+
     // Achievements
     'achievements': 'Osiągnięcia',
     'unlocked': 'Odblokowane',
@@ -1264,7 +1502,7 @@ class AppLocalizations {
     'xp_hunter_desc': 'Zdobądź łącznie 1000 XP',
     'centurion': 'Centurion',
     'centurion_desc': 'Osiągnij poziom 100',
-    
+
     // Profile
     'profile': 'Profil',
     'edit_profile': 'Edytuj profil',
@@ -1278,7 +1516,7 @@ class AppLocalizations {
     'learning_history': 'Historia nauki',
     'help_support': 'Pomoc i wsparcie',
     'welcome_back_emoji': 'Witaj ponownie! 👋',
-    
+
     // Settings
     'account': 'Konto',
     'change_password': 'Zmień hasło',
@@ -1297,35 +1535,37 @@ class AppLocalizations {
     'privacy_policy': 'Polityka prywatności',
     'danger_zone': 'Strefa niebezpieczna',
     'delete_account': 'Usuń konto',
-    'delete_account_warning': 'Ta akcja jest nieodwracalna. Wszystkie twoje dane zostaną trwale usunięte.',
+    'delete_account_warning':
+        'Ta akcja jest nieodwracalna. Wszystkie twoje dane zostaną trwale usunięte.',
     'clear_cache_confirm': 'Czy na pewno chcesz wyczyścić pamięć podręczną?',
     'logout_confirm': 'Czy na pewno chcesz się wylogować?',
     'choose_language_subtitle': 'Wybierz język interfejsu',
     'search_language': 'Szukaj języka',
     'no_languages_found': 'Nie znaleziono języków',
     'language_changed': 'Język zaktualizowano',
-    
+
     // Navigation
     'home': 'Strona główna',
     'learn': 'Nauka',
     'practice': 'Ćwiczenia',
-    
+
     // Home screen specific
     'your_courses': 'Twoje kursy',
     'browse_all_courses': 'Przeglądaj wszystkie kursy',
     'lessons_completed_suffix': 'ukończonych lekcji',
-    
+
     // Onboarding
     'onboarding_title_1': 'Naucz się programować',
     'onboarding_desc_1': 'Opanuj programowanie dzięki interaktywnym lekcjom',
     'onboarding_title_2': 'Ćwicz codziennie',
-    'onboarding_desc_2': 'Buduj nawyki programowania dzięki codziennym wyzwaniom',
+    'onboarding_desc_2':
+        'Buduj nawyki programowania dzięki codziennym wyzwaniom',
     'onboarding_title_3': 'Śledź postępy',
     'onboarding_desc_3': 'Zobacz swój rozwój dzięki szczegółowym statystykom',
     'onboarding_title_4': 'Dołącz do społeczności',
     'onboarding_desc_4': 'Połącz się z uczniami z całego świata',
     'get_started': 'Rozpocznij',
-    
+
     // Common messages
     'sign_in_to_continue': 'Zaloguj się, aby kontynuować naukę',
     'error_prefix': 'Błąd: ',

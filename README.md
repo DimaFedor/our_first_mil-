@@ -174,6 +174,65 @@ To add a new language without code changes:
 2. Add the locale entry to `assets/l10n/languages.json`.
 3. Run `flutter pub get` (or restart hot reload) so assets are refreshed.
 
+### Lesson Content Localization
+Lessons use an overlay model:
+
+- Base lesson content (English fallback) lives in `lib/core/services/course_content_service.dart`
+- Per-language overlays live in `assets/lessons/<lang>/<courseId>.json`
+- Export and translation automation lives in `tool/export_lessons_to_json.dart` and `tool/generate_lesson_translations.py`
+
+Example:
+- `assets/lessons/uk/python.json`
+- `assets/lessons/pl/python.json`
+
+JSON structure:
+```json
+{
+  "courseId": "python",
+  "lessons": [
+    {
+      "id": "python_lesson_1",
+      "title": "Localized title",
+      "description": "Localized description",
+      "theorySlides": [
+        { "title": "Slide title", "content": "Slide content" }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Localized question",
+            "options": ["A", "B", "C", "D"],
+            "explanation": "Localized explanation"
+          }
+        ]
+      },
+      "codingChallenge": {
+        "title": "Localized challenge title",
+        "description": "Localized challenge description",
+        "hint": "Localized hint"
+      }
+    }
+  ]
+}
+```
+
+Any missing translation field automatically falls back to the original English lesson content.
+
+#### Regenerating translations for all current courses
+1. Export English JSON for all configured courses:
+   - `dart run tool/export_lessons_to_json.dart assets/lessons/en`
+2. Generate translated overlays for target languages:
+   - `python tool/generate_lesson_translations.py --source-dir assets/lessons/en --assets-dir assets/lessons --languages uk pl`
+3. Run `flutter pub get` after adding new language directories/files in `assets/lessons/`.
+
+#### Future courses
+When you add a new course:
+1. Add the course ID to `CourseContentService.supportedCourseIds`.
+2. Add lesson content in `CourseContentService`.
+3. Re-run the export + translation scripts above.
+
+If a selected language has no asset overlay yet, the app attempts runtime translation for lesson content and falls back to English when translation is unavailable.
+
 ## 🛠️ Tech Stack
 
 | Category | Technology |

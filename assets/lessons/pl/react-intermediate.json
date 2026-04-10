@@ -1,0 +1,357 @@
+{
+  "courseId": "react-intermediate",
+  "lessons": [
+    {
+      "id": "react_int_lesson_1",
+      "courseId": "react-intermediate",
+      "moduleId": "hooks",
+      "title": "Głębokie nurkowanie z haczykami",
+      "description": "Haczyki Master React",
+      "theorySlides": [
+        {
+          "title": "Reaguj haki 🪝",
+          "content": "Wbudowane haczyki:\n• **useState**: Stan lokalny\n• **useEffect**: Skutki uboczne\n• **useContext**: Korzystanie z kontekstu\n• **useRef**: Zmienne referencje\n• **useMemo/useCallback**: Optymalizacja",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Zasady haków 📏",
+          "content": "Dwie zasady, których MUSISZ przestrzegać:\n\n1️⃣ **Wywołuj tylko na najwyższym poziomie** – Nie wewnątrz pętli, warunków ani funkcji zagnieżdżonych\n\n2️⃣ **Wywołuj tylko funkcje React** - Komponenty lub niestandardowe hooki",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "użyj Oczyszczania efektów",
+          "content": "Wyczyść subskrypcje i liczniki czasu.",
+          "codeSnippet": "useEffect(() => {\n  const timer = setInterval(() => {\n    console.log(\"tick\");\n  }, 1000);\n  \n  // Cleanup function\n  return () => clearInterval(timer);\n}, []);",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Tablica zależności ⚙️",
+          "content": "Sterowanie po uruchomieniu efektu:\n\n• **[]** – Tylko na montażu\n• **[dep]** – Gdy zmienia się dep\n• **Brak tablicy** – przy każdym renderowaniu (ostrożnie!)\n\nZawsze uwzględniaj wszystkie wartości użyte w efekcie.",
+          "codeSnippet": "// Runs when userId changes\nuseEffect(() => {\n  fetchUser(userId);\n}, [userId]);\n\n// Runs on every render - usually wrong!\nuseEffect(() => {\n  console.log(\"rendered\");\n});",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Kiedy uruchamiane jest czyszczenie useEffect?",
+            "options": [
+              "Tylko na górze",
+              "Przed każdym ponownym uruchomieniem i odmontowaniem",
+              "Nigdy",
+              "Po kliknięciu"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Czyszczenie odbywa się przed ponownym uruchomieniem efektu i po odmontowaniu.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co oznacza pusta tablica zależności []?",
+            "options": [
+              "Uruchamiaj przy każdym renderowaniu",
+              "Uruchom tylko raz na górze",
+              "Nigdy nie biegaj",
+              "Błąd"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Pusta tablica oznacza, że ​​efekt działa tylko raz po zamontowaniu komponentu.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Czy możesz używać haków wewnątrz instrukcji if?",
+            "options": [
+              "Tak, zawsze",
+              "Nie, musi być na najwyższym poziomie",
+              "Używaj tylko stanu",
+              "Używaj tylkoEffect"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Haki muszą być wywoływane na najwyższym poziomie, aby zapewnić spójną kolejność renderowań.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Timer z czyszczeniem",
+        "description": "Utwórz efekt użycia z czyszczeniem dla interwału.",
+        "starterCode": "function Timer() {\n  const [count, setCount] = useState(0);\n  \n  useEffect(() => {\n    // Set interval and return cleanup\n  }, []);\n  \n  return <div>{count}</div>;\n}",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "setInterval return () => clearInterval",
+            "isHidden": false
+          }
+        ],
+        "hint": "Zwróć funkcję czyszczenia za pomocą clearInterval",
+        "solution": "function Timer() {\n  const [count, setCount] = useState(0);\n  \n  useEffect(() => {\n    const timer = setInterval(() => {\n      setCount(c => c + 1);\n    }, 1000);\n    return () => clearInterval(timer);\n  }, []);\n  \n  return <div>{count}</div>;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 0
+    },
+    {
+      "id": "react_int_lesson_2",
+      "courseId": "react-intermediate",
+      "moduleId": "hooks",
+      "title": "Niestandardowe haczyki",
+      "description": "Utwórz logikę wielokrotnego użytku",
+      "theorySlides": [
+        {
+          "title": "Niestandardowe haczyki 🔧",
+          "content": "Wyodrębnij logikę wielokrotnego użytku:\n• Zacznij od przedrostka „use”.\n• Wewnątrz można zastosować inne haczyki\n• Dziel się logiką stanową, a nie stanem",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Przykład: użyjLocalStorage",
+          "content": "Utrwalaj stan w localStorage.",
+          "codeSnippet": "function useLocalStorage(key, initial) {\n  const [value, setValue] = useState(() => {\n    const saved = localStorage.getItem(key);\n    return saved ? JSON.parse(saved) : initial;\n  });\n  \n  useEffect(() => {\n    localStorage.setItem(key, JSON.stringify(value));\n  }, [key, value]);\n  \n  return [value, setValue];\n}",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Niestandardowa konwencja nazewnictwa haków?",
+            "options": [
+              "nazwa_haka",
+              "jesteś na HookName",
+              "Nazwa haka",
+              "z_hakiem"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Niestandardowe haki muszą zaczynać się od przedrostka „use”.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Utwórz użycieToggle",
+        "description": "Utwórz hak useToggle dla stanu logicznego.",
+        "starterCode": "function useToggle(initial = false) {\n  // Return [value, toggle function]\n}\n\n// Usage:\n// const [isOn, toggle] = useToggle();",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "useState setX(!x)",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj useState i zwróć seter, który odwraca wartość",
+        "solution": "function useToggle(initial = false) {\n  const [value, setValue] = useState(initial);\n  const toggle = () => setValue(v => !v);\n  return [value, toggle];\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 1
+    },
+    {
+      "id": "react_int_lesson_3",
+      "courseId": "react-intermediate",
+      "moduleId": "state",
+      "title": "Kontekstowe API",
+      "description": "Stan globalny bez wierceń podporowych",
+      "theorySlides": [
+        {
+          "title": "Zareaguj na kontekst 🌐",
+          "content": "Udostępniaj dane bez przekazywania rekwizytów:\n• createContext(): Utwórz kontekst\n• Dostawca: Podaj wartość\n• useContext(): Zużywa wartość",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Wzorzec kontekstu",
+          "content": "Pełna konfiguracja kontekstu.",
+          "codeSnippet": "const ThemeContext = createContext('light');\n\nfunction ThemeProvider({ children }) {\n  const [theme, setTheme] = useState('light');\n  return (\n    <ThemeContext.Provider value={{ theme, setTheme }}>\n      {children}\n    </ThemeContext.Provider>\n  );\n}\n\nfunction Button() {\n  const { theme } = useContext(ThemeContext);\n  return <button className={theme}>Click</button>;\n}",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Co zwraca useContext?",
+            "options": [
+              "Dostawca",
+              "Konsument",
+              "Bieżąca wartość kontekstu",
+              "Obiekt kontekstowy"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "useContext zwraca bieżącą wartość od najbliższego dostawcy.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Użyj kontekstu motywu",
+        "description": "Utwórz i użyj prostego kontekstu motywu.",
+        "starterCode": "const ThemeContext = createContext();\n\nfunction App() {\n  return (\n    // Wrap with Provider value=\"dark\"\n    <Button />\n  );\n}\n\nfunction Button() {\n  // Use context to get theme\n  return <button>{theme}</button>;\n}",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "ThemeContext.Provider value useContext(ThemeContext)",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj dostawcy z właściwością wartości, użyj kontekstu do wykorzystania",
+        "solution": "const ThemeContext = createContext();\n\nfunction App() {\n  return (\n    <ThemeContext.Provider value=\"dark\">\n      <Button />\n    </ThemeContext.Provider>\n  );\n}\n\nfunction Button() {\n  const theme = useContext(ThemeContext);\n  return <button>{theme}</button>;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 2
+    },
+    {
+      "id": "react_int_lesson_4",
+      "courseId": "react-intermediate",
+      "moduleId": "performance",
+      "title": "Optymalizacja wydajności",
+      "description": "w notatce, w oddzwonieniu, notatce",
+      "theorySlides": [
+        {
+          "title": "Reaguj na występ ⚡",
+          "content": "Zapobiegaj niepotrzebnemu ponownemu renderowaniu:\n• **React.memo**: zapamiętywanie komponentów\n• **useMemo**: zapamiętywanie wartości\n• **useCallback**: Zapamiętywanie funkcji",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Kiedy optymalizować",
+          "content": "Optymalizuj tylko wtedy, gdy jest to konieczne!",
+          "codeSnippet": "// Expensive calculation\nconst sorted = useMemo(() => {\n  return items.sort((a, b) => a - b);\n}, [items]);\n\n// Stable callback for child\nconst handleClick = useCallback(() => {\n  setCount(c => c + 1);\n}, []);\n\n// Memoized child\nconst Child = React.memo(({ onClick }) => {\n  return <button onClick={onClick}>Click</button>;\n});",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Kiedy useMemo dokonuje ponownego obliczenia?",
+            "options": [
+              "Każdy render",
+              "Kiedy zmieniają się zależności",
+              "Nigdy",
+              "Po kliknięciu"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "useMemo przelicza tylko wtedy, gdy zmieniają się zależności.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Zapamiętaj drogie kalkulatory",
+        "description": "Użyj useMemo do kosztownych obliczeń.",
+        "starterCode": "function List({ items }) {\n  // Memoize the filtered result\n  const filtered = items.filter(i => i > 10);\n  \n  return <ul>{filtered.map(i => <li>{i}</li>)}</ul>;\n}",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "useMemo(() => items.filter [items]",
+            "isHidden": false
+          }
+        ],
+        "hint": "Zawiń filtr w useMemo z zależnością [elementy].",
+        "solution": "function List({ items }) {\n  const filtered = useMemo(() => {\n    return items.filter(i => i > 10);\n  }, [items]);\n  \n  return <ul>{filtered.map(i => <li>{i}</li>)}</ul>;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 3
+    },
+    {
+      "id": "react_int_lesson_5",
+      "courseId": "react-intermediate",
+      "moduleId": "patterns",
+      "title": "Granice błędów",
+      "description": "Obsługuj błędy komponentów z wdziękiem",
+      "theorySlides": [
+        {
+          "title": "Granice błędów 🛡️",
+          "content": "Wychwytuj błędy JavaScript w komponentach:\n• Zapobiega awarii całej aplikacji\n• Pokazuje zastępczy interfejs użytkownika\n• Tylko komponent klasy (na razie)",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Klasa granicy błędu",
+          "content": "Utwórz komponent granicy błędu.",
+          "codeSnippet": "class ErrorBoundary extends React.Component {\n  state = { hasError: false };\n  \n  static getDerivedStateFromError(error) {\n    return { hasError: true };\n  }\n  \n  componentDidCatch(error, info) {\n    console.error(error, info);\n  }\n  \n  render() {\n    if (this.state.hasError) {\n      return <h1>Something went wrong.</h1>;\n    }\n    return this.props.children;\n  }\n}",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Jakich błędów NIE wychwytują granice?",
+            "options": [
+              "Błędy renderowania",
+              "Błędy obsługi zdarzeń",
+              "Błędy cyklu życia",
+              "Błędy konstruktora"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Granice błędów nie wychwytują błędów obsługi zdarzeń - użyj try/catch.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Użyj granicy błędu",
+        "description": "Zawiń komponent z granicą błędu.",
+        "starterCode": "function App() {\n  return (\n    // Wrap UserProfile with ErrorBoundary\n    <UserProfile />\n  );\n}",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "<ErrorBoundary><UserProfile /></ErrorBoundary>",
+            "isHidden": false
+          }
+        ],
+        "hint": "Zawiń UserProfile w tagach ErrorBoundary",
+        "solution": "function App() {\n  return (\n    <ErrorBoundary>\n      <UserProfile />\n    </ErrorBoundary>\n  );\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 4
+    }
+  ]
+}

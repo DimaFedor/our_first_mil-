@@ -1,0 +1,357 @@
+{
+  "courseId": "react-intermediate",
+  "lessons": [
+    {
+      "id": "react_int_lesson_1",
+      "courseId": "react-intermediate",
+      "moduleId": "hooks",
+      "title": "Hooks Deep Dive",
+      "description": "Master React hooks",
+      "theorySlides": [
+        {
+          "title": "React Hooks 🪝",
+          "content": "Built-in hooks:\n• **useState**: Local state\n• **useEffect**: Side effects\n• **useContext**: Consume context\n• **useRef**: Mutable refs\n• **useMemo/useCallback**: Optimization",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Rules of Hooks 📏",
+          "content": "Two rules you MUST follow:\n\n1️⃣ **Only call at top level** - Not inside loops, conditions, or nested functions\n\n2️⃣ **Only call from React functions** - Components or custom hooks",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "useEffect Cleanup",
+          "content": "Clean up subscriptions and timers.",
+          "codeSnippet": "useEffect(() => {\n  const timer = setInterval(() => {\n    console.log(\"tick\");\n  }, 1000);\n  \n  // Cleanup function\n  return () => clearInterval(timer);\n}, []);",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Dependency Array ⚙️",
+          "content": "Controls when effect runs:\n\n• **[]** - Only on mount\n• **[dep]** - When dep changes\n• **No array** - Every render (careful!)\n\nAlways include all values used inside effect.",
+          "codeSnippet": "// Runs when userId changes\nuseEffect(() => {\n  fetchUser(userId);\n}, [userId]);\n\n// Runs on every render - usually wrong!\nuseEffect(() => {\n  console.log(\"rendered\");\n});",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "When does useEffect cleanup run?",
+            "options": [
+              "On mount only",
+              "Before every re-run and unmount",
+              "Never",
+              "On click"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Cleanup runs before re-running effect and on unmount.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does an empty dependency array [] mean?",
+            "options": [
+              "Run on every render",
+              "Run only once on mount",
+              "Never run",
+              "Error"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Empty array means effect runs only once when component mounts.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Can you use hooks inside if statements?",
+            "options": [
+              "Yes, always",
+              "No, must be at top level",
+              "Only useState",
+              "Only useEffect"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Hooks must be called at the top level to ensure consistent order between renders.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Timer with Cleanup",
+        "description": "Create useEffect with cleanup for interval.",
+        "starterCode": "function Timer() {\n  const [count, setCount] = useState(0);\n  \n  useEffect(() => {\n    // Set interval and return cleanup\n  }, []);\n  \n  return <div>{count}</div>;\n}",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "setInterval return () => clearInterval",
+            "isHidden": false
+          }
+        ],
+        "hint": "Return cleanup function with clearInterval",
+        "solution": "function Timer() {\n  const [count, setCount] = useState(0);\n  \n  useEffect(() => {\n    const timer = setInterval(() => {\n      setCount(c => c + 1);\n    }, 1000);\n    return () => clearInterval(timer);\n  }, []);\n  \n  return <div>{count}</div>;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 0
+    },
+    {
+      "id": "react_int_lesson_2",
+      "courseId": "react-intermediate",
+      "moduleId": "hooks",
+      "title": "Custom Hooks",
+      "description": "Create reusable logic",
+      "theorySlides": [
+        {
+          "title": "Custom Hooks 🔧",
+          "content": "Extract reusable logic:\n• Start with \"use\" prefix\n• Can use other hooks inside\n• Share stateful logic, not state",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Example: useLocalStorage",
+          "content": "Persist state to localStorage.",
+          "codeSnippet": "function useLocalStorage(key, initial) {\n  const [value, setValue] = useState(() => {\n    const saved = localStorage.getItem(key);\n    return saved ? JSON.parse(saved) : initial;\n  });\n  \n  useEffect(() => {\n    localStorage.setItem(key, JSON.stringify(value));\n  }, [key, value]);\n  \n  return [value, setValue];\n}",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Custom hook naming convention?",
+            "options": [
+              "hook_name",
+              "useHookName",
+              "HookName",
+              "with_hook"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Custom hooks must start with \"use\" prefix.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Create useToggle",
+        "description": "Create a useToggle hook for boolean state.",
+        "starterCode": "function useToggle(initial = false) {\n  // Return [value, toggle function]\n}\n\n// Usage:\n// const [isOn, toggle] = useToggle();",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "useState setX(!x)",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use useState and return setter that flips value",
+        "solution": "function useToggle(initial = false) {\n  const [value, setValue] = useState(initial);\n  const toggle = () => setValue(v => !v);\n  return [value, toggle];\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 1
+    },
+    {
+      "id": "react_int_lesson_3",
+      "courseId": "react-intermediate",
+      "moduleId": "state",
+      "title": "Context API",
+      "description": "Global state without props drilling",
+      "theorySlides": [
+        {
+          "title": "React Context 🌐",
+          "content": "Share data without passing props:\n• createContext(): Create context\n• Provider: Provide value\n• useContext(): Consume value",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Context Pattern",
+          "content": "Complete context setup.",
+          "codeSnippet": "const ThemeContext = createContext('light');\n\nfunction ThemeProvider({ children }) {\n  const [theme, setTheme] = useState('light');\n  return (\n    <ThemeContext.Provider value={{ theme, setTheme }}>\n      {children}\n    </ThemeContext.Provider>\n  );\n}\n\nfunction Button() {\n  const { theme } = useContext(ThemeContext);\n  return <button className={theme}>Click</button>;\n}",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What does useContext return?",
+            "options": [
+              "Provider",
+              "Consumer",
+              "Current context value",
+              "Context object"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "useContext returns the current value from nearest Provider.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Use Theme Context",
+        "description": "Create and use a simple theme context.",
+        "starterCode": "const ThemeContext = createContext();\n\nfunction App() {\n  return (\n    // Wrap with Provider value=\"dark\"\n    <Button />\n  );\n}\n\nfunction Button() {\n  // Use context to get theme\n  return <button>{theme}</button>;\n}",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "ThemeContext.Provider value useContext(ThemeContext)",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use Provider with value prop, useContext to consume",
+        "solution": "const ThemeContext = createContext();\n\nfunction App() {\n  return (\n    <ThemeContext.Provider value=\"dark\">\n      <Button />\n    </ThemeContext.Provider>\n  );\n}\n\nfunction Button() {\n  const theme = useContext(ThemeContext);\n  return <button>{theme}</button>;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 2
+    },
+    {
+      "id": "react_int_lesson_4",
+      "courseId": "react-intermediate",
+      "moduleId": "performance",
+      "title": "Performance Optimization",
+      "description": "useMemo, useCallback, memo",
+      "theorySlides": [
+        {
+          "title": "React Performance ⚡",
+          "content": "Prevent unnecessary re-renders:\n• **React.memo**: Memoize components\n• **useMemo**: Memoize values\n• **useCallback**: Memoize functions",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "When to Optimize",
+          "content": "Only optimize when needed!",
+          "codeSnippet": "// Expensive calculation\nconst sorted = useMemo(() => {\n  return items.sort((a, b) => a - b);\n}, [items]);\n\n// Stable callback for child\nconst handleClick = useCallback(() => {\n  setCount(c => c + 1);\n}, []);\n\n// Memoized child\nconst Child = React.memo(({ onClick }) => {\n  return <button onClick={onClick}>Click</button>;\n});",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "When does useMemo recalculate?",
+            "options": [
+              "Every render",
+              "When dependencies change",
+              "Never",
+              "On click"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "useMemo only recalculates when dependencies change.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Memoize Expensive Calc",
+        "description": "Use useMemo for expensive calculation.",
+        "starterCode": "function List({ items }) {\n  // Memoize the filtered result\n  const filtered = items.filter(i => i > 10);\n  \n  return <ul>{filtered.map(i => <li>{i}</li>)}</ul>;\n}",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "useMemo(() => items.filter [items]",
+            "isHidden": false
+          }
+        ],
+        "hint": "Wrap filter in useMemo with [items] dependency",
+        "solution": "function List({ items }) {\n  const filtered = useMemo(() => {\n    return items.filter(i => i > 10);\n  }, [items]);\n  \n  return <ul>{filtered.map(i => <li>{i}</li>)}</ul>;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 3
+    },
+    {
+      "id": "react_int_lesson_5",
+      "courseId": "react-intermediate",
+      "moduleId": "patterns",
+      "title": "Error Boundaries",
+      "description": "Handle component errors gracefully",
+      "theorySlides": [
+        {
+          "title": "Error Boundaries 🛡️",
+          "content": "Catch JavaScript errors in components:\n• Prevents whole app crash\n• Shows fallback UI\n• Class component only (for now)",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Error Boundary Class",
+          "content": "Create error boundary component.",
+          "codeSnippet": "class ErrorBoundary extends React.Component {\n  state = { hasError: false };\n  \n  static getDerivedStateFromError(error) {\n    return { hasError: true };\n  }\n  \n  componentDidCatch(error, info) {\n    console.error(error, info);\n  }\n  \n  render() {\n    if (this.state.hasError) {\n      return <h1>Something went wrong.</h1>;\n    }\n    return this.props.children;\n  }\n}",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What errors do boundaries NOT catch?",
+            "options": [
+              "Render errors",
+              "Event handler errors",
+              "Lifecycle errors",
+              "Constructor errors"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Error boundaries dont catch event handler errors - use try/catch.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Use Error Boundary",
+        "description": "Wrap component with error boundary.",
+        "starterCode": "function App() {\n  return (\n    // Wrap UserProfile with ErrorBoundary\n    <UserProfile />\n  );\n}",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "<ErrorBoundary><UserProfile /></ErrorBoundary>",
+            "isHidden": false
+          }
+        ],
+        "hint": "Wrap UserProfile in ErrorBoundary tags",
+        "solution": "function App() {\n  return (\n    <ErrorBoundary>\n      <UserProfile />\n    </ErrorBoundary>\n  );\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 4
+    }
+  ]
+}

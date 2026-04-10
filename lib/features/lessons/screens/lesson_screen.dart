@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/l10n/app_localizations.dart';
 import '../../../core/services/logger_service.dart';
+import '../../../core/services/lesson_localization_service.dart';
 import '../models/lesson_model.dart';
 import '../../courses/models/course_model.dart';
 import '../../progress/providers/progress_provider.dart';
@@ -18,11 +19,7 @@ class LessonScreen extends ConsumerStatefulWidget {
   final Course course;
   final Lesson lesson;
 
-  const LessonScreen({
-    super.key,
-    required this.course,
-    required this.lesson,
-  });
+  const LessonScreen({super.key, required this.course, required this.lesson});
 
   @override
   ConsumerState<LessonScreen> createState() => _LessonScreenState();
@@ -32,7 +29,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   int _currentSlideIndex = 0;
-  
+
   @override
   void initState() {
     super.initState();
@@ -47,36 +44,42 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
 
   @override
   Widget build(BuildContext context) {
+    final localizedLessonsAsync = ref.watch(
+      localizedCourseLessonsProvider(widget.course.id),
+    );
+    final localizedLesson =
+        localizedLessonsAsync.valueOrNull?.firstWhere(
+          (lesson) => lesson.id == widget.lesson.id,
+          orElse: () => widget.lesson,
+        ) ??
+        widget.lesson;
+
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [
-              Color(0xFF0A0E27),
-              Color(0xFF1A1F3A),
-              Color(0xFF0D1B3A),
-            ],
+            colors: [Color(0xFF0A0E27), Color(0xFF1A1F3A), Color(0xFF0D1B3A)],
           ),
         ),
         child: SafeArea(
           child: Column(
             children: [
               // Header
-              _buildHeader(),
-              
+              _buildHeader(localizedLesson),
+
               // Tab Bar
               _buildTabBar(),
-              
+
               // Content
               Expanded(
                 child: TabBarView(
                   controller: _tabController,
                   children: [
-                    _buildTheoryTab(),
-                    _buildQuizTab(),
-                    _buildCodingTab(),
+                    _buildTheoryTab(localizedLesson),
+                    _buildQuizTab(localizedLesson),
+                    _buildCodingTab(localizedLesson),
                   ],
                 ),
               ),
@@ -87,7 +90,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
     );
   }
 
-  Widget _buildHeader() {
+  Widget _buildHeader(Lesson lesson) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -104,7 +107,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      widget.lesson.title,
+                      lesson.title,
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 20,
@@ -112,7 +115,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
                       ),
                     ),
                     Text(
-                      widget.lesson.description,
+                      lesson.description,
                       style: const TextStyle(
                         color: Colors.white60,
                         fontSize: 14,
@@ -124,7 +127,10 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 6,
+                ),
                 decoration: BoxDecoration(
                   color: widget.course.color.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(12),
@@ -134,7 +140,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
                     Icon(Icons.star, color: widget.course.color, size: 16),
                     const SizedBox(width: 4),
                     Text(
-                      '${widget.lesson.xpReward} XP',
+                      '${lesson.xpReward} XP',
                       style: TextStyle(
                         color: widget.course.color,
                         fontWeight: FontWeight.bold,
@@ -161,7 +167,10 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
         controller: _tabController,
         indicator: BoxDecoration(
           gradient: LinearGradient(
-            colors: [widget.course.color, widget.course.color.withValues(alpha: 0.7)],
+            colors: [
+              widget.course.color,
+              widget.course.color.withValues(alpha: 0.7),
+            ],
           ),
           borderRadius: BorderRadius.circular(12),
         ),
@@ -176,11 +185,12 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
     ).animate(delay: 200.ms).fadeIn();
   }
 
-  Widget _buildTheoryTab() {
-    if (widget.lesson.theorySlides.isEmpty) {
+  Widget _buildTheoryTab(Lesson lesson) {
+    if (lesson.theorySlides.isEmpty) {
       return Center(
         child: Text(
-          AppLocalizations.of(context)?.get('no_theory') ?? 'No theory available',
+          AppLocalizations.of(context)?.get('no_theory') ??
+              'No theory available',
           style: const TextStyle(color: Colors.white60),
         ),
       );
@@ -190,7 +200,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
       children: [
         Expanded(
           child: PageView.builder(
-            itemCount: widget.lesson.theorySlides.length,
+            itemCount: lesson.theorySlides.length,
             onPageChanged: (index) {
               setState(() {
                 _currentSlideIndex = index;
@@ -198,21 +208,21 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
             },
             itemBuilder: (context, index) {
               return _TheorySlideWidget(
-                slide: widget.lesson.theorySlides[index],
+                slide: lesson.theorySlides[index],
                 courseColor: widget.course.color,
                 courseId: widget.course.id,
               );
             },
           ),
         ),
-        
+
         // Progress Indicator
         Padding(
           padding: const EdgeInsets.all(24),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(
-              widget.lesson.theorySlides.length,
+              lesson.theorySlides.length,
               (index) => AnimatedContainer(
                 duration: const Duration(milliseconds: 300),
                 margin: const EdgeInsets.symmetric(horizontal: 4),
@@ -228,19 +238,22 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
             ),
           ),
         ),
-        
+
         // Continue Button
-        if (_currentSlideIndex == widget.lesson.theorySlides.length - 1)
+        if (_currentSlideIndex == lesson.theorySlides.length - 1)
           Padding(
             padding: const EdgeInsets.all(24),
-            child: _buildContinueButton('Continue to Quiz'),
+            child: _buildContinueButton(
+              AppLocalizations.of(context)?.get('continue_to_quiz') ??
+                  'Continue to Quiz',
+            ),
           ),
       ],
     );
   }
 
-  Widget _buildQuizTab() {
-    if (widget.lesson.quiz == null) {
+  Widget _buildQuizTab(Lesson lesson) {
+    if (lesson.quiz == null) {
       return Center(
         child: Text(
           AppLocalizations.of(context)?.get('no_quiz') ?? 'No quiz available',
@@ -250,7 +263,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
     }
 
     return _QuizWidget(
-      quiz: widget.lesson.quiz!,
+      quiz: lesson.quiz!,
       courseColor: widget.course.color,
       onComplete: () {
         _tabController.animateTo(2);
@@ -258,45 +271,53 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
     );
   }
 
-  Widget _buildCodingTab() {
-    if (widget.lesson.codingChallenge == null) {
+  Widget _buildCodingTab(Lesson lesson) {
+    if (lesson.codingChallenge == null) {
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              AppLocalizations.of(context)?.get('no_coding_challenge') ?? 'No coding challenge',
+              AppLocalizations.of(context)?.get('no_coding_challenge') ??
+                  'No coding challenge',
               style: const TextStyle(color: Colors.white60, fontSize: 16),
             ),
             const SizedBox(height: 24),
-            _buildContinueButton(AppLocalizations.of(context)?.get('complete_lesson') ?? 'Complete Lesson'),
+            _buildContinueButton(
+              AppLocalizations.of(context)?.get('complete_lesson') ??
+                  'Complete Lesson',
+            ),
           ],
         ),
       );
     }
 
     return _CodingChallengeWidget(
-      challenge: widget.lesson.codingChallenge!,
+      challenge: lesson.codingChallenge!,
       courseColor: widget.course.color,
       onComplete: () async {
         try {
-          AppLogger.debug('Completing lesson: course=${widget.course.id}, lesson=${widget.lesson.id}');
-          
+          AppLogger.debug(
+            'Completing lesson: course=${widget.course.id}, lesson=${lesson.id}',
+          );
+
           // Mark lesson as complete
-          await ref.read(progressActionsProvider).completeLesson(
+          await ref
+              .read(progressActionsProvider)
+              .completeLesson(
                 courseId: widget.course.id,
-                lessonId: widget.lesson.id,
-                xpEarned: widget.lesson.xpReward,
+                lessonId: lesson.id,
+                xpEarned: lesson.xpReward,
               );
-          
-          AppLogger.success('Lesson completed: +${widget.lesson.xpReward} XP');
-          
+
+          AppLogger.success('Lesson completed: +${lesson.xpReward} XP');
+
           if (mounted) {
-            _showCompletionDialog();
+            _showCompletionDialog(lesson.xpReward);
           }
         } catch (e, stackTrace) {
           AppLogger.error('Error completing lesson', e, stackTrace);
-          
+
           if (mounted) {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
@@ -331,7 +352,10 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
         child: Ink(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [widget.course.color, widget.course.color.withValues(alpha: 0.7)],
+              colors: [
+                widget.course.color,
+                widget.course.color.withValues(alpha: 0.7),
+              ],
             ),
             borderRadius: BorderRadius.circular(16),
           ),
@@ -351,7 +375,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
     );
   }
 
-  void _showCompletionDialog() {
+  void _showCompletionDialog(int xpReward) {
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -365,7 +389,10 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [widget.course.color, widget.course.color.withValues(alpha: 0.7)],
+                  colors: [
+                    widget.course.color,
+                    widget.course.color.withValues(alpha: 0.7),
+                  ],
                 ),
                 shape: BoxShape.circle,
               ),
@@ -373,7 +400,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
             ).animate().scale(duration: 600.ms, curve: Curves.elasticOut),
             const SizedBox(height: 24),
             Text(
-              AppLocalizations.of(context)?.get('lesson_completed') ?? 'Lesson Complete!',
+              AppLocalizations.of(context)?.get('lesson_completed') ??
+                  'Lesson Complete!',
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 24,
@@ -382,7 +410,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
             ),
             const SizedBox(height: 8),
             Text(
-              '+${widget.lesson.xpReward} XP',
+              '+$xpReward XP',
               style: TextStyle(
                 color: widget.course.color,
                 fontSize: 20,
@@ -403,7 +431,9 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                child: Text(AppLocalizations.of(context)?.get('continue') ?? 'Continue'),
+                child: Text(
+                  AppLocalizations.of(context)?.get('continue') ?? 'Continue',
+                ),
               ),
             ),
           ],
@@ -453,9 +483,9 @@ class _TheorySlideWidget extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ).animate().fadeIn().slideY(begin: 0.2, end: 0),
-          
+
           const SizedBox(height: 24),
-          
+
           Text(
             slide.content,
             style: const TextStyle(
@@ -464,7 +494,7 @@ class _TheorySlideWidget extends StatelessWidget {
               height: 1.6,
             ),
           ).animate(delay: 200.ms).fadeIn().slideY(begin: 0.2, end: 0),
-          
+
           if (slide.codeSnippet != null) ...[
             const SizedBox(height: 24),
             CodeBlock(
@@ -510,7 +540,8 @@ class _QuizWidgetState extends State<_QuizWidget> {
     }
 
     final question = widget.quiz.questions[_currentQuestionIndex];
-    final isLastQuestion = _currentQuestionIndex == widget.quiz.questions.length - 1;
+    final isLastQuestion =
+        _currentQuestionIndex == widget.quiz.questions.length - 1;
 
     return Padding(
       padding: const EdgeInsets.all(24),
@@ -526,7 +557,7 @@ class _QuizWidgetState extends State<_QuizWidget> {
             ),
           ),
           const SizedBox(height: 16),
-          
+
           // Question
           Text(
             question.question,
@@ -537,7 +568,7 @@ class _QuizWidgetState extends State<_QuizWidget> {
             ),
           ),
           const SizedBox(height: 32),
-          
+
           // Options
           Expanded(
             child: ListView.builder(
@@ -548,87 +579,107 @@ class _QuizWidgetState extends State<_QuizWidget> {
                 final showColors = _showResult;
 
                 return Container(
-                  margin: const EdgeInsets.only(bottom: 12),
-                  child: Material(
-                    color: Colors.transparent,
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(12),
-                      onTap: _showResult ? null : () {
-                        setState(() {
-                          _selectedAnswer = index;
-                        });
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          color: showColors
-                              ? (isCorrect
-                                  ? Colors.green.withValues(alpha: 0.2)
-                                  : (isSelected
-                                      ? Colors.red.withValues(alpha: 0.2)
-                                      : Colors.white.withValues(alpha: 0.05)))
-                              : (isSelected
-                                  ? widget.courseColor.withValues(alpha: 0.2)
-                                  : Colors.white.withValues(alpha: 0.05)),
+                      margin: const EdgeInsets.only(bottom: 12),
+                      child: Material(
+                        color: Colors.transparent,
+                        child: InkWell(
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(
-                            color: showColors
-                                ? (isCorrect
-                                    ? Colors.green
-                                    : (isSelected ? Colors.red : Colors.transparent))
-                                : (isSelected ? widget.courseColor : Colors.transparent),
-                            width: 2,
-                          ),
-                        ),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 32,
-                              height: 32,
-                              decoration: BoxDecoration(
+                          onTap: _showResult
+                              ? null
+                              : () {
+                                  setState(() {
+                                    _selectedAnswer = index;
+                                  });
+                                },
+                          child: Container(
+                            padding: const EdgeInsets.all(16),
+                            decoration: BoxDecoration(
+                              color: showColors
+                                  ? (isCorrect
+                                        ? Colors.green.withValues(alpha: 0.2)
+                                        : (isSelected
+                                              ? Colors.red.withValues(
+                                                  alpha: 0.2,
+                                                )
+                                              : Colors.white.withValues(
+                                                  alpha: 0.05,
+                                                )))
+                                  : (isSelected
+                                        ? widget.courseColor.withValues(
+                                            alpha: 0.2,
+                                          )
+                                        : Colors.white.withValues(alpha: 0.05)),
+                              borderRadius: BorderRadius.circular(12),
+                              border: Border.all(
                                 color: showColors
                                     ? (isCorrect
-                                        ? Colors.green
-                                        : (isSelected ? Colors.red : Colors.white12))
-                                    : (isSelected ? widget.courseColor : Colors.white12),
-                                shape: BoxShape.circle,
+                                          ? Colors.green
+                                          : (isSelected
+                                                ? Colors.red
+                                                : Colors.transparent))
+                                    : (isSelected
+                                          ? widget.courseColor
+                                          : Colors.transparent),
+                                width: 2,
                               ),
-                              child: Center(
-                                child: Text(
-                                  String.fromCharCode(65 + index),
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
+                            ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 32,
+                                  height: 32,
+                                  decoration: BoxDecoration(
+                                    color: showColors
+                                        ? (isCorrect
+                                              ? Colors.green
+                                              : (isSelected
+                                                    ? Colors.red
+                                                    : Colors.white12))
+                                        : (isSelected
+                                              ? widget.courseColor
+                                              : Colors.white12),
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      String.fromCharCode(65 + index),
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ),
-                            const SizedBox(width: 16),
-                            Expanded(
-                              child: Text(
-                                question.options[index],
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
+                                const SizedBox(width: 16),
+                                Expanded(
+                                  child: Text(
+                                    question.options[index],
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                    ),
+                                  ),
                                 ),
-                              ),
+                                if (showColors && isCorrect)
+                                  const Icon(
+                                    Icons.check_circle,
+                                    color: Colors.green,
+                                  ),
+                                if (showColors && isSelected && !isCorrect)
+                                  const Icon(Icons.cancel, color: Colors.red),
+                              ],
                             ),
-                            if (showColors && isCorrect)
-                              const Icon(Icons.check_circle, color: Colors.green),
-                            if (showColors && isSelected && !isCorrect)
-                              const Icon(Icons.cancel, color: Colors.red),
-                          ],
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                ).animate(delay: Duration(milliseconds: 100 * index))
+                    )
+                    .animate(delay: Duration(milliseconds: 100 * index))
                     .fadeIn(duration: 300.ms)
                     .slideX(begin: 0.1, end: 0);
               },
             ),
           ),
-          
+
           // Check Answer Button
           if (!_showResult && _selectedAnswer != null)
             SizedBox(
@@ -649,41 +700,53 @@ class _QuizWidgetState extends State<_QuizWidget> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                child: Text(AppLocalizations.of(context)?.get('check_answer') ?? 'Check Answer'),
+                child: Text(
+                  AppLocalizations.of(context)?.get('check_answer') ??
+                      'Check Answer',
+                ),
               ),
             ).animate().fadeIn(duration: 200.ms).slideY(begin: 0.2, end: 0),
-          
+
           // Next/Finish Button
           if (_showResult)
             SizedBox(
-              width: double.infinity,
-              height: 56,
-              child: ElevatedButton(
-                onPressed: () {
-                  if (isLastQuestion) {
-                    // Show completion screen instead of directly calling onComplete
-                    setState(() {
-                      _quizCompleted = true;
-                    });
-                  } else {
-                    setState(() {
-                      _currentQuestionIndex++;
-                      _selectedAnswer = null;
-                      _showResult = false;
-                    });
-                  }
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: widget.courseColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                  width: double.infinity,
+                  height: 56,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (isLastQuestion) {
+                        // Show completion screen instead of directly calling onComplete
+                        setState(() {
+                          _quizCompleted = true;
+                        });
+                      } else {
+                        setState(() {
+                          _currentQuestionIndex++;
+                          _selectedAnswer = null;
+                          _showResult = false;
+                        });
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: widget.courseColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    child: Text(
+                      isLastQuestion
+                          ? (AppLocalizations.of(context)?.get('finish_quiz') ??
+                                'Finish Quiz')
+                          : (AppLocalizations.of(
+                                  context,
+                                )?.get('next_question') ??
+                                'Next Question'),
+                    ),
                   ),
-                ),
-                child: Text(isLastQuestion 
-                  ? (AppLocalizations.of(context)?.get('finish_quiz') ?? 'Finish Quiz')
-                  : (AppLocalizations.of(context)?.get('next_question') ?? 'Next Question')),
-              ),
-            ).animate().fadeIn(duration: 200.ms).scale(begin: const Offset(0.95, 0.95)),
+                )
+                .animate()
+                .fadeIn(duration: 200.ms)
+                .scale(begin: const Offset(0.95, 0.95)),
         ],
       ),
     );
@@ -705,7 +768,7 @@ class _QuizWidgetState extends State<_QuizWidget> {
               width: 120,
               height: 120,
               decoration: BoxDecoration(
-                color: isPassed 
+                color: isPassed
                     ? Colors.green.withValues(alpha: 0.2)
                     : Colors.orange.withValues(alpha: 0.2),
                 shape: BoxShape.circle,
@@ -716,23 +779,25 @@ class _QuizWidgetState extends State<_QuizWidget> {
                 color: isPassed ? Colors.green : Colors.orange,
               ),
             ).animate().scale(duration: 500.ms, curve: Curves.elasticOut),
-            
+
             const SizedBox(height: 32),
-            
+
             // Title
             Text(
-              isPassed 
-                ? (AppLocalizations.of(context)?.get('quiz_completed') ?? 'Quiz Completed! 🎉')
-                : (AppLocalizations.of(context)?.get('keep_practicing') ?? 'Keep Practicing!'),
+              isPassed
+                  ? (AppLocalizations.of(context)?.get('quiz_completed') ??
+                        'Quiz Completed! 🎉')
+                  : (AppLocalizations.of(context)?.get('keep_practicing') ??
+                        'Keep Practicing!'),
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
               ),
             ).animate(delay: 200.ms).fadeIn().slideY(begin: 0.2, end: 0),
-            
+
             const SizedBox(height: 16),
-            
+
             // Score
             Text(
               '$_correctAnswers/$totalQuestions correct ($percentage%)',
@@ -742,9 +807,9 @@ class _QuizWidgetState extends State<_QuizWidget> {
                 fontWeight: FontWeight.w600,
               ),
             ).animate(delay: 400.ms).fadeIn().slideY(begin: 0.2, end: 0),
-            
+
             const SizedBox(height: 48),
-            
+
             // Continue Button
             SizedBox(
               width: double.infinity,
@@ -758,12 +823,16 @@ class _QuizWidgetState extends State<_QuizWidget> {
                   ),
                 ),
                 child: Text(
-                  AppLocalizations.of(context)?.get('continue_to_coding') ?? 'Continue to Coding Challenge',
-                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  AppLocalizations.of(context)?.get('continue_to_coding') ??
+                      'Continue to Coding Challenge',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ).animate(delay: 600.ms).fadeIn().slideY(begin: 0.2, end: 0),
-            
+
             // Retry Button (if failed)
             if (!isPassed) ...[
               const SizedBox(height: 16),
@@ -779,10 +848,7 @@ class _QuizWidgetState extends State<_QuizWidget> {
                 },
                 child: Text(
                   AppLocalizations.of(context)?.get('try_again') ?? 'Try Again',
-                  style: TextStyle(
-                    color: widget.courseColor,
-                    fontSize: 16,
-                  ),
+                  style: TextStyle(color: widget.courseColor, fontSize: 16),
                 ),
               ).animate(delay: 800.ms).fadeIn(),
             ],
@@ -854,7 +920,7 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
             ),
           ),
           const SizedBox(height: 24),
-          
+
           // Code Editor with syntax highlighting and autocomplete
           CodeEditor(
             controller: _codeController,
@@ -862,7 +928,7 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
             accentColor: widget.courseColor,
           ),
           const SizedBox(height: 16),
-          
+
           // Hint Button
           if (widget.challenge.hint != null)
             TextButton.icon(
@@ -880,7 +946,7 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
                 style: TextStyle(color: widget.courseColor),
               ),
             ),
-          
+
           if (_showHint && widget.challenge.hint != null)
             Container(
               padding: const EdgeInsets.all(16),
@@ -888,21 +954,23 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
               decoration: BoxDecoration(
                 color: widget.courseColor.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: widget.courseColor.withValues(alpha: 0.3)),
+                border: Border.all(
+                  color: widget.courseColor.withValues(alpha: 0.3),
+                ),
               ),
               child: Text(
                 widget.challenge.hint!,
                 style: const TextStyle(color: Colors.white70),
               ),
             ),
-          
+
           // Run Button
           SizedBox(
             width: double.infinity,
             height: 56,
             child: ElevatedButton.icon(
               onPressed: _isRunning ? null : _runCode,
-              icon: _isRunning 
+              icon: _isRunning
                   ? const SizedBox(
                       width: 20,
                       height: 20,
@@ -913,9 +981,11 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
                     )
                   : const Icon(Icons.play_arrow, color: Colors.white),
               label: Text(
-                _isRunning 
-                  ? (AppLocalizations.of(context)?.get('loading') ?? 'Loading...')
-                  : (AppLocalizations.of(context)?.get('run_code') ?? 'Run Code'),
+                _isRunning
+                    ? (AppLocalizations.of(context)?.get('loading') ??
+                          'Loading...')
+                    : (AppLocalizations.of(context)?.get('run_code') ??
+                          'Run Code'),
                 style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w600,
@@ -930,7 +1000,7 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
               ),
             ),
           ),
-          
+
           // Console Output
           if (_output.isNotEmpty) ...[
             const SizedBox(height: 16),
@@ -940,7 +1010,7 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
                 color: const Color(0xFF0D1117),
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
-                  color: _hasError 
+                  color: _hasError
                       ? Colors.red.withValues(alpha: 0.5)
                       : widget.courseColor.withValues(alpha: 0.3),
                 ),
@@ -970,7 +1040,9 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
                   SelectableText(
                     _output,
                     style: TextStyle(
-                      color: _hasError ? Colors.red.shade300 : Colors.green.shade300,
+                      color: _hasError
+                          ? Colors.red.shade300
+                          : Colors.green.shade300,
                       fontFamily: 'monospace',
                       fontSize: 14,
                       height: 1.5,
@@ -980,32 +1052,36 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
               ),
             ).animate().fadeIn(duration: 300.ms).slideY(begin: 0.1, end: 0),
           ],
-          
+
           if (_testsPassed) ...[
             const SizedBox(height: 24),
             Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.green.withValues(alpha: 0.2),
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.green),
-              ),
-              child: const Row(
-                children: [
-                  Icon(Icons.check_circle, color: Colors.green),
-                  SizedBox(width: 12),
-                  Expanded(
-                    child: Text(
-                      'All tests passed! 🎉',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
-                    ),
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: Colors.green.withValues(alpha: 0.2),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: Colors.green),
                   ),
-                ],
-              ),
-            ).animate()
-              .scale(duration: 300.ms, curve: Curves.elasticOut)
-              .then()
-              .shimmer(duration: 500.ms, color: Colors.green.withValues(alpha: 0.5)),
+                  child: const Row(
+                    children: [
+                      Icon(Icons.check_circle, color: Colors.green),
+                      SizedBox(width: 12),
+                      Expanded(
+                        child: Text(
+                          'All tests passed! 🎉',
+                          style: TextStyle(color: Colors.white, fontSize: 16),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+                .animate()
+                .scale(duration: 300.ms, curve: Curves.elasticOut)
+                .then()
+                .shimmer(
+                  duration: 500.ms,
+                  color: Colors.green.withValues(alpha: 0.5),
+                ),
             const SizedBox(height: 16),
             SizedBox(
               width: double.infinity,
@@ -1032,7 +1108,7 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
 
   void _runCode() {
     final code = _codeController.text;
-    
+
     setState(() {
       _isRunning = true;
       _output = '';
@@ -1043,16 +1119,17 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
     // Simulate code execution with delay for UX
     Future.delayed(const Duration(milliseconds: 500), () {
       if (!mounted) return;
-      
+
       // Choose interpreter based on challenge language
       final language = widget.challenge.language.toLowerCase();
       final isJavaScript = language == 'javascript' || language == 'js';
-      final isHTML = language == 'html' || language == 'html/css' || language == 'css';
+      final isHTML =
+          language == 'html' || language == 'html/css' || language == 'css';
       final isSQL = language == 'sql';
       final isReact = language == 'react' || language == 'jsx';
-      
+
       dynamic result;
-      
+
       if (isJavaScript || isReact) {
         final jsInterpreter = js.JSInterpreter();
         result = jsInterpreter.execute(code);
@@ -1067,12 +1144,12 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
         final pythonInterpreter = py.PythonInterpreter();
         result = pythonInterpreter.execute(code);
       }
-      
+
       // Check against test cases
       final testCases = widget.challenge.testCases;
       bool passed = false;
       String? expectedHint;
-      
+
       if (result.hasError) {
         setState(() {
           _isRunning = false;
@@ -1082,23 +1159,27 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
         });
         return;
       }
-      
+
       final actualOutput = result.output.trim();
-      
+
       if (testCases.isNotEmpty) {
         for (final testCase in testCases) {
           final expected = testCase.expectedOutput.trim();
-          
+
           // Normalize comparison (handle different line endings)
-          final normalizedActual = actualOutput.replaceAll('\r\n', '\n').toLowerCase();
-          final normalizedExpected = expected.replaceAll('\r\n', '\n').toLowerCase();
-          
+          final normalizedActual = actualOutput
+              .replaceAll('\r\n', '\n')
+              .toLowerCase();
+          final normalizedExpected = expected
+              .replaceAll('\r\n', '\n')
+              .toLowerCase();
+
           if (normalizedActual == normalizedExpected) {
             passed = true;
             break;
           }
         }
-        
+
         if (!passed && testCases.isNotEmpty) {
           expectedHint = testCases.first.expectedOutput;
         }
@@ -1106,14 +1187,14 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
         // No test cases - accept any output
         passed = actualOutput.isNotEmpty;
       }
-      
+
       String finalOutput = actualOutput;
       if (!passed && expectedHint != null) {
         finalOutput = '$actualOutput\n\n❌ Expected output: "$expectedHint"';
       } else if (passed) {
         finalOutput = '$actualOutput\n\n✅ Test Passed!';
       }
-      
+
       setState(() {
         _isRunning = false;
         _output = finalOutput;
@@ -1126,15 +1207,54 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
   // SQL validation - validates SQL syntax and compares with expected output
   dynamic _validateSQL(String code) {
     final testCases = widget.challenge.testCases;
-    final normalizedCode = code.trim().toUpperCase().replaceAll(RegExp(r'\s+'), ' ');
-    
+    final normalizedCode = code.trim().toUpperCase().replaceAll(
+      RegExp(r'\s+'),
+      ' ',
+    );
+
     // Basic SQL syntax validation
-    final validKeywords = ['SELECT', 'INSERT', 'UPDATE', 'DELETE', 'CREATE', 'DROP', 'ALTER', 'FROM', 'WHERE', 'JOIN', 'LEFT', 'RIGHT', 'INNER', 'GROUP', 'ORDER', 'HAVING', 'LIMIT', 'INDEX', 'ON', 'INTO', 'VALUES', 'SET', 'TABLE', 'AND', 'OR', 'NOT', 'IN', 'LIKE', 'BETWEEN', 'AS', 'AVG', 'SUM', 'COUNT', 'MAX', 'MIN'];
-    
+    final validKeywords = [
+      'SELECT',
+      'INSERT',
+      'UPDATE',
+      'DELETE',
+      'CREATE',
+      'DROP',
+      'ALTER',
+      'FROM',
+      'WHERE',
+      'JOIN',
+      'LEFT',
+      'RIGHT',
+      'INNER',
+      'GROUP',
+      'ORDER',
+      'HAVING',
+      'LIMIT',
+      'INDEX',
+      'ON',
+      'INTO',
+      'VALUES',
+      'SET',
+      'TABLE',
+      'AND',
+      'OR',
+      'NOT',
+      'IN',
+      'LIKE',
+      'BETWEEN',
+      'AS',
+      'AVG',
+      'SUM',
+      'COUNT',
+      'MAX',
+      'MIN',
+    ];
+
     // Check for common SQL typos
     final typos = {
       'SELCT': 'SELECT',
-      'SLECT': 'SELECT', 
+      'SLECT': 'SELECT',
       'FORM': 'FROM',
       'WERE': 'WHERE',
       'WHER': 'WHERE',
@@ -1142,34 +1262,48 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
       'DELTE': 'DELETE',
       'UPDTE': 'UPDATE',
     };
-    
+
     for (final typo in typos.entries) {
       if (normalizedCode.contains(typo.key)) {
         return _SQLResult(
-          output: '❌ Typo detected: "${typo.key}" should be "${typo.value}"\n\nYour query:\n$code',
+          output:
+              '❌ Typo detected: "${typo.key}" should be "${typo.value}"\n\nYour query:\n$code',
           hasError: true,
         );
       }
     }
-    
+
     for (final testCase in testCases) {
-      final expectedNormalized = testCase.expectedOutput.trim().toUpperCase().replaceAll(RegExp(r'\s+'), ' ');
-      
+      final expectedNormalized = testCase.expectedOutput
+          .trim()
+          .toUpperCase()
+          .replaceAll(RegExp(r'\s+'), ' ');
+
       // Check if code matches expected (case-insensitive, whitespace-normalized)
       if (normalizedCode == expectedNormalized) {
-        return _SQLResult(output: '✅ Query is correct!\n\n$code', hasError: false);
+        return _SQLResult(
+          output: '✅ Query is correct!\n\n$code',
+          hasError: false,
+        );
       }
-      
+
       // Also check if it contains key parts (more flexible matching)
-      final expectedParts = expectedNormalized.split(' ').where((p) => validKeywords.contains(p) || p.contains('('));
-      final codeParts = normalizedCode.split(' ').where((p) => validKeywords.contains(p) || p.contains('('));
-      
-      if (expectedParts.length == codeParts.length && 
+      final expectedParts = expectedNormalized
+          .split(' ')
+          .where((p) => validKeywords.contains(p) || p.contains('('));
+      final codeParts = normalizedCode
+          .split(' ')
+          .where((p) => validKeywords.contains(p) || p.contains('('));
+
+      if (expectedParts.length == codeParts.length &&
           expectedParts.every((p) => normalizedCode.contains(p))) {
-        return _SQLResult(output: '✅ Query is correct!\n\n$code', hasError: false);
+        return _SQLResult(
+          output: '✅ Query is correct!\n\n$code',
+          hasError: false,
+        );
       }
     }
-    
+
     // If no match, provide helpful feedback
     if (testCases.isNotEmpty) {
       final expected = testCases.first.expectedOutput;
@@ -1178,7 +1312,7 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
         hasError: false,
       );
     }
-    
+
     return _SQLResult(output: code, hasError: false);
   }
 }
@@ -1200,9 +1334,5 @@ class _SQLResult {
   final bool hasError;
   final String? error;
 
-  _SQLResult({
-    required this.output,
-    required this.hasError,
-    this.error,
-  });
+  _SQLResult({required this.output, required this.hasError, this.error});
 }

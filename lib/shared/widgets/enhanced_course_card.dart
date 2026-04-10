@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
+
+import '../../core/l10n/app_localizations.dart';
 import '../../features/courses/models/course_model.dart';
 
 class EnhancedCourseCard extends StatefulWidget {
@@ -25,11 +26,14 @@ class _EnhancedCourseCardState extends State<EnhancedCourseCard> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final lessonsCountLabel = l10n?.get('lessons_count') ?? 'lessons';
     final totalLessons = widget.course.totalLessons;
-    final progress = totalLessons > 0 
-        ? widget.completedLessons / totalLessons 
+    final progress = totalLessons > 0
+        ? widget.completedLessons / totalLessons
         : 0.0;
-    final isCompleted = widget.completedLessons >= totalLessons && totalLessons > 0;
+    final isCompleted =
+        widget.completedLessons >= totalLessons && totalLessons > 0;
 
     return GestureDetector(
       onTapDown: (_) => setState(() => _isPressed = true),
@@ -74,7 +78,7 @@ class _EnhancedCourseCardState extends State<EnhancedCourseCard> {
                   ),
                 ),
               ),
-              
+
               // Content
               Padding(
                 padding: const EdgeInsets.all(16),
@@ -123,9 +127,9 @@ class _EnhancedCourseCardState extends State<EnhancedCourseCard> {
                           ),
                       ],
                     ),
-                    
+
                     const SizedBox(height: 12),
-                    
+
                     // Title
                     Text(
                       widget.course.title,
@@ -135,9 +139,9 @@ class _EnhancedCourseCardState extends State<EnhancedCourseCard> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    
+
                     const SizedBox(height: 4),
-                    
+
                     // Description
                     Expanded(
                       child: Text(
@@ -150,7 +154,7 @@ class _EnhancedCourseCardState extends State<EnhancedCourseCard> {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                    
+
                     // Progress bar
                     if (widget.completedLessons > 0) ...[
                       const SizedBox(height: 8),
@@ -159,13 +163,15 @@ class _EnhancedCourseCardState extends State<EnhancedCourseCard> {
                         child: LinearProgressIndicator(
                           value: progress,
                           backgroundColor: Colors.white.withValues(alpha: 0.2),
-                          valueColor: const AlwaysStoppedAnimation(Colors.white),
+                          valueColor: const AlwaysStoppedAnimation(
+                            Colors.white,
+                          ),
                           minHeight: 4,
                         ),
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        '${widget.completedLessons}/$totalLessons lessons',
+                        '${widget.completedLessons}/$totalLessons $lessonsCountLabel',
                         style: TextStyle(
                           color: Colors.white.withValues(alpha: 0.8),
                           fontSize: 10,
@@ -183,7 +189,7 @@ class _EnhancedCourseCardState extends State<EnhancedCourseCard> {
                           ),
                           const SizedBox(width: 4),
                           Text(
-                            '$totalLessons lessons',
+                            '$totalLessons $lessonsCountLabel',
                             style: TextStyle(
                               color: Colors.white.withValues(alpha: 0.8),
                               fontSize: 11,

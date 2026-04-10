@@ -1,0 +1,629 @@
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../features/lessons/models/lesson_model.dart';
+import '../l10n/language_catalog.dart';
+import '../l10n/locale_provider.dart';
+import 'course_content_service.dart';
+import 'runtime_translation_service.dart';
+
+final lessonLanguageOverrideProvider = StateProvider<String?>((ref) {
+  return null;
+});
+
+final localizedCourseLessonsProvider =
+    FutureProvider.family<List<Lesson>, String>((ref, courseId) async {
+      final uiLocale = ref.watch(localeProvider);
+      final forcedLanguageCode = ref.watch(lessonLanguageOverrideProvider);
+
+      return LessonLocalizationService.getLocalizedLessons(
+        courseId: courseId,
+        uiLocale: uiLocale,
+        forcedLanguageCode: forcedLanguageCode,
+      );
+    });
+
+class LessonLocalizationService {
+  static const String _fallbackLanguageCode = 'en';
+  static const String _assetsRoot = 'assets/lessons';
+
+  static final Map<String, Map<String, Map<String, dynamic>>>
+  _courseTranslationCache = {};
+  static final Map<String, List<Lesson>> _localizedLessonsCache = {};
+
+  static Future<List<Lesson>> getLocalizedLessons({
+    required String courseId,
+    required Locale uiLocale,
+    String? forcedLanguageCode,
+  }) async {
+    final baseLessons = CourseContentService.getLessonsForCourse(courseId);
+    if (baseLessons.isEmpty) {
+      return const <Lesson>[];
+    }
+
+    final languageCandidates = _buildLanguageCandidates(
+      uiLocale: uiLocale,
+      forcedLanguageCode: forcedLanguageCode,
+    );
+
+    final primaryLanguageCode = _resolvePrimaryLanguageCode(languageCandidates);
+    final localizedCacheKey = '$primaryLanguageCode|$courseId';
+    final cachedLessons = _localizedLessonsCache[localizedCacheKey];
+    if (cachedLessons != null) {
+      return cachedLessons;
+    }
+
+    final mergedTranslations = <String, Map<String, dynamic>>{};
+
+    for (final languageCode in languageCandidates) {
+      if (languageCode == _fallbackLanguageCode) {
+        continue;
+      }
+
+      final translationsByLesson = await _loadTranslationsForCourseLanguage(
+        courseId: courseId,
+        languageCode: languageCode,
+      );
+
+      if (translationsByLesson.isEmpty) {
+        continue;
+      }
+
+      for (final entry in translationsByLesson.entries) {
+        final existing = mergedTranslations[entry.key];
+        mergedTranslations[entry.key] = existing == null
+            ? Map<String, dynamic>.from(entry.value)
+            : _mergeMaps(existing, entry.value);
+      }
+    }
+
+    final hasFullOverlayForCourse = _hasComprehensiveOverlayForCourse(
+      baseLessons: baseLessons,
+      mergedTranslations: mergedTranslations,
+    );
+
+    var localizedLessons = baseLessons;
+    if (primaryLanguageCode != _fallbackLanguageCode &&
+        !hasFullOverlayForCourse) {
+      localizedLessons = await _autoTranslateLessons(
+        lessons: localizedLessons,
+        targetLanguageCode: primaryLanguageCode,
+      );
+    }
+
+    if (mergedTranslations.isNotEmpty) {
+      localizedLessons = List<Lesson>.unmodifiable(
+        localizedLessons.map(
+          (lesson) =>
+              _applyLessonTranslation(lesson, mergedTranslations[lesson.id]),
+        ),
+      );
+    }
+
+    final immutableLessons = List<Lesson>.unmodifiable(localizedLessons);
+    _localizedLessonsCache[localizedCacheKey] = immutableLessons;
+    return immutableLessons;
+  }
+
+  static List<String> _buildLanguageCandidates({
+    required Locale uiLocale,
+    String? forcedLanguageCode,
+  }) {
+    final normalizedLanguageCode =
+        forcedLanguageCode != null && forcedLanguageCode.trim().isNotEmpty
+        ? _normalizeLanguageCode(forcedLanguageCode)
+        : _normalizeLanguageCode(localeToLanguageTag(uiLocale));
+
+    final parts = normalizedLanguageCode
+        .split('-')
+        .where((part) => part.isNotEmpty)
+        .toList(growable: false);
+
+    if (parts.isEmpty) {
+      return <String>[_fallbackLanguageCode];
+    }
+
+    final candidates = <String>[parts.first];
+    if (parts.length > 1) {
+      candidates.add(parts.join('-'));
+    }
+
+    return candidates.toSet().toList(growable: false);
+  }
+
+  static String _normalizeLanguageCode(String rawCode) {
+    return rawCode.trim().toLowerCase().replaceAll('_', '-');
+  }
+
+  static String _resolvePrimaryLanguageCode(List<String> languageCandidates) {
+    if (languageCandidates.isEmpty) {
+      return _fallbackLanguageCode;
+    }
+
+    final firstCandidate = _normalizeLanguageCode(languageCandidates.first);
+    final segments = firstCandidate.split('-').where((part) => part.isNotEmpty);
+    if (segments.isEmpty) {
+      return _fallbackLanguageCode;
+    }
+
+    return segments.first;
+  }
+
+  static Future<Map<String, Map<String, dynamic>>>
+  _loadTranslationsForCourseLanguage({
+    required String courseId,
+    required String languageCode,
+  }) async {
+    final cacheKey = '$languageCode|$courseId';
+    final cached = _courseTranslationCache[cacheKey];
+    if (cached != null) {
+      return cached;
+    }
+
+    final path = '$_assetsRoot/$languageCode/$courseId.json';
+
+    try {
+      final rawJson = await rootBundle.loadString(path);
+      final decoded = jsonDecode(rawJson);
+
+      if (decoded is! Map<String, dynamic>) {
+        debugPrint('Lesson translation file is not a JSON object: $path');
+        const emptyTranslations = <String, Map<String, dynamic>>{};
+        _courseTranslationCache[cacheKey] = emptyTranslations;
+        return emptyTranslations;
+      }
+
+      final declaredCourseId = _readString(decoded, 'courseId');
+      if (declaredCourseId != null && declaredCourseId != courseId) {
+        debugPrint(
+          'Lesson translation file $path has mismatched courseId "$declaredCourseId".',
+        );
+      }
+
+      final translations = <String, Map<String, dynamic>>{};
+      final rawLessons = decoded['lessons'];
+      if (rawLessons is List) {
+        for (final item in rawLessons) {
+          final lessonMap = _asStringMap(item);
+          if (lessonMap == null) {
+            continue;
+          }
+
+          final lessonId = _readString(lessonMap, 'id');
+          if (lessonId == null || lessonId.isEmpty) {
+            continue;
+          }
+
+          translations[lessonId] = lessonMap;
+        }
+      }
+
+      final immutableTranslations =
+          Map<String, Map<String, dynamic>>.unmodifiable(translations);
+      _courseTranslationCache[cacheKey] = immutableTranslations;
+      return immutableTranslations;
+    } on FlutterError {
+      const emptyTranslations = <String, Map<String, dynamic>>{};
+      _courseTranslationCache[cacheKey] = emptyTranslations;
+      return emptyTranslations;
+    } on FormatException catch (error) {
+      debugPrint('Invalid lesson translation JSON in $path: $error');
+      const emptyTranslations = <String, Map<String, dynamic>>{};
+      _courseTranslationCache[cacheKey] = emptyTranslations;
+      return emptyTranslations;
+    }
+  }
+
+  static Lesson _applyLessonTranslation(
+    Lesson baseLesson,
+    Map<String, dynamic>? translation,
+  ) {
+    if (translation == null) {
+      return baseLesson;
+    }
+
+    return Lesson(
+      id: baseLesson.id,
+      courseId: baseLesson.courseId,
+      moduleId: baseLesson.moduleId,
+      title: _readString(translation, 'title') ?? baseLesson.title,
+      description:
+          _readString(translation, 'description') ?? baseLesson.description,
+      theorySlides: _applyTheorySlideTranslations(
+        baseSlides: baseLesson.theorySlides,
+        rawSlides: translation['theorySlides'],
+      ),
+      quiz: _applyQuizTranslation(
+        baseQuiz: baseLesson.quiz,
+        rawQuiz: translation['quiz'],
+      ),
+      codingChallenge: _applyCodingChallengeTranslation(
+        baseChallenge: baseLesson.codingChallenge,
+        rawChallenge: translation['codingChallenge'],
+      ),
+      xpReward: baseLesson.xpReward,
+      order: baseLesson.order,
+    );
+  }
+
+  static List<TheorySlide> _applyTheorySlideTranslations({
+    required List<TheorySlide> baseSlides,
+    required dynamic rawSlides,
+  }) {
+    if (rawSlides is! List) {
+      return baseSlides;
+    }
+
+    return List<TheorySlide>.generate(baseSlides.length, (index) {
+      final baseSlide = baseSlides[index];
+      final translation = index < rawSlides.length
+          ? _asStringMap(rawSlides[index])
+          : null;
+
+      if (translation == null) {
+        return baseSlide;
+      }
+
+      return TheorySlide(
+        title: _readString(translation, 'title') ?? baseSlide.title,
+        content: _readString(translation, 'content') ?? baseSlide.content,
+        codeSnippet: baseSlide.codeSnippet,
+        codeLanguage: baseSlide.codeLanguage,
+        imageUrl: baseSlide.imageUrl,
+        lottieUrl: baseSlide.lottieUrl,
+        order: baseSlide.order,
+      );
+    });
+  }
+
+  static Quiz? _applyQuizTranslation({
+    required Quiz? baseQuiz,
+    required dynamic rawQuiz,
+  }) {
+    if (baseQuiz == null) {
+      return null;
+    }
+
+    final quizTranslation = _asStringMap(rawQuiz);
+    if (quizTranslation == null) {
+      return baseQuiz;
+    }
+
+    return Quiz(
+      questions: _applyQuizQuestionTranslations(
+        baseQuestions: baseQuiz.questions,
+        rawQuestions: quizTranslation['questions'],
+      ),
+      xpReward: baseQuiz.xpReward,
+    );
+  }
+
+  static List<QuizQuestion> _applyQuizQuestionTranslations({
+    required List<QuizQuestion> baseQuestions,
+    required dynamic rawQuestions,
+  }) {
+    if (rawQuestions is! List) {
+      return baseQuestions;
+    }
+
+    return List<QuizQuestion>.generate(baseQuestions.length, (index) {
+      final baseQuestion = baseQuestions[index];
+      final translation = index < rawQuestions.length
+          ? _asStringMap(rawQuestions[index])
+          : null;
+
+      if (translation == null) {
+        return baseQuestion;
+      }
+
+      return QuizQuestion(
+        question: _readString(translation, 'question') ?? baseQuestion.question,
+        options: _applyQuizOptions(
+          baseOptions: baseQuestion.options,
+          rawOptions: translation['options'],
+        ),
+        correctAnswerIndex: baseQuestion.correctAnswerIndex,
+        explanation:
+            _readString(translation, 'explanation') ?? baseQuestion.explanation,
+        type: baseQuestion.type,
+      );
+    });
+  }
+
+  static List<String> _applyQuizOptions({
+    required List<String> baseOptions,
+    required dynamic rawOptions,
+  }) {
+    if (rawOptions is! List) {
+      return baseOptions;
+    }
+
+    return List<String>.generate(baseOptions.length, (index) {
+      if (index >= rawOptions.length) {
+        return baseOptions[index];
+      }
+
+      final translated = rawOptions[index];
+      if (translated is String && translated.trim().isNotEmpty) {
+        return translated;
+      }
+
+      return baseOptions[index];
+    });
+  }
+
+  static CodingChallenge? _applyCodingChallengeTranslation({
+    required CodingChallenge? baseChallenge,
+    required dynamic rawChallenge,
+  }) {
+    if (baseChallenge == null) {
+      return null;
+    }
+
+    final challengeTranslation = _asStringMap(rawChallenge);
+    if (challengeTranslation == null) {
+      return baseChallenge;
+    }
+
+    return CodingChallenge(
+      title: _readString(challengeTranslation, 'title') ?? baseChallenge.title,
+      description:
+          _readString(challengeTranslation, 'description') ??
+          baseChallenge.description,
+      starterCode: baseChallenge.starterCode,
+      language: baseChallenge.language,
+      testCases: baseChallenge.testCases,
+      hint: _readString(challengeTranslation, 'hint') ?? baseChallenge.hint,
+      solution: baseChallenge.solution,
+      xpReward: baseChallenge.xpReward,
+    );
+  }
+
+  static Future<List<Lesson>> _autoTranslateLessons({
+    required List<Lesson> lessons,
+    required String targetLanguageCode,
+  }) async {
+    final translatedLessons = await Future.wait(
+      lessons.map(
+        (lesson) => _autoTranslateLesson(
+          lesson: lesson,
+          targetLanguageCode: targetLanguageCode,
+        ),
+      ),
+    );
+    return List<Lesson>.unmodifiable(translatedLessons);
+  }
+
+  static Future<Lesson> _autoTranslateLesson({
+    required Lesson lesson,
+    required String targetLanguageCode,
+  }) async {
+    final translatedTitleFuture = _translateText(
+      lesson.title,
+      targetLanguageCode,
+    );
+    final translatedDescriptionFuture = _translateText(
+      lesson.description,
+      targetLanguageCode,
+    );
+    final translatedSlidesFuture = _autoTranslateTheorySlides(
+      slides: lesson.theorySlides,
+      targetLanguageCode: targetLanguageCode,
+    );
+    final translatedQuizFuture = _autoTranslateQuiz(
+      quiz: lesson.quiz,
+      targetLanguageCode: targetLanguageCode,
+    );
+    final translatedChallengeFuture = _autoTranslateCodingChallenge(
+      challenge: lesson.codingChallenge,
+      targetLanguageCode: targetLanguageCode,
+    );
+
+    return Lesson(
+      id: lesson.id,
+      courseId: lesson.courseId,
+      moduleId: lesson.moduleId,
+      title: await translatedTitleFuture,
+      description: await translatedDescriptionFuture,
+      theorySlides: await translatedSlidesFuture,
+      quiz: await translatedQuizFuture,
+      codingChallenge: await translatedChallengeFuture,
+      xpReward: lesson.xpReward,
+      order: lesson.order,
+    );
+  }
+
+  static Future<List<TheorySlide>> _autoTranslateTheorySlides({
+    required List<TheorySlide> slides,
+    required String targetLanguageCode,
+  }) async {
+    final translatedSlides = await Future.wait(
+      slides.map((slide) async {
+        final translatedTitleFuture = _translateText(
+          slide.title,
+          targetLanguageCode,
+        );
+        final translatedContentFuture = _translateText(
+          slide.content,
+          targetLanguageCode,
+        );
+
+        return TheorySlide(
+          title: await translatedTitleFuture,
+          content: await translatedContentFuture,
+          codeSnippet: slide.codeSnippet,
+          codeLanguage: slide.codeLanguage,
+          imageUrl: slide.imageUrl,
+          lottieUrl: slide.lottieUrl,
+          order: slide.order,
+        );
+      }),
+    );
+
+    return List<TheorySlide>.unmodifiable(translatedSlides);
+  }
+
+  static Future<Quiz?> _autoTranslateQuiz({
+    required Quiz? quiz,
+    required String targetLanguageCode,
+  }) async {
+    if (quiz == null) {
+      return null;
+    }
+
+    final translatedQuestions = await Future.wait(
+      quiz.questions.map((question) async {
+        final translatedQuestionFuture = _translateText(
+          question.question,
+          targetLanguageCode,
+        );
+        final translatedExplanationFuture = _translateOptionalText(
+          question.explanation,
+          targetLanguageCode,
+        );
+        final translatedOptionsFuture = Future.wait(
+          question.options.map(
+            (option) => _translateText(option, targetLanguageCode),
+          ),
+        );
+
+        return QuizQuestion(
+          question: await translatedQuestionFuture,
+          options: await translatedOptionsFuture,
+          correctAnswerIndex: question.correctAnswerIndex,
+          explanation: await translatedExplanationFuture,
+          type: question.type,
+        );
+      }),
+    );
+
+    return Quiz(
+      questions: List<QuizQuestion>.unmodifiable(translatedQuestions),
+      xpReward: quiz.xpReward,
+    );
+  }
+
+  static Future<CodingChallenge?> _autoTranslateCodingChallenge({
+    required CodingChallenge? challenge,
+    required String targetLanguageCode,
+  }) async {
+    if (challenge == null) {
+      return null;
+    }
+
+    final translatedTitleFuture = _translateText(
+      challenge.title,
+      targetLanguageCode,
+    );
+    final translatedDescriptionFuture = _translateText(
+      challenge.description,
+      targetLanguageCode,
+    );
+    final translatedHintFuture = _translateOptionalText(
+      challenge.hint,
+      targetLanguageCode,
+    );
+
+    final translatedHint = await translatedHintFuture;
+
+    return CodingChallenge(
+      title: await translatedTitleFuture,
+      description: await translatedDescriptionFuture,
+      starterCode: challenge.starterCode,
+      language: challenge.language,
+      testCases: challenge.testCases,
+      hint: translatedHint,
+      solution: challenge.solution,
+      xpReward: challenge.xpReward,
+    );
+  }
+
+  static Future<String> _translateText(String text, String targetLanguageCode) {
+    return RuntimeTranslationService.translateText(
+      text: text,
+      targetLanguageCode: targetLanguageCode,
+    );
+  }
+
+  static Future<String?> _translateOptionalText(
+    String? text,
+    String targetLanguageCode,
+  ) async {
+    if (text == null || text.trim().isEmpty) {
+      return text;
+    }
+    return _translateText(text, targetLanguageCode);
+  }
+
+  static bool _hasComprehensiveOverlayForCourse({
+    required List<Lesson> baseLessons,
+    required Map<String, Map<String, dynamic>> mergedTranslations,
+  }) {
+    if (mergedTranslations.length != baseLessons.length) {
+      return false;
+    }
+
+    for (final lesson in baseLessons) {
+      final translation = mergedTranslations[lesson.id];
+      if (translation == null) {
+        return false;
+      }
+
+      final hasCoreText =
+          translation['title'] is String &&
+          translation['description'] is String;
+      final hasTheorySlides = translation['theorySlides'] is List;
+      final hasQuiz = lesson.quiz == null || translation['quiz'] is Map;
+      final hasChallenge =
+          lesson.codingChallenge == null ||
+          translation['codingChallenge'] is Map;
+
+      if (!hasCoreText || !hasTheorySlides || !hasQuiz || !hasChallenge) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  static Map<String, dynamic> _mergeMaps(
+    Map<String, dynamic> base,
+    Map<String, dynamic> overlay,
+  ) {
+    final merged = Map<String, dynamic>.from(base);
+
+    for (final entry in overlay.entries) {
+      final existingValue = merged[entry.key];
+      final incomingValue = entry.value;
+
+      if (existingValue is Map && incomingValue is Map) {
+        merged[entry.key] = _mergeMaps(
+          Map<String, dynamic>.from(existingValue),
+          Map<String, dynamic>.from(incomingValue),
+        );
+      } else {
+        merged[entry.key] = incomingValue;
+      }
+    }
+
+    return merged;
+  }
+
+  static Map<String, dynamic>? _asStringMap(dynamic value) {
+    if (value is Map) {
+      return Map<String, dynamic>.from(value);
+    }
+    return null;
+  }
+
+  static String? _readString(Map<String, dynamic> map, String key) {
+    final value = map[key];
+    if (value is String && value.trim().isNotEmpty) {
+      return value;
+    }
+    return null;
+  }
+}

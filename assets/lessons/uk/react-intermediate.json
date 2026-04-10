@@ -1,0 +1,357 @@
+{
+  "courseId": "react-intermediate",
+  "lessons": [
+    {
+      "id": "react_int_lesson_1",
+      "courseId": "react-intermediate",
+      "moduleId": "hooks",
+      "title": "Гачки Deep Dive",
+      "description": "Майстер хуків React",
+      "theorySlides": [
+        {
+          "title": "Хуки React 🪝",
+          "content": "Вбудовані гачки:\n• **useState**: локальний стан\n• **useEffect**: побічні ефекти\n• **useContext**: використовувати контекст\n• **useRef**: змінні посилання\n• **useMemo/useCallback**: оптимізація",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Правила хуків 📏",
+          "content": "Два правила, яких ОБОВ'ЯЗКОВО слідувати:\n\n1️⃣ **Тільки виклик на верхньому рівні** - не всередині циклів, умов або вкладених функцій\n\n2️⃣ **Тільки виклик із функцій React** - Компоненти або спеціальні хуки",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "useEffect Cleanup",
+          "content": "Очистіть підписки та таймери.",
+          "codeSnippet": "useEffect(() => {\n  const timer = setInterval(() => {\n    console.log(\"tick\");\n  }, 1000);\n  \n  // Cleanup function\n  return () => clearInterval(timer);\n}, []);",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Масив залежностей ⚙️",
+          "content": "Керує під час запуску ефекту:\n\n• **[]** - лише на монтуванні\n• **[dep]** - коли змінюється dep\n• **Без масиву** – кожен рендер (обережно!)\n\nЗавжди включайте всі значення, що використовуються всередині ефекту.",
+          "codeSnippet": "// Runs when userId changes\nuseEffect(() => {\n  fetchUser(userId);\n}, [userId]);\n\n// Runs on every render - usually wrong!\nuseEffect(() => {\n  console.log(\"rendered\");\n});",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Коли запускається очищення useEffect?",
+            "options": [
+              "Тільки на кріпленні",
+              "Перед кожним повторним запуском і демонтуванням",
+              "Ніколи",
+              "На клацання"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Очищення виконується перед повторним запуском ефекту та після відключення.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що означає порожній масив залежностей []?",
+            "options": [
+              "Запускати на кожному рендері",
+              "Запустити лише один раз на монтуванні",
+              "Ніколи не бігайте",
+              "Помилка"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Порожній масив означає, що ефект запускається лише один раз, коли компонент монтується.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Чи можна використовувати хуки в операторах if?",
+            "options": [
+              "Так, завжди",
+              "Ні, має бути на найвищому рівні",
+              "Тільки використовуйте State",
+              "Використовуйте лише ефект"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Хуки потрібно викликати на верхньому рівні, щоб забезпечити послідовний порядок між візуалізаціями.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Таймер з очищенням",
+        "description": "Створіть useEffect з очищенням для інтервалу.",
+        "starterCode": "function Timer() {\n  const [count, setCount] = useState(0);\n  \n  useEffect(() => {\n    // Set interval and return cleanup\n  }, []);\n  \n  return <div>{count}</div>;\n}",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "setInterval return () => clearInterval",
+            "isHidden": false
+          }
+        ],
+        "hint": "Повернути функцію очищення з clearInterval",
+        "solution": "function Timer() {\n  const [count, setCount] = useState(0);\n  \n  useEffect(() => {\n    const timer = setInterval(() => {\n      setCount(c => c + 1);\n    }, 1000);\n    return () => clearInterval(timer);\n  }, []);\n  \n  return <div>{count}</div>;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 0
+    },
+    {
+      "id": "react_int_lesson_2",
+      "courseId": "react-intermediate",
+      "moduleId": "hooks",
+      "title": "Спеціальні гачки",
+      "description": "Створіть багаторазову логіку",
+      "theorySlides": [
+        {
+          "title": "Спеціальні гачки 🔧",
+          "content": "Витягти багаторазову логіку:\n• Починайте з префікса \"використовувати\".\n• Можна використовувати інші гачки всередині\n• Поділіться логікою стану, а не станом",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Приклад: useLocalStorage",
+          "content": "Зберігати стан у localStorage.",
+          "codeSnippet": "function useLocalStorage(key, initial) {\n  const [value, setValue] = useState(() => {\n    const saved = localStorage.getItem(key);\n    return saved ? JSON.parse(saved) : initial;\n  });\n  \n  useEffect(() => {\n    localStorage.setItem(key, JSON.stringify(value));\n  }, [key, value]);\n  \n  return [value, setValue];\n}",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Конвенція про іменування власних хуків?",
+            "options": [
+              "hook_name",
+              "ви на HookName",
+              "HookName",
+              "with_hook"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Спеціальні хуки повинні починатися з префікса \"use\".",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Створити useToggle",
+        "description": "Створіть хук useToggle для логічного стану.",
+        "starterCode": "function useToggle(initial = false) {\n  // Return [value, toggle function]\n}\n\n// Usage:\n// const [isOn, toggle] = useToggle();",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "useState setX(!x)",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте useState та повертайте сетер, який перевертає значення",
+        "solution": "function useToggle(initial = false) {\n  const [value, setValue] = useState(initial);\n  const toggle = () => setValue(v => !v);\n  return [value, toggle];\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 1
+    },
+    {
+      "id": "react_int_lesson_3",
+      "courseId": "react-intermediate",
+      "moduleId": "state",
+      "title": "API контексту",
+      "description": "Глобальна держава без реквізитного буріння",
+      "theorySlides": [
+        {
+          "title": "Реагувати на контекст 🌐",
+          "content": "Діліться даними без передачі атрибутів:\n• createContext(): створити контекст\n• Постачальник: надайте значення\n• useContext(): споживати значення",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Шаблон контексту",
+          "content": "Повне налаштування контексту.",
+          "codeSnippet": "const ThemeContext = createContext('light');\n\nfunction ThemeProvider({ children }) {\n  const [theme, setTheme] = useState('light');\n  return (\n    <ThemeContext.Provider value={{ theme, setTheme }}>\n      {children}\n    </ThemeContext.Provider>\n  );\n}\n\nfunction Button() {\n  const { theme } = useContext(ThemeContext);\n  return <button className={theme}>Click</button>;\n}",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Що повертає useContext?",
+            "options": [
+              "Провайдер",
+              "Споживач",
+              "Поточне контекстне значення",
+              "Об'єкт контексту"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "useContext повертає поточне значення від найближчого постачальника.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Використовуйте контекст теми",
+        "description": "Створіть і використовуйте простий контекст теми.",
+        "starterCode": "const ThemeContext = createContext();\n\nfunction App() {\n  return (\n    // Wrap with Provider value=\"dark\"\n    <Button />\n  );\n}\n\nfunction Button() {\n  // Use context to get theme\n  return <button>{theme}</button>;\n}",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "ThemeContext.Provider value useContext(ThemeContext)",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте Provider із значенням prop, useContext для споживання",
+        "solution": "const ThemeContext = createContext();\n\nfunction App() {\n  return (\n    <ThemeContext.Provider value=\"dark\">\n      <Button />\n    </ThemeContext.Provider>\n  );\n}\n\nfunction Button() {\n  const theme = useContext(ThemeContext);\n  return <button>{theme}</button>;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 2
+    },
+    {
+      "id": "react_int_lesson_4",
+      "courseId": "react-intermediate",
+      "moduleId": "performance",
+      "title": "Оптимізація продуктивності",
+      "description": "у Мемо, у Зворотній дзвінок, пам'ятка",
+      "theorySlides": [
+        {
+          "title": "Продуктивність React ⚡",
+          "content": "Запобігайте непотрібним повторним візуалізаціям:\n• **React.memo**: запам’ятовування компонентів\n• **useMemo**: запам’ятати значення\n• **useCallback**: запам’ятовування функцій",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Коли оптимізувати",
+          "content": "Оптимізуйте лише тоді, коли це необхідно!",
+          "codeSnippet": "// Expensive calculation\nconst sorted = useMemo(() => {\n  return items.sort((a, b) => a - b);\n}, [items]);\n\n// Stable callback for child\nconst handleClick = useCallback(() => {\n  setCount(c => c + 1);\n}, []);\n\n// Memoized child\nconst Child = React.memo(({ onClick }) => {\n  return <button onClick={onClick}>Click</button>;\n});",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Коли useMemo перераховує?",
+            "options": [
+              "Кожен рендер",
+              "Коли залежності змінюються",
+              "Ніколи",
+              "На клацання"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "useMemo перераховує лише коли залежності змінюються.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Memoize Expensive Calc",
+        "description": "Використовуйте useMemo для дорогих розрахунків.",
+        "starterCode": "function List({ items }) {\n  // Memoize the filtered result\n  const filtered = items.filter(i => i > 10);\n  \n  return <ul>{filtered.map(i => <li>{i}</li>)}</ul>;\n}",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "useMemo(() => items.filter [items]",
+            "isHidden": false
+          }
+        ],
+        "hint": "Обгорнути фільтр у useMemo із залежністю [items].",
+        "solution": "function List({ items }) {\n  const filtered = useMemo(() => {\n    return items.filter(i => i > 10);\n  }, [items]);\n  \n  return <ul>{filtered.map(i => <li>{i}</li>)}</ul>;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 3
+    },
+    {
+      "id": "react_int_lesson_5",
+      "courseId": "react-intermediate",
+      "moduleId": "patterns",
+      "title": "Межі помилок",
+      "description": "Витончено обробляйте помилки компонентів",
+      "theorySlides": [
+        {
+          "title": "Межі помилок 🛡️",
+          "content": "Виловлюйте помилки JavaScript у компонентах:\n• Запобігає збою всієї програми\n• Показує резервний інтерфейс користувача\n• Лише компонент класу (наразі)",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Граничний клас помилки",
+          "content": "Створіть компонент межі помилки.",
+          "codeSnippet": "class ErrorBoundary extends React.Component {\n  state = { hasError: false };\n  \n  static getDerivedStateFromError(error) {\n    return { hasError: true };\n  }\n  \n  componentDidCatch(error, info) {\n    console.error(error, info);\n  }\n  \n  render() {\n    if (this.state.hasError) {\n      return <h1>Something went wrong.</h1>;\n    }\n    return this.props.children;\n  }\n}",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Які помилки НЕ вловлюють кордони?",
+            "options": [
+              "Помилки візуалізації",
+              "Помилки обробника подій",
+              "Помилки життєвого циклу",
+              "Помилки конструктора"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Межі помилок не вловлюють помилки обробника подій – використовуйте try/catch.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Використовуйте межу помилки",
+        "description": "Обгорнути компонент межею помилки.",
+        "starterCode": "function App() {\n  return (\n    // Wrap UserProfile with ErrorBoundary\n    <UserProfile />\n  );\n}",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "<ErrorBoundary><UserProfile /></ErrorBoundary>",
+            "isHidden": false
+          }
+        ],
+        "hint": "Оберніть UserProfile у теги ErrorBoundary",
+        "solution": "function App() {\n  return (\n    <ErrorBoundary>\n      <UserProfile />\n    </ErrorBoundary>\n  );\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 4
+    }
+  ]
+}

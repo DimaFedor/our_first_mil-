@@ -1,0 +1,1195 @@
+{
+  "courseId": "sql",
+  "lessons": [
+    {
+      "id": "sql_lesson_1",
+      "courseId": "sql",
+      "moduleId": "basics",
+      "title": "Wprowadzenie do SQL",
+      "description": "Odkryj język, który napędza bazy danych na całym świecie",
+      "theorySlides": [
+        {
+          "title": "Co to jest SQL? 🗄️",
+          "content": "SQL (Structured Query Language) to standardowy język do pracy z bazami danych. Jest używany przez miliony aplikacji na całym świecie do przechowywania, pobierania i zarządzania danymi.\n\nSQL pozwala na:\n• Przechowuj dane w zorganizowanych tabelach\n• Uzyskaj dokładnie takie dane, jakich potrzebujesz\n• Aktualizuj i usuwaj informacje\n• Twórz złożone raporty i analizy",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Zrozumienie baz danych",
+          "content": "Baza danych jest jak cyfrowa szafka na dokumenty. Zawiera tabele, które przypominają arkusze kalkulacyjne z wierszami i kolumnami.\n\n📊 Przykład tabeli: „użytkownicy”\n┌────┬──────────┬─────────────────┐\n│ identyfikator │ imię i nazwisko │ e-mail │\n├────┼──────────┼─────────────────┤\n│ 1 │ Alicja │ alice@email.com │\n│ 2 │ Bob │ bob@email.com │\n└────┴──────────┴─────────────────┘\n\nKażdy wiersz jest rekordem, każda kolumna jest polem.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Twoje pierwsze zapytanie SELECT",
+          "content": "Instrukcja SELECT pobiera dane z bazy danych. Jest to najczęściej używane polecenie SQL.",
+          "codeSnippet": "-- Get all data from the users table\nSELECT * FROM users;\n\n-- Get only names from the users table\nSELECT name FROM users;\n\n-- Get multiple columns\nSELECT name, email FROM users;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Co oznacza SQL?",
+            "options": [
+              "Prosty język zapytań",
+              "Strukturalny język zapytań",
+              "Standardowy język pytań",
+              "Logika zapytań sekwencyjnych"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "SQL oznacza Strukturalny Język Zapytań. Jest to standardowy język do zarządzania relacyjnymi bazami danych i wysyłania zapytań do nich.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co oznacza symbol * w SELECT * FROM użytkowników?",
+            "options": [
+              "Wybierz tylko pierwszy wiersz",
+              "Wybierz wszystkie kolumny",
+              "Wybierz losowe dane",
+              "Usuń wszystkie dane"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Gwiazdka (*) to symbol wieloznaczny oznaczający „wszystkie kolumny”. SELECT * pobiera każdą kolumnę z określonej tabeli.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jak nazywa się wiersz w tabeli bazy danych?",
+            "options": [
+              "Pole",
+              "Kolumna",
+              "Rekord",
+              "Zapytanie"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Każdy wiersz w tabeli nazywany jest rekordem. Reprezentuje pojedynczy wpis z wartościami dla każdej kolumny.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Które słowo kluczowe służy do określenia tabeli, do której ma zostać wysłane zapytanie?",
+            "options": [
+              "DOSTAWAĆ",
+              "Z",
+              "TABELA",
+              "GDZIE"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Słowo kluczowe FROM określa, z której tabeli mają zostać pobrane dane. Przykład: WYBIERZ nazwę OD użytkowników.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jaki jest cel SQL?",
+            "options": [
+              "Twórz strony internetowe",
+              "Zarządzaj bazami danych i wysyłaj zapytania do nich",
+              "Projektowanie interfejsów użytkownika",
+              "Wysyłaj e-maile"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "SQL został specjalnie zaprojektowany do zarządzania relacyjnymi bazami danych i wykonywania zapytań, umożliwiając przechowywanie, pobieranie, aktualizowanie i usuwanie danych.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Twoje pierwsze zapytanie",
+        "description": "Napisz zapytanie SQL, aby wybrać WSZYSTKIE kolumny z tabeli „produkty”.",
+        "starterCode": "-- Select all columns from the products table\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT * FROM products;",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj SELECT *, aby pobrać wszystkie kolumny i FROM, aby określić nazwę tabeli.",
+        "solution": "SELECT * FROM products;",
+        "xpReward": 15
+      },
+      "xpReward": 15,
+      "order": 0
+    },
+    {
+      "id": "sql_lesson_2",
+      "courseId": "sql",
+      "moduleId": "basics",
+      "title": "WYBIERZ Podstawy",
+      "description": "Opanuj podstawy wykonywania zapytań o dane",
+      "theorySlides": [
+        {
+          "title": "Wybieranie określonych kolumn 📋",
+          "content": "Zamiast zaznaczać wszystko za pomocą *, możesz wybrać dokładnie te kolumny, których potrzebujesz. Jest to bardziej wydajne i sprawia, że ​​Twoje zapytania są jaśniejsze.",
+          "codeSnippet": "-- Select specific columns\nSELECT name, price FROM products;\n\n-- Select with a different order\nSELECT price, name, category FROM products;\n\n-- Columns can be listed in any order you want",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Filtrowanie za pomocą WHERE",
+          "content": "Klauzula WHERE filtruje wyniki, aby wyświetlić tylko wiersze spełniające warunek. To jakby zapytać: „pokaż mi tylko te elementy, które…”",
+          "codeSnippet": "-- Find products with price greater than 50\nSELECT name, price FROM products\nWHERE price > 50;\n\n-- Find a specific user by name\nSELECT * FROM users\nWHERE name = 'Alice';\n\n-- Find products in a specific category\nSELECT * FROM products\nWHERE category = 'Electronics';",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Operatory porównania",
+          "content": "SQL obsługuje różne operatory do porównywania wartości:\n\n• = Równe\n• != lub <> Nie równe\n• > Większe niż\n• < Mniej niż\n• >= Większe lub równe\n• <= Mniejsze lub równe",
+          "codeSnippet": "-- Find products priced at exactly 29.99\nSELECT * FROM products WHERE price = 29.99;\n\n-- Find orders with quantity less than 10\nSELECT * FROM orders WHERE quantity < 10;\n\n-- Find users who are NOT admins\nSELECT * FROM users WHERE role != 'admin';",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Jak wybrać tylko kolumny „nazwa” i „e-mail” z tabeli „użytkownicy”?",
+            "options": [
+              "WYBIERZ * OD użytkowników;",
+              "WYBIERZ nazwę, e-mail OD użytkowników;",
+              "POBIERZ nazwę, adres e-mail OD użytkowników;",
+              "WYBIERZ (imię i nazwisko) OD użytkowników;"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Wyświetl nazwy kolumn oddzielone przecinkami po WYBIERZ: WYBIERZ nazwę, e-mail OD użytkowników;",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Które słowo kluczowe służy do filtrowania wyników?",
+            "options": [
+              "FILTR",
+              "GDY",
+              "GDZIE",
+              "JEŚLI"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jak znaleźć produkty, których cena jest większa niż 100?",
+            "options": [
+              "WYBIERZ * Z produktów GDZIE cena > 100;",
+              "WYBIERZ * Z produktów JEŚLI cena > 100;",
+              "WYBIERZ * Z produktów KIEDY cena > 100;",
+              "WYBIERZ * Z produktów o cenie > 100;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Użyj WHERE z operatorem >: WHERE cena > 100",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jaki operator oznacza „nie równy” w SQL?",
+            "options": [
+              "==",
+              "!==",
+              "!= lub <>",
+              "=/="
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "W języku SQL zarówno !=, jak i <> oznaczają „nie równe”. Obydwa są ważne i szeroko stosowane.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jak należy zapisywać wartości tekstowe w warunkach SQL?",
+            "options": [
+              "W cudzysłowie: „wartość”",
+              "W pojedynczym cudzysłowie: „wartość”",
+              "W backtickach: `wartość`",
+              "Bez cudzysłowów: wartość"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "W języku SQL wartości tekstowe (ciąg znaków) powinny być ujęte w pojedyncze cudzysłowy, np. „Alice” lub „Elektronika”.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Filtruj produkty",
+        "description": "Napisz zapytanie, aby wybrać nazwę i cenę wszystkich produktów, których cena jest mniejsza lub równa 50.",
+        "starterCode": "-- Get name and price for affordable products\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT name, price FROM products WHERE price <= 50;",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj SELECT, aby wybrać kolumny, FROM dla tabeli i WHERE z <= dla warunku.",
+        "solution": "SELECT name, price FROM products WHERE price <= 50;",
+        "xpReward": 15
+      },
+      "xpReward": 18,
+      "order": 1
+    },
+    {
+      "id": "sql_lesson_3",
+      "courseId": "sql",
+      "moduleId": "basics",
+      "title": "Filtrowanie danych",
+      "description": "Poznaj zaawansowane filtrowanie za pomocą AND, OR i dopasowywania wzorców",
+      "theorySlides": [
+        {
+          "title": "Łączenie warunków za pomocą AND i OR 🔍",
+          "content": "Możesz połączyć wiele warunków, używając AND (oba muszą być prawdziwe) lub OR (przynajmniej jeden musi być prawdziwy).",
+          "codeSnippet": "-- AND: Both conditions must be true\nSELECT * FROM products\nWHERE category = 'Electronics' AND price < 500;\n\n-- OR: At least one condition must be true\nSELECT * FROM products\nWHERE category = 'Books' OR category = 'Music';\n\n-- Combining AND and OR (use parentheses!)\nSELECT * FROM products\nWHERE (category = 'Electronics' OR category = 'Gadgets')\nAND price < 100;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "W, MIĘDZY i NIE",
+          "content": "SQL udostępnia skróty do typowych wzorców filtrowania:\n\n• IN: Dopasowuje dowolną wartość z listy\n• MIĘDZY: Dopasuj zakres wartości\n• NIE: Odrzuć warunek",
+          "codeSnippet": "-- IN: Instead of multiple OR conditions\nSELECT * FROM products\nWHERE category IN ('Electronics', 'Computers', 'Phones');\n\n-- BETWEEN: Range of values (inclusive)\nSELECT * FROM products\nWHERE price BETWEEN 10 AND 50;\n\n-- NOT: Exclude matches\nSELECT * FROM products\nWHERE category NOT IN ('Clothing', 'Food');",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Dopasowywanie wzorców za pomocą LIKE",
+          "content": "Operator LIKE pozwala wyszukiwać wzorce w tekście za pomocą symboli wieloznacznych:\n\n• % odpowiada dowolnej sekwencji znaków\n• _ odpowiada dokładnie jednemu znakowi",
+          "codeSnippet": "-- Names starting with 'A'\nSELECT * FROM users WHERE name LIKE 'A%';\n\n-- Names ending with 'son'\nSELECT * FROM users WHERE name LIKE '%son';\n\n-- Names containing 'ann'\nSELECT * FROM users WHERE name LIKE '%ann%';\n\n-- Emails from gmail\nSELECT * FROM users WHERE email LIKE '%@gmail.com';\n\n-- Names with exactly 4 characters\nSELECT * FROM users WHERE name LIKE '____';",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Czego wymaga AND, aby wiersz został wybrany?",
+            "options": [
+              "Przynajmniej jeden warunek musi być prawdziwy",
+              "Wszystkie warunki muszą być prawdziwe",
+              "Żadne warunki nie muszą być prawdziwe",
+              "Musi być spełniony dokładnie jeden warunek"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "ORAZ wymaga, aby WSZYSTKIE warunki były prawdziwe. Jeśli którykolwiek warunek jest fałszywy, wiersz nie jest wybrany.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jaki jest właściwy sposób dopasowywania wartości 10, 20 lub 30?",
+            "options": [
+              "GDZIE wartość = 10 LUB 20 LUB 30",
+              "GDZIE wartość IN (10, 20, 30)",
+              "GDZIE wartość MIĘDZY 10 A 30",
+              "GDZIE wartość = (10, 20, 30)"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "IN umożliwia określenie wielu wartości: WHERE wartość IN (10, 20, 30). Zauważ, że BETWEEN będzie zawierał wszystkie liczby od 10 do 30, a nie tylko 10, 20 i 30.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Do czego pasuje % symbol wieloznaczny w LIKE?",
+            "options": [
+              "Dokładnie jeden znak",
+              "Tylko liczby",
+              "Dowolny ciąg znaków (w tym żaden)",
+              "Tylko spacje"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Symbol wieloznaczny % dopasowuje zero lub więcej znaków dowolnego typu. Na przykład „A%” pasuje do „A”, „Alicja” i „Niesamowite”.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jak znaleźć imiona, które NIE zaczynają się na literę „J”?",
+            "options": [
+              "GDZIE nazwa NIE JAK „J%”",
+              "GDZIE nazwa UNLIKE „J%”",
+              "GDZIE NIE nazwa = 'J%'",
+              "GDZIE nazwa <> 'J%'"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Użyj NOT LIKE, aby zanegować dopasowanie wzorca: WHERE nazwa NOT LIKE „J%”",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co zawiera MIĘDZY 5 A 10?",
+            "options": [
+              "Tylko 5 i 10",
+              "Tylko 6, 7, 8 i 9",
+              "5, 6, 7, 8, 9 i 10",
+              "Wszystko oprócz 5 i 10"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "BETWEEN ma charakter włączający, co oznacza, że ​​zawiera zarówno wartość początkową, jak i końcową. POMIĘDZY 5 A 10 obejmuje 5, 6, 7, 8, 9 i 10.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Złożony filtr",
+        "description": "Napisz zapytanie, aby znaleźć wszystkich użytkowników, których nazwa zaczyna się na literę „J” ORAZ których adres e-mail zawiera „gmail”.",
+        "starterCode": "-- Find users with specific name and email patterns\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT * FROM users WHERE name LIKE 'J%' AND email LIKE '%gmail%';",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj LIKE z % symbolem wieloznacznym do dopasowania wzorca. Połącz warunki za pomocą AND.",
+        "solution": "SELECT * FROM users WHERE name LIKE 'J%' AND email LIKE '%gmail%';",
+        "xpReward": 15
+      },
+      "xpReward": 20,
+      "order": 2
+    },
+    {
+      "id": "sql_lesson_4",
+      "courseId": "sql",
+      "moduleId": "basics",
+      "title": "Sortowanie i ograniczanie wyników",
+      "description": "Kontroluj kolejność i ilość wyników",
+      "theorySlides": [
+        {
+          "title": "Zamawianie wyników za pomocą ORDER BY 📊",
+          "content": "Klauzula ORDER BY sortuje wyniki. Domyślnie sortuje w kolejności rosnącej (A-Z, 0-9).",
+          "codeSnippet": "-- Sort by name alphabetically (A to Z)\nSELECT * FROM users ORDER BY name;\n\n-- Sort by price, lowest first (ascending)\nSELECT * FROM products ORDER BY price ASC;\n\n-- Sort by price, highest first (descending)\nSELECT * FROM products ORDER BY price DESC;\n\n-- Sort by multiple columns\nSELECT * FROM products\nORDER BY category ASC, price DESC;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Ograniczanie wyników za pomocą LIMIT",
+          "content": "LIMIT ogranicza liczbę zwracanych wierszy. Jest to niezbędne do paginacji i uzyskania najlepszych/najniższych wyników.",
+          "codeSnippet": "-- Get only the first 10 products\nSELECT * FROM products LIMIT 10;\n\n-- Get the 5 most expensive products\nSELECT * FROM products\nORDER BY price DESC\nLIMIT 5;\n\n-- Pagination: Skip first 20, get next 10\nSELECT * FROM products\nLIMIT 10 OFFSET 20;\n\n-- Alternative syntax: LIMIT offset, count\nSELECT * FROM products LIMIT 20, 10;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Obsługa wartości NULL",
+          "content": "NULL reprezentuje brakujące lub nieznane dane. Wymaga specjalnej obsługi w języku SQL.",
+          "codeSnippet": "-- Find rows where email is NULL (missing)\nSELECT * FROM users WHERE email IS NULL;\n\n-- Find rows where email exists (is NOT NULL)\nSELECT * FROM users WHERE email IS NOT NULL;\n\n-- WRONG: This won't work!\nSELECT * FROM users WHERE email = NULL;\n\n-- NULLs sort last in ASC, first in DESC\n-- Use NULLS FIRST or NULLS LAST to control\nSELECT * FROM users\nORDER BY last_login DESC NULLS LAST;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Jak posortować wyniki od najwyższego do najniższego?",
+            "options": [
+              "ZAMÓW PRZEZ kolumnę ASC",
+              "ZAMÓW BY kolumna DESC",
+              "Sortuj według kolumny W DÓŁ",
+              "ZAMÓW PRZEZ kolumnę ODWROT"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "DESC (malejąco) sortuje od najwyższej do najniższej. ASC (rosnąco) sortuje od najniższej do najwyższej.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co robi LIMIT 5?",
+            "options": [
+              "Pomija pierwsze 5 wierszy",
+              "Zwraca tylko pierwsze 5 wierszy",
+              "Zwraca wiersze, w których kolumna ma wartość 5",
+              "Grupuje wyniki w 5 kategorii"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "LIMIT 5 ogranicza zestaw wyników tylko do pierwszych 5 wierszy zwróconych przez zapytanie.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jak sprawdzić, czy wartość ma wartość NULL?",
+            "options": [
+              "Kolumna GDZIE = NULL",
+              "Kolumna GDZIE == NULL",
+              "WHERE kolumna ma wartość NULL",
+              "GDZIE kolumna równa się NULL"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "NULL wymaga operatora IS, a nie =. Użyj kolumny WHERE IS NULL lub WHERE kolumna NIE JEST NULL.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co robi OFFSET 10 z LIMIT 5?",
+            "options": [
+              "Zwraca 10 wierszy, zaczynając od wiersza 5",
+              "Zwraca 5 wierszy, pomijając pierwsze 10",
+              "Zwraca wiersze od 5 do 10",
+              "Zwraca łącznie 15 wierszy"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "OFFSET 10 pomija pierwsze 10 wierszy. W połączeniu z LIMIT 5 otrzymasz rzędy 11-15.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jak zdobyć 3 najtańsze produkty?",
+            "options": [
+              "WYBIERZ * Z produktów ZAMÓW WEDŁUG ceny ASC LIMIT 3;",
+              "WYBIERZ * Z produktów ZAMÓW WEDŁUG ceny OPIS LIMIT 3;",
+              "WYBIERZ * Z produktów LIMIT 3 ZAMÓW WEDŁUG ceny;",
+              "WYBIERZ TOP 3 * Z produktów GDZIE cena = MIN;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Sortuj według ceny w kolejności rosnącej (najpierw najniższa) i ogranicz do 3 wyników.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Najlepsze produkty",
+        "description": "Napisz zapytanie, aby otrzymać 5 najdroższych produktów. Pokaż tylko kolumny z nazwą i ceną, posortowane według ceny od najwyższej do najniższej.",
+        "starterCode": "-- Get the top 5 expensive products\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT name, price FROM products ORDER BY price DESC LIMIT 5;",
+            "isHidden": false
+          }
+        ],
+        "hint": "Najpierw użyj ORDER BY z DESC, aby uzyskać najwyższą wartość, a następnie LIMIT, aby ograniczyć wyniki.",
+        "solution": "SELECT name, price FROM products ORDER BY price DESC LIMIT 5;",
+        "xpReward": 15
+      },
+      "xpReward": 18,
+      "order": 3
+    },
+    {
+      "id": "sql_lesson_5",
+      "courseId": "sql",
+      "moduleId": "intermediate",
+      "title": "Funkcje agregujące",
+      "description": "Wykonuj obliczenia na grupach danych",
+      "theorySlides": [
+        {
+          "title": "Co to są funkcje agregujące? 📈",
+          "content": "Funkcje agregujące wykonują obliczenia w wielu wierszach i zwracają jedną wartość. Są niezbędne do analizy danych i raportowania.\n\n• COUNT() - Liczba wierszy\n• SUM() - Suma wartości\n• AVG() – Średnia wartości\n• MIN() - Najmniejsza wartość\n• MAX() – Największa wartość",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "LICZBA, SUMA i ŚREDNIA",
+          "content": "Oto najczęściej używane funkcje agregujące:",
+          "codeSnippet": "-- Count total number of products\nSELECT COUNT(*) FROM products;\n\n-- Count products in a category\nSELECT COUNT(*) FROM products\nWHERE category = 'Electronics';\n\n-- Sum of all order amounts\nSELECT SUM(amount) FROM orders;\n\n-- Average product price\nSELECT AVG(price) FROM products;\n\n-- Count non-NULL emails\nSELECT COUNT(email) FROM users;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "MIN, MAX i aliasy kolumn",
+          "content": "Znajdź wartości ekstremalne i nadaj swoim wynikom znaczące nazwy:",
+          "codeSnippet": "-- Find the cheapest product price\nSELECT MIN(price) AS lowest_price FROM products;\n\n-- Find the most expensive product price  \nSELECT MAX(price) AS highest_price FROM products;\n\n-- Combine multiple aggregates\nSELECT \n  COUNT(*) AS total_products,\n  AVG(price) AS average_price,\n  MIN(price) AS min_price,\n  MAX(price) AS max_price\nFROM products;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Co zwraca COUNT(*)?",
+            "options": [
+              "Suma wszystkich wartości",
+              "Całkowita liczba wierszy",
+              "Średnia wszystkich wartości",
+              "Liczba kolumn"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "COUNT(*) zlicza wszystkie wiersze w zestawie wyników, łącznie z wierszami z wartościami NULL.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jaka jest różnica między COUNT(*) a COUNT(kolumna)?",
+            "options": [
+              "Bez różnicy",
+              "COUNT(*) zlicza wszystkie wiersze, COUNT(kolumna) zlicza tylko wartości inne niż NULL",
+              "COUNT(*) jest szybsze",
+              "COUNT(kolumna) zlicza wszystkie wiersze"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "COUNT(*) zlicza wszystkie wiersze, natomiast COUNT(kolumna) zlicza tylko te wiersze, w których dana kolumna nie ma wartości NULL.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jak znaleźć średnią kwotę zamówienia?",
+            "options": [
+              "WYBIERZ ŚREDNĄ (kwotę) Z zamówień;",
+              "WYBIERZ AVG(kwota) Z zamówień;",
+              "WYBIERZ ŚREDNĄ (kwotę) Z zamówień;",
+              "WYBIERZ SUMĘ(kwota)/COUNT(*) Z zamówień;"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "AVG() to standardowa funkcja SQL służąca do obliczania średnich. Chociaż opcja D działałaby matematycznie, funkcja AVG() jest czystsza i poprawnie obsługuje wartości NULL.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co robi AS w „WYBIERZ LICZBĘ (*) AS ogółem”?",
+            "options": [
+              "Filtruje liczbę",
+              "Tworzy alias kolumny (nazwę)",
+              "Sortuje wyniki",
+              "Grupuje dane"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "AS tworzy alias, nadając kolumnie wynikowej niestandardową nazwę. „Suma AS” oznacza, że ​​liczba pojawi się w kolumnie o nazwie „total”.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Która funkcja znajduje największą wartość?",
+            "options": [
+              "SZCZYT()",
+              "NAJWYŻSZA()",
+              "MAKS()",
+              "NAJWIĘKSZY()"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "MAX() zwraca maksymalną (najwyższą) wartość w kolumnie. Działa z liczbami, datami i tekstem.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Statystyki zamówień",
+        "description": "Napisz zapytanie wyświetlające łączną liczbę zamówień, sumę wszystkich kwot oraz średnią kwotę z tabeli „zamówienia”. Użyj aliasów: total_orders, total_amount, avg_amount.",
+        "starterCode": "-- Calculate order statistics\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT COUNT(*) AS total_orders, SUM(amount) AS total_amount, AVG(amount) AS avg_amount FROM orders;",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj COUNT(*), SUM() i AVG() z AS, aby utworzyć aliasy dla każdego wyniku.",
+        "solution": "SELECT COUNT(*) AS total_orders, SUM(amount) AS total_amount, AVG(amount) AS avg_amount FROM orders;",
+        "xpReward": 15
+      },
+      "xpReward": 20,
+      "order": 4
+    },
+    {
+      "id": "sql_lesson_6",
+      "courseId": "sql",
+      "moduleId": "intermediate",
+      "title": "GRUPUJ WEDŁUG & POSIADAJĄC",
+      "description": "Grupuj dane i filtruj zagregowane wyniki",
+      "theorySlides": [
+        {
+          "title": "Grupowanie danych za pomocą GROUP BY 📊",
+          "content": "GROUP BY dzieli wiersze na grupy na podstawie wartości kolumn, umożliwiając zastosowanie funkcji agregujących do każdej grupy z osobna.",
+          "codeSnippet": "-- Count products per category\nSELECT category, COUNT(*) AS product_count\nFROM products\nGROUP BY category;\n\n-- Total sales per customer\nSELECT customer_id, SUM(amount) AS total_spent\nFROM orders\nGROUP BY customer_id;\n\n-- Average price by category\nSELECT category, AVG(price) AS avg_price\nFROM products\nGROUP BY category;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Filtrowanie grup za pomocą HAVING",
+          "content": "HAVING filtruje grupy PO agregacji. Użyj go, jeśli chcesz filtrować na podstawie zagregowanych wyników (GDZIE nie można tego zrobić!).",
+          "codeSnippet": "-- Categories with more than 10 products\nSELECT category, COUNT(*) AS count\nFROM products\nGROUP BY category\nHAVING COUNT(*) > 10;\n\n-- Customers who spent over $1000\nSELECT customer_id, SUM(amount) AS total\nFROM orders\nGROUP BY customer_id\nHAVING SUM(amount) > 1000;\n\n-- WHERE filters rows, HAVING filters groups\nSELECT category, AVG(price) AS avg_price\nFROM products\nWHERE price > 0        -- Filter rows first\nGROUP BY category\nHAVING AVG(price) > 50; -- Then filter groups",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Uzupełnij GRUPUJ WEDŁUG PRZYKŁADU",
+          "content": "Oto przykład z życia wzięty, łączący wszystko:",
+          "codeSnippet": "-- Sales report by category and month\nSELECT \n  category,\n  COUNT(*) AS num_orders,\n  SUM(amount) AS total_sales,\n  AVG(amount) AS avg_order\nFROM orders\nWHERE status = 'completed'\nGROUP BY category\nHAVING SUM(amount) >= 1000\nORDER BY total_sales DESC;\n\n-- Query execution order:\n-- 1. FROM (get table)\n-- 2. WHERE (filter rows)\n-- 3. GROUP BY (create groups)\n-- 4. HAVING (filter groups)\n-- 5. SELECT (choose columns)\n-- 6. ORDER BY (sort results)",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Co robi GROUP BY?",
+            "options": [
+              "Sortuje wyniki",
+              "Dzieli wiersze na grupy w celu agregacji",
+              "Ogranicza liczbę wyników",
+              "Łączy ze sobą dwie tabele"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "GROUP BY dzieli wiersze na grupy w oparciu o jedną lub więcej kolumn, dzięki czemu funkcje agregujące można zastosować do każdej grupy oddzielnie.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jaka jest różnica między WHERE i HAVING?",
+            "options": [
+              "Są tacy sami",
+              "WHERE filtry przed grupowaniem, HAVING filtry po",
+              "POSIADANIE jest szybsze",
+              "WHERE działa tylko z liczbami"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "WHERE filtruje poszczególne wiersze przed ich zgrupowaniem. HAVING filtruje grupy po agregacji. Użyj HAVING podczas filtrowania wyników zagregowanych, takich jak COUNT() lub SUM().",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Które zapytanie znajduje kategorie ze średnią ceną powyżej 50 USD?",
+            "options": [
+              "WYBIERZ kategorię Z produktów GDZIE ŚREDNIA(cena) > 50 GRUPUJ WG kategorii;",
+              "WYBIERZ kategorię Z produktów GRUPUJ WG kategorii POSIADAJĄC ŚREDNĄ(cenę) > 50;",
+              "WYBIERZ kategorię Z produktów GRUPUJ WG kategorii GDZIE ŚREDNIA(cena) > 50;",
+              "WYBIERZ kategorię, AVG(cena) Z produktów MAJĄCYCH AVG(cena) > 50;"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Do filtrowania funkcji agregujących należy używać HAVING (a nie WHERE). HAVING następuje po GROUP BY.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Kiedy używasz GROUP BY, co może pojawić się w SELECT?",
+            "options": [
+              "Dowolne kolumny",
+              "Tylko zgrupowane kolumny i funkcje agregujące",
+              "Tylko funkcje agregujące",
+              "Tylko zgrupowane kolumny"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "W zapytaniu GROUP BY polecenie SELECT może uwzględniać tylko kolumny objęte klauzulą ​​GROUP BY lub kolumny opakowane w funkcje agregujące.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "W jakiej kolejności wykonywane są klauzule SQL?",
+            "options": [
+              "WYBIERZ → OD → GDZIE → GRUPUJ WG",
+              "OD → WYBIERZ → GDZIE → GRUPUJ WG",
+              "OD → GDZIE → GRUPUJ WEDŁUG → POSIADAJĄC → WYBIERZ",
+              "WYBIERZ → GDZIE → OD → GRUPUJ WG"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "SQL wykonuje się w następującej kolejności: FROM (pobierz dane) → WHERE (filtruj wiersze) → GROUP BY (grupa) → HAVING (filtruj grupy) → SELECT (kolumny) → ORDER BY (sortowanie)",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Analiza kategorii",
+        "description": "Napisz zapytanie wyświetlające każdą kategorię i liczbę jej produktów z tabeli „produkty”. Uwzględnij tylko kategorie, które mają więcej niż 5 produktów. Sortuj według liczby malejącej.",
+        "starterCode": "-- Show categories with more than 5 products\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT category, COUNT(*) AS product_count FROM products GROUP BY category HAVING COUNT(*) > 5 ORDER BY product_count DESC;",
+            "isHidden": false
+          }
+        ],
+        "hint": "GROUP BY, użyj opcji HAVING, aby odfiltrować grupy z COUNT(*) > 5, a następnie ORDER BY.",
+        "solution": "SELECT category, COUNT(*) AS product_count FROM products GROUP BY category HAVING COUNT(*) > 5 ORDER BY product_count DESC;",
+        "xpReward": 15
+      },
+      "xpReward": 22,
+      "order": 5
+    },
+    {
+      "id": "sql_lesson_7",
+      "courseId": "sql",
+      "moduleId": "intermediate",
+      "title": "DOŁĄCZ Podstawy",
+      "description": "Łącz dane z wielu tabel",
+      "theorySlides": [
+        {
+          "title": "Dlaczego warto używać połączeń JOIN? 🔗",
+          "content": "Prawdziwe bazy danych dzielą dane pomiędzy wiele tabel, aby uniknąć powielania. JOIN umożliwiają łączenie powiązanych danych z różnych tabel.\n\nPrzykładowe tabele:\n• użytkownicy: identyfikator, imię i nazwisko, adres e-mail\n• zamówienia: id, user_id, kwota, data\n\nIdentyfikator użytkownika w zamówieniach łączy się z identyfikatorem w użytkownikach. Ta relacja pozwala nam zobaczyć, który użytkownik złożył każde zamówienie.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "WEWNĘTRZNE POŁĄCZENIE",
+          "content": "INNER JOIN zwraca tylko wiersze, które mają pasujące wartości w obu tabelach. Jest to najczęstszy rodzaj łączenia.",
+          "codeSnippet": "-- Get orders with customer names\nSELECT orders.id, users.name, orders.amount\nFROM orders\nINNER JOIN users ON orders.user_id = users.id;\n\n-- Using table aliases for cleaner code\nSELECT o.id, u.name, o.amount\nFROM orders o\nINNER JOIN users u ON o.user_id = u.id;\n\n-- With additional filtering\nSELECT u.name, o.amount, o.order_date\nFROM orders o\nINNER JOIN users u ON o.user_id = u.id\nWHERE o.amount > 100;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Zrozumienie składni JOIN",
+          "content": "Klauzula ON określa, w jaki sposób tabele są ze sobą powiązane:",
+          "codeSnippet": "-- Full syntax breakdown\nSELECT \n  products.name AS product_name,\n  categories.name AS category_name\nFROM products                    -- First table\nINNER JOIN categories            -- Second table\nON products.category_id = categories.id;  -- Link\n\n-- Join products with their orders\nSELECT p.name, o.quantity, o.order_date\nFROM products p\nINNER JOIN order_items o ON p.id = o.product_id;\n\n-- You can also just write JOIN (INNER is default)\nSELECT * FROM orders\nJOIN users ON orders.user_id = users.id;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Co zwraca INNER JOIN?",
+            "options": [
+              "Wszystkie wiersze z obu tabel",
+              "Tylko wiersze, które mają pasujące wartości w obu tabelach",
+              "Wszystkie wiersze z lewej tabeli",
+              "Wszystkie wiersze z prawej tabeli"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "INNER JOIN zwraca tylko te wiersze, w których występuje dopasowanie w obu tabelach na podstawie warunku złączenia.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co określa klauzula ON?",
+            "options": [
+              "Które kolumny wyświetlić",
+              "Jak tabele są ze sobą powiązane",
+              "Kolejność wyników",
+              "Ile wierszy zwrócić"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Klauzula ON definiuje relację między tabelami, określając, które kolumny powinny pasować (np. zamówienia.user_id = users.id).",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co to jest alias tabeli?",
+            "options": [
+              "Sposób na trwałą zmianę nazwy tabeli",
+              "Krótka nazwa tabeli w zapytaniu",
+              "Kopia zapasowa tabeli",
+              "Rodzaj łączenia"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Alias ​​tabeli to tymczasowa krótka nazwa (np. „u” w przypadku „użytkowników”), która ułatwia pisanie i czytanie zapytań.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jeśli zamówienia mają 100 wierszy, a użytkownicy 50, ile wierszy może zwrócić maksymalnie INNER JOIN?",
+            "options": [
+              "Dokładnie 100",
+              "Dokładnie 50",
+              "Do 100 (jeśli wszystkie zamówienia mają pasujących użytkowników)",
+              "150"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "INNER JOIN zwraca tylko pasujące wiersze. Jeśli wszystkie 100 zamówień ma prawidłowe identyfikatory user_id istniejące w użytkownikach, otrzymasz 100 wierszy. Niedopasowane wiersze są wykluczane.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Czy „JOIN” to to samo, co „INNER JOIN”?",
+            "options": [
+              "Nie, są inni",
+              "Tak, opcja JOIN ma domyślnie wartość INNER JOIN",
+              "JOIN zwraca więcej wierszy",
+              "INNER JOIN jest szybszy"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "W SQL JOIN bez przedrostka ma domyślnie wartość INNER JOIN. Dają takie same rezultaty.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Dołącz do zamówień z użytkownikami",
+        "description": "Napisz zapytanie, które będzie wyświetlało każde zamówienie z nazwą klienta. Wybierz identyfikator zamówienia, nazwę użytkownika i kwotę. Używaj aliasów tabel (o dla zamówień, u dla użytkowników).",
+        "starterCode": "-- Join orders with users to see customer names\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT o.id, u.name, o.amount FROM orders o INNER JOIN users u ON o.user_id = u.id;",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj poleceń FROM o, a następnie użytkowników INNER JOIN u ON o.user_id = u.id",
+        "solution": "SELECT o.id, u.name, o.amount FROM orders o INNER JOIN users u ON o.user_id = u.id;",
+        "xpReward": 15
+      },
+      "xpReward": 22,
+      "order": 6
+    },
+    {
+      "id": "sql_lesson_8",
+      "courseId": "sql",
+      "moduleId": "intermediate",
+      "title": "Zaawansowane ŁĄCZENIA",
+      "description": "Opanuj LEFT JOIN, PRAWY JOIN i łączenie wielu tabel",
+      "theorySlides": [
+        {
+          "title": "LEFT DOŁĄCZ - zachowaj wszystkie lewe rzędy 👈",
+          "content": "Funkcja LEFT JOIN zwraca wszystkie wiersze z lewej tabeli oraz pasujące wiersze z prawej tabeli. Jeśli nie ma dopasowania, prawe kolumny tabeli wypełniają wartości NULL.",
+          "codeSnippet": "-- All users, even those with no orders\nSELECT u.name, o.amount\nFROM users u\nLEFT JOIN orders o ON u.id = o.user_id;\n\n-- Result might include:\n-- Alice  | 99.99\n-- Bob    | 150.00\n-- Carol  | NULL    ← Carol has no orders\n\n-- Find users who have never ordered\nSELECT u.name, u.email\nFROM users u\nLEFT JOIN orders o ON u.id = o.user_id\nWHERE o.id IS NULL;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "PRAWE DOŁĄCZENIE i przewodnik wizualny",
+          "content": "RIGHT JOIN jest przeciwieństwem LEFT - zachowuje wszystkie wiersze z prawej tabeli.\n\n📊 Typy DOŁĄCZENIA Wizualnie:\n\nINNER: Tylko pasujące wiersze (A ∩ B)\nPO LEWEJ: Wszystko od lewej + dopasowania (A + A∩B)\nPRAWY: Wszystko od prawej + dopasowania (B + A∩B)",
+          "codeSnippet": "-- All products, even those never ordered\nSELECT p.name, o.quantity\nFROM order_items o\nRIGHT JOIN products p ON o.product_id = p.id;\n\n-- RIGHT JOIN is less common - you can usually\n-- rewrite it as LEFT JOIN by swapping tables:\nSELECT p.name, o.quantity\nFROM products p\nLEFT JOIN order_items o ON p.id = o.product_id;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Łączenie wielu tabel",
+          "content": "Możesz połączyć wiele JOIN, aby połączyć dane z kilku powiązanych tabel:",
+          "codeSnippet": "-- Orders with user names and product details\nSELECT \n  u.name AS customer,\n  p.name AS product,\n  oi.quantity,\n  o.order_date\nFROM orders o\nINNER JOIN users u ON o.user_id = u.id\nINNER JOIN order_items oi ON o.id = oi.order_id\nINNER JOIN products p ON oi.product_id = p.id\nWHERE o.order_date >= '2024-01-01';\n\n-- Mix JOIN types as needed\nSELECT u.name, COUNT(o.id) AS order_count\nFROM users u\nLEFT JOIN orders o ON u.id = o.user_id\nGROUP BY u.id, u.name;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Co zwraca LEFT JOIN, czego nie zwraca INNER JOIN?",
+            "options": [
+              "Więcej kolumn",
+              "Niedopasowane wiersze z lewej tabeli (z wartościami NULL)",
+              "Szybsze rezultaty",
+              "Posortowane wyniki"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "LEFT JOIN uwzględnia wszystkie wiersze z lewej tabeli, nawet jeśli w prawej tabeli nie ma dopasowania. Niedopasowane kolumny po prawej stronie mają wartość NULL.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jak znaleźć użytkowników, którzy NIE mają zamówień?",
+            "options": [
+              "WYBIERZ * OD użytkowników GDZIE zamówienia = 0;",
+              "WYBIERZ * OD użytkowników LEWY DOŁĄCZ DO ZAMÓWIEŃ NA ... GDZIE zamówienia.id ma wartość NULL;",
+              "WYBIERZ * OD użytkowników INNER JOIN zamówienia ON ... GDZIE kwota = 0;",
+              "WYBIERZ * OD użytkowników GDZIE NIE W zamówieniach;"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Użyj LEFT JOIN i sprawdź wartość NULL w kolumnie klucza po prawej stronie tabeli. Jeśli Orders.id ma wartość NULL, użytkownik nie ma pasujących zamówień.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jeśli użytkownicy mają 100 wierszy, a zamówienia 50, jaki jest minimalny wynik LEFT JOIN?",
+            "options": [
+              "50 rzędów",
+              "100 rzędów",
+              "150 rzędów",
+              "0 wierszy"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "LEFT JOIN zawsze zwraca co najmniej tyle wierszy, ile lewa tabela. Pojawią się wszyscy 100 użytkowników, nawet ci bez zamówień.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Czy możesz użyć wielu JOIN w jednym zapytaniu?",
+            "options": [
+              "Nie, dozwolone jest tylko jedno DOŁĄCZENIE",
+              "Tak, połącz je jeden po drugim",
+              "Tylko z podzapytaniami",
+              "Tylko z UNIĄ"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Można łączyć wiele operacji JOIN w celu łączenia danych z wielu tabel. Każde JOIN dodaje kolejną tabelę do wyniku.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "PRAWO DOŁĄCZ użytkowników NA zamówienia.user_id = users.id jest równoważne:",
+            "options": [
+              "LEWO DOŁĄCZ do zamówień ON users.id = zamówienia.user_id",
+              "INNER JOIN z zamienionymi tabelami",
+              "LEWO DOŁĄCZ do użytkowników NA zamówienia.user_id = users.id",
+              "Żadne z powyższych"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "RIGHT JOIN table_a jest równoważne LEFT JOIN z zamienionymi tabelami. Większość programistów woli LEFT JOIN dla spójności.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Znajdź nieaktywnych użytkowników",
+        "description": "Napisz zapytanie, aby znaleźć wszystkich użytkowników, którzy nigdy nie złożyli zamówienia. Użyj LEFT JOIN i sprawdź wartość NULL. Pokaż tylko nazwę użytkownika i adres e-mail.",
+        "starterCode": "-- Find users with no orders\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT u.name, u.email FROM users u LEFT JOIN orders o ON u.id = o.user_id WHERE o.id IS NULL;",
+            "isHidden": false
+          }
+        ],
+        "hint": "LEFT JOIN zachowuje wszystkich użytkowników. Jeśli nie ma pasującego zamówienia, kolumny zamówienia będą miały wartość NULL.",
+        "solution": "SELECT u.name, u.email FROM users u LEFT JOIN orders o ON u.id = o.user_id WHERE o.id IS NULL;",
+        "xpReward": 15
+      },
+      "xpReward": 23,
+      "order": 7
+    },
+    {
+      "id": "sql_lesson_9",
+      "courseId": "sql",
+      "moduleId": "advanced",
+      "title": "Modyfikowanie danych",
+      "description": "Dowiedz się, jak bezpiecznie wstawiać, aktualizować i usuwać dane",
+      "theorySlides": [
+        {
+          "title": "Wstawianie danych za pomocą INSERT 📝",
+          "content": "Instrukcja INSERT dodaje nowe wiersze do tabeli. Można wstawić jeden lub wiele wierszy jednocześnie.",
+          "codeSnippet": "-- Insert a single row (specify columns)\nINSERT INTO users (name, email)\nVALUES ('Alice', 'alice@email.com');\n\n-- Insert with all columns (order matters!)\nINSERT INTO products\nVALUES (1, 'Laptop', 999.99, 'Electronics');\n\n-- Insert multiple rows at once\nINSERT INTO users (name, email) VALUES\n  ('Bob', 'bob@email.com'),\n  ('Carol', 'carol@email.com'),\n  ('Dave', 'dave@email.com');",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Aktualizowanie danych za pomocą UPDATE",
+          "content": "UPDATE modyfikuje istniejące wiersze. ZAWSZE używaj WHERE, aby określić, które wiersze mają zostać zaktualizowane!",
+          "codeSnippet": "-- Update a specific user's email\nUPDATE users\nSET email = 'newemail@example.com'\nWHERE id = 5;\n\n-- Update multiple columns\nUPDATE products\nSET price = 899.99, category = 'Sale'\nWHERE id = 10;\n\n-- Update based on conditions\nUPDATE products\nSET price = price * 0.9  -- 10% discount\nWHERE category = 'Clearance';\n\n-- ⚠️ DANGEROUS: Updates ALL rows!\nUPDATE users SET status = 'active';",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Usuwanie danych za pomocą DELETE",
+          "content": "DELETE usuwa wiersze z tabeli. Bądź bardzo ostrożny – jest to trwałe!",
+          "codeSnippet": "-- Delete a specific row\nDELETE FROM users WHERE id = 5;\n\n-- Delete rows matching a condition\nDELETE FROM orders\nWHERE status = 'cancelled'\nAND created_at < '2023-01-01';\n\n-- ⚠️ DANGEROUS: Deletes ALL rows!\nDELETE FROM users;\n\n-- Safety tip: Test with SELECT first!\nSELECT * FROM orders\nWHERE status = 'cancelled';  -- Preview\n-- Then change SELECT to DELETE\n\n-- Use transactions for safety\nBEGIN TRANSACTION;\nDELETE FROM orders WHERE id = 100;\n-- Check results, then:\nCOMMIT;  -- Save changes\n-- Or: ROLLBACK;  -- Undo changes",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Jaka jest poprawna składnia wstawiania nowego użytkownika?",
+            "options": [
+              "DODAJ DO WARTOŚCI użytkowników („John”, „jan@email.com”);",
+              "WSTAW użytkowników (imię i nazwisko, adres e-mail) („John”, „jan@email.com”);",
+              "WSTAW DO użytkowników (imię i nazwisko, adres e-mail) WARTOŚCI („John”, „jan@email.com”);",
+              "UTWÓRZ użytkowników WIERSZA („Jan”, „jan@email.com”);"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Poprawna składnia to INSERT INTO tabela (kolumny) VALUES (wartości);",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co się stanie, jeśli uruchomisz UPDATE users SET status = 'active'; bez GDZIE?",
+            "options": [
+              "Nie udaje się to z powodu błędu",
+              "Aktualizuje tylko pierwszy wiersz",
+              "Aktualizuje WSZYSTKIE wiersze w tabeli",
+              "Nic się nie dzieje"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Bez klauzuli WHERE UPDATE wpływa na WSZYSTKIE wiersze w tabeli. To częsty i niebezpieczny błąd!",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jak zmienić cenę produktu ze 100 USD na 90 USD?",
+            "options": [
+              "AKTUALIZUJ produkty USTAW cenę = 90 GDZIE cena = 100;",
+              "ZMIENIAJ cenę produktów = 90 GDZIE cena = 100;",
+              "ZMIEŃ produkty USTAW cenę 90 GDZIE id = ?;",
+              "AKTUALIZACJA cena = 90 OD produktów;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Użyj kolumny SET tabeli UPDATE = wartość WHERE, warunek; aby zmodyfikować określone wiersze.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co powinieneś zrobić przed uruchomieniem DELETE?",
+            "options": [
+              "Najpierw uruchom COMMIT",
+              "Przetestuj za pomocą SELECT, używając tej samej klauzuli WHERE",
+              "Nic, po prostu uruchom",
+              "Utwórz nową tabelę"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Zawsze wyświetl podgląd tego, co zostanie usunięte, uruchamiając najpierw polecenie SELECT z tą samą klauzulą ​​WHERE. Zapobiega to przypadkowej utracie danych.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co robi ROLLBACK w transakcji?",
+            "options": [
+              "Zapisuje wszystkie zmiany",
+              "Cofa wszystkie zmiany od czasu ROZPOCZĘCIA TRANSAKCJI",
+              "Usuwa tabelę",
+              "Blokuje bazę danych"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "ROLLBACK cofa wszystkie zmiany dokonane od rozpoczęcia transakcji. COMMIT zapisuje je. Transakcje umożliwiają bezpieczne testowanie zmian.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Dodaj nowy produkt",
+        "description": "Napisz oświadczenie INSERT w celu dodania do tabeli produktów nowego produktu o nazwie \"Mysz bezprzewodowa\" w cenie 29,99 i kategorii \"Elektronika\".",
+        "starterCode": "-- Insert a new product\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "INSERT INTO products (name, price, category) VALUES ('Wireless Mouse', 29.99, 'Electronics');",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj INSERT INTO tabela (kolumny) VALUES (wartości); - pamiętaj o podaniu wartości tekstowych.",
+        "solution": "INSERT INTO products (name, price, category) VALUES ('Wireless Mouse', 29.99, 'Electronics');",
+        "xpReward": 15
+      },
+      "xpReward": 23,
+      "order": 8
+    },
+    {
+      "id": "sql_lesson_10",
+      "courseId": "sql",
+      "moduleId": "advanced",
+      "title": "Tworzenie tabel",
+      "description": "Projektuj i twórz własne tabele bazy danych",
+      "theorySlides": [
+        {
+          "title": "UTWÓRZ TABELI Podstawy 🏗️",
+          "content": "CREATE TABLE definiuje nową tabelę z kolumnami i ich typami danych. Każda kolumna wymaga nazwy i typu.",
+          "codeSnippet": "-- Basic table creation\nCREATE TABLE users (\n  id INT,\n  name VARCHAR(100),\n  email VARCHAR(255),\n  age INT,\n  created_at TIMESTAMP\n);\n\n-- Common data types:\n-- INT: Whole numbers (1, 42, -10)\n-- DECIMAL(10,2): Decimal numbers (99.99)\n-- VARCHAR(n): Text up to n characters\n-- TEXT: Long text (no limit)\n-- BOOLEAN: true/false\n-- DATE: Dates (2024-01-15)\n-- TIMESTAMP: Date + time",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Klucze podstawowe i automatyczny przyrost",
+          "content": "KLUCZ PODSTAWOWY jednoznacznie identyfikuje każdy wiersz. AUTO_INCREMENT automatycznie generuje unikalne identyfikatory.",
+          "codeSnippet": "-- Table with primary key and auto-increment\nCREATE TABLE products (\n  id INT PRIMARY KEY AUTO_INCREMENT,\n  name VARCHAR(255) NOT NULL,\n  price DECIMAL(10, 2) NOT NULL,\n  description TEXT,\n  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n);\n\n-- PostgreSQL uses SERIAL instead:\nCREATE TABLE products (\n  id SERIAL PRIMARY KEY,\n  name VARCHAR(255) NOT NULL,\n  price DECIMAL(10, 2) NOT NULL\n);",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Ograniczenia i klucze obce",
+          "content": "Ograniczenia wymuszają reguły dotyczące danych w celu zachowania integralności:",
+          "codeSnippet": "-- Table with various constraints\nCREATE TABLE orders (\n  id INT PRIMARY KEY AUTO_INCREMENT,\n  user_id INT NOT NULL,\n  amount DECIMAL(10, 2) NOT NULL CHECK (amount > 0),\n  status VARCHAR(50) DEFAULT 'pending',\n  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\n  \n  -- Foreign key links to users table\n  FOREIGN KEY (user_id) REFERENCES users(id)\n);\n\n-- Constraints explained:\n-- NOT NULL: Column cannot be empty\n-- UNIQUE: All values must be different\n-- CHECK: Values must meet a condition\n-- DEFAULT: Value if none provided\n-- FOREIGN KEY: Must match a value in another table",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Co zapewnia KLUCZ PODSTAWOWY?",
+            "options": [
+              "Kolumna jest zawsze posortowana",
+              "Każdy wiersz ma unikalny identyfikator",
+              "Kolumna może mieć wartość NULL",
+              "Tabela ładuje się szybciej"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "PRIMARY KEY zapewnia, że ​​każdy wiersz ma unikalny identyfikator inny niż null. Jest to niezbędne do identyfikowania i łączenia rekordów.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Który typ danych najlepiej nadaje się do przechowywania cen takich jak 99,99 USD?",
+            "options": [
+              "WEWN",
+              "VARCHAR(10)",
+              "DZIESIĘTNE(10, 2)",
+              "PLATFORMA"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "DECIMAL(10, 2) przechowuje dokładne liczby dziesiętne z 2 miejscami po przecinku - idealne dla pieniędzy. FLOAT może zawierać błędy zaokrągleń.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co oznacza NIE NULL?",
+            "options": [
+              "W kolumnie można przechowywać tylko wartość NULL",
+              "Kolumna musi zawsze zawierać wartość",
+              "Kolumna jest kluczem podstawowym",
+              "Kolumna przechowuje zero"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "NOT NULL oznacza, że ​​kolumna nie może być pusta — każdy wiersz musi zawierać wartość dla tej kolumny.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Do czego służy KLUCZ OBCY?",
+            "options": [
+              "Tworzy nową tabelę",
+              "Linki do wiersza w innej tabeli",
+              "Sprawia, że ​​kolumna jest wyjątkowa",
+              "Szyfruje dane"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "KLUCZ OBCY tworzy relację między tabelami poprzez odniesienie do klucza podstawowego innej tabeli, zapewniając integralność referencyjną.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co robi DOMYŚLNE „oczekujące”?",
+            "options": [
+              "Sprawia, że ​​kolumna jest wymagana",
+              "Ustawia wartość na „oczekującą”, jeśli nie została podana",
+              "Zezwala tylko na wartość „oczekującą”",
+              "Nazywa kolumnę „oczekującą”"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "DEFAULT określa wartość, która ma zostać użyta, gdy podczas INSERT nie zostanie podana żadna wartość. W takim przypadku domyślnie będzie to status „oczekujący”.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Utwórz tabelę klientów",
+        "description": "Utwórz tabelę „klienci” zawierającą: identyfikator (liczba całkowita, klucz podstawowy, automatyczny przyrost), nazwę (varchar 100, nie null), adres e-mail (varchar 255, unikalny) i utworzony_at (znacznik czasu z domyślnym bieżącym znacznikiem czasu).",
+        "starterCode": "-- Create the customers table\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "CREATE TABLE customers (\n  id INT PRIMARY KEY AUTO_INCREMENT,\n  name VARCHAR(100) NOT NULL,\n  email VARCHAR(255) UNIQUE,\n  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n);",
+            "isHidden": false
+          }
+        ],
+        "hint": "Zdefiniuj każdą kolumnę wraz z jej typem i ograniczeniami. Używaj przecinków między kolumnami.",
+        "solution": "CREATE TABLE customers (\n  id INT PRIMARY KEY AUTO_INCREMENT,\n  name VARCHAR(100) NOT NULL,\n  email VARCHAR(255) UNIQUE,\n  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n);",
+        "xpReward": 15
+      },
+      "xpReward": 25,
+      "order": 9
+    }
+  ]
+}

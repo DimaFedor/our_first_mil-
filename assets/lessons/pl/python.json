@@ -1,0 +1,1207 @@
+{
+  "courseId": "python",
+  "lessons": [
+    {
+      "id": "python_lesson_1",
+      "courseId": "python",
+      "moduleId": "basics",
+      "title": "Witamy w Pythonie",
+      "description": "Twoje pierwsze kroki w świecie programowania w Pythonie",
+      "theorySlides": [
+        {
+          "title": "Co to jest Python? 🐍",
+          "content": "Python to jeden z najpopularniejszych języków programowania na świecie. Jest używany przez firmy takie jak Google, Netflix i Instagram do tworzenia niesamowitego oprogramowania.\n\nPython jest znany z tego, że:\n• Łatwy do odczytania i zapisu\n• Potężny, ale prosty\n• Idealny dla początkujących\n• Stosowany wszędzie: tworzenie stron internetowych, analiza danych, sztuczna inteligencja i wiele więcej!",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Dlaczego warto wybrać Pythona?",
+          "content": "Python został zaprojektowany tak, aby był prosty i czytelny. W przeciwieństwie do innych języków programowania, które używają wielu symboli i nawiasów, Python używa zwykłych angielskich słów.\n\nMoce Pythona:\n🌐 Strony internetowe (Instagram, Pinterest)\n🤖 Sztuczna inteligencja i uczenie maszynowe (Tesla, Spotify)\n📊 Analiza danych (rekomendacje Netflix)\n🎮 Gry (Cywilizacja IV)",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Twój pierwszy program w Pythonie",
+          "content": "Każdy programista zaczyna od „Hello, World!” - prosty program wyświetlający tekst na ekranie.",
+          "codeSnippet": "print(\"Hello, World!\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Co wyróżnia Pythona na tle innych języków programowania?",
+            "options": [
+              "Łatwo się czyta i pisze",
+              "Działa tylko w systemie Windows",
+              "To najszybszy język",
+              "Może tylko tworzyć gry"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Główną zaletą Pythona jest jego czytelność i prostota, co czyni go idealnym dla początkujących, a jednocześnie wystarczająco potężnym dla ekspertów.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Które polecenie wyświetla tekst w Pythonie?",
+            "options": [
+              "pokazywać()",
+              "wyświetlacz()",
+              "wydrukować()",
+              "pisać()"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Funkcja print() służy do wyświetlania tekstu wyjściowego w Pythonie.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jaka interpunkcja musi otaczać tekst w funkcji print()?",
+            "options": [
+              "Nawiasy kwadratowe []",
+              "Nawiasy klamrowe {}",
+              "Cytaty „” lub „”",
+              "Nawiasy ()"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Tekst (ciągi znaków) w Pythonie musi być owinięty w cudzysłów — pojedynczy „” lub podwójny „”.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Która firma używa Pythona?",
+            "options": [
+              "Google",
+              "Netflixa",
+              "Instagrama",
+              "Wszystkie powyższe"
+            ],
+            "correctAnswerIndex": 3,
+            "explanation": "Python jest używany przez wiele dużych firm, w tym Google, Netflix, Instagram, Spotify i wiele więcej!",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Powiedz cześć!",
+        "description": "Napisz program wyświetlający komunikat „Hello, Python!” do ekranu.",
+        "starterCode": "# Write your code below\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Hello, Python!",
+            "isHidden": false
+          }
+        ],
+        "hint": "Aby wyświetlić tekst, użyj funkcji print(). Pamiętaj, aby umieścić swój tekst w cudzysłowie!",
+        "solution": "print(\"Hello, Python!\")",
+        "xpReward": 15
+      },
+      "xpReward": 15,
+      "order": 0
+    },
+    {
+      "id": "python_lesson_2",
+      "courseId": "python",
+      "moduleId": "basics",
+      "title": "Zmienne - przechowywanie informacji",
+      "description": "Dowiedz się, jak przechowywać i wykorzystywać dane w swoich programach",
+      "theorySlides": [
+        {
+          "title": "Czym są zmienne? 📦",
+          "content": "Pomyśl o zmiennych jak oznaczonych polach, w których przechowywane są informacje. W tych polach możesz umieścić różne typy danych i wykorzystać je później.\n\nNa przykład:\n• Pudełko oznaczone „imię” może zawierać „Alicja”\n• Pole oznaczone „wiek” może zawierać 25\n• Pole oznaczone „is_student” może zawierać wartość True",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tworzenie zmiennych",
+          "content": "W Pythonie utworzenie zmiennej jest niezwykle proste! Wystarczy wpisać nazwę, znak równości i wartość.",
+          "codeSnippet": "name = \"Alex\"\nage = 20\nheight = 5.8\nis_student = True",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Rodzaje danych",
+          "content": "Python automatycznie rozpoznaje różne typy danych:\n\n• Tekst (ciąg znaków): „Hello”, „Python”, „123 Main St”\n• Liczby (liczba całkowita): 5, 42, -10, 0\n• Liczby dziesiętne (zmiennoprzecinkowe): 3,14, 2,5, -1,2\n• Prawda/Fałsz (Boolean): Prawda, Fałsz",
+          "codeSnippet": "message = \"Welcome!\"  # Text\nscore = 100          # Whole number\nprice = 19.99        # Decimal\nis_open = True       # True/False",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Używanie zmiennych",
+          "content": "Po utworzeniu zmiennej możesz jej używać w dowolnym miejscu programu, wpisując jej nazwę.",
+          "codeSnippet": "player_name = \"Maya\"\npoints = 150\n\nprint(\"Player:\", player_name)\nprint(\"Points:\", points)\nprint(\"Great job\", player_name, \"!\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Jak utworzyć zmienną o nazwie „score” o wartości 100?",
+            "options": [
+              "utwórz wynik = 100",
+              "wynik = 100",
+              "wynik var = 100",
+              "wynik := 100"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "W Pythonie zmienne tworzy się za pomocą operatora przypisania (=). Po prostu napisz: wynik = 100",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jakiego rodzaju dane to „Hello World”?",
+            "options": [
+              "Liczba całkowita",
+              "Platforma",
+              "Smyczkowy",
+              "Wartość logiczna"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Tekst w cudzysłowie nazywany jest ciągiem. „Hello World” jest ciągiem znaków, ponieważ zawiera znaki tekstowe.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Która z nich jest poprawną nazwą zmiennej?",
+            "options": [
+              "2 imię",
+              "mój wiek",
+              "wynik_gracza",
+              "wydrukować"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Nazwy zmiennych mogą zawierać litery, cyfry i znaki podkreślenia, ale nie mogą zaczynać się od cyfry ani zawierać łączników.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jaka jest wartość x po: x = 5; x = 10?",
+            "options": [
+              "5",
+              "10",
+              "15",
+              "Błąd"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Zmienne można ponownie przypisać. Drugie przypisanie (x = 10) zastępuje pierwszą wartość.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jakiego typu jest wartość True?",
+            "options": [
+              "Smyczkowy",
+              "Liczba całkowita",
+              "Wartość logiczna",
+              "Platforma"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Prawda i Fałsz są wartościami logicznymi - reprezentują stany tak/nie lub stany włączenia/wyłączenia.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Karta danych osobowych",
+        "description": "Utwórz dwie zmienne:\n• imię = „Aleks”\n• wiek = 25 lat\n\nNastępnie wydrukuj każdy w osobnych wierszach:\nImię: Aleks\nWiek: 25",
+        "starterCode": "# Step 1: Create variables\nname = # add \"Alex\" here\nage = # add 25 here\n\n# Step 2: Print them\nprint(\"Name:\", name)\nprint(\"Age:\", age)",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Name: Alex\nAge: 25",
+            "isHidden": false
+          }
+        ],
+        "hint": "Zastąp komentarze wartościami: imię = „Alex” (z cudzysłowami w przypadku tekstu) i wiek = 25 (bez cudzysłowów w przypadku liczb).",
+        "solution": "name = \"Alex\"\nage = 25\n\nprint(\"Name:\", name)\nprint(\"Age:\", age)",
+        "xpReward": 15
+      },
+      "xpReward": 20,
+      "order": 1
+    },
+    {
+      "id": "python_lesson_3",
+      "courseId": "python",
+      "moduleId": "basics",
+      "title": "Matematyka w Pythonie",
+      "description": "Naucz się wykonywać obliczenia i pracować z liczbami",
+      "theorySlides": [
+        {
+          "title": "Python to świetny kalkulator! 🔢",
+          "content": "Python może wykonywać wszystkie podstawowe operacje matematyczne i wiele więcej. Możesz go używać jak potężnego kalkulatora!",
+          "codeSnippet": "print(5 + 3)    # Addition: 8\nprint(10 - 4)   # Subtraction: 6\nprint(6 * 7)    # Multiplication: 42\nprint(15 / 3)   # Division: 5.0",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Matematyka ze zmiennymi",
+          "content": "Możesz używać zmiennych w operacjach matematycznych, dzięki czemu obliczenia są dynamiczne i nadają się do ponownego wykorzystania.",
+          "codeSnippet": "price = 25\nquantity = 3\ntotal = price * quantity\n\nprint(\"Total cost:\", total)  # Total cost: 75",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Specjalne operacje matematyczne",
+          "content": "Python ma kilka specjalnych operatorów matematycznych, które są naprawdę przydatne:",
+          "codeSnippet": "print(10 ** 2)   # Power: 10 squared = 100\nprint(17 // 5)   # Floor division: 3\nprint(17 % 5)    # Modulo (remainder): 2",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Aktualizowanie zmiennych",
+          "content": "Możesz zmienić wartość zmiennej, przypisując jej nową wartość. Możesz nawet użyć bieżącej wartości zmiennej do obliczenia nowej!",
+          "codeSnippet": "score = 100\nprint(\"Current score:\", score)\n\nscore = score + 50  # Add 50 points\nprint(\"New score:\", score)\n\n# Shortcut: score += 50 does the same thing",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Co oznacza 10 ** 3 w Pythonie?",
+            "options": [
+              "30",
+              "103",
+              "1000",
+              "13"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "** jest operatorem mocy. 10 ** 3 oznacza 10 do potęgi 3, czyli 10 × 10 × 10 = 1000.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jeśli x = 5, ile x += 3 sprawi, że x będzie równe?",
+            "options": [
+              "5",
+              "8",
+              "3",
+              "53"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "x += 3 jest skrótem od x = x + 3. Zatem jeśli x zaczyna się od 5, staje się 5 + 3 = 8.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Do czego służy operator %?",
+            "options": [
+              "Oblicza procent",
+              "Znajduje resztę z dzielenia",
+              "Mnoży przez 100",
+              "Konwertuje na dziesiętny"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Operator % (modulo) zwraca resztę z dzielenia. Na przykład 17% 5 = 2.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co to jest 15 // 4 w Pythonie?",
+            "options": [
+              "3,75",
+              "3",
+              "4",
+              "3.7"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "// to dzielenie pięter - dzieli i zaokrągla w dół do najbliższej liczby całkowitej. 15/4 = 3,75, ale 15//4 = 3.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Który operator ma najwyższy priorytet (wykonuje się jako pierwszy)?",
+            "options": [
+              "+ (dodatek)",
+              "* (mnożenie)",
+              "** (moc)",
+              "- (odejmowanie)"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Python przestrzega matematycznej kolejności działań: najpierw obliczana jest ** (potęga), następnie * i /, następnie + i -.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Oblicz powierzchnię koła",
+        "description": "Mając promień, oblicz pole koła, korzystając ze wzoru: pole = 3,14 * promień * promień",
+        "starterCode": "# Given radius\nradius = 5\n\n# Calculate area (use 3.14 for pi)\narea = \n\nprint(\"Area:\", area)",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Area: 78.5",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj wzoru: powierzchnia = 3,14 * promień * promień. Pamiętaj, że promień * promień jest taki sam jak promień ** 2.",
+        "solution": "radius = 5\narea = 3.14 * radius * radius\nprint(\"Area:\", area)",
+        "xpReward": 15
+      },
+      "xpReward": 20,
+      "order": 2
+    },
+    {
+      "id": "python_lesson_4",
+      "courseId": "python",
+      "moduleId": "basics",
+      "title": "Praca z tekstem",
+      "description": "Opanuj manipulację tekstem i operacje na ciągach znaków",
+      "theorySlides": [
+        {
+          "title": "Struny mają moc! 📝",
+          "content": "W programowaniu tekst nazywany jest „ciągiem”, ponieważ przypomina ciąg połączonych ze sobą znaków. Python ma wiele narzędzi do pracy z tekstem.",
+          "codeSnippet": "message = \"Hello, World!\"\nname = \"Python\"\nsentence = \"Learning \" + name + \" is fun!\"",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Łączenie tekstu (łączenie)",
+          "content": "Możesz łączyć ciągi znaków za pomocą operatora +, podobnie jak dodawanie liczb!",
+          "codeSnippet": "first_name = \"John\"\nlast_name = \"Doe\"\nfull_name = first_name + \" \" + last_name\n\nprint(full_name)  # John Doe",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Przydatne metody ciągów",
+          "content": "Ciągi mają wbudowane „metody” – specjalne funkcje, które mogą je przekształcić:",
+          "codeSnippet": "text = \"Hello World\"\n\nprint(text.upper())     # HELLO WORLD\nprint(text.lower())     # hello world\nprint(text.title())     # Hello World\nprint(len(text))        # 11 (length)",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Struny F: nowoczesny sposób",
+          "content": "Ciągi F to najbardziej elegancki sposób łączenia tekstu i zmiennych w Pythonie:",
+          "codeSnippet": "name = \"Alice\"\nage = 30\nscore = 95.5\n\n# Old way:\nmessage1 = \"Hi \" + name + \", you are \" + str(age)\n\n# F-string way (modern):\nmessage2 = f\"Hi {name}, you are {age} years old!\"\nmessage3 = f\"Your score is {score}%\"",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Jak połączyć „Hello” i „World” ze spacją pomiędzy nimi?",
+            "options": [
+              "„Witam” + „Świecie”",
+              "„Witam” + „ „ + „Świecie”",
+              "„Witam” i „” i „Świecie”",
+              "„Witam” * „Świecie”"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Aby połączyć ciągi znaków ze spacją, użyj: „Hello” + „ „ + „World”, co daje „Hello World”.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co zwraca funkcja „python”.upper()?",
+            "options": [
+              "\"PYTON\"",
+              "\"Pyton\"",
+              "\"pyton\"",
+              "Błąd"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Metoda .upper() konwertuje wszystkie litery na wielkie, więc „python” staje się „PYTHON”.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Która to struna f?",
+            "options": [
+              "„Witam” + imię",
+              "f\"Witam {imię}\"",
+              "„Witam, {imię}”",
+              "„Witam %s” % nazwa"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Ciągi F zaczynają się od f i używają składni {nazwa_zmiennej}: f\"Witam {nazwa}\"",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co zwraca len(\"Python\")?",
+            "options": [
+              "5",
+              "6",
+              "7",
+              "Błąd"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "len() zwraca liczbę znaków w ciągu. „Python” ma 6 znaków.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jak uzyskać pierwszy znak tekstu = „Witam”?",
+            "options": [
+              "tekst.pierwszy()",
+              "tekst[0]",
+              "Tekst 1]",
+              "tekst.get(0)"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Użyj nawiasów kwadratowych z indeksem. W Pythonie indeksowanie rozpoczyna się od 0, więc tekst [0] jest pierwszym znakiem.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Zbuduj nazwę użytkownika",
+        "description": "Utwórz nazwę użytkownika, łącząc imię, inicjał nazwiska i rok urodzenia.",
+        "starterCode": "first_name = \"john\"\nlast_name = \"doe\"\nbirth_year = 1995\n\n# Create username: firstname + first letter of lastname + year\n# Example: john + d + 1995 = \"johnd1995\"\nusername = \n\nprint(username)",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "johnd1995",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj łączenia ciągów (+) lub ciągu f. Aby uzyskać pierwszą literę nazwiska, użyj nazwisko[0]. Konwertuj rok urodzenia na ciąg znaków za pomocą str().",
+        "solution": "first_name = \"john\"\nlast_name = \"doe\"\nbirth_year = 1995\n\nusername = first_name + last_name[0] + str(birth_year)\nprint(username)",
+        "xpReward": 15
+      },
+      "xpReward": 25,
+      "order": 3
+    },
+    {
+      "id": "python_lesson_5",
+      "courseId": "python",
+      "moduleId": "control_flow",
+      "title": "Podejmowanie decyzji",
+      "description": "Dowiedz się, jak programy dokonują wyborów za pomocą instrukcji if",
+      "theorySlides": [
+        {
+          "title": "Programy, które myślą! 🤔",
+          "content": "Prawdziwe programy muszą podejmować decyzje w oparciu o różne sytuacje. Instrukcja „if” pozwala programowi wybrać, co ma zrobić.\n\nPomyśl o tym tak:\n„JEŚLI pada deszcz, zabierz ze sobą parasol”\n„JEŚLI wynik jest wysoki, okaż gratulacje”",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Podstawowa instrukcja if",
+          "content": "Instrukcja if sprawdza, czy coś jest prawdą, a następnie uruchamia kod tylko wtedy, gdy jest:",
+          "codeSnippet": "age = 18\n\nif age >= 18:\n    print(\"You can vote!\")\n    print(\"Welcome to adulthood!\")\n\nprint(\"This always runs\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Jeśli-inaczej: dwie możliwości",
+          "content": "Użyj else do obsługi przypadku, gdy warunek jest fałszywy:",
+          "codeSnippet": "temperature = 25\n\nif temperature > 30:\n    print(\"It's hot! Stay hydrated.\")\nelse:\n    print(\"Nice weather today!\")\n    print(\"Perfect for a walk.\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Wiele warunków",
+          "content": "Użyj elif (else if), aby sprawdzić wiele warunków:",
+          "codeSnippet": "score = 85\n\nif score >= 90:\n    grade = \"A\"\nelif score >= 80:\n    grade = \"B\"\nelif score >= 70:\n    grade = \"C\"\nelse:\n    grade = \"Need more practice\"\n\nprint(f\"Your grade: {grade}\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        },
+        {
+          "title": "Operatory porównania",
+          "content": "Te operatory pomagają w porównywaniu wartości:",
+          "codeSnippet": "# Comparison operators\nprint(5 == 5)    # Equal to: True\nprint(5 != 3)    # Not equal: True\nprint(7 > 5)     # Greater than: True\nprint(4 < 8)     # Less than: True\nprint(5 >= 5)    # Greater or equal: True\nprint(3 <= 10)   # Less or equal: True",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 4
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Co się stanie, jeśli warunek w instrukcji if będzie fałszywy?",
+            "options": [
+              "Program ulega awarii",
+              "Kod wewnątrz bloku if jest pomijany",
+              "Kod i tak działa",
+              "Python pokazuje błąd"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Gdy warunek if jest fałszywy, Python pomija cały kod znajdujący się w bloku if.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co robi operator ==?",
+            "options": [
+              "Przypisuje wartość",
+              "Sprawdza, czy dwie wartości są równe",
+              "Dodaje dwie liczby",
+              "Drukuje wartość"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "== sprawdza, czy dwie wartości są równe i zwraca True lub False. Nie myl tego z =, które przypisuje wartości.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Które słowo kluczowe jest używane w Pythonie jako „w przeciwnym razie”?",
+            "options": [
+              "W przeciwnym razie",
+              "w przeciwnym razie",
+              "Następnie",
+              "koniec"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Słowo kluczowe „else” obsługuje przypadek, gdy warunek if jest fałszywy.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co się stanie, jeśli żaden warunek nie jest prawdziwy i nie ma innego?",
+            "options": [
+              "Błąd",
+              "Nic się nie dzieje",
+              "Program ulega awarii",
+              "Drukuje Brak"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Jeśli żaden warunek nie pasuje i nie ma bloku else, Python po prostu pomija całą instrukcję if.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Który operator oznacza „nie równy”?",
+            "options": [
+              "<>",
+              "!=",
+              "=/=",
+              "<!="
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "!= sprawdza, czy dwie wartości NIE są równe. Przykład: 5 != 3 zwraca True.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Sprawdzanie kategorii wiekowych",
+        "description": "Napisz program, który kategoryzuje ludzi według wieku: Dziecko (0-12), Nastolatek (13-19), Dorosły (20-64), Senior (65+)",
+        "starterCode": "age = 16\n\n# Write if-elif-else statements to categorize the age\n# Print the appropriate category\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Teen",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj if-elif-else z przedziałami wiekowymi. Sprawdź od najmłodszego do najstarszego lub użyj odpowiednich operatorów porównania.",
+        "solution": "age = 16\n\nif age <= 12:\n    print(\"Child\")\nelif age <= 19:\n    print(\"Teen\")\nelif age <= 64:\n    print(\"Adult\")\nelse:\n    print(\"Senior\")",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 4
+    },
+    {
+      "id": "python_lesson_6",
+      "courseId": "python",
+      "moduleId": "data-structures",
+      "title": "Praca z listami",
+      "description": "Naucz się przechowywać wiele przedmiotów w uporządkowanych kolekcjach",
+      "theorySlides": [
+        {
+          "title": "Czym są listy? 📝",
+          "content": "Listy umożliwiają przechowywanie wielu elementów w jednej zmiennej. Są uporządkowane, zmienne i pozwalają na powielanie wartości.\n\nPrzykłady z życia wzięte:\n• Lista zakupów\n• Playlista utworów\n• Lista najlepszych wyników\n• Rzeczy do zrobienia",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tworzenie list",
+          "content": "Listy tworzone są przy użyciu nawiasów kwadratowych [], a pozycje oddzielane są przecinkami.",
+          "codeSnippet": "fruits = [\"apple\", \"banana\", \"cherry\"]\nnumbers = [1, 2, 3, 4, 5]\nmixed = [1, \"hello\", True, 3.14]\n\nprint(fruits)",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Dostęp do elementów listy",
+          "content": "Dostęp do elementów według ich numeru indeksu. Python używa indeksowania od zera (pierwszy element to 0).",
+          "codeSnippet": "fruits = [\"apple\", \"banana\", \"cherry\"]\n\nprint(fruits[0])   # apple\nprint(fruits[1])   # banana\nprint(fruits[-1])  # cherry (last item)",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Metody listy",
+          "content": "Python udostępnia wiele wbudowanych metod modyfikowania list.",
+          "codeSnippet": "fruits = [\"apple\", \"banana\"]\n\n# Add item\nfruits.append(\"cherry\")\n\n# Remove item\nfruits.remove(\"banana\")\n\n# Sort list\nfruits.sort()\n\nprint(fruits)",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Który indeks uzyskuje dostęp do pierwszego elementu?",
+            "options": [
+              "0",
+              "1",
+              "-1",
+              "Pierwszy"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Python używa indeksowania od zera: indeks 0 jest pierwszym elementem.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Która metoda dodaje element na końcu?",
+            "options": [
+              "dodać()",
+              "dodać()",
+              "naciskać()",
+              "wstawić()"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "append() dodaje pojedynczy element na koniec listy.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co zwracają owoce[-1], jeśli owoce = [\"a\", \"b\", \"c\"]?",
+            "options": [
+              "\"A\"",
+              "\"B\"",
+              "\"C\"",
+              "Błąd"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Indeksowanie ujemne zaczyna się od końca. -1 to ostatni element, -2 to przedostatni element, itd.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jak zmienić drugi element na liście?",
+            "options": [
+              "lista[2] = wartość",
+              "lista[1] = wartość",
+              "lista.set(1, wartość)",
+              "lista.zmiana(2, wartość)"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Drugi element ma indeks 1 (ponieważ indeksowanie zaczyna się od 0). Użyj list[1] = wartość, aby to zmienić.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Lista zakupów",
+        "description": "Utwórz listę zawierającą 3 pozycje: „mleko”, „chleb”, „jajka”\nNastępnie dodaj do listy „masło”.\nNa koniec wydrukuj całkowitą liczbę (powinna wynosić 4).",
+        "starterCode": "# Step 1: Create the list\nshopping = [\"milk\", \"bread\", \"eggs\"]\n\n# Step 2: Add \"butter\" using append()\n\n\n# Step 3: Print the count using len()\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "4",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj shopping.append(\"masło\"), aby dodać przedmiot, a następnie print(len(shopping)), aby wydrukować liczbę.",
+        "solution": "shopping = [\"milk\", \"bread\", \"eggs\"]\nshopping.append(\"butter\")\nprint(len(shopping))",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 5
+    },
+    {
+      "id": "python_lesson_7",
+      "courseId": "python",
+      "moduleId": "control-flow",
+      "title": "Pętle i iteracja",
+      "description": "Efektywnie powtarzaj czynności za pomocą pętli for i while",
+      "theorySlides": [
+        {
+          "title": "Pętla for 🔄",
+          "content": "Pętle umożliwiają wielokrotne powtarzanie kodu. Pętla for iteruje po sekwencjach.",
+          "codeSnippet": "fruits = [\"apple\", \"banana\", \"cherry\"]\n\nfor fruit in fruits:\n    print(fruit)\n\n# Loop through range\nfor i in range(5):\n    print(i)  # 0, 1, 2, 3, 4",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Funkcja range().",
+          "content": "range() generuje ciągi liczb dla pętli.",
+          "codeSnippet": "# range(stop)\nfor i in range(3):\n    print(i)  # 0, 1, 2\n\n# range(start, stop, step)\nfor i in range(0, 10, 2):\n    print(i)  # 0, 2, 4, 6, 8",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Pętla while",
+          "content": "while pętle działają tak długo, jak warunek jest spełniony.",
+          "codeSnippet": "count = 0\nwhile count < 5:\n    print(count)\n    count += 1  # Important!",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Co generuje zakres(3)?",
+            "options": [
+              "0, 1, 2",
+              "1, 2, 3",
+              "0, 1, 2, 3",
+              "1, 2"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "range(3) generuje 0, 1, 2 (do 3, ale nie włącznie).",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Które słowo kluczowe wychodzi z pętli?",
+            "options": [
+              "Wyjście",
+              "przerwa",
+              "zatrzymywać się",
+              "powrót"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "break natychmiast opuszcza bieżącą pętlę.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co generuje zakres (2, 8, 2)?",
+            "options": [
+              "2, 4, 6",
+              "2, 4, 6, 8",
+              "2, 3, 4, 5, 6, 7",
+              "4, 6"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "zakres(2, 8, 2) zaczyna się od 2, kończy przed 8, krok 2 → daje 2, 4, 6.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Które słowo kluczowe przechodzi do następnej iteracji?",
+            "options": [
+              "Następny",
+              "Kontynuować",
+              "pominąć",
+              "przechodzić"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Kontynuuj pomija resztę bieżącej iteracji i przechodzi do następnej.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co jest nie tak z: while True: print(\"Cześć\")?",
+            "options": [
+              "Błąd składni",
+              "Nieskończona pętla (działa wiecznie)",
+              "Nic nie drukuje",
+              "Drukuje raz"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Ponieważ warunek jest zawsze prawdziwy, pętla ta nigdy się nie kończy – jest to pętla nieskończona!",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Wydrukuj liczby parzyste",
+        "description": "Wydrukuj wszystkie liczby parzyste od 0 do 10.",
+        "starterCode": "# Print even numbers 0-10\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "0\n2\n4\n6\n8\n10",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj zakresu (0, 11, 2).",
+        "solution": "for i in range(0, 11, 2):\n    print(i)",
+        "xpReward": 15
+      },
+      "xpReward": 35,
+      "order": 6
+    },
+    {
+      "id": "python_lesson_8",
+      "courseId": "python",
+      "moduleId": "data-structures",
+      "title": "Słowniki",
+      "description": "Przechowuj dane w parach klucz-wartość",
+      "theorySlides": [
+        {
+          "title": "Czym są słowniki? 🗂️",
+          "content": "Słowniki przechowują dane w postaci par klucz-wartość. Każdy klucz jest unikalny i przypisany do wartości.\n\nJak prawdziwy słownik:\nSłowo (klucz) → Definicja (wartość)\n\nW programowaniu:\n„imię” → „Alicja”\n„wiek” → 25",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tworzenie słowników",
+          "content": "Używaj nawiasów klamrowych {} z parami klucz:wartość.",
+          "codeSnippet": "person = {\n    \"name\": \"Alice\",\n    \"age\": 25,\n    \"city\": \"NYC\"\n}\n\nprint(person[\"name\"])",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Metody słownikowe",
+          "content": "Przydatne metody pracy ze słownikami.",
+          "codeSnippet": "person = {\"name\": \"Alice\", \"age\": 25}\n\n# Get all keys\nprint(person.keys())\n\n# Get all values\nprint(person.values())\n\n# Check if key exists\nif \"name\" in person:\n    print(\"Found!\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Jak uzyskać dostęp do wartości słownikowej?",
+            "options": [
+              "dykt.klawisz",
+              "dykt[\"klucz\"]",
+              "dyktuj (klucz)",
+              "dykt->klawisz"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Użyj zapisu nawiasowego: dict[\"key\"].",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Która metoda zwraca wszystkie klucze?",
+            "options": [
+              "get_keys()",
+              "klawiatura()",
+              "wszystkie_klawisze()",
+              "pobierz klucze()"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Metoda klucze() zwraca wszystkie klucze słownika.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co się stanie, jeśli uzyskasz dostęp do klucza, który nie istnieje?",
+            "options": [
+              "Zwraca Brak",
+              "Zwraca „”",
+              "Błąd klucza",
+              "Tworzy klucz"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Dostęp do nieistniejącego klucza wywołuje błąd KeyError. Zamiast tego użyj .get(\"key\"), aby bezpiecznie zwrócić None.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Czy klucze słownika mogą być listami?",
+            "options": [
+              "Tak",
+              "NIE",
+              "Tylko puste listy",
+              "Tylko małe listy"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Klucze słownika muszą być niezmienne (niezmienne). Listy mogą się zmieniać, więc nie mogą być kluczami.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Rekord studenta",
+        "description": "Utwórz słownik z imieniem, wiekiem i oceną. Wydrukuj nazwę.",
+        "starterCode": "# Create student dict\nstudent = {}\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Alice",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj składni {\"key\": \"value\"}.",
+        "solution": "student = {\"name\": \"Alice\", \"age\": 20, \"grade\": \"A\"}\nprint(student[\"name\"])",
+        "xpReward": 15
+      },
+      "xpReward": 35,
+      "order": 7
+    },
+    {
+      "id": "python_lesson_9",
+      "courseId": "python",
+      "moduleId": "functions",
+      "title": "Tworzenie funkcji",
+      "description": "Napisz bloki kodu wielokrotnego użytku",
+      "theorySlides": [
+        {
+          "title": "Czym są funkcje? ⚙️",
+          "content": "Funkcje to bloki kodu wielokrotnego użytku, które wykonują określone zadania.\n\nKorzyści:\n• Unikaj powtarzania kodu\n• Organizuj złożone programy\n• Ułatw testowanie kodu\n• Włącz udostępnianie kodu",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Definiowanie funkcji",
+          "content": "Do tworzenia funkcji użyj słowa kluczowego def.",
+          "codeSnippet": "def greet():\n    print(\"Hello!\")\n\n# Call the function\ngreet()\ngreet()  # Can call multiple times",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Parametry funkcji",
+          "content": "Funkcje mogą przyjmować wartości wejściowe (parametry).",
+          "codeSnippet": "def greet(name):\n    print(f\"Hello, {name}!\")\n\ngreet(\"Alice\")\ngreet(\"Bob\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Zwracane wartości",
+          "content": "Funkcje mogą zwracać wartości za pomocą return.",
+          "codeSnippet": "def add(a, b):\n    return a + b\n\nresult = add(5, 3)\nprint(result)  # 8",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Jakie słowo kluczowe definiuje funkcję?",
+            "options": [
+              "funkcjonować",
+              "def",
+              "funk",
+              "określić"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Słowo kluczowe def definiuje funkcje w Pythonie.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co domyślnie zwraca funkcja?",
+            "options": [
+              "0",
+              "Nic",
+              "Pusty ciąg",
+              "Błąd"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Funkcje bez instrukcji return zwracają None.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co jest nie tak z: def greet(imię): return f\"Cześć {imię}\" print(\"Gotowe\")?",
+            "options": [
+              "Nic",
+              "Kod po powrocie nigdy nie jest wykonywany",
+              "Błąd składni",
+              "Funkcja jest za długa"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "return natychmiast opuszcza funkcję. Kod po powrocie jest nieosiągalny.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co to są parametry?",
+            "options": [
+              "Zwróć wartości",
+              "Wartości wejściowe, które funkcja otrzymuje",
+              "Błędy",
+              "Nazwy funkcji"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Parametry to zmienne, które otrzymują wartości po wywołaniu funkcji.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Funkcja kalkulatora",
+        "description": "Utwórz funkcję mnożenia, która zwraca iloczyn dwóch liczb.",
+        "starterCode": "def multiply(a, b):\n    # Your code\n    pass\n\nprint(multiply(6, 7))",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "42",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj * i wróć.",
+        "solution": "def multiply(a, b):\n    return a * b\n\nprint(multiply(6, 7))",
+        "xpReward": 15
+      },
+      "xpReward": 40,
+      "order": 8
+    },
+    {
+      "id": "python_lesson_10",
+      "courseId": "python",
+      "moduleId": "advanced",
+      "title": "Obsługa błędów",
+      "description": "Radź sobie z błędami w swoim kodzie z wdziękiem",
+      "theorySlides": [
+        {
+          "title": "Jakie są wyjątki? ⚠️",
+          "content": "Wyjątkami są błędy występujące podczas wykonywania programu.\n\nTypowe wyjątki:\n• ZeroDivisionError (podziel przez 0)\n• ValueError (zły typ wartości)\n• TypeError (zły typ danych)\n• FileNotFoundError (brakujący plik)",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Spróbuj i wyjątek",
+          "content": "Obsługuj błędy za pomocą bloków try/except, aby zapobiec awariom.",
+          "codeSnippet": "try:\n    result = 10 / 0\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero!\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Wiele wyjątków",
+          "content": "Obsługuj różne typy błędów osobno.",
+          "codeSnippet": "try:\n    num = int(input(\"Enter number: \"))\n    result = 10 / num\nexcept ValueError:\n    print(\"Invalid number!\")\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero!\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Wreszcie blok",
+          "content": "Kod w końcu zawsze działa, niezależnie od tego, czy wystąpił błąd, czy nie.",
+          "codeSnippet": "try:\n    file = open(\"data.txt\")\n    # Do something\nexcept FileNotFoundError:\n    print(\"File not found!\")\nfinally:\n    print(\"Cleanup complete\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Który blok obsługuje wyjątki?",
+            "options": [
+              "złapać",
+              "z wyjątkiem",
+              "błąd",
+              "uchwyt"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Blok z wyjątkiem wyłapuje i obsługuje wyjątki.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Kiedy wykonywany jest blok finalny?",
+            "options": [
+              "Tylko przy błędzie",
+              "Tylko o sukcesie",
+              "Zawsze",
+              "Nigdy"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "w końcu zawsze wykonuje się, niezależnie od błędów.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jaki wyjątek występuje przy dzieleniu przez zero?",
+            "options": [
+              "Błąd wartości",
+              "TypBłąd",
+              "Błąd ZeroDivision",
+              "Błąd matematyczny"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "ZeroDivisionError jest zgłaszany podczas próby podzielenia liczby przez zero.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Jak złapać wyjątek?",
+            "options": [
+              "z wyjątkiem wszystkich:",
+              "z wyjątkiem *:",
+              "z wyjątkiem wyjątku:",
+              "z wyjątkiem błędu:"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "z wyjątkiem wyjątku: przechwytuje większość wyjątków. Możesz także użyć z wyjątkiem: samodzielnie, aby złapać wszystko.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Bezpieczny Oddział",
+        "description": "Utwórz bezpieczny podział, który wykryje błąd ZeroDivisionError i wyświetli komunikat „Nie można dzielić przez zero!”",
+        "starterCode": "# Safe division\ntry:\n    result = 10 / 0\n    # Your code here\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Cannot divide by zero!",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj z wyjątkiem ZeroDivisionError.",
+        "solution": "try:\n    result = 10 / 0\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero!\")",
+        "xpReward": 15
+      },
+      "xpReward": 45,
+      "order": 9
+    }
+  ]
+}

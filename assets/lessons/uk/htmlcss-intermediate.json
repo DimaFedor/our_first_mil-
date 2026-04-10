@@ -1,0 +1,399 @@
+{
+  "courseId": "htmlcss-intermediate",
+  "lessons": [
+    {
+      "id": "htmlcss_int_lesson_1",
+      "courseId": "htmlcss-intermediate",
+      "moduleId": "layout",
+      "title": "Макет Flexbox",
+      "description": "Майстер гнучкого макета коробки",
+      "theorySlides": [
+        {
+          "title": "Що таке Flexbox? 📦",
+          "content": "Flexbox — це метод одновимірного макета для рядків або стовпців.\n\nКлючові властивості:\n• дисплей: гнучкий\n• justify-content (головна вісь)\n• align-items (перехресна вісь)\n• флекс-напрямок",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Сокири Flexbox 🎯",
+          "content": "Дві осі у flexbox:\n\n**Головна вісь** – напрямок потоку елементів (рядок/стовпець)\n• justify-content контролює це\n\n**Поперечна вісь** - перпендикулярна до головної\n• align-items контролює це",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Центрування за допомогою Flexbox",
+          "content": "Легко центрувати елементи.",
+          "codeSnippet": ".container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100vh;\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Flex Item Properties 🔧",
+          "content": "Керуйте окремими елементами:",
+          "codeSnippet": ".item {\n  flex-grow: 1;    /* Can grow */\n  flex-shrink: 0;  /* Won't shrink */\n  flex-basis: 200px; /* Starting size */\n  \n  /* Shorthand: flex: grow shrink basis */\n  flex: 1 0 200px;\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Яка властивість розташована на головній осі?",
+            "options": [
+              "align-items",
+              "justify-content",
+              "flex-напрямок",
+              "flex-wrap"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "justify-content контролює вирівнювання головної осі.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що робить flex-direction: column?",
+            "options": [
+              "Предмети поруч",
+              "Предмети, складені вертикально",
+              "Робить стовпці рівними",
+              "Приховує елементи"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "колонка змінює головну вісь на вертикальну, елементи складаються зверху вниз.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що означає flex: 1?",
+            "options": [
+              "Фіксована ширина 1 піксель",
+              "Предмет займає однакову частку місця",
+              "Видно лише 1 елемент",
+              "Помилка"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "flex: 1 означає flex-grow: 1, що дозволяє елементу рости та заповнювати доступний простір.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Центруйте коробку",
+        "description": "Відцентруйте div за допомогою flexbox.",
+        "starterCode": ".container {\n  height: 200px;\n  /* Add flexbox centering */\n}",
+        "language": "css",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "display: flex; justify-content: center; align-items: center;",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте display: flex із вирівнюванням вмісту та вирівнюванням елементів по центру",
+        "solution": ".container {\n  height: 200px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 0
+    },
+    {
+      "id": "htmlcss_int_lesson_2",
+      "courseId": "htmlcss-intermediate",
+      "moduleId": "layout",
+      "title": "Сітка CSS",
+      "description": "Створюйте двовимірні макети",
+      "theorySlides": [
+        {
+          "title": "Сітка CSS 🔲",
+          "content": "CSS Grid створює макети з рядками ТА стовпцями.\n\nКлючові властивості:\n• сітка-шаблон-стовпці\n• grid-template-rows\n• розрив\n• fr одиниця (дріб)",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Grid проти Flexbox 🆚",
+          "content": "Коли використовувати які:\n\n**Сітка:** 2D-макети (рядки ТА стовпці)\n• Макети сторінок\n• Карткові сітки\n• Складні конструкції\n\n**Flexbox:** 1D макети (рядок АБО стовпець)\n• Панелі навігації\n• Центрування\n• Один рядок/стовпець",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Чуйна сітка",
+          "content": "Створіть адаптивні сітки.",
+          "codeSnippet": ".grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));\n  gap: 16px;\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Зони сітки 🗺️",
+          "content": "Назвіть області для візуальних макетів.",
+          "codeSnippet": ".layout {\n  display: grid;\n  grid-template-areas:\n    \"header header\"\n    \"sidebar main\"\n    \"footer footer\";\n  grid-template-columns: 200px 1fr;\n}\n\n.header { grid-area: header; }\n.sidebar { grid-area: sidebar; }",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Що означає 1fr?",
+            "options": [
+              "1 піксель",
+              "1 частка простору",
+              "1 кадр",
+              "1 ряд"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "fr — це частка доступного простору.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що робить автопідгонка в repeat()?",
+            "options": [
+              "Стаціонарні колони",
+              "Заповнює рядок стільки стовпців, скільки вміщається",
+              "Одна колонка",
+              "Помилка"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "автопідгонка створює стільки стовпців, скільки може вмістити доступний простір.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що створює сітку 2x2?",
+            "options": [
+              "сітка: 2х2",
+              "сітка-шаблон: 2 2",
+              "grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr",
+              "колонки: 2; ряди: 2"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Визначте стовпці та рядки за допомогою grid-template-columns і grid-template-rows.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Створіть сітку з 3 стовпців",
+        "description": "Створіть рівну сітку з 3 стовпців з проміжком.",
+        "starterCode": ".grid {\n  /* Create 3 equal columns with 16px gap */\n}",
+        "language": "css",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте repeat(3, 1fr) для 3 рівних стовпців",
+        "solution": ".grid {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 16px;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 1
+    },
+    {
+      "id": "htmlcss_int_lesson_3",
+      "courseId": "htmlcss-intermediate",
+      "moduleId": "modern",
+      "title": "Змінні CSS",
+      "description": "Використовуйте спеціальні властивості для підтримки CSS",
+      "theorySlides": [
+        {
+          "title": "Змінні CSS ✨",
+          "content": "Зберігайте та повторно використовуйте значення у вашій таблиці стилів.\n\nВизначити за допомогою --name, використати за допомогою var(--name)",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "приклад",
+          "content": "Визначте кольори та інтервали.",
+          "codeSnippet": ":root {\n  --primary: #0066ff;\n  --spacing: 16px;\n}\n\n.button {\n  background: var(--primary);\n  padding: var(--spacing);\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Як визначити змінну CSS?",
+            "options": [
+              "$var: значення",
+              "@var: значення",
+              "--var: значення",
+              "змінна = значення"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Змінні CSS використовують префікс із подвійним тире.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Визначення та використання змінної",
+        "description": "Створіть основний колір і використовуйте його.",
+        "starterCode": ":root {\n  /* Define --primary as #0066ff */\n}\n\n.btn {\n  /* Use --primary for background */\n}",
+        "language": "css",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "--primary: #0066ff; background: var(--primary);",
+            "isHidden": false
+          }
+        ],
+        "hint": "Визначити в :root, використовувати з var()",
+        "solution": ":root {\n  --primary: #0066ff;\n}\n\n.btn {\n  background: var(--primary);\n}",
+        "xpReward": 15
+      },
+      "xpReward": 25,
+      "order": 2
+    },
+    {
+      "id": "htmlcss_int_lesson_4",
+      "courseId": "htmlcss-intermediate",
+      "moduleId": "animations",
+      "title": "CSS анімації",
+      "description": "Створюйте плавну анімацію",
+      "theorySlides": [
+        {
+          "title": "CSS анімація 🎬",
+          "content": "Два типи:\n• **Переходи**: між двома станами\n• **Ключові кадри**: багатокрокова анімація",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Ключові кадри",
+          "content": "Визначте кроки анімації.",
+          "codeSnippet": "@keyframes fadeIn {\n  from { opacity: 0; }\n  to { opacity: 1; }\n}\n\n.element {\n  animation: fadeIn 0.5s ease;\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Що робить нескінченність?",
+            "options": [
+              "Бігає швидше",
+              "Петлі назавжди",
+              "Збільшує розмір",
+              "Паузи"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "infinite змушує анімацію повторюватись вічно.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Анімація пульсу",
+        "description": "Створіть анімацію пульсу з масштабом від 1 до 1,1.",
+        "starterCode": "@keyframes pulse {\n  /* 0%: scale(1), 50%: scale(1.1), 100%: scale(1) */\n}\n\n.box {\n  animation: pulse 1s infinite;\n}",
+        "language": "css",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); }",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте transform: scale() для кожного ключового кадру",
+        "solution": "@keyframes pulse {\n  0% { transform: scale(1); }\n  50% { transform: scale(1.1); }\n  100% { transform: scale(1); }\n}\n\n.box {\n  animation: pulse 1s infinite;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 3
+    },
+    {
+      "id": "htmlcss_int_lesson_5",
+      "courseId": "htmlcss-intermediate",
+      "moduleId": "responsive",
+      "title": "Медіа запити",
+      "description": "Створюйте адаптивні макети",
+      "theorySlides": [
+        {
+          "title": "Адаптивний дизайн 📱",
+          "content": "Застосовуйте різні стилі залежно від розміру екрана.\n\nТочки зупину:\n• Мобільний: < 768 пікселів\n• Планшет: 768 пікселів - 1024 пікселів\n• Робочий стіл: > 1024 пікселів",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Mobile First",
+          "content": "Почніть з мобільного, додайте стилі робочого столу.",
+          "codeSnippet": ".container {\n  padding: 16px;\n}\n\n@media (min-width: 768px) {\n  .container {\n    padding: 32px;\n    max-width: 1200px;\n  }\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Що таке mobile-first?",
+            "options": [
+              "Підтримка лише мобільних пристроїв",
+              "Спочатку напишіть мобільний CSS, додайте настільний комп’ютер",
+              "Спочатку протестуйте мобільний",
+              "Ігнорувати робочий стіл"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Mobile-first використовує базові стилі для мобільних пристроїв, медіа-запити для великих екранів.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Чуйна сітка",
+        "description": "Створіть сітку з 1 стовпця на мобільному пристрої та 2 на планшеті (768 пікселів+).",
+        "starterCode": ".grid {\n  display: grid;\n  grid-template-columns: 1fr;\n}\n\n/* Add media query for 768px+ */",
+        "language": "css",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "@media (min-width: 768px) { .grid { grid-template-columns: 1fr 1fr; } }",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте @media (мін. ширина: 768 пікселів)",
+        "solution": ".grid {\n  display: grid;\n  grid-template-columns: 1fr;\n}\n\n@media (min-width: 768px) {\n  .grid {\n    grid-template-columns: 1fr 1fr;\n  }\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 4
+    }
+  ]
+}

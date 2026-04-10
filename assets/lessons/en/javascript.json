@@ -1,0 +1,1183 @@
+{
+  "courseId": "javascript",
+  "lessons": [
+    {
+      "id": "js_lesson_1",
+      "courseId": "javascript",
+      "moduleId": "basics",
+      "title": "Welcome to JavaScript",
+      "description": "Your first steps into the world of web programming",
+      "theorySlides": [
+        {
+          "title": "What is JavaScript? 🌐",
+          "content": "JavaScript is the programming language of the web! It makes websites interactive and dynamic.\n\nEvery website you visit uses JavaScript:\n• Animations and effects\n• Form validation\n• Interactive maps\n• Games and apps\n\nIt's one of the most popular languages in the world!",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "JavaScript Everywhere",
+          "content": "JavaScript started as a browser language, but now it runs everywhere!\n\n🌐 Frontend: React, Vue, Angular\n⚙️ Backend: Node.js, Express\n📱 Mobile: React Native\n🖥️ Desktop: Electron\n🎮 Games: Phaser, Three.js",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Your First JavaScript",
+          "content": "Let's write your first JavaScript code! We use console.log() to display messages.",
+          "codeSnippet": "console.log(\"Hello, World!\");",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is JavaScript primarily used for?",
+            "options": [
+              "Making websites interactive",
+              "Designing graphics",
+              "Writing documents",
+              "Managing databases only"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "JavaScript is the language of the web, making websites dynamic and interactive!",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which function displays output in JavaScript?",
+            "options": [
+              "print()",
+              "echo()",
+              "console.log()",
+              "display()"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "console.log() is the standard way to output messages in JavaScript.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Where can JavaScript code run?",
+            "options": [
+              "Only in web browsers",
+              "Only on servers",
+              "Both browsers and servers",
+              "Only on mobile devices"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "JavaScript runs everywhere - in browsers (frontend), on servers with Node.js, and even in mobile/desktop apps!",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which company originally created JavaScript?",
+            "options": [
+              "Microsoft",
+              "Google",
+              "Netscape",
+              "Apple"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "JavaScript was created by Brendan Eich at Netscape in 1995 in just 10 days!",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Say Hello!",
+        "description": "Write code that displays \"Hello, JavaScript!\" using console.log()",
+        "starterCode": "// Write your code below\n",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Hello, JavaScript!",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use console.log() with your message in quotes!",
+        "solution": "console.log(\"Hello, JavaScript!\");",
+        "xpReward": 15
+      },
+      "xpReward": 15,
+      "order": 0
+    },
+    {
+      "id": "js_lesson_2",
+      "courseId": "javascript",
+      "moduleId": "basics",
+      "title": "Variables - Storing Data",
+      "description": "Learn how to store and use information in JavaScript",
+      "theorySlides": [
+        {
+          "title": "What are Variables? 📦",
+          "content": "Variables are containers for storing data. Think of them as labeled boxes where you can put information.\n\nIn JavaScript, we have three ways to create variables:\n• let - for values that change\n• const - for values that stay the same\n• var - the old way (avoid using)",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Creating Variables",
+          "content": "Here's how to create and use variables:",
+          "codeSnippet": "let name = \"Alex\";\nlet age = 25;\nconst PI = 3.14159;\n\nconsole.log(name);  // Alex\nconsole.log(age);   // 25",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Data Types",
+          "content": "JavaScript has several data types:\n\n📝 String: \"Hello\" (text in quotes)\n🔢 Number: 42, 3.14 (numbers)\n✅ Boolean: true, false\n📋 Array: [1, 2, 3] (lists)\n📦 Object: {name: \"Alex\"} (complex data)",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Which keyword creates a variable that cannot be changed?",
+            "options": [
+              "let",
+              "var",
+              "const",
+              "static"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "const creates constants - values that cannot be reassigned.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What type is the value \"Hello\"?",
+            "options": [
+              "Number",
+              "String",
+              "Boolean",
+              "Array"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Text in quotes is called a String in JavaScript.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What happens if you use a variable before declaring it with let?",
+            "options": [
+              "It works fine",
+              "You get undefined",
+              "ReferenceError is thrown",
+              "It becomes a global variable"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "With let, variables are not hoisted like var. Accessing them before declaration causes a ReferenceError (temporal dead zone).",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement about const is true?",
+            "options": [
+              "The value can never be modified",
+              "The reference cannot be changed",
+              "It only works with numbers",
+              "It creates immutable objects"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "const prevents reassignment of the variable, but if it's an object or array, the contents can still be modified!",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the result of: typeof null?",
+            "options": [
+              "\"null\"",
+              "\"undefined\"",
+              "\"object\"",
+              "\"number\""
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "This is a famous JavaScript quirk! typeof null returns \"object\" - a bug that can't be fixed due to backward compatibility.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Create a Greeting",
+        "description": "Create a variable called \"greeting\" with the value \"Hello!\" and display it.",
+        "starterCode": "// Create your variable and display it\n",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Hello!",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use let greeting = \"Hello!\"; then console.log(greeting);",
+        "solution": "let greeting = \"Hello!\";\nconsole.log(greeting);",
+        "xpReward": 15
+      },
+      "xpReward": 20,
+      "order": 1
+    },
+    {
+      "id": "js_lesson_3",
+      "courseId": "javascript",
+      "moduleId": "basics",
+      "title": "Operators - Math & Logic",
+      "description": "Learn to perform calculations and comparisons",
+      "theorySlides": [
+        {
+          "title": "Math Operators ➕",
+          "content": "JavaScript can do math! Here are the basic operators:\n\n+ Addition\n- Subtraction\n* Multiplication\n/ Division\n% Modulus (remainder)\n** Exponentiation (power)",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Math Examples",
+          "content": "Let's see operators in action:",
+          "codeSnippet": "let sum = 10 + 5;      // 15\nlet diff = 10 - 3;     // 7\nlet product = 4 * 3;   // 12\nlet quotient = 15 / 3; // 5\nlet remainder = 17 % 5; // 2\nlet power = 2 ** 3;    // 8",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Comparison Operators",
+          "content": "Compare values to get true or false:\n\n== Equal value\n=== Equal value AND type\n!= Not equal\n> Greater than\n< Less than\n>= Greater or equal\n<= Less or equal",
+          "codeSnippet": "console.log(5 > 3);   // true\nconsole.log(10 === 10); // true\nconsole.log(5 !== 3);  // true",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is 17 % 5?",
+            "options": [
+              "3",
+              "2",
+              "12",
+              "3.4"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "The modulus operator returns the remainder. 17 ÷ 5 = 3 remainder 2.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does === check?",
+            "options": [
+              "Value only",
+              "Type only",
+              "Value and type",
+              "Nothing"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "=== checks both value AND type. \"5\" === 5 is false!",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the result of: 5 + \"5\"?",
+            "options": [
+              "10",
+              "\"55\"",
+              "Error",
+              "\"10\""
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "JavaScript coerces the number to a string and concatenates them, resulting in \"55\". This is type coercion in action!",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which operator would you use to check if two values are NOT equal in type AND value?",
+            "options": [
+              "!=",
+              "!==",
+              "<>",
+              "=/="
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "!== is the strict inequality operator. It returns true if values differ in value OR type.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Calculate the Sum",
+        "description": "Create two variables a=15 and b=25, add them, and display the result.",
+        "starterCode": "// Create variables a and b, then display their sum\n",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "40",
+            "isHidden": false
+          }
+        ],
+        "hint": "Create a and b, then use console.log(a + b)",
+        "solution": "let a = 15;\nlet b = 25;\nconsole.log(a + b);",
+        "xpReward": 15
+      },
+      "xpReward": 20,
+      "order": 2
+    },
+    {
+      "id": "js_lesson_4",
+      "courseId": "javascript",
+      "moduleId": "basics",
+      "title": "Working with Strings",
+      "description": "Master text manipulation in JavaScript",
+      "theorySlides": [
+        {
+          "title": "Strings - Text Data 📝",
+          "content": "Strings are text values. You can create them with:\n\n• Single quotes: 'Hello'\n• Double quotes: \"Hello\"\n• Backticks: `Hello` (template literals)\n\nBackticks are special - they allow embedding variables!",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Template Literals",
+          "content": "Template literals let you embed expressions:",
+          "codeSnippet": "let name = \"Alex\";\nlet age = 25;\n\n// Template literal with ${}\nlet message = `Hi, I'm ${name} and I'm ${age} years old!`;\n\nconsole.log(message);\n// Hi, I'm Alex and I'm 25 years old!",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "String Methods",
+          "content": "Strings have useful methods:\n\n.length - get length\n.toUpperCase() - UPPERCASE\n.toLowerCase() - lowercase\n.includes() - check if contains\n.slice() - extract part",
+          "codeSnippet": "let text = \"JavaScript\";\nconsole.log(text.length);      // 10\nconsole.log(text.toUpperCase()); // JAVASCRIPT\nconsole.log(text.includes(\"Script\")); // true",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Which quotes allow embedding variables?",
+            "options": [
+              "Single quotes ''",
+              "Double quotes \"\"",
+              "Backticks ``",
+              "All of them"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Only backticks (template literals) allow ${variable} syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does \"hello\".toUpperCase() return?",
+            "options": [
+              "hello",
+              "HELLO",
+              "Hello",
+              "hELLO"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "toUpperCase() converts all letters to uppercase.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the output of: `The answer is 8`?",
+            "options": [
+              "The answer is 5 + 3",
+              "The answer is 8",
+              "The answer is 8",
+              "The answer is 53"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Template literals (backticks) evaluate expressions inside ${}. So 5 + 3 becomes 8.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How do you get the length of a string \"hello\"?",
+            "options": [
+              "\"hello\".length()",
+              "\"hello\".size",
+              "\"hello\".length",
+              "length(\"hello\")"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": ".length is a property (not a method), so no parentheses are needed. \"hello\".length returns 5.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does \"JavaScript\".slice(0, 4) return?",
+            "options": [
+              "\"Java\"",
+              "\"JavaScript\"",
+              "\"Script\"",
+              "\"Jav\""
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "slice(0, 4) extracts characters from index 0 to 3 (end index is exclusive), returning \"Java\".",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Introduce Yourself",
+        "description": "Create a variable name=\"Coder\" and display \"Hello, Coder!\" using template literals.",
+        "starterCode": "// Use template literals to create a greeting\n",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Hello, Coder!",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use backticks: `Hello, ${name}!`",
+        "solution": "let name = \"Coder\";\nconsole.log(`Hello, ${name}!`);",
+        "xpReward": 15
+      },
+      "xpReward": 25,
+      "order": 3
+    },
+    {
+      "id": "js_lesson_5",
+      "courseId": "javascript",
+      "moduleId": "basics",
+      "title": "If Statements - Making Decisions",
+      "description": "Learn to write code that makes choices",
+      "theorySlides": [
+        {
+          "title": "Conditional Logic 🤔",
+          "content": "Programs need to make decisions! If statements let your code choose different paths based on conditions.\n\nThink of it like: \"IF it's raining, THEN take umbrella, ELSE wear sunglasses\"",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "If Statement Syntax",
+          "content": "Here's how to write if statements:",
+          "codeSnippet": "let age = 18;\n\nif (age >= 18) {\n  console.log(\"You can vote!\");\n} else {\n  console.log(\"Too young to vote\");\n}",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Multiple Conditions",
+          "content": "Use else if for multiple conditions:",
+          "codeSnippet": "let score = 85;\n\nif (score >= 90) {\n  console.log(\"A - Excellent!\");\n} else if (score >= 80) {\n  console.log(\"B - Good job!\");\n} else if (score >= 70) {\n  console.log(\"C - Keep trying\");\n} else {\n  console.log(\"Need improvement\");\n}",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What does the else block do?",
+            "options": [
+              "Runs if condition is true",
+              "Runs if condition is false",
+              "Always runs",
+              "Never runs"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "The else block executes when the if condition is false.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If x = 5, what does (x > 3) evaluate to?",
+            "options": [
+              "true",
+              "false",
+              "5",
+              "3"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "5 is greater than 3, so the condition is true.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the purpose of the else if statement?",
+            "options": [
+              "To run code when all conditions are false",
+              "To check multiple conditions sequentially",
+              "To repeat code multiple times",
+              "To define a function"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "else if allows you to test multiple conditions in order. The first true condition executes, then the rest are skipped.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the result of: true && false?",
+            "options": [
+              "true",
+              "false",
+              "1",
+              "0"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "The && (AND) operator returns true only if BOTH operands are true. Here, false makes the whole expression false.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Age Checker",
+        "description": "Create a variable age=20. If age >= 18, display \"Adult\", else display \"Minor\".",
+        "starterCode": "// Check if someone is an adult\nlet age = 20;\n",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Adult",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use if (age >= 18) { console.log(\"Adult\"); }",
+        "solution": "let age = 20;\nif (age >= 18) {\n  console.log(\"Adult\");\n} else {\n  console.log(\"Minor\");\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 4
+    },
+    {
+      "id": "js_lesson_6",
+      "courseId": "javascript",
+      "moduleId": "data-structures",
+      "title": "Working with Arrays",
+      "description": "Master JavaScript arrays and their methods",
+      "theorySlides": [
+        {
+          "title": "What are Arrays? 📚",
+          "content": "Arrays store multiple values in a single variable. They are ordered and can hold any data type.\n\nCommon uses:\n• User lists\n• Shopping carts\n• Playlists\n• Game scores",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Creating Arrays",
+          "content": "Arrays use square brackets with comma-separated values.",
+          "codeSnippet": "const fruits = [\"apple\", \"banana\", \"orange\"];\nconst numbers = [1, 2, 3, 4, 5];\nconst mixed = [1, \"hello\", true, null];\n\nconsole.log(fruits[0]);  // apple",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Array Methods",
+          "content": "JavaScript provides powerful array methods.",
+          "codeSnippet": "const arr = [1, 2, 3];\n\n// Add elements\narr.push(4);       // [1,2,3,4]\narr.unshift(0);    // [0,1,2,3,4]\n\n// Remove elements\narr.pop();         // Remove last\narr.shift();       // Remove first\n\nconsole.log(arr);",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Useful Array Methods",
+          "content": "More methods for common tasks.",
+          "codeSnippet": "const numbers = [1, 2, 3, 4, 5];\n\nconsole.log(numbers.length);     // 5\nconsole.log(numbers.includes(3)); // true\nconsole.log(numbers.indexOf(4));  // 3\n\nconst doubled = numbers.map(n => n * 2);\nconsole.log(doubled);  // [2,4,6,8,10]",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Which method adds an element to the end?",
+            "options": [
+              "add()",
+              "push()",
+              "append()",
+              "insert()"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "push() adds elements to the end of an array.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How do you access the first element?",
+            "options": [
+              "arr[0]",
+              "arr[1]",
+              "arr.first",
+              "arr.first()"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Arrays are zero-indexed, so arr[0] is the first element.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does the spread operator (...) do with arrays?",
+            "options": [
+              "Deletes all elements",
+              "Copies or expands array elements",
+              "Sorts the array",
+              "Reverses the array"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "The spread operator (...) expands array elements. Example: [...arr1, ...arr2] combines two arrays.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is array destructuring?",
+            "options": [
+              "Deleting array elements",
+              "Extracting values into variables",
+              "Combining multiple arrays",
+              "Sorting an array"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Destructuring unpacks array values: const [a, b] = [1, 2] assigns a=1, b=2. It's a clean way to extract values!",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does [1,2,3].filter(n => n > 1) return?",
+            "options": [
+              "[1]",
+              "[2, 3]",
+              "[1, 2, 3]",
+              "true"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "filter() creates a new array with elements that pass the test. Only 2 and 3 are greater than 1.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Manage a Task List",
+        "description": "Create an array with 3 tasks, add a 4th task, and log the array length.",
+        "starterCode": "// Create your task array\nconst tasks = [];\n",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "4",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use push() and .length property.",
+        "solution": "const tasks = [\"Task 1\", \"Task 2\", \"Task 3\"];\ntasks.push(\"Task 4\");\nconsole.log(tasks.length);",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 5
+    },
+    {
+      "id": "js_lesson_7",
+      "courseId": "javascript",
+      "moduleId": "control-flow",
+      "title": "Loops in JavaScript",
+      "description": "Iterate efficiently with for, while, and forEach",
+      "theorySlides": [
+        {
+          "title": "The for Loop 🔄",
+          "content": "The classic for loop with three parts: initialization, condition, and increment.",
+          "codeSnippet": "for (let i = 0; i < 5; i++) {\n  console.log(i);\n}\n// Prints: 0, 1, 2, 3, 4\n\nfor (let i = 0; i < 10; i += 2) {\n  console.log(i);\n}\n// Prints: 0, 2, 4, 6, 8",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "The while Loop",
+          "content": "Loops continue while a condition is true.",
+          "codeSnippet": "let count = 0;\nwhile (count < 5) {\n  console.log(count);\n  count++;\n}\n\n// Be careful with infinite loops!\nlet ready = false;\nwhile (!ready) {\n  // Must set ready = true eventually\n}",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "forEach for Arrays",
+          "content": "The modern way to loop through arrays.",
+          "codeSnippet": "const fruits = [\"apple\", \"banana\", \"orange\"];\n\nfruits.forEach(fruit => {\n  console.log(fruit);\n});\n\n// With index\nfruits.forEach((fruit, index) => {\n  console.log(index + \": \" + fruit);\n});",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What does i++ do in a for loop?",
+            "options": [
+              "Decreases i",
+              "Increments i",
+              "Resets i",
+              "Doubles i"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "i++ increments i by 1 each iteration.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which is best for looping through arrays?",
+            "options": [
+              "for",
+              "while",
+              "forEach",
+              "All are equal"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "forEach is the most readable and modern way to iterate arrays.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the key difference between for...of and for...in?",
+            "options": [
+              "No difference",
+              "for...of iterates values, for...in iterates keys",
+              "for...in iterates values, for...of iterates keys",
+              "Both iterate the same way"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "for...of loops through array VALUES, while for...in loops through object KEYS/indices. Use for...of for arrays!",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How do you exit a loop early?",
+            "options": [
+              "exit",
+              "break",
+              "stop",
+              "return"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "The break statement immediately exits the current loop. Use continue to skip to the next iteration.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Sum Numbers",
+        "description": "Use a for loop to calculate the sum of numbers from 1 to 10 and log it.",
+        "starterCode": "// Calculate sum of 1 to 10\nlet sum = 0;\n",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "55",
+            "isHidden": false
+          }
+        ],
+        "hint": "Loop from 1 to 10 and add each number to sum.",
+        "solution": "let sum = 0;\nfor (let i = 1; i <= 10; i++) {\n  sum += i;\n}\nconsole.log(sum);",
+        "xpReward": 15
+      },
+      "xpReward": 35,
+      "order": 6
+    },
+    {
+      "id": "js_lesson_8",
+      "courseId": "javascript",
+      "moduleId": "data-structures",
+      "title": "JavaScript Objects",
+      "description": "Store structured data with objects",
+      "theorySlides": [
+        {
+          "title": "What are Objects? 🏷️",
+          "content": "Objects store data as key-value pairs (properties). They represent real-world entities.\n\nExamples:\n• User profiles\n• Product details\n• Game characters\n• Configuration settings",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Creating Objects",
+          "content": "Objects use curly braces with property: value pairs.",
+          "codeSnippet": "const person = {\n  name: \"Alice\",\n  age: 25,\n  city: \"NYC\",\n  isStudent: true\n};\n\nconsole.log(person.name);  // Alice\nconsole.log(person[\"age\"]); // 25",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Object Methods",
+          "content": "Objects can contain functions (methods).",
+          "codeSnippet": "const user = {\n  name: \"Bob\",\n  age: 30,\n  greet: function() {\n    console.log(\"Hi, I am \" + this.name);\n  },\n  haveBirthday() {\n    this.age++;\n  }\n};\n\nuser.greet();  // Hi, I am Bob",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Object Manipulation",
+          "content": "Add, update, or delete properties dynamically.",
+          "codeSnippet": "const car = {\n  brand: \"Toyota\",\n  year: 2020\n};\n\n// Add property\ncar.color = \"red\";\n\n// Update property\ncar.year = 2021;\n\n// Delete property\ndelete car.color;\n\nconsole.log(car);",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "How do you access object properties?",
+            "options": [
+              "obj.property or obj[\"property\"]",
+              "obj->property",
+              "obj(property)",
+              "obj::property"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Use dot notation or bracket notation to access properties.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is \"this\" in an object method?",
+            "options": [
+              "The global object",
+              "Undefined",
+              "The object itself",
+              "The window"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "\"this\" refers to the object the method belongs to.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is object destructuring?",
+            "options": [
+              "Deleting object properties",
+              "Extracting properties into variables",
+              "Merging two objects",
+              "Copying an object"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Destructuring extracts properties: const {name, age} = person assigns person.name to name and person.age to age.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does Object.keys(obj) return?",
+            "options": [
+              "An array of values",
+              "An array of property names",
+              "The number of properties",
+              "A string of all keys"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Object.keys() returns an array of an object's property names (keys). Object.values() returns the values.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How do you create a shallow copy of an object?",
+            "options": [
+              "obj.copy()",
+              "{...obj}",
+              "obj.clone()",
+              "Object.copy(obj)"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "The spread operator {...obj} creates a shallow copy. Alternatively, use Object.assign({}, obj).",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Create a Product",
+        "description": "Create an object \"product\" with name, price, and inStock properties. Log the name.",
+        "starterCode": "// Create product object\nconst product = {};\n",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Laptop",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use {key: value} syntax.",
+        "solution": "const product = {\n  name: \"Laptop\",\n  price: 999,\n  inStock: true\n};\nconsole.log(product.name);",
+        "xpReward": 15
+      },
+      "xpReward": 35,
+      "order": 7
+    },
+    {
+      "id": "js_lesson_9",
+      "courseId": "javascript",
+      "moduleId": "functions",
+      "title": "Functions in JavaScript",
+      "description": "Master function declarations, expressions, and arrows",
+      "theorySlides": [
+        {
+          "title": "Function Basics 📦",
+          "content": "Functions are reusable blocks of code. JavaScript has multiple ways to define them.",
+          "codeSnippet": "// Function declaration\nfunction greet(name) {\n  return \"Hello, \" + name + \"!\";\n}\n\nconsole.log(greet(\"Alice\"));\n// Hello, Alice!",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Arrow Functions",
+          "content": "Modern, concise syntax for functions.",
+          "codeSnippet": "// Traditional\nconst add = function(a, b) {\n  return a + b;\n};\n\n// Arrow function\nconst add = (a, b) => a + b;\n\n// Multiple lines\nconst greet = name => {\n  const message = \"Hello, \" + name;\n  return message;\n};",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Default Parameters",
+          "content": "Provide default values for parameters.",
+          "codeSnippet": "const greet = (name = \"Guest\") => {\n  console.log(\"Welcome, \" + name + \"!\");\n};\n\ngreet();          // Welcome, Guest!\ngreet(\"Alice\");   // Welcome, Alice!",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Higher-Order Functions",
+          "content": "Functions that take or return other functions.",
+          "codeSnippet": "const numbers = [1, 2, 3, 4, 5];\n\n// map: transform each element\nconst doubled = numbers.map(n => n * 2);\n\n// filter: keep elements that match\nconst evens = numbers.filter(n => n % 2 === 0);\n\nconsole.log(doubled);  // [2,4,6,8,10]\nconsole.log(evens);    // [2,4]",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the syntax for arrow functions?",
+            "options": [
+              "function => {}",
+              "() => {}",
+              "arrow function()",
+              "=> function()"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Arrow functions use () => {} syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does the map() method do?",
+            "options": [
+              "Filters an array",
+              "Transforms each element",
+              "Sorts an array",
+              "Reverses an array"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "map() creates a new array by transforming each element.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is a closure in JavaScript?",
+            "options": [
+              "A way to close a function",
+              "A function with access to its outer scope",
+              "A closed loop",
+              "An error type"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "A closure is when a function \"remembers\" variables from its outer scope, even after that scope has finished executing!",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the difference between function declarations and arrow functions regarding \"this\"?",
+            "options": [
+              "No difference",
+              "Arrow functions don't have their own \"this\"",
+              "Arrow functions create a new \"this\"",
+              "Function declarations can't use \"this\""
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Arrow functions inherit \"this\" from their surrounding scope (lexical this). Regular functions create their own \"this\" context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does the reduce() method do?",
+            "options": [
+              "Removes elements from an array",
+              "Reduces array to a single value",
+              "Filters array elements",
+              "Makes array smaller"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "reduce() executes a reducer function on each element, resulting in a single output value. Example: sum all numbers.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Square Numbers",
+        "description": "Create an arrow function that takes a number and returns its square. Test with 8.",
+        "starterCode": "// Create square function\nconst square = \n\nconsole.log(square(8));",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "64",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use (n) => n * n syntax.",
+        "solution": "const square = (n) => n * n;\nconsole.log(square(8));",
+        "xpReward": 15
+      },
+      "xpReward": 40,
+      "order": 8
+    },
+    {
+      "id": "js_lesson_10",
+      "courseId": "javascript",
+      "moduleId": "advanced",
+      "title": "Asynchronous JavaScript",
+      "description": "Handle timing, promises, and async operations",
+      "theorySlides": [
+        {
+          "title": "What is Async? ⏱️",
+          "content": "Asynchronous code doesn't wait for operations to complete. It continues running and handles results later.\n\nCommon async operations:\n• Network requests\n• File reading\n• Database queries\n• Timers",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Callbacks",
+          "content": "The original way to handle async operations.",
+          "codeSnippet": "setTimeout(() => {\n  console.log(\"After 2 seconds\");\n}, 2000);\n\nconsole.log(\"Immediately\");\n\n// Output:\n// Immediately\n// After 2 seconds",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Promises",
+          "content": "Modern way to handle async operations. A promise represents a future value.",
+          "codeSnippet": "const promise = new Promise((resolve, reject) => {\n  setTimeout(() => {\n    resolve(\"Success!\");\n  }, 1000);\n});\n\npromise.then(result => {\n  console.log(result);  // Success!\n});",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Async/Await",
+          "content": "The cleanest syntax for async code. Makes it read like synchronous code.",
+          "codeSnippet": "async function getData() {\n  try {\n    const result = await fetchData();\n    console.log(result);\n  } catch (error) {\n    console.error(error);\n  }\n}\n\ngetData();",
+          "codeLanguage": "javascript",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What does setTimeout() do?",
+            "options": [
+              "Stops time",
+              "Delays execution",
+              "Measures time",
+              "Loops forever"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "setTimeout() delays code execution by a specified time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What keyword makes a function async?",
+            "options": [
+              "async",
+              "await",
+              "promise",
+              "defer"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The async keyword makes a function asynchronous.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does await do?",
+            "options": [
+              "Stops the entire program",
+              "Pauses execution until promise resolves",
+              "Creates a new promise",
+              "Cancels a promise"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "await pauses async function execution until the promise resolves, making async code look synchronous. Only works inside async functions!",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What are the three states of a Promise?",
+            "options": [
+              "start, middle, end",
+              "pending, fulfilled, rejected",
+              "waiting, done, error",
+              "new, active, complete"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "A Promise can be pending (initial), fulfilled (successful), or rejected (failed). Use .then() for fulfilled and .catch() for rejected.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is Promise.all() used for?",
+            "options": [
+              "Running promises one at a time",
+              "Running multiple promises in parallel",
+              "Canceling all promises",
+              "Creating new promises"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Promise.all() runs multiple promises concurrently and resolves when ALL complete (or rejects if ANY fails). Great for parallel operations!",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Delayed Message",
+        "description": "Use setTimeout to log \"Hello from the future!\" after 0 milliseconds.",
+        "starterCode": "// Use setTimeout\n",
+        "language": "javascript",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Hello from the future!",
+            "isHidden": false
+          }
+        ],
+        "hint": "setTimeout takes a callback and delay in ms.",
+        "solution": "setTimeout(() => {\n  console.log(\"Hello from the future!\");\n}, 0);",
+        "xpReward": 15
+      },
+      "xpReward": 45,
+      "order": 9
+    }
+  ]
+}

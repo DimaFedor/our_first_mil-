@@ -1,0 +1,1216 @@
+{
+  "courseId": "htmlcss",
+  "lessons": [
+    {
+      "id": "html_lesson_1",
+      "courseId": "html_css",
+      "moduleId": "basics",
+      "title": "Ласкаво просимо до HTML",
+      "description": "Вивчіть будівельні блоки кожного веб-сайту",
+      "theorySlides": [
+        {
+          "title": "Що таке HTML? 🏗️",
+          "content": "HTML (мова розмітки гіпертексту) є скелетом кожного веб-сайту. Він визначає структуру та зміст веб-сторінок.\n\nHTML використовує \"теги\" для розмітки вмісту:\n• <p> для абзаців\n• <h1> для заголовків\n• <img> для зображень\n• <a> для посилань",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Структура HTML",
+          "content": "Кожен документ HTML має базову структуру:",
+          "codeSnippet": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>My Page</title>\n  </head>\n  <body>\n    <h1>Hello World!</h1>\n    <p>Welcome to my website.</p>\n  </body>\n</html>",
+          "codeLanguage": "html",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Теги та елементи",
+          "content": "Більшість тегів HTML бувають парами:\n\n<tagname>вміст</tagname>\n\n• Початковий тег: <p>\n• Зміст: Привіт\n• Закриваючий тег: </p>\n\nДеякі теги самозакриваються: <img />, <br />, <hr />",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Що означає HTML?",
+            "options": [
+              "Мова розмітки гіпертексту",
+              "Сучасна мова високих технологій",
+              "Home Tool Markup Language",
+              "Мова створення тексту гіперпосилання"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "HTML = HyperText Markup Language, стандарт для веб-сторінок.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який тег створює абзац?",
+            "options": [
+              "<абзац>",
+              "<текст>",
+              "<p>",
+              "<para>"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "<p> — це тег абзацу в HTML.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яка мета оголошення <!DOCTYPE html>?",
+            "options": [
+              "Це робить сторінку барвистою",
+              "Він повідомляє браузеру, що це документ HTML5",
+              "Це створює назву",
+              "Це необов’язково і нічого не робить"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Оголошення <!DOCTYPE html> повідомляє веб-переглядачу відображати сторінку в режимі стандартів HTML5.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який розділ містить такі метадані, як заголовок сторінки?",
+            "options": [
+              "<тіло>",
+              "<голова>",
+              "<meta>",
+              "<назва>"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Розділ <head> містить метадані, включаючи теги <title>, <meta> і посилання на таблиці стилів.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Створіть заголовок",
+        "description": "Напишіть заголовок h1 із написом \"Привіт, світ!\"",
+        "starterCode": "<!-- Write your HTML below -->\n",
+        "language": "html",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Hello, World!",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте <h1>Ваш текст тут</h1>",
+        "solution": "<h1>Hello, World!</h1>",
+        "xpReward": 15
+      },
+      "xpReward": 15,
+      "order": 0
+    },
+    {
+      "id": "html_lesson_2",
+      "courseId": "html_css",
+      "moduleId": "basics",
+      "title": "Текстові елементи",
+      "description": "Навчіться форматувати текст за допомогою HTML",
+      "theorySlides": [
+        {
+          "title": "Заголовки 📰",
+          "content": "HTML має 6 рівнів заголовків, від h1 (найбільший) до h6 (найменший):\n\n<h1> - Головний заголовок\n<h2> - Заголовок розділу\n<h3> - Підрозділ\n<h4>, <h5>, <h6> - менші заголовки\n\nВикористовуйте заголовки, щоб логічно організувати свій вміст!",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Форматування тексту",
+          "content": "Відформатуйте текст за допомогою цих тегів:",
+          "codeSnippet": "<p>This is a paragraph.</p>\n<strong>Bold text</strong>\n<em>Italic text</em>\n<u>Underlined text</u>\n<mark>Highlighted text</mark>\n<del>Deleted text</del>",
+          "codeLanguage": "html",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Розриви та роздільники",
+          "content": "Керуйте інтервалом за допомогою:\n\n<br> - Розрив рядка (новий рядок)\n<hr> - Горизонтальна лінія (роздільна лінія)\n\nЦе самозакриваючі теги - закриваючий тег не потрібен!",
+          "codeSnippet": "<p>First line<br>Second line</p>\n<hr>\n<p>After the line</p>",
+          "codeLanguage": "html",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Який заголовок найбільший?",
+            "options": [
+              "<h6>",
+              "<h1>",
+              "<h3>",
+              "<заголовок>"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "<h1> — найбільший заголовок, <h6> — найменший.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Як зробити текст жирним?",
+            "options": [
+              "<жирний>",
+              "<b> або <strong>",
+              "<жирний>",
+              "<важкий>"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "<strong> (семантичний) або <b> (візуальний) роблять текст жирним.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яка різниця між <strong> і <b>?",
+            "options": [
+              "Без різниці",
+              "<strong> має семантичне значення, <b> лише візуальне",
+              "<strong> більший",
+              "<b> не підтримується"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "<strong> вказує на семантичну важливість (для програм зчитування з екрана), тоді як <b> є суто візуальним форматуванням.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який тег створює розрив рядка?",
+            "options": [
+              "<перерва>",
+              "<lb>",
+              "<br>",
+              "<новий рядок>"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "<br> створює розрив рядка без початку нового абзацу.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Чому варто використовувати семантичні елементи HTML?",
+            "options": [
+              "Завдяки їм сторінки завантажуються швидше",
+              "Вони покращують доступність і SEO",
+              "Вони додають автоматичне укладання",
+              "Вони потрібні всім браузерам"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Семантичний HTML покращує доступність для програм зчитування з екрана та допомагає пошуковим системам зрозуміти структуру вашого вмісту.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Відформатувати текст",
+        "description": "Створіть абзац зі словом «важливе» жирним шрифтом.",
+        "starterCode": "<!-- Create a paragraph with bold text -->\n",
+        "language": "html",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "important",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте <p> для абзацу та <strong> для жирного шрифту.",
+        "solution": "<p>This is <strong>important</strong> information.</p>",
+        "xpReward": 15
+      },
+      "xpReward": 20,
+      "order": 1
+    },
+    {
+      "id": "html_lesson_3",
+      "courseId": "html_css",
+      "moduleId": "basics",
+      "title": "Посилання та зображення",
+      "description": "Додайте посилання та зображення на свої сторінки",
+      "theorySlides": [
+        {
+          "title": "Створення посилань 🔗",
+          "content": "Тег <a> створює гіперпосилання. Атрибут href визначає призначення:",
+          "codeSnippet": "<a href=\"https://google.com\">Visit Google</a>\n\n<!-- Open in new tab -->\n<a href=\"https://google.com\" target=\"_blank\">\n  Open in new tab\n</a>",
+          "codeLanguage": "html",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Додавання зображень 🖼️",
+          "content": "Тег <img> відображає зображення. Він самозакривається!",
+          "codeSnippet": "<img src=\"photo.jpg\" alt=\"A beautiful photo\">\n\n<!-- With size -->\n<img src=\"logo.png\" alt=\"Logo\" width=\"200\" height=\"100\">",
+          "codeLanguage": "html",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Зображення як посилання",
+          "content": "Ви можете зробити зображення доступним для натискання, загорнувши його в посилання:",
+          "codeSnippet": "<a href=\"https://example.com\">\n  <img src=\"banner.jpg\" alt=\"Click me!\">\n</a>",
+          "codeLanguage": "html",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Який атрибут визначає призначення посилання?",
+            "options": [
+              "src",
+              "href",
+              "посилання",
+              "url"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "href (гіпертекстове посилання) вказує, куди йде посилання.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що робить атрибут alt?",
+            "options": [
+              "Змінює розмір зображення",
+              "Надає альтернативний текст для доступності",
+              "Змінює кольори зображення",
+              "Нічого важливого"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "alt надає текстовий опис для програм зчитування екрана та коли не вдається завантажити зображення.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Як відкрити посилання в новій вкладці?",
+            "options": [
+              "target=\"_blank\"",
+              "newtab=\"true\"",
+              "вікно=\"нове\"",
+              "open=\"tab\""
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Атрибут target=\"_blank\" відкриває посилання в новій вкладці або вікні браузера.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який правильний формат для абсолютної URL-адреси?",
+            "options": [
+              "page.html",
+              "../folder/page.html",
+              "https://example.com/page.html",
+              "/page.html"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Абсолютна URL-адреса містить повний протокол (https://) і доменне ім’я.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Чому атрибут alt важливий для зображень?",
+            "options": [
+              "Завдяки цьому зображення завантажуються швидше",
+              "Це покращує доступність і SEO",
+              "Це змінює якість зображення",
+              "Це не важливо"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Атрибут alt допомагає користувачам із вадами зору та пошуковим системам зрозуміти вміст зображення.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Створити посилання",
+        "description": "Створіть посилання на https://flutter.dev із текстом \"Flutter\"",
+        "starterCode": "<!-- Create your link here -->\n",
+        "language": "html",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Flutter",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте <a href=\"url\">текст</a>",
+        "solution": "<a href=\"https://flutter.dev\">Flutter</a>",
+        "xpReward": 15
+      },
+      "xpReward": 20,
+      "order": 2
+    },
+    {
+      "id": "css_lesson_1",
+      "courseId": "html_css",
+      "moduleId": "styling",
+      "title": "Ласкаво просимо до CSS",
+      "description": "Навчіться стилізувати свої веб-сторінки",
+      "theorySlides": [
+        {
+          "title": "Що таке CSS? 🎨",
+          "content": "CSS (каскадні таблиці стилів) контролює вигляд елементів HTML.\n\nЯкщо HTML — це скелет, то CSS — це шкіра, одяг і макіяж!\n\nЗа допомогою CSS ви контролюєте:\n• Кольори\n• Шрифти\n• Інтервал\n• Макет\n• Анімації",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Синтаксис CSS",
+          "content": "Правила CSS мають селектор і оголошення:",
+          "codeSnippet": "selector {\n  property: value;\n  property: value;\n}\n\n/* Example */\nh1 {\n  color: blue;\n  font-size: 24px;\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Додавання CSS",
+          "content": "Три способи додати CSS:\n\n1. Вбудований: <p style=\"color: red;\">\n2. Внутрішній: <style> в <head>\n3. Зовнішній: окремий файл .css (найкраще!)",
+          "codeSnippet": "<!-- Internal CSS -->\n<head>\n  <style>\n    p { color: blue; }\n  </style>\n</head>",
+          "codeLanguage": "html",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Що означає CSS?",
+            "options": [
+              "Каскадні таблиці стилів",
+              "Система творчого стилю",
+              "Комп'ютерні таблиці стилів",
+              "Барвисті таблиці стилів"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "CSS = каскадні таблиці стилів.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який найкращий спосіб додати CSS?",
+            "options": [
+              "Вбудований",
+              "внутрішній",
+              "Зовнішній файл",
+              "Всі рівні"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Зовнішні файли CSS найкраще підходять для обслуговування та повторного використання.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що таке специфіка CSS?",
+            "options": [
+              "Як швидко завантажується CSS",
+              "Система пріоритетів для конфліктних стилів",
+              "Розмір файлів CSS",
+              "Наскільки специфічний колір"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Специфіка CSS визначає, які правила стилю застосовуються, коли кілька правил націлені на той самий елемент. Inline > ID > Class > Element.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який селектор CSS має найвищу специфічність?",
+            "options": [
+              "Селектор елементів (p)",
+              "Селектор класу (.box)",
+              "Селектор ідентифікатора (#header)",
+              "Вбудований стиль"
+            ],
+            "correctAnswerIndex": 3,
+            "explanation": "Вбудовані стилі мають найвищу специфічність, за якими йдуть ідентифікатори, класи та селектори елементів.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що означає \"Каскадування\" в CSS?",
+            "options": [
+              "Стилі течуть водоспадом",
+              "Можна комбінувати кілька таблиць стилів",
+              "Стилі каскадують від батьківських до дочірніх елементів",
+              "Все перераховане вище"
+            ],
+            "correctAnswerIndex": 3,
+            "explanation": "Каскадування стосується того, як стилі з кількох джерел поєднуються, успадковуються від батьківського до дочірнього та замінюють один одного на основі специфіки.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Розфарбуйте заголовок",
+        "description": "Напишіть CSS, щоб зробити елементи h1 червоними.",
+        "starterCode": "/* Write your CSS rule */\n",
+        "language": "css",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "red",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте h1 { колір: червоний; }",
+        "solution": "h1 {\n  color: red;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 25,
+      "order": 3
+    },
+    {
+      "id": "css_lesson_2",
+      "courseId": "html_css",
+      "moduleId": "styling",
+      "title": "Кольори та фони",
+      "description": "Основні кольори в CSS",
+      "theorySlides": [
+        {
+          "title": "Значення кольорів 🌈",
+          "content": "CSS підтримує багато кольорових форматів:\n\n• Названий: червоний, синій, зелений\n• Шістнадцятковий: #FF0000, #00FF00\n• RGB: rgb (255, 0, 0)\n• RGBA: rgba(255, 0, 0, 0,5)\n• HSL: hsl(0, 100%, 50%)",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Текст і кольори фону",
+          "content": "Дві основні властивості кольору:",
+          "codeSnippet": ".card {\n  color: #333;           /* text color */\n  background-color: #f0f0f0; /* bg color */\n}\n\n.button {\n  color: white;\n  background-color: #007bff;\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "градієнти",
+          "content": "Створіть красиві градієнти:",
+          "codeSnippet": ".gradient-box {\n  background: linear-gradient(\n    to right,\n    #ff6b6b,\n    #4ecdc4\n  );\n}\n\n.radial {\n  background: radial-gradient(\n    circle,\n    white,\n    blue\n  );\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Що таке #FF0000?",
+            "options": [
+              "Зелений",
+              "Синій",
+              "Червоний",
+              "Жовтий"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "#FF0000 червоний (повний червоний, без зеленого, без синього).",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що створює rgba(0,0,0,0.5)?",
+            "options": [
+              "Однотонний чорний",
+              "Напівпрозорий чорний",
+              "Білий",
+              "Прозорий"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Значення 0,5 альфа робить його прозорим на 50%.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яка різниця між RGB і HSL?",
+            "options": [
+              "Без різниці",
+              "RGB використовує червоний/зелений/синій, HSL використовує відтінок/насиченість/світлість",
+              "HSL швидше",
+              "RGB застаріло"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "RGB визначає кольори шляхом змішування червоного, зеленого та синього кольорів. HSL використовує відтінок (колір), насиченість (інтенсивність) і освітленість, що часто є більш інтуїтивно зрозумілим.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Як створити лінійний градієнт зверху вниз?",
+            "options": [
+              "фон: градієнт (верхній, синій, червоний);",
+              "фон: лінійний градієнт (синій, червоний);",
+              "градієнт: лінійний (синій, червоний);",
+              "background-gradient: верх-низ;"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "linear-gradient() створює градієнти. Без напрямку за замовчуванням – зверху вниз.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Стилізуйте коробку",
+        "description": "Створіть CSS для .box із білим текстом і синім фоном.",
+        "starterCode": "/* Style the box class */\n",
+        "language": "css",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "blue",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте .box { колір: білий; колір фону: синій; }",
+        "solution": ".box {\n  color: white;\n  background-color: blue;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 4
+    },
+    {
+      "id": "html_lesson_6",
+      "courseId": "html-css",
+      "moduleId": "css-layout",
+      "title": "Коробкова модель CSS",
+      "description": "Зрозумійте поля, відступи та рамки",
+      "theorySlides": [
+        {
+          "title": "Модель коробки 📦",
+          "content": "Кожен елемент HTML - це коробка! Коробкова модель складається з:\n\n• Вміст – фактичний текст/зображення\n• Відступ – простір навколо вмісту\n• Границя – лінія навколо відступу\n• Поле – простір за межами",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Підкладка",
+          "content": "Заповнення створює простір усередині елемента між вмістом і межею.",
+          "codeSnippet": ".box {\n  padding: 20px;              /* all sides */\n  padding: 10px 20px;         /* top/bottom, left/right */\n  padding: 10px 20px 15px 5px; /* top, right, bottom, left */\n  padding-top: 10px;          /* specific side */\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Маржа",
+          "content": "Поле створює простір поза елементом, відокремлюючи його від інших елементів.",
+          "codeSnippet": ".box {\n  margin: 20px;              /* all sides */\n  margin: 10px auto;         /* center horizontally */\n  margin-bottom: 30px;       /* specific side */\n  margin: 0;                 /* remove default margins */\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Кордон",
+          "content": "Межі охоплюють відступ і вміст.",
+          "codeSnippet": ".box {\n  border: 2px solid black;      /* shorthand */\n  border-width: 2px;\n  border-style: solid;          /* solid, dashed, dotted */\n  border-color: #333;\n  border-radius: 10px;          /* rounded corners */\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "На що впливає підкладка?",
+            "options": [
+              "Простір поза елементом",
+              "Простір всередині елемента",
+              "Ширина кордону",
+              "Розмір шрифту"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Заповнення створює простір усередині елемента між вмістом і межею.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Як центрувати елемент горизонтально з полями?",
+            "options": [
+              "поле: центр;",
+              "запас: 0 авто;",
+              "запас: авто 0;",
+              "поле: посередині;"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "запас: 0 авто; встановлює верх/низ на 0 і ліворуч/праворуч на автоматичний, центруючи елемент.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яке значення розміру поля за замовчуванням?",
+            "options": [
+              "box-sizing: border-box;",
+              "box-sizing: content-box;",
+              "box-sizing: padding-box;",
+              "розмір коробки: авто;"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "За замовчуванням параметром розміру вікна є content-box, де ширина/висота застосовуються лише до вмісту. border-box включає відступи та межі в розмірах.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що відбувається, коли ви встановлюєте box-sizing: border-box?",
+            "options": [
+              "Видаляє всі межі",
+              "Відступи та рамки входять до ширини/висоти елемента",
+              "Збільшує коробку",
+              "Змінює стиль межі"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "border-box дозволяє ширину/висоту включати відступи та межі, роблячи розмір більш передбачуваним.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що таке колапс маржі?",
+            "options": [
+              "Коли маржа стає меншою",
+              "Коли вертикальні поля між елементами об'єднуються в одне",
+              "Коли поля зникають",
+              "Помилка CSS"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Згортання поля відбувається, коли вертикальні поля суміжних елементів перекриваються, і виграє більший край.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Стилізуйте картку",
+        "description": "Створіть клас CSS під назвою «картка» з відступом 20 пікселів, полем 10 пікселів і суцільною сірою рамкою 1 пікселем.",
+        "starterCode": "/* Style your card */\n.card {\n  \n}",
+        "language": "css",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "padding",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте властивості padding, margin і border.",
+        "solution": ".card {\n  padding: 20px;\n  margin: 10px;\n  border: 1px solid gray;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 5
+    },
+    {
+      "id": "html_lesson_7",
+      "courseId": "html-css",
+      "moduleId": "css-layout",
+      "title": "Макет Flexbox",
+      "description": "Створюйте гнучкі макети за допомогою CSS Flexbox",
+      "theorySlides": [
+        {
+          "title": "Що таке Flexbox? 🎯",
+          "content": "Flexbox — це потужна система компонування, яка дозволяє легко:\n\n• Вирівняти елементи по горизонталі або вертикалі\n• Розподіліть простір між предметами\n• Створюйте адаптивні макети\n• Ідеально центрувати вміст",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Гнучкий контейнер",
+          "content": "Увімкніть flexbox, встановивши display: flex на батьківському контейнері.",
+          "codeSnippet": ".container {\n  display: flex;\n  flex-direction: row;     /* row, column */\n  justify-content: center; /* horizontal align */\n  align-items: center;     /* vertical align */\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "justify-content",
+          "content": "Керує вирівнюванням уздовж головної осі (за замовчуванням горизонтально).",
+          "codeSnippet": ".container {\n  display: flex;\n  justify-content: flex-start;    /* start */\n  justify-content: flex-end;      /* end */\n  justify-content: center;        /* center */\n  justify-content: space-between; /* spread */\n  justify-content: space-around;  /* equal space */\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Flex Items",
+          "content": "Контролюйте, як окремі елементи збільшуються, зменшуються або вирівнюються.",
+          "codeSnippet": ".item {\n  flex: 1;           /* grow to fill space */\n  flex-grow: 1;      /* growth factor */\n  flex-shrink: 0;    /* dont shrink */\n  align-self: center; /* override container align */\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Як увімкнути Flexbox?",
+            "options": [
+              "flex: true;",
+              "дисплей: гнучкий;",
+              "компонування: flex;",
+              "flexbox: увімкнено;"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Налаштуйте відображення: згинайте елемент контейнера, щоб увімкнути Flexbox.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яка властивість центрує елементи горизонтально у гнучкому рядку?",
+            "options": [
+              "align-items: центр",
+              "justify-content: центр",
+              "вирівнювання тексту: по центру",
+              "вертикальне вирівнювання: посередині"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "justify-content контролює вирівнювання вздовж головної осі (по горизонталі в напрямку рядка).",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що робить flex-direction: column?",
+            "options": [
+              "Створює кілька стовпців",
+              "Укладає предмети вертикально",
+              "Центрує предмети",
+              "Змушує предмети рости"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "flex-direction: стовпець змінює головну вісь на вертикальну, роблячи елементи стопкою зверху вниз.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що робить flex: 1 з елементом flex?",
+            "options": [
+              "Робить його шириною 1 піксель",
+              "Змушує його рости, щоб заповнити доступний простір",
+              "Змушує його зникнути",
+              "Робить це першим елементом"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "flex: 1 змушує елемент рости, щоб заповнити доступний простір, з коефіцієнтом flex-grow 1.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Коли б ви використовували flex-wrap: wrap?",
+            "options": [
+              "Для обтікання текстом всередині елементів",
+              "Щоб дозволити елементам переносити на наступний рядок, коли контейнер занадто малий",
+              "Для усунення проміжків між предметами",
+              "Центрувати предмети"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "flex-wrap: wrap дозволяє гнучким елементам обертатися в кілька рядків замість того, щоб згортатися або переповнюватися.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Центр Все",
+        "description": "Створіть гнучкий контейнер, який центрує дочірні елементи як горизонтально, так і вертикально.",
+        "starterCode": ".center-box {\n  display: flex;\n  \n}",
+        "language": "css",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "justify-content",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте justify-content і align-items, обидва встановлені по центру.",
+        "solution": ".center-box {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 35,
+      "order": 6
+    },
+    {
+      "id": "html_lesson_8",
+      "courseId": "html-css",
+      "moduleId": "css-layout",
+      "title": "Основи CSS Grid",
+      "description": "Створюйте двовимірні макети за допомогою CSS Grid",
+      "theorySlides": [
+        {
+          "title": "Що таке CSS Grid? 📐",
+          "content": "CSS Grid ідеально підходить для двовимірних макетів із рядками ТА стовпцями.\n\nВипадки використання:\n• Макети сторінок\n• Галереї зображень\n• Карткові сітки\n• Макети приладової панелі",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Сітковий контейнер",
+          "content": "Увімкніть сітку та визначте стовпці та рядки.",
+          "codeSnippet": ".grid {\n  display: grid;\n  grid-template-columns: 1fr 1fr 1fr; /* 3 equal cols */\n  grid-template-rows: 100px 200px;    /* 2 rows */\n  gap: 20px;                          /* spacing */\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Одиниці сітки",
+          "content": "Різні способи визначення розміру доріжок сітки.",
+          "codeSnippet": ".grid {\n  /* Fixed pixels */\n  grid-template-columns: 200px 200px;\n  \n  /* Fractional units (proportional) */\n  grid-template-columns: 1fr 2fr;  /* 1:2 ratio */\n  \n  /* Repeat function */\n  grid-template-columns: repeat(3, 1fr);\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Розміщення предметів",
+          "content": "Керуйте розташуванням елементів у сітці.",
+          "codeSnippet": ".item {\n  grid-column: 1 / 3;  /* span cols 1-2 */\n  grid-row: 1 / 2;     /* row 1 only */\n  \n  /* Shorthand */\n  grid-area: 1 / 1 / 2 / 3;\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Що означає «1fr» у CSS Grid?",
+            "options": [
+              "1 піксель",
+              "1 відсоток",
+              "1 частка доступного простору",
+              "1 ряд"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "fr — це дробова одиниця, яка пропорційно ділить доступний простір.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Як створити 4 однакові стовпці?",
+            "options": [
+              "сітка-стовпці: 4",
+              "grid-template-columns: repeat(4, 1fr)",
+              "колонки: 4",
+              "сітка: 4 кол"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "repeat(4, 1fr) створює 4 стовпці, кожен з яких займає 1 частку місця.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яке призначення властивості gap у Grid?",
+            "options": [
+              "Створює прогалини в тексті",
+              "Встановлює відстань між елементами сітки",
+              "Видаляє лінії сітки",
+              "Робить елементи прозорими"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Властивість gap (або grid-gap) встановлює відстань між рядками та стовпцями в макеті сітки.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що означає grid-column: 1/3?",
+            "options": [
+              "Створіть від 1 до 3 колонок",
+              "Елемент охоплює рядок стовпця 1-3",
+              "Пункт знаходиться в колонці 1 або 3",
+              "Розділіть стовпець на 3"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "grid-column: 1/3 охоплює елемент від лінії сітки 1 до лінії 3, охоплюючи 2 стовпці.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Коли слід використовувати Grid замість Flexbox?",
+            "options": [
+              "Сітка завжди краща",
+              "Для складних двовимірних макетів із рядками ТА стовпцями",
+              "Для простих одновимірних макетів",
+              "Вони ідентичні"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Використовуйте сітку для двовимірних макетів, де вам потрібен контроль як над рядками, так і над стовпцями. Використовуйте Flexbox для простіших одновимірних макетів.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Створіть сітку",
+        "description": "Створіть сітку з 3 однакових стовпців і 20 пікселів між елементами.",
+        "starterCode": ".gallery {\n  display: grid;\n  \n}",
+        "language": "css",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "repeat",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте сітку-шаблон-стовпці з repeat() і проміжком.",
+        "solution": ".gallery {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 20px;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 35,
+      "order": 7
+    },
+    {
+      "id": "html_lesson_9",
+      "courseId": "html-css",
+      "moduleId": "responsive",
+      "title": "Адаптивний дизайн",
+      "description": "Зробіть так, щоб ваші веб-сайти працювали на екранах усіх розмірів",
+      "theorySlides": [
+        {
+          "title": "Чому Responsive? 📱",
+          "content": "Користувачі переглядають на багатьох пристроях:\n\n• Настільні комп’ютери (1920px+)\n• Ноутбуки (1024-1920 пікселів)\n• Планшети (768-1024 пікселів)\n• Телефони (320-768 пікселів)\n\nВаш дизайн повинен адаптуватися до всіх них!",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Метатег Viewport",
+          "content": "Необхідно для правильного відтворення мобільних браузерів.",
+          "codeSnippet": "<!-- In your HTML <head> -->\n<meta name=\"viewport\" \n      content=\"width=device-width, initial-scale=1.0\">",
+          "codeLanguage": "html",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Медіа запити",
+          "content": "Застосовуйте різні стилі залежно від розміру екрана.",
+          "codeSnippet": "/* Default styles for mobile */\n.container {\n  width: 100%;\n}\n\n/* Styles for tablets and up */\n@media (min-width: 768px) {\n  .container {\n    width: 750px;\n  }\n}\n\n/* Styles for desktop */\n@media (min-width: 1200px) {\n  .container {\n    width: 1140px;\n  }\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Мобільний підхід",
+          "content": "Почніть зі стилів для мобільних пристроїв, а потім додайте складності для більших екранів.",
+          "codeSnippet": "/* Mobile-first: single column */\n.grid {\n  display: flex;\n  flex-direction: column;\n}\n\n/* Tablet: 2 columns */\n@media (min-width: 768px) {\n  .grid {\n    flex-direction: row;\n    flex-wrap: wrap;\n  }\n  .item { width: 50%; }\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Що робить метатег вікна перегляду?",
+            "options": [
+              "Збільшує текст",
+              "Керує шириною сторінки на мобільному пристрої",
+              "Додає анімацію",
+              "Змінює кольори"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Метатег viewport повідомляє мобільним браузерам, як відтворювати ширину сторінки.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що таке мобільний підхід?",
+            "options": [
+              "Підтримка лише мобільних пристроїв",
+              "Дизайн мобільного останнім",
+              "Почніть із мобільних пристроїв, додайте для більших екранів",
+              "Ігнорувати мобільний"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Mobile-First означає написання базових стилів для мобільних пристроїв, а потім використання медіа-запитів для вдосконалення для великих екранів.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що означає min-width у медіа-запиті?",
+            "options": [
+              "Максимальний розмір екрану",
+              "Застосовує стилі, коли ширина екрану ПРИМЕНШЕ такої",
+              "Мінімальний розмір шрифту",
+              "Мінімальна маржа"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "@media (min-width: 768px) означає \"застосовувати ці стилі, коли вікно перегляду становить 768px або більше\".",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що таке загальні точки зупинки реагування?",
+            "options": [
+              "100 пікселів, 200 пікселів, 300 пікселів",
+              "480 пікселів (мобільний), 768 пікселів (планшет), 1024 пікселів (настільний комп’ютер)",
+              "Тільки 1920px",
+              "Точки зупину не потрібні"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Загальні контрольні точки націлені на мобільні пристрої (~480 пікселів), планшети (~768 пікселів) і настільні пристрої (~1024 пікселів+).",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Навіщо використовувати відносні одиниці (%, em, rem) замість пікселів для адаптивного дизайну?",
+            "options": [
+              "Вони виглядають крутіше",
+              "Вони краще адаптуються до різних розмірів екрана та вподобань користувача",
+              "Вони завантажуються швидше",
+              "Пікселі застаріли"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Відносні одиниці масштабуються пропорційно та з урахуванням налаштувань доступності користувача, що робить дизайн більш гнучким і доступним.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Напишіть медіа-запит",
+        "description": "Напишіть медіа-запит, який змінює ширину .box до 500 пікселів на екранах 768 пікселів або більше.",
+        "starterCode": ".box {\n  width: 100%;\n}\n\n/* Add media query below */\n",
+        "language": "css",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "@media",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте @media (min-width: 768px) { ... }",
+        "solution": ".box {\n  width: 100%;\n}\n\n@media (min-width: 768px) {\n  .box {\n    width: 500px;\n  }\n}",
+        "xpReward": 15
+      },
+      "xpReward": 40,
+      "order": 8
+    },
+    {
+      "id": "html_lesson_10",
+      "courseId": "html-css",
+      "moduleId": "animations",
+      "title": "Переходи та анімація CSS",
+      "description": "Додайте руху та інтерактивності своїм дизайнам",
+      "theorySlides": [
+        {
+          "title": "Переходи CSS ✨",
+          "content": "Переходи плавно анімують зміни між двома станами.\n\nВикористовуйте для:\n• Ефекти наведення\n• Стани фокусування\n• Зміна кольору\n• Зміна розміру",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Перехідні властивості",
+          "content": "Контролюйте, що анімує і як.",
+          "codeSnippet": ".button {\n  background: blue;\n  transition: background 0.3s ease;\n}\n\n.button:hover {\n  background: darkblue;\n}\n\n/* Multiple properties */\n.card {\n  transition: transform 0.3s, box-shadow 0.3s;\n}\n\n.card:hover {\n  transform: translateY(-5px);\n  box-shadow: 0 10px 20px rgba(0,0,0,0.2);\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "CSS анімації",
+          "content": "Для більш складної багатоетапної анімації використовуйте @keyframes.",
+          "codeSnippet": "@keyframes pulse {\n  0% {\n    transform: scale(1);\n  }\n  50% {\n    transform: scale(1.1);\n  }\n  100% {\n    transform: scale(1);\n  }\n}\n\n.heart {\n  animation: pulse 1s infinite;\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Властивості анімації",
+          "content": "Налаштуйте свої анімації.",
+          "codeSnippet": ".element {\n  animation-name: slide-in;\n  animation-duration: 0.5s;\n  animation-timing-function: ease-out;\n  animation-delay: 0.2s;\n  animation-iteration-count: 1;\n  animation-fill-mode: forwards;\n  \n  /* Shorthand */\n  animation: slide-in 0.5s ease-out 0.2s forwards;\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Яка різниця між переходом і анімацією?",
+            "options": [
+              "Без різниці",
+              "Для переходу потрібні 2 стани, анімація використовує ключові кадри",
+              "Анімація працює швидше",
+              "Перехід лише для кольорів"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Переходи анімуються між двома станами, тоді як анімації використовують @keyframes для складних багатоетапних послідовностей.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що робить \"нескінченний\" у підрахунку ітерацій анімації?",
+            "options": [
+              "Бігти один раз",
+              "Бігти двічі",
+              "Петля назавжди",
+              "Зупинити анімацію"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "infinite змушує анімацію повторюватися безкінечно.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яка мета функції анімації часу?",
+            "options": [
+              "Встановлює тривалість анімації",
+              "Керує кривою швидкості анімації",
+              "Затримує анімацію",
+              "Назви анімацію"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "animation-timing-function (ease, linear, ease-in, ease-out тощо) контролює прогрес анімації з часом.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Коли слід використовувати переходи чи анімацію?",
+            "options": [
+              "Вони однакові",
+              "Переходи для простих змін двох станів, анімація для складних послідовностей",
+              "Завжди використовуйте анімацію",
+              "Переходи застаріли"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Використовуйте переходи для простих змін стану (ефекти наведення). Використовуйте анімацію @keyframes для багатоетапного складного руху.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що робить animation-fill-mode: forwards?",
+            "options": [
+              "Відтворення анімації вперед",
+              "Зберігає остаточний стан анімації після завершення",
+              "Переміщує елемент вперед",
+              "Збільшує швидкість"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "forwards змушує елемент зберігати стилі з останнього ключового кадру після завершення анімації.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Додайте ефект наведення",
+        "description": "Зробіть кнопку, яка плавно змінює колір фону при наведенні курсора на 0,3 секунди.",
+        "starterCode": ".button {\n  background: #3498db;\n  color: white;\n  padding: 10px 20px;\n  /* Add transition */\n}\n\n.button:hover {\n  background: #2980b9;\n}",
+        "language": "css",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "transition",
+            "isHidden": false
+          }
+        ],
+        "hint": "Додати перехід: фон 0,3 с; до .кнопки",
+        "solution": ".button {\n  background: #3498db;\n  color: white;\n  padding: 10px 20px;\n  transition: background 0.3s;\n}\n\n.button:hover {\n  background: #2980b9;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 45,
+      "order": 9
+    }
+  ]
+}

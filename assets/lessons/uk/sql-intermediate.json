@@ -1,0 +1,630 @@
+{
+  "courseId": "sql-intermediate",
+  "lessons": [
+    {
+      "id": "sql_int_lesson_1",
+      "courseId": "sql-intermediate",
+      "moduleId": "joins",
+      "title": "SQL JOIN",
+      "description": "Об’єднайте дані з кількох таблиць",
+      "theorySlides": [
+        {
+          "title": "ПРИЄДНУЄМОСЯ 🔗",
+          "content": "Об’єднати рядки з кількох таблиць:\n• **INNER JOIN**: лише відповідні рядки\n• **LEFT JOIN**: усі ліві + відповідні праві\n• **ПРАВО ОБ'ЄДНАТИ**: все праворуч + відповідне ліворуч\n• **ПОВНЕ ПРИЄДНАННЯ**: усе з обох",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "ВНУТРІШНЄ З'ЄДНАННЯ",
+          "content": "Отримайте відповідні записи з обох таблиць.",
+          "codeSnippet": "SELECT users.name, orders.total\nFROM users\nINNER JOIN orders ON users.id = orders.user_id;\n\n-- Only users WITH orders",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "ПРАВИЛЬНО І ПОВНО ПРИЄДНУЙТЕСЯ 🔄",
+          "content": "Інші типи JOIN:\n• **ПРАВЕ ОБ’ЄДНАННЯ**: усі праві рядки таблиці + відповідні ліві\n• **FULL OUTER JOIN**: усі рядки з обох таблиць\n• NULL заповнює відсутні збіги",
+          "codeSnippet": "-- RIGHT JOIN: All orders, even without users\nSELECT users.name, orders.total\nFROM users\nRIGHT JOIN orders ON users.id = orders.user_id;\n\n-- FULL JOIN: All users AND all orders\nSELECT users.name, orders.total\nFROM users\nFULL OUTER JOIN orders ON users.id = orders.user_id;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Кілька приєднань 🔗🔗",
+          "content": "Об’єднайте кілька таблиць разом:\n• Об’єднайте стільки столів, скільки потрібно\n• Кожне JOIN додає більше даних\n• Порядок має значення для читабельності",
+          "codeSnippet": "SELECT \n  u.name,\n  o.order_date,\n  p.product_name,\n  oi.quantity\nFROM users u\nINNER JOIN orders o ON u.id = o.user_id\nINNER JOIN order_items oi ON o.id = oi.order_id\nINNER JOIN products p ON oi.product_id = p.id;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        },
+        {
+          "title": "Сам ПРИЄДНУЙСЯ 🪞",
+          "content": "Приєднати таблицю до себе:\n• Корисно для ієрархічних даних\n• Порівняти рядки в одній таблиці\n• Необхідно використовувати псевдоніми таблиць",
+          "codeSnippet": "-- Find employees and their managers\nSELECT \n  e.name AS employee,\n  m.name AS manager\nFROM employees e\nLEFT JOIN employees m ON e.manager_id = m.id;\n\n-- Find pairs of users from same city\nSELECT a.name, b.name, a.city\nFROM users a\nJOIN users b ON a.city = b.city AND a.id < b.id;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 4
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Яке JOIN включає всі ліві рядки таблиці?",
+            "options": [
+              "ВНУТРІШНЄ З'ЄДНАННЯ",
+              "ЛІВОГО ПРИЄДНАННЯ",
+              "ПРАВО ПРИЄДНУЙТЕСЯ",
+              "ХРЕСНЕ З'ЄДНАННЯ"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "LEFT JOIN зберігає всі рядки з лівої таблиці.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що повертає FULL OUTER JOIN?",
+            "options": [
+              "Лише збігаються рядки",
+              "Усі рядки з лівої таблиці",
+              "Усі рядки правої таблиці",
+              "Усі рядки з обох таблиць"
+            ],
+            "correctAnswerIndex": 3,
+            "explanation": "FULL OUTER JOIN повертає всі рядки з обох таблиць, з NULL для невідповідних рядків.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Коли б ви використовували самостійний JOIN?",
+            "options": [
+              "Дублювати таблицю",
+              "Щоб знайти ієрархічні зв’язки в одній таблиці",
+              "Щоб видалити дублікати",
+              "Щоб створити резервну копію"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Самооб’єднання корисне для ієрархічних даних, як-от співробітників/керівників, або пошуку зв’язків у одній таблиці.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Скільки таблиць можна ОБ'ЄДНАТИ в одному запиті?",
+            "options": [
+              "Тільки 2",
+              "Максимум 5",
+              "Максимум 10",
+              "Скільки потрібно"
+            ],
+            "correctAnswerIndex": 3,
+            "explanation": "Ви можете з’єднати стільки JOIN, скільки потрібно, хоча продуктивність може знизитися з великою кількістю таблиць.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Приєднуйтеся до користувачів і замовлень",
+        "description": "Напишіть запит, щоб отримати:\n• ім'я користувачів\n• замовлення.всього\n\nВикористовуйте LEFT JOIN, щоб включити користувачів, навіть якщо вони не мають замовлень.\n\nСтруктура:\nВИБРАТИ ... ВІД користувачів ЛІВО ПРИЄДНАТИ замовлення ON ...",
+        "starterCode": "-- Select users.name and orders.total\n-- Use LEFT JOIN to include all users\nSELECT users.name, orders.total\nFROM users\n-- Add LEFT JOIN here\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT users.name, orders.total FROM users LEFT JOIN orders ON users.id = orders.user_id;",
+            "isHidden": false
+          }
+        ],
+        "hint": "Додайте: LEFT JOIN orders ON users.id = orders.user_id",
+        "solution": "SELECT users.name, orders.total\nFROM users\nLEFT JOIN orders ON users.id = orders.user_id;",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 0
+    },
+    {
+      "id": "sql_int_lesson_2",
+      "courseId": "sql-intermediate",
+      "moduleId": "advanced",
+      "title": "Підзапити",
+      "description": "Запити в запитах",
+      "theorySlides": [
+        {
+          "title": "Підзапити 📦",
+          "content": "Запит, вкладений в інший запит.\n\nКорисно для:\n• Фільтрування з обчисленими значеннями\n• Створення тимчасових наборів результатів\n• Складні умови",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "приклад",
+          "content": "Знайдіть зарплату вище середньої.",
+          "codeSnippet": "SELECT name, salary\nFROM employees\nWHERE salary > (\n  SELECT AVG(salary) \n  FROM employees\n);",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Підзапит IN 📋",
+          "content": "Перевірте, чи існує значення в списку:\n• Повертає TRUE, якщо значення відповідає будь-якому результату\n• Альтернатива численним умовам АБО\n• Можна використовувати NOT IN для виключення",
+          "codeSnippet": "-- Find users who made orders\nSELECT name FROM users\nWHERE id IN (\n  SELECT DISTINCT user_id FROM orders\n);\n\n-- Find products NOT ordered\nSELECT name FROM products\nWHERE id NOT IN (\n  SELECT product_id FROM order_items\n);",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "ІСНУЄ підзапит ✅",
+          "content": "Перевірте, чи підзапит повертає рядки:\n• Повертає TRUE/FALSE\n• Часто швидше, ніж IN\n• Використовуйте для перевірки існування",
+          "codeSnippet": "-- Find users who have placed orders\nSELECT name FROM users u\nWHERE EXISTS (\n  SELECT 1 FROM orders o\n  WHERE o.user_id = u.id\n);\n\n-- Find categories with no products\nSELECT name FROM categories c\nWHERE NOT EXISTS (\n  SELECT 1 FROM products p\n  WHERE p.category_id = c.id\n);",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        },
+        {
+          "title": "Корельовані підзапити 🔄",
+          "content": "Підзапит посилається на зовнішній запит:\n• Виконується один раз на зовнішній ряд\n• Потужніше, але повільніше\n• Використовує псевдоніми зовнішніх таблиць",
+          "codeSnippet": "-- Find employees earning more than dept average\nSELECT name, salary, department_id\nFROM employees e1\nWHERE salary > (\n  SELECT AVG(salary)\n  FROM employees e2\n  WHERE e2.department_id = e1.department_id\n);\n\n-- Find latest order per customer\nSELECT * FROM orders o1\nWHERE order_date = (\n  SELECT MAX(order_date) FROM orders o2\n  WHERE o2.customer_id = o1.customer_id\n);",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 4
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Де можуть з'являтися підзапити?",
+            "options": [
+              "Тільки в ДЕ",
+              "Тільки в SELECT",
+              "ДЕ, ВИБРАТИ, З",
+              "Тільки в ВІД"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Підзапити можуть міститися в реченнях SELECT, FROM або WHERE.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що повертає EXISTS?",
+            "options": [
+              "Відповідні рядки",
+              "Підрахунок рядків",
+              "ІСТИНА чи НЕПРАВДА",
+              "NULL"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "EXISTS повертає TRUE, якщо підзапит повертає будь-які рядки, FALSE в іншому випадку.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що таке корельований підзапит?",
+            "options": [
+              "Підзапит із GROUP BY",
+              "Підзапит, який посилається на зовнішній запит",
+              "Підзапит із JOIN",
+              "Підзапит із ORDER BY"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Корельований підзапит посилається на стовпці із зовнішнього запиту та виконується один раз для кожного зовнішнього рядка.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Коли EXISTS часто краще, ніж IN?",
+            "options": [
+              "Для невеликих наборів даних",
+              "Під час перевірки наявності рядків (а не значень)",
+              "Для порівняння рядків",
+              "Ніколи"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "EXISTS може бути швидшим, оскільки він зупиняється, щойно знаходить збіг, тоді як IN оцінює всі значення.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Ціна вище середнього",
+        "description": "Знайдіть продукти за ціною вище середньої.",
+        "starterCode": "-- Find products with price > average price\nSELECT name, price\nFROM products\nWHERE price > \n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT name, price FROM products WHERE price > (SELECT AVG(price) FROM products);",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте (ВИБЕРІТЬ СЕРЕДНЄ (ціна) З продуктів)",
+        "solution": "SELECT name, price\nFROM products\nWHERE price > (SELECT AVG(price) FROM products);",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 1
+    },
+    {
+      "id": "sql_int_lesson_3",
+      "courseId": "sql-intermediate",
+      "moduleId": "aggregation",
+      "title": "ГРУПУВАННЯ ЗА ТА НАЯВНОСТЮ",
+      "description": "Групи агрегатів і фільтрів",
+      "theorySlides": [
+        {
+          "title": "Групування даних 📊",
+          "content": "GROUP BY групує рядки для агрегації.\n\nГрупи фільтрів HAVING (наприклад, WHERE для агрегатів).\n\nПорядок: WHERE → GROUP BY → HAVING → ORDER BY",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "приклад",
+          "content": "Знайдіть категорії з високими продажами.",
+          "codeSnippet": "SELECT category, SUM(amount) as total\nFROM sales\nGROUP BY category\nHAVING SUM(amount) > 1000\nORDER BY total DESC;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Групування кількох стовпців 📊📊",
+          "content": "Згрупувати за кількома стовпцями:\n• Створює унікальні комбінації\n• Більш зерниста агрегація\n• Порядок колонок має значення",
+          "codeSnippet": "-- Sales by category AND year\nSELECT \n  category,\n  YEAR(sale_date) as year,\n  SUM(amount) as total,\n  COUNT(*) as num_sales\nFROM sales\nGROUP BY category, YEAR(sale_date)\nORDER BY category, year;\n\n-- Result: Electronics 2023 5000, Electronics 2024 7000...",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "НАЯВЛЕННЯ з кількома умовами 🎯",
+          "content": "Групи фільтрів зі складними умовами:\n• Використовуйте AND/OR у HAVING\n• Може поєднувати декілька агрегатів\n• Фільтрувати після групування",
+          "codeSnippet": "-- Categories with high sales AND many orders\nSELECT \n  category,\n  SUM(amount) as total,\n  COUNT(*) as orders\nFROM sales\nGROUP BY category\nHAVING SUM(amount) > 1000 \n   AND COUNT(*) >= 10;\n\n-- Customers with avg order > 100 but < 500\nSELECT customer_id, AVG(total) as avg_order\nFROM orders\nGROUP BY customer_id\nHAVING AVG(total) BETWEEN 100 AND 500;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        },
+        {
+          "title": "WHERE + GROUP BY + HAVING 🔗",
+          "content": "Ефективно поєднайте всі речення:\n• ДЕ: фільтрувати рядки ПЕРЕД групуванням\n• ГРУПИТИ ЗА: створення груп\n• HAVING: групи фільтрів ПІСЛЯ агрегації",
+          "codeSnippet": "-- 2024 sales by category, only categories > 5000\nSELECT \n  category,\n  SUM(amount) as total\nFROM sales\nWHERE sale_date >= '2024-01-01'   -- Filter rows first\nGROUP BY category                  -- Then group\nHAVING SUM(amount) > 5000          -- Filter groups\nORDER BY total DESC;\n\n-- Active customers with many orders\nSELECT customer_id, COUNT(*) as orders\nFROM orders\nWHERE status = 'completed'\nGROUP BY customer_id\nHAVING COUNT(*) > 5;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 4
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Різниця між WHERE і HAVING?",
+            "options": [
+              "Те саме",
+              "WHERE фільтрує рядки, HAVING фільтрує групи",
+              "МАТИ швидше",
+              "WHERE застаріло"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "WHERE фільтрує перед групуванням, HAVING після.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що відбувається, коли ви ГРУПУЄТЕ ЗА кількома стовпцями?",
+            "options": [
+              "Виникає помилка",
+              "Використовується лише перший стовпець",
+              "Створює унікальні комбінації всіх стовпців",
+              "Стовпці об’єднані"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "GROUP BY кількома стовпцями створює групу для кожної унікальної комбінації значень.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Чи можна використовувати WHERE і HAVING в одному запиті?",
+            "options": [
+              "Ні, дозволено лише одну",
+              "Так, WHERE запускається першим",
+              "Так, спочатку запускається HAVING",
+              "Тільки з підзапитами"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "так! WHERE фільтрує рядки перед групуванням, HAVING фільтрує групи після агрегування.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який правильний порядок виконання?",
+            "options": [
+              "ВИБРАТИ → ВІД → ДЕ",
+              "FROM → WHERE → GROUP BY → HAVING",
+              "ГРУПУВАТИ ЗА → ДЕ → МАТИ",
+              "HAVING → GROUP BY → WHERE"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "SQL виконує: FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Велика кількість клієнтів",
+        "description": "Знайдіть клієнтів із понад 5 замовленнями.",
+        "starterCode": "-- Find customers with > 5 orders\nSELECT customer_id, COUNT(*) as order_count\nFROM orders\n\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT customer_id, COUNT(*) as order_count FROM orders GROUP BY customer_id HAVING COUNT(*) > 5;",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте GROUP BY і HAVING COUNT(*) > 5",
+        "solution": "SELECT customer_id, COUNT(*) as order_count\nFROM orders\nGROUP BY customer_id\nHAVING COUNT(*) > 5;",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 2
+    },
+    {
+      "id": "sql_int_lesson_4",
+      "courseId": "sql-intermediate",
+      "moduleId": "advanced",
+      "title": "Функції вікна",
+      "description": "Розширена аналітика",
+      "theorySlides": [
+        {
+          "title": "Функції вікна 🪟",
+          "content": "Виконайте обчислення по рядках:\n• ROW_NUMBER(): Послідовний номер\n• RANK(): Ранжування з пропусками\n• LAG/LEAD: попередній/наступний рядок\n• SUM() OVER: Загальна сума",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "приклад",
+          "content": "Розташувати співробітників за окладом.",
+          "codeSnippet": "SELECT \n  name,\n  salary,\n  ROW_NUMBER() OVER (ORDER BY salary DESC) as rank\nFROM employees;\n\n-- Result: Alex 100k #1, Bob 80k #2...",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Функції LAG & LEAD ⏮️⏭️",
+          "content": "Доступ до значень попереднього/наступного рядка:\n• **LAG()**: отримати значення з попереднього рядка\n• **LEAD()**: отримати значення з наступного рядка\n• Чудово підходить для порівнянь і трендів",
+          "codeSnippet": "SELECT \n  sale_date,\n  amount,\n  LAG(amount) OVER (ORDER BY sale_date) as prev_amount,\n  LEAD(amount) OVER (ORDER BY sale_date) as next_amount,\n  amount - LAG(amount) OVER (ORDER BY sale_date) as change\nFROM sales;\n\n-- Result: Shows each sale with previous and next amounts",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Підсумки 📈",
+          "content": "Обчисліть кумулятивні суми:\n• SUM() OVER з ORDER BY\n• Поточна кількість, також можливо середнє значення\n• Скидання за допомогою PARTITION BY",
+          "codeSnippet": "SELECT \n  order_date,\n  amount,\n  SUM(amount) OVER (ORDER BY order_date) as running_total,\n  COUNT(*) OVER (ORDER BY order_date) as order_num,\n  AVG(amount) OVER (ORDER BY order_date) as running_avg\nFROM orders;\n\n-- Running total per customer\nSELECT customer_id, order_date, amount,\n  SUM(amount) OVER (\n    PARTITION BY customer_id \n    ORDER BY order_date\n  ) as customer_running_total\nFROM orders;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        },
+        {
+          "title": "РОЗБІЛ ЗА ПРИКЛАДАМИ 📊",
+          "content": "Розбийте дані на групи для розрахунків:\n• Як GROUP BY, але зберігає всі рядки\n• Кожна перегородка розраховується окремо\n• Поєднується з будь-якою функцією вікна",
+          "codeSnippet": "-- Rank employees within each department\nSELECT \n  name,\n  department,\n  salary,\n  RANK() OVER (\n    PARTITION BY department \n    ORDER BY salary DESC\n  ) as dept_rank\nFROM employees;\n\n-- Percentage of department total\nSELECT \n  name,\n  department,\n  salary,\n  salary * 100.0 / SUM(salary) OVER (\n    PARTITION BY department\n  ) as pct_of_dept\nFROM employees;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 4
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Що робить PARTITION BY?",
+            "options": [
+              "Видаляє розділи",
+              "Групи для функції вікна",
+              "Створює нову таблицю",
+              "Фільтри рядків"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "PARTITION BY ділить рядки на групи для віконних обчислень.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що повертає LAG()?",
+            "options": [
+              "Значення наступного рядка",
+              "Значення попереднього рядка",
+              "Поточне значення рядка",
+              "Випадкове значення рядка"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "LAG() повертає значення з попереднього рядка в наборі результатів.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Як обчислити поточну суму?",
+            "options": [
+              "GROUP BY із SUM",
+              "SUM() ПОВЕРХ (Упорядкувати за датою)",
+              "RUNNING_TOTAL()",
+              "CUMULATIVE_SUM()"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "SUM() OVER з ORDER BY обчислює поточну суму, яка накопичується рядок за рядком.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Різниця між ROW_NUMBER і RANK?",
+            "options": [
+              "Без різниці",
+              "RANK пропускає числа для нічиї",
+              "ROW_NUMBER пропускає числа",
+              "RANK починається з 0"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "RANK дає однакове число нічиям і пропускає наступні числа. ROW_NUMBER завжди послідовний.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Рейтинг продуктів",
+        "description": "Розташуйте продукти за ціною за ROW_NUMBER.",
+        "starterCode": "-- Add rank by price (highest = 1)\nSELECT \n  name,\n  price,\n  \nFROM products;",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "ROW_NUMBER() OVER (ORDER BY price DESC) as rank",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте ROW_NUMBER() НАД (Упорядкувати ЗА ціною DESC)",
+        "solution": "SELECT \n  name,\n  price,\n  ROW_NUMBER() OVER (ORDER BY price DESC) as rank\nFROM products;",
+        "xpReward": 15
+      },
+      "xpReward": 35,
+      "order": 3
+    },
+    {
+      "id": "sql_int_lesson_5",
+      "courseId": "sql-intermediate",
+      "moduleId": "performance",
+      "title": "Індекси та продуктивність",
+      "description": "Оптимізуйте швидкість запитів",
+      "theorySlides": [
+        {
+          "title": "Індекси бази даних ⚡",
+          "content": "Індекси прискорюють запити:\n• Як індекс книг - швидкий пошук\n• Створюйте стовпці, до яких часто звертаються\n• Компроміс: повільніше запис, більше пам’яті",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Створення індексів",
+          "content": "Індексувати загальні стовпці пошуку.",
+          "codeSnippet": "-- Single column index\nCREATE INDEX idx_email ON users(email);\n\n-- Composite index\nCREATE INDEX idx_name_date \nON orders(customer_name, order_date);\n\n-- Check with EXPLAIN\nEXPLAIN SELECT * FROM users WHERE email = 'test@test.com';",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Композитні індекси 🔗",
+          "content": "Індексуйте кілька стовпців разом:\n• Порядок колонок має значення!\n• Першими використовуються крайні ліві стовпці\n• Чудово підходить для кількох стовпців WHERE/ORDER BY",
+          "codeSnippet": "-- Composite index on (last_name, first_name)\nCREATE INDEX idx_name ON users(last_name, first_name);\n\n-- Uses index (starts with last_name)\nSELECT * FROM users WHERE last_name = 'Smith';\n\n-- Uses index (both columns)\nSELECT * FROM users \nWHERE last_name = 'Smith' AND first_name = 'John';\n\n-- Does NOT use index (missing leftmost column)\nSELECT * FROM users WHERE first_name = 'John';",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "ПОЯСНІТЬ, проаналізуйте 🔍",
+          "content": "Розуміння виконання запиту:\n• Показує, чи використовується індекс\n• Розкриває повне сканування таблиць\n• Допомагає оптимізувати повільні запити",
+          "codeSnippet": "-- Basic EXPLAIN\nEXPLAIN SELECT * FROM users WHERE email = 'test@example.com';\n\n-- Shows: type, possible_keys, key, rows scanned\n\n-- EXPLAIN ANALYZE (actual execution)\nEXPLAIN ANALYZE SELECT * FROM orders \nWHERE customer_id = 100 AND status = 'pending';\n\n-- Look for:\n-- ✅ \"Using index\" - Good!\n-- ❌ \"Full table scan\" - Needs index\n-- ❌ \"filesort\" - Consider index on ORDER BY",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        },
+        {
+          "title": "Index Best Practices 📋",
+          "content": "Коли використовувати індекси:\n• Стовпці в WHERE, JOIN, ORDER BY\n• Стовпці високої потужності (багато унікальних значень)\n• Зовнішні ключі\n\nУникайте індексів на:\n• Часто оновлювані колонки\n• Маленькі столики\n• Низька потужність (кілька унікальних значень)",
+          "codeSnippet": "-- Good index candidates\nCREATE INDEX idx_order_date ON orders(order_date);\nCREATE INDEX idx_customer_status ON orders(customer_id, status);\nCREATE INDEX idx_product_category ON products(category_id);\n\n-- Check existing indexes\nSHOW INDEX FROM orders;\n\n-- Remove unused index\nDROP INDEX idx_old_unused ON orders;\n\n-- Unique index (also enforces uniqueness)\nCREATE UNIQUE INDEX idx_email ON users(email);",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 4
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Коли НЕ використовувати індекси?",
+            "options": [
+              "На первинних ключах",
+              "На часто оновлюваних колонках",
+              "У стовпцях WHERE",
+              "На стовпцях JOIN"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Часті оновлення сповільнюються з індексами через обслуговування.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "У складеному індексі (A, B, C), які запити його використовують?",
+            "options": [
+              "Тільки ДЕ А",
+              "ДЕ А, ДЕ А+В, ДЕ А+В+С",
+              "Будь-яка комбінація A, B, C",
+              "Тільки ДЕ A+B+C"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Композитні індекси працюють зліва направо. Для використання індексу запити мають містити крайні ліві стовпці.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що вам допоможе знайти ПОЯСНЕННЯ?",
+            "options": [
+              "Синтаксичні помилки",
+              "Відсутні таблиці",
+              "План виконання запиту та використання індексу",
+              "Дозволи користувача"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "EXPLAIN показує, як база даних виконує запит, включно з тим, які індекси використовуються.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що таке «кардинальність» у контексті індексу?",
+            "options": [
+              "Розмір індексу",
+              "Кількість унікальних значень",
+              "Швидкість запиту",
+              "Підрахунок рядків таблиці"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Мощність - це кількість унікальних значень. Стовпці з високою потужністю (багато унікальних значень) отримують найбільшу користь від індексів.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Створити індекс",
+        "description": "Створіть індекс у стовпці категорії продуктів.",
+        "starterCode": "-- Create index on category column\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "CREATE INDEX idx_category ON products(category);",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте CREATE INDEX idx_name ON table(column)",
+        "solution": "CREATE INDEX idx_category ON products(category);",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 4
+    }
+  ]
+}

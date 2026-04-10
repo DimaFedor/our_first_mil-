@@ -1,0 +1,1195 @@
+{
+  "courseId": "sql",
+  "lessons": [
+    {
+      "id": "sql_lesson_1",
+      "courseId": "sql",
+      "moduleId": "basics",
+      "title": "Введення в SQL",
+      "description": "Відкрийте для себе мову, яка є джерелом баз даних у всьому світі",
+      "theorySlides": [
+        {
+          "title": "Що таке SQL? 🗄️",
+          "content": "SQL (Structured Query Language) — стандартна мова для роботи з базами даних. Він використовується мільйонами програм у всьому світі для зберігання, отримання та керування даними.\n\nSQL дозволяє:\n• Зберігайте дані в організованих таблицях\n• Отримайте саме ті дані, які вам потрібні\n• Оновлення та видалення інформації\n• Створення складних звітів і аналізів",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Розуміння баз даних",
+          "content": "База даних схожа на цифрову картотеку. Він містить таблиці, які схожі на електронні таблиці з рядками та стовпцями.\n\n📊 Приклад таблиці: \"користувачі\"\n┌────┬───────────┬──────────────────┐\n│ id │ ім'я │ email │\n├────┼───────────┼──────────────────┤\n│ 1 │ Аліса │ alice@email.com │\n│ 2 │ Боб │ bob@email.com │\n└────┴───────────┴──────────────────┘\n\nКожен рядок - це запис, кожен стовпець - це поле.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Ваш перший запит SELECT",
+          "content": "Оператор SELECT отримує дані з бази даних. Це найпоширеніша команда SQL, яку ви будете використовувати.",
+          "codeSnippet": "-- Get all data from the users table\nSELECT * FROM users;\n\n-- Get only names from the users table\nSELECT name FROM users;\n\n-- Get multiple columns\nSELECT name, email FROM users;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Що означає SQL?",
+            "options": [
+              "Проста мова запитів",
+              "Структурована мова запитів",
+              "Стандартна мова запитань",
+              "Логіка послідовного запиту"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "SQL означає мову структурованих запитів. Це стандартна мова для керування та запитів до реляційних баз даних.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що означає символ * у користувачах SELECT * FROM?",
+            "options": [
+              "Виберіть лише перший рядок",
+              "Виберіть усі стовпці",
+              "Виберіть випадкові дані",
+              "Видалити всі дані"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Зірочка (*) є символом узагальнення, що означає «всі стовпці». SELECT * отримує кожен стовпець із зазначеної таблиці.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Як називається рядок у таблиці бази даних?",
+            "options": [
+              "Поле",
+              "Колонка",
+              "Запис",
+              "Запит"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Кожен рядок у таблиці називається записом. Він являє собою один запис зі значеннями для кожного стовпця.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яке ключове слово використовується для визначення таблиці для запиту?",
+            "options": [
+              "ОТРИМАТИ",
+              "ВІД",
+              "ТАБЛИЦЯ",
+              "ДЕ"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Ключове слово FROM визначає, з якої таблиці отримувати дані. Приклад: ВИБРАТИ ім'я FROM користувачів.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яке призначення SQL?",
+            "options": [
+              "Створення сайтів",
+              "Керуйте базами даних і надсилайте запити",
+              "Дизайн інтерфейсів користувача",
+              "Надсилайте електронні листи"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "SQL спеціально розроблений для керування та запитів до реляційних баз даних, що дозволяє зберігати, отримувати, оновлювати та видаляти дані.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Ваш перший запит",
+        "description": "Напишіть SQL-запит, щоб вибрати ВСІ стовпці з таблиці «продукти».",
+        "starterCode": "-- Select all columns from the products table\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT * FROM products;",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте SELECT *, щоб отримати всі стовпці, і FROM, щоб указати назву таблиці.",
+        "solution": "SELECT * FROM products;",
+        "xpReward": 15
+      },
+      "xpReward": 15,
+      "order": 0
+    },
+    {
+      "id": "sql_lesson_2",
+      "courseId": "sql",
+      "moduleId": "basics",
+      "title": "ВИБІР Основи",
+      "description": "Оволодіти основами запиту даних",
+      "theorySlides": [
+        {
+          "title": "Вибір конкретних стовпців 📋",
+          "content": "Замість того, щоб вибирати все за допомогою *, ви можете вибрати саме ті стовпці, які вам потрібні. Це більш ефективно та робить ваші запити зрозумілішими.",
+          "codeSnippet": "-- Select specific columns\nSELECT name, price FROM products;\n\n-- Select with a different order\nSELECT price, name, category FROM products;\n\n-- Columns can be listed in any order you want",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Фільтрування за допомогою WHERE",
+          "content": "Речення WHERE фільтрує результати, щоб показати лише рядки, які відповідають умові. Це все одно, що просити «покажи мені лише ті предмети, які...»",
+          "codeSnippet": "-- Find products with price greater than 50\nSELECT name, price FROM products\nWHERE price > 50;\n\n-- Find a specific user by name\nSELECT * FROM users\nWHERE name = 'Alice';\n\n-- Find products in a specific category\nSELECT * FROM products\nWHERE category = 'Electronics';",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Оператори порівняння",
+          "content": "SQL підтримує різні оператори для порівняння значень:\n\n• = Дорівнює\n• != або <> Не дорівнює\n• > Більше ніж\n• < Менше ніж\n• >= Більше або дорівнює\n• <= Менше або дорівнює",
+          "codeSnippet": "-- Find products priced at exactly 29.99\nSELECT * FROM products WHERE price = 29.99;\n\n-- Find orders with quantity less than 10\nSELECT * FROM orders WHERE quantity < 10;\n\n-- Find users who are NOT admins\nSELECT * FROM users WHERE role != 'admin';",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Як вибрати лише стовпці «ім’я» та «електронна адреса» з таблиці «користувачі»?",
+            "options": [
+              "SELECT * FROM користувачів;",
+              "ВИБРАТИ ім'я, електронну пошту ВІД користувачів;",
+              "ОТРИМАТИ ім'я, електронну адресу ВІД користувачів;",
+              "SELECT (ім’я електронної пошти) FROM користувачів;"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Перелічіть назви стовпців, розділених комами після SELECT: SELECT name, email FROM users;",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яке ключове слово використовується для фільтрації результатів?",
+            "options": [
+              "ФІЛЬТР",
+              "КОЛИ",
+              "ДЕ",
+              "ЯКЩО"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Речення WHERE використовується для фільтрації записів, які відповідають певній умові.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Як знайти продукти, ціна яких перевищує 100?",
+            "options": [
+              "ВИБРАТИ * З продуктів WHERE ціна > 100;",
+              "ВИБРАТИ * З продуктів, ЯКЩО ціна > 100;",
+              "ВИБРАТИ * З продуктів, КОЛИ ціна > 100;",
+              "ВИБРАТИ * ІЗ товарів З ціною > 100;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Використовуйте WHERE з оператором >: WHERE ціна > 100",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який оператор означає \"не дорівнює\" в SQL?",
+            "options": [
+              "==",
+              "!==",
+              "!= або <>",
+              "=/="
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "У SQL і !=, і <> означають \"не дорівнює\". Обидва дійсні та широко використовуються.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Як слід записувати текстові значення в умовах SQL?",
+            "options": [
+              "У подвійних лапках: \"значення\"",
+              "В одинарних лапках: 'value'",
+              "У зворотних галочках: `value`",
+              "Без лапок: значення"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "У SQL текстові (рядкові) значення мають бути взяті в одинарні лапки, наприклад «Alice» або «Electronics».",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Фільтр продуктів",
+        "description": "Напишіть запит, щоб вибрати назву та ціну всіх товарів, ціна яких менша або дорівнює 50.",
+        "starterCode": "-- Get name and price for affordable products\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT name, price FROM products WHERE price <= 50;",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте SELECT, щоб вибрати стовпці, FROM для таблиці та WHERE з <= для умови.",
+        "solution": "SELECT name, price FROM products WHERE price <= 50;",
+        "xpReward": 15
+      },
+      "xpReward": 18,
+      "order": 1
+    },
+    {
+      "id": "sql_lesson_3",
+      "courseId": "sql",
+      "moduleId": "basics",
+      "title": "Фільтрування даних",
+      "description": "Дізнайтеся про розширену фільтрацію за допомогою І, АБО та зіставлення за шаблоном",
+      "theorySlides": [
+        {
+          "title": "Поєднання умов з І та АБО 🔍",
+          "content": "Ви можете поєднати кілька умов за допомогою І (обидві мають бути істинними) або АБО (принаймні одна має бути істинною).",
+          "codeSnippet": "-- AND: Both conditions must be true\nSELECT * FROM products\nWHERE category = 'Electronics' AND price < 500;\n\n-- OR: At least one condition must be true\nSELECT * FROM products\nWHERE category = 'Books' OR category = 'Music';\n\n-- Combining AND and OR (use parentheses!)\nSELECT * FROM products\nWHERE (category = 'Electronics' OR category = 'Gadgets')\nAND price < 100;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "В, МІЖ і НІ",
+          "content": "SQL надає ярлики для типових шаблонів фільтрації:\n\n• IN: відповідність будь-якому значенню в списку\n• BETWEEN: відповідність діапазону значень\n• НІ: заперечення умови",
+          "codeSnippet": "-- IN: Instead of multiple OR conditions\nSELECT * FROM products\nWHERE category IN ('Electronics', 'Computers', 'Phones');\n\n-- BETWEEN: Range of values (inclusive)\nSELECT * FROM products\nWHERE price BETWEEN 10 AND 50;\n\n-- NOT: Exclude matches\nSELECT * FROM products\nWHERE category NOT IN ('Clothing', 'Food');",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Зіставлення шаблонів за допомогою LIKE",
+          "content": "Оператор LIKE дозволяє шукати шаблони в тексті за допомогою символів підстановки:\n\n• % відповідає будь-якій послідовності символів\n• _ відповідає рівно одному символу",
+          "codeSnippet": "-- Names starting with 'A'\nSELECT * FROM users WHERE name LIKE 'A%';\n\n-- Names ending with 'son'\nSELECT * FROM users WHERE name LIKE '%son';\n\n-- Names containing 'ann'\nSELECT * FROM users WHERE name LIKE '%ann%';\n\n-- Emails from gmail\nSELECT * FROM users WHERE email LIKE '%@gmail.com';\n\n-- Names with exactly 4 characters\nSELECT * FROM users WHERE name LIKE '____';",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Що вимагає AND для вибору рядка?",
+            "options": [
+              "Принаймні одна умова має виконуватися",
+              "Усі умови мають відповідати дійсності",
+              "Жодні умови не повинні бути вірними",
+              "Рівно одна умова має бути вірною"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "І вимагає, щоб УСІ умови були істинними. Якщо будь-яка умова хибна, рядок не вибирається.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який правильний спосіб зіставлення значень 10, 20 або 30?",
+            "options": [
+              "Значення WHERE = 10 АБО 20 АБО 30",
+              "WHERE значення IN (10, 20, 30)",
+              "WHERE значення BETWEEN 10 AND 30",
+              "WHERE значення = (10, 20, 30)"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "IN дозволяє вказати кілька значень: WHERE значення IN (10, 20, 30). Зауважте, що BETWEEN включатиме всі числа від 10 до 30, а не лише 10, 20 і 30.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що відповідає символу підстановки % у LIKE?",
+            "options": [
+              "Рівно один персонаж",
+              "Тільки цифри",
+              "Будь-яка послідовність символів (включаючи відсутність)",
+              "Тільки пробіли"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Символ узагальнення % відповідає нулю чи більше символам будь-якого типу. Наприклад, «A%» відповідає «A», «Alice» і «Amazing».",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Як знайти імена, які НЕ починаються на «J»?",
+            "options": [
+              "WHERE ім'я НЕ ЯК \"J%\"",
+              "WHERE назва UNLIKE 'J%'",
+              "WHERE NOT назва = 'J%'",
+              "WHERE ім'я <> 'J%'"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Використовуйте NOT LIKE, щоб заперечити збіг шаблону: WHERE ім'я NOT LIKE 'J%'",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що включає в себе BETWEEN 5 AND 10?",
+            "options": [
+              "Тільки 5 і 10",
+              "Тільки 6, 7, 8 і 9",
+              "5, 6, 7, 8, 9 і 10",
+              "Все, крім 5 і 10"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "BETWEEN є включним, тобто включає початкове та кінцеве значення. МІЖ 5 І 10 включає 5, 6, 7, 8, 9 і 10.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Комплексний фільтр",
+        "description": "Напишіть запит, щоб знайти всіх користувачів, чиє ім’я починається з «J» І чия електронна адреса містить «gmail».",
+        "starterCode": "-- Find users with specific name and email patterns\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT * FROM users WHERE name LIKE 'J%' AND email LIKE '%gmail%';",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте LIKE із символом підстановки % для відповідності шаблону. Поєднайте умови з І.",
+        "solution": "SELECT * FROM users WHERE name LIKE 'J%' AND email LIKE '%gmail%';",
+        "xpReward": 15
+      },
+      "xpReward": 20,
+      "order": 2
+    },
+    {
+      "id": "sql_lesson_4",
+      "courseId": "sql",
+      "moduleId": "basics",
+      "title": "Сортування та обмеження результатів",
+      "description": "Контролюйте порядок і кількість результатів",
+      "theorySlides": [
+        {
+          "title": "Результати замовлення за допомогою ORDER BY 📊",
+          "content": "Речення ORDER BY сортує результати. За замовчуванням сортується в порядку зростання (А-Я, 0-9).",
+          "codeSnippet": "-- Sort by name alphabetically (A to Z)\nSELECT * FROM users ORDER BY name;\n\n-- Sort by price, lowest first (ascending)\nSELECT * FROM products ORDER BY price ASC;\n\n-- Sort by price, highest first (descending)\nSELECT * FROM products ORDER BY price DESC;\n\n-- Sort by multiple columns\nSELECT * FROM products\nORDER BY category ASC, price DESC;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Обмеження результатів за допомогою LIMIT",
+          "content": "LIMIT обмежує кількість повернутих рядків. Це важливо для розбиття на сторінки та отримання верхніх/нижніх результатів.",
+          "codeSnippet": "-- Get only the first 10 products\nSELECT * FROM products LIMIT 10;\n\n-- Get the 5 most expensive products\nSELECT * FROM products\nORDER BY price DESC\nLIMIT 5;\n\n-- Pagination: Skip first 20, get next 10\nSELECT * FROM products\nLIMIT 10 OFFSET 20;\n\n-- Alternative syntax: LIMIT offset, count\nSELECT * FROM products LIMIT 20, 10;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Обробка значень NULL",
+          "content": "NULL означає відсутні або невідомі дані. Це вимагає спеціальної обробки в SQL.",
+          "codeSnippet": "-- Find rows where email is NULL (missing)\nSELECT * FROM users WHERE email IS NULL;\n\n-- Find rows where email exists (is NOT NULL)\nSELECT * FROM users WHERE email IS NOT NULL;\n\n-- WRONG: This won't work!\nSELECT * FROM users WHERE email = NULL;\n\n-- NULLs sort last in ASC, first in DESC\n-- Use NULLS FIRST or NULLS LAST to control\nSELECT * FROM users\nORDER BY last_login DESC NULLS LAST;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Як сортувати результати від найвищого до найнижчого?",
+            "options": [
+              "ORDER BY колонка ASC",
+              "ПОРЯДОК ЗА стовпцем DESC",
+              "СОРТУВАЙТЕ ЗА стовпцем ВНИЗ",
+              "ПОРЯДОК ЗА колонкою РЕВЕРС"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "DESC (за спаданням) сортує від найвищого до найнижчого. ASC (за зростанням) сортує від найнижчого до найвищого.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що робить LIMIT 5?",
+            "options": [
+              "Пропускає перші 5 рядів",
+              "Повертає лише перші 5 рядків",
+              "Повертає рядки, у яких стовпець дорівнює 5",
+              "Групує результати в 5 категорій"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "LIMIT 5 обмежує набір результатів лише першими 5 рядками, які повертає запит.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Як перевірити, чи значення дорівнює NULL?",
+            "options": [
+              "Стовпець WHERE = NULL",
+              "Стовпець WHERE == NULL",
+              "WHERE стовпець NULL",
+              "WHERE стовпець EQUALS NULL"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "NULL вимагає оператора IS, а не =. Використовуйте стовпець WHERE IS NULL або WHERE стовпець IS NOT NULL.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що OFFSET 10 робить з LIMIT 5?",
+            "options": [
+              "Повертає 10 рядків, починаючи з рядка 5",
+              "Повертає 5 рядків, пропускаючи перші 10",
+              "Повертає рядки з 5 по 10",
+              "Загалом повертає 15 рядків"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "OFFSET 10 пропускає перші 10 рядків. У поєднанні з LIMIT 5 ви отримаєте рядки 11-15.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Як отримати 3 найдешевші продукти?",
+            "options": [
+              "ВИБРАТИ * З продуктів ORDER BY ціною ASC LIMIT 3;",
+              "ВИБРАТИ * З продуктів ORDER BY price DESC LIMIT 3;",
+              "ВИБРАТИ * З продуктів ОБМЕЖЕННЯ 3 Упорядкувати ЗА ціною;",
+              "ВИБРАТИ ТОП 3 * З продуктів WHERE price = MIN;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Сортуйте за ціною в порядку зростання (найнижча спочатку) і обмежтеся до 3 результатів.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Кращі продукти",
+        "description": "Напишіть запит, щоб отримати 5 найдорожчих товарів. Показувати лише стовпці імені та ціни, відсортовані за ціною від найвищої до найнижчої.",
+        "starterCode": "-- Get the top 5 expensive products\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT name, price FROM products ORDER BY price DESC LIMIT 5;",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте ORDER BY із DESC для найвищого значення, а потім LIMIT для обмеження результатів.",
+        "solution": "SELECT name, price FROM products ORDER BY price DESC LIMIT 5;",
+        "xpReward": 15
+      },
+      "xpReward": 18,
+      "order": 3
+    },
+    {
+      "id": "sql_lesson_5",
+      "courseId": "sql",
+      "moduleId": "intermediate",
+      "title": "Агрегатні функції",
+      "description": "Виконайте обчислення на групах даних",
+      "theorySlides": [
+        {
+          "title": "Що таке агрегатні функції? 📈",
+          "content": "Агрегатні функції виконують обчислення в кількох рядках і повертають одне значення. Вони необхідні для аналізу даних і звітності.\n\n• COUNT() – кількість рядків\n• SUM() - Загальна кількість значень\n• AVG() - Середнє значення\n• MIN() – найменше значення\n• MAX() – найбільше значення",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "COUNT, SUM і AVG",
+          "content": "Це найчастіше використовувані агрегатні функції:",
+          "codeSnippet": "-- Count total number of products\nSELECT COUNT(*) FROM products;\n\n-- Count products in a category\nSELECT COUNT(*) FROM products\nWHERE category = 'Electronics';\n\n-- Sum of all order amounts\nSELECT SUM(amount) FROM orders;\n\n-- Average product price\nSELECT AVG(price) FROM products;\n\n-- Count non-NULL emails\nSELECT COUNT(email) FROM users;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "MIN, MAX і псевдоніми стовпців",
+          "content": "Знайдіть екстремальні значення та дайте своїм результатам змістовні назви:",
+          "codeSnippet": "-- Find the cheapest product price\nSELECT MIN(price) AS lowest_price FROM products;\n\n-- Find the most expensive product price  \nSELECT MAX(price) AS highest_price FROM products;\n\n-- Combine multiple aggregates\nSELECT \n  COUNT(*) AS total_products,\n  AVG(price) AS average_price,\n  MIN(price) AS min_price,\n  MAX(price) AS max_price\nFROM products;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Що повертає COUNT(*)?",
+            "options": [
+              "Сума всіх значень",
+              "Загальна кількість рядів",
+              "Середнє значення всіх значень",
+              "Кількість колонок"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "COUNT(*) підраховує всі рядки в наборі результатів, включаючи рядки зі значеннями NULL.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яка різниця між COUNT(*) і COUNT(column)?",
+            "options": [
+              "Без різниці",
+              "COUNT(*) підраховує всі рядки, COUNT(column) підраховує лише значення, відмінні від NULL",
+              "COUNT(*) швидше",
+              "COUNT(стовпець) підраховує всі рядки"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "COUNT(*) підраховує всі рядки, тоді як COUNT(column) підраховує лише ті рядки, у яких конкретний стовпець не є NULL.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Як знайти середню суму замовлення?",
+            "options": [
+              "SELECT AVERAGE(amount) FROM orders;",
+              "ВИБРАТИ СРЕДНЄ (сума) З замовлень;",
+              "SELECT MEAN(amount) FROM orders;",
+              "ВИБРАТИ СУМУ(сума)/КІЛЬКІСТЬ(*) З замовлень;"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "AVG() — стандартна функція SQL для обчислення середніх значень. Хоча варіант D працював би математично, AVG() є чистішим і правильно обробляє NULL.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що робить AS у \"SELECT COUNT(*) AS total\"?",
+            "options": [
+              "Фільтрує кількість",
+              "Створює псевдонім стовпця (назва)",
+              "Сортує результати",
+              "Групує дані"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "AS створює псевдонім, надаючи стовпцю результату спеціальну назву. «AS total» означає, що кількість відображатиметься в стовпці під назвою «total».",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яка функція знаходить найбільше значення?",
+            "options": [
+              "ТОП()",
+              "НАЙВИЩИЙ()",
+              "МАКС()",
+              "НАЙБІЛЬШИЙ()"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "MAX() повертає максимальне (найвище) значення в стовпці. Він працює з числами, датами та текстом.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Статистика замовлень",
+        "description": "Напишіть запит, який показує загальну кількість замовлень, суму всіх сум і середню суму з таблиці «замовлення». Використовуйте псевдоніми: total_orders, total_amount, avg_amount.",
+        "starterCode": "-- Calculate order statistics\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT COUNT(*) AS total_orders, SUM(amount) AS total_amount, AVG(amount) AS avg_amount FROM orders;",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте COUNT(*), SUM() і AVG() із AS, щоб створити псевдоніми для кожного результату.",
+        "solution": "SELECT COUNT(*) AS total_orders, SUM(amount) AS total_amount, AVG(amount) AS avg_amount FROM orders;",
+        "xpReward": 15
+      },
+      "xpReward": 20,
+      "order": 4
+    },
+    {
+      "id": "sql_lesson_6",
+      "courseId": "sql",
+      "moduleId": "intermediate",
+      "title": "ГРУПУВАННЯ ЗА ТА НАЯВНОСТЮ",
+      "description": "Групуйте дані та фільтруйте зведені результати",
+      "theorySlides": [
+        {
+          "title": "Групування даних за допомогою GROUP BY 📊",
+          "content": "GROUP BY ділить рядки на групи на основі значень стовпців, що дозволяє застосовувати агрегатні функції до кожної групи окремо.",
+          "codeSnippet": "-- Count products per category\nSELECT category, COUNT(*) AS product_count\nFROM products\nGROUP BY category;\n\n-- Total sales per customer\nSELECT customer_id, SUM(amount) AS total_spent\nFROM orders\nGROUP BY customer_id;\n\n-- Average price by category\nSELECT category, AVG(price) AS avg_price\nFROM products\nGROUP BY category;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Фільтрування груп за допомогою HAVING",
+          "content": "HAVING фільтрує групи ПІСЛЯ агрегації. Використовуйте його, коли ви хочете фільтрувати на основі сукупних результатів (ДЕ це не можна зробити!).",
+          "codeSnippet": "-- Categories with more than 10 products\nSELECT category, COUNT(*) AS count\nFROM products\nGROUP BY category\nHAVING COUNT(*) > 10;\n\n-- Customers who spent over $1000\nSELECT customer_id, SUM(amount) AS total\nFROM orders\nGROUP BY customer_id\nHAVING SUM(amount) > 1000;\n\n-- WHERE filters rows, HAVING filters groups\nSELECT category, AVG(price) AS avg_price\nFROM products\nWHERE price > 0        -- Filter rows first\nGROUP BY category\nHAVING AVG(price) > 50; -- Then filter groups",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Заповніть приклад GROUP BY",
+          "content": "Ось реальний приклад, який поєднує все:",
+          "codeSnippet": "-- Sales report by category and month\nSELECT \n  category,\n  COUNT(*) AS num_orders,\n  SUM(amount) AS total_sales,\n  AVG(amount) AS avg_order\nFROM orders\nWHERE status = 'completed'\nGROUP BY category\nHAVING SUM(amount) >= 1000\nORDER BY total_sales DESC;\n\n-- Query execution order:\n-- 1. FROM (get table)\n-- 2. WHERE (filter rows)\n-- 3. GROUP BY (create groups)\n-- 4. HAVING (filter groups)\n-- 5. SELECT (choose columns)\n-- 6. ORDER BY (sort results)",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Що робить GROUP BY?",
+            "options": [
+              "Сортує результати",
+              "Розділяє рядки на групи для агрегації",
+              "Обмежує кількість результатів",
+              "З’єднує дві таблиці"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "GROUP BY ділить рядки на групи на основі одного або кількох стовпців, тому агрегатні функції можна застосовувати до кожної групи окремо.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яка різниця між WHERE і HAVING?",
+            "options": [
+              "Вони однакові",
+              "WHERE фільтрує перед групуванням, HAVING фільтрує після",
+              "МАТИ швидше",
+              "WHERE працює лише з числами"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "WHERE фільтрує окремі рядки перед їх групуванням. HAVING фільтрує групи після агрегації. Використовуйте HAVING під час фільтрації зведених результатів, таких як COUNT() або SUM().",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який запит знаходить категорії із середньою ціною понад 50 доларів США?",
+            "options": [
+              "ВИБРАТИ категорію FROM продуктів WHERE AVG (ціна) > 50 GROUP BY category;",
+              "ВИБЕРІТЬ категорію ІЗ продуктів, ГРУПУВАЙТЕ ЗА категорією, ЩО МАЄ СРЕДНЄ (ціна) > 50;",
+              "ВИБРАТИ категорію FROM продуктів GROUP BY category WHERE AVG (ціна) > 50;",
+              "ВИБРАТИ категорію, СР (ціна) З продуктів, ЯКІ МАЮТЬ СР (ціна) > 50;"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Ви повинні використовувати HAVING (а не WHERE) для фільтрації агрегатних функцій. HAVING стоїть після GROUP BY.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Коли використовується GROUP BY, що може відображатися в SELECT?",
+            "options": [
+              "Будь-які стовпці, які ви хочете",
+              "Лише згруповані стовпці та агрегатні функції",
+              "Тільки агрегатні функції",
+              "Тільки згруповані стовпці"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "У запиті GROUP BY SELECT може включати лише стовпці, які містяться в реченні GROUP BY, або стовпці, загорнуті в агрегатні функції.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "У якому порядку виконуються пропозиції SQL?",
+            "options": [
+              "ВИБРАТИ → ВІД → ДЕ → ЗГРУПИТИ ЗА",
+              "FROM → ВИБРАТИ → WHERE → GROUP BY",
+              "FROM → WHERE → GROUP BY → HAVING → SELECT",
+              "ВИБРАТИ → ДЕ → З → ГРУПУВАТИ ЗА"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "SQL виконується в такому порядку: FROM (отримати дані) → WHERE (фільтрувати рядки) → GROUP BY (групувати) → HAVING (фільтрувати групи) → SELECT (стовпці) → ORDER BY (сортувати)",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Аналіз категорій",
+        "description": "Напишіть запит, щоб показати кожну категорію та кількість продуктів у таблиці «продукти». Включайте лише категорії, які містять більше 5 продуктів. Порядок за спаданням кількості.",
+        "starterCode": "-- Show categories with more than 5 products\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT category, COUNT(*) AS product_count FROM products GROUP BY category HAVING COUNT(*) > 5 ORDER BY product_count DESC;",
+            "isHidden": false
+          }
+        ],
+        "hint": "ГРУПУВАЙТЕ ЗА категорією, використовуйте HAVING, щоб фільтрувати групи з COUNT(*) > 5, а потім ORDER BY.",
+        "solution": "SELECT category, COUNT(*) AS product_count FROM products GROUP BY category HAVING COUNT(*) > 5 ORDER BY product_count DESC;",
+        "xpReward": 15
+      },
+      "xpReward": 22,
+      "order": 5
+    },
+    {
+      "id": "sql_lesson_7",
+      "courseId": "sql",
+      "moduleId": "intermediate",
+      "title": "Основи JOIN",
+      "description": "Об’єднайте дані з кількох таблиць",
+      "theorySlides": [
+        {
+          "title": "Навіщо використовувати JOIN? 🔗",
+          "content": "Реальні бази даних розділяють дані на кілька таблиць, щоб уникнути дублювання. JOIN дозволяє об’єднувати пов’язані дані з різних таблиць.\n\nПриклади таблиць:\n• користувачі: id, ім'я, email\n• замовлення: id, user_id, сума, дата\n\nUser_id у замовленні посилається на ідентифікатор у користувачах. Цей зв’язок дозволяє нам побачити, який користувач зробив кожне замовлення.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "ВНУТРІШНЄ З'ЄДНАННЯ",
+          "content": "INNER JOIN повертає лише ті рядки, які мають відповідні значення в обох таблицях. Це найпоширеніший тип об’єднання.",
+          "codeSnippet": "-- Get orders with customer names\nSELECT orders.id, users.name, orders.amount\nFROM orders\nINNER JOIN users ON orders.user_id = users.id;\n\n-- Using table aliases for cleaner code\nSELECT o.id, u.name, o.amount\nFROM orders o\nINNER JOIN users u ON o.user_id = u.id;\n\n-- With additional filtering\nSELECT u.name, o.amount, o.order_date\nFROM orders o\nINNER JOIN users u ON o.user_id = u.id\nWHERE o.amount > 100;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Розуміння синтаксису JOIN",
+          "content": "Речення ON визначає, як таблиці пов’язані одна з одною:",
+          "codeSnippet": "-- Full syntax breakdown\nSELECT \n  products.name AS product_name,\n  categories.name AS category_name\nFROM products                    -- First table\nINNER JOIN categories            -- Second table\nON products.category_id = categories.id;  -- Link\n\n-- Join products with their orders\nSELECT p.name, o.quantity, o.order_date\nFROM products p\nINNER JOIN order_items o ON p.id = o.product_id;\n\n-- You can also just write JOIN (INNER is default)\nSELECT * FROM orders\nJOIN users ON orders.user_id = users.id;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Що повертає INNER JOIN?",
+            "options": [
+              "Усі рядки з обох таблиць",
+              "Лише рядки, які мають відповідні значення в обох таблицях",
+              "Усі рядки з лівої таблиці",
+              "Усі рядки з правої таблиці"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "INNER JOIN повертає лише ті рядки, у яких є збіг в обох таблицях на основі умови об’єднання.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що вказує речення ON?",
+            "options": [
+              "Які стовпці відображати",
+              "Як пов'язані таблиці",
+              "Порядок результатів",
+              "Скільки рядків повернути"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Речення ON визначає зв’язок між таблицями, вказуючи, які стовпці мають збігатися (наприклад, orders.user_id = users.id).",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що таке псевдонім таблиці?",
+            "options": [
+              "Спосіб остаточного перейменування таблиці",
+              "Коротка назва таблиці в запиті",
+              "Резервна копія таблиці",
+              "Тип об'єднання"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Псевдонім таблиці — це тимчасове коротке ім’я (наприклад, «u» для «користувачів»), яке полегшує написання та читання запитів.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Якщо замовлення мають 100 рядків, а користувачі — 50, скільки рядків INNER JOIN може повернути максимум?",
+            "options": [
+              "Рівно 100",
+              "Рівно 50",
+              "До 100 (якщо всі замовлення мають відповідних користувачів)",
+              "150"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "INNER JOIN повертає лише відповідні рядки. Якщо всі 100 замовлень мають дійсні user_ids, які існують у користувачах, ви отримаєте 100 рядків. Невідповідні рядки виключаються.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Чи \"JOIN\" те саме, що \"INNER JOIN\"?",
+            "options": [
+              "Ні, вони різні",
+              "Так, JOIN за умовчанням має значення INNER JOIN",
+              "JOIN повертає більше рядків",
+              "INNER JOIN швидше"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "У SQL JOIN без префікса за замовчуванням має значення INNER JOIN. Вони дають однакові результати.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Приєднуйтеся до замовлень з користувачами",
+        "description": "Напишіть запит, щоб кожне замовлення відображалося з іменем клієнта. Виберіть ідентифікатор замовлення, ім’я користувача та суму. Використовуйте псевдоніми таблиць (o для замовлень, u для користувачів).",
+        "starterCode": "-- Join orders with users to see customer names\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT o.id, u.name, o.amount FROM orders o INNER JOIN users u ON o.user_id = u.id;",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте замовлення FROM o, потім користувачів INNER JOIN u ON o.user_id = u.id",
+        "solution": "SELECT o.id, u.name, o.amount FROM orders o INNER JOIN users u ON o.user_id = u.id;",
+        "xpReward": 15
+      },
+      "xpReward": 22,
+      "order": 6
+    },
+    {
+      "id": "sql_lesson_8",
+      "courseId": "sql",
+      "moduleId": "intermediate",
+      "title": "Розширені JOIN",
+      "description": "Опануйте LEFT JOIN, RIGHT JOIN і кілька об’єднань таблиць",
+      "theorySlides": [
+        {
+          "title": "ОБ'ЄДНАННЯ ЗЛІВОГО - Зберігайте всі ліві ряди 👈",
+          "content": "LEFT JOIN повертає всі рядки з лівої таблиці, а також відповідні рядки з правої таблиці. Якщо відповідності немає, значення NULL заповнюються для правих стовпців таблиці.",
+          "codeSnippet": "-- All users, even those with no orders\nSELECT u.name, o.amount\nFROM users u\nLEFT JOIN orders o ON u.id = o.user_id;\n\n-- Result might include:\n-- Alice  | 99.99\n-- Bob    | 150.00\n-- Carol  | NULL    ← Carol has no orders\n\n-- Find users who have never ordered\nSELECT u.name, u.email\nFROM users u\nLEFT JOIN orders o ON u.id = o.user_id\nWHERE o.id IS NULL;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "RIGHT JOIN & Візуальний посібник",
+          "content": "RIGHT JOIN є протилежністю LEFT - воно зберігає всі рядки з правої таблиці.\n\n📊 JOIN Візуальні типи:\n\nINNER: Лише відповідні рядки (A ∩ B)\nЗЛІВОРУЧО: усе зліва + збіги (A + A∩B)\nПРАВОруч: усе справа + збіги (B + A∩B)",
+          "codeSnippet": "-- All products, even those never ordered\nSELECT p.name, o.quantity\nFROM order_items o\nRIGHT JOIN products p ON o.product_id = p.id;\n\n-- RIGHT JOIN is less common - you can usually\n-- rewrite it as LEFT JOIN by swapping tables:\nSELECT p.name, o.quantity\nFROM products p\nLEFT JOIN order_items o ON p.id = o.product_id;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Об’єднання кількох столів",
+          "content": "Ви можете об’єднати кілька JOIN, щоб об’єднати дані з кількох пов’язаних таблиць:",
+          "codeSnippet": "-- Orders with user names and product details\nSELECT \n  u.name AS customer,\n  p.name AS product,\n  oi.quantity,\n  o.order_date\nFROM orders o\nINNER JOIN users u ON o.user_id = u.id\nINNER JOIN order_items oi ON o.id = oi.order_id\nINNER JOIN products p ON oi.product_id = p.id\nWHERE o.order_date >= '2024-01-01';\n\n-- Mix JOIN types as needed\nSELECT u.name, COUNT(o.id) AS order_count\nFROM users u\nLEFT JOIN orders o ON u.id = o.user_id\nGROUP BY u.id, u.name;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Що повертає LEFT JOIN, чого не повертає INNER JOIN?",
+            "options": [
+              "Більше колонок",
+              "Невідповідні рядки з лівої таблиці (з NULL)",
+              "Швидший результат",
+              "Відсортовані результати"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "LEFT JOIN включає всі рядки з лівої таблиці, навіть якщо в правій таблиці немає відповідності. Невідповідні праві стовпці відображаються як NULL.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Як знайти користувачів, які не мають замовлень?",
+            "options": [
+              "SELECT * FROM users WHERE orders = 0;",
+              "SELECT * FROM users LEFT JOIN orders ON ... WHERE orders.id IS NULL;",
+              "SELECT * FROM користувачів INNER JOIN замовлення ON ... WHERE сума = 0;",
+              "ВИБРАТИ * ВІД користувачів WHERE NOT IN orders;"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Використовуйте LEFT JOIN і перевірте наявність NULL у стовпці ключа правої таблиці. Якщо orders.id РАВНИЙ NULL, користувач не має відповідних замовлень.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Якщо користувачі мають 100 рядків, а замовлення мають 50, який мінімальний результат LEFT JOIN?",
+            "options": [
+              "50 рядів",
+              "100 рядків",
+              "150 рядів",
+              "0 рядків"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "LEFT JOIN завжди повертає принаймні стільки рядків, скільки ліва таблиця. З'являться всі 100 користувачів, навіть без замовлень.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Чи можете ви використовувати кілька JOIN в одному запиті?",
+            "options": [
+              "Ні, дозволено лише одне приєднання",
+              "Так, ланцюжок один за одним",
+              "Тільки з підзапитами",
+              "Тільки з UNION"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Ви можете об’єднати кілька JOIN, щоб об’єднати дані з багатьох таблиць. Кожне JOIN додає ще одну таблицю до результату.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "RIGHT JOIN users ON orders.user_id = users.id еквівалентно:",
+            "options": [
+              "LEFT JOIN orders ON users.id = orders.user_id",
+              "INNER JOIN з поміняними таблицями",
+              "LEFT JOIN users ON orders.user_id = users.id",
+              "Нічого з перерахованого вище"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "RIGHT JOIN table_a еквівалентно LEFT JOIN з поміняними місцями таблиць. Більшість розробників віддають перевагу LEFT JOIN для узгодженості.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Знайти неактивних користувачів",
+        "description": "Напишіть запит, щоб знайти всіх користувачів, які ніколи не робили замовлення. Використовуйте LEFT JOIN і перевірте значення NULL. Показувати лише ім’я користувача та електронну адресу.",
+        "starterCode": "-- Find users with no orders\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT u.name, u.email FROM users u LEFT JOIN orders o ON u.id = o.user_id WHERE o.id IS NULL;",
+            "isHidden": false
+          }
+        ],
+        "hint": "LEFT JOIN зберігає всіх користувачів. Якщо відповідного порядку немає, стовпці порядку будуть NULL.",
+        "solution": "SELECT u.name, u.email FROM users u LEFT JOIN orders o ON u.id = o.user_id WHERE o.id IS NULL;",
+        "xpReward": 15
+      },
+      "xpReward": 23,
+      "order": 7
+    },
+    {
+      "id": "sql_lesson_9",
+      "courseId": "sql",
+      "moduleId": "advanced",
+      "title": "Зміна даних",
+      "description": "Навчіться безпечно вставляти, оновлювати та видаляти дані",
+      "theorySlides": [
+        {
+          "title": "Вставлення даних за допомогою INSERT 📝",
+          "content": "Оператор INSERT додає нові рядки до таблиці. Ви можете вставити один або кілька рядків одночасно.",
+          "codeSnippet": "-- Insert a single row (specify columns)\nINSERT INTO users (name, email)\nVALUES ('Alice', 'alice@email.com');\n\n-- Insert with all columns (order matters!)\nINSERT INTO products\nVALUES (1, 'Laptop', 999.99, 'Electronics');\n\n-- Insert multiple rows at once\nINSERT INTO users (name, email) VALUES\n  ('Bob', 'bob@email.com'),\n  ('Carol', 'carol@email.com'),\n  ('Dave', 'dave@email.com');",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Оновлення даних за допомогою UPDATE",
+          "content": "UPDATE змінює наявні рядки. ЗАВЖДИ використовуйте WHERE, щоб указати, які рядки оновлювати!",
+          "codeSnippet": "-- Update a specific user's email\nUPDATE users\nSET email = 'newemail@example.com'\nWHERE id = 5;\n\n-- Update multiple columns\nUPDATE products\nSET price = 899.99, category = 'Sale'\nWHERE id = 10;\n\n-- Update based on conditions\nUPDATE products\nSET price = price * 0.9  -- 10% discount\nWHERE category = 'Clearance';\n\n-- ⚠️ DANGEROUS: Updates ALL rows!\nUPDATE users SET status = 'active';",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Видалення даних за допомогою DELETE",
+          "content": "DELETE видаляє рядки з таблиці. Будьте дуже обережні - це постійно!",
+          "codeSnippet": "-- Delete a specific row\nDELETE FROM users WHERE id = 5;\n\n-- Delete rows matching a condition\nDELETE FROM orders\nWHERE status = 'cancelled'\nAND created_at < '2023-01-01';\n\n-- ⚠️ DANGEROUS: Deletes ALL rows!\nDELETE FROM users;\n\n-- Safety tip: Test with SELECT first!\nSELECT * FROM orders\nWHERE status = 'cancelled';  -- Preview\n-- Then change SELECT to DELETE\n\n-- Use transactions for safety\nBEGIN TRANSACTION;\nDELETE FROM orders WHERE id = 100;\n-- Check results, then:\nCOMMIT;  -- Save changes\n-- Or: ROLLBACK;  -- Undo changes",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Який правильний синтаксис для вставки нового користувача?",
+            "options": [
+              "ДОДАТИ В ЗНАЧЕННЯ користувачів ('John', 'john@email.com');",
+              "INSERT користувачів (ім'я, електронна пошта) ('John', 'john@email.com');",
+              "INSERT INTO users (ime, email) VALUES ('John', 'john@email.com');",
+              "Користувачі CREATE ROW ('John', 'john@email.com');"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Правильний синтаксис: INSERT INTO таблиця (стовпці) VALUES (значення);",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що станеться, якщо запустити UPDATE users SET status = 'active'; без КУДИ?",
+            "options": [
+              "Виходить з ладу з помилкою",
+              "Він оновлює лише перший рядок",
+              "Він оновлює ВСІ рядки в таблиці",
+              "Нічого не відбувається"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Без пропозиції WHERE UPDATE впливає на ВСІ рядки в таблиці. Це поширена і небезпечна помилка!",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Як змінити ціну товару зі 100 до 90 доларів?",
+            "options": [
+              "ОНОВИТИ продукти SET price = 90 WHERE price = 100;",
+              "MODIFY products price = 90 WHERE price = 100;",
+              "ЗМІНИТИ продукти ВСТАНОВИТИ ціну 90 WHERE id = ?;",
+              "ОНОВЛЕННЯ ціни = 90 ВІД товарів;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Використовуйте таблицю UPDATE стовпець SET = значення WHERE умова; щоб змінити певні рядки.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що потрібно зробити, перш ніж запускати DELETE?",
+            "options": [
+              "Спочатку запустіть COMMIT",
+              "Перевірте за допомогою SELECT, використовуючи ту саму пропозицію WHERE",
+              "Нічого, просто запустіть",
+              "Створіть нову таблицю"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Завжди попередньо переглядайте те, що буде видалено, спочатку виконавши SELECT з тим самим реченням WHERE. Це запобігає випадковій втраті даних.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що робить ROLLBACK у транзакції?",
+            "options": [
+              "Зберігає всі зміни",
+              "Скасовує всі зміни з моменту ПОЧАТКУ ТРАНЗАКЦІЇ",
+              "Видаляє таблицю",
+              "Блокує базу даних"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "ROLLBACK скасовує всі зміни, зроблені з моменту початку транзакції. COMMIT зберігає їх. Трансакції дозволяють безпечно тестувати зміни.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Додати новий продукт",
+        "description": "Напишіть оператор INSERT, щоб додати новий продукт із назвою «Бездротова миша», ціною 29,99 і категорією «Електроніка» до таблиці товарів.",
+        "starterCode": "-- Insert a new product\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "INSERT INTO products (name, price, category) VALUES ('Wireless Mouse', 29.99, 'Electronics');",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте INSERT INTO таблицю (стовпці) VALUES (значення); - не забувайте цитувати текстові значення.",
+        "solution": "INSERT INTO products (name, price, category) VALUES ('Wireless Mouse', 29.99, 'Electronics');",
+        "xpReward": 15
+      },
+      "xpReward": 23,
+      "order": 8
+    },
+    {
+      "id": "sql_lesson_10",
+      "courseId": "sql",
+      "moduleId": "advanced",
+      "title": "Створення таблиць",
+      "description": "Проектуйте та створюйте власні таблиці бази даних",
+      "theorySlides": [
+        {
+          "title": "Основи СТВОРИТИ ТАБЛИЦЮ 🏗️",
+          "content": "CREATE TABLE визначає нову таблицю зі стовпцями та їхніми типами даних. Кожен стовпець потребує імені та типу.",
+          "codeSnippet": "-- Basic table creation\nCREATE TABLE users (\n  id INT,\n  name VARCHAR(100),\n  email VARCHAR(255),\n  age INT,\n  created_at TIMESTAMP\n);\n\n-- Common data types:\n-- INT: Whole numbers (1, 42, -10)\n-- DECIMAL(10,2): Decimal numbers (99.99)\n-- VARCHAR(n): Text up to n characters\n-- TEXT: Long text (no limit)\n-- BOOLEAN: true/false\n-- DATE: Dates (2024-01-15)\n-- TIMESTAMP: Date + time",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Первинні ключі та автоматичне збільшення",
+          "content": "ПЕРВИННИЙ КЛЮЧ унікально ідентифікує кожен рядок. AUTO_INCREMENT автоматично генерує унікальні ідентифікатори.",
+          "codeSnippet": "-- Table with primary key and auto-increment\nCREATE TABLE products (\n  id INT PRIMARY KEY AUTO_INCREMENT,\n  name VARCHAR(255) NOT NULL,\n  price DECIMAL(10, 2) NOT NULL,\n  description TEXT,\n  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n);\n\n-- PostgreSQL uses SERIAL instead:\nCREATE TABLE products (\n  id SERIAL PRIMARY KEY,\n  name VARCHAR(255) NOT NULL,\n  price DECIMAL(10, 2) NOT NULL\n);",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Обмеження та зовнішні ключі",
+          "content": "Обмеження забезпечують дотримання правил щодо ваших даних для підтримки цілісності:",
+          "codeSnippet": "-- Table with various constraints\nCREATE TABLE orders (\n  id INT PRIMARY KEY AUTO_INCREMENT,\n  user_id INT NOT NULL,\n  amount DECIMAL(10, 2) NOT NULL CHECK (amount > 0),\n  status VARCHAR(50) DEFAULT 'pending',\n  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\n  \n  -- Foreign key links to users table\n  FOREIGN KEY (user_id) REFERENCES users(id)\n);\n\n-- Constraints explained:\n-- NOT NULL: Column cannot be empty\n-- UNIQUE: All values must be different\n-- CHECK: Values must meet a condition\n-- DEFAULT: Value if none provided\n-- FOREIGN KEY: Must match a value in another table",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Що забезпечує PRIMARY KEY?",
+            "options": [
+              "Стовпець завжди сортується",
+              "Кожен рядок має унікальний ідентифікатор",
+              "Стовпець може мати значення NULL",
+              "Таблиця завантажується швидше"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "PRIMARY KEY гарантує, що кожен рядок має унікальний ненульовий ідентифікатор. Це важливо для ідентифікації та зв’язування записів.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який тип даних найкраще підходить для зберігання цін, наприклад 99,99 доларів США?",
+            "options": [
+              "ІНТ",
+              "VARCHAR(10)",
+              "DECIMAL(10; 2)",
+              "ПЛАВАТИ"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "DECIMAL(10, 2) зберігає точні десяткові числа з 2 знаками після коми - ідеально підходить для грошей. FLOAT може мати помилки округлення.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що означає NOT NULL?",
+            "options": [
+              "Стовпець може зберігати лише NULL",
+              "Стовпець завжди повинен мати значення",
+              "Стовпець є первинним ключем",
+              "Стовпець зберігає нуль"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "NOT NULL означає, що стовпець не може бути порожнім - кожен рядок повинен мати значення для цього стовпця.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що робить FOREIGN KEY?",
+            "options": [
+              "Створює нову таблицю",
+              "Посилання на рядок в іншій таблиці",
+              "Робить колонку унікальною",
+              "Шифрує дані"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "FOREIGN KEY створює зв’язок між таблицями шляхом посилання на первинний ключ іншої таблиці, забезпечуючи посилальну цілісність.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що робить DEFAULT 'очікує'?",
+            "options": [
+              "Робить необхідну колонку",
+              "Встановлює значення \"очікує\", якщо не вказано",
+              "Дозволяє лише значення \"очікує\"",
+              "Назве стовпець \"очікує на розгляд\""
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "DEFAULT вказує значення для використання, якщо значення не вказано під час INSERT. У цьому випадку за замовчуванням статус буде «очікує».",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Створіть таблицю клієнтів",
+        "description": "Створіть таблицю «клієнти» з: id (ціле число, первинний ключ, автоматичне збільшення), назвою (varchar 100, не null), електронною поштою (varchar 255, унікальний) і created_at (часова позначка з поточною міткою часу за замовчуванням).",
+        "starterCode": "-- Create the customers table\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "CREATE TABLE customers (\n  id INT PRIMARY KEY AUTO_INCREMENT,\n  name VARCHAR(100) NOT NULL,\n  email VARCHAR(255) UNIQUE,\n  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n);",
+            "isHidden": false
+          }
+        ],
+        "hint": "Визначте кожен стовпець із його типом і обмеженнями. Використовуйте коми між колонками.",
+        "solution": "CREATE TABLE customers (\n  id INT PRIMARY KEY AUTO_INCREMENT,\n  name VARCHAR(100) NOT NULL,\n  email VARCHAR(255) UNIQUE,\n  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n);",
+        "xpReward": 15
+      },
+      "xpReward": 25,
+      "order": 9
+    }
+  ]
+}
