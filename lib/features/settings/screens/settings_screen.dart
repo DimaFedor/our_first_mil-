@@ -6,13 +6,19 @@ import '../../auth/providers/auth_provider.dart';
 import '../../../core/l10n/app_localizations.dart';
 import '../../../core/l10n/language_catalog.dart';
 import '../../../core/l10n/locale_provider.dart';
+import '../../../core/theme/theme_mode_provider.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final isDarkTheme = theme.brightness == Brightness.dark;
     final currentLocale = ref.watch(localeProvider);
+    final themeMode = ref.watch(appThemeModeProvider);
+    final isDarkMode = themeMode == ThemeMode.dark;
     final availableLanguages =
         ref.watch(availableLanguagesProvider).valueOrNull ??
         LanguageCatalog.fallbackLanguages;
@@ -20,18 +26,24 @@ class SettingsScreen extends ConsumerWidget {
       availableLanguages,
       currentLocale,
     );
-    
+
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [
-              Color(0xFF0A0E27),
-              Color(0xFF1A1F3A),
-              Color(0xFF0D1B3A),
-            ],
+            colors: isDarkTheme
+                ? const [
+                    Color(0xFF0A0E27),
+                    Color(0xFF1A1F3A),
+                    Color(0xFF0D1B3A),
+                  ]
+                : const [
+                    Color(0xFFF8FAFF),
+                    Color(0xFFEEF3FF),
+                    Color(0xFFE6EEFF),
+                  ],
           ),
         ),
         child: SafeArea(
@@ -40,32 +52,40 @@ class SettingsScreen extends ConsumerWidget {
               // Header
               Padding(
                 padding: const EdgeInsets.all(24.0),
-                child: Row(
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.arrow_back, color: Colors.white),
-                      onPressed: () => Navigator.of(context).pop(),
-                    ),
-                    const SizedBox(width: 8),
-                    Text(
-                      context.tr('settings'),
-                      style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                    ),
-                  ],
-                ).animate().fadeIn(duration: 600.ms).slideY(begin: -0.2, end: 0),
+                child:
+                    Row(
+                          children: [
+                            IconButton(
+                              icon: Icon(
+                                Icons.arrow_back,
+                                color: colorScheme.onSurface,
+                              ),
+                              onPressed: () => Navigator.of(context).pop(),
+                            ),
+                            const SizedBox(width: 8),
+                            Text(
+                              context.tr('settings'),
+                              style: Theme.of(context).textTheme.headlineMedium
+                                  ?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    color: colorScheme.onSurface,
+                                  ),
+                            ),
+                          ],
+                        )
+                        .animate()
+                        .fadeIn(duration: 600.ms)
+                        .slideY(begin: -0.2, end: 0),
               ),
-              
+
               Expanded(
                 child: ListView(
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
                   children: [
                     const SizedBox(height: 16),
-                    
+
                     // Account Section
-                    _buildSectionTitle(context.tr('account')),
+                    _buildSectionTitle(context, context.tr('account')),
                     const SizedBox(height: 12),
                     _buildSettingItem(
                       context,
@@ -91,23 +111,34 @@ class SettingsScreen extends ConsumerWidget {
                       },
                       index: 1,
                     ),
-                    
+
                     const SizedBox(height: 24),
-                    
+
                     // Preferences Section
-                    _buildSectionTitle(context.tr('preferences')),
+                    _buildSectionTitle(context, context.tr('preferences')),
                     const SizedBox(height: 12),
                     _buildSettingItem(
                       context,
                       icon: Icons.dark_mode_outlined,
                       title: context.tr('theme'),
-                      subtitle: context.tr('dark_mode'),
+                      subtitle: isDarkMode
+                          ? context.tr('dark_mode')
+                          : context.tr('light_mode'),
                       onTap: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Theme switching coming in v1.1!')),
-                        );
+                        ref
+                            .read(appThemeModeProvider.notifier)
+                            .toggleThemeMode();
                       },
                       index: 2,
+                      showArrow: false,
+                      trailing: Switch(
+                        value: isDarkMode,
+                        onChanged: (_) {
+                          ref
+                              .read(appThemeModeProvider.notifier)
+                              .toggleThemeMode();
+                        },
+                      ),
                     ),
                     _buildSettingItem(
                       context,
@@ -116,7 +147,9 @@ class SettingsScreen extends ConsumerWidget {
                       subtitle: 'Manage notification preferences',
                       onTap: () {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Push notifications coming in v1.1!')),
+                          const SnackBar(
+                            content: Text('Push notifications coming in v1.1!'),
+                          ),
                         );
                       },
                       index: 3,
@@ -125,15 +158,16 @@ class SettingsScreen extends ConsumerWidget {
                       context,
                       icon: Icons.language_outlined,
                       title: context.tr('language'),
-                      subtitle: '${currentLanguage.flag} ${currentLanguage.nativeName}',
+                      subtitle:
+                          '${currentLanguage.flag} ${currentLanguage.nativeName}',
                       onTap: () => _showLanguageDialog(context),
                       index: 4,
                     ),
-                    
+
                     const SizedBox(height: 24),
-                    
+
                     // Data Section
-                    _buildSectionTitle(context.tr('data_privacy')),
+                    _buildSectionTitle(context, context.tr('data_privacy')),
                     const SizedBox(height: 12),
                     _buildSettingItem(
                       context,
@@ -156,14 +190,20 @@ class SettingsScreen extends ConsumerWidget {
                         showDialog(
                           context: context,
                           builder: (ctx) => AlertDialog(
-                            backgroundColor: const Color(0xFF1A1F3A),
+                            backgroundColor: Theme.of(ctx).colorScheme.surface,
                             title: Text(
                               '${context.tr('clear_cache')}?',
-                              style: const TextStyle(color: Colors.white),
+                              style: TextStyle(
+                                color: Theme.of(ctx).colorScheme.onSurface,
+                              ),
                             ),
                             content: Text(
                               context.tr('clear_cache_confirm'),
-                              style: const TextStyle(color: Colors.white70),
+                              style: TextStyle(
+                                color: Theme.of(
+                                  ctx,
+                                ).colorScheme.onSurface.withValues(alpha: 0.75),
+                              ),
                             ),
                             actions: [
                               TextButton(
@@ -174,10 +214,15 @@ class SettingsScreen extends ConsumerWidget {
                                 onPressed: () {
                                   Navigator.pop(ctx);
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(content: Text('Cache cleared!')),
+                                    const SnackBar(
+                                      content: Text('Cache cleared!'),
+                                    ),
                                   );
                                 },
-                                child: Text(context.tr('delete'), style: const TextStyle(color: Colors.red)),
+                                child: Text(
+                                  context.tr('delete'),
+                                  style: const TextStyle(color: Colors.red),
+                                ),
                               ),
                             ],
                           ),
@@ -185,11 +230,11 @@ class SettingsScreen extends ConsumerWidget {
                       },
                       index: 6,
                     ),
-                    
+
                     const SizedBox(height: 24),
-                    
+
                     // About Section
-                    _buildSectionTitle(context.tr('about')),
+                    _buildSectionTitle(context, context.tr('about')),
                     const SizedBox(height: 12),
                     _buildSettingItem(
                       context,
@@ -224,11 +269,15 @@ class SettingsScreen extends ConsumerWidget {
                       },
                       index: 9,
                     ),
-                    
+
                     const SizedBox(height: 24),
-                    
+
                     // Danger Zone
-                    _buildSectionTitle(context.tr('danger_zone'), color: Colors.red),
+                    _buildSectionTitle(
+                      context,
+                      context.tr('danger_zone'),
+                      color: Colors.red,
+                    ),
                     const SizedBox(height: 12),
                     _buildSettingItem(
                       context,
@@ -254,14 +303,20 @@ class SettingsScreen extends ConsumerWidget {
                         showDialog(
                           context: context,
                           builder: (ctx) => AlertDialog(
-                            backgroundColor: const Color(0xFF1A1F3A),
+                            backgroundColor: Theme.of(ctx).colorScheme.surface,
                             title: Text(
                               '${context.tr('delete_account')}?',
-                              style: const TextStyle(color: Colors.white),
+                              style: TextStyle(
+                                color: Theme.of(ctx).colorScheme.onSurface,
+                              ),
                             ),
                             content: Text(
                               context.tr('delete_account_warning'),
-                              style: const TextStyle(color: Colors.white70),
+                              style: TextStyle(
+                                color: Theme.of(
+                                  ctx,
+                                ).colorScheme.onSurface.withValues(alpha: 0.75),
+                              ),
                             ),
                             actions: [
                               TextButton(
@@ -272,10 +327,15 @@ class SettingsScreen extends ConsumerWidget {
                                 onPressed: () {
                                   Navigator.pop(ctx);
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(content: Text(context.tr('coming_soon'))),
+                                    SnackBar(
+                                      content: Text(context.tr('coming_soon')),
+                                    ),
                                   );
                                 },
-                                child: Text(context.tr('delete'), style: const TextStyle(color: Colors.red)),
+                                child: Text(
+                                  context.tr('delete'),
+                                  style: const TextStyle(color: Colors.red),
+                                ),
                               ),
                             ],
                           ),
@@ -283,7 +343,7 @@ class SettingsScreen extends ConsumerWidget {
                       },
                       index: 11,
                     ),
-                    
+
                     const SizedBox(height: 40),
                   ],
                 ),
@@ -323,13 +383,22 @@ class SettingsScreen extends ConsumerWidget {
     return languages.first;
   }
 
-  Widget _buildSectionTitle(String title, {Color? color}) {
+  Widget _buildSectionTitle(
+    BuildContext context,
+    String title, {
+    Color? color,
+  }) {
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     return Text(
       title,
       style: TextStyle(
         fontSize: 14,
         fontWeight: FontWeight.w600,
-        color: color ?? Colors.white.withOpacity(0.6),
+        color:
+            color ??
+            (isDarkTheme
+                ? Colors.white.withValues(alpha: 0.6)
+                : Colors.black.withValues(alpha: 0.6)),
         letterSpacing: 0.5,
       ),
     ).animate().fadeIn(duration: 400.ms);
@@ -344,83 +413,100 @@ class SettingsScreen extends ConsumerWidget {
     required int index,
     Color? color,
     bool showArrow = true,
+    Widget? trailing,
   }) {
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+    final baseTextColor = isDarkTheme ? Colors.white : const Color(0xFF111827);
+    final subtitleColor = isDarkTheme
+        ? Colors.white.withValues(alpha: 0.6)
+        : const Color(0xFF4B5563);
+
     return Container(
-      margin: const EdgeInsets.only(bottom: 8),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            const Color(0xFF1A1F3A).withOpacity(0.5),
-            const Color(0xFF0D1B3A).withOpacity(0.3),
-          ],
-        ),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: Colors.white.withOpacity(0.1),
-          width: 1,
-        ),
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          borderRadius: BorderRadius.circular(16),
-          onTap: onTap,
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Row(
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: (color ?? Colors.blue).withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Icon(
-                    icon,
-                    color: color ?? Colors.blue.shade300,
-                    size: 22,
-                  ),
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        title,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: color ?? Colors.white,
-                        ),
-                      ),
-                      const SizedBox(height: 2),
-                      Text(
-                        subtitle,
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.white.withOpacity(0.6),
-                        ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
-                  ),
-                ),
-                if (showArrow)
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    color: Colors.white.withOpacity(0.4),
-                    size: 16,
-                  ),
+          margin: const EdgeInsets.only(bottom: 8),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                isDarkTheme
+                    ? const Color(0xFF1A1F3A).withValues(alpha: 0.5)
+                    : const Color(0xFFFFFFFF),
+                isDarkTheme
+                    ? const Color(0xFF0D1B3A).withValues(alpha: 0.3)
+                    : const Color(0xFFF1F5FF),
               ],
             ),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(
+              color: isDarkTheme
+                  ? Colors.white.withValues(alpha: 0.1)
+                  : const Color(0xFFD6E2FF),
+              width: 1,
+            ),
           ),
-        ),
-      ),
-    )
+          child: Material(
+            color: Colors.transparent,
+            child: InkWell(
+              borderRadius: BorderRadius.circular(16),
+              onTap: onTap,
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: (color ?? Colors.blue).withValues(alpha: 0.15),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Icon(
+                        icon,
+                        color: color ?? Colors.blue.shade300,
+                        size: 22,
+                      ),
+                    ),
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            title,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: color ?? baseTextColor,
+                            ),
+                          ),
+                          const SizedBox(height: 2),
+                          Text(
+                            subtitle,
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: subtitleColor,
+                            ),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      ),
+                    ),
+                    if (trailing != null)
+                      trailing
+                    else if (showArrow)
+                      Icon(
+                        Icons.arrow_forward_ios,
+                        color: isDarkTheme
+                            ? Colors.white.withValues(alpha: 0.4)
+                            : Colors.black.withValues(alpha: 0.4),
+                        size: 16,
+                      ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        )
         .animate(delay: Duration(milliseconds: 100 * index))
         .fadeIn(duration: 400.ms)
         .slideX(begin: 0.2, end: 0);
@@ -453,9 +539,7 @@ class _LanguagePickerSheetState extends ConsumerState<_LanguagePickerSheet> {
           decoration: BoxDecoration(
             color: const Color(0xFF1A1F3A),
             borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
-            border: Border.all(
-              color: Colors.white.withOpacity(0.08),
-            ),
+            border: Border.all(color: Colors.white.withOpacity(0.08)),
           ),
           child: Column(
             children: [
@@ -517,9 +601,7 @@ class _LanguagePickerSheetState extends ConsumerState<_LanguagePickerSheet> {
                   style: const TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                     hintText: context.tr('search_language'),
-                    hintStyle: TextStyle(
-                      color: Colors.white.withOpacity(0.5),
-                    ),
+                    hintStyle: TextStyle(color: Colors.white.withOpacity(0.5)),
                     prefixIcon: Icon(
                       Icons.search_rounded,
                       color: Colors.white.withOpacity(0.7),
@@ -551,9 +633,7 @@ class _LanguagePickerSheetState extends ConsumerState<_LanguagePickerSheet> {
                       child: Text(
                         '${context.tr('error')}: $error',
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white.withOpacity(0.8),
-                        ),
+                        style: TextStyle(color: Colors.white.withOpacity(0.8)),
                       ),
                     ),
                   ),
@@ -579,20 +659,18 @@ class _LanguagePickerSheetState extends ConsumerState<_LanguagePickerSheet> {
 
                     return LayoutBuilder(
                       builder: (context, constraints) {
-                        final columns = _columnsForWidth(
-                          constraints.maxWidth,
-                        );
+                        final columns = _columnsForWidth(constraints.maxWidth);
 
                         return GridView.builder(
                           controller: scrollController,
                           padding: const EdgeInsets.fromLTRB(16, 12, 16, 28),
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: columns,
-                            crossAxisSpacing: 12,
-                            mainAxisSpacing: 12,
-                            mainAxisExtent: 86,
-                          ),
+                                crossAxisCount: columns,
+                                crossAxisSpacing: 12,
+                                mainAxisSpacing: 12,
+                                mainAxisExtent: 86,
+                              ),
                           itemCount: filteredLanguages.length,
                           itemBuilder: (context, index) {
                             final language = filteredLanguages[index];
@@ -630,11 +708,13 @@ class _LanguagePickerSheetState extends ConsumerState<_LanguagePickerSheet> {
       return languages;
     }
 
-    return languages.where((language) {
-      return language.code.toLowerCase().contains(normalizedQuery) ||
-          language.name.toLowerCase().contains(normalizedQuery) ||
-          language.nativeName.toLowerCase().contains(normalizedQuery);
-    }).toList(growable: false);
+    return languages
+        .where((language) {
+          return language.code.toLowerCase().contains(normalizedQuery) ||
+              language.name.toLowerCase().contains(normalizedQuery) ||
+              language.nativeName.toLowerCase().contains(normalizedQuery);
+        })
+        .toList(growable: false);
   }
 
   int _columnsForWidth(double maxWidth) {
@@ -662,7 +742,9 @@ class _LanguagePickerSheetState extends ConsumerState<_LanguagePickerSheet> {
 
     Navigator.of(context).pop();
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('${language.flag} ${context.tr('language_changed')}')),
+      SnackBar(
+        content: Text('${language.flag} ${context.tr('language_changed')}'),
+      ),
     );
   }
 }
@@ -741,10 +823,7 @@ class _LanguageTile extends StatelessWidget {
                         language.name,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          color: subtitleColor,
-                          fontSize: 12,
-                        ),
+                        style: TextStyle(color: subtitleColor, fontSize: 12),
                       ),
                     ],
                   ),

@@ -56,17 +56,26 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+    final onSurface = Theme.of(context).colorScheme.onSurface;
+
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [
-              Color(0xFF0A0E27),
-              Color(0xFF1A1F3A),
-              Color(0xFF0D1B3A),
-            ],
+            colors: isDarkTheme
+                ? const [
+                    Color(0xFF0A0E27),
+                    Color(0xFF1A1F3A),
+                    Color(0xFF0D1B3A),
+                  ]
+                : const [
+                    Color(0xFFF8FAFF),
+                    Color(0xFFEEF3FF),
+                    Color(0xFFE6EEFF),
+                  ],
           ),
         ),
         child: SafeArea(
@@ -82,8 +91,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                       onPressed: () => context.go('/login'),
                       child: Text(
                         AppLocalizations.of(context)?.get('skip') ?? 'Skip',
-                        style: const TextStyle(
-                          color: Colors.white70,
+                        style: TextStyle(
+                          color: onSurface.withValues(alpha: 0.7),
                           fontSize: 16,
                         ),
                       ),
@@ -122,8 +131,12 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                       height: 8,
                       decoration: BoxDecoration(
                         color: _currentPage == index
-                            ? Colors.white
-                            : Colors.white30,
+                            ? (isDarkTheme
+                                  ? Colors.white
+                                  : const Color(0xFF2563EB))
+                            : (isDarkTheme
+                                  ? Colors.white30
+                                  : const Color(0xFF93C5FD)),
                         borderRadius: BorderRadius.circular(4),
                       ),
                     ),
@@ -167,8 +180,12 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                         alignment: Alignment.center,
                         child: Text(
                           _currentPage < _pages.length - 1
-                              ? (AppLocalizations.of(context)?.get('next') ?? 'Next')
-                              : (AppLocalizations.of(context)?.get('get_started') ?? 'Get Started'),
+                              ? (AppLocalizations.of(context)?.get('next') ??
+                                    'Next')
+                              : (AppLocalizations.of(
+                                      context,
+                                    )?.get('get_started') ??
+                                    'Get Started'),
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 18,
@@ -181,41 +198,42 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 ),
               ),
 
-                // Temporary Debug: Skip Auth Button
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: SizedBox(
-                    width: double.infinity,
-                    height: 48,
-                    child: ElevatedButton(
-                      onPressed: () async {
-                        try {
-                          await ref.read(authActionsProvider).signInAnonymously();
-                          if (mounted) {
-                            context.go("/");
-                          }
-                        } catch (e) {
+              // Temporary Debug: Skip Auth Button
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 48,
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      try {
+                        await ref.read(authActionsProvider).signInAnonymously();
+                        if (mounted) {
                           context.go("/");
                         }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.orange.withValues(alpha: 0.8),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
+                      } catch (e) {
+                        context.go("/");
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.orange.withValues(alpha: 0.8),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
                       ),
-                      child: Text(
-                        AppLocalizations.of(context)?.get('skip_auth_debug') ?? 'Skip Auth (Debug)',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    ),
+                    child: Text(
+                      AppLocalizations.of(context)?.get('skip_auth_debug') ??
+                          'Skip Auth (Debug)',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 24),
+              ),
+              const SizedBox(height: 24),
             ],
           ),
         ),
@@ -250,6 +268,8 @@ class OnboardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+    final onSurface = Theme.of(context).colorScheme.onSurface;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Column(
@@ -270,19 +290,16 @@ class OnboardingPage extends StatelessWidget {
               ],
             ),
             child: Center(
-              child: Text(
-                icon,
-                style: const TextStyle(fontSize: 48),
-              ),
+              child: Text(icon, style: const TextStyle(fontSize: 48)),
             ),
           ),
           const SizedBox(height: 48),
           Text(
-            titleKey != null 
-              ? (AppLocalizations.of(context)?.get(titleKey!) ?? title)
-              : title,
-            style: const TextStyle(
-              color: Colors.white,
+            titleKey != null
+                ? (AppLocalizations.of(context)?.get(titleKey!) ?? title)
+                : title,
+            style: TextStyle(
+              color: onSurface,
               fontSize: 32,
               fontWeight: FontWeight.bold,
             ),
@@ -291,10 +308,12 @@ class OnboardingPage extends StatelessWidget {
           const SizedBox(height: 16),
           Text(
             descKey != null
-              ? (AppLocalizations.of(context)?.get(descKey!) ?? description)
-              : description,
+                ? (AppLocalizations.of(context)?.get(descKey!) ?? description)
+                : description,
             style: TextStyle(
-              color: Colors.white.withValues(alpha: 0.8),
+              color: isDarkTheme
+                  ? Colors.white.withValues(alpha: 0.8)
+                  : onSurface.withValues(alpha: 0.75),
               fontSize: 18,
               height: 1.5,
             ),

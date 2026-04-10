@@ -14,10 +14,15 @@ final achievementsProvider = StreamProvider<List<UserAchievement>>((ref) {
       .collection('achievements')
       .snapshots()
       .map((snapshot) {
-    return snapshot.docs
-        .map((doc) => UserAchievement.fromJson(doc.data()))
-        .toList();
-  });
+        return snapshot.docs
+            .map(
+              (doc) => UserAchievement.fromJson(
+                doc.data(),
+                fallbackAchievementId: doc.id,
+              ),
+            )
+            .toList();
+      });
 });
 
 final achievementActionsProvider = Provider<AchievementActions>((ref) {
@@ -31,12 +36,14 @@ class AchievementActions {
 
   AchievementActions(this._userId);
 
-  Future<void> checkAndUnlockAchievements({
+  Future<List<Achievement>> checkAndUnlockAchievements({
     required int totalLessons,
     required int currentStreak,
     required int totalXP,
   }) async {
-    if (_userId == null) return;
+    if (_userId == null) return [];
+
+    final newlyUnlocked = <Achievement>[];
 
     final allAchievements = Achievement.getAllAchievements();
     final unlockedSnapshot = await _firestore
@@ -68,8 +75,11 @@ class AchievementActions {
 
       if (shouldUnlock) {
         await _unlockAchievement(achievement);
+        newlyUnlocked.add(achievement);
       }
     }
+
+    return newlyUnlocked;
   }
 
   Future<void> _unlockAchievement(Achievement achievement) async {
@@ -81,13 +91,14 @@ class AchievementActions {
         .collection('achievements')
         .doc(achievement.id)
         .set({
-      'achievementId': achievement.id,
-      'unlockedAt': DateTime.now().toIso8601String(),
-    });
+          'achievementId': achievement.id,
+          'unlockedAt': DateTime.now().toIso8601String(),
+        });
 
     // Award XP
-    await _firestore.collection('users').doc(_userId).update({
+    await _firestore.collection('users').doc(_userId).set({
       'totalXP': FieldValue.increment(achievement.xpReward),
-    });
+      'lastActive': FieldValue.serverTimestamp(),
+    }, SetOptions(merge: true));
   }
 }

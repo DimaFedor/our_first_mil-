@@ -17,12 +17,12 @@ class LevelProgressWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (compact) {
-      return _buildCompactVersion();
+      return _buildCompactVersion(context);
     }
-    return _buildFullVersion();
+    return _buildFullVersion(context);
   }
 
-  Widget _buildCompactVersion() {
+  Widget _buildCompactVersion(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
@@ -34,10 +34,7 @@ class LevelProgressWidget extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            levelInfo.badge,
-            style: const TextStyle(fontSize: 16),
-          ),
+          Text(levelInfo.badge, style: const TextStyle(fontSize: 16)),
           const SizedBox(width: 6),
           Text(
             'Lvl ${levelInfo.level}',
@@ -52,19 +49,28 @@ class LevelProgressWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildFullVersion() {
+  Widget _buildFullVersion(BuildContext context) {
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+    final onSurface = Theme.of(context).colorScheme.onSurface;
+
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            const Color(0xFF0066FF).withValues(alpha: 0.2),
-            const Color(0xFF8B5CF6).withValues(alpha: 0.1),
+            isDarkTheme
+                ? const Color(0xFF0066FF).withValues(alpha: 0.2)
+                : const Color(0xFF0066FF).withValues(alpha: 0.16),
+            isDarkTheme
+                ? const Color(0xFF8B5CF6).withValues(alpha: 0.1)
+                : const Color(0xFF8B5CF6).withValues(alpha: 0.12),
           ],
         ),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: const Color(0xFF0066FF).withValues(alpha: 0.3),
+          color: isDarkTheme
+              ? const Color(0xFF0066FF).withValues(alpha: 0.3)
+              : const Color(0xFF0066FF).withValues(alpha: 0.45),
         ),
       ),
       child: Column(
@@ -96,17 +102,17 @@ class LevelProgressWidget extends StatelessWidget {
                   ),
                 ),
               ).animate().scale(duration: 500.ms, curve: Curves.elasticOut),
-              
+
               const SizedBox(width: 16),
-              
+
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       'Level ${levelInfo.level}',
-                      style: const TextStyle(
-                        color: Colors.white,
+                      style: TextStyle(
+                        color: onSurface,
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
                       ),
@@ -114,17 +120,20 @@ class LevelProgressWidget extends StatelessWidget {
                     Text(
                       levelInfo.title,
                       style: TextStyle(
-                        color: Colors.white.withValues(alpha: 0.7),
+                        color: onSurface.withValues(alpha: 0.75),
                         fontSize: 16,
                       ),
                     ),
                   ],
                 ),
               ),
-              
+
               // XP badge
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 6,
+                ),
                 decoration: BoxDecoration(
                   color: const Color(0xFFF59E0B).withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(20),
@@ -150,9 +159,9 @@ class LevelProgressWidget extends StatelessWidget {
               ),
             ],
           ).animate(delay: 100.ms).fadeIn().slideX(begin: -0.2, end: 0),
-          
+
           const SizedBox(height: 24),
-          
+
           // Progress bar
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -161,11 +170,11 @@ class LevelProgressWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    levelInfo.isMaxLevel 
+                    levelInfo.isMaxLevel
                         ? 'Max Level Reached!'
                         : 'Progress to Level ${levelInfo.level + 1}',
                     style: TextStyle(
-                      color: Colors.white.withValues(alpha: 0.8),
+                      color: onSurface.withValues(alpha: 0.8),
                       fontSize: 14,
                     ),
                   ),
@@ -173,15 +182,15 @@ class LevelProgressWidget extends StatelessWidget {
                     Text(
                       '${levelInfo.xpNeededForNextLevel} XP needed',
                       style: TextStyle(
-                        color: Colors.white.withValues(alpha: 0.6),
+                        color: onSurface.withValues(alpha: 0.65),
                         fontSize: 12,
                       ),
                     ),
                 ],
               ),
-              
+
               const SizedBox(height: 10),
-              
+
               // Progress bar
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
@@ -190,40 +199,49 @@ class LevelProgressWidget extends StatelessWidget {
                     Container(
                       height: 12,
                       decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.1),
+                        color: isDarkTheme
+                            ? Colors.white.withValues(alpha: 0.1)
+                            : onSurface.withValues(alpha: 0.12),
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
                     FractionallySizedBox(
                       widthFactor: levelInfo.progress,
-                      child: Container(
-                        height: 12,
-                        decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            colors: [Color(0xFF0066FF), Color(0xFF8B5CF6)],
-                          ),
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: const Color(0xFF0066FF).withValues(alpha: 0.5),
-                              blurRadius: 8,
-                            ),
-                          ],
-                        ),
-                      ).animate(delay: 300.ms)
-                        .scaleX(
-                          begin: 0,
-                          duration: 800.ms,
-                          curve: Curves.easeOutCubic,
-                          alignment: Alignment.centerLeft,
-                        ),
+                      child:
+                          Container(
+                                height: 12,
+                                decoration: BoxDecoration(
+                                  gradient: const LinearGradient(
+                                    colors: [
+                                      Color(0xFF0066FF),
+                                      Color(0xFF8B5CF6),
+                                    ],
+                                  ),
+                                  borderRadius: BorderRadius.circular(10),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: const Color(
+                                        0xFF0066FF,
+                                      ).withValues(alpha: 0.5),
+                                      blurRadius: 8,
+                                    ),
+                                  ],
+                                ),
+                              )
+                              .animate(delay: 300.ms)
+                              .scaleX(
+                                begin: 0,
+                                duration: 800.ms,
+                                curve: Curves.easeOutCubic,
+                                alignment: Alignment.centerLeft,
+                              ),
                     ),
                   ],
                 ),
               ),
-              
+
               const SizedBox(height: 8),
-              
+
               // XP range
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -231,7 +249,7 @@ class LevelProgressWidget extends StatelessWidget {
                   Text(
                     '${levelInfo.xpForCurrentLevel} XP',
                     style: TextStyle(
-                      color: Colors.white.withValues(alpha: 0.5),
+                      color: onSurface.withValues(alpha: 0.55),
                       fontSize: 11,
                     ),
                   ),
@@ -246,7 +264,7 @@ class LevelProgressWidget extends StatelessWidget {
                   Text(
                     '${levelInfo.xpForNextLevel} XP',
                     style: TextStyle(
-                      color: Colors.white.withValues(alpha: 0.5),
+                      color: onSurface.withValues(alpha: 0.55),
                       fontSize: 11,
                     ),
                   ),
@@ -254,10 +272,10 @@ class LevelProgressWidget extends StatelessWidget {
               ),
             ],
           ).animate(delay: 200.ms).fadeIn().slideY(begin: 0.2, end: 0),
-          
+
           if (showDetails) ...[
             const SizedBox(height: 20),
-            
+
             // Next milestone
             Container(
               padding: const EdgeInsets.all(12),
@@ -344,62 +362,60 @@ class XPGainWidget extends StatelessWidget {
   final int xpGained;
   final String? bonusReason;
 
-  const XPGainWidget({
-    super.key,
-    required this.xpGained,
-    this.bonusReason,
-  });
+  const XPGainWidget({super.key, required this.xpGained, this.bonusReason});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [Color(0xFFF59E0B), Color(0xFFFBBF24)],
-        ),
-        borderRadius: BorderRadius.circular(24),
-        boxShadow: [
-          BoxShadow(
-            color: const Color(0xFFF59E0B).withValues(alpha: 0.4),
-            blurRadius: 20,
-            offset: const Offset(0, 8),
-          ),
-        ],
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Icon(Icons.star, color: Colors.white, size: 28),
-              const SizedBox(width: 8),
-              Text(
-                '+$xpGained XP',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                ),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              colors: [Color(0xFFF59E0B), Color(0xFFFBBF24)],
+            ),
+            borderRadius: BorderRadius.circular(24),
+            boxShadow: [
+              BoxShadow(
+                color: const Color(0xFFF59E0B).withValues(alpha: 0.4),
+                blurRadius: 20,
+                offset: const Offset(0, 8),
               ),
             ],
           ),
-          if (bonusReason != null) ...[
-            const SizedBox(height: 4),
-            Text(
-              bonusReason!,
-              style: const TextStyle(
-                color: Colors.white70,
-                fontSize: 14,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(Icons.star, color: Colors.white, size: 28),
+                  const SizedBox(width: 8),
+                  Text(
+                    '+$xpGained XP',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
-        ],
-      ),
-    ).animate()
-      .scale(begin: const Offset(0.5, 0.5), duration: 400.ms, curve: Curves.elasticOut)
-      .then()
-      .shimmer(duration: 800.ms);
+              if (bonusReason != null) ...[
+                const SizedBox(height: 4),
+                Text(
+                  bonusReason!,
+                  style: const TextStyle(color: Colors.white70, fontSize: 14),
+                ),
+              ],
+            ],
+          ),
+        )
+        .animate()
+        .scale(
+          begin: const Offset(0.5, 0.5),
+          duration: 400.ms,
+          curve: Curves.elasticOut,
+        )
+        .then()
+        .shimmer(duration: 800.ms);
   }
 }

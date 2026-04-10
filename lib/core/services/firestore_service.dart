@@ -42,8 +42,10 @@ class FirestoreService {
     required String lessonId,
     required int xpEarned,
   }) async {
-    AppLogger.debug('Updating progress: user=$userId, course=$courseId, lesson=$lessonId');
-    
+    AppLogger.debug(
+      'Updating progress: user=$userId, course=$courseId, lesson=$lessonId',
+    );
+
     final progressDoc = userProgressCollection(userId).doc(courseId);
     final progressSnapshot = await progressDoc.get();
 
@@ -63,12 +65,13 @@ class FirestoreService {
       });
     }
 
-    // Update user's total XP
-    await usersCollection.doc(userId).update({
+    // Update user's total XP (merge to avoid failure if user doc doesn't exist yet)
+    await usersCollection.doc(userId).set({
+      'uid': userId,
       'totalXP': FieldValue.increment(xpEarned),
       'lastActive': FieldValue.serverTimestamp(),
-    });
-    
+    }, SetOptions(merge: true));
+
     AppLogger.success('Progress saved: +$xpEarned XP');
   }
 
@@ -78,36 +81,47 @@ class FirestoreService {
     final snapshot = await userDoc.get();
     final data = snapshot.data() as Map<String, dynamic>?;
 
-    if (data != null) {
-      final lastActive = (data['lastActive'] as Timestamp?)?.toDate();
-      final now = DateTime.now();
-      final currentStreak = data['currentStreak'] as int? ?? 0;
-      final longestStreak = data['longestStreak'] as int? ?? 0;
+    if (data == null) {
+      await userDoc.set({
+        'uid': userId,
+        'currentStreak': 1,
+        'longestStreak': 1,
+        'lastActive': FieldValue.serverTimestamp(),
+      }, SetOptions(merge: true));
+      return;
+    }
 
-      int newStreak = currentStreak;
+    final lastActive = (data['lastActive'] as Timestamp?)?.toDate();
+    final now = DateTime.now();
+    final currentStreak = data['currentStreak'] as int? ?? 0;
+    final longestStreak = data['longestStreak'] as int? ?? 0;
 
-      if (lastActive != null) {
-        final difference = now.difference(lastActive).inDays;
-        if (difference == 1) {
-          newStreak = currentStreak + 1;
-        } else if (difference > 1) {
-          newStreak = 1;
-        }
-      } else {
+    int newStreak = currentStreak;
+
+    if (lastActive != null) {
+      final difference = now.difference(lastActive).inDays;
+      if (difference == 1) {
+        newStreak = currentStreak + 1;
+      } else if (difference > 1) {
         newStreak = 1;
       }
-
-      await userDoc.update({
-        'currentStreak': newStreak,
-        'longestStreak': newStreak > longestStreak ? newStreak : longestStreak,
-        'lastActive': FieldValue.serverTimestamp(),
-      });
+    } else {
+      newStreak = 1;
     }
+
+    await userDoc.set({
+      'uid': userId,
+      'currentStreak': newStreak,
+      'longestStreak': newStreak > longestStreak ? newStreak : longestStreak,
+      'lastActive': FieldValue.serverTimestamp(),
+    }, SetOptions(merge: true));
   }
 
   // Get User Progress for Course
   Future<Map<String, dynamic>?> getUserProgress(
-      String userId, String courseId) async {
+    String userId,
+    String courseId,
+  ) async {
     final doc = await userProgressCollection(userId).doc(courseId).get();
     return doc.data() as Map<String, dynamic>?;
   }
@@ -117,10 +131,12 @@ class FirestoreService {
     final doc = await usersCollection.doc(userId).get();
     return doc.data() as Map<String, dynamic>?;
   }
-  
+
   // Get All User Progress
   Future<List<Map<String, dynamic>>> getAllUserProgress(String userId) async {
     final snapshot = await userProgressCollection(userId).get();
-    return snapshot.docs.map((doc) => doc.data() as Map<String, dynamic>).toList();
+    return snapshot.docs
+        .map((doc) => doc.data() as Map<String, dynamic>)
+        .toList();
   }
 }

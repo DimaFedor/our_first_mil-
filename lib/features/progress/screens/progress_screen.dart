@@ -7,17 +7,26 @@ class ProgressScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+    final onSurface = Theme.of(context).colorScheme.onSurface;
+
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [
-              Color(0xFF0A0E27),
-              Color(0xFF1A1F3A),
-              Color(0xFF0D1B3A),
-            ],
+            colors: isDarkTheme
+                ? const [
+                    Color(0xFF0A0E27),
+                    Color(0xFF1A1F3A),
+                    Color(0xFF0D1B3A),
+                  ]
+                : const [
+                    Color(0xFFF8FAFF),
+                    Color(0xFFEEF3FF),
+                    Color(0xFFE6EEFF),
+                  ],
           ),
         ),
         child: SafeArea(
@@ -28,21 +37,20 @@ class ProgressScreen extends StatelessWidget {
               children: [
                 // Header
                 Text(
-                  AppLocalizations.of(context)?.get('your_progress') ?? 'Your Progress',
+                  AppLocalizations.of(context)?.get('your_progress') ??
+                      'Your Progress',
                   style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                )
-                    .animate()
-                    .fadeIn(duration: 600.ms)
-                    .slideY(begin: 0.3, end: 0),
+                    fontWeight: FontWeight.bold,
+                    color: onSurface,
+                  ),
+                ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
                 const SizedBox(height: 8),
                 Text(
-                  AppLocalizations.of(context)?.get('keep_up_work') ?? 'Keep up the great work!',
+                  AppLocalizations.of(context)?.get('keep_up_work') ??
+                      'Keep up the great work!',
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: Colors.white60,
-                      ),
+                    color: onSurface.withValues(alpha: 0.65),
+                  ),
                 ).animate(delay: 200.ms).fadeIn(),
                 const SizedBox(height: 32),
 
@@ -75,9 +83,9 @@ class ProgressScreen extends StatelessWidget {
                 Text(
                   'Course Progress',
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
+                    fontWeight: FontWeight.bold,
+                    color: onSurface,
+                  ),
                 ).animate(delay: 400.ms).fadeIn(),
                 const SizedBox(height: 16),
 
@@ -156,10 +164,7 @@ class _StatCard extends StatelessWidget {
           ),
           Text(
             title,
-            style: const TextStyle(
-              color: Colors.white70,
-              fontSize: 14,
-            ),
+            style: const TextStyle(color: Colors.white70, fontSize: 14),
           ),
         ],
       ),
@@ -184,6 +189,8 @@ class _ProgressItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+    final onSurface = Theme.of(context).colorScheme.onSurface;
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
@@ -191,13 +198,19 @@ class _ProgressItem extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            const Color(0xFF1A1F3A).withOpacity(0.8),
-            const Color(0xFF242B4A).withOpacity(0.6),
+            isDarkTheme
+                ? const Color(0xFF1A1F3A).withValues(alpha: 0.8)
+                : const Color(0xFFFFFFFF),
+            isDarkTheme
+                ? const Color(0xFF242B4A).withValues(alpha: 0.6)
+                : const Color(0xFFF1F5FF),
           ],
         ),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: Colors.white.withOpacity(0.1),
+          color: isDarkTheme
+              ? Colors.white.withValues(alpha: 0.1)
+              : const Color(0xFFD6E2FF),
         ),
       ),
       child: Column(
@@ -208,8 +221,8 @@ class _ProgressItem extends StatelessWidget {
             children: [
               Text(
                 courseName,
-                style: const TextStyle(
-                  color: Colors.white,
+                style: TextStyle(
+                  color: onSurface,
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -229,7 +242,9 @@ class _ProgressItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
             child: LinearProgressIndicator(
               value: progress,
-              backgroundColor: Colors.white.withOpacity(0.1),
+              backgroundColor: isDarkTheme
+                  ? Colors.white.withValues(alpha: 0.1)
+                  : const Color(0xFFD6E2FF),
               valueColor: AlwaysStoppedAnimation<Color>(color),
               minHeight: 8,
             ),
@@ -237,8 +252,8 @@ class _ProgressItem extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             '${(progress * 100).toInt()}% complete',
-            style: const TextStyle(
-              color: Colors.white60,
+            style: TextStyle(
+              color: onSurface.withValues(alpha: 0.65),
               fontSize: 14,
             ),
           ),

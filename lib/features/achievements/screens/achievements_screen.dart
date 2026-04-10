@@ -10,16 +10,28 @@ class AchievementsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+    final onSurface = Theme.of(context).colorScheme.onSurface;
     final achievementsAsync = ref.watch(achievementsProvider);
     final allAchievements = Achievement.getAllAchievements();
 
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [Color(0xFF0A0E27), Color(0xFF1A1F3A), Color(0xFF0D1B3A)],
+            colors: isDarkTheme
+                ? const [
+                    Color(0xFF0A0E27),
+                    Color(0xFF1A1F3A),
+                    Color(0xFF0D1B3A),
+                  ]
+                : const [
+                    Color(0xFFF8FAFF),
+                    Color(0xFFEEF3FF),
+                    Color(0xFFE6EEFF),
+                  ],
           ),
         ),
         child: SafeArea(
@@ -41,20 +53,22 @@ class AchievementsScreen extends ConsumerWidget {
                         final isUnlocked = unlockedIds.contains(achievement.id);
 
                         return _AchievementCard(
-                          achievement: achievement,
-                          isUnlocked: isUnlocked,
-                        ).animate(delay: (index * 50).ms).fadeIn().slideX(begin: -0.2);
+                              achievement: achievement,
+                              isUnlocked: isUnlocked,
+                            )
+                            .animate(delay: (index * 50).ms)
+                            .fadeIn()
+                            .slideX(begin: -0.2);
                       },
                     );
                   },
-                  loading: () => const Center(
-                    child: CircularProgressIndicator(),
-                  ),
+                  loading: () =>
+                      const Center(child: CircularProgressIndicator()),
                   error: (e, _) => Center(
                     child: Builder(
                       builder: (context) => Text(
                         '${AppLocalizations.of(context)?.get('error_prefix') ?? 'Error: '}$e',
-                        style: const TextStyle(color: Colors.white),
+                        style: TextStyle(color: onSurface),
                       ),
                     ),
                   ),
@@ -76,9 +90,10 @@ class AchievementsScreen extends ConsumerWidget {
           const SizedBox(width: 12),
           Builder(
             builder: (context) => Text(
-              AppLocalizations.of(context)?.get('achievements') ?? 'Achievements',
-              style: const TextStyle(
-                color: Colors.white,
+              AppLocalizations.of(context)?.get('achievements') ??
+                  'Achievements',
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onSurface,
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
               ),
@@ -94,13 +109,12 @@ class _AchievementCard extends StatelessWidget {
   final Achievement achievement;
   final bool isUnlocked;
 
-  const _AchievementCard({
-    required this.achievement,
-    required this.isUnlocked,
-  });
+  const _AchievementCard({required this.achievement, required this.isUnlocked});
 
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+    final onSurface = Theme.of(context).colorScheme.onSurface;
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(16),
@@ -148,7 +162,9 @@ class _AchievementCard extends StatelessWidget {
                 Text(
                   achievement.title,
                   style: TextStyle(
-                    color: isUnlocked ? Colors.white : Colors.grey,
+                    color: isUnlocked
+                        ? (isDarkTheme ? Colors.white : onSurface)
+                        : Colors.grey,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
@@ -157,7 +173,11 @@ class _AchievementCard extends StatelessWidget {
                 Text(
                   achievement.description,
                   style: TextStyle(
-                    color: isUnlocked ? Colors.white70 : Colors.grey,
+                    color: isUnlocked
+                        ? (isDarkTheme
+                              ? Colors.white70
+                              : onSurface.withValues(alpha: 0.7))
+                        : Colors.grey,
                     fontSize: 14,
                   ),
                 ),
@@ -174,11 +194,7 @@ class _AchievementCard extends StatelessWidget {
             ),
           ),
           if (isUnlocked)
-            Icon(
-              Icons.check_circle,
-              color: achievement.color,
-              size: 24,
-            ),
+            Icon(Icons.check_circle, color: achievement.color, size: 24),
         ],
       ),
     );

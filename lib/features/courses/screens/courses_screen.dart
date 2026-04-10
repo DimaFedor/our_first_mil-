@@ -15,6 +15,8 @@ class CoursesScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+    final onSurface = Theme.of(context).colorScheme.onSurface;
     final currentUser = ref.watch(currentUserProvider);
     final progressAsync = ref.watch(allUserProgressProvider);
     final coursesAsync = ref.watch(localizedCoursesProvider);
@@ -22,11 +24,21 @@ class CoursesScreen extends ConsumerWidget {
 
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [Color(0xFF0A0E27), Color(0xFF1A1F3A), Color(0xFF0D1B3A)],
+            colors: isDarkTheme
+                ? const [
+                    Color(0xFF0A0E27),
+                    Color(0xFF1A1F3A),
+                    Color(0xFF0D1B3A),
+                  ]
+                : const [
+                    Color(0xFFF8FAFF),
+                    Color(0xFFEEF3FF),
+                    Color(0xFFE6EEFF),
+                  ],
           ),
         ),
         child: SafeArea(
@@ -45,7 +57,7 @@ class CoursesScreen extends ConsumerWidget {
                           style: Theme.of(context).textTheme.headlineLarge
                               ?.copyWith(
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                                color: onSurface,
                               ),
                         )
                         .animate()
@@ -93,9 +105,9 @@ class CoursesScreen extends ConsumerWidget {
                 Text(
                   AppLocalizations.of(context)?.get('choose_learning_path') ??
                       'Choose your learning path',
-                  style: Theme.of(
-                    context,
-                  ).textTheme.bodyLarge?.copyWith(color: Colors.white60),
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    color: onSurface.withValues(alpha: 0.65),
+                  ),
                 ).animate(delay: 200.ms).fadeIn(),
                 const SizedBox(height: 32),
 
@@ -107,7 +119,9 @@ class CoursesScreen extends ConsumerWidget {
                     error: (error, _) => Center(
                       child: Text(
                         '${AppLocalizations.of(context)?.get('error') ?? 'Error'}: $error',
-                        style: const TextStyle(color: Colors.white70),
+                        style: TextStyle(
+                          color: onSurface.withValues(alpha: 0.75),
+                        ),
                         textAlign: TextAlign.center,
                       ),
                     ),

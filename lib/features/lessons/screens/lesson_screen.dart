@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/l10n/app_localizations.dart';
 import '../../../core/services/logger_service.dart';
 import '../../../core/services/lesson_localization_service.dart';
+import '../../achievements/models/achievement_model.dart';
 import '../models/lesson_model.dart';
 import '../../courses/models/course_model.dart';
 import '../../progress/providers/progress_provider.dart';
@@ -44,6 +45,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
 
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     final localizedLessonsAsync = ref.watch(
       localizedCourseLessonsProvider(widget.course.id),
     );
@@ -56,11 +58,21 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
 
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [Color(0xFF0A0E27), Color(0xFF1A1F3A), Color(0xFF0D1B3A)],
+            colors: isDarkTheme
+                ? const [
+                    Color(0xFF0A0E27),
+                    Color(0xFF1A1F3A),
+                    Color(0xFF0D1B3A),
+                  ]
+                : const [
+                    Color(0xFFF8FAFF),
+                    Color(0xFFEEF3FF),
+                    Color(0xFFE6EEFF),
+                  ],
           ),
         ),
         child: SafeArea(
@@ -91,6 +103,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
   }
 
   Widget _buildHeader(Lesson lesson) {
+    final onSurface = Theme.of(context).colorScheme.onSurface;
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -98,7 +111,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
           Row(
             children: [
               IconButton(
-                icon: const Icon(Icons.arrow_back, color: Colors.white),
+                icon: Icon(Icons.arrow_back, color: onSurface),
                 onPressed: () => context.pop(),
               ),
               const SizedBox(width: 8),
@@ -108,16 +121,16 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
                   children: [
                     Text(
                       lesson.title,
-                      style: const TextStyle(
-                        color: Colors.white,
+                      style: TextStyle(
+                        color: onSurface,
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
                       lesson.description,
-                      style: const TextStyle(
-                        color: Colors.white60,
+                      style: TextStyle(
+                        color: onSurface.withValues(alpha: 0.65),
                         fontSize: 14,
                       ),
                       maxLines: 1,
@@ -157,10 +170,14 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
   }
 
   Widget _buildTabBar() {
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+    final onSurface = Theme.of(context).colorScheme.onSurface;
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 24),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.05),
+        color: isDarkTheme
+            ? Colors.white.withValues(alpha: 0.05)
+            : Colors.white.withValues(alpha: 0.8),
         borderRadius: BorderRadius.circular(12),
       ),
       child: TabBar(
@@ -174,8 +191,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
           ),
           borderRadius: BorderRadius.circular(12),
         ),
-        labelColor: Colors.white,
-        unselectedLabelColor: Colors.white60,
+        labelColor: isDarkTheme ? Colors.white : const Color(0xFF0B1220),
+        unselectedLabelColor: onSurface.withValues(alpha: 0.6),
         tabs: [
           Tab(text: AppLocalizations.of(context)?.get('theory') ?? 'Theory'),
           Tab(text: AppLocalizations.of(context)?.get('quiz') ?? 'Quiz'),
@@ -191,7 +208,11 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
         child: Text(
           AppLocalizations.of(context)?.get('no_theory') ??
               'No theory available',
-          style: const TextStyle(color: Colors.white60),
+          style: TextStyle(
+            color: Theme.of(
+              context,
+            ).colorScheme.onSurface.withValues(alpha: 0.65),
+          ),
         ),
       );
     }
@@ -257,7 +278,11 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
       return Center(
         child: Text(
           AppLocalizations.of(context)?.get('no_quiz') ?? 'No quiz available',
-          style: const TextStyle(color: Colors.white60),
+          style: TextStyle(
+            color: Theme.of(
+              context,
+            ).colorScheme.onSurface.withValues(alpha: 0.65),
+          ),
         ),
       );
     }
@@ -280,7 +305,12 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
             Text(
               AppLocalizations.of(context)?.get('no_coding_challenge') ??
                   'No coding challenge',
-              style: const TextStyle(color: Colors.white60, fontSize: 16),
+              style: TextStyle(
+                color: Theme.of(
+                  context,
+                ).colorScheme.onSurface.withValues(alpha: 0.65),
+                fontSize: 16,
+              ),
             ),
             const SizedBox(height: 24),
             _buildContinueButton(
@@ -302,7 +332,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
           );
 
           // Mark lesson as complete
-          await ref
+          final unlockedAchievements = await ref
               .read(progressActionsProvider)
               .completeLesson(
                 courseId: widget.course.id,
@@ -313,7 +343,10 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
           AppLogger.success('Lesson completed: +${lesson.xpReward} XP');
 
           if (mounted) {
-            _showCompletionDialog(lesson.xpReward);
+            if (unlockedAchievements.isNotEmpty) {
+              _showAchievementNotifications(unlockedAchievements);
+            }
+            _showCompletionDialog(lesson.xpReward, unlockedAchievements);
           }
         } catch (e, stackTrace) {
           AppLogger.error('Error completing lesson', e, stackTrace);
@@ -375,12 +408,15 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
     );
   }
 
-  void _showCompletionDialog(int xpReward) {
+  void _showCompletionDialog(
+    int xpReward, [
+    List<Achievement> unlockedAchievements = const [],
+  ]) {
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (dialogContext) => AlertDialog(
-        backgroundColor: const Color(0xFF1A1F3A),
+        backgroundColor: Theme.of(dialogContext).colorScheme.surface,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         content: Column(
           mainAxisSize: MainAxisSize.min,
@@ -402,8 +438,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
             Text(
               AppLocalizations.of(context)?.get('lesson_completed') ??
                   'Lesson Complete!',
-              style: const TextStyle(
-                color: Colors.white,
+              style: TextStyle(
+                color: Theme.of(dialogContext).colorScheme.onSurface,
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
@@ -417,6 +453,43 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
                 fontWeight: FontWeight.bold,
               ),
             ),
+            if (unlockedAchievements.isNotEmpty) ...[
+              const SizedBox(height: 20),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: Colors.amber.withValues(alpha: 0.12),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(
+                    color: Colors.amber.withValues(alpha: 0.45),
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      '🏆 Achievement unlocked',
+                      style: TextStyle(
+                        color: Colors.amber,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    const SizedBox(height: 6),
+                    ...unlockedAchievements.map(
+                      (achievement) => Text(
+                        '${achievement.title} (+${achievement.xpReward} XP)',
+                        style: TextStyle(
+                          color: Theme.of(dialogContext).colorScheme.onSurface,
+                          fontSize: 13,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
             const SizedBox(height: 24),
             SizedBox(
               width: double.infinity,
@@ -440,6 +513,21 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
         ),
       ),
     );
+  }
+
+  void _showAchievementNotifications(List<Achievement> achievements) {
+    final messenger = ScaffoldMessenger.of(context);
+    for (final achievement in achievements) {
+      messenger.showSnackBar(
+        SnackBar(
+          content: Text(
+            '🏆 ${achievement.title} unlocked (+${achievement.xpReward} XP)',
+          ),
+          backgroundColor: const Color(0xFF7C3AED),
+          duration: const Duration(seconds: 2),
+        ),
+      );
+    }
   }
 }
 
@@ -470,6 +558,7 @@ class _TheorySlideWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final onSurface = Theme.of(context).colorScheme.onSurface;
     return SingleChildScrollView(
       padding: const EdgeInsets.all(24),
       child: Column(
@@ -477,8 +566,8 @@ class _TheorySlideWidget extends StatelessWidget {
         children: [
           Text(
             slide.title,
-            style: const TextStyle(
-              color: Colors.white,
+            style: TextStyle(
+              color: onSurface,
               fontSize: 28,
               fontWeight: FontWeight.bold,
             ),
@@ -488,11 +577,7 @@ class _TheorySlideWidget extends StatelessWidget {
 
           Text(
             slide.content,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-              height: 1.6,
-            ),
+            style: TextStyle(color: onSurface, fontSize: 16, height: 1.6),
           ).animate(delay: 200.ms).fadeIn().slideY(begin: 0.2, end: 0),
 
           if (slide.codeSnippet != null) ...[
@@ -534,6 +619,9 @@ class _QuizWidgetState extends State<_QuizWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+    final onSurface = Theme.of(context).colorScheme.onSurface;
+
     // Show completion screen if quiz is completed
     if (_quizCompleted) {
       return _buildQuizCompletionScreen();
@@ -561,8 +649,8 @@ class _QuizWidgetState extends State<_QuizWidget> {
           // Question
           Text(
             question.question,
-            style: const TextStyle(
-              color: Colors.white,
+            style: TextStyle(
+              color: onSurface,
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
@@ -601,14 +689,24 @@ class _QuizWidgetState extends State<_QuizWidget> {
                                               ? Colors.red.withValues(
                                                   alpha: 0.2,
                                                 )
-                                              : Colors.white.withValues(
-                                                  alpha: 0.05,
-                                                )))
+                                              : (isDarkTheme
+                                                    ? Colors.white.withValues(
+                                                        alpha: 0.05,
+                                                      )
+                                                    : Colors.white.withValues(
+                                                        alpha: 0.92,
+                                                      ))))
                                   : (isSelected
                                         ? widget.courseColor.withValues(
                                             alpha: 0.2,
                                           )
-                                        : Colors.white.withValues(alpha: 0.05)),
+                                        : (isDarkTheme
+                                              ? Colors.white.withValues(
+                                                  alpha: 0.05,
+                                                )
+                                              : Colors.white.withValues(
+                                                  alpha: 0.92,
+                                                ))),
                               borderRadius: BorderRadius.circular(12),
                               border: Border.all(
                                 color: showColors
@@ -616,10 +714,16 @@ class _QuizWidgetState extends State<_QuizWidget> {
                                           ? Colors.green
                                           : (isSelected
                                                 ? Colors.red
-                                                : Colors.transparent))
+                                                : (isDarkTheme
+                                                      ? Colors.transparent
+                                                      : const Color(
+                                                          0xFFD6E2FF,
+                                                        ))))
                                     : (isSelected
                                           ? widget.courseColor
-                                          : Colors.transparent),
+                                          : (isDarkTheme
+                                                ? Colors.transparent
+                                                : const Color(0xFFD6E2FF))),
                                 width: 2,
                               ),
                             ),
@@ -634,17 +738,28 @@ class _QuizWidgetState extends State<_QuizWidget> {
                                               ? Colors.green
                                               : (isSelected
                                                     ? Colors.red
-                                                    : Colors.white12))
+                                                    : (isDarkTheme
+                                                          ? Colors.white12
+                                                          : onSurface
+                                                                .withValues(
+                                                                  alpha: 0.08,
+                                                                ))))
                                         : (isSelected
                                               ? widget.courseColor
-                                              : Colors.white12),
+                                              : (isDarkTheme
+                                                    ? Colors.white12
+                                                    : onSurface.withValues(
+                                                        alpha: 0.08,
+                                                      ))),
                                     shape: BoxShape.circle,
                                   ),
                                   child: Center(
                                     child: Text(
                                       String.fromCharCode(65 + index),
-                                      style: const TextStyle(
-                                        color: Colors.white,
+                                      style: TextStyle(
+                                        color: isSelected || showColors
+                                            ? Colors.white
+                                            : onSurface,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -654,8 +769,8 @@ class _QuizWidgetState extends State<_QuizWidget> {
                                 Expanded(
                                   child: Text(
                                     question.options[index],
-                                    style: const TextStyle(
-                                      color: Colors.white,
+                                    style: TextStyle(
+                                      color: onSurface,
                                       fontSize: 16,
                                     ),
                                   ),
@@ -696,6 +811,7 @@ class _QuizWidgetState extends State<_QuizWidget> {
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: widget.courseColor,
+                  foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -729,6 +845,7 @@ class _QuizWidgetState extends State<_QuizWidget> {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: widget.courseColor,
+                      foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -753,6 +870,7 @@ class _QuizWidgetState extends State<_QuizWidget> {
   }
 
   Widget _buildQuizCompletionScreen() {
+    final onSurface = Theme.of(context).colorScheme.onSurface;
     final totalQuestions = widget.quiz.questions.length;
     final percentage = (_correctAnswers / totalQuestions * 100).round();
     final isPassed = percentage >= 60;
@@ -789,8 +907,8 @@ class _QuizWidgetState extends State<_QuizWidget> {
                         'Quiz Completed! 🎉')
                   : (AppLocalizations.of(context)?.get('keep_practicing') ??
                         'Keep Practicing!'),
-              style: const TextStyle(
-                color: Colors.white,
+              style: TextStyle(
+                color: onSurface,
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
               ),
@@ -818,6 +936,7 @@ class _QuizWidgetState extends State<_QuizWidget> {
                 onPressed: widget.onComplete,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: widget.courseColor,
+                  foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -898,6 +1017,8 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
   @override
   Widget build(BuildContext context) {
     final isSQLChallenge = widget.challenge.language.toLowerCase() == 'sql';
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+    final onSurface = Theme.of(context).colorScheme.onSurface;
 
     return SingleChildScrollView(
       padding: const EdgeInsets.all(24),
@@ -906,8 +1027,8 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
         children: [
           Text(
             widget.challenge.title,
-            style: const TextStyle(
-              color: Colors.white,
+            style: TextStyle(
+              color: onSurface,
               fontSize: 24,
               fontWeight: FontWeight.bold,
             ),
@@ -915,8 +1036,8 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
           const SizedBox(height: 12),
           Text(
             widget.challenge.description,
-            style: const TextStyle(
-              color: Colors.white70,
+            style: TextStyle(
+              color: onSurface.withValues(alpha: 0.75),
               fontSize: 16,
               height: 1.5,
             ),
@@ -927,7 +1048,9 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
               width: double.infinity,
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: const Color(0xFF0D1117),
+                color: isDarkTheme
+                    ? const Color(0xFF0D1117)
+                    : const Color(0xFFFFFFFF),
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
                   color: widget.courseColor.withValues(alpha: 0.3),
@@ -948,7 +1071,9 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
                   SelectableText(
                     _sqlTablesPreview(),
                     style: TextStyle(
-                      color: Colors.grey.shade300,
+                      color: isDarkTheme
+                          ? Colors.grey.shade300
+                          : Colors.grey.shade800,
                       fontFamily: 'monospace',
                       fontSize: 12,
                       height: 1.45,
@@ -999,7 +1124,7 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
               ),
               child: Text(
                 widget.challenge.hint!,
-                style: const TextStyle(color: Colors.white70),
+                style: TextStyle(color: onSurface.withValues(alpha: 0.75)),
               ),
             ),
 
@@ -1129,13 +1254,18 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
                 onPressed: widget.onComplete,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: widget.courseColor,
+                  foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
                 child: const Text(
                   'Complete Lesson',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ).animate(delay: 200.ms).fadeIn().slideY(begin: 0.2, end: 0),

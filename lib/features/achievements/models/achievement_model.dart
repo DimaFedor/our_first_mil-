@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-enum AchievementType {
-  lessonComplete,
-  courseComplete,
-  streak,
-  xp,
-  special,
-}
+enum AchievementType { lessonComplete, courseComplete, streak, xp, special }
 
 class Achievement {
   final String id;
@@ -119,15 +114,29 @@ class UserAchievement {
   final String achievementId;
   final DateTime unlockedAt;
 
-  UserAchievement({
-    required this.achievementId,
-    required this.unlockedAt,
-  });
+  UserAchievement({required this.achievementId, required this.unlockedAt});
 
-  factory UserAchievement.fromJson(Map<String, dynamic> json) {
+  factory UserAchievement.fromJson(
+    Map<String, dynamic> json, {
+    String? fallbackAchievementId,
+  }) {
+    final rawUnlockedAt = json['unlockedAt'];
+    DateTime parsedUnlockedAt;
+
+    if (rawUnlockedAt is Timestamp) {
+      parsedUnlockedAt = rawUnlockedAt.toDate();
+    } else if (rawUnlockedAt is String) {
+      parsedUnlockedAt = DateTime.tryParse(rawUnlockedAt) ?? DateTime.now();
+    } else if (rawUnlockedAt is int) {
+      parsedUnlockedAt = DateTime.fromMillisecondsSinceEpoch(rawUnlockedAt);
+    } else {
+      parsedUnlockedAt = DateTime.now();
+    }
+
     return UserAchievement(
-      achievementId: json['achievementId'],
-      unlockedAt: DateTime.parse(json['unlockedAt']),
+      achievementId:
+          (json['achievementId'] as String?) ?? fallbackAchievementId ?? '',
+      unlockedAt: parsedUnlockedAt,
     );
   }
 

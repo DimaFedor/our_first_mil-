@@ -12,21 +12,28 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     final userId = ref.watch(currentUserUidProvider);
     final progressAsync = ref.watch(allUserProgressProvider);
     final userDataAsync = ref.watch(userDataProvider(userId ?? ''));
     final levelInfoAsync = ref.watch(levelInfoProvider);
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [
-              Color(0xFF0A0E27), // Dark navy
-              Color(0xFF1A1F3A), // Lighter navy
-              Color(0xFF0D1B3A), // Blue tint
-            ],
+            colors: isDarkTheme
+                ? const [
+                    Color(0xFF0A0E27), // Dark navy
+                    Color(0xFF1A1F3A), // Lighter navy
+                    Color(0xFF0D1B3A), // Blue tint
+                  ]
+                : const [
+                    Color(0xFFF8FAFF),
+                    Color(0xFFEEF3FF),
+                    Color(0xFFE6EEFF),
+                  ],
           ),
         ),
         child: SafeArea(
@@ -38,23 +45,25 @@ class HomeScreen extends ConsumerWidget {
                 // Header with profile button
                 _buildHeader(context, ref),
                 const SizedBox(height: 24),
-                
+
                 // Welcome message with user stats
                 _buildWelcomeSection(context, userDataAsync, levelInfoAsync),
                 const SizedBox(height: 24),
-                
+
                 // Progress overview
                 progressAsync.when(
-                  data: (courseProgress) => _buildProgressOverview(context, ref, courseProgress),
-                  loading: () => const Center(child: CircularProgressIndicator()),
+                  data: (courseProgress) =>
+                      _buildProgressOverview(context, ref, courseProgress),
+                  loading: () =>
+                      const Center(child: CircularProgressIndicator()),
                   error: (_, __) => const SizedBox(),
                 ),
-                
+
                 const SizedBox(height: 24),
-                
+
                 // CTA Button
                 _buildCTAButton(context, ref),
-                
+
                 const SizedBox(height: 16),
               ],
             ),
@@ -65,6 +74,8 @@ class HomeScreen extends ConsumerWidget {
   }
 
   Widget _buildHeader(BuildContext context, WidgetRef ref) {
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+    final onSurface = Theme.of(context).colorScheme.onSurface;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -89,7 +100,7 @@ class HomeScreen extends ConsumerWidget {
                 AppLocalizations.of(context)?.get('app_name') ?? 'CodeLearn',
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: onSurface,
                 ),
               ),
             ).animate().fadeIn(duration: 600.ms).slideX(begin: -0.2),
@@ -104,16 +115,22 @@ class HomeScreen extends ConsumerWidget {
           child: Container(
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.1),
+              color: isDarkTheme
+                  ? Colors.white.withValues(alpha: 0.1)
+                  : Colors.white.withValues(alpha: 0.9),
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
-                color: Colors.white.withOpacity(0.2),
+                color: isDarkTheme
+                    ? Colors.white.withValues(alpha: 0.2)
+                    : const Color(0xFFD6E2FF),
                 width: 1,
               ),
             ),
-            child: const Icon(
-              Icons.person_outline, 
-              color: Colors.white70,
+            child: Icon(
+              Icons.person_outline,
+              color: isDarkTheme
+                  ? Colors.white70
+                  : onSurface.withValues(alpha: 0.7),
               size: 24,
             ),
           ),
@@ -122,99 +139,119 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildWelcomeSection(BuildContext context, AsyncValue userData, AsyncValue levelInfo) {
+  Widget _buildWelcomeSection(
+    BuildContext context,
+    AsyncValue userData,
+    AsyncValue levelInfo,
+  ) {
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+    final onSurface = Theme.of(context).colorScheme.onSurface;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        userData.when(
-          data: (data) => Text(
-            'Welcome back! 👋',
-            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-          ),
-          loading: () => const SizedBox(),
-          error: (_, __) => const SizedBox(),
-        ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
-        
+        userData
+            .when(
+              data: (data) => Text(
+                'Welcome back! 👋',
+                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: onSurface,
+                ),
+              ),
+              loading: () => const SizedBox(),
+              error: (_, __) => const SizedBox(),
+            )
+            .animate()
+            .fadeIn(duration: 600.ms)
+            .slideY(begin: 0.3, end: 0),
+
         const SizedBox(height: 16),
-        
+
         // Level and XP info
         levelInfo.when(
-          data: (info) => Container(
-            padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-                  const Color(0xFF0066FF).withOpacity(0.2),
-                  const Color(0xFF8B5CF6).withOpacity(0.2),
-                ],
-              ),
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(
-                color: Colors.white.withOpacity(0.1),
-                width: 1,
-              ),
-            ),
-            child: Row(
-              children: [
-                // Level badge
-                Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                      colors: [Color(0xFF0066FF), Color(0xFF8B5CF6)],
-                    ),
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Text(
-                    info.badge,
-                    style: const TextStyle(fontSize: 32),
-                  ),
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Level ${info.level}',
-                        style: const TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      Text(
-                        info.title,
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.white.withOpacity(0.7),
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Row(
-                        children: [
-                          Icon(Icons.star, color: Colors.amber.shade400, size: 16),
-                          const SizedBox(width: 4),
-                          Text(
-                            '${info.currentXP} / ${info.xpForNextLevel} XP',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.white.withOpacity(0.6),
-                            ),
-                          ),
+          data: (info) =>
+              Container(
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          const Color(0xFF0066FF).withOpacity(0.2),
+                          const Color(0xFF8B5CF6).withOpacity(0.2),
                         ],
                       ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ).animate(delay: 200.ms).fadeIn(duration: 600.ms).slideY(begin: 0.2, end: 0),
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(
+                        color: isDarkTheme
+                            ? Colors.white.withValues(alpha: 0.1)
+                            : const Color(0xFFD6E2FF),
+                        width: 1,
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        // Level badge
+                        Container(
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                              colors: [Color(0xFF0066FF), Color(0xFF8B5CF6)],
+                            ),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: Text(
+                            info.badge,
+                            style: const TextStyle(fontSize: 32),
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Level ${info.level}',
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                  color: onSurface,
+                                ),
+                              ),
+                              Text(
+                                info.title,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: onSurface.withValues(alpha: 0.7),
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.star,
+                                    color: Colors.amber.shade400,
+                                    size: 16,
+                                  ),
+                                  const SizedBox(width: 4),
+                                  Text(
+                                    '${info.currentXP} / ${info.xpForNextLevel} XP',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: onSurface.withValues(alpha: 0.65),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                  .animate(delay: 200.ms)
+                  .fadeIn(duration: 600.ms)
+                  .slideY(begin: 0.2, end: 0),
           loading: () => const SizedBox(height: 100),
           error: (_, __) => const SizedBox(),
         ),
@@ -222,17 +259,21 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildProgressOverview(BuildContext context, WidgetRef ref, List<dynamic> courseProgress) {
+  Widget _buildProgressOverview(
+    BuildContext context,
+    WidgetRef ref,
+    List<dynamic> courseProgress,
+  ) {
+    final onSurface = Theme.of(context).colorScheme.onSurface;
     CourseProgress? findProgress(String courseId) {
       try {
-        return courseProgress.firstWhere(
-          (cp) => cp.courseId == courseId,
-        ) as CourseProgress?;
+        return courseProgress.firstWhere((cp) => cp.courseId == courseId)
+            as CourseProgress?;
       } catch (_) {
         return null;
       }
     }
-    
+
     final pythonProgress = findProgress('python-basics');
     final jsProgress = findProgress('javascript-basics');
     final htmlCssProgress = findProgress('html-css-basics');
@@ -271,7 +312,7 @@ class HomeScreen extends ConsumerWidget {
           AppLocalizations.of(context)?.get('your_courses') ?? 'Your Courses',
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
             fontWeight: FontWeight.bold,
-            color: Colors.white,
+            color: onSurface,
           ),
         ).animate(delay: 400.ms).fadeIn().slideX(begin: -0.1, end: 0),
         const SizedBox(height: 16),
@@ -305,86 +346,84 @@ class HomeScreen extends ConsumerWidget {
     String courseId,
     int index,
   ) {
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+    final onSurface = Theme.of(context).colorScheme.onSurface;
     final progress = total > 0 ? completed / total : 0.0;
-    
+
     return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            color.withOpacity(0.15),
-            color.withOpacity(0.05),
-          ],
-        ),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: color.withOpacity(0.3),
-          width: 1.5,
-        ),
-      ),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(16),
-        onTap: () {
-          // Navigate to courses tab
-          ref.read(currentTabProvider.notifier).state = 1;
-        },
-        child: Row(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: color.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Text(icon, style: const TextStyle(fontSize: 28)),
+          margin: const EdgeInsets.only(bottom: 12),
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [color.withOpacity(0.15), color.withOpacity(0.05)],
             ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    name,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: color.withOpacity(0.3), width: 1.5),
+          ),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(16),
+            onTap: () {
+              // Navigate to courses tab
+              ref.read(currentTabProvider.notifier).state = 1;
+            },
+            child: Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: color.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(12),
                   ),
-                  const SizedBox(height: 4),
-                  Text(
-                    '$completed/$total ${AppLocalizations.of(context)?.get('lessons_completed_suffix') ?? 'lessons completed'}',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.white.withOpacity(0.6),
-                    ),
+                  child: Text(icon, style: const TextStyle(fontSize: 28)),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        name,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: onSurface,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        '$completed/$total ${AppLocalizations.of(context)?.get('lessons_completed_suffix') ?? 'lessons completed'}',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: onSurface.withValues(alpha: 0.65),
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: LinearProgressIndicator(
+                          value: progress,
+                          minHeight: 6,
+                          backgroundColor: isDarkTheme
+                              ? Colors.white.withValues(alpha: 0.1)
+                              : const Color(0xFFD6E2FF),
+                          valueColor: AlwaysStoppedAnimation<Color>(color),
+                        ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 8),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: LinearProgressIndicator(
-                      value: progress,
-                      minHeight: 6,
-                      backgroundColor: Colors.white.withOpacity(0.1),
-                      valueColor: AlwaysStoppedAnimation<Color>(color),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+                const SizedBox(width: 12),
+                Icon(
+                  Icons.arrow_forward_ios,
+                  color: onSurface.withValues(alpha: 0.5),
+                  size: 16,
+                ),
+              ],
             ),
-            const SizedBox(width: 12),
-            Icon(
-              Icons.arrow_forward_ios,
-              color: Colors.white.withOpacity(0.5),
-              size: 16,
-            ),
-          ],
-        ),
-      ),
-    )
+          ),
+        )
         .animate(delay: Duration(milliseconds: 500 + (index * 100)))
         .fadeIn(duration: 600.ms)
         .slideX(begin: 0.2, end: 0);
@@ -392,42 +431,43 @@ class HomeScreen extends ConsumerWidget {
 
   Widget _buildCTAButton(BuildContext context, WidgetRef ref) {
     return Container(
-      width: double.infinity,
-      height: 56,
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [Color(0xFF0066FF), Color(0xFF8B5CF6)],
-        ),
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: const Color(0xFF0066FF).withOpacity(0.3),
-            blurRadius: 20,
-            offset: const Offset(0, 10),
+          width: double.infinity,
+          height: 56,
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              colors: [Color(0xFF0066FF), Color(0xFF8B5CF6)],
+            ),
+            borderRadius: BorderRadius.circular(16),
+            boxShadow: [
+              BoxShadow(
+                color: const Color(0xFF0066FF).withOpacity(0.3),
+                blurRadius: 20,
+                offset: const Offset(0, 10),
+              ),
+            ],
           ),
-        ],
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          borderRadius: BorderRadius.circular(16),
-          onTap: () {
-            // Switch to Courses tab (index 1)
-            ref.read(currentTabProvider.notifier).state = 1;
-          },
-          child: Center(
-            child: Text(
-              AppLocalizations.of(context)?.get('browse_all_courses') ?? 'Browse All Courses',
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
+          child: Material(
+            color: Colors.transparent,
+            child: InkWell(
+              borderRadius: BorderRadius.circular(16),
+              onTap: () {
+                // Switch to Courses tab (index 1)
+                ref.read(currentTabProvider.notifier).state = 1;
+              },
+              child: Center(
+                child: Text(
+                  AppLocalizations.of(context)?.get('browse_all_courses') ??
+                      'Browse All Courses',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ),
           ),
-        ),
-      ),
-    )
+        )
         .animate(delay: 800.ms)
         .fadeIn(duration: 600.ms)
         .slideY(begin: 0.3)

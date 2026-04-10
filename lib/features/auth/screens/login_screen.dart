@@ -36,10 +36,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     });
 
     try {
-      await ref.read(authActionsProvider).signIn(
-            _emailController.text.trim(),
-            _passwordController.text,
-          );
+      await ref
+          .read(authActionsProvider)
+          .signIn(_emailController.text.trim(), _passwordController.text);
       if (mounted) {
         context.go('/');
       }
@@ -72,17 +71,36 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+    final onSurface = Theme.of(context).colorScheme.onSurface;
+    final fieldTextColor = isDarkTheme ? Colors.white : onSurface;
+    final fieldHintColor = isDarkTheme
+        ? Colors.white.withValues(alpha: 0.7)
+        : onSurface.withValues(alpha: 0.7);
+    final fieldFillColor = isDarkTheme
+        ? Colors.white.withValues(alpha: 0.05)
+        : Colors.white.withValues(alpha: 0.9);
+    final fieldBorderColor = isDarkTheme
+        ? Colors.white.withValues(alpha: 0.1)
+        : const Color(0xFFD6E2FF);
+
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [
-              Color(0xFF0A0E27),
-              Color(0xFF1A1F3A),
-              Color(0xFF0D1B3A),
-            ],
+            colors: isDarkTheme
+                ? const [
+                    Color(0xFF0A0E27),
+                    Color(0xFF1A1F3A),
+                    Color(0xFF0D1B3A),
+                  ]
+                : const [
+                    Color(0xFFF8FAFF),
+                    Color(0xFFEEF3FF),
+                    Color(0xFFE6EEFF),
+                  ],
           ),
         ),
         child: SafeArea(
@@ -97,49 +115,62 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
                   // Logo
                   Center(
-                    child: Container(
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        gradient: const LinearGradient(
-                          colors: [Color(0xFF0066FF), Color(0xFF8B5CF6)],
+                    child:
+                        Container(
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                              colors: [Color(0xFF0066FF), Color(0xFF8B5CF6)],
+                            ),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: const Icon(
+                            Icons.code,
+                            color: Colors.white,
+                            size: 48,
+                          ),
+                        ).animate().scale(
+                          duration: 600.ms,
+                          curve: Curves.elasticOut,
                         ),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: const Icon(Icons.code, color: Colors.white, size: 48),
-                    )
-                        .animate()
-                        .scale(duration: 600.ms, curve: Curves.elasticOut),
                   ),
 
                   const SizedBox(height: 24),
 
                   // Title
                   Center(
-                    child: ShaderMask(
-                      shaderCallback: (bounds) => const LinearGradient(
-                        colors: [Color(0xFF0066FF), Color(0xFF8B5CF6)],
-                      ).createShader(bounds),
-                      child: Text(
-                        AppLocalizations.of(context)?.get('welcome_back') ?? 'Welcome Back!',
-                        style: const TextStyle(
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                    )
-                        .animate(delay: 200.ms)
-                        .fadeIn()
-                        .slideY(begin: 0.3, end: 0),
+                    child:
+                        ShaderMask(
+                              shaderCallback: (bounds) => const LinearGradient(
+                                colors: [Color(0xFF0066FF), Color(0xFF8B5CF6)],
+                              ).createShader(bounds),
+                              child: Text(
+                                AppLocalizations.of(
+                                      context,
+                                    )?.get('welcome_back') ??
+                                    'Welcome Back!',
+                                style: const TextStyle(
+                                  fontSize: 32,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            )
+                            .animate(delay: 200.ms)
+                            .fadeIn()
+                            .slideY(begin: 0.3, end: 0),
                   ),
 
                   const SizedBox(height: 8),
 
                   Center(
                     child: Text(
-                      AppLocalizations.of(context)?.get('sign_in_to_continue') ?? 'Sign in to continue learning',
+                      AppLocalizations.of(
+                            context,
+                          )?.get('sign_in_to_continue') ??
+                          'Sign in to continue learning',
                       style: TextStyle(
-                        color: Colors.white.withOpacity(0.7),
+                        color: onSurface.withValues(alpha: 0.7),
                         fontSize: 16,
                       ),
                     ).animate(delay: 300.ms).fadeIn(),
@@ -175,22 +206,24 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   TextFormField(
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
-                    style: const TextStyle(color: Colors.white),
+                    style: TextStyle(color: fieldTextColor),
                     decoration: InputDecoration(
-                      labelText: AppLocalizations.of(context)?.get('email') ?? 'Email',
-                      labelStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
-                      prefixIcon: Icon(Icons.email_outlined,
-                          color: Colors.white.withOpacity(0.7)),
+                      labelText:
+                          AppLocalizations.of(context)?.get('email') ?? 'Email',
+                      labelStyle: TextStyle(color: fieldHintColor),
+                      prefixIcon: Icon(
+                        Icons.email_outlined,
+                        color: fieldHintColor,
+                      ),
                       filled: true,
-                      fillColor: Colors.white.withOpacity(0.05),
+                      fillColor: fieldFillColor,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
                         borderSide: BorderSide.none,
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
-                        borderSide:
-                            BorderSide(color: Colors.white.withOpacity(0.1)),
+                        borderSide: BorderSide(color: fieldBorderColor),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
@@ -199,10 +232,16 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return AppLocalizations.of(context)?.get('enter_email') ?? 'Please enter your email';
+                        return AppLocalizations.of(
+                              context,
+                            )?.get('enter_email') ??
+                            'Please enter your email';
                       }
                       if (!value.contains('@')) {
-                        return AppLocalizations.of(context)?.get('invalid_email') ?? 'Please enter a valid email';
+                        return AppLocalizations.of(
+                              context,
+                            )?.get('invalid_email') ??
+                            'Please enter a valid email';
                       }
                       return null;
                     },
@@ -214,18 +253,22 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   TextFormField(
                     controller: _passwordController,
                     obscureText: _obscurePassword,
-                    style: const TextStyle(color: Colors.white),
+                    style: TextStyle(color: fieldTextColor),
                     decoration: InputDecoration(
-                      labelText: AppLocalizations.of(context)?.get('password') ?? 'Password',
-                      labelStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
-                      prefixIcon: Icon(Icons.lock_outlined,
-                          color: Colors.white.withOpacity(0.7)),
+                      labelText:
+                          AppLocalizations.of(context)?.get('password') ??
+                          'Password',
+                      labelStyle: TextStyle(color: fieldHintColor),
+                      prefixIcon: Icon(
+                        Icons.lock_outlined,
+                        color: fieldHintColor,
+                      ),
                       suffixIcon: IconButton(
                         icon: Icon(
                           _obscurePassword
                               ? Icons.visibility_outlined
                               : Icons.visibility_off_outlined,
-                          color: Colors.white.withOpacity(0.7),
+                          color: fieldHintColor,
                         ),
                         onPressed: () {
                           setState(() {
@@ -234,15 +277,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         },
                       ),
                       filled: true,
-                      fillColor: Colors.white.withOpacity(0.05),
+                      fillColor: fieldFillColor,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
                         borderSide: BorderSide.none,
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
-                        borderSide:
-                            BorderSide(color: Colors.white.withOpacity(0.1)),
+                        borderSide: BorderSide(color: fieldBorderColor),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
@@ -251,10 +293,16 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return AppLocalizations.of(context)?.get('enter_password') ?? 'Please enter a password';
+                        return AppLocalizations.of(
+                              context,
+                            )?.get('enter_password') ??
+                            'Please enter a password';
                       }
                       if (value.length < 6) {
-                        return AppLocalizations.of(context)?.get('password_too_short') ?? 'Password must be at least 6 characters';
+                        return AppLocalizations.of(
+                              context,
+                            )?.get('password_too_short') ??
+                            'Password must be at least 6 characters';
                       }
                       return null;
                     },
@@ -270,7 +318,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         // TODO: Implement forgot password
                       },
                       child: Text(
-                        AppLocalizations.of(context)?.get('forgot_password') ?? 'Forgot Password?',
+                        AppLocalizations.of(context)?.get('forgot_password') ??
+                            'Forgot Password?',
                         style: const TextStyle(color: Color(0xFF0066FF)),
                       ),
                     ),
@@ -308,11 +357,15 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                   child: CircularProgressIndicator(
                                     strokeWidth: 2,
                                     valueColor: AlwaysStoppedAnimation<Color>(
-                                        Colors.white),
+                                      Colors.white,
+                                    ),
                                   ),
                                 )
                               : Text(
-                                  AppLocalizations.of(context)?.get('sign_in') ?? 'Sign In',
+                                  AppLocalizations.of(
+                                        context,
+                                      )?.get('sign_in') ??
+                                      'Sign In',
                                   style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 18,
@@ -334,7 +387,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       onPressed: () async {
                         // Skip auth for debug - create anonymous user
                         try {
-                          await ref.read(authActionsProvider).signInAnonymously();
+                          await ref
+                              .read(authActionsProvider)
+                              .signInAnonymously();
                           if (mounted) {
                             context.go('/');
                           }
@@ -351,7 +406,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         ),
                       ),
                       child: Text(
-                        AppLocalizations.of(context)?.get('skip_auth_debug') ?? 'Skip Auth (Debug)',
+                        AppLocalizations.of(context)?.get('skip_auth_debug') ??
+                            'Skip Auth (Debug)',
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 16,
@@ -371,13 +427,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         Text(
                           "${AppLocalizations.of(context)?.get('dont_have_account') ?? "Don't have an account?"} ",
                           style: TextStyle(
-                            color: Colors.white.withOpacity(0.7),
+                            color: onSurface.withValues(alpha: 0.7),
                           ),
                         ),
                         TextButton(
                           onPressed: () => context.go('/register'),
                           child: Text(
-                            AppLocalizations.of(context)?.get('sign_up') ?? 'Sign Up',
+                            AppLocalizations.of(context)?.get('sign_up') ??
+                                'Sign Up',
                             style: const TextStyle(
                               color: Color(0xFF0066FF),
                               fontWeight: FontWeight.bold,

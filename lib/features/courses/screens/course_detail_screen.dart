@@ -16,16 +16,20 @@ class CourseDetailScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+    final onSurface = Theme.of(context).colorScheme.onSurface;
     final lessonsAsync = ref.watch(localizedCourseLessonsProvider(course.id));
     final progressAsync = ref.watch(allUserProgressProvider);
 
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [Color(0xFF1E1E2E), Color(0xFF2D2D44)],
+            colors: isDarkTheme
+                ? const [Color(0xFF1E1E2E), Color(0xFF2D2D44)]
+                : const [Color(0xFFF8FAFF), Color(0xFFEEF3FF)],
           ),
         ),
         child: SafeArea(
@@ -38,7 +42,7 @@ class CourseDetailScreen extends ConsumerWidget {
                   children: [
                     IconButton(
                       onPressed: () => context.pop(),
-                      icon: const Icon(Icons.arrow_back, color: Colors.white),
+                      icon: Icon(Icons.arrow_back, color: onSurface),
                     ),
                     Expanded(
                       child: Column(
@@ -46,8 +50,8 @@ class CourseDetailScreen extends ConsumerWidget {
                         children: [
                           Text(
                             course.title,
-                            style: const TextStyle(
-                              color: Colors.white,
+                            style: TextStyle(
+                              color: onSurface,
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
                             ),
@@ -55,7 +59,7 @@ class CourseDetailScreen extends ConsumerWidget {
                           Text(
                             course.description,
                             style: TextStyle(
-                              color: Colors.white.withValues(alpha: 0.7),
+                              color: onSurface.withValues(alpha: 0.7),
                               fontSize: 14,
                             ),
                           ),
@@ -102,10 +106,14 @@ class CourseDetailScreen extends ConsumerWidget {
                         margin: const EdgeInsets.all(16),
                         padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
-                          color: Colors.white.withValues(alpha: 0.1),
+                          color: isDarkTheme
+                              ? Colors.white.withValues(alpha: 0.1)
+                              : const Color(0xFFFFFFFF),
                           borderRadius: BorderRadius.circular(16),
                           border: Border.all(
-                            color: Colors.white.withValues(alpha: 0.2),
+                            color: isDarkTheme
+                                ? Colors.white.withValues(alpha: 0.2)
+                                : const Color(0xFFD6E2FF),
                           ),
                         ),
                         child: Row(
@@ -187,7 +195,11 @@ class CourseDetailScreen extends ConsumerWidget {
                                     border: Border.all(
                                       color: isCompleted
                                           ? Colors.green.withValues(alpha: 0.5)
-                                          : Colors.white.withValues(alpha: 0.2),
+                                          : (isDarkTheme
+                                                ? Colors.white.withValues(
+                                                    alpha: 0.2,
+                                                  )
+                                                : const Color(0xFFD6E2FF)),
                                     ),
                                   ),
                                   child: ListTile(
@@ -217,17 +229,15 @@ class CourseDetailScreen extends ConsumerWidget {
                                     ),
                                     title: Text(
                                       lesson.title,
-                                      style: const TextStyle(
-                                        color: Colors.white,
+                                      style: TextStyle(
+                                        color: onSurface,
                                         fontWeight: FontWeight.w600,
                                       ),
                                     ),
                                     subtitle: Text(
                                       lesson.description,
                                       style: TextStyle(
-                                        color: Colors.white.withValues(
-                                          alpha: 0.7,
-                                        ),
+                                        color: onSurface.withValues(alpha: 0.7),
                                         fontSize: 12,
                                       ),
                                     ),
@@ -256,7 +266,7 @@ class CourseDetailScreen extends ConsumerWidget {
                                         : Text(
                                             '${lesson.xpReward} XP',
                                             style: TextStyle(
-                                              color: Colors.white.withValues(
+                                              color: onSurface.withValues(
                                                 alpha: 0.7,
                                               ),
                                               fontSize: 12,
@@ -308,14 +318,15 @@ class _StatItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final onSurface = Theme.of(context).colorScheme.onSurface;
     return Column(
       children: [
-        Icon(icon, color: Colors.white.withValues(alpha: 0.8), size: 28),
+        Icon(icon, color: onSurface.withValues(alpha: 0.8), size: 28),
         const SizedBox(height: 8),
         Text(
           value,
-          style: const TextStyle(
-            color: Colors.white,
+          style: TextStyle(
+            color: onSurface,
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
@@ -323,7 +334,7 @@ class _StatItem extends StatelessWidget {
         Text(
           label,
           style: TextStyle(
-            color: Colors.white.withValues(alpha: 0.7),
+            color: onSurface.withValues(alpha: 0.7),
             fontSize: 12,
           ),
         ),
