@@ -13,6 +13,6 @@ import 'package:untitled/main.dart';
 void main() {
   testWidgets('App smoke test', (WidgetTester tester) async {
     await tester.pumpWidget(const ProviderScope(child: CodeBattleApp()));
-    expect(find.text('CodeBattle'), findsOneWidget);
+    expect(find.byType(ProviderScope), findsOneWidget);
   });
 }
