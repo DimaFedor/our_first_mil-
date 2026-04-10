@@ -4,8 +4,8 @@ import '../../core/l10n/app_localizations.dart';
 import '../../core/services/engagement_notification_service.dart';
 import '../../features/auth/models/user_model.dart';
 import '../../features/auth/providers/auth_provider.dart';
+import '../../features/home/widgets/home_dashboard.dart';
 import '../../features/courses/screens/courses_screen.dart';
-import '../../features/home/home_screen.dart';
 import '../../features/profile/screens/profile_screen.dart';
 import '../../features/progress/providers/progress_provider.dart';
 import '../../features/progress/screens/progress_screen.dart';
@@ -17,7 +17,7 @@ class MainNavigationScreen extends ConsumerStatefulWidget {
   const MainNavigationScreen({super.key});
 
   static final List<Widget> _screens = [
-    const HomeScreen(),
+    const HomeDashboard(),
     const CoursesScreen(),
     const ProgressScreen(),
     const ProfileScreen(),
