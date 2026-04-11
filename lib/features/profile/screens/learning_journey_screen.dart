@@ -34,13 +34,18 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
     final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     final onSurface = Theme.of(context).colorScheme.onSurface;
     final l10n = AppLocalizations.of(context);
+    final isUkr = _isUkrainianLocale(context);
 
     if (userId == null) {
       return Scaffold(
         body: SafeArea(
           child: Center(
             child: Text(
-              'Sign in to open your journey.',
+              _tr(
+                context,
+                en: 'Sign in to open your journey.',
+                uk: 'Увійдіть, щоб відкрити вашу навчальну подорож.',
+              ),
               style: TextStyle(color: onSurface),
             ),
           ),
@@ -90,13 +95,17 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
                     Icon(Icons.error_outline, color: onSurface, size: 34),
                     const SizedBox(height: 12),
                     Text(
-                      'Could not load learning journey.',
+                      _tr(
+                        context,
+                        en: 'Could not load learning journey.',
+                        uk: 'Не вдалося завантажити навчальну подорож.',
+                      ),
                       style: TextStyle(color: onSurface),
                     ),
                     const SizedBox(height: 12),
                     ElevatedButton(
                       onPressed: () => _refreshJourney(ref, userId),
-                      child: const Text('Retry'),
+                      child: Text(_tr(context, en: 'Retry', uk: 'Повторити')),
                     ),
                   ],
                 ),
@@ -121,17 +130,23 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
     final nodes = _buildNodeSnapshots(courses, progress);
     final weakSpots = nodes.where((node) => node.isWeakSpot).toList()
       ..sort((a, b) => a.progress.compareTo(b.progress));
-    final recommendations = _buildRecommendations(nodes, userData);
     final missions = _buildMissions(
       nodes: nodes,
       portfolioEntries: portfolioEntries,
       userData: userData,
+      isUkr: isUkr,
     );
     final insights = _buildInsights(
       nodes: nodes,
       portfolioEntries: portfolioEntries,
       userData: userData,
       unlockedAchievements: achievements.length,
+      isUkr: isUkr,
+    );
+    final recommendations = _buildRecommendations(
+      nodes,
+      userData,
+      isUkr: isUkr,
     );
 
     final completedLessons = nodes.fold<int>(
@@ -215,6 +230,7 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
                 ).animate(delay: 160.ms).fadeIn().slideY(begin: 0.08, end: 0),
                 const SizedBox(height: 14),
                 _buildRecommendationsCard(
+                  context: context,
                   recommendations: recommendations,
                   isDarkTheme: isDarkTheme,
                   onSurface: onSurface,
@@ -229,6 +245,7 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
                 ).animate(delay: 240.ms).fadeIn().slideY(begin: 0.08, end: 0),
                 const SizedBox(height: 14),
                 _buildInsightsCard(
+                  context: context,
                   insights: insights,
                   isDarkTheme: isDarkTheme,
                   onSurface: onSurface,
@@ -311,6 +328,7 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
     required List<JourneyNodeSnapshot> nodes,
     required List<PortfolioEntry> portfolioEntries,
     required UserModel? userData,
+    required bool isUkr,
   }) {
     final startedButIncomplete = nodes.any(
       (node) => node.isStarted && !node.isCompleted,
@@ -326,24 +344,52 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
     return [
       JourneyMission(
         id: 'keep-streak',
-        title: 'Keep streak alive',
-        description: 'Complete at least one lesson today.',
+        title: _trByLocale(
+          isUkr,
+          en: 'Keep streak alive',
+          uk: 'Підтримай серію',
+        ),
+        description: _trByLocale(
+          isUkr,
+          en: 'Complete at least one lesson today.',
+          uk: 'Заверши хоча б один урок сьогодні.',
+        ),
         xpReward: 20,
         isCompleted: activeToday || (userData?.currentStreak ?? 0) > 0,
       ),
       JourneyMission(
         id: 'course-step',
-        title: 'Push one step on Skill Map',
+        title: _trByLocale(
+          isUkr,
+          en: 'Push one step on Skill Map',
+          uk: 'Зроби крок на карті навичок',
+        ),
         description: startedButIncomplete
-            ? 'Finish the next lesson in your current path.'
-            : 'Start your first course node today.',
+            ? _trByLocale(
+                isUkr,
+                en: 'Finish the next lesson in your current path.',
+                uk: 'Заверши наступний урок у поточному шляху.',
+              )
+            : _trByLocale(
+                isUkr,
+                en: 'Start your first course node today.',
+                uk: 'Почни перший вузол курсу сьогодні.',
+              ),
         xpReward: 30,
         isCompleted: nodes.any((node) => node.progress >= 0.5),
       ),
       JourneyMission(
         id: 'portfolio-log',
-        title: 'Log solution in Portfolio',
-        description: 'Save one code snippet with notes about your approach.',
+        title: _trByLocale(
+          isUkr,
+          en: 'Log solution in Portfolio',
+          uk: 'Збережи рішення в Portfolio',
+        ),
+        description: _trByLocale(
+          isUkr,
+          en: 'Save one code snippet with notes about your approach.',
+          uk: 'Збережи один фрагмент коду з нотатками про підхід.',
+        ),
         xpReward: 25,
         isCompleted: hasEntryToday,
       ),
@@ -352,11 +398,16 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
 
   List<String> _buildRecommendations(
     List<JourneyNodeSnapshot> nodes,
-    UserModel? userData,
-  ) {
+    UserModel? userData, {
+    required bool isUkr,
+  }) {
     if (nodes.isEmpty) {
-      return const <String>[
-        'Open your first course node to start the Developer Journey.',
+      return <String>[
+        _trByLocale(
+          isUkr,
+          en: 'Open your first course node to start the Developer Journey.',
+          uk: 'Відкрий перший вузол курсу, щоб почати подорож розробника.',
+        ),
       ];
     }
 
@@ -383,18 +434,30 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
 
     final weakestNode = weakest.isNotEmpty ? weakest.first : null;
     final recommendations = <String>[
-      'Next best step: continue ${primaryNode.title} (${(primaryNode.progress * 100).round()}%).',
+      _trByLocale(
+        isUkr,
+        en: 'Next best step: continue ${primaryNode.title} (${(primaryNode.progress * 100).round()}%).',
+        uk: 'Найкращий наступний крок: продовжити ${primaryNode.title} (${(primaryNode.progress * 100).round()}%).',
+      ),
     ];
 
     if (weakestNode != null && weakestNode.courseId != primaryNode.courseId) {
       recommendations.add(
-        'Weak spot detected in ${weakestNode.title}. Revisit one foundational lesson.',
+        _trByLocale(
+          isUkr,
+          en: 'Weak spot detected in ${weakestNode.title}. Revisit one foundational lesson.',
+          uk: 'Виявлено слабке місце у ${weakestNode.title}. Повтори один базовий урок.',
+        ),
       );
     }
 
     if ((userData?.currentStreak ?? 0) < 3) {
       recommendations.add(
-        'Build a 3-day streak to unlock faster XP momentum and bonus rewards.',
+        _trByLocale(
+          isUkr,
+          en: 'Build a 3-day streak to unlock faster XP momentum and bonus rewards.',
+          uk: 'Збери серію 3 дні, щоб отримати швидший XP-прогрес і бонуси.',
+        ),
       );
     }
 
@@ -406,6 +469,7 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
     required List<PortfolioEntry> portfolioEntries,
     required UserModel? userData,
     required int unlockedAchievements,
+    required bool isUkr,
   }) {
     final completedLessons = nodes.fold<int>(
       0,
@@ -434,26 +498,56 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
 
     return [
       JourneyInsight(
-        title: 'Growth momentum',
-        description:
-            'You completed $completedLessons lessons and unlocked $unlockedAchievements achievements.',
+        title: _trByLocale(isUkr, en: 'Growth momentum', uk: 'Динаміка росту'),
+        description: _trByLocale(
+          isUkr,
+          en: 'You completed $completedLessons lessons and unlocked $unlockedAchievements achievements.',
+          uk: 'Ти завершив(ла) $completedLessons уроків і відкрив(ла) $unlockedAchievements досягнень.',
+        ),
       ),
       JourneyInsight(
-        title: 'Strongest direction',
+        title: _trByLocale(
+          isUkr,
+          en: 'Strongest direction',
+          uk: 'Найсильніший напрям',
+        ),
         description: topCourse.isEmpty
-            ? 'No dominant skill yet — complete 2 lessons in one track to reveal strength.'
-            : '${topCourse.first.title} is your strongest track right now.',
+            ? _trByLocale(
+                isUkr,
+                en: 'No dominant skill yet — complete 2 lessons in one track to reveal strength.',
+                uk: 'Поки немає домінуючої навички — пройди 2 уроки в одному треку, щоб побачити силу.',
+              )
+            : _trByLocale(
+                isUkr,
+                en: '${topCourse.first.title} is your strongest track right now.',
+                uk: '${topCourse.first.title} — зараз твій найсильніший трек.',
+              ),
       ),
       JourneyInsight(
-        title: 'Focus zone',
+        title: _trByLocale(isUkr, en: 'Focus zone', uk: 'Зона фокусу'),
         description: topWeakTag == null
-            ? 'Mark mistakes in Portfolio to get precise weak-spot analytics.'
-            : 'Most repeated struggle: ${topWeakTag.toUpperCase()}. Add one focused recap session.',
+            ? _trByLocale(
+                isUkr,
+                en: 'Mark mistakes in Portfolio to get precise weak-spot analytics.',
+                uk: 'Позначай помилки в портфоліо, щоб отримати точну аналітику слабких місць.',
+              )
+            : _trByLocale(
+                isUkr,
+                en: 'Most repeated struggle: ${topWeakTag.toUpperCase()}. Add one focused recap session.',
+                uk: 'Найчастіша складність: ${topWeakTag.toUpperCase()}. Додай одну фокусну сесію повторення.',
+              ),
       ),
       JourneyInsight(
-        title: 'Level trajectory',
-        description:
-            'Level ${XPSystem.levelFromXP(userData?.totalXP ?? 0)} with $completedCourses completed course paths.',
+        title: _trByLocale(
+          isUkr,
+          en: 'Level trajectory',
+          uk: 'Траєкторія рівня',
+        ),
+        description: _trByLocale(
+          isUkr,
+          en: 'Level ${XPSystem.levelFromXP(userData?.totalXP ?? 0)} with $completedCourses completed course paths.',
+          uk: 'Рівень ${XPSystem.levelFromXP(userData?.totalXP ?? 0)} і $completedCourses завершених треків курсів.',
+        ),
       ),
     ];
   }
@@ -483,7 +577,7 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
               ),
               const SizedBox(height: 2),
               Text(
-                'Developer Journey',
+                _tr(context, en: 'Developer Journey', uk: 'Подорож розробника'),
                 style: TextStyle(
                   color: onSurface.withValues(alpha: 0.65),
                   fontWeight: FontWeight.w600,
@@ -525,7 +619,11 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
               const SizedBox(width: 10),
               Expanded(
                 child: Text(
-                  'Welcome to Developer Journey',
+                  _tr(
+                    context,
+                    en: 'Welcome to Developer Journey',
+                    uk: 'Ласкаво просимо до Подорожі розробника',
+                  ),
                   style: TextStyle(
                     color: onSurface,
                     fontWeight: FontWeight.w700,
@@ -537,7 +635,11 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
           ),
           const SizedBox(height: 10),
           Text(
-            'Track your path as a Skill Map, save your code portfolio, and use insights to improve weak spots.',
+            _tr(
+              context,
+              en: 'Track your path as a Skill Map, save your code portfolio, and use insights to improve weak spots.',
+              uk: 'Відстежуй шлях через карту навичок, зберігай портфоліо коду та використовуй інсайти для роботи зі слабкими місцями.',
+            ),
             style: TextStyle(
               color: onSurface.withValues(alpha: 0.75),
               height: 1.35,
@@ -549,7 +651,9 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
             child: ElevatedButton.icon(
               onPressed: onDismiss,
               icon: const Icon(Icons.rocket_launch_outlined, size: 18),
-              label: const Text('Start Journey'),
+              label: Text(
+                _tr(context, en: 'Start Journey', uk: 'Почати подорож'),
+              ),
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF0066FF),
                 foregroundColor: Colors.white,
@@ -582,7 +686,7 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
               const SizedBox(width: 10),
               Expanded(
                 child: Text(
-                  'Level ${levelInfo.level} • ${levelInfo.title}',
+                  '${_tr(context, en: 'Level', uk: 'Рівень')} ${levelInfo.level} • ${_localizedLevelTitle(context, levelInfo.title)}',
                   style: TextStyle(
                     color: onSurface,
                     fontWeight: FontWeight.w800,
@@ -619,14 +723,17 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
             runSpacing: 8,
             children: [
               _overviewChip(Icons.bolt, '$totalXP XP'),
-              _overviewChip(Icons.local_fire_department, '$streak streak'),
+              _overviewChip(
+                Icons.local_fire_department,
+                '$streak ${_tr(context, en: 'streak', uk: 'серія')}',
+              ),
               _overviewChip(
                 Icons.emoji_events_outlined,
-                '$achievementsCount badges',
+                '$achievementsCount ${_tr(context, en: 'badges', uk: 'бейджі')}',
               ),
               _overviewChip(
                 Icons.trending_up,
-                '${levelInfo.xpNeededForNextLevel} XP to next level',
+                '${levelInfo.xpNeededForNextLevel} ${_tr(context, en: 'XP to next level', uk: 'XP до наступного рівня')}',
               ),
             ],
           ),
@@ -673,7 +780,7 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Skill Map Path',
+            _tr(context, en: 'Skill Map Path', uk: 'Шлях карти навичок'),
             style: TextStyle(
               color: onSurface,
               fontWeight: FontWeight.w800,
@@ -682,7 +789,11 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
           ),
           const SizedBox(height: 6),
           Text(
-            'Tap a node to continue. Hover cards on web for quick status preview.',
+            _tr(
+              context,
+              en: 'Tap a node to continue. Hover cards on web for quick status preview.',
+              uk: 'Натисни вузол, щоб продовжити. У веб-версії наведи курсор на картку для швидкого статусу.',
+            ),
             style: TextStyle(
               color: onSurface.withValues(alpha: 0.7),
               fontSize: 13,
@@ -691,7 +802,7 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
           const SizedBox(height: 12),
           if (nodes.isEmpty)
             Text(
-              'No courses found.',
+              _tr(context, en: 'No courses found.', uk: 'Курси не знайдено.'),
               style: TextStyle(color: onSurface.withValues(alpha: 0.7)),
             )
           else
@@ -786,7 +897,7 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
                               ),
                               const SizedBox(height: 8),
                               Text(
-                                '${node.completedLessons}/${node.totalLessons} lessons',
+                                '${node.completedLessons}/${node.totalLessons} ${_tr(context, en: 'lessons', uk: 'уроків')}',
                                 style: TextStyle(
                                   color: onSurface.withValues(alpha: 0.72),
                                   fontSize: 12,
@@ -795,10 +906,22 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
                               const SizedBox(height: 4),
                               Text(
                                 node.isCompleted
-                                    ? 'Completed'
+                                    ? _tr(
+                                        context,
+                                        en: 'Completed',
+                                        uk: 'Завершено',
+                                      )
                                     : node.isWeakSpot
-                                    ? 'Needs focus'
-                                    : 'In progress',
+                                    ? _tr(
+                                        context,
+                                        en: 'Needs focus',
+                                        uk: 'Потрібен фокус',
+                                      )
+                                    : _tr(
+                                        context,
+                                        en: 'In progress',
+                                        uk: 'У процесі',
+                                      ),
                                 style: TextStyle(
                                   color: statusColor,
                                   fontWeight: FontWeight.w700,
@@ -830,7 +953,7 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Weak spots radar',
+            _tr(context, en: 'Weak spots radar', uk: 'Радар слабких місць'),
             style: TextStyle(
               color: onSurface,
               fontWeight: FontWeight.w800,
@@ -840,7 +963,11 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
           const SizedBox(height: 8),
           if (weakSpots.isEmpty)
             Text(
-              'No major weak spots detected yet. Keep momentum!',
+              _tr(
+                context,
+                en: 'No major weak spots detected yet. Keep momentum!',
+                uk: 'Поки немає критичних слабких місць. Тримай темп!',
+              ),
               style: TextStyle(color: onSurface.withValues(alpha: 0.75)),
             )
           else
@@ -865,7 +992,11 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
                     const SizedBox(width: 8),
                     Expanded(
                       child: Text(
-                        '${spot.title}: ${(spot.progress * 100).round()}% mastery. Revisit fundamentals.',
+                        _tr(
+                          context,
+                          en: '${spot.title}: ${(spot.progress * 100).round()}% mastery. Revisit fundamentals.',
+                          uk: '${spot.title}: ${(spot.progress * 100).round()}% засвоєння. Повтори фундамент.',
+                        ),
                         style: TextStyle(
                           color: onSurface.withValues(alpha: 0.86),
                           fontSize: 13,
@@ -892,7 +1023,7 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Daily Missions',
+            _tr(context, en: 'Daily Missions', uk: 'Щоденні місії'),
             style: TextStyle(
               color: onSurface,
               fontWeight: FontWeight.w800,
@@ -962,6 +1093,7 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
   }
 
   Widget _buildRecommendationsCard({
+    required BuildContext context,
     required List<String> recommendations,
     required bool isDarkTheme,
     required Color onSurface,
@@ -972,7 +1104,11 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Personal recommendations',
+            _tr(
+              context,
+              en: 'Personal recommendations',
+              uk: 'Персональні рекомендації',
+            ),
             style: TextStyle(
               color: onSurface,
               fontWeight: FontWeight.w800,
@@ -1030,7 +1166,7 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
             children: [
               Expanded(
                 child: Text(
-                  'Code Portfolio',
+                  _tr(context, en: 'Code Portfolio', uk: 'Портфоліо коду'),
                   style: TextStyle(
                     color: onSurface,
                     fontWeight: FontWeight.w800,
@@ -1041,14 +1177,18 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
               TextButton.icon(
                 onPressed: () => _showAddPortfolioEntrySheet(context, userId),
                 icon: const Icon(Icons.add, size: 16),
-                label: const Text('Add'),
+                label: Text(_tr(context, en: 'Add', uk: 'Додати')),
               ),
             ],
           ),
           const SizedBox(height: 6),
           if (entries.isEmpty)
             Text(
-              'Save your best solutions and mistakes to build a personal developer log.',
+              _tr(
+                context,
+                en: 'Save your best solutions and mistakes to build a personal developer log.',
+                uk: 'Зберігай найкращі рішення й помилки, щоб будувати персональний developer log.',
+              ),
               style: TextStyle(color: onSurface.withValues(alpha: 0.75)),
             )
           else
@@ -1105,7 +1245,7 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
                           ),
                           const SizedBox(height: 3),
                           Text(
-                            '${entry.language.toUpperCase()} • ${_formatRelativeDate(entry.createdAt)}',
+                            '${entry.language.toUpperCase()} • ${_formatRelativeDate(entry.createdAt, isUkr: _isUkrainianLocale(context))}',
                             style: TextStyle(
                               color: onSurface.withValues(alpha: 0.7),
                               fontSize: 12,
@@ -1168,6 +1308,7 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
   }
 
   Widget _buildInsightsCard({
+    required BuildContext context,
     required List<JourneyInsight> insights,
     required bool isDarkTheme,
     required Color onSurface,
@@ -1178,7 +1319,7 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Learning insights',
+            _tr(context, en: 'Learning insights', uk: 'Навчальні інсайти'),
             style: TextStyle(
               color: onSurface,
               fontWeight: FontWeight.w800,
@@ -1335,7 +1476,11 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Add portfolio entry',
+                            _tr(
+                              sheetContext,
+                              en: 'Add portfolio entry',
+                              uk: 'Додати запис у portfolio',
+                            ),
                             style: TextStyle(
                               color: onSurface,
                               fontWeight: FontWeight.w800,
@@ -1347,17 +1492,25 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
                             controller: titleController,
                             validator: (value) =>
                                 value == null || value.trim().length < 3
-                                ? 'Title must be at least 3 characters'
+                                ? _tr(
+                                    sheetContext,
+                                    en: 'Title must be at least 3 characters',
+                                    uk: 'Назва має бути щонайменше 3 символи',
+                                  )
                                 : null,
-                            decoration: const InputDecoration(
-                              labelText: 'Title',
-                              border: OutlineInputBorder(),
+                            decoration: InputDecoration(
+                              labelText: _tr(
+                                sheetContext,
+                                en: 'Title',
+                                uk: 'Назва',
+                              ),
+                              border: const OutlineInputBorder(),
                             ),
                           ),
                           const SizedBox(height: 10),
                           DropdownButtonFormField<String>(
                             initialValue: language,
-                            items: const [
+                            items: [
                               DropdownMenuItem(
                                 value: 'python',
                                 child: Text('Python'),
@@ -1376,7 +1529,9 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
                               ),
                               DropdownMenuItem(
                                 value: 'other',
-                                child: Text('Other'),
+                                child: Text(
+                                  _tr(sheetContext, en: 'Other', uk: 'Інше'),
+                                ),
                               ),
                             ],
                             onChanged: (value) {
@@ -1384,9 +1539,13 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
                                 setModalState(() => language = value);
                               }
                             },
-                            decoration: const InputDecoration(
-                              labelText: 'Language',
-                              border: OutlineInputBorder(),
+                            decoration: InputDecoration(
+                              labelText: _tr(
+                                sheetContext,
+                                en: 'Language',
+                                uk: 'Мова',
+                              ),
+                              border: const OutlineInputBorder(),
                             ),
                           ),
                           const SizedBox(height: 10),
@@ -1395,20 +1554,32 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
                             maxLines: 5,
                             validator: (value) =>
                                 value == null || value.trim().isEmpty
-                                ? 'Add code snippet or solution summary'
+                                ? _tr(
+                                    sheetContext,
+                                    en: 'Add code snippet or solution summary',
+                                    uk: 'Додайте фрагмент коду або опис рішення',
+                                  )
                                 : null,
-                            decoration: const InputDecoration(
-                              labelText: 'Code snippet / solution',
-                              border: OutlineInputBorder(),
+                            decoration: InputDecoration(
+                              labelText: _tr(
+                                sheetContext,
+                                en: 'Code snippet / solution',
+                                uk: 'Фрагмент коду / рішення',
+                              ),
+                              border: const OutlineInputBorder(),
                             ),
                           ),
                           const SizedBox(height: 10),
                           TextFormField(
                             controller: notesController,
                             maxLines: 2,
-                            decoration: const InputDecoration(
-                              labelText: 'Notes (optional)',
-                              border: OutlineInputBorder(),
+                            decoration: InputDecoration(
+                              labelText: _tr(
+                                sheetContext,
+                                en: 'Notes (optional)',
+                                uk: 'Нотатки (необовʼязково)',
+                              ),
+                              border: const OutlineInputBorder(),
                             ),
                           ),
                           const SizedBox(height: 10),
@@ -1417,17 +1588,29 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
                             value: hadErrors,
                             onChanged: (value) =>
                                 setModalState(() => hadErrors = value),
-                            title: const Text(
-                              'I had difficulties in this task',
+                            title: Text(
+                              _tr(
+                                sheetContext,
+                                en: 'I had difficulties in this task',
+                                uk: 'У цьому завданні були труднощі',
+                              ),
                             ),
                           ),
                           TextFormField(
                             controller: tagsController,
                             maxLines: 1,
-                            decoration: const InputDecoration(
-                              labelText: 'Error tags (comma separated)',
-                              hintText: 'loops, arrays, joins',
-                              border: OutlineInputBorder(),
+                            decoration: InputDecoration(
+                              labelText: _tr(
+                                sheetContext,
+                                en: 'Error tags (comma separated)',
+                                uk: 'Теги помилок (через кому)',
+                              ),
+                              hintText: _tr(
+                                sheetContext,
+                                en: 'loops, arrays, joins',
+                                uk: 'цикли, масиви, joins',
+                              ),
+                              border: const OutlineInputBorder(),
                             ),
                           ),
                           const SizedBox(height: 14),
@@ -1451,7 +1634,13 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
                                             ),
                                       ),
                                     )
-                                  : const Text('Save entry'),
+                                  : Text(
+                                      _tr(
+                                        sheetContext,
+                                        en: 'Save entry',
+                                        uk: 'Зберегти запис',
+                                      ),
+                                    ),
                             ),
                           ),
                         ],
@@ -1471,18 +1660,56 @@ class _LearningJourneyScreenState extends ConsumerState<LearningJourneyScreen> {
     return a.year == b.year && a.month == b.month && a.day == b.day;
   }
 
-  String _formatRelativeDate(DateTime date) {
+  String _formatRelativeDate(DateTime date, {required bool isUkr}) {
     final now = DateTime.now();
     final difference = now.difference(date);
     if (difference.inMinutes < 60) {
-      return '${math.max(1, difference.inMinutes)}m ago';
+      return isUkr
+          ? '${math.max(1, difference.inMinutes)} хв тому'
+          : '${math.max(1, difference.inMinutes)}m ago';
     }
     if (difference.inHours < 24) {
-      return '${difference.inHours}h ago';
+      return isUkr
+          ? '${difference.inHours} год тому'
+          : '${difference.inHours}h ago';
     }
     if (difference.inDays < 7) {
-      return '${difference.inDays}d ago';
+      return isUkr
+          ? '${difference.inDays} д тому'
+          : '${difference.inDays}d ago';
     }
     return '${date.day.toString().padLeft(2, '0')}.${date.month.toString().padLeft(2, '0')}.${date.year}';
+  }
+
+  bool _isUkrainianLocale(BuildContext context) {
+    final code = Localizations.localeOf(context).languageCode.toLowerCase();
+    return code == 'uk';
+  }
+
+  String _tr(BuildContext context, {required String en, required String uk}) {
+    return _isUkrainianLocale(context) ? uk : en;
+  }
+
+  String _trByLocale(bool isUkr, {required String en, required String uk}) {
+    return isUkr ? uk : en;
+  }
+
+  String _localizedLevelTitle(BuildContext context, String title) {
+    if (!_isUkrainianLocale(context)) return title;
+
+    const localized = <String, String>{
+      'Novice': 'Новачок',
+      'Apprentice': 'Початківець',
+      'Student': 'Студент',
+      'Coder': 'Кодер',
+      'Developer': 'Розробник',
+      'Senior Developer': 'Сеньйор-розробник',
+      'Expert': 'Експерт',
+      'Master': 'Майстер',
+      'Guru': 'Гуру',
+      'Legend': 'Легенда',
+      'Code Wizard': 'Маг коду',
+    };
+    return localized[title] ?? title;
   }
 }
