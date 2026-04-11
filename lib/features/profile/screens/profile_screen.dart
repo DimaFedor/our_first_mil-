@@ -563,16 +563,7 @@ class ProfileScreen extends ConsumerWidget {
                   title:
                       AppLocalizations.of(context)?.get('learning_history') ??
                       'Learning History',
-                  onTap: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          AppLocalizations.of(context)?.get('coming_soon') ??
-                              'Coming soon!',
-                        ),
-                      ),
-                    );
-                  },
+                  onTap: () => context.push('/learning-journey'),
                 ),
                 const SizedBox(height: 12),
                 _MenuItem(

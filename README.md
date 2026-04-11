@@ -177,6 +177,40 @@ An API reference implementation is included in:
 
 It includes endpoints for `register`, `login`, `google`, `magic-link`, `challenge`, `refresh`, and `logout`, with token rotation and rate limiting.
 
+### Learning Journey Blueprint (Active Learning History)
+The old passive history can be replaced with an interactive **Developer Journey** module:
+- **Skill Map Path**: visual node-based course progress (started/completed/weak spot states)
+- **Daily Missions**: streak/XP/portfolio tasks with completion states
+- **Code Portfolio**: saved user solutions, notes, and error tags
+- **Insights**: strongest skills, weak areas, and growth momentum
+
+Data structure (suggested):
+- `users/{uid}`: `totalXP`, `currentStreak`, `skillLevel`, `preferredLanguage`, `lastActive`
+- `users/{uid}/progress/{courseId}`: `completedLessons[]`, `totalXP`, `lastUpdated`
+- `users/{uid}/achievements/{achievementId}`: `unlockedAt`
+- `users/{uid}/portfolio/{entryId}`: `title`, `language`, `snippet`, `notes`, `hadErrors`, `errorTags[]`, `createdAt`
+- `users/{uid}/journeyInsights/{insightId}` (optional aggregated): `type`, `score`, `generatedAt`
+
+Suggested API endpoints:
+- `GET /api/journey/overview` — level, XP, streak, achievements, aggregate progress
+- `GET /api/journey/skill-map` — ordered nodes with per-course progress and weak-spot score
+- `GET /api/journey/recommendations` — personalized next-best actions
+- `GET /api/journey/insights` — strengths, weak areas, repeated mistakes, momentum
+- `GET /api/portfolio` / `POST /api/portfolio` / `DELETE /api/portfolio/:id`
+- `POST /api/journey/missions/complete` — mission completion and XP reward
+
+Progress analytics flow:
+1. Capture lesson completions + quiz/challenge outcomes.
+2. Compute per-skill mastery and weak-spot score.
+3. Build recommendation signals (preferred stack, recent mistakes, streak risk).
+4. Store daily snapshots for trend insights and motivation copy.
+
+Scaling strategy:
+- Precompute heavy insight aggregates with scheduled jobs (hourly/daily).
+- Cache journey overview/skill-map responses (Redis or edge cache).
+- Keep write path event-driven (progress events → analytics pipeline).
+- Use paginated portfolio endpoints and background indexing for large histories.
+
 ### Localization Packs
 The app now loads language metadata and translation packs from JSON assets:
 

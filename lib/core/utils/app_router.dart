@@ -8,6 +8,7 @@ import '../../features/lessons/screens/lesson_screen.dart';
 import '../../features/lessons/models/lesson_model.dart';
 import '../../features/achievements/screens/achievements_screen.dart';
 import '../../features/profile/screens/edit_profile_screen.dart';
+import '../../features/profile/screens/learning_journey_screen.dart';
 import '../../features/settings/screens/settings_screen.dart';
 import '../../shared/widgets/main_navigation.dart';
 
@@ -69,6 +70,11 @@ class AppRouter {
             path: 'edit-profile',
             name: 'edit_profile',
             builder: (context, state) => const EditProfileScreen(),
+          ),
+          GoRoute(
+            path: 'learning-journey',
+            name: 'learning_journey',
+            builder: (context, state) => const LearningJourneyScreen(),
           ),
         ],
       ),
