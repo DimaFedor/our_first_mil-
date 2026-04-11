@@ -15,6 +15,7 @@ import '../../../shared/widgets/code_editor.dart';
 import '../../../core/services/python_interpreter.dart' as py;
 import '../../../core/services/js_interpreter.dart' as js;
 import '../../../core/services/html_validator.dart';
+import '../widgets/git_challenge_widget.dart';
 
 class LessonScreen extends ConsumerStatefulWidget {
   final Course course;
@@ -322,46 +323,56 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
       );
     }
 
+    final challenge = lesson.codingChallenge!;
+    if (challenge.language.toLowerCase() == 'git') {
+      return GitChallengeWidget(
+        challenge: challenge,
+        courseColor: widget.course.color,
+        onComplete: () => _handleLessonCompletion(lesson),
+      );
+    }
+
     return _CodingChallengeWidget(
-      challenge: lesson.codingChallenge!,
+      challenge: challenge,
       courseColor: widget.course.color,
-      onComplete: () async {
-        try {
-          AppLogger.debug(
-            'Completing lesson: course=${widget.course.id}, lesson=${lesson.id}',
+      onComplete: () => _handleLessonCompletion(lesson),
+    );
+  }
+
+  Future<void> _handleLessonCompletion(Lesson lesson) async {
+    try {
+      AppLogger.debug(
+        'Completing lesson: course=${widget.course.id}, lesson=${lesson.id}',
+      );
+
+      final unlockedAchievements = await ref
+          .read(progressActionsProvider)
+          .completeLesson(
+            courseId: widget.course.id,
+            lessonId: lesson.id,
+            xpEarned: lesson.xpReward,
           );
 
-          // Mark lesson as complete
-          final unlockedAchievements = await ref
-              .read(progressActionsProvider)
-              .completeLesson(
-                courseId: widget.course.id,
-                lessonId: lesson.id,
-                xpEarned: lesson.xpReward,
-              );
+      AppLogger.success('Lesson completed: +${lesson.xpReward} XP');
 
-          AppLogger.success('Lesson completed: +${lesson.xpReward} XP');
-
-          if (mounted) {
-            if (unlockedAchievements.isNotEmpty) {
-              _showAchievementNotifications(unlockedAchievements);
-            }
-            _showCompletionDialog(lesson.xpReward, unlockedAchievements);
-          }
-        } catch (e, stackTrace) {
-          AppLogger.error('Error completing lesson', e, stackTrace);
-
-          if (mounted) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Error saving progress. Please try again.'),
-                backgroundColor: Colors.red,
-              ),
-            );
-          }
+      if (mounted) {
+        if (unlockedAchievements.isNotEmpty) {
+          _showAchievementNotifications(unlockedAchievements);
         }
-      },
-    );
+        _showCompletionDialog(lesson.xpReward, unlockedAchievements);
+      }
+    } catch (e, stackTrace) {
+      AppLogger.error('Error completing lesson', e, stackTrace);
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Error saving progress. Please try again.'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
   }
 
   Widget _buildContinueButton(String text) {
@@ -551,6 +562,12 @@ class _TheorySlideWidget extends StatelessWidget {
         return 'javascript';
       case 'htmlcss':
         return 'html';
+      case 'react':
+        return 'javascript';
+      case 'sql':
+        return 'sql';
+      case 'git':
+        return 'bash';
       default:
         return 'python';
     }
@@ -584,7 +601,7 @@ class _TheorySlideWidget extends StatelessWidget {
             const SizedBox(height: 24),
             CodeBlock(
               code: slide.codeSnippet!,
-              language: _getLanguageFromCourseId(),
+              language: slide.codeLanguage ?? _getLanguageFromCourseId(),
               showLineNumbers: slide.codeSnippet!.contains('\n'),
             ).animate(delay: 400.ms).fadeIn().slideY(begin: 0.2, end: 0),
           ],

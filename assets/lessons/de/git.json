@@ -1,0 +1,433 @@
+{
+  "courseId": "git",
+  "lessons": [
+    {
+      "id": "git_lesson_1",
+      "courseId": "git",
+      "moduleId": "foundations",
+      "title": "Git-Grundlagen: Snapshots und Commits",
+      "description": "Verstehen Sie, was Git verfolgt, und erstellen Sie Ihr erstes Commit",
+      "theorySlides": [
+        {
+          "title": "Was ist Git? 🌱",
+          "content": "Git ist ein Versionskontrollsystem. Betrachten Sie es als eine Zeitmaschine für Ihr Projekt:\n\n• Prüfpunkte speichern (Commits)\n• Gehen Sie sicher zurück\n• Änderungen vergleichen\n• Arbeiten Sie zusammen, ohne sich gegenseitig zu überschreiben",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Die 3 Kernstaaten",
+          "content": "In Git für Anfänger können Sie sich drei Schichten vorstellen:\n\n1) Arbeitsdateien (was Sie bearbeiten)\n2) Bereitstellungsbereich (was Sie vorbereiten)\n3) Commit-Verlauf (was Sie für immer speichern)",
+          "codeSnippet": "git status\n# see current state\n\ngit add .\n# stage all current changes\n\ngit commit -m \"Initial layout\"",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Erster Commit-Flow",
+          "content": "Ein Commit ist eine Momentaufnahme. Kleine, klare Commits machen Projekte leichter verständlich.",
+          "codeSnippet": "git init\ngit status\ngit commit -m \"Initial commit\"",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Was ist der Hauptzweck von Git?",
+            "options": [
+              "Erstellen Sie UI-Komponenten",
+              "Verfolgen und verwalten Sie den Codeverlauf",
+              "Führen Sie SQL-Abfragen aus",
+              "Stellen Sie Apps automatisch bereit"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Git dient dazu, Dateiänderungen im Laufe der Zeit zu verfolgen und die Arbeit sicher zu koordinieren.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Was stellt ein Commit dar?",
+            "options": [
+              "Ein Filialname",
+              "Eine Projektabhängigkeit",
+              "Eine gespeicherte Momentaufnahme der Änderungen",
+              "Ein Remote-Server"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Ein Commit ist eine gespeicherte Momentaufnahme Ihres Codes zu einem bestimmten Zeitpunkt.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Welcher Befehl erstellt einen Commit?",
+            "options": [
+              "Git-Zweig",
+              "Git Merge",
+              "git commit -m „Nachricht“",
+              "git checkout"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Verwenden Sie git commit mit einer Nachricht, um einen neuen Snapshot im Verlauf zu erstellen.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Warum sollten Commit-Nachrichten klar sein?",
+            "options": [
+              "Sie ändern die Zweigfarben",
+              "Sie helfen Teamkollegen zu verstehen, was sich geändert hat",
+              "Sie machen Zusammenführungen schneller",
+              "Sie reduzieren die Dateigröße"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Gute Commit-Nachrichten machen den Projektverlauf für Sie und Ihr Team lesbar.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Erstellen Sie Ihr erstes Commit",
+        "description": "Führen Sie Befehle aus, damit Ihr Repository mit einem neuen Commit auf main endet.",
+        "starterCode": "# Inspect the repo first\ngit status\n\n# Create your first commit\n",
+        "language": "git",
+        "testCases": [
+          {
+            "input": "Goal: stay on main and create the first commit (C1) in history.",
+            "expectedOutput": "HEAD=main\nHAS_BRANCH=main\nMIN_COMMITS=2\nBRANCH_AT=main:C1",
+            "isHidden": false
+          }
+        ],
+        "hint": "Verwenden Sie: git commit -m „Initial commit“",
+        "solution": "git status\ngit commit -m \"Initial commit\"",
+        "xpReward": 15
+      },
+      "xpReward": 25,
+      "order": 0
+    },
+    {
+      "id": "git_lesson_2",
+      "courseId": "git",
+      "moduleId": "branching",
+      "title": "Zweige: Isolierte Arbeit",
+      "description": "Erstellen und wechseln Sie Zweige, um sicher parallel zu arbeiten",
+      "theorySlides": [
+        {
+          "title": "Warum Zweige wichtig sind 🌿",
+          "content": "Mit Branches können Sie Ideen testen, ohne Ihre Hauptlinie zu unterbrechen:\n\n• Main bleibt stabil\n• Feature-Zweige enthalten Experimente\n• Durch späteres Zusammenführen werden fertige Arbeiten zusammengefasst",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Erstellen und verschieben",
+          "content": "Verwenden Sie branch + checkout (oder checkout -b), um isolierte Arbeitsbereiche zu erstellen.",
+          "codeSnippet": "git branch feature/login\ngit checkout feature/login\n# now commits go to feature/login",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Tastenkürzel: Kasse -b",
+          "content": "Erstellen und wechseln Sie in einem Befehl. Ideal für schnelle Funktionsstarts.",
+          "codeSnippet": "git checkout -b feature/navbar\ngit commit -m \"Add navbar structure\"",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Was ist der beste Grund, einen Feature-Zweig zu verwenden?",
+            "options": [
+              "Um Commits vollständig zu vermeiden",
+              "Um die Arbeit von der Hauptarbeit zu isolieren",
+              "Um das Internet zu beschleunigen",
+              "Um den alten Verlauf zu löschen"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Zweige isolieren unvollendete Arbeit und schützen den stabilen Zweig.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Was macht die Funktion „git checkout -b“?",
+            "options": [
+              "Löscht den Feature-Zweig",
+              "Erstellt und wechselt zum Feature-Zweig",
+              "Führt die Funktion in die Hauptfunktion ein",
+              "Listet alle Zweige auf"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "checkout -b ist eine Verknüpfung zum Erstellen und Wechseln von Zweigen.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Wohin gehen nach dem Auschecken für die Funktion neue Commits?",
+            "options": [
+              "hauptsächlich",
+              "Besonderheit",
+              "Nur Fernbedienung",
+              "nirgends"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Commits werden an den aktuell ausgecheckten Zweig angehängt.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Warum sollte man beim Lernen die Hauptplatine sauber halten?",
+            "options": [
+              "Um die CPU-Auslastung zu reduzieren",
+              "Um einen stabilen Fortschritt zu gewährleisten und Verwirrung zu vermeiden",
+              "Um Commits unsichtbar zu machen",
+              "Um Zusammenführungen zu deaktivieren"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Ein sauberer Hauptzweig macht den Projektverlauf und die Releases sicherer.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Erstellen und erweitern Sie einen Feature-Zweig",
+        "description": "Erstellen Sie ein Commit für „main“, wechseln Sie dann zu „feature“ und erstellen Sie dort ein weiteres Commit.",
+        "starterCode": "# 1) Make a baseline commit on main\n# 2) Create feature branch\n# 3) Switch to feature\n# 4) Create a feature commit\n",
+        "language": "git",
+        "testCases": [
+          {
+            "input": "Goal: finish on feature branch with separate tips for main and feature.",
+            "expectedOutput": "HEAD=feature\nHAS_BRANCH=main\nHAS_BRANCH=feature\nMIN_COMMITS=3\nBRANCH_AT=main:C1\nBRANCH_AT=feature:C2\nBRANCHES_DIFFER=main:feature",
+            "isHidden": false
+          }
+        ],
+        "hint": "Reihenfolge: Git Commit -> Git Branch Feature -> Git Checkout Feature -> Git Commit",
+        "solution": "git commit -m \"Base commit on main\"\ngit branch feature\ngit checkout feature\ngit commit -m \"Feature work\"",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 1
+    },
+    {
+      "id": "git_lesson_3",
+      "courseId": "git",
+      "moduleId": "merging",
+      "title": "Grundlagen zusammenführen",
+      "description": "Bringen Sie fertige Feature-Arbeiten mithilfe von Merge-Commits zurück in den Main-Bereich",
+      "theorySlides": [
+        {
+          "title": "Was ist Zusammenführen? 🔀",
+          "content": "Beim Zusammenführen werden Historien aus zwei Zweigen kombiniert.\n\nWenn beide Zweige verschoben wurden, erstellt Git einen Merge-Commit mit zwei übergeordneten Zweigen.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Grundlegender Merge-Workflow",
+          "content": "Normalerweise führen Sie die Zusammenführung mit main durch, nachdem die Feature-Arbeit abgeschlossen ist.",
+          "codeSnippet": "git checkout main\ngit merge feature\n# main now includes feature history",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Denken Sie in Diagrammen",
+          "content": "Git ist ein Commit-Graph, keine Ordnerkopie. Zweignamen sind bewegliche Beschriftungen, die auf Commits verweisen.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Was macht die Git-Merge-Funktion von Main aus?",
+            "options": [
+              "Löscht die Funktion",
+              "Verschiebt die Funktion ohne Verlauf in die Hauptfunktion",
+              "Kombiniert den Feature-Verlauf in den Hauptteil",
+              "Erstellt ein neues Repository"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Merge integriert einen weiteren Zweigverlauf in den aktuellen Zweig.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Wo sollten Sie sich befinden, bevor Sie die Funktion mit der Hauptdatei zusammenführen?",
+            "options": [
+              "Auf Feature",
+              "Hauptsächlich",
+              "Auf jeder Filiale",
+              "Keine Filiale ausgecheckt"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Sie werden mit dem Zweig zusammengeführt, den Sie gerade ausgecheckt haben.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Was ist ein Merge-Commit?",
+            "options": [
+              "Ein Commit ohne übergeordnetes Element",
+              "Ein Commit mit genau einem Elternteil",
+              "Ein Commit, bei dem zwei Eltern ihre Geschichten verbinden",
+              "Ein gelöschter Commit"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Ein Merge-Commit verbindet zwei Verlaufszeilen.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Warum ist die Visualisierung von Zweigen sinnvoll?",
+            "options": [
+              "Es ändert die Befehlssyntax",
+              "Es hilft, Commit-Beziehungen zu verstehen",
+              "Es beseitigt Konflikte automatisch",
+              "Es deaktiviert den Checkout"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Durch die Betrachtung des Diagramms lassen sich Verzweigungsbewegungen und Zusammenführungen leichter nachvollziehen.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Funktion wieder zur Hauptseite zusammenführen",
+        "description": "Simulieren Sie einen vollständigen Verzweigungszyklus: Festschreiben für Hauptzweig, Festschreiben für Feature und dann Zusammenführen mit Hauptzweig.",
+        "starterCode": "# Build this flow:\n# main commit -> feature commit -> merge feature into main\n",
+        "language": "git",
+        "testCases": [
+          {
+            "input": "Goal: end on main with a merge commit, while feature still points to its latest feature commit.",
+            "expectedOutput": "HEAD=main\nHAS_BRANCH=main\nHAS_BRANCH=feature\nMIN_COMMITS=4\nBRANCH_AT=feature:C2\nBRANCH_AT=main:C3\nMERGE_COMMIT_ON=main",
+            "isHidden": false
+          }
+        ],
+        "hint": "Führen Sie zuerst Commits für beide Zweige durch und checken Sie dann die Haupt- und Zusammenführungsfunktion aus.",
+        "solution": "git commit -m \"Base on main\"\ngit branch feature\ngit checkout feature\ngit commit -m \"Feature commit\"\ngit checkout main\ngit merge feature",
+        "xpReward": 15
+      },
+      "xpReward": 35,
+      "order": 2
+    },
+    {
+      "id": "git_lesson_4",
+      "courseId": "git",
+      "moduleId": "workflow",
+      "title": "Einsteiger-Zweig-Workflow-Mission",
+      "description": "Üben Sie einen End-to-End-Zweig-Workflow mit checkout -b und merge",
+      "theorySlides": [
+        {
+          "title": "Tägliches Arbeitsablaufmuster",
+          "content": "Ein praktischer Anfängerablauf:\n\n1) Beginnen Sie mit dem Hauptmenü\n2) Zweig mit checkout -b erstellen\n3) Beauftragen Sie die Feature-Arbeit\n4) Zurück zum Hauptmenü\n5) Zweig zusammenführen",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Warum das funktioniert",
+          "content": "Dieser Workflow sorgt dafür, dass Änderungen fokussiert, überprüfbar und bei Bedarf einfach rückgängig zu machen sind.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Missionsbefehle",
+          "content": "Verwenden Sie genau diese Idee in Ihrer letzten Anfänger-Challenge.",
+          "codeSnippet": "git commit -m \"Main baseline\"\ngit checkout -b bugfix\ngit commit -m \"Fix issue\"\ngit checkout main\ngit commit -m \"Main update\"\ngit merge bugfix",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Was ist der beste Befehl, um Zweige schnell zu erstellen und zu wechseln?",
+            "options": [
+              "git merge -b",
+              "git checkout -b <Name>",
+              "Git-Status -b",
+              "git commit -b"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "checkout -b kombiniert Zweigerstellung und Zweigwechsel.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Wann erfolgt in diesem Workflow die Zusammenführung?",
+            "options": [
+              "Vor jedem Commit",
+              "Nachdem der Feature-Zweig sinnvolle Commits hat",
+              "Nur wenn der Zweig leer ist",
+              "Unmittelbar nach git init"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Sie führen die Zusammenführung durch, nachdem Sie die Funktionsarbeit implementiert und festgeschrieben haben.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Warum sollte man sich in dieser Mission vor dem Zusammenführen auf Main festlegen?",
+            "options": [
+              "Erstellen unterschiedlicher Historien für eine realistische Zusammenführungspraxis",
+              "Zum Löschen des Feature-Zweigs",
+              "Um Commits für die Funktion zu vermeiden",
+              "Zum Deaktivieren von Merge-Commits"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Bei einer realistischen Zusammenführung werden häufig zwei Zweige zusammengeführt, die sich beide vorwärts bewegt haben.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Was sollten Sie nach der Zusammenführung überprüfen?",
+            "options": [
+              "HEAD-Zweig und Diagrammform",
+              "Nur Dateianzahl",
+              "Internetverbindung",
+              "Compiler-Version"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Überprüfen Sie die Verzweigungszeiger und das Commit-Diagramm, um die Korrektheit des Workflows zu bestätigen.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Workflow-Mission: Bugfix-Merge",
+        "description": "Verwenden Sie checkout -b, erstellen Sie Commits für beide Zweige und schließen Sie mit einer Zusammenführung in main ab.",
+        "starterCode": "# Build this mission flow with real git commands\n",
+        "language": "git",
+        "testCases": [
+          {
+            "input": "Goal: final graph should include bugfix branch and a merge commit on main.",
+            "expectedOutput": "HEAD=main\nHAS_BRANCH=main\nHAS_BRANCH=bugfix\nMIN_COMMITS=5\nBRANCH_AT=bugfix:C2\nBRANCH_AT=main:C4\nMERGE_COMMIT_ON=main",
+            "isHidden": false
+          }
+        ],
+        "hint": "Versuchen Sie: Haupt-Commit -> Checkout -b Bugfix -> Bugfix-Commit -> Checkout Main -> Haupt-Commit -> Bugfix zusammenführen",
+        "solution": "git commit -m \"Main baseline\"\ngit checkout -b bugfix\ngit commit -m \"Fix bug\"\ngit checkout main\ngit commit -m \"Main progress\"\ngit merge bugfix",
+        "xpReward": 15
+      },
+      "xpReward": 40,
+      "order": 3
+    }
+  ]
+}

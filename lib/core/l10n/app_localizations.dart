@@ -182,6 +182,9 @@ class AppLocalizations {
     'react_desc': 'Create interactive UIs with React',
     'sql': 'SQL',
     'sql_desc': 'Master database queries with SQL',
+    'git': 'Git & GitHub',
+    'git_desc':
+        'Learn version control basics with branching and merging workflows',
     'python_intermediate': 'Python Intermediate',
     'python_intermediate_desc':
         'OOP, decorators, generators and advanced patterns',
@@ -224,6 +227,25 @@ class AppLocalizations {
     'lessons_count': 'lessons',
     'start_course': 'Start Course',
     'continue_course': 'Continue Course',
+    'filter_all': 'All',
+    'filter_new': 'New',
+    'streak_days': 'day streak',
+    'start_streak': 'Start a streak',
+    'lessons_completed': 'lessons completed',
+    'start_first_course_title': 'Start your first course',
+    'start_first_course_desc':
+        'Open the course library and pick a path that fits your current goal.',
+    'browse': 'Browse',
+    'no_courses_match_filter': 'No courses match this filter',
+    'no_courses_match_filter_desc':
+        'Switch back to all courses to keep exploring your learning paths.',
+    'show_all_courses': 'Show all courses',
+    'action_review': 'Review',
+    'action_resume': 'Resume',
+    'action_start': 'Start',
+    'course_complete': 'Course complete',
+    'next_prefix': 'Next',
+    'start_with_first_lesson': 'Start with the first lesson',
 
     // Lessons
     'lesson': 'Lesson',
@@ -254,8 +276,22 @@ class AppLocalizations {
     'test_failed': 'Test Failed',
     'try_again': 'Try Again',
     'show_hint': 'Show Hint',
+    'hide_hint': 'Hide Hint',
     'reset_code': 'Reset Code',
+    'reset': 'Reset',
     'check_answer': 'Check Answer',
+    'run_simulation': 'Run Simulation',
+    'running': 'Running...',
+    'git_terminal': 'Git Terminal',
+    'type_git_commands': 'Type git commands here...',
+    'challenge_goal': 'Challenge Goal',
+    'repository_graph': 'Repository Graph',
+    'simulation_error': 'Simulation error',
+    'simulation_output': 'Simulation output',
+    'git_goal_complete': 'Goal complete!',
+    'git_goal_not_completed': 'Goal not completed yet:',
+    'git_goal_success':
+        'Great work! You reached the Git goal. Complete the lesson to get XP.',
 
     // Progress
     'progress': 'Progress',
@@ -424,6 +460,9 @@ class AppLocalizations {
     'react_desc': 'Створюйте інтерактивні інтерфейси з React',
     'sql': 'SQL',
     'sql_desc': 'Опануйте запити до баз даних за допомогою SQL',
+    'git': 'Git і GitHub',
+    'git_desc':
+        'Вивчіть основи контролю версій через гілки та робочі процеси злиття',
     'python_intermediate': 'Python (середній рівень)',
     'python_intermediate_desc':
         'ООП, декоратори, генератори та просунуті патерни',
@@ -466,6 +505,25 @@ class AppLocalizations {
     'lessons_count': 'уроків',
     'start_course': 'Почати курс',
     'continue_course': 'Продовжити курс',
+    'filter_all': 'Усі',
+    'filter_new': 'Нові',
+    'streak_days': 'днів поспіль',
+    'start_streak': 'Почніть серію',
+    'lessons_completed': 'уроків завершено',
+    'start_first_course_title': 'Почніть свій перший курс',
+    'start_first_course_desc':
+        'Відкрийте бібліотеку курсів і виберіть шлях під вашу поточну ціль.',
+    'browse': 'Огляд',
+    'no_courses_match_filter': 'За цим фільтром курсів не знайдено',
+    'no_courses_match_filter_desc':
+        'Поверніться до всіх курсів, щоб продовжити вивчати доступні шляхи.',
+    'show_all_courses': 'Показати всі курси',
+    'action_review': 'Повторити',
+    'action_resume': 'Продовжити',
+    'action_start': 'Почати',
+    'course_complete': 'Курс завершено',
+    'next_prefix': 'Далі',
+    'start_with_first_lesson': 'Почніть з першого уроку',
 
     // Lessons
     'lesson': 'Урок',
@@ -496,8 +554,22 @@ class AppLocalizations {
     'test_failed': 'Тест не пройдено',
     'try_again': 'Спробувати ще раз',
     'show_hint': 'Показати підказку',
+    'hide_hint': 'Сховати підказку',
     'reset_code': 'Скинути код',
+    'reset': 'Скинути',
     'check_answer': 'Перевірити відповідь',
+    'run_simulation': 'Запустити симуляцію',
+    'running': 'Виконується...',
+    'git_terminal': 'Git термінал',
+    'type_git_commands': 'Введіть git-команди тут...',
+    'challenge_goal': 'Мета завдання',
+    'repository_graph': 'Граф репозиторію',
+    'simulation_error': 'Помилка симуляції',
+    'simulation_output': 'Вивід симуляції',
+    'git_goal_complete': 'Мету виконано!',
+    'git_goal_not_completed': 'Мету ще не виконано:',
+    'git_goal_success':
+        'Чудова робота! Ви досягли Git-мети. Завершіть урок, щоб отримати XP.',
 
     // Progress
     'progress': 'Прогрес',
@@ -668,6 +740,9 @@ class AppLocalizations {
     'react_desc': 'Crea interfaces interactivas con React',
     'sql': 'SQL',
     'sql_desc': 'Domina las consultas de bases de datos con SQL',
+    'git': 'Git y GitHub',
+    'git_desc':
+        'Aprende los fundamentos del control de versiones con ramas y fusiones',
     'python_intermediate': 'Python Intermedio',
     'python_intermediate_desc':
         'POO, decoradores, generadores y patrones avanzados',
@@ -710,6 +785,25 @@ class AppLocalizations {
     'lessons_count': 'lecciones',
     'start_course': 'Comenzar curso',
     'continue_course': 'Continuar curso',
+    'filter_all': 'Todos',
+    'filter_new': 'Nuevos',
+    'streak_days': 'días seguidos',
+    'start_streak': 'Comienza una racha',
+    'lessons_completed': 'lecciones completadas',
+    'start_first_course_title': 'Empieza tu primer curso',
+    'start_first_course_desc':
+        'Abre la biblioteca de cursos y elige una ruta que encaje con tu objetivo actual.',
+    'browse': 'Explorar',
+    'no_courses_match_filter': 'Ningún curso coincide con este filtro',
+    'no_courses_match_filter_desc':
+        'Vuelve a todos los cursos para seguir explorando tus rutas de aprendizaje.',
+    'show_all_courses': 'Mostrar todos los cursos',
+    'action_review': 'Revisar',
+    'action_resume': 'Reanudar',
+    'action_start': 'Empezar',
+    'course_complete': 'Curso completado',
+    'next_prefix': 'Siguiente',
+    'start_with_first_lesson': 'Empieza con la primera lección',
 
     // Lessons
     'lesson': 'Lección',
@@ -740,8 +834,22 @@ class AppLocalizations {
     'test_failed': 'Prueba fallida',
     'try_again': 'Intentar de nuevo',
     'show_hint': 'Mostrar pista',
+    'hide_hint': 'Ocultar pista',
     'reset_code': 'Reiniciar código',
+    'reset': 'Restablecer',
     'check_answer': 'Comprobar respuesta',
+    'run_simulation': 'Ejecutar simulación',
+    'running': 'Ejecutando...',
+    'git_terminal': 'Terminal Git',
+    'type_git_commands': 'Escribe comandos git aquí...',
+    'challenge_goal': 'Objetivo del desafío',
+    'repository_graph': 'Grafo del repositorio',
+    'simulation_error': 'Error de simulación',
+    'simulation_output': 'Salida de simulación',
+    'git_goal_complete': '¡Objetivo completado!',
+    'git_goal_not_completed': 'El objetivo aún no está completo:',
+    'git_goal_success':
+        '¡Excelente! Alcanzaste el objetivo de Git. Completa la lección para ganar XP.',
 
     // Progress
     'progress': 'Progreso',
@@ -910,6 +1018,9 @@ class AppLocalizations {
     'react_desc': 'Erstelle interaktive Benutzeroberflächen mit React',
     'sql': 'SQL',
     'sql_desc': 'Beherrsche Datenbankabfragen mit SQL',
+    'git': 'Git & GitHub',
+    'git_desc':
+        'Lerne die Grundlagen der Versionskontrolle mit Branching und Merging',
     'python_intermediate': 'Python Mittelstufe',
     'python_intermediate_desc':
         'OOP, Decorators, Generatoren und fortgeschrittene Muster',
@@ -952,6 +1063,25 @@ class AppLocalizations {
     'lessons_count': 'Lektionen',
     'start_course': 'Kurs starten',
     'continue_course': 'Kurs fortsetzen',
+    'filter_all': 'Alle',
+    'filter_new': 'Neu',
+    'streak_days': 'Tage am Stück',
+    'start_streak': 'Starte eine Serie',
+    'lessons_completed': 'Lektionen abgeschlossen',
+    'start_first_course_title': 'Starte deinen ersten Kurs',
+    'start_first_course_desc':
+        'Öffne die Kursbibliothek und wähle einen Lernpfad, der zu deinem aktuellen Ziel passt.',
+    'browse': 'Entdecken',
+    'no_courses_match_filter': 'Keine Kurse passen zu diesem Filter',
+    'no_courses_match_filter_desc':
+        'Wechsle zurück zu allen Kursen, um weiter Lernpfade zu erkunden.',
+    'show_all_courses': 'Alle Kurse anzeigen',
+    'action_review': 'Wiederholen',
+    'action_resume': 'Fortsetzen',
+    'action_start': 'Starten',
+    'course_complete': 'Kurs abgeschlossen',
+    'next_prefix': 'Nächste',
+    'start_with_first_lesson': 'Starte mit der ersten Lektion',
 
     // Lessons
     'lesson': 'Lektion',
@@ -982,8 +1112,22 @@ class AppLocalizations {
     'test_failed': 'Test fehlgeschlagen',
     'try_again': 'Erneut versuchen',
     'show_hint': 'Hinweis anzeigen',
+    'hide_hint': 'Hinweis ausblenden',
     'reset_code': 'Code zurücksetzen',
+    'reset': 'Zurücksetzen',
     'check_answer': 'Antwort überprüfen',
+    'run_simulation': 'Simulation ausführen',
+    'running': 'Läuft...',
+    'git_terminal': 'Git-Terminal',
+    'type_git_commands': 'Gib hier Git-Befehle ein...',
+    'challenge_goal': 'Challenge-Ziel',
+    'repository_graph': 'Repository-Graph',
+    'simulation_error': 'Simulationsfehler',
+    'simulation_output': 'Simulationsausgabe',
+    'git_goal_complete': 'Ziel erreicht!',
+    'git_goal_not_completed': 'Ziel noch nicht erreicht:',
+    'git_goal_success':
+        'Großartig! Du hast das Git-Ziel erreicht. Schließe die Lektion ab, um XP zu erhalten.',
 
     // Progress
     'progress': 'Fortschritt',
@@ -1155,6 +1299,9 @@ class AppLocalizations {
     'react_desc': 'Créez des interfaces interactives avec React',
     'sql': 'SQL',
     'sql_desc': 'Maîtrisez les requêtes de base de données avec SQL',
+    'git': 'Git et GitHub',
+    'git_desc':
+        'Apprenez les bases du contrôle de version avec des workflows de branches et de fusion',
     'python_intermediate': 'Python Intermédiaire',
     'python_intermediate_desc':
         'POO, décorateurs, générateurs et patterns avancés',
@@ -1198,6 +1345,25 @@ class AppLocalizations {
     'lessons_count': 'leçons',
     'start_course': 'Commencer le cours',
     'continue_course': 'Continuer le cours',
+    'filter_all': 'Tous',
+    'filter_new': 'Nouveaux',
+    'streak_days': 'jours d\'affilée',
+    'start_streak': 'Commencez une série',
+    'lessons_completed': 'leçons terminées',
+    'start_first_course_title': 'Commencez votre premier cours',
+    'start_first_course_desc':
+        'Ouvrez la bibliothèque de cours et choisissez un parcours adapté à votre objectif actuel.',
+    'browse': 'Parcourir',
+    'no_courses_match_filter': 'Aucun cours ne correspond à ce filtre',
+    'no_courses_match_filter_desc':
+        'Revenez à tous les cours pour continuer à explorer vos parcours d\'apprentissage.',
+    'show_all_courses': 'Afficher tous les cours',
+    'action_review': 'Réviser',
+    'action_resume': 'Reprendre',
+    'action_start': 'Commencer',
+    'course_complete': 'Cours terminé',
+    'next_prefix': 'Suivant',
+    'start_with_first_lesson': 'Commencez par la première leçon',
 
     // Lessons
     'lesson': 'Leçon',
@@ -1228,8 +1394,22 @@ class AppLocalizations {
     'test_failed': 'Test échoué',
     'try_again': 'Réessayer',
     'show_hint': 'Afficher l\'indice',
+    'hide_hint': 'Masquer l\'indice',
     'reset_code': 'Réinitialiser le code',
+    'reset': 'Réinitialiser',
     'check_answer': 'Vérifier la réponse',
+    'run_simulation': 'Lancer la simulation',
+    'running': 'Exécution...',
+    'git_terminal': 'Terminal Git',
+    'type_git_commands': 'Tapez les commandes git ici...',
+    'challenge_goal': 'Objectif du défi',
+    'repository_graph': 'Graphe du dépôt',
+    'simulation_error': 'Erreur de simulation',
+    'simulation_output': 'Sortie de la simulation',
+    'git_goal_complete': 'Objectif atteint !',
+    'git_goal_not_completed': 'Objectif pas encore atteint :',
+    'git_goal_success':
+        'Excellent ! Vous avez atteint l\'objectif Git. Terminez la leçon pour gagner de l\'XP.',
 
     // Progress
     'progress': 'Progrès',
@@ -1403,6 +1583,8 @@ class AppLocalizations {
     'react_desc': 'Twórz interaktywne interfejsy z React',
     'sql': 'SQL',
     'sql_desc': 'Opanuj zapytania bazodanowe z SQL',
+    'git': 'Git i GitHub',
+    'git_desc': 'Poznaj podstawy kontroli wersji z użyciem gałęzi i scalania',
     'python_intermediate': 'Python Średniozaawansowany',
     'python_intermediate_desc':
         'OOP, dekoratory, generatory i zaawansowane wzorce',
@@ -1445,6 +1627,25 @@ class AppLocalizations {
     'lessons_count': 'lekcji',
     'start_course': 'Rozpocznij kurs',
     'continue_course': 'Kontynuuj kurs',
+    'filter_all': 'Wszystkie',
+    'filter_new': 'Nowe',
+    'streak_days': 'dni z rzędu',
+    'start_streak': 'Rozpocznij serię',
+    'lessons_completed': 'lekcji ukończono',
+    'start_first_course_title': 'Rozpocznij swój pierwszy kurs',
+    'start_first_course_desc':
+        'Otwórz bibliotekę kursów i wybierz ścieżkę, która pasuje do Twojego aktualnego celu.',
+    'browse': 'Przeglądaj',
+    'no_courses_match_filter': 'Brak kursów pasujących do tego filtra',
+    'no_courses_match_filter_desc':
+        'Wróć do wszystkich kursów, aby dalej odkrywać ścieżki nauki.',
+    'show_all_courses': 'Pokaż wszystkie kursy',
+    'action_review': 'Powtórz',
+    'action_resume': 'Wznów',
+    'action_start': 'Start',
+    'course_complete': 'Kurs ukończony',
+    'next_prefix': 'Następnie',
+    'start_with_first_lesson': 'Zacznij od pierwszej lekcji',
 
     // Lessons
     'lesson': 'Lekcja',
@@ -1475,8 +1676,22 @@ class AppLocalizations {
     'test_failed': 'Test niezaliczony',
     'try_again': 'Spróbuj ponownie',
     'show_hint': 'Pokaż wskazówkę',
+    'hide_hint': 'Ukryj wskazówkę',
     'reset_code': 'Zresetuj kod',
+    'reset': 'Resetuj',
     'check_answer': 'Sprawdź odpowiedź',
+    'run_simulation': 'Uruchom symulację',
+    'running': 'Uruchamianie...',
+    'git_terminal': 'Terminal Git',
+    'type_git_commands': 'Wpisz tutaj polecenia git...',
+    'challenge_goal': 'Cel zadania',
+    'repository_graph': 'Graf repozytorium',
+    'simulation_error': 'Błąd symulacji',
+    'simulation_output': 'Wynik symulacji',
+    'git_goal_complete': 'Cel osiągnięty!',
+    'git_goal_not_completed': 'Cel nie został jeszcze osiągnięty:',
+    'git_goal_success':
+        'Świetna robota! Osiągnąłeś cel Git. Ukończ lekcję, aby zdobyć XP.',
 
     // Progress
     'progress': 'Postęp',

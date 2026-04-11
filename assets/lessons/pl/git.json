@@ -1,0 +1,433 @@
+{
+  "courseId": "git",
+  "lessons": [
+    {
+      "id": "git_lesson_1",
+      "courseId": "git",
+      "moduleId": "foundations",
+      "title": "Podstawy Gita: migawki i zatwierdzenia",
+      "description": "Dowiedz się, co śledzi Git i utwórz swoje pierwsze zatwierdzenie",
+      "theorySlides": [
+        {
+          "title": "Co to jest Git? 🌱",
+          "content": "Git to system kontroli wersji. Pomyśl o tym jak o wehikule czasu dla swojego projektu:\n\n• Zapisuj punkty kontrolne (zatwierdzenia)\n• Wracaj bezpiecznie\n• Porównaj zmiany\n• Współpracuj bez wzajemnego nadpisywania",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Trzy stany rdzenia",
+          "content": "W początkującym Gicie możesz sobie wyobrazić 3 warstwy:\n\n1) Pliki robocze (co edytujesz)\n2) Miejsce postoju (co przygotowujesz)\n3) Historia zobowiązań (to, co oszczędzasz na zawsze)",
+          "codeSnippet": "git status\n# see current state\n\ngit add .\n# stage all current changes\n\ngit commit -m \"Initial layout\"",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Pierwszy przepływ zatwierdzania",
+          "content": "Zatwierdzenie to migawka. Małe, jasne zatwierdzenia sprawiają, że projekty są łatwiejsze do zrozumienia.",
+          "codeSnippet": "git init\ngit status\ngit commit -m \"Initial commit\"",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Jaki jest główny cel Gita?",
+            "options": [
+              "Twórz komponenty interfejsu użytkownika",
+              "Śledź historię kodu i zarządzaj nią",
+              "Uruchamiaj zapytania SQL",
+              "Wdrażaj aplikacje automatycznie"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Git służy do śledzenia zmian plików w czasie i bezpiecznej koordynacji pracy.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co oznacza zatwierdzenie?",
+            "options": [
+              "Nazwa oddziału",
+              "Zależność projektu",
+              "Zapisana migawka zmian",
+              "Zdalny serwer"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Zatwierdzenie to zapisana migawka kodu w określonym momencie.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Które polecenie tworzy zatwierdzenie?",
+            "options": [
+              "gałąź gita",
+              "git scalaj",
+              "git commit -m „wiadomość”",
+              "przejdź do kasy"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Użyj git commit z komunikatem, aby utworzyć nową migawkę w historii.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Dlaczego komunikaty dotyczące zatwierdzania powinny być jasne?",
+            "options": [
+              "Zmieniają kolory gałęzi",
+              "Pomagają członkom zespołu zrozumieć, co się zmieniło",
+              "Szybciej dokonują fuzji",
+              "Zmniejszają rozmiar pliku"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Dobre komunikaty dotyczące zatwierdzeń sprawiają, że historia projektu jest czytelna dla Ciebie i Twojego zespołu.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Utwórz swoje pierwsze zatwierdzenie",
+        "description": "Uruchom polecenia, aby Twoje repozytorium zakończyło się jednym nowym zatwierdzeniem w pliku main.",
+        "starterCode": "# Inspect the repo first\ngit status\n\n# Create your first commit\n",
+        "language": "git",
+        "testCases": [
+          {
+            "input": "Goal: stay on main and create the first commit (C1) in history.",
+            "expectedOutput": "HEAD=main\nHAS_BRANCH=main\nMIN_COMMITS=2\nBRANCH_AT=main:C1",
+            "isHidden": false
+          }
+        ],
+        "hint": "Użyj: git commit -m „Początkowe zatwierdzenie”",
+        "solution": "git status\ngit commit -m \"Initial commit\"",
+        "xpReward": 15
+      },
+      "xpReward": 25,
+      "order": 0
+    },
+    {
+      "id": "git_lesson_2",
+      "courseId": "git",
+      "moduleId": "branching",
+      "title": "Gałęzie: Praca izolowana",
+      "description": "Twórz i przełączaj gałęzie, aby bezpiecznie pracować równolegle",
+      "theorySlides": [
+        {
+          "title": "Dlaczego gałęzie mają znaczenie 🌿",
+          "content": "Gałęzie pozwalają testować pomysły bez przerywania głównej linii:\n\n• główne podpory stabilne\n• gałęzie funkcyjne przeprowadzają eksperymenty\n• późniejsze łączenie łączy ukończoną pracę",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Twórz i przenoś",
+          "content": "Użyj gałęzi + kasy (lub kasy -b), aby utworzyć izolowane obszary robocze.",
+          "codeSnippet": "git branch feature/login\ngit checkout feature/login\n# now commits go to feature/login",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Skrót: kasa -b",
+          "content": "Twórz i przełączaj jednym poleceniem. Świetne do szybkiego uruchamiania funkcji.",
+          "codeSnippet": "git checkout -b feature/navbar\ngit commit -m \"Add navbar structure\"",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Jaki jest najlepszy powód, aby używać gałęzi funkcji?",
+            "options": [
+              "Aby całkowicie uniknąć zatwierdzeń",
+              "Aby odizolować pracę od pliku main",
+              "Aby przyspieszyć internet",
+              "Aby usunąć starą historię"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Gałęzie izolują niedokończoną pracę i chronią stabilną gałąź.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Do czego służy funkcja git checkout -b?",
+            "options": [
+              "Usuwa gałąź funkcji",
+              "Tworzy i przełącza do gałęzi funkcji",
+              "Łączy funkcję w główną",
+              "Wyświetla listę wszystkich oddziałów"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "checkout -b to skrót do tworzenia gałęzi + przełącznik.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Gdzie trafiają nowe zatwierdzenia po przejściu do funkcji?",
+            "options": [
+              "główny",
+              "funkcja",
+              "tylko zdalnie",
+              "nigdzie"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Zatwierdzenia są dołączone do aktualnie wyewidencjonowanej gałęzi.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Po co utrzymywać porządek główny podczas nauki?",
+            "options": [
+              "Aby zmniejszyć użycie procesora",
+              "Aby utrzymać stabilny postęp i uniknąć zamieszania",
+              "Aby zatwierdzenia były niewidoczne",
+              "Aby wyłączyć scalanie"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Czysta główna gałąź sprawia, że ​​historia projektu i wydania są bezpieczniejsze.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Utwórz i rozwijaj gałąź funkcji",
+        "description": "Utwórz zatwierdzenie na stronie głównej, następnie przejdź do funkcji i utwórz tam jeszcze jedno zatwierdzenie.",
+        "starterCode": "# 1) Make a baseline commit on main\n# 2) Create feature branch\n# 3) Switch to feature\n# 4) Create a feature commit\n",
+        "language": "git",
+        "testCases": [
+          {
+            "input": "Goal: finish on feature branch with separate tips for main and feature.",
+            "expectedOutput": "HEAD=feature\nHAS_BRANCH=main\nHAS_BRANCH=feature\nMIN_COMMITS=3\nBRANCH_AT=main:C1\nBRANCH_AT=feature:C2\nBRANCHES_DIFFER=main:feature",
+            "isHidden": false
+          }
+        ],
+        "hint": "Sekwencja: git commit -> funkcja gałęzi git -> funkcja git checkout -> git commit",
+        "solution": "git commit -m \"Base commit on main\"\ngit branch feature\ngit checkout feature\ngit commit -m \"Feature work\"",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 1
+    },
+    {
+      "id": "git_lesson_3",
+      "courseId": "git",
+      "moduleId": "merging",
+      "title": "Podstawy scalania",
+      "description": "Przenieś ukończoną funkcję z powrotem do głównego, używając zatwierdzeń scalających",
+      "theorySlides": [
+        {
+          "title": "Co to jest scalanie? 🔀",
+          "content": "Łączenie łączy historie z dwóch gałęzi.\n\nKiedy obie gałęzie zostaną przeniesione, Git tworzy zatwierdzenie scalania z dwoma gałęziami nadrzędnymi.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Podstawowy proces scalania",
+          "content": "Zwykle łączysz się z głównym, gdy prace nad funkcjami są już gotowe.",
+          "codeSnippet": "git checkout main\ngit merge feature\n# main now includes feature history",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Myśl na wykresach",
+          "content": "Git to wykres zatwierdzeń, a nie kopia folderu. Nazwy gałęzi to ruchome etykiety wskazujące na zatwierdzenia.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Co robi funkcja git merge z poziomu głównego?",
+            "options": [
+              "Usuwa funkcję",
+              "Przenosi funkcję do głównej bez historii",
+              "Łączy historię funkcji w stronę główną",
+              "Tworzy nowe repozytorium"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Merge integruje historię innej gałęzi z bieżącą gałęzią.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Gdzie powinieneś być przed połączeniem funkcji z główną?",
+            "options": [
+              "Funkcja",
+              "Na głównym",
+              "Na dowolnej gałęzi",
+              "Żaden oddział nie został sprawdzony"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Łączysz się z oddziałem, który aktualnie sprawdziłeś.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co to jest zatwierdzenie scalania?",
+            "options": [
+              "Zatwierdzenie bez elementu nadrzędnego",
+              "Zatwierdzenie z dokładnie jednym rodzicem",
+              "Zatwierdzenie, w którym dwoje rodziców łączy historie",
+              "Usunięte zatwierdzenie"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Zatwierdzenie scalania łączy dwie linie historii.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Dlaczego wizualizacja gałęzi jest przydatna?",
+            "options": [
+              "Zmienia składnię poleceń",
+              "Pomaga zrozumieć zaangażowane relacje",
+              "Automatycznie usuwa konflikty",
+              "Wyłącza realizację transakcji"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Widzenie wykresu ułatwia zrozumienie ruchu gałęzi i łączenia.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Połącz funkcję z powrotem do głównej",
+        "description": "Symuluj pełny cykl rozgałęzień: zatwierdź na głównym, zatwierdź na funkcji, a następnie połącz z głównym.",
+        "starterCode": "# Build this flow:\n# main commit -> feature commit -> merge feature into main\n",
+        "language": "git",
+        "testCases": [
+          {
+            "input": "Goal: end on main with a merge commit, while feature still points to its latest feature commit.",
+            "expectedOutput": "HEAD=main\nHAS_BRANCH=main\nHAS_BRANCH=feature\nMIN_COMMITS=4\nBRANCH_AT=feature:C2\nBRANCH_AT=main:C3\nMERGE_COMMIT_ON=main",
+            "isHidden": false
+          }
+        ],
+        "hint": "Najpierw wykonaj zatwierdzenia w obu gałęziach, a następnie sprawdź funkcję główną i scal.",
+        "solution": "git commit -m \"Base on main\"\ngit branch feature\ngit checkout feature\ngit commit -m \"Feature commit\"\ngit checkout main\ngit merge feature",
+        "xpReward": 15
+      },
+      "xpReward": 35,
+      "order": 2
+    },
+    {
+      "id": "git_lesson_4",
+      "courseId": "git",
+      "moduleId": "workflow",
+      "title": "Misja przepływu pracy dla początkujących oddziałów",
+      "description": "Przećwicz kompleksowy przepływ pracy w gałęziach, używając polecenia checkout -b i scalania",
+      "theorySlides": [
+        {
+          "title": "Dzienny wzorzec przepływu pracy",
+          "content": "Praktyczny przepływ dla początkujących:\n\n1) Zacznij od głównego\n2) Utwórz oddział z kasą -b\n3) Zaangażuj się w pracę nad funkcjami\n4) Wróć do głównego\n5) Połącz oddział",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Dlaczego to działa",
+          "content": "Dzięki temu przepływowi pracy zmiany są skoncentrowane, możliwe do przeglądania i łatwe do wycofania, jeśli zajdzie taka potrzeba.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Polecenia misji",
+          "content": "Wykorzystaj dokładnie ten pomysł w swoim ostatnim wyzwaniu dla początkujących.",
+          "codeSnippet": "git commit -m \"Main baseline\"\ngit checkout -b bugfix\ngit commit -m \"Fix issue\"\ngit checkout main\ngit commit -m \"Main update\"\ngit merge bugfix",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Jakie jest najlepsze polecenie, aby szybko tworzyć i przełączać gałęzie?",
+            "options": [
+              "git merge -b",
+              "git checkout -b <nazwa>",
+              "status gita -b",
+              "git zatwierdzenie -b"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "checkout -b łączy tworzenie gałęzi i przełączanie gałęzi.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Kiedy w tym przepływie pracy następuje scalanie?",
+            "options": [
+              "Przed jakimkolwiek zatwierdzeniem",
+              "Po tym, jak gałąź funkcji zawiera znaczące zatwierdzenia",
+              "Tylko wtedy, gdy oddział jest pusty",
+              "Natychmiast po git init"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Łączysz po wdrożeniu i zatwierdzeniu pracy nad funkcjami.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Po co angażować się na poziomie głównym przed połączeniem w tej misji?",
+            "options": [
+              "Aby utworzyć rozbieżne historie dla realistycznej praktyki łączenia",
+              "Aby usunąć gałąź funkcji",
+              "Aby uniknąć zatwierdzeń funkcji",
+              "Aby wyłączyć zatwierdzenia scalania"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Realistyczne połączenie często łączy dwie gałęzie, które posunęły się do przodu.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Co należy zweryfikować po fuzji?",
+            "options": [
+              "GŁOWA gałąź i kształt wykresu",
+              "Tylko liczba plików",
+              "Połączenie internetowe",
+              "Wersja kompilatora"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Sprawdź wskaźniki gałęzi i zatwierdź wykres, aby potwierdzić poprawność przepływu pracy.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Misja przepływu pracy: połączenie poprawek błędów",
+        "description": "Użyj checkout -b, utwórz zatwierdzenia w obu gałęziach i zakończ łączeniem z main.",
+        "starterCode": "# Build this mission flow with real git commands\n",
+        "language": "git",
+        "testCases": [
+          {
+            "input": "Goal: final graph should include bugfix branch and a merge commit on main.",
+            "expectedOutput": "HEAD=main\nHAS_BRANCH=main\nHAS_BRANCH=bugfix\nMIN_COMMITS=5\nBRANCH_AT=bugfix:C2\nBRANCH_AT=main:C4\nMERGE_COMMIT_ON=main",
+            "isHidden": false
+          }
+        ],
+        "hint": "Spróbuj: główne zatwierdzenie -> checkout -b bugfix -> naprawienie błędu zatwierdzenie -> checkout main -> główne zatwierdzenie -> scal błąd",
+        "solution": "git commit -m \"Main baseline\"\ngit checkout -b bugfix\ngit commit -m \"Fix bug\"\ngit checkout main\ngit commit -m \"Main progress\"\ngit merge bugfix",
+        "xpReward": 15
+      },
+      "xpReward": 40,
+      "order": 3
+    }
+  ]
+}

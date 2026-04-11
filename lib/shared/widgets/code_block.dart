@@ -19,14 +19,12 @@ class CodeBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final lines = code.split('\n');
-    
+
     return Container(
       decoration: BoxDecoration(
         color: const Color(0xFF282C34),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          color: Colors.white.withValues(alpha: 0.1),
-        ),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(12),
@@ -47,12 +45,17 @@ class CodeBlock extends StatelessWidget {
               child: Row(
                 children: [
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 4,
+                    ),
                     decoration: BoxDecoration(
                       color: _getLanguageColor(language).withValues(alpha: 0.2),
                       borderRadius: BorderRadius.circular(4),
                       border: Border.all(
-                        color: _getLanguageColor(language).withValues(alpha: 0.5),
+                        color: _getLanguageColor(
+                          language,
+                        ).withValues(alpha: 0.5),
                       ),
                     ),
                     child: Text(
@@ -156,6 +159,10 @@ class CodeBlock extends StatelessWidget {
         return const Color(0xFF1572B6);
       case 'dart':
         return const Color(0xFF0175C2);
+      case 'bash':
+      case 'shell':
+      case 'sh':
+        return const Color(0xFF22C55E);
       default:
         return const Color(0xFF61DAFB);
     }
@@ -164,11 +171,8 @@ class CodeBlock extends StatelessWidget {
 
 class InlineCode extends StatelessWidget {
   final String code;
-  
-  const InlineCode({
-    super.key,
-    required this.code,
-  });
+
+  const InlineCode({super.key, required this.code});
 
   @override
   Widget build(BuildContext context) {
@@ -177,9 +181,7 @@ class InlineCode extends StatelessWidget {
       decoration: BoxDecoration(
         color: const Color(0xFF282C34),
         borderRadius: BorderRadius.circular(4),
-        border: Border.all(
-          color: Colors.white.withValues(alpha: 0.1),
-        ),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
       ),
       child: Text(
         code,

@@ -1,0 +1,433 @@
+{
+  "courseId": "git",
+  "lessons": [
+    {
+      "id": "git_lesson_1",
+      "courseId": "git",
+      "moduleId": "foundations",
+      "title": "Bases de Git : instantanés et validations",
+      "description": "Comprendre ce que Git suit et créer votre premier commit",
+      "theorySlides": [
+        {
+          "title": "Qu’est-ce que Git ? 🌱",
+          "content": "Git est un système de contrôle de version. Considérez-le comme une machine à voyager dans le temps pour votre projet :\n\n• Enregistrer les points de contrôle (commits)\n• Rentrez en toute sécurité\n• Comparer les modifications\n• Collaborez sans vous écraser",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Les 3 États centraux",
+          "content": "Dans Git débutant, vous pouvez imaginer 3 couches :\n\n1) Fichiers de travail (ce que vous modifiez)\n2) Zone de transit (ce que vous préparez)\n3) Valider l'historique (ce que vous enregistrez pour toujours)",
+          "codeSnippet": "git status\n# see current state\n\ngit add .\n# stage all current changes\n\ngit commit -m \"Initial layout\"",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Premier flux de validation",
+          "content": "Un commit est un instantané. Des engagements petits et clairs facilitent la compréhension des projets.",
+          "codeSnippet": "git init\ngit status\ngit commit -m \"Initial commit\"",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Quel est l’objectif principal de Git ?",
+            "options": [
+              "Créer des composants d'interface utilisateur",
+              "Suivre et gérer l'historique du code",
+              "Exécuter des requêtes SQL",
+              "Déployer automatiquement les applications"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Git permet de suivre les modifications des fichiers au fil du temps et de coordonner le travail en toute sécurité.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Que représente un commit ?",
+            "options": [
+              "Un nom de succursale",
+              "Une dépendance de projet",
+              "Un instantané enregistré des modifications",
+              "Un serveur distant"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Un commit est un instantané enregistré de votre code à un moment précis.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Quelle commande crée un commit ?",
+            "options": [
+              "branche git",
+              "git fusionner",
+              "git commit -m \"message\"",
+              "git paiement"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Utilisez git commit avec un message pour créer un nouvel instantané dans l'historique.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Pourquoi les messages de commit devraient-ils être clairs ?",
+            "options": [
+              "Ils changent la couleur des branches",
+              "Ils aident les coéquipiers à comprendre ce qui a changé",
+              "Ils accélèrent les fusions",
+              "Ils réduisent la taille du fichier"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "De bons messages de validation rendent l'historique du projet lisible pour vous et votre équipe.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Créez votre premier commit",
+        "description": "Exécutez les commandes pour que votre référentiel se termine par un nouveau commit sur main.",
+        "starterCode": "# Inspect the repo first\ngit status\n\n# Create your first commit\n",
+        "language": "git",
+        "testCases": [
+          {
+            "input": "Goal: stay on main and create the first commit (C1) in history.",
+            "expectedOutput": "HEAD=main\nHAS_BRANCH=main\nMIN_COMMITS=2\nBRANCH_AT=main:C1",
+            "isHidden": false
+          }
+        ],
+        "hint": "Utilisation : git commit -m \"Commit initial\"",
+        "solution": "git status\ngit commit -m \"Initial commit\"",
+        "xpReward": 15
+      },
+      "xpReward": 25,
+      "order": 0
+    },
+    {
+      "id": "git_lesson_2",
+      "courseId": "git",
+      "moduleId": "branching",
+      "title": "Branches : Travail isolé",
+      "description": "Créez et changez de branche pour travailler en parallèle en toute sécurité",
+      "theorySlides": [
+        {
+          "title": "Pourquoi les succursales sont importantes 🌿",
+          "content": "Les branches vous permettent de tester des idées sans rompre votre ligne principale :\n\n• le principal reste stable\n• Les branches de fonctionnalités organisent des expériences\n• La fusion ultérieure combine le travail terminé",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Créer et déplacer",
+          "content": "Utilisez branch + checkout (ou checkout -b) pour créer des espaces de travail isolés.",
+          "codeSnippet": "git branch feature/login\ngit checkout feature/login\n# now commits go to feature/login",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Raccourci : checkout -b",
+          "content": "Créez et changez en une seule commande. Idéal pour les démarrages rapides de fonctionnalités.",
+          "codeSnippet": "git checkout -b feature/navbar\ngit commit -m \"Add navbar structure\"",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Quelle est la meilleure raison d’utiliser une branche de fonctionnalités ?",
+            "options": [
+              "Pour éviter complètement les commits",
+              "Pour isoler le travail du principal",
+              "Pour accélérer Internet",
+              "Pour supprimer l'ancien historique"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Les branches isolent le travail inachevé et protègent la branche stable.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Que fait la fonctionnalité git checkout -b ?",
+            "options": [
+              "Supprime la branche de fonctionnalité",
+              "Crée et passe à la branche de fonctionnalités",
+              "Fusionne la fonctionnalité dans la principale",
+              "Répertorie toutes les succursales"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "checkout -b est un raccourci pour la création de branche + le commutateur.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Après le paiement pour la fonctionnalité, où vont les nouveaux commits ?",
+            "options": [
+              "principal",
+              "fonctionnalité",
+              "à distance uniquement",
+              "nulle part"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Les commits sont attachés à la branche actuellement extraite.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Pourquoi garder la maison propre tout en apprenant ?",
+            "options": [
+              "Pour réduire l'utilisation du processeur",
+              "Pour maintenir une progression stable et éviter toute confusion",
+              "Pour rendre les commits invisibles",
+              "Pour désactiver les fusions"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Une branche principale propre rend l'historique du projet et les versions plus sûres.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Créer et faire progresser une branche de fonctionnalités",
+        "description": "Créez un commit sur main, puis passez à la fonctionnalité et créez-y un autre commit.",
+        "starterCode": "# 1) Make a baseline commit on main\n# 2) Create feature branch\n# 3) Switch to feature\n# 4) Create a feature commit\n",
+        "language": "git",
+        "testCases": [
+          {
+            "input": "Goal: finish on feature branch with separate tips for main and feature.",
+            "expectedOutput": "HEAD=feature\nHAS_BRANCH=main\nHAS_BRANCH=feature\nMIN_COMMITS=3\nBRANCH_AT=main:C1\nBRANCH_AT=feature:C2\nBRANCHES_DIFFER=main:feature",
+            "isHidden": false
+          }
+        ],
+        "hint": "Séquence : git commit -> fonctionnalité de branche git -> fonctionnalité de paiement git -> git commit",
+        "solution": "git commit -m \"Base commit on main\"\ngit branch feature\ngit checkout feature\ngit commit -m \"Feature work\"",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 1
+    },
+    {
+      "id": "git_lesson_3",
+      "courseId": "git",
+      "moduleId": "merging",
+      "title": "Fusionner les principes fondamentaux",
+      "description": "Ramenez le travail de fonctionnalité terminé dans le principal à l'aide des validations de fusion",
+      "theorySlides": [
+        {
+          "title": "Qu’est-ce que la fusion ? 🔀",
+          "content": "La fusion combine les historiques de deux branches.\n\nLorsque les deux branches sont déplacées, Git crée une validation de fusion avec deux parents.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Flux de travail de fusion de base",
+          "content": "Vous fusionnez généralement dans main une fois que le travail sur les fonctionnalités est prêt.",
+          "codeSnippet": "git checkout main\ngit merge feature\n# main now includes feature history",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Pensez en graphiques",
+          "content": "Git est un graphique de validation, pas une copie de dossier. Les noms de branches sont des étiquettes mobiles pointant vers les validations.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Que fait la fonctionnalité de fusion de git depuis main ?",
+            "options": [
+              "Supprime la fonctionnalité",
+              "Déplace la fonctionnalité vers le principal sans historique",
+              "Combine l'historique des fonctionnalités dans le principal",
+              "Crée un nouveau référentiel"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "La fusion intègre un autre historique de branche dans la branche actuelle.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Où devriez-vous être avant de fusionner la fonctionnalité dans main ?",
+            "options": [
+              "En vedette",
+              "Sur le principal",
+              "Sur n'importe quelle branche",
+              "Aucune succursale extraite"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Vous fusionnez dans la branche que vous avez actuellement extraite.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Qu'est-ce qu'un commit de fusion ?",
+            "options": [
+              "Un commit sans parent",
+              "Un commit avec exactement un parent",
+              "Un engagement avec deux parents rejoignant les histoires",
+              "Un commit supprimé"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Un commit de fusion relie deux lignes d’historique.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Pourquoi la visualisation des branches est-elle utile ?",
+            "options": [
+              "Cela change la syntaxe des commandes",
+              "Cela aide à comprendre les relations d'engagement",
+              "Il supprime automatiquement les conflits",
+              "Il désactive le paiement"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Voir le graphique rend le mouvement des branches et les fusions plus faciles à raisonner.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Fusionner la fonctionnalité avec la principale",
+        "description": "Simulez un cycle de branche complet : validez sur main, validez sur la fonctionnalité, puis fusionnez dans main.",
+        "starterCode": "# Build this flow:\n# main commit -> feature commit -> merge feature into main\n",
+        "language": "git",
+        "testCases": [
+          {
+            "input": "Goal: end on main with a merge commit, while feature still points to its latest feature commit.",
+            "expectedOutput": "HEAD=main\nHAS_BRANCH=main\nHAS_BRANCH=feature\nMIN_COMMITS=4\nBRANCH_AT=feature:C2\nBRANCH_AT=main:C3\nMERGE_COMMIT_ON=main",
+            "isHidden": false
+          }
+        ],
+        "hint": "Effectuez d'abord les validations sur les deux branches, puis extrayez la fonctionnalité principale et la fusion.",
+        "solution": "git commit -m \"Base on main\"\ngit branch feature\ngit checkout feature\ngit commit -m \"Feature commit\"\ngit checkout main\ngit merge feature",
+        "xpReward": 15
+      },
+      "xpReward": 35,
+      "order": 2
+    },
+    {
+      "id": "git_lesson_4",
+      "courseId": "git",
+      "moduleId": "workflow",
+      "title": "Mission de workflow de branche pour débutants",
+      "description": "Pratiquez un flux de travail de branche de bout en bout en utilisant checkout -b et fusionnez",
+      "theorySlides": [
+        {
+          "title": "Modèle de flux de travail quotidien",
+          "content": "Un flux pratique pour débutant :\n\n1) Commencer par le principal\n2) Créer une branche avec checkout -b\n3) Valider le travail des fonctionnalités\n4) Retour à la page principale\n5) Fusionner la branche",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Pourquoi ça marche",
+          "content": "Ce flux de travail permet de conserver les modifications ciblées, révisables et faciles à annuler si nécessaire.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Commandes de mission",
+          "content": "Utilisez cette idée exacte dans votre défi final pour débutant.",
+          "codeSnippet": "git commit -m \"Main baseline\"\ngit checkout -b bugfix\ngit commit -m \"Fix issue\"\ngit checkout main\ngit commit -m \"Main update\"\ngit merge bugfix",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Quelle est la meilleure commande pour créer et changer de branche rapidement ?",
+            "options": [
+              "git fusionner -b",
+              "git checkout -b <nom>",
+              "statut git -b",
+              "git commit -b"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "checkout -b combine la création de branche et le changement de branche.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Dans ce workflow, quand fusionner ?",
+            "options": [
+              "Avant tout commit",
+              "Une fois que la branche de fonctionnalités a des commits significatifs",
+              "Uniquement lorsque la branche est vide",
+              "Immédiatement après git init"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Vous fusionnez après avoir implémenté et validé le travail sur les fonctionnalités.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Pourquoi s'engager sur main avant de fusionner dans cette mission ?",
+            "options": [
+              "Créer des historiques divergents pour une pratique de fusion réaliste",
+              "Pour supprimer une branche de fonctionnalité",
+              "Pour éviter les commits sur la fonctionnalité",
+              "Pour désactiver les validations de fusion"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Une fusion réaliste réunit souvent deux branches qui ont toutes deux progressé.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Que devez-vous vérifier après la fusion ?",
+            "options": [
+              "Branche HEAD et forme du graphique",
+              "Seul le nombre de fichiers",
+              "Connexion Internet",
+              "Version du compilateur"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Vérifiez les pointeurs de branche et le graphique de validation pour confirmer l’exactitude du flux de travail.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Mission de workflow : fusion de corrections de bugs",
+        "description": "Utilisez checkout -b, créez des commits sur les deux branches et terminez par une fusion dans main.",
+        "starterCode": "# Build this mission flow with real git commands\n",
+        "language": "git",
+        "testCases": [
+          {
+            "input": "Goal: final graph should include bugfix branch and a merge commit on main.",
+            "expectedOutput": "HEAD=main\nHAS_BRANCH=main\nHAS_BRANCH=bugfix\nMIN_COMMITS=5\nBRANCH_AT=bugfix:C2\nBRANCH_AT=main:C4\nMERGE_COMMIT_ON=main",
+            "isHidden": false
+          }
+        ],
+        "hint": "Essayez : commit principal -> checkout -b bugfix -> bugfix commit -> checkout main -> main commit -> fusionner bugfix",
+        "solution": "git commit -m \"Main baseline\"\ngit checkout -b bugfix\ngit commit -m \"Fix bug\"\ngit checkout main\ngit commit -m \"Main progress\"\ngit merge bugfix",
+        "xpReward": 15
+      },
+      "xpReward": 40,
+      "order": 3
+    }
+  ]
+}

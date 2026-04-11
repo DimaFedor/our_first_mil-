@@ -108,6 +108,24 @@ class CourseLocalizationService {
       ],
     ),
     _CourseDefinition(
+      id: 'git',
+      titleKey: 'git',
+      titleFallback: 'Git & GitHub',
+      descriptionKey: 'git_desc',
+      descriptionFallback:
+          'Learn version control basics with branching and merging workflows',
+      icon: '🌳',
+      color: Color(0xFFF97316),
+      difficultyKey: 'difficulty_beginner',
+      difficultyFallback: 'Beginner',
+      estimatedHours: 10,
+      tags: [
+        _LocalizedTextDescriptor('tag_programming', 'Programming'),
+        _LocalizedTextDescriptor('tag_beginner_friendly', 'Beginner-friendly'),
+        _LocalizedTextDescriptor('tag_modern', 'Modern'),
+      ],
+    ),
+    _CourseDefinition(
       id: 'python-intermediate',
       titleKey: 'python_intermediate',
       titleFallback: 'Python Intermediate',

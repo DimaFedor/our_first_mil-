@@ -141,7 +141,7 @@ class _CoursesScreenState extends ConsumerState<CoursesScreen> {
                                 Expanded(
                                   child: Text(
                                     '${filteredSnapshots.length} '
-                                    '${filteredSnapshots.length == 1 ? 'course' : 'courses'}',
+                                    '${AppLocalizations.of(context)?.get('courses') ?? 'courses'}',
                                     style: Theme.of(context)
                                         .textTheme
                                         .titleMedium
@@ -195,8 +195,8 @@ class _CoursesScreenState extends ConsumerState<CoursesScreen> {
                                     crossAxisSpacing: 16,
                                     mainAxisSpacing: 16,
                                     mainAxisExtent: crossAxisCount == 1
-                                        ? 304
-                                        : 312,
+                                        ? 340
+                                        : 348,
                                   ),
                               delegate: SliverChildBuilderDelegate((
                                 context,
@@ -304,18 +304,18 @@ class _CoursesScreenState extends ConsumerState<CoursesScreen> {
     List<_CourseSnapshot> snapshots,
     BuildContext context,
   ) {
-    final completedLabel =
-        AppLocalizations.of(context)?.get('completed') ?? 'Completed';
+    final l10n = AppLocalizations.of(context);
+    final completedLabel = l10n?.get('completed') ?? 'Completed';
 
     return [
       _CourseFilterItem(
         filter: _CourseFilter.all,
-        label: 'All',
+        label: l10n?.get('filter_all') ?? 'All',
         count: snapshots.length,
       ),
       _CourseFilterItem(
         filter: _CourseFilter.inProgress,
-        label: 'In progress',
+        label: l10n?.get('in_progress') ?? 'In progress',
         count: snapshots.where((snapshot) => snapshot.isInProgress).length,
       ),
       _CourseFilterItem(
@@ -325,7 +325,7 @@ class _CoursesScreenState extends ConsumerState<CoursesScreen> {
       ),
       _CourseFilterItem(
         filter: _CourseFilter.newCourses,
-        label: 'New',
+        label: l10n?.get('filter_new') ?? 'New',
         count: snapshots.where((snapshot) => snapshot.isNew).length,
       ),
     ];
@@ -397,13 +397,14 @@ class _CoursesHeroCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final heroTextColor = isDarkTheme ? Colors.white : const Color(0xFF0F172A);
     final heroMutedColor = heroTextColor.withValues(alpha: 0.72);
     final progressText =
-        '${stats.completionPercent}% ${AppLocalizations.of(context)?.get('progress') ?? 'Progress'}';
+        '${stats.completionPercent}% ${l10n?.get('progress') ?? 'Progress'}';
     final streakLabel = currentStreak > 0
-        ? '$currentStreak day streak'
-        : 'Start a streak';
+        ? '$currentStreak ${l10n?.get('streak_days') ?? 'day streak'}'
+        : l10n?.get('start_streak') ?? 'Start a streak';
 
     return Container(
       width: double.infinity,
@@ -459,8 +460,7 @@ class _CoursesHeroCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          AppLocalizations.of(context)?.get('courses') ??
-                              'Courses',
+                          l10n?.get('courses') ?? 'Courses',
                           style: Theme.of(context).textTheme.headlineSmall
                               ?.copyWith(
                                 color: heroTextColor,
@@ -469,9 +469,7 @@ class _CoursesHeroCard extends StatelessWidget {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          AppLocalizations.of(
-                                context,
-                              )?.get('choose_learning_path') ??
+                          l10n?.get('choose_learning_path') ??
                               'Choose your learning path',
                           style: Theme.of(context).textTheme.bodyMedium
                               ?.copyWith(color: heroMutedColor),
@@ -514,9 +512,7 @@ class _CoursesHeroCard extends StatelessWidget {
                 children: [
                   _MetricTile(
                     value: '${stats.totalCourses}',
-                    label:
-                        AppLocalizations.of(context)?.get('courses') ??
-                        'Courses',
+                    label: l10n?.get('courses') ?? 'Courses',
                     color: const Color(0xFF38BDF8),
                     textColor: heroTextColor,
                     backgroundColor: isDarkTheme
@@ -525,7 +521,7 @@ class _CoursesHeroCard extends StatelessWidget {
                   ),
                   _MetricTile(
                     value: '${stats.inProgressCourses}',
-                    label: 'In progress',
+                    label: l10n?.get('in_progress') ?? 'In progress',
                     color: const Color(0xFF34D399),
                     textColor: heroTextColor,
                     backgroundColor: isDarkTheme
@@ -534,9 +530,7 @@ class _CoursesHeroCard extends StatelessWidget {
                   ),
                   _MetricTile(
                     value: '${stats.completedCourses}',
-                    label:
-                        AppLocalizations.of(context)?.get('completed') ??
-                        'Completed',
+                    label: l10n?.get('completed') ?? 'Completed',
                     color: const Color(0xFFF59E0B),
                     textColor: heroTextColor,
                     backgroundColor: isDarkTheme
@@ -545,9 +539,7 @@ class _CoursesHeroCard extends StatelessWidget {
                   ),
                   _MetricTile(
                     value: '${stats.completedLessons}/${stats.totalLessons}',
-                    label:
-                        AppLocalizations.of(context)?.get('lessons') ??
-                        'Lessons',
+                    label: l10n?.get('lessons') ?? 'Lessons',
                     color: const Color(0xFF8B5CF6),
                     textColor: heroTextColor,
                     backgroundColor: isDarkTheme
@@ -581,7 +573,7 @@ class _CoursesHeroCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '${stats.completedLessons} lessons completed',
+                    '${stats.completedLessons} ${l10n?.get('lessons_completed') ?? 'lessons completed'}',
                     style: Theme.of(
                       context,
                     ).textTheme.bodySmall?.copyWith(color: heroMutedColor),
@@ -630,7 +622,7 @@ class _NextActionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final course = snapshot.course;
-    final actionLabel = snapshot.actionLabel;
+    final actionLabel = snapshot.actionLabel(context);
     final statusColor = snapshot.statusColor;
 
     return Material(
@@ -673,7 +665,7 @@ class _NextActionCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      snapshot.focusText,
+                      snapshot.focusText(context),
                       style: Theme.of(context).textTheme.labelLarge?.copyWith(
                         color: statusColor,
                         fontWeight: FontWeight.w800,
@@ -727,6 +719,7 @@ class _BrowsePromptCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Material(
       color: Colors.transparent,
       child: InkWell(
@@ -765,7 +758,8 @@ class _BrowsePromptCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      'Start your first course',
+                      l10n?.get('start_first_course_title') ??
+                          'Start your first course',
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         color: textColor,
                         fontWeight: FontWeight.w800,
@@ -773,7 +767,8 @@ class _BrowsePromptCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'Open the course library and pick a path that fits your current goal.',
+                      l10n?.get('start_first_course_desc') ??
+                          'Open the course library and pick a path that fits your current goal.',
                       style: Theme.of(
                         context,
                       ).textTheme.bodySmall?.copyWith(color: mutedColor),
@@ -782,7 +777,10 @@ class _BrowsePromptCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 12),
-              _ActionPill(label: 'Browse', color: const Color(0xFF0066FF)),
+              _ActionPill(
+                label: l10n?.get('browse') ?? 'Browse',
+                color: const Color(0xFF0066FF),
+              ),
             ],
           ),
         ),
@@ -969,7 +967,7 @@ class _CourseCard extends StatelessWidget {
                       ),
                       const Spacer(),
                       _StatusPill(
-                        label: snapshot.statusLabel,
+                        label: snapshot.statusLabel(context),
                         color: statusColor,
                       ),
                     ],
@@ -1016,7 +1014,7 @@ class _CourseCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
                   Text(
-                    snapshot.focusText,
+                    snapshot.focusText(context),
                     style: theme.textTheme.bodySmall?.copyWith(
                       color: onSurface.withValues(alpha: 0.72),
                       fontWeight: FontWeight.w600,
@@ -1064,7 +1062,7 @@ class _CourseCard extends StatelessWidget {
                         ),
                       ),
                       _ActionPill(
-                        label: snapshot.actionLabel,
+                        label: snapshot.actionLabel(context),
                         color: statusColor,
                       ),
                     ],
@@ -1086,6 +1084,7 @@ class _EmptyCoursesState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final onSurface = Theme.of(context).colorScheme.onSurface;
 
     return Container(
@@ -1114,7 +1113,8 @@ class _EmptyCoursesState extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            'No courses match this filter',
+            l10n?.get('no_courses_match_filter') ??
+                'No courses match this filter',
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
               color: onSurface,
               fontWeight: FontWeight.w800,
@@ -1123,7 +1123,8 @@ class _EmptyCoursesState extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            'Switch back to all courses to keep exploring your learning paths.',
+            l10n?.get('no_courses_match_filter_desc') ??
+                'Switch back to all courses to keep exploring your learning paths.',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               color: onSurface.withValues(alpha: 0.68),
             ),
@@ -1132,7 +1133,9 @@ class _EmptyCoursesState extends StatelessWidget {
           const SizedBox(height: 16),
           TextButton(
             onPressed: onShowAll,
-            child: const Text('Show all courses'),
+            child: Text(
+              l10n?.get('show_all_courses') ?? 'Show all courses',
+            ),
           ),
         ],
       ),
@@ -1148,6 +1151,7 @@ class _CoursesErrorState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final onSurface = Theme.of(context).colorScheme.onSurface;
     return Center(
       child: Padding(
@@ -1162,12 +1166,15 @@ class _CoursesErrorState extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             Text(
-              '${AppLocalizations.of(context)?.get('error') ?? 'Error'}: $error',
+              '${l10n?.get('error') ?? 'Error'}: $error',
               style: TextStyle(color: onSurface.withValues(alpha: 0.78)),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 12),
-            FilledButton(onPressed: onRetry, child: const Text('Retry')),
+            FilledButton(
+              onPressed: onRetry,
+              child: Text(l10n?.get('retry') ?? 'Retry'),
+            ),
           ],
         ),
       ),
@@ -1430,7 +1437,7 @@ class _NextActionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final course = snapshot.course;
-    final actionLabel = snapshot.actionLabel;
+    final actionLabel = snapshot.actionLabel(context);
     final statusColor = snapshot.statusColor;
 
     return Material(
@@ -1473,7 +1480,7 @@ class _NextActionCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      snapshot.focusText,
+                      snapshot.focusText(context),
                       style: Theme.of(context).textTheme.labelLarge?.copyWith(
                         color: statusColor,
                         fontWeight: FontWeight.w800,
@@ -1769,7 +1776,7 @@ class _CourseCard extends StatelessWidget {
                       ),
                       const Spacer(),
                       _StatusPill(
-                        label: snapshot.statusLabel,
+                        label: snapshot.statusLabel(context),
                         color: statusColor,
                       ),
                     ],
@@ -1816,7 +1823,7 @@ class _CourseCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
                   Text(
-                    snapshot.focusText,
+                    snapshot.focusText(context),
                     style: theme.textTheme.bodySmall?.copyWith(
                       color: onSurface.withValues(alpha: 0.72),
                       fontWeight: FontWeight.w600,
@@ -1864,7 +1871,7 @@ class _CourseCard extends StatelessWidget {
                         ),
                       ),
                       _ActionPill(
-                        label: snapshot.actionLabel,
+                        label: snapshot.actionLabel(context),
                         color: statusColor,
                       ),
                     ],
@@ -2324,24 +2331,28 @@ class _CourseSnapshot {
     return const Color(0xFF3B82F6);
   }
 
-  String get statusLabel {
-    if (isCompleted) return 'Done';
+  String statusLabel(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    if (isCompleted) return l10n?.get('completed') ?? 'Done';
     if (isInProgress) return '$completionPercent%';
-    return 'New';
+    return l10n?.get('filter_new') ?? 'New';
   }
 
-  String get actionLabel {
-    if (isCompleted) return 'Review';
-    if (isInProgress) return 'Resume';
-    return 'Start';
+  String actionLabel(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    if (isCompleted) return l10n?.get('action_review') ?? 'Review';
+    if (isInProgress) return l10n?.get('action_resume') ?? 'Resume';
+    return l10n?.get('action_start') ?? 'Start';
   }
 
-  String get focusText {
-    if (isCompleted) return 'Course complete';
+  String focusText(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    if (isCompleted) return l10n?.get('course_complete') ?? 'Course complete';
     final lesson = previewLesson;
     if (lesson != null) {
-      return 'Next: ${lesson.title}';
+      return '${l10n?.get('next_prefix') ?? 'Next'}: ${lesson.title}';
     }
-    return 'Start with the first lesson';
+    return l10n?.get('start_with_first_lesson') ??
+        'Start with the first lesson';
   }
 }

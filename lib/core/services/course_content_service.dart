@@ -7,6 +7,7 @@ class CourseContentService {
     'htmlcss',
     'react',
     'sql',
+    'git',
     'python-intermediate',
     'htmlcss-intermediate',
     'javascript-intermediate',
@@ -26,6 +27,8 @@ class CourseContentService {
         return getReactLessons();
       case 'sql':
         return getSQLLessons();
+      case 'git':
+        return getGitLessons();
       case 'python-intermediate':
         return getPythonIntermediateLessons();
       case 'htmlcss-intermediate':
@@ -8437,6 +8440,473 @@ const Child = React.memo(({ onClick }) => {
         ),
         xpReward: 30,
         order: 4,
+      ),
+    ];
+  }
+
+  static List<Lesson> getGitLessons() {
+    return [
+      Lesson(
+        id: 'git_lesson_1',
+        courseId: 'git',
+        moduleId: 'foundations',
+        title: 'Git Basics: Snapshots and Commits',
+        description: 'Understand what Git tracks and create your first commit',
+        theorySlides: [
+          TheorySlide(
+            title: 'What is Git? 🌱',
+            content:
+                'Git is a version control system. Think of it as a time machine for your project:\n\n• Save checkpoints (commits)\n• Go back safely\n• Compare changes\n• Collaborate without overwriting each other',
+            order: 0,
+          ),
+          TheorySlide(
+            title: 'The 3 Core States',
+            content:
+                'In beginner Git, you can imagine 3 layers:\n\n1) Working files (what you edit)\n2) Staging area (what you prepare)\n3) Commit history (what you save forever)',
+            codeSnippet: '''git status
+# see current state
+
+git add .
+# stage all current changes
+
+git commit -m "Initial layout"''',
+            codeLanguage: 'bash',
+            order: 1,
+          ),
+          TheorySlide(
+            title: 'First Commit Flow',
+            content:
+                'A commit is a snapshot. Small, clear commits make projects easier to understand.',
+            codeSnippet: '''git init
+git status
+git commit -m "Initial commit"''',
+            codeLanguage: 'bash',
+            order: 2,
+          ),
+        ],
+        quiz: Quiz(
+          questions: [
+            QuizQuestion(
+              question: 'What is the main purpose of Git?',
+              options: [
+                'Build UI components',
+                'Track and manage code history',
+                'Run SQL queries',
+                'Deploy apps automatically',
+              ],
+              correctAnswerIndex: 1,
+              explanation:
+                  'Git is for tracking file changes over time and coordinating work safely.',
+            ),
+            QuizQuestion(
+              question: 'What does a commit represent?',
+              options: [
+                'A branch name',
+                'A project dependency',
+                'A saved snapshot of changes',
+                'A remote server',
+              ],
+              correctAnswerIndex: 2,
+              explanation:
+                  'A commit is a saved snapshot of your code at a specific moment.',
+            ),
+            QuizQuestion(
+              question: 'Which command creates a commit?',
+              options: [
+                'git branch',
+                'git merge',
+                'git commit -m "message"',
+                'git checkout',
+              ],
+              correctAnswerIndex: 2,
+              explanation:
+                  'Use git commit with a message to create a new snapshot in history.',
+            ),
+            QuizQuestion(
+              question: 'Why should commit messages be clear?',
+              options: [
+                'They change branch colors',
+                'They help teammates understand what changed',
+                'They make merges faster',
+                'They reduce file size',
+              ],
+              correctAnswerIndex: 1,
+              explanation:
+                  'Good commit messages make project history readable for you and your team.',
+            ),
+          ],
+        ),
+        codingChallenge: CodingChallenge(
+          title: 'Create your first commit',
+          description:
+              'Run commands so your repository ends with one new commit on main.',
+          starterCode: '''# Inspect the repo first
+git status
+
+# Create your first commit
+''',
+          language: 'git',
+          testCases: [
+            TestCase(
+              input:
+                  'Goal: stay on main and create the first commit (C1) in history.',
+              expectedOutput: '''HEAD=main
+HAS_BRANCH=main
+MIN_COMMITS=2
+BRANCH_AT=main:C1''',
+            ),
+          ],
+          hint: 'Use: git commit -m "Initial commit"',
+          solution: '''git status
+git commit -m "Initial commit"''',
+        ),
+        xpReward: 25,
+        order: 0,
+      ),
+      Lesson(
+        id: 'git_lesson_2',
+        courseId: 'git',
+        moduleId: 'branching',
+        title: 'Branches: Isolated Work',
+        description: 'Create and switch branches to work safely in parallel',
+        theorySlides: [
+          TheorySlide(
+            title: 'Why Branches Matter 🌿',
+            content:
+                'Branches let you test ideas without breaking your main line:\n\n• main stays stable\n• feature branches hold experiments\n• merging later combines finished work',
+            order: 0,
+          ),
+          TheorySlide(
+            title: 'Create and Move',
+            content:
+                'Use branch + checkout (or checkout -b) to create isolated workspaces.',
+            codeSnippet: '''git branch feature/login
+git checkout feature/login
+# now commits go to feature/login''',
+            codeLanguage: 'bash',
+            order: 1,
+          ),
+          TheorySlide(
+            title: 'Shortcut: checkout -b',
+            content:
+                'Create and switch in one command. Great for fast feature starts.',
+            codeSnippet: '''git checkout -b feature/navbar
+git commit -m "Add navbar structure"''',
+            codeLanguage: 'bash',
+            order: 2,
+          ),
+        ],
+        quiz: Quiz(
+          questions: [
+            QuizQuestion(
+              question: 'What is the best reason to use a feature branch?',
+              options: [
+                'To avoid commits entirely',
+                'To isolate work from main',
+                'To speed up internet',
+                'To delete old history',
+              ],
+              correctAnswerIndex: 1,
+              explanation:
+                  'Branches isolate unfinished work and protect the stable branch.',
+            ),
+            QuizQuestion(
+              question: 'What does git checkout -b feature do?',
+              options: [
+                'Deletes feature branch',
+                'Creates and switches to feature branch',
+                'Merges feature into main',
+                'Lists all branches',
+              ],
+              correctAnswerIndex: 1,
+              explanation:
+                  'checkout -b is a shortcut for branch creation + switch.',
+            ),
+            QuizQuestion(
+              question: 'After checkout to feature, where do new commits go?',
+              options: ['main', 'feature', 'remote only', 'nowhere'],
+              correctAnswerIndex: 1,
+              explanation:
+                  'Commits are attached to the currently checked-out branch.',
+            ),
+            QuizQuestion(
+              question: 'Why keep main clean while learning?',
+              options: [
+                'To reduce CPU usage',
+                'To keep stable progress and avoid confusion',
+                'To make commits invisible',
+                'To disable merges',
+              ],
+              correctAnswerIndex: 1,
+              explanation:
+                  'A clean main branch makes project history and releases safer.',
+            ),
+          ],
+        ),
+        codingChallenge: CodingChallenge(
+          title: 'Create and advance a feature branch',
+          description:
+              'Create a commit on main, then move to feature and create one more commit there.',
+          starterCode: '''# 1) Make a baseline commit on main
+# 2) Create feature branch
+# 3) Switch to feature
+# 4) Create a feature commit
+''',
+          language: 'git',
+          testCases: [
+            TestCase(
+              input:
+                  'Goal: finish on feature branch with separate tips for main and feature.',
+              expectedOutput: '''HEAD=feature
+HAS_BRANCH=main
+HAS_BRANCH=feature
+MIN_COMMITS=3
+BRANCH_AT=main:C1
+BRANCH_AT=feature:C2
+BRANCHES_DIFFER=main:feature''',
+            ),
+          ],
+          hint:
+              'Sequence: git commit -> git branch feature -> git checkout feature -> git commit',
+          solution: '''git commit -m "Base commit on main"
+git branch feature
+git checkout feature
+git commit -m "Feature work"''',
+        ),
+        xpReward: 30,
+        order: 1,
+      ),
+      Lesson(
+        id: 'git_lesson_3',
+        courseId: 'git',
+        moduleId: 'merging',
+        title: 'Merge Fundamentals',
+        description:
+            'Bring finished feature work back into main using merge commits',
+        theorySlides: [
+          TheorySlide(
+            title: 'What is Merge? 🔀',
+            content:
+                'Merging combines histories from two branches.\n\nWhen both branches moved, Git creates a merge commit with two parents.',
+            order: 0,
+          ),
+          TheorySlide(
+            title: 'Basic Merge Workflow',
+            content: 'You usually merge into main after feature work is ready.',
+            codeSnippet: '''git checkout main
+git merge feature
+# main now includes feature history''',
+            codeLanguage: 'bash',
+            order: 1,
+          ),
+          TheorySlide(
+            title: 'Think in Graphs',
+            content:
+                'Git is a commit graph, not a folder copy. Branch names are movable labels pointing at commits.',
+            order: 2,
+          ),
+        ],
+        quiz: Quiz(
+          questions: [
+            QuizQuestion(
+              question: 'What does git merge feature do from main?',
+              options: [
+                'Deletes feature',
+                'Moves feature to main without history',
+                'Combines feature history into main',
+                'Creates a new repository',
+              ],
+              correctAnswerIndex: 2,
+              explanation:
+                  'Merge integrates another branch history into the current branch.',
+            ),
+            QuizQuestion(
+              question: 'Where should you be before merging feature into main?',
+              options: [
+                'On feature',
+                'On main',
+                'On any branch',
+                'No branch checked out',
+              ],
+              correctAnswerIndex: 1,
+              explanation:
+                  'You merge into the branch you currently have checked out.',
+            ),
+            QuizQuestion(
+              question: 'What is a merge commit?',
+              options: [
+                'A commit with no parent',
+                'A commit with exactly one parent',
+                'A commit with two parents joining histories',
+                'A deleted commit',
+              ],
+              correctAnswerIndex: 2,
+              explanation: 'A merge commit connects two lines of history.',
+            ),
+            QuizQuestion(
+              question: 'Why is visualizing branches useful?',
+              options: [
+                'It changes command syntax',
+                'It helps understand commit relationships',
+                'It removes conflicts automatically',
+                'It disables checkout',
+              ],
+              correctAnswerIndex: 1,
+              explanation:
+                  'Seeing the graph makes branch movement and merges easier to reason about.',
+            ),
+          ],
+        ),
+        codingChallenge: CodingChallenge(
+          title: 'Merge feature back to main',
+          description:
+              'Simulate a full branch cycle: commit on main, commit on feature, then merge into main.',
+          starterCode: '''# Build this flow:
+# main commit -> feature commit -> merge feature into main
+''',
+          language: 'git',
+          testCases: [
+            TestCase(
+              input:
+                  'Goal: end on main with a merge commit, while feature still points to its latest feature commit.',
+              expectedOutput: '''HEAD=main
+HAS_BRANCH=main
+HAS_BRANCH=feature
+MIN_COMMITS=4
+BRANCH_AT=feature:C2
+BRANCH_AT=main:C3
+MERGE_COMMIT_ON=main''',
+            ),
+          ],
+          hint:
+              'Do commits on both branches first, then checkout main and merge feature.',
+          solution: '''git commit -m "Base on main"
+git branch feature
+git checkout feature
+git commit -m "Feature commit"
+git checkout main
+git merge feature''',
+        ),
+        xpReward: 35,
+        order: 2,
+      ),
+      Lesson(
+        id: 'git_lesson_4',
+        courseId: 'git',
+        moduleId: 'workflow',
+        title: 'Beginner Branch Workflow Mission',
+        description:
+            'Practice an end-to-end branch workflow using checkout -b and merge',
+        theorySlides: [
+          TheorySlide(
+            title: 'Daily Workflow Pattern',
+            content:
+                'A practical beginner flow:\n\n1) Start from main\n2) Create branch with checkout -b\n3) Commit feature work\n4) Return to main\n5) Merge branch',
+            order: 0,
+          ),
+          TheorySlide(
+            title: 'Why this works',
+            content:
+                'This workflow keeps changes focused, reviewable, and easy to rollback if needed.',
+            order: 1,
+          ),
+          TheorySlide(
+            title: 'Mission Commands',
+            content: 'Use this exact idea in your final beginner challenge.',
+            codeSnippet: '''git commit -m "Main baseline"
+git checkout -b bugfix
+git commit -m "Fix issue"
+git checkout main
+git commit -m "Main update"
+git merge bugfix''',
+            codeLanguage: 'bash',
+            order: 2,
+          ),
+        ],
+        quiz: Quiz(
+          questions: [
+            QuizQuestion(
+              question:
+                  'What is the best command to create and switch branches fast?',
+              options: [
+                'git merge -b',
+                'git checkout -b <name>',
+                'git status -b',
+                'git commit -b',
+              ],
+              correctAnswerIndex: 1,
+              explanation:
+                  'checkout -b combines branch creation and branch switch.',
+            ),
+            QuizQuestion(
+              question: 'In this workflow, when do you merge?',
+              options: [
+                'Before any commit',
+                'After feature branch has meaningful commits',
+                'Only when branch is empty',
+                'Immediately after git init',
+              ],
+              correctAnswerIndex: 1,
+              explanation:
+                  'You merge after implementing and committing feature work.',
+            ),
+            QuizQuestion(
+              question: 'Why commit on main before merge in this mission?',
+              options: [
+                'To create diverging histories for realistic merge practice',
+                'To delete feature branch',
+                'To avoid commits on feature',
+                'To disable merge commits',
+              ],
+              correctAnswerIndex: 0,
+              explanation:
+                  'A realistic merge often joins two branches that both moved forward.',
+            ),
+            QuizQuestion(
+              question: 'What should you verify after merge?',
+              options: [
+                'HEAD branch and graph shape',
+                'Only file count',
+                'Internet connection',
+                'Compiler version',
+              ],
+              correctAnswerIndex: 0,
+              explanation:
+                  'Check branch pointers and commit graph to confirm workflow correctness.',
+            ),
+          ],
+        ),
+        codingChallenge: CodingChallenge(
+          title: 'Workflow mission: bugfix merge',
+          description:
+              'Use checkout -b, create commits on both branches, and finish with a merge into main.',
+          starterCode: '''# Build this mission flow with real git commands
+''',
+          language: 'git',
+          testCases: [
+            TestCase(
+              input:
+                  'Goal: final graph should include bugfix branch and a merge commit on main.',
+              expectedOutput: '''HEAD=main
+HAS_BRANCH=main
+HAS_BRANCH=bugfix
+MIN_COMMITS=5
+BRANCH_AT=bugfix:C2
+BRANCH_AT=main:C4
+MERGE_COMMIT_ON=main''',
+            ),
+          ],
+          hint:
+              'Try: main commit -> checkout -b bugfix -> bugfix commit -> checkout main -> main commit -> merge bugfix',
+          solution: '''git commit -m "Main baseline"
+git checkout -b bugfix
+git commit -m "Fix bug"
+git checkout main
+git commit -m "Main progress"
+git merge bugfix''',
+        ),
+        xpReward: 40,
+        order: 3,
       ),
     ];
   }

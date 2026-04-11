@@ -532,6 +532,9 @@ class _LanguagePickerSheetState extends ConsumerState<_LanguagePickerSheet> {
   Widget build(BuildContext context) {
     final currentLocale = ref.watch(localeProvider);
     final languagesAsync = ref.watch(availableLanguagesProvider);
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final isDarkTheme = theme.brightness == Brightness.dark;
 
     return DraggableScrollableSheet(
       expand: false,
@@ -541,9 +544,13 @@ class _LanguagePickerSheetState extends ConsumerState<_LanguagePickerSheet> {
       builder: (context, scrollController) {
         return Container(
           decoration: BoxDecoration(
-            color: const Color(0xFF1A1F3A),
+            color: colorScheme.surface,
             borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
-            border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
+            border: Border.all(
+              color: colorScheme.onSurface.withValues(
+                alpha: isDarkTheme ? 0.14 : 0.08,
+              ),
+            ),
           ),
           child: Column(
             children: [
@@ -552,7 +559,9 @@ class _LanguagePickerSheetState extends ConsumerState<_LanguagePickerSheet> {
                 width: 42,
                 height: 4,
                 decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.35),
+                  color: colorScheme.onSurface.withValues(
+                    alpha: isDarkTheme ? 0.35 : 0.22,
+                  ),
                   borderRadius: BorderRadius.circular(2),
                 ),
               ),
@@ -573,8 +582,8 @@ class _LanguagePickerSheetState extends ConsumerState<_LanguagePickerSheet> {
                         children: [
                           Text(
                             context.tr('language'),
-                            style: const TextStyle(
-                              color: Colors.white,
+                            style: TextStyle(
+                              color: colorScheme.onSurface,
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
@@ -583,7 +592,9 @@ class _LanguagePickerSheetState extends ConsumerState<_LanguagePickerSheet> {
                           Text(
                             context.tr('choose_language_subtitle'),
                             style: TextStyle(
-                              color: Colors.white.withValues(alpha: 0.65),
+                              color: colorScheme.onSurface.withValues(
+                                alpha: 0.68,
+                              ),
                               fontSize: 13,
                             ),
                           ),
@@ -602,18 +613,20 @@ class _LanguagePickerSheetState extends ConsumerState<_LanguagePickerSheet> {
                       _searchQuery = value;
                     });
                   },
-                  style: const TextStyle(color: Colors.white),
+                  style: TextStyle(color: colorScheme.onSurface),
                   decoration: InputDecoration(
                     hintText: context.tr('search_language'),
                     hintStyle: TextStyle(
-                      color: Colors.white.withValues(alpha: 0.5),
+                      color: colorScheme.onSurface.withValues(alpha: 0.5),
                     ),
                     prefixIcon: Icon(
                       Icons.search_rounded,
-                      color: Colors.white.withValues(alpha: 0.7),
+                      color: colorScheme.onSurface.withValues(alpha: 0.7),
                     ),
                     filled: true,
-                    fillColor: const Color(0xFF101730),
+                    fillColor: colorScheme.surfaceContainerHighest.withValues(
+                      alpha: isDarkTheme ? 0.35 : 0.7,
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(14),
                       borderSide: BorderSide.none,
@@ -640,7 +653,7 @@ class _LanguagePickerSheetState extends ConsumerState<_LanguagePickerSheet> {
                         '${context.tr('error')}: $error',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: Colors.white.withValues(alpha: 0.8),
+                          color: colorScheme.onSurface.withValues(alpha: 0.8),
                         ),
                       ),
                     ),
@@ -659,7 +672,9 @@ class _LanguagePickerSheetState extends ConsumerState<_LanguagePickerSheet> {
                         child: Text(
                           context.tr('no_languages_found'),
                           style: TextStyle(
-                            color: Colors.white.withValues(alpha: 0.75),
+                            color: colorScheme.onSurface.withValues(
+                              alpha: 0.75,
+                            ),
                           ),
                         ),
                       );
@@ -964,15 +979,16 @@ class _LanguageTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final isDarkTheme = theme.brightness == Brightness.dark;
     final borderColor = isSelected
-        ? Colors.blue.shade300
-        : Colors.white.withValues(alpha: 0.12);
-    final textColor = isSelected
-        ? Colors.white
-        : Colors.white.withValues(alpha: 0.92);
+        ? colorScheme.primary.withValues(alpha: 0.72)
+        : colorScheme.outline.withValues(alpha: isDarkTheme ? 0.35 : 0.28);
+    final textColor = isSelected ? Colors.white : colorScheme.onSurface;
     final subtitleColor = isSelected
         ? Colors.white.withValues(alpha: 0.85)
-        : Colors.white.withValues(alpha: 0.62);
+        : colorScheme.onSurface.withValues(alpha: 0.68);
 
     return Material(
       color: Colors.transparent,
@@ -986,14 +1002,21 @@ class _LanguageTile extends StatelessWidget {
               end: Alignment.bottomRight,
               colors: isSelected
                   ? const [Color(0xFF2D4FFF), Color(0xFF1F2C66)]
-                  : const [Color(0xFF101730), Color(0xFF131E3A)],
+                  : [
+                      colorScheme.surfaceContainerHighest.withValues(
+                        alpha: isDarkTheme ? 0.35 : 0.95,
+                      ),
+                      colorScheme.surface.withValues(
+                        alpha: isDarkTheme ? 0.72 : 1,
+                      ),
+                    ],
             ),
             borderRadius: BorderRadius.circular(16),
             border: Border.all(color: borderColor),
             boxShadow: isSelected
                 ? [
                     BoxShadow(
-                      color: Colors.blue.withValues(alpha: 0.24),
+                      color: colorScheme.primary.withValues(alpha: 0.24),
                       blurRadius: 14,
                       offset: const Offset(0, 6),
                     ),
@@ -1043,7 +1066,7 @@ class _LanguageTile extends StatelessWidget {
                       : Icon(
                           Icons.circle_outlined,
                           key: const ValueKey('not-selected'),
-                          color: Colors.white.withValues(alpha: 0.3),
+                          color: colorScheme.onSurface.withValues(alpha: 0.3),
                           size: 20,
                         ),
                 ),

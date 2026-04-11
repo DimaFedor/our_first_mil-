@@ -1,0 +1,433 @@
+{
+  "courseId": "git",
+  "lessons": [
+    {
+      "id": "git_lesson_1",
+      "courseId": "git",
+      "moduleId": "foundations",
+      "title": "Основи Git: знімки та коміти",
+      "description": "Зрозумійте, що відстежує Git, і створіть свій перший комміт",
+      "theorySlides": [
+        {
+          "title": "Що таке Git? 🌱",
+          "content": "Git — це система контролю версій. Подумайте про це як про машину часу для свого проекту:\n\n• Збереження контрольних точок (комітів)\n• Повертайся безпечно\n• Порівняти зміни\n• Співпрацюйте, не перезаписуючи одне одного",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "3 основні штати",
+          "content": "У Git для початківців ви можете уявити 3 шари:\n\n1) Робочі файли (те, що ви редагуєте)\n2) Місце проведення (що ви готуєте)\n3) Історія фіксації (те, що ви зберігаєте назавжди)",
+          "codeSnippet": "git status\n# see current state\n\ngit add .\n# stage all current changes\n\ngit commit -m \"Initial layout\"",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Перший потік фіксації",
+          "content": "Комітт — це моментальний знімок. Невеликі чіткі коміти роблять проекти легшими для розуміння.",
+          "codeSnippet": "git init\ngit status\ngit commit -m \"Initial commit\"",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Яке основне призначення Git?",
+            "options": [
+              "Створення компонентів інтерфейсу користувача",
+              "Відстежуйте та керуйте історією коду",
+              "Виконуйте SQL запити",
+              "Автоматичне розгортання програм"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Git призначений для відстеження змін файлів з часом і безпечної координації роботи.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що означає комміт?",
+            "options": [
+              "Назва гілки",
+              "Залежність проекту",
+              "Збережений знімок змін",
+              "Віддалений сервер"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Комміт — це збережений знімок вашого коду в певний момент.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яка команда створює комміт?",
+            "options": [
+              "git гілка",
+              "git злиття",
+              "git commit -m \"повідомлення\"",
+              "git перевірка"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Використовуйте git commit із повідомленням, щоб створити новий знімок в історії.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Чому повідомлення фіксації мають бути зрозумілими?",
+            "options": [
+              "Вони змінюють колір гілок",
+              "Вони допомагають товаришам по команді зрозуміти, що змінилося",
+              "Вони роблять злиття швидше",
+              "Вони зменшують розмір файлу"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Хороші повідомлення про фіксацію роблять історію проекту читабельною для вас і вашої команди.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Створіть свій перший комміт",
+        "description": "Виконайте команди, щоб ваш репозиторій завершився одним новим комітом на головному.",
+        "starterCode": "# Inspect the repo first\ngit status\n\n# Create your first commit\n",
+        "language": "git",
+        "testCases": [
+          {
+            "input": "Goal: stay on main and create the first commit (C1) in history.",
+            "expectedOutput": "HEAD=main\nHAS_BRANCH=main\nMIN_COMMITS=2\nBRANCH_AT=main:C1",
+            "isHidden": false
+          }
+        ],
+        "hint": "Використовуйте: git commit -m \"Початкова фіксація\"",
+        "solution": "git status\ngit commit -m \"Initial commit\"",
+        "xpReward": 15
+      },
+      "xpReward": 25,
+      "order": 0
+    },
+    {
+      "id": "git_lesson_2",
+      "courseId": "git",
+      "moduleId": "branching",
+      "title": "Галузі: Ізольована робота",
+      "description": "Створюйте та перемикайте гілки для безпечної паралельної роботи",
+      "theorySlides": [
+        {
+          "title": "Чому філії важливі 🌿",
+          "content": "Гілки дозволяють тестувати ідеї, не порушуючи основної лінії:\n\n• основний залишається стабільним\n• особливі гілки проводять експерименти\n• об'єднання пізніше об'єднує готову роботу",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Створюй і рухайся",
+          "content": "Використовуйте branch + checkout (або checkout -b), щоб створити ізольовані робочі області.",
+          "codeSnippet": "git branch feature/login\ngit checkout feature/login\n# now commits go to feature/login",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Комбінація клавіш: checkout -b",
+          "content": "Створення та перемикання в одній команді. Чудово підходить для швидкого запуску функцій.",
+          "codeSnippet": "git checkout -b feature/navbar\ngit commit -m \"Add navbar structure\"",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Яка найкраща причина використовувати гілку функції?",
+            "options": [
+              "Щоб повністю уникнути зобов’язань",
+              "Відокремити роботу від основної",
+              "Для прискорення інтернету",
+              "Щоб видалити стару історію"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Гілки ізолюють незавершену роботу і захищають стабільну гілку.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що робить функція git checkout -b?",
+            "options": [
+              "Видаляє гілку функції",
+              "Створює та перемикає на гілку функцій",
+              "Об’єднує функцію в основну",
+              "Перелічує всі гілки"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "checkout -b — це ярлик для створення гілки + перемикач.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Куди йдуть нові коміти після отримання функції?",
+            "options": [
+              "основний",
+              "функція",
+              "тільки віддалений",
+              "ніде"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Коміти приєднані до поточної вилученої гілки.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Навіщо підтримувати чистоту під час навчання?",
+            "options": [
+              "Щоб зменшити використання ЦП",
+              "Щоб підтримувати стабільний прогрес і уникнути плутанини",
+              "Щоб зробити коміти невидимими",
+              "Щоб вимкнути злиття"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Чиста основна гілка робить історію проекту та випуски безпечнішими.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Створити та розширити гілку функції",
+        "description": "Створіть коміт на головному, потім перейдіть до функції та створіть там ще один коміт.",
+        "starterCode": "# 1) Make a baseline commit on main\n# 2) Create feature branch\n# 3) Switch to feature\n# 4) Create a feature commit\n",
+        "language": "git",
+        "testCases": [
+          {
+            "input": "Goal: finish on feature branch with separate tips for main and feature.",
+            "expectedOutput": "HEAD=feature\nHAS_BRANCH=main\nHAS_BRANCH=feature\nMIN_COMMITS=3\nBRANCH_AT=main:C1\nBRANCH_AT=feature:C2\nBRANCHES_DIFFER=main:feature",
+            "isHidden": false
+          }
+        ],
+        "hint": "Послідовність: git commit -> git функція гілки -> git checkout функція -> git commit",
+        "solution": "git commit -m \"Base commit on main\"\ngit branch feature\ngit checkout feature\ngit commit -m \"Feature work\"",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 1
+    },
+    {
+      "id": "git_lesson_3",
+      "courseId": "git",
+      "moduleId": "merging",
+      "title": "Основи злиття",
+      "description": "Поверніть завершену роботу над функціями в основний за допомогою комітів злиття",
+      "theorySlides": [
+        {
+          "title": "Що таке злиття? 🔀",
+          "content": "Злиття поєднує історії двох гілок.\n\nКоли обидві гілки перемістилися, Git створює комміт злиття з двома батьками.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Основний робочий процес злиття",
+          "content": "Зазвичай ви об’єднуєтеся з основним після того, як робота над функціями готова.",
+          "codeSnippet": "git checkout main\ngit merge feature\n# main now includes feature history",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Подумайте в графіках",
+          "content": "Git — це граф фіксації, а не копія папки. Імена гілок — це рухомі мітки, що вказують на коміти.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Що функція git merge робить з main?",
+            "options": [
+              "Видаляє функцію",
+              "Переміщує об’єкт на основний без історії",
+              "Поєднує історію функцій у основну",
+              "Створює нове сховище"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Злиття інтегрує історію іншої гілки в поточну гілку.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Де ви маєте бути перед об’єднанням функції в основну?",
+            "options": [
+              "На особливості",
+              "На головному",
+              "На будь-якій гілці",
+              "Жодна філія не перевірена"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Ви об’єднуєтеся з тією гілкою, яку наразі перевірили.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що таке комміт злиття?",
+            "options": [
+              "Коміт без батьківського елемента",
+              "Комітт із рівно одним батьком",
+              "Комміт із двома батьками, які об’єднують історії",
+              "Видалений комміт"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Комміт злиття з’єднує дві лінії історії.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Чому візуалізація гілок корисна?",
+            "options": [
+              "Він змінює синтаксис команди",
+              "Це допомагає зрозуміти взаємовідносини",
+              "Він автоматично усуває конфлікти",
+              "Він вимикає перевірку"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Побачивши графік, легше міркувати про рух гілок і злиття.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Об’єднати функцію назад до основної",
+        "description": "Змоделюйте повний цикл розгалуження: фіксація на головній, фіксація на функції, потім об’єднання в основну.",
+        "starterCode": "# Build this flow:\n# main commit -> feature commit -> merge feature into main\n",
+        "language": "git",
+        "testCases": [
+          {
+            "input": "Goal: end on main with a merge commit, while feature still points to its latest feature commit.",
+            "expectedOutput": "HEAD=main\nHAS_BRANCH=main\nHAS_BRANCH=feature\nMIN_COMMITS=4\nBRANCH_AT=feature:C2\nBRANCH_AT=main:C3\nMERGE_COMMIT_ON=main",
+            "isHidden": false
+          }
+        ],
+        "hint": "Спочатку виконайте коміти в обох гілках, а потім перевірте основну функцію та функцію злиття.",
+        "solution": "git commit -m \"Base on main\"\ngit branch feature\ngit checkout feature\ngit commit -m \"Feature commit\"\ngit checkout main\ngit merge feature",
+        "xpReward": 15
+      },
+      "xpReward": 35,
+      "order": 2
+    },
+    {
+      "id": "git_lesson_4",
+      "courseId": "git",
+      "moduleId": "workflow",
+      "title": "Початківець Місія робочого процесу відділення",
+      "description": "Попрактикуйтесь у наскрізному робочому процесі розгалужень за допомогою перевірки -b та злиття",
+      "theorySlides": [
+        {
+          "title": "Шаблон щоденного робочого процесу",
+          "content": "Практична схема для початківців:\n\n1) Почніть з основного\n2) Створіть гілку з перевіркою -b\n3) Зробіть особливу роботу\n4) Повернутися до основного\n5) Злиття гілок",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Чому це працює",
+          "content": "Цей робочий процес дозволяє зосередити зміни, їх можна переглядати та легко повертати, якщо потрібно.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Команди місій",
+          "content": "Використовуйте цю точну ідею у своєму останньому виклику для початківців.",
+          "codeSnippet": "git commit -m \"Main baseline\"\ngit checkout -b bugfix\ngit commit -m \"Fix issue\"\ngit checkout main\ngit commit -m \"Main update\"\ngit merge bugfix",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Яка команда найкраща для швидкого створення та перемикання гілок?",
+            "options": [
+              "git merge -b",
+              "git checkout -b <ім'я>",
+              "git status -b",
+              "git commit -b"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "checkout -b поєднує створення гілок і перемикання гілок.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "У цьому робочому процесі, коли ви об’єднуєте?",
+            "options": [
+              "Перед будь-яким комітом",
+              "Гілка функції After має значущі коміти",
+              "Тільки коли гілка порожня",
+              "Одразу після git init"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Ви об’єднуєтеся після впровадження та виконання функцій.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Навіщо робити зобов’язання на головному перед злиттям у цій місії?",
+            "options": [
+              "Для створення розбіжних історій для реалістичної практики злиття",
+              "Щоб видалити гілку функції",
+              "Щоб уникнути комітів щодо функції",
+              "Щоб вимкнути коміти злиття"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Реалістичне злиття часто поєднує дві гілки, які обидві рухалися вперед.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що потрібно перевірити після злиття?",
+            "options": [
+              "HEAD гілка та форма графіка",
+              "Лише кількість файлів",
+              "підключення до Інтернету",
+              "Версія компілятора"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Перевірте вказівники гілок і графік фіксації, щоб підтвердити правильність робочого процесу.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Місія робочого процесу: злиття виправлень помилок",
+        "description": "Використовуйте checkout -b, створіть коміти в обох гілках і закінчіть злиттям у main.",
+        "starterCode": "# Build this mission flow with real git commands\n",
+        "language": "git",
+        "testCases": [
+          {
+            "input": "Goal: final graph should include bugfix branch and a merge commit on main.",
+            "expectedOutput": "HEAD=main\nHAS_BRANCH=main\nHAS_BRANCH=bugfix\nMIN_COMMITS=5\nBRANCH_AT=bugfix:C2\nBRANCH_AT=main:C4\nMERGE_COMMIT_ON=main",
+            "isHidden": false
+          }
+        ],
+        "hint": "Спробуйте: основний коміт -> перевірка -b bugfix -> bugfix commit -> checkout main -> головний коміт -> merge bugfix",
+        "solution": "git commit -m \"Main baseline\"\ngit checkout -b bugfix\ngit commit -m \"Fix bug\"\ngit checkout main\ngit commit -m \"Main progress\"\ngit merge bugfix",
+        "xpReward": 15
+      },
+      "xpReward": 40,
+      "order": 3
+    }
+  ]
+}
