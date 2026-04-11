@@ -33,6 +33,60 @@ class ProfileScreen extends ConsumerWidget {
     return 'User';
   }
 
+  Future<void> _confirmAndLogout(BuildContext context, WidgetRef ref) async {
+    final l10n = AppLocalizations.of(context);
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: Theme.of(ctx).colorScheme.surface,
+        title: Text(
+          '${l10n?.get('logout') ?? 'Logout'}?',
+          style: TextStyle(color: Theme.of(ctx).colorScheme.onSurface),
+        ),
+        content: Text(
+          l10n?.get('logout_confirm') ?? 'Are you sure you want to logout?',
+          style: TextStyle(
+            color: Theme.of(ctx).colorScheme.onSurface.withValues(alpha: 0.75),
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, false),
+            child: Text(l10n?.get('cancel') ?? 'Cancel'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, true),
+            child: Text(
+              l10n?.get('logout') ?? 'Logout',
+              style: const TextStyle(color: Colors.red),
+            ),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed != true || !context.mounted) return;
+
+    try {
+      await ref.read(authActionsProvider).signOut();
+      if (!context.mounted) return;
+      context.go('/onboarding');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(l10n?.get('logout_success') ?? 'Logged out')),
+      );
+    } catch (_) {
+      if (!context.mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            l10n?.get('logout_failed') ?? 'Logout failed. Please try again',
+          ),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
@@ -588,23 +642,7 @@ class ProfileScreen extends ConsumerWidget {
                   title:
                       AppLocalizations.of(context)?.get('logout') ?? 'Logout',
                   color: Colors.red,
-                  onTap: () async {
-                    try {
-                      await ref.read(authActionsProvider).signOut();
-                      if (context.mounted) {
-                        context.go('/onboarding');
-                      }
-                    } catch (e) {
-                      if (context.mounted) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Logout failed. Please try again'),
-                            backgroundColor: Colors.red,
-                          ),
-                        );
-                      }
-                    }
-                  },
+                  onTap: () => _confirmAndLogout(context, ref),
                 ),
               ],
             ),

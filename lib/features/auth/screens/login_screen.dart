@@ -29,6 +29,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
   String? _successMessage;
   AuthChallenge? _activeChallenge;
 
+  String _t(String key, String fallback) {
+    return AppLocalizations.of(context)?.get(key) ?? fallback;
+  }
+
   @override
   void initState() {
     super.initState();
@@ -91,11 +95,15 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
     final password = _passwordController.text;
 
     if (email.isEmpty || !email.contains('@')) {
-      setState(() => _errorMessage = 'Вкажіть валідний email.');
+      setState(
+        () => _errorMessage = _t('invalid_email', 'Please enter a valid email'),
+      );
       return;
     }
     if (password.isEmpty) {
-      setState(() => _errorMessage = 'Введіть пароль.');
+      setState(
+        () => _errorMessage = _t('enter_password', 'Please enter a password'),
+      );
       return;
     }
 
@@ -115,20 +123,30 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
   Future<void> _handleSendMagicLink() async {
     final email = _magicEmailController.text.trim();
     if (email.isEmpty || !email.contains('@')) {
-      setState(() => _errorMessage = 'Вкажіть валідний email.');
+      setState(
+        () => _errorMessage = _t('invalid_email', 'Please enter a valid email'),
+      );
       return;
     }
 
     await _runAuthAction(
       () => ref.read(authActionsProvider).sendMagicLink(email),
-      successMessage: 'Magic link надіслано. Вставте його в поле нижче.',
+      successMessage: _t(
+        'magic_link_sent',
+        'Magic link sent. Paste it in the field below.',
+      ),
     );
   }
 
   Future<void> _handleMagicLinkSignIn() async {
     final magicLink = _magicLinkController.text.trim();
     if (magicLink.isEmpty) {
-      setState(() => _errorMessage = 'Вставте отриманий magic link.');
+      setState(
+        () => _errorMessage = _t(
+          'magic_link_required',
+          'Paste the magic link you received.',
+        ),
+      );
       return;
     }
 
@@ -146,7 +164,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
   void _handleGenerateChallenge() {
     final email = _emailController.text.trim();
     if (email.isEmpty || !email.contains('@')) {
-      setState(() => _errorMessage = 'Вкажіть валідний email перед challenge.');
+      setState(
+        () => _errorMessage = _t(
+          'challenge_need_email_before_generate',
+          'Enter a valid email before generating a challenge.',
+        ),
+      );
       return;
     }
 
@@ -157,7 +180,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
       setState(() {
         _activeChallenge = challenge;
         _errorMessage = null;
-        _successMessage = 'Challenge згенеровано. Розвʼяжіть і увійдіть.';
+        _successMessage = _t(
+          'challenge_generated',
+          'Challenge generated. Solve it and sign in.',
+        );
       });
     } catch (error) {
       setState(() {
@@ -172,19 +198,33 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
     final answer = _challengeAnswerController.text.trim();
 
     if (_activeChallenge == null) {
-      setState(() => _errorMessage = 'Спочатку згенеруйте challenge.');
+      setState(
+        () => _errorMessage = _t(
+          'challenge_generate_first',
+          'Generate a challenge first.',
+        ),
+      );
       return;
     }
     if (email.isEmpty || !email.contains('@')) {
-      setState(() => _errorMessage = 'Вкажіть валідний email.');
+      setState(
+        () => _errorMessage = _t('invalid_email', 'Please enter a valid email'),
+      );
       return;
     }
     if (password.isEmpty) {
-      setState(() => _errorMessage = 'Введіть пароль.');
+      setState(
+        () => _errorMessage = _t('enter_password', 'Please enter a password'),
+      );
       return;
     }
     if (answer.isEmpty) {
-      setState(() => _errorMessage = 'Введіть відповідь на challenge.');
+      setState(
+        () => _errorMessage = _t(
+          'challenge_enter_answer',
+          'Enter an answer for the challenge.',
+        ),
+      );
       return;
     }
 
@@ -203,13 +243,21 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
   Future<void> _handleResetPassword() async {
     final email = _emailController.text.trim();
     if (email.isEmpty || !email.contains('@')) {
-      setState(() => _errorMessage = 'Вкажіть email, щоб скинути пароль.');
+      setState(
+        () => _errorMessage = _t(
+          'reset_password_email_required',
+          'Enter your email to reset the password.',
+        ),
+      );
       return;
     }
 
     await _runAuthAction(
       () => ref.read(authActionsProvider).resetPassword(email),
-      successMessage: 'Лист для скидання пароля відправлено.',
+      successMessage: _t(
+        'reset_password_sent',
+        'Password reset email has been sent.',
+      ),
     );
   }
 
@@ -220,28 +268,37 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
 
     final message = error.toString().toLowerCase();
     if (message.contains('wrong-password') || message.contains('incorrect')) {
-      return 'Неправильний пароль.';
+      return _t('auth_wrong_password', 'Incorrect password.');
     }
     if (message.contains('user-not-found') || message.contains('no user')) {
-      return 'Користувача з таким email не знайдено.';
+      return _t('auth_user_not_found', 'No user found with this email.');
     }
     if (message.contains('invalid-email')) {
-      return 'Невалідний email.';
+      return _t('invalid_email', 'Please enter a valid email');
     }
     if (message.contains('challenge-expired')) {
-      return 'Challenge застарів. Згенеруйте новий.';
+      return _t(
+        'auth_challenge_expired',
+        'Challenge expired. Generate a new one.',
+      );
     }
     if (message.contains('challenge-wrong-answer')) {
-      return 'Неправильна відповідь на challenge.';
+      return _t('auth_challenge_wrong_answer', 'Incorrect challenge answer.');
     }
     if (message.contains('too-many-requests') ||
         message.contains('rate-limited')) {
-      return 'Забагато спроб. Спробуйте пізніше.';
+      return _t(
+        'auth_too_many_requests',
+        'Too many attempts. Try again later.',
+      );
     }
     if (message.contains('network')) {
-      return 'Проблема з мережею. Перевірте підключення.';
+      return _t(
+        'auth_network_problem',
+        'Network error. Check your internet connection.',
+      );
     }
-    return 'Не вдалося виконати вхід. Спробуйте ще раз.';
+    return _t('auth_sign_in_failed', 'Unable to sign in. Please try again.');
   }
 
   @override
@@ -297,7 +354,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
                   ),
                 ),
                 const SizedBox(height: 16),
-                _buildFooter(context, onSurface),
+                _buildFooter(context, onSurface, l10n),
               ],
             ),
           ),
@@ -316,10 +373,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
       case 0:
         return _buildEmailTab(context, isDarkTheme, onSurface, l10n);
       case 1:
-        return _buildMagicLinkTab(context, isDarkTheme, onSurface);
+        return _buildMagicLinkTab(context, isDarkTheme, onSurface, l10n);
       case 2:
       default:
-        return _buildChallengeTab(context, isDarkTheme, onSurface);
+        return _buildChallengeTab(context, isDarkTheme, onSurface, l10n);
     }
   }
 
@@ -360,7 +417,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
         const SizedBox(height: 8),
         Center(
           child: Text(
-            'Увійди зручним способом і продовжуй прокачувати кодинг.',
+            l10n?.get('login_subtitle') ??
+                'Choose your preferred sign-in method and keep learning.',
             textAlign: TextAlign.center,
             style: TextStyle(
               color: onSurface.withValues(alpha: 0.7),
@@ -434,9 +492,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
         labelColor: Colors.white,
         unselectedLabelColor: onSurface.withValues(alpha: 0.7),
         tabs: [
-          Tab(text: l10n?.get('sign_in') ?? 'Email'),
-          const Tab(text: 'Magic Link'),
-          const Tab(text: 'Code Challenge'),
+          Tab(text: l10n?.get('sign_in') ?? 'Sign In'),
+          Tab(text: l10n?.get('tab_magic_link') ?? 'Magic Link'),
+          Tab(text: l10n?.get('tab_code_challenge') ?? 'Code Challenge'),
         ],
       ),
     );
@@ -484,7 +542,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
             alignment: Alignment.centerRight,
             child: TextButton(
               onPressed: _isLoading ? null : _handleResetPassword,
-              child: const Text('Forgot password?'),
+              child: Text(l10n?.get('forgot_password') ?? 'Forgot Password?'),
             ),
           ),
           const SizedBox(height: 8),
@@ -494,7 +552,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
           ),
           const SizedBox(height: 12),
           _buildSecondaryButton(
-            title: 'Continue with Google',
+            title: l10n?.get('continue_with_google') ?? 'Continue with Google',
             icon: Icons.g_mobiledata_rounded,
             onPressed: _isLoading ? null : _handleGoogleLogin,
             isDarkTheme: isDarkTheme,
@@ -509,6 +567,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
     BuildContext context,
     bool isDarkTheme,
     Color onSurface,
+    AppLocalizations? l10n,
   ) {
     return _buildCardShell(
       isDarkTheme: isDarkTheme,
@@ -516,7 +575,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Passwordless вхід',
+            l10n?.get('magic_link_title') ?? 'Passwordless sign in',
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w700,
@@ -525,13 +584,15 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
           ),
           const SizedBox(height: 6),
           Text(
-            'Отримай magic link на email і увійди без пароля.',
+            l10n?.get('magic_link_subtitle') ??
+                'Get a magic link by email and sign in without a password.',
             style: TextStyle(color: onSurface.withValues(alpha: 0.7)),
           ),
           const SizedBox(height: 16),
           _buildInputField(
             controller: _magicEmailController,
-            label: 'Email для magic link',
+            label:
+                l10n?.get('magic_link_email_label') ?? 'Email for magic link',
             icon: Icons.alternate_email_rounded,
             keyboardType: TextInputType.emailAddress,
             isDarkTheme: isDarkTheme,
@@ -539,20 +600,22 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
           ),
           const SizedBox(height: 10),
           _buildPrimaryButton(
-            title: 'Send magic link',
+            title: l10n?.get('send_magic_link') ?? 'Send magic link',
             onPressed: _isLoading ? null : _handleSendMagicLink,
           ),
           const SizedBox(height: 18),
           _buildInputField(
             controller: _magicLinkController,
-            label: 'Встав magic link',
+            label: l10n?.get('magic_link_input_label') ?? 'Paste magic link',
             icon: Icons.link_rounded,
             isDarkTheme: isDarkTheme,
             onSurface: onSurface,
           ),
           const SizedBox(height: 10),
           _buildSecondaryButton(
-            title: 'Sign in with magic link',
+            title:
+                l10n?.get('sign_in_with_magic_link') ??
+                'Sign in with magic link',
             icon: Icons.login_rounded,
             onPressed: _isLoading ? null : _handleMagicLinkSignIn,
             isDarkTheme: isDarkTheme,
@@ -567,6 +630,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
     BuildContext context,
     bool isDarkTheme,
     Color onSurface,
+    AppLocalizations? l10n,
   ) {
     return _buildCardShell(
       isDarkTheme: isDarkTheme,
@@ -574,7 +638,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Login через задачу',
+            l10n?.get('challenge_login_title') ?? 'Login with challenge',
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w700,
@@ -583,13 +647,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
           ),
           const SizedBox(height: 6),
           Text(
-            'Розвʼяжи короткий challenge і підтверди, що це ти.',
+            l10n?.get('challenge_login_subtitle') ??
+                'Solve a short challenge to confirm it is you.',
             style: TextStyle(color: onSurface.withValues(alpha: 0.7)),
           ),
           const SizedBox(height: 14),
           _buildInputField(
             controller: _emailController,
-            label: 'Email',
+            label: l10n?.get('email') ?? 'Email',
             icon: Icons.email_outlined,
             keyboardType: TextInputType.emailAddress,
             isDarkTheme: isDarkTheme,
@@ -598,7 +663,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
           const SizedBox(height: 10),
           _buildInputField(
             controller: _passwordController,
-            label: 'Password',
+            label: l10n?.get('password') ?? 'Password',
             icon: Icons.lock_outline_rounded,
             obscureText: _obscurePassword,
             isDarkTheme: isDarkTheme,
@@ -616,7 +681,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
           ),
           const SizedBox(height: 10),
           _buildSecondaryButton(
-            title: 'Generate challenge',
+            title: l10n?.get('generate_challenge') ?? 'Generate challenge',
             icon: Icons.bolt_rounded,
             onPressed: _isLoading ? null : _handleGenerateChallenge,
             isDarkTheme: isDarkTheme,
@@ -628,14 +693,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
             const SizedBox(height: 10),
             _buildInputField(
               controller: _challengeAnswerController,
-              label: 'Твоя відповідь',
+              label: l10n?.get('your_answer') ?? 'Your answer',
               icon: Icons.terminal_rounded,
               isDarkTheme: isDarkTheme,
               onSurface: onSurface,
             ),
             const SizedBox(height: 10),
             _buildPrimaryButton(
-              title: 'Solve & login',
+              title: l10n?.get('solve_and_login') ?? 'Solve & login',
               onPressed: _isLoading ? null : _handleChallengeLogin,
             ),
           ],
@@ -675,7 +740,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
               ),
               const Spacer(),
               Text(
-                'Спроб: ${challenge.attemptsLeft}',
+                '${_t('attempts', 'Attempts')}: ${challenge.attemptsLeft}',
                 style: TextStyle(
                   color: onSurface.withValues(alpha: 0.7),
                   fontSize: 12,
@@ -713,7 +778,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
           ),
           const SizedBox(height: 4),
           Text(
-            'Hint: ${challenge.hint}',
+            '${_t('hint', 'Hint')}: ${challenge.hint}',
             style: TextStyle(
               color: onSurface.withValues(alpha: 0.7),
               fontSize: 12,
@@ -724,7 +789,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
     );
   }
 
-  Widget _buildFooter(BuildContext context, Color onSurface) {
+  Widget _buildFooter(
+    BuildContext context,
+    Color onSurface,
+    AppLocalizations? l10n,
+  ) {
     return Column(
       children: [
         SizedBox(
@@ -738,19 +807,19 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
                       redirectToHome: true,
                     );
                   },
-            child: const Text('Продовжити як гість'),
+            child: Text(l10n?.get('continue_as_guest') ?? 'Continue as guest'),
           ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Немає акаунту?',
+              l10n?.get('dont_have_account') ?? "Don't have an account?",
               style: TextStyle(color: onSurface.withValues(alpha: 0.7)),
             ),
             TextButton(
               onPressed: _isLoading ? null : () => context.go('/register'),
-              child: const Text('Зареєструватися'),
+              child: Text(l10n?.get('register') ?? 'Register'),
             ),
           ],
         ),

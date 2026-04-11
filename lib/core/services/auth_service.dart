@@ -259,7 +259,6 @@ class AuthService {
   }
 
   Future<void> signOut() async {
-    await _googleSignIn.signOut();
     await _auth.signOut();
     await _tokenStorage.clearTokenBundle();
     await _tokenStorage.clearPendingMagicEmail();

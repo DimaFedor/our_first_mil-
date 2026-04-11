@@ -220,7 +220,7 @@ class SettingsScreen extends ConsumerWidget {
                       context,
                       icon: Icons.info_outline,
                       title: context.tr('version'),
-                      subtitle: 'v1.0.0 Production Ready',
+                      subtitle: context.tr('version_subtitle'),
                       onTap: () {},
                       index: 7,
                       showArrow: false,
@@ -229,7 +229,7 @@ class SettingsScreen extends ConsumerWidget {
                       context,
                       icon: Icons.description_outlined,
                       title: context.tr('terms_of_service'),
-                      subtitle: 'Read our terms',
+                      subtitle: context.tr('terms_subtitle'),
                       onTap: () {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text(context.tr('coming_soon'))),
@@ -241,7 +241,7 @@ class SettingsScreen extends ConsumerWidget {
                       context,
                       icon: Icons.privacy_tip_outlined,
                       title: context.tr('privacy_policy'),
-                      subtitle: 'How we handle your data',
+                      subtitle: context.tr('privacy_subtitle'),
                       onTap: () {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text(context.tr('coming_soon'))),
@@ -263,14 +263,9 @@ class SettingsScreen extends ConsumerWidget {
                       context,
                       icon: Icons.logout,
                       title: context.tr('logout'),
-                      subtitle: 'Sign out of your account',
+                      subtitle: context.tr('sign_out_subtitle'),
                       color: Colors.red,
-                      onTap: () async {
-                        await ref.read(authActionsProvider).signOut();
-                        if (context.mounted) {
-                          context.go('/onboarding');
-                        }
-                      },
+                      onTap: () => _confirmAndLogout(context, ref),
                       index: 10,
                     ),
                     _buildSettingItem(
@@ -362,6 +357,57 @@ class SettingsScreen extends ConsumerWidget {
         return context.tr('dark_mode');
       case ThemeMode.system:
         return context.tr('system_theme');
+    }
+  }
+
+  Future<void> _confirmAndLogout(BuildContext context, WidgetRef ref) async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: Theme.of(ctx).colorScheme.surface,
+        title: Text(
+          '${context.tr('logout')}?',
+          style: TextStyle(color: Theme.of(ctx).colorScheme.onSurface),
+        ),
+        content: Text(
+          context.tr('logout_confirm'),
+          style: TextStyle(
+            color: Theme.of(ctx).colorScheme.onSurface.withValues(alpha: 0.75),
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, false),
+            child: Text(context.tr('cancel')),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, true),
+            child: Text(
+              context.tr('logout'),
+              style: const TextStyle(color: Colors.red),
+            ),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed != true || !context.mounted) return;
+
+    try {
+      await ref.read(authActionsProvider).signOut();
+      if (!context.mounted) return;
+      context.go('/onboarding');
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(context.tr('logout_success'))));
+    } catch (_) {
+      if (!context.mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(context.tr('logout_failed')),
+          backgroundColor: Colors.red,
+        ),
+      );
     }
   }
 

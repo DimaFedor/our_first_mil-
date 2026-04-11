@@ -28,17 +28,51 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
   String _selectedLanguage = 'python';
 
   static const _skillLevels = <String, String>{
-    'beginner': 'Beginner',
-    'intermediate': 'Intermediate',
-    'advanced': 'Advanced',
+    'beginner': 'difficulty_beginner',
+    'intermediate': 'difficulty_intermediate',
+    'advanced': 'tag_advanced',
   };
 
   static const _languages = <String, String>{
-    'python': 'Python',
-    'javascript': 'JavaScript',
-    'sql': 'SQL',
-    'dart': 'Dart',
+    'python': 'python',
+    'javascript': 'javascript',
+    'sql': 'sql',
+    'dart': 'dart',
   };
+
+  String _t(String key, String fallback) {
+    return AppLocalizations.of(context)?.get(key) ?? fallback;
+  }
+
+  String _skillLabel(String level) {
+    final key = _skillLevels[level];
+    switch (level) {
+      case 'beginner':
+        return _t(key ?? 'difficulty_beginner', 'Beginner');
+      case 'intermediate':
+        return _t(key ?? 'difficulty_intermediate', 'Intermediate');
+      case 'advanced':
+        return _t(key ?? 'tag_advanced', 'Advanced');
+      default:
+        return level;
+    }
+  }
+
+  String _languageLabel(String languageCode) {
+    final key = _languages[languageCode];
+    switch (languageCode) {
+      case 'python':
+        return _t(key ?? 'python', 'Python');
+      case 'javascript':
+        return _t(key ?? 'javascript', 'JavaScript');
+      case 'sql':
+        return _t(key ?? 'sql', 'SQL');
+      case 'dart':
+        return _t(key ?? 'dart', 'Dart');
+      default:
+        return languageCode;
+    }
+  }
 
   @override
   void dispose() {
@@ -88,19 +122,34 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
     final confirmPassword = _confirmPasswordController.text;
 
     if (name.length < 2) {
-      setState(() => _errorMessage = 'Введіть імʼя (мінімум 2 символи).');
+      setState(
+        () => _errorMessage = _t(
+          'name_too_short',
+          'Name must be at least 2 characters',
+        ),
+      );
       return;
     }
     if (email.isEmpty || !email.contains('@')) {
-      setState(() => _errorMessage = 'Вкажіть валідний email.');
+      setState(
+        () => _errorMessage = _t('invalid_email', 'Please enter a valid email'),
+      );
       return;
     }
     if (password.length < 6) {
-      setState(() => _errorMessage = 'Пароль має містити мінімум 6 символів.');
+      setState(
+        () => _errorMessage = _t(
+          'password_too_short',
+          'Password must be at least 6 characters',
+        ),
+      );
       return;
     }
     if (password != confirmPassword) {
-      setState(() => _errorMessage = 'Паролі не співпадають.');
+      setState(
+        () =>
+            _errorMessage = _t('passwords_not_match', 'Passwords do not match'),
+      );
       return;
     }
 
@@ -138,18 +187,30 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
     final message = error.toString().toLowerCase();
     if (message.contains('email-already-in-use') ||
         message.contains('already exists')) {
-      return 'Акаунт з таким email вже існує.';
+      return _t(
+        'auth_account_exists',
+        'An account with this email already exists.',
+      );
     }
     if (message.contains('weak-password')) {
-      return 'Пароль занадто слабкий. Використай щонайменше 6 символів.';
+      return _t(
+        'auth_weak_password',
+        'Weak password. Use at least 6 characters.',
+      );
     }
     if (message.contains('invalid-email')) {
-      return 'Невалідний email.';
+      return _t('invalid_email', 'Please enter a valid email');
     }
     if (message.contains('network')) {
-      return 'Проблема з мережею. Перевірте підключення.';
+      return _t(
+        'auth_network_problem',
+        'Network error. Check your internet connection.',
+      );
     }
-    return 'Не вдалося зареєструватися. Спробуйте ще раз.';
+    return _t(
+      'auth_register_failed',
+      'Unable to create account. Please try again.',
+    );
   }
 
   @override
@@ -198,7 +259,8 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                 ).animate().fadeIn().slideY(begin: 0.2, end: 0),
                 const SizedBox(height: 8),
                 Text(
-                  'Перетворимо реєстрацію на старт твоєї coding-квести.',
+                  l10n?.get('register_subtitle') ??
+                      'Set up your account and start your coding quest.',
                   style: TextStyle(
                     color: onSurface.withValues(alpha: 0.7),
                     fontSize: 14,
@@ -282,7 +344,8 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '1) Рівень підготовки',
+                        l10n?.get('register_skill_level_title') ??
+                            '1) Skill level',
                         style: TextStyle(
                           color: onSurface,
                           fontWeight: FontWeight.w700,
@@ -295,7 +358,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                         children: _skillLevels.entries.map((entry) {
                           final isSelected = _selectedSkillLevel == entry.key;
                           return _buildChoiceChip(
-                            label: entry.value,
+                            label: _skillLabel(entry.key),
                             isSelected: isSelected,
                             onTap: () {
                               setState(() => _selectedSkillLevel = entry.key);
@@ -305,7 +368,8 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                       ),
                       const SizedBox(height: 18),
                       Text(
-                        '2) Перша мова для фокусу',
+                        l10n?.get('register_focus_language_title') ??
+                            '2) First focus language',
                         style: TextStyle(
                           color: onSurface,
                           fontWeight: FontWeight.w700,
@@ -318,7 +382,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                         children: _languages.entries.map((entry) {
                           final isSelected = _selectedLanguage == entry.key;
                           return _buildChoiceChip(
-                            label: entry.value,
+                            label: _languageLabel(entry.key),
                             isSelected: isSelected,
                             onTap: () {
                               setState(() => _selectedLanguage = entry.key);
@@ -338,7 +402,8 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                 ),
                 const SizedBox(height: 10),
                 _buildSecondaryButton(
-                  title: 'Sign up with Google',
+                  title:
+                      l10n?.get('sign_up_with_google') ?? 'Sign up with Google',
                   icon: Icons.g_mobiledata_rounded,
                   onPressed: _isLoading ? null : _handleGoogleSignUp,
                   isDarkTheme: isDarkTheme,
@@ -349,12 +414,13 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Вже маєш акаунт?',
+                      l10n?.get('already_have_account') ??
+                          'Already have an account?',
                       style: TextStyle(color: onSurface.withValues(alpha: 0.7)),
                     ),
                     TextButton(
                       onPressed: _isLoading ? null : () => context.go('/login'),
-                      child: const Text('Увійти'),
+                      child: Text(l10n?.get('sign_in') ?? 'Sign in'),
                     ),
                   ],
                 ),
@@ -398,8 +464,8 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
   }
 
   Widget _buildStarterQuestCard() {
-    final level = _skillLevels[_selectedSkillLevel] ?? 'Beginner';
-    final language = _languages[_selectedLanguage] ?? 'Python';
+    final level = _skillLabel(_selectedSkillLevel);
+    final language = _languageLabel(_selectedLanguage);
 
     return Container(
       width: double.infinity,
@@ -420,8 +486,8 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            '🎮 Starter Quest',
+          Text(
+            _t('starter_quest_title', 'Starter Quest'),
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w800,
@@ -430,12 +496,15 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
           ),
           const SizedBox(height: 6),
           Text(
-            'Твій старт: $level · $language',
+            '${_t('starter_quest_start', 'Your start')}: $level · $language',
             style: const TextStyle(color: Colors.white, fontSize: 14),
           ),
           const SizedBox(height: 4),
           Text(
-            'Після входу одразу отримаєш персональний welcome та рекомендації.',
+            _t(
+              'starter_quest_message',
+              'After sign up, you will get a personalized welcome and recommendations.',
+            ),
             style: TextStyle(
               color: Colors.white.withValues(alpha: 0.92),
               fontSize: 12,

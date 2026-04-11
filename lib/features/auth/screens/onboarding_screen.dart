@@ -1,6 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
 import '../../../core/l10n/app_localizations.dart';
 import '../providers/auth_provider.dart';
 
@@ -54,8 +56,20 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     ),
   ];
 
+  void _goNext() {
+    if (_currentPage < _pages.length - 1) {
+      _pageController.nextPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+      return;
+    }
+    context.go('/login');
+  }
+
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     final onSurface = Theme.of(context).colorScheme.onSurface;
 
@@ -81,16 +95,58 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
         child: SafeArea(
           child: Column(
             children: [
-              // Skip button
               Padding(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.fromLTRB(20, 14, 20, 0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 8,
+                      ),
+                      decoration: BoxDecoration(
+                        color: isDarkTheme
+                            ? Colors.white.withValues(alpha: 0.08)
+                            : Colors.white.withValues(alpha: 0.9),
+                        borderRadius: BorderRadius.circular(999),
+                        border: Border.all(
+                          color: isDarkTheme
+                              ? Colors.white.withValues(alpha: 0.12)
+                              : const Color(0xFFD6E2FF),
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(
+                            Icons.auto_awesome_rounded,
+                            size: 16,
+                            color: Color(0xFF8B5CF6),
+                          ),
+                          const SizedBox(width: 6),
+                          Text(
+                            l10n?.get('app_name') ?? 'CodeLearn',
+                            style: TextStyle(
+                              color: onSurface,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Spacer(),
+                    Text(
+                      '${_currentPage + 1}/${_pages.length}',
+                      style: TextStyle(
+                        color: onSurface.withValues(alpha: 0.6),
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const SizedBox(width: 8),
                     TextButton(
                       onPressed: () => context.go('/login'),
                       child: Text(
-                        AppLocalizations.of(context)?.get('skip') ?? 'Skip',
+                        l10n?.get('skip') ?? 'Skip',
                         style: TextStyle(
                           color: onSurface.withValues(alpha: 0.7),
                           fontSize: 16,
@@ -100,8 +156,6 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   ],
                 ),
               ),
-
-              // PageView
               Expanded(
                 child: PageView.builder(
                   controller: _pageController,
@@ -116,10 +170,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   },
                 ),
               ),
-
-              // Page indicators
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 24),
+                padding: const EdgeInsets.symmetric(vertical: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(
@@ -127,13 +179,16 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                     (index) => AnimatedContainer(
                       duration: const Duration(milliseconds: 300),
                       margin: const EdgeInsets.symmetric(horizontal: 4),
-                      width: _currentPage == index ? 32 : 8,
+                      width: _currentPage == index ? 30 : 8,
                       height: 8,
                       decoration: BoxDecoration(
+                        gradient: _currentPage == index
+                            ? const LinearGradient(
+                                colors: [Color(0xFF0066FF), Color(0xFF8B5CF6)],
+                              )
+                            : null,
                         color: _currentPage == index
-                            ? (isDarkTheme
-                                  ? Colors.white
-                                  : const Color(0xFF2563EB))
+                            ? null
                             : (isDarkTheme
                                   ? Colors.white30
                                   : const Color(0xFF93C5FD)),
@@ -143,97 +198,118 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   ),
                 ),
               ),
-
-              // Next/Get Started button
               Padding(
-                padding: const EdgeInsets.all(24),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 56,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      if (_currentPage < _pages.length - 1) {
-                        _pageController.nextPage(
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.easeInOut,
-                        );
-                      } else {
-                        context.go('/login');
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.transparent,
-                      shadowColor: Colors.transparent,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      padding: EdgeInsets.zero,
-                    ),
-                    child: Ink(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: _pages[_currentPage].gradient,
+                padding: const EdgeInsets.fromLTRB(24, 0, 24, 16),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      width: double.infinity,
+                      height: 56,
+                      child: ElevatedButton(
+                        onPressed: _goNext,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.transparent,
+                          shadowColor: Colors.transparent,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          padding: EdgeInsets.zero,
                         ),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: Container(
-                        alignment: Alignment.center,
-                        child: Text(
-                          _currentPage < _pages.length - 1
-                              ? (AppLocalizations.of(context)?.get('next') ??
-                                    'Next')
-                              : (AppLocalizations.of(
-                                      context,
-                                    )?.get('get_started') ??
-                                    'Get Started'),
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
+                        child: Ink(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: _pages[_currentPage].gradient,
+                            ),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              _currentPage < _pages.length - 1
+                                  ? (l10n?.get('next') ?? 'Next')
+                                  : (l10n?.get('get_started') ?? 'Get Started'),
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ),
-              ),
-
-              // Temporary Debug: Skip Auth Button
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 48,
-                  child: ElevatedButton(
-                    onPressed: () async {
-                      try {
-                        await ref.read(authActionsProvider).signInAnonymously();
-                        if (mounted) {
-                          context.go("/");
-                        }
-                      } catch (e) {
-                        context.go("/");
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.orange.withValues(alpha: 0.8),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
+                    const SizedBox(height: 10),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 48,
+                      child: OutlinedButton(
+                        onPressed: () => context.go('/register'),
+                        style: OutlinedButton.styleFrom(
+                          side: BorderSide(
+                            color: isDarkTheme
+                                ? Colors.white.withValues(alpha: 0.18)
+                                : const Color(0xFFC7D7FF),
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14),
+                          ),
+                        ),
+                        child: Text(
+                          l10n?.get('create_account') ?? 'Create account',
+                          style: TextStyle(
+                            color: onSurface,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
                       ),
                     ),
-                    child: Text(
-                      AppLocalizations.of(context)?.get('skip_auth_debug') ??
-                          'Skip Auth (Debug)',
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
+                    TextButton(
+                      onPressed: () => context.go('/login'),
+                      child: Text(
+                        l10n?.get('sign_in') ?? 'Sign in',
+                        style: TextStyle(
+                          color: onSurface.withValues(alpha: 0.8),
+                        ),
                       ),
                     ),
-                  ),
+                    if (kDebugMode)
+                      SizedBox(
+                        width: double.infinity,
+                        height: 44,
+                        child: ElevatedButton(
+                          onPressed: () async {
+                            try {
+                              await ref
+                                  .read(authActionsProvider)
+                                  .signInAnonymously();
+                              if (!context.mounted) return;
+                              context.go('/');
+                            } catch (_) {
+                              if (!context.mounted) return;
+                              context.go('/');
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.orange.withValues(
+                              alpha: 0.8,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                          ),
+                          child: Text(
+                            l10n?.get('skip_auth_debug') ?? 'Skip Auth (Debug)',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                  ],
                 ),
               ),
-              const SizedBox(height: 24),
             ],
           ),
         ),
@@ -270,56 +346,72 @@ class OnboardingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     final onSurface = Theme.of(context).colorScheme.onSurface;
+
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            width: 120,
-            height: 120,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(colors: gradient),
-              shape: BoxShape.circle,
-              boxShadow: [
-                BoxShadow(
-                  color: gradient.first.withValues(alpha: 0.3),
-                  blurRadius: 20,
-                  offset: const Offset(0, 10),
-                ),
-              ],
-            ),
-            child: Center(
-              child: Text(icon, style: const TextStyle(fontSize: 48)),
-            ),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.all(24),
+        decoration: BoxDecoration(
+          color: isDarkTheme
+              ? Colors.white.withValues(alpha: 0.06)
+              : Colors.white.withValues(alpha: 0.88),
+          borderRadius: BorderRadius.circular(24),
+          border: Border.all(
+            color: isDarkTheme
+                ? Colors.white.withValues(alpha: 0.12)
+                : const Color(0xFFD6E2FF),
           ),
-          const SizedBox(height: 48),
-          Text(
-            titleKey != null
-                ? (AppLocalizations.of(context)?.get(titleKey!) ?? title)
-                : title,
-            style: TextStyle(
-              color: onSurface,
-              fontSize: 32,
-              fontWeight: FontWeight.bold,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 120,
+              height: 120,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(colors: gradient),
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: gradient.first.withValues(alpha: 0.3),
+                    blurRadius: 20,
+                    offset: const Offset(0, 10),
+                  ),
+                ],
+              ),
+              child: Center(
+                child: Text(icon, style: const TextStyle(fontSize: 48)),
+              ),
             ),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 16),
-          Text(
-            descKey != null
-                ? (AppLocalizations.of(context)?.get(descKey!) ?? description)
-                : description,
-            style: TextStyle(
-              color: isDarkTheme
-                  ? Colors.white.withValues(alpha: 0.8)
-                  : onSurface.withValues(alpha: 0.75),
-              fontSize: 18,
-              height: 1.5,
+            const SizedBox(height: 28),
+            Text(
+              titleKey != null
+                  ? (AppLocalizations.of(context)?.get(titleKey!) ?? title)
+                  : title,
+              style: TextStyle(
+                color: onSurface,
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
-          ),
-        ],
+            const SizedBox(height: 14),
+            Text(
+              descKey != null
+                  ? (AppLocalizations.of(context)?.get(descKey!) ?? description)
+                  : description,
+              style: TextStyle(
+                color: isDarkTheme
+                    ? Colors.white.withValues(alpha: 0.82)
+                    : onSurface.withValues(alpha: 0.76),
+                fontSize: 17,
+                height: 1.5,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
       ),
     );
   }
