@@ -353,6 +353,17 @@ class AppLocalizations {
     'completed': 'Completed',
     'in_progress': 'In Progress',
     'not_started': 'Not Started',
+    'progress_snapshot': 'Progress Snapshot',
+    'active_courses': 'Active Courses',
+    'finished_courses': 'Finished Courses',
+    'completion_rate': 'Completion Rate',
+    'xp_to_next_level': 'XP to next level',
+    'recommended_next_step': 'Recommended Next Step',
+    'lessons_left': 'Lessons left',
+    'browse_courses': 'Browse Courses',
+    'no_progress_title': 'No progress yet',
+    'no_progress_subtitle':
+        'Start a course to unlock your personalized learning insights.',
 
     // Achievements
     'achievements': 'Achievements',
@@ -685,6 +696,17 @@ class AppLocalizations {
     'completed': 'Завершено',
     'in_progress': 'В процесі',
     'not_started': 'Не розпочато',
+    'progress_snapshot': 'Зріз прогресу',
+    'active_courses': 'Активні курси',
+    'finished_courses': 'Завершені курси',
+    'completion_rate': 'Відсоток завершення',
+    'xp_to_next_level': 'XP до наступного рівня',
+    'recommended_next_step': 'Рекомендований наступний крок',
+    'lessons_left': 'Уроків залишилось',
+    'browse_courses': 'Переглянути курси',
+    'no_progress_title': 'Прогресу поки немає',
+    'no_progress_subtitle':
+        'Почніть курс, щоб побачити персональні інсайти навчання.',
 
     // Achievements
     'achievements': 'Досягнення',
@@ -1022,6 +1044,17 @@ class AppLocalizations {
     'completed': 'Completado',
     'in_progress': 'En progreso',
     'not_started': 'No iniciado',
+    'progress_snapshot': 'Resumen del progreso',
+    'active_courses': 'Cursos activos',
+    'finished_courses': 'Cursos finalizados',
+    'completion_rate': 'Tasa de finalización',
+    'xp_to_next_level': 'XP para el siguiente nivel',
+    'recommended_next_step': 'Siguiente paso recomendado',
+    'lessons_left': 'Lecciones restantes',
+    'browse_courses': 'Explorar cursos',
+    'no_progress_title': 'Aún no hay progreso',
+    'no_progress_subtitle':
+        'Comienza un curso para desbloquear tus insights de aprendizaje.',
 
     // Achievements
     'achievements': 'Logros',
@@ -1359,6 +1392,17 @@ class AppLocalizations {
     'completed': 'Abgeschlossen',
     'in_progress': 'In Bearbeitung',
     'not_started': 'Nicht begonnen',
+    'progress_snapshot': 'Fortschrittsübersicht',
+    'active_courses': 'Aktive Kurse',
+    'finished_courses': 'Abgeschlossene Kurse',
+    'completion_rate': 'Abschlussquote',
+    'xp_to_next_level': 'XP bis zum nächsten Level',
+    'recommended_next_step': 'Empfohlener nächster Schritt',
+    'lessons_left': 'Lektionen übrig',
+    'browse_courses': 'Kurse entdecken',
+    'no_progress_title': 'Noch kein Fortschritt',
+    'no_progress_subtitle':
+        'Starte einen Kurs, um personalisierte Lern-Insights zu sehen.',
 
     // Achievements
     'achievements': 'Erfolge',
@@ -1702,6 +1746,17 @@ class AppLocalizations {
     'completed': 'Terminé',
     'in_progress': 'En cours',
     'not_started': 'Non commencé',
+    'progress_snapshot': 'Aperçu de progression',
+    'active_courses': 'Cours actifs',
+    'finished_courses': 'Cours terminés',
+    'completion_rate': 'Taux de progression',
+    'xp_to_next_level': 'XP avant le niveau suivant',
+    'recommended_next_step': 'Prochaine étape recommandée',
+    'lessons_left': 'Leçons restantes',
+    'browse_courses': 'Parcourir les cours',
+    'no_progress_title': 'Pas encore de progression',
+    'no_progress_subtitle':
+        'Commencez un cours pour débloquer vos insights d’apprentissage.',
 
     // Achievements
     'achievements': 'Réalisations',
@@ -2039,6 +2094,17 @@ class AppLocalizations {
     'completed': 'Ukończone',
     'in_progress': 'W trakcie',
     'not_started': 'Nie rozpoczęto',
+    'progress_snapshot': 'Podsumowanie postępów',
+    'active_courses': 'Aktywne kursy',
+    'finished_courses': 'Ukończone kursy',
+    'completion_rate': 'Wskaźnik ukończenia',
+    'xp_to_next_level': 'XP do następnego poziomu',
+    'recommended_next_step': 'Rekomendowany kolejny krok',
+    'lessons_left': 'Pozostało lekcji',
+    'browse_courses': 'Przeglądaj kursy',
+    'no_progress_title': 'Brak postępów',
+    'no_progress_subtitle':
+        'Rozpocznij kurs, aby odblokować spersonalizowane wskazówki nauki.',
 
     // Achievements
     'achievements': 'Osiągnięcia',
