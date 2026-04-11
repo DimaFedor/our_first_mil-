@@ -487,6 +487,29 @@ class _HeroStatusCard extends StatelessWidget {
     required this.onContinueTap,
   });
 
+  String? _formatLanguageFocus(String? languageCode) {
+    if (languageCode == null || languageCode.isEmpty) {
+      return null;
+    }
+
+    switch (languageCode.trim().toLowerCase()) {
+      case 'python':
+        return 'Python';
+      case 'javascript':
+        return 'JavaScript';
+      case 'cplusplus':
+      case 'cpp':
+      case 'c++':
+        return 'C++';
+      case 'sql':
+        return 'SQL';
+      case 'dart':
+        return 'Dart';
+      default:
+        return languageCode.toUpperCase();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -497,10 +520,7 @@ class _HeroStatusCard extends StatelessWidget {
         ? '${_greetingForHour(DateTime.now().hour)}, $userName'
         : (AppLocalizations.of(context)?.get('start_journey') ??
               'Start your journey');
-    final learningFocus =
-        (preferredLanguage != null && preferredLanguage!.isNotEmpty)
-        ? preferredLanguage!.toUpperCase()
-        : null;
+    final learningFocus = _formatLanguageFocus(preferredLanguage);
     final skillLabel = (skillLevel != null && skillLevel!.isNotEmpty)
         ? '${skillLevel![0].toUpperCase()}${skillLevel!.substring(1)}'
         : null;

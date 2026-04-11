@@ -59,7 +59,7 @@ class CodeBlock extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      language.toUpperCase(),
+                      _languageLabel(language),
                       style: TextStyle(
                         color: _getLanguageColor(language),
                         fontSize: 10,
@@ -153,6 +153,10 @@ class CodeBlock extends StatelessWidget {
       case 'javascript':
       case 'js':
         return const Color(0xFFF7DF1E);
+      case 'cpp':
+      case 'c++':
+      case 'cplusplus':
+        return const Color(0xFF00599C);
       case 'html':
         return const Color(0xFFE34F26);
       case 'css':
@@ -166,6 +170,16 @@ class CodeBlock extends StatelessWidget {
       default:
         return const Color(0xFF61DAFB);
     }
+  }
+
+  String _languageLabel(String lang) {
+    final normalized = lang.trim().toLowerCase();
+    if (normalized == 'cpp' ||
+        normalized == 'c++' ||
+        normalized == 'cplusplus') {
+      return 'C++';
+    }
+    return lang.toUpperCase();
   }
 }
 

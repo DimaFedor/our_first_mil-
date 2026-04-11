@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
@@ -86,12 +87,25 @@ class LessonLocalizationService {
     );
 
     var localizedLessons = baseLessons;
-    if (primaryLanguageCode != _fallbackLanguageCode &&
-        !hasFullOverlayForCourse) {
-      localizedLessons = await _autoTranslateLessons(
-        lessons: localizedLessons,
-        targetLanguageCode: primaryLanguageCode,
-      );
+    final shouldAttemptRuntimeAutoTranslation =
+        primaryLanguageCode != _fallbackLanguageCode &&
+        !hasFullOverlayForCourse &&
+        mergedTranslations.isNotEmpty;
+    if (shouldAttemptRuntimeAutoTranslation) {
+      try {
+        localizedLessons = await _autoTranslateLessons(
+          lessons: localizedLessons,
+          targetLanguageCode: primaryLanguageCode,
+        ).timeout(const Duration(seconds: 8));
+      } on TimeoutException {
+        debugPrint(
+          'Runtime lesson translation timed out for "$courseId" ($primaryLanguageCode); using base lesson copy.',
+        );
+      } catch (error) {
+        debugPrint(
+          'Runtime lesson translation skipped for "$courseId" ($primaryLanguageCode): $error',
+        );
+      }
     }
 
     if (mergedTranslations.isNotEmpty) {

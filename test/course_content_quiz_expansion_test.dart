@@ -13,6 +13,11 @@ void main() {
             courseId,
           );
 
+          expect(
+            rawLessons,
+            isNotEmpty,
+            reason: 'Course $courseId has no lessons',
+          );
           expect(expandedLessons.length, rawLessons.length);
 
           for (final rawLesson in rawLessons) {
@@ -56,6 +61,8 @@ List<Lesson> _rawLessonsForCourse(String courseId) {
       return CourseContentService.getPythonLessons();
     case 'javascript':
       return CourseContentService.getJavaScriptLessons();
+    case 'cplusplus':
+      return CourseContentService.getCPPLessons();
     case 'htmlcss':
       return CourseContentService.getHTMLCSSLessons();
     case 'react':
@@ -66,6 +73,8 @@ List<Lesson> _rawLessonsForCourse(String courseId) {
       return CourseContentService.getGitLessons();
     case 'python-intermediate':
       return CourseContentService.getPythonIntermediateLessons();
+    case 'cplusplus-intermediate':
+      return CourseContentService.getCPPIntermediateLessons();
     case 'htmlcss-intermediate':
       return CourseContentService.getHTMLCSSIntermediateLessons();
     case 'javascript-intermediate':

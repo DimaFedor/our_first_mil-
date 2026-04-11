@@ -35,6 +35,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
   static const _languageLabels = <String, String>{
     'python': 'Python',
     'javascript': 'JavaScript',
+    'cplusplus': 'C++',
     'sql': 'SQL',
     'dart': 'Dart',
   };

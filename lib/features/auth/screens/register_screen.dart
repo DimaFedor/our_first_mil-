@@ -36,12 +36,17 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
   static const _languages = <String, String>{
     'python': 'python',
     'javascript': 'javascript',
+    'cplusplus': 'cplusplus',
     'sql': 'sql',
     'dart': 'dart',
   };
 
   String _t(String key, String fallback) {
-    return AppLocalizations.of(context)?.get(key) ?? fallback;
+    final localized = AppLocalizations.of(context)?.get(key);
+    if (localized == null || localized == key) {
+      return fallback;
+    }
+    return localized;
   }
 
   String _skillLabel(String level) {
@@ -65,6 +70,8 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
         return _t(key ?? 'python', 'Python');
       case 'javascript':
         return _t(key ?? 'javascript', 'JavaScript');
+      case 'cplusplus':
+        return _t(key ?? 'cplusplus', 'C++');
       case 'sql':
         return _t(key ?? 'sql', 'SQL');
       case 'dart':

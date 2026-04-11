@@ -8,27 +8,34 @@ import 'package:highlight/languages/sql.dart';
 
 // Custom theme with VS Code-like colors
 const codeTheme = {
-  'root': TextStyle(backgroundColor: Color(0xFF1E1E1E), color: Color(0xFFD4D4D4)),
-  'keyword': TextStyle(color: Color(0xFFC586C0)),           // if, for, while - purple/pink
-  'built_in': TextStyle(color: Color(0xFFDCDCAA)),          // print, console - yellow
-  'type': TextStyle(color: Color(0xFF4EC9B0)),              // int, float, bool - teal
-  'literal': TextStyle(color: Color(0xFF569CD6)),           // true, false, null - blue  
-  'number': TextStyle(color: Color(0xFFB5CEA8)),            // numbers - light green
-  'string': TextStyle(color: Color(0xFFCE9178)),            // strings - orange
-  'comment': TextStyle(color: Color(0xFF6A9955)),           // comments - green
-  'function': TextStyle(color: Color(0xFFDCDCAA)),          // function calls - yellow
-  'title': TextStyle(color: Color(0xFFDCDCAA)),             // function definitions - yellow
-  'params': TextStyle(color: Color(0xFF9CDCFE)),            // parameters - light blue
-  'variable': TextStyle(color: Color(0xFF9CDCFE)),          // variables - light blue
-  'attr': TextStyle(color: Color(0xFF9CDCFE)),              // attributes - light blue
-  'meta': TextStyle(color: Color(0xFF569CD6)),              // decorators - blue
-  'subst': TextStyle(color: Color(0xFFD4D4D4)),             // template substitutions
-  'tag': TextStyle(color: Color(0xFF569CD6)),               // HTML tags - blue
-  'name': TextStyle(color: Color(0xFF569CD6)),              // tag names - blue
-  'attribute': TextStyle(color: Color(0xFF9CDCFE)),         // HTML attributes - light blue
-  'selector-tag': TextStyle(color: Color(0xFFD7BA7D)),      // CSS selectors - gold
-  'selector-class': TextStyle(color: Color(0xFFD7BA7D)),    // CSS classes - gold
-  'selector-id': TextStyle(color: Color(0xFFD7BA7D)),       // CSS ids - gold
+  'root': TextStyle(
+    backgroundColor: Color(0xFF1E1E1E),
+    color: Color(0xFFD4D4D4),
+  ),
+  'keyword': TextStyle(
+    color: Color(0xFFC586C0),
+  ), // if, for, while - purple/pink
+  'built_in': TextStyle(color: Color(0xFFDCDCAA)), // print, console - yellow
+  'type': TextStyle(color: Color(0xFF4EC9B0)), // int, float, bool - teal
+  'literal': TextStyle(color: Color(0xFF569CD6)), // true, false, null - blue
+  'number': TextStyle(color: Color(0xFFB5CEA8)), // numbers - light green
+  'string': TextStyle(color: Color(0xFFCE9178)), // strings - orange
+  'comment': TextStyle(color: Color(0xFF6A9955)), // comments - green
+  'function': TextStyle(color: Color(0xFFDCDCAA)), // function calls - yellow
+  'title': TextStyle(color: Color(0xFFDCDCAA)), // function definitions - yellow
+  'params': TextStyle(color: Color(0xFF9CDCFE)), // parameters - light blue
+  'variable': TextStyle(color: Color(0xFF9CDCFE)), // variables - light blue
+  'attr': TextStyle(color: Color(0xFF9CDCFE)), // attributes - light blue
+  'meta': TextStyle(color: Color(0xFF569CD6)), // decorators - blue
+  'subst': TextStyle(color: Color(0xFFD4D4D4)), // template substitutions
+  'tag': TextStyle(color: Color(0xFF569CD6)), // HTML tags - blue
+  'name': TextStyle(color: Color(0xFF569CD6)), // tag names - blue
+  'attribute': TextStyle(
+    color: Color(0xFF9CDCFE),
+  ), // HTML attributes - light blue
+  'selector-tag': TextStyle(color: Color(0xFFD7BA7D)), // CSS selectors - gold
+  'selector-class': TextStyle(color: Color(0xFFD7BA7D)), // CSS classes - gold
+  'selector-id': TextStyle(color: Color(0xFFD7BA7D)), // CSS ids - gold
 };
 
 /// A code editor widget with syntax highlighting, autocomplete, and error detection
@@ -115,9 +122,34 @@ class _CodeEditorState extends State<CodeEditor> {
     'continue': 'Skip iteration',
   };
 
-  static const pythonKeywords = {'if', 'elif', 'else', 'for', 'while', 'def', 'return', 
-    'try', 'except', 'finally', 'True', 'False', 'None', 'and', 'or', 'not', 'in', 
-    'break', 'continue', 'pass', 'class', 'import', 'from', 'as', 'with', 'lambda'};
+  static const pythonKeywords = {
+    'if',
+    'elif',
+    'else',
+    'for',
+    'while',
+    'def',
+    'return',
+    'try',
+    'except',
+    'finally',
+    'True',
+    'False',
+    'None',
+    'and',
+    'or',
+    'not',
+    'in',
+    'break',
+    'continue',
+    'pass',
+    'class',
+    'import',
+    'from',
+    'as',
+    'with',
+    'lambda',
+  };
 
   // JavaScript completions
   static const jsCompletions = <String, String>{
@@ -196,10 +228,107 @@ class _CodeEditorState extends State<CodeEditor> {
     '!==': 'Strict inequality',
   };
 
-  static const jsKeywords = {'let', 'const', 'var', 'function', 'return', 'if', 'else',
-    'for', 'while', 'do', 'switch', 'case', 'break', 'continue', 'try', 'catch',
-    'finally', 'throw', 'async', 'await', 'class', 'new', 'this', 'true', 'false',
-    'null', 'undefined', 'typeof', 'instanceof', 'import', 'export', 'default'};
+  static const jsKeywords = {
+    'let',
+    'const',
+    'var',
+    'function',
+    'return',
+    'if',
+    'else',
+    'for',
+    'while',
+    'do',
+    'switch',
+    'case',
+    'break',
+    'continue',
+    'try',
+    'catch',
+    'finally',
+    'throw',
+    'async',
+    'await',
+    'class',
+    'new',
+    'this',
+    'true',
+    'false',
+    'null',
+    'undefined',
+    'typeof',
+    'instanceof',
+    'import',
+    'export',
+    'default',
+  };
+
+  // C++ completions
+  static const cppCompletions = <String, String>{
+    '#include <iostream>': 'Input/output header',
+    'using namespace std;': 'Use std symbols directly',
+    'int main()': 'Program entry point',
+    'cout <<': 'Print output',
+    'cin >>': 'Read input',
+    'endl': 'New line output',
+    'int': 'Integer type',
+    'double': 'Floating-point type',
+    'string': 'Text type',
+    'char': 'Character type',
+    'bool': 'Boolean type',
+    'if': 'Conditional branch',
+    'else': 'Else branch',
+    'for': 'For loop',
+    'while': 'While loop',
+    'return': 'Return value',
+    'vector<int>': 'Dynamic integer list',
+    '.push_back()': 'Append to vector',
+    '.size()': 'Collection size',
+    'class': 'Class declaration',
+    'public:': 'Public class section',
+    'private:': 'Private class section',
+    'template <typename T>': 'Template declaration',
+    'auto': 'Type inference',
+    'const': 'Immutable value',
+    'nullptr': 'Null pointer',
+    'std::': 'Standard library scope',
+  };
+
+  static const cppKeywords = {
+    'int',
+    'double',
+    'float',
+    'bool',
+    'char',
+    'string',
+    'if',
+    'else',
+    'for',
+    'while',
+    'return',
+    'class',
+    'public',
+    'private',
+    'protected',
+    'template',
+    'typename',
+    'const',
+    'auto',
+    'nullptr',
+    'include',
+    'using',
+    'namespace',
+    'std',
+    'switch',
+    'case',
+    'break',
+    'continue',
+    'struct',
+    'virtual',
+    'override',
+    'new',
+    'delete',
+  };
 
   // HTML/CSS completions
   static const htmlCompletions = <String, String>{
@@ -337,12 +466,57 @@ class _CodeEditorState extends State<CodeEditor> {
     'END': 'End case',
   };
 
-  static const sqlKeywords = {'SELECT', 'FROM', 'WHERE', 'AND', 'OR', 'NOT',
-    'IN', 'BETWEEN', 'LIKE', 'ORDER', 'BY', 'ASC', 'DESC', 'LIMIT', 'OFFSET',
-    'GROUP', 'HAVING', 'JOIN', 'INNER', 'LEFT', 'RIGHT', 'FULL', 'ON', 'AS',
-    'DISTINCT', 'INSERT', 'INTO', 'VALUES', 'UPDATE', 'SET', 'DELETE', 'CREATE',
-    'DROP', 'ALTER', 'TABLE', 'ADD', 'COLUMN', 'PRIMARY', 'KEY', 'FOREIGN',
-    'REFERENCES', 'NULL', 'UNIQUE', 'DEFAULT', 'CASE', 'WHEN', 'THEN', 'ELSE', 'END'};
+  static const sqlKeywords = {
+    'SELECT',
+    'FROM',
+    'WHERE',
+    'AND',
+    'OR',
+    'NOT',
+    'IN',
+    'BETWEEN',
+    'LIKE',
+    'ORDER',
+    'BY',
+    'ASC',
+    'DESC',
+    'LIMIT',
+    'OFFSET',
+    'GROUP',
+    'HAVING',
+    'JOIN',
+    'INNER',
+    'LEFT',
+    'RIGHT',
+    'FULL',
+    'ON',
+    'AS',
+    'DISTINCT',
+    'INSERT',
+    'INTO',
+    'VALUES',
+    'UPDATE',
+    'SET',
+    'DELETE',
+    'CREATE',
+    'DROP',
+    'ALTER',
+    'TABLE',
+    'ADD',
+    'COLUMN',
+    'PRIMARY',
+    'KEY',
+    'FOREIGN',
+    'REFERENCES',
+    'NULL',
+    'UNIQUE',
+    'DEFAULT',
+    'CASE',
+    'WHEN',
+    'THEN',
+    'ELSE',
+    'END',
+  };
 
   // React completions (extends JS completions)
   static const reactCompletions = <String, String>{
@@ -407,6 +581,10 @@ class _CodeEditorState extends State<CodeEditor> {
       case 'react':
       case 'jsx':
         return reactCompletions;
+      case 'cpp':
+      case 'c++':
+      case 'cplusplus':
+        return cppCompletions;
       case 'sql':
         return sqlCompletions;
       case 'html':
@@ -425,6 +603,10 @@ class _CodeEditorState extends State<CodeEditor> {
       case 'js':
       case 'react':
       case 'jsx':
+        return javascript;
+      case 'cpp':
+      case 'c++':
+      case 'cplusplus':
         return javascript;
       case 'sql':
         return sql;
@@ -475,6 +657,8 @@ class _CodeEditorState extends State<CodeEditor> {
     final code = _codeController.text;
     final errors = <SyntaxError>[];
     final lines = code.split('\n');
+    final language = widget.language.toLowerCase();
+    final isPython = language == 'python';
 
     for (int i = 0; i < lines.length; i++) {
       final line = lines[i];
@@ -482,23 +666,31 @@ class _CodeEditorState extends State<CodeEditor> {
       if (trimmed.isEmpty) continue;
 
       // Check for common syntax errors
-      
+
       // Unclosed strings
       final singleQuotes = "'".allMatches(line).length;
       final doubleQuotes = '"'.allMatches(line).length;
-      if (singleQuotes % 2 != 0 && !line.contains('"""') && !line.contains("'''")) {
+      if (singleQuotes % 2 != 0 &&
+          !line.contains('"""') &&
+          !line.contains("'''")) {
         errors.add(SyntaxError(i, "Unclosed string (missing ')"));
       }
-      if (doubleQuotes % 2 != 0 && !line.contains('"""') && !line.contains("'''")) {
+      if (doubleQuotes % 2 != 0 &&
+          !line.contains('"""') &&
+          !line.contains("'''")) {
         errors.add(SyntaxError(i, 'Unclosed string (missing ")'));
       }
 
-      // Missing colon after if/elif/else/for/while/def/class/try/except/finally
-      if (RegExp(r'^(if|elif|for|while|def|class|try|except|finally)\s+.+[^:]$').hasMatch(trimmed)) {
-        errors.add(SyntaxError(i, 'Missing colon (:) at end of statement'));
-      }
-      if (trimmed == 'else' || trimmed == 'try' || trimmed == 'finally') {
-        errors.add(SyntaxError(i, 'Missing colon (:) after $trimmed'));
+      if (isPython) {
+        // Missing colon after if/elif/else/for/while/def/class/try/except/finally
+        if (RegExp(
+          r'^(if|elif|for|while|def|class|try|except|finally)\s+.+[^:]$',
+        ).hasMatch(trimmed)) {
+          errors.add(SyntaxError(i, 'Missing colon (:) at end of statement'));
+        }
+        if (trimmed == 'else' || trimmed == 'try' || trimmed == 'finally') {
+          errors.add(SyntaxError(i, 'Missing colon (:) after $trimmed'));
+        }
       }
 
       // Unclosed parentheses
@@ -533,7 +725,7 @@ class _CodeEditorState extends State<CodeEditor> {
       }
 
       // print without parentheses (Python 2 style)
-      if (RegExp(r'^print\s+[^(]').hasMatch(trimmed)) {
+      if (isPython && RegExp(r'^print\s+[^(]').hasMatch(trimmed)) {
         errors.add(SyntaxError(i, 'print needs parentheses: print(...)'));
       }
     }
@@ -546,7 +738,7 @@ class _CodeEditorState extends State<CodeEditor> {
   void _updateSuggestions() {
     final text = _codeController.text;
     final cursorPos = _codeController.selection.baseOffset;
-    
+
     if (cursorPos < 0 || cursorPos > text.length) {
       setState(() {
         _showSuggestions = false;
@@ -557,8 +749,10 @@ class _CodeEditorState extends State<CodeEditor> {
 
     // Get current word being typed (word characters only, not parentheses)
     final beforeCursor = text.substring(0, cursorPos);
-    final wordMatch = RegExp(r'[a-zA-Z_][a-zA-Z0-9_]*$').firstMatch(beforeCursor);
-    
+    final wordMatch = RegExp(
+      r'[a-zA-Z_][a-zA-Z0-9_]*$',
+    ).firstMatch(beforeCursor);
+
     if (wordMatch == null || wordMatch.group(0)!.length < 2) {
       setState(() {
         _showSuggestions = false;
@@ -572,7 +766,11 @@ class _CodeEditorState extends State<CodeEditor> {
     // Filter suggestions from current language completions
     final matches = _completions.keys
         .where((s) {
-          final compareStr = s.replaceAll('()', '').replaceAll(':', '').replaceAll('', '').toLowerCase();
+          final compareStr = s
+              .replaceAll('()', '')
+              .replaceAll(':', '')
+              .replaceAll('', '')
+              .toLowerCase();
           // Show if starts with current word, or is exact match with special chars
           if (compareStr.startsWith(_currentWord)) {
             // Don't show if exact match without special chars
@@ -599,32 +797,37 @@ class _CodeEditorState extends State<CodeEditor> {
   void _insertSuggestion(String suggestion) {
     final text = _codeController.text;
     final cursorPos = _codeController.selection.baseOffset;
-    
+
     // Find where current word starts (match what we used in _updateSuggestions)
     final beforeCursor = text.substring(0, cursorPos);
-    final wordMatch = RegExp(r'[a-zA-Z_][a-zA-Z0-9_]*$').firstMatch(beforeCursor);
-    
+    final wordMatch = RegExp(
+      r'[a-zA-Z_][a-zA-Z0-9_]*$',
+    ).firstMatch(beforeCursor);
+
     if (wordMatch != null) {
       final wordStart = wordMatch.start;
       // If suggestion starts with dot (method), don't replace the dot if present before word
       String insertText = suggestion;
-      if (suggestion.startsWith('.') && wordStart > 0 && text[wordStart - 1] == '.') {
+      if (suggestion.startsWith('.') &&
+          wordStart > 0 &&
+          text[wordStart - 1] == '.') {
         insertText = suggestion.substring(1); // Remove leading dot
       }
-      
-      final newText = text.substring(0, wordStart) + insertText + text.substring(cursorPos);
-      
+
+      final newText =
+          text.substring(0, wordStart) + insertText + text.substring(cursorPos);
+
       _codeController.text = newText;
-      
+
       // Position cursor
       int newCursorPos = wordStart + insertText.length;
       if (insertText.endsWith('()')) {
         newCursorPos--; // Put cursor inside parentheses
       }
-      
+
       _codeController.selection = TextSelection.collapsed(offset: newCursorPos);
     }
-    
+
     setState(() {
       _showSuggestions = false;
       _suggestions = [];
@@ -635,20 +838,27 @@ class _CodeEditorState extends State<CodeEditor> {
     if (suggestion.endsWith('()')) return Icons.functions;
     if (suggestion.startsWith('.')) return Icons.extension;
     if (suggestion.startsWith('<')) return Icons.code; // HTML tags
-    if (suggestion.contains(':') && !suggestion.contains('::')) return Icons.style; // CSS properties
-    
+    if (suggestion.contains(':') && !suggestion.contains('::')) {
+      return Icons.style; // CSS properties
+    }
+
     // Check if keyword based on current language
     final lang = widget.language.toLowerCase();
     Set<String> keywords;
-    if (lang == 'javascript' || lang == 'js' || lang == 'react' || lang == 'jsx') {
+    if (lang == 'javascript' ||
+        lang == 'js' ||
+        lang == 'react' ||
+        lang == 'jsx') {
       keywords = jsKeywords;
+    } else if (lang == 'cpp' || lang == 'c++' || lang == 'cplusplus') {
+      keywords = cppKeywords;
     } else if (lang == 'sql') {
       keywords = sqlKeywords;
     } else {
       keywords = pythonKeywords;
     }
-    
-    if (keywords.contains(suggestion.replaceAll(':', '').toUpperCase()) || 
+
+    if (keywords.contains(suggestion.replaceAll(':', '').toUpperCase()) ||
         keywords.contains(suggestion.replaceAll(':', ''))) {
       return Icons.code;
     }
@@ -659,25 +869,42 @@ class _CodeEditorState extends State<CodeEditor> {
     if (suggestion.endsWith('()')) return Colors.amber;
     if (suggestion.startsWith('.')) return Colors.cyan;
     if (suggestion.startsWith('<')) return Colors.blue; // HTML tags
-    if (suggestion.contains(':') && !suggestion.contains('::')) return Colors.purple; // CSS properties
+    if (suggestion.contains(':') && !suggestion.contains('::')) {
+      return Colors.purple; // CSS properties
+    }
     if (suggestion == '=>' || suggestion == '...') return Colors.green;
-    
+
     // SQL keywords - blue theme
     final lang = widget.language.toLowerCase();
     if (lang == 'sql') {
       if (sqlKeywords.contains(suggestion.toUpperCase())) return Colors.blue;
     }
-    
+
     // Check if keyword based on current language
     Set<String> keywords;
-    if (lang == 'javascript' || lang == 'js' || lang == 'react' || lang == 'jsx') {
+    if (lang == 'javascript' ||
+        lang == 'js' ||
+        lang == 'react' ||
+        lang == 'jsx') {
       keywords = jsKeywords;
+    } else if (lang == 'cpp' || lang == 'c++' || lang == 'cplusplus') {
+      keywords = cppKeywords;
     } else {
       keywords = pythonKeywords;
     }
-    
+
     if (keywords.contains(suggestion.replaceAll(':', ''))) return Colors.purple;
     return Colors.blue;
+  }
+
+  String _languageLabel(String language) {
+    final normalized = language.trim().toLowerCase();
+    if (normalized == 'cpp' ||
+        normalized == 'c++' ||
+        normalized == 'cplusplus') {
+      return 'C++';
+    }
+    return language.toUpperCase();
   }
 
   @override
@@ -691,8 +918,8 @@ class _CodeEditorState extends State<CodeEditor> {
             color: const Color(0xFF1E1E1E),
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: _syntaxErrors.isNotEmpty 
-                  ? Colors.red.withValues(alpha: 0.5) 
+              color: _syntaxErrors.isNotEmpty
+                  ? Colors.red.withValues(alpha: 0.5)
                   : Colors.white.withValues(alpha: 0.1),
             ),
           ),
@@ -700,21 +927,29 @@ class _CodeEditorState extends State<CodeEditor> {
             children: [
               // Header
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 8,
+                ),
                 decoration: BoxDecoration(
                   color: Colors.black.withValues(alpha: 0.3),
-                  borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+                  borderRadius: const BorderRadius.vertical(
+                    top: Radius.circular(12),
+                  ),
                 ),
                 child: Row(
                   children: [
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 4,
+                      ),
                       decoration: BoxDecoration(
                         color: widget.accentColor.withValues(alpha: 0.2),
                         borderRadius: BorderRadius.circular(4),
                       ),
                       child: Text(
-                        widget.language.toUpperCase(),
+                        _languageLabel(widget.language),
                         style: TextStyle(
                           color: widget.accentColor,
                           fontSize: 10,
@@ -725,7 +960,10 @@ class _CodeEditorState extends State<CodeEditor> {
                     const Spacer(),
                     if (_syntaxErrors.isNotEmpty)
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
                         decoration: BoxDecoration(
                           color: Colors.red.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(4),
@@ -733,17 +971,28 @@ class _CodeEditorState extends State<CodeEditor> {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            const Icon(Icons.error_outline, size: 12, color: Colors.red),
+                            const Icon(
+                              Icons.error_outline,
+                              size: 12,
+                              color: Colors.red,
+                            ),
                             const SizedBox(width: 4),
                             Text(
                               '${_syntaxErrors.length} ${_syntaxErrors.length == 1 ? 'error' : 'errors'}',
-                              style: const TextStyle(color: Colors.red, fontSize: 10),
+                              style: const TextStyle(
+                                color: Colors.red,
+                                fontSize: 10,
+                              ),
                             ),
                           ],
                         ),
                       )
                     else
-                      Icon(Icons.check_circle_outline, size: 16, color: Colors.green.withValues(alpha: 0.7)),
+                      Icon(
+                        Icons.check_circle_outline,
+                        size: 16,
+                        color: Colors.green.withValues(alpha: 0.7),
+                      ),
                   ],
                 ),
               ),
@@ -776,7 +1025,7 @@ class _CodeEditorState extends State<CodeEditor> {
             ],
           ),
         ),
-        
+
         // Autocomplete suggestions (below editor)
         if (_showSuggestions && _suggestions.isNotEmpty)
           Container(
@@ -784,7 +1033,9 @@ class _CodeEditorState extends State<CodeEditor> {
             decoration: BoxDecoration(
               color: const Color(0xFF2D2D2D),
               borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: widget.accentColor.withValues(alpha: 0.3)),
+              border: Border.all(
+                color: widget.accentColor.withValues(alpha: 0.3),
+              ),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withValues(alpha: 0.3),
@@ -798,14 +1049,23 @@ class _CodeEditorState extends State<CodeEditor> {
               children: [
                 // Header
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 6,
+                  ),
                   decoration: BoxDecoration(
                     color: widget.accentColor.withValues(alpha: 0.1),
-                    borderRadius: const BorderRadius.vertical(top: Radius.circular(8)),
+                    borderRadius: const BorderRadius.vertical(
+                      top: Radius.circular(8),
+                    ),
                   ),
                   child: Row(
                     children: [
-                      Icon(Icons.lightbulb_outline, size: 14, color: widget.accentColor),
+                      Icon(
+                        Icons.lightbulb_outline,
+                        size: 14,
+                        color: widget.accentColor,
+                      ),
                       const SizedBox(width: 6),
                       Text(
                         'Suggestions',
@@ -836,12 +1096,19 @@ class _CodeEditorState extends State<CodeEditor> {
                   return InkWell(
                     onTap: () => _insertSuggestion(suggestion),
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 10,
+                      ),
                       decoration: BoxDecoration(
-                        color: isSelected ? widget.accentColor.withValues(alpha: 0.2) : null,
+                        color: isSelected
+                            ? widget.accentColor.withValues(alpha: 0.2)
+                            : null,
                         border: Border(
                           bottom: index < _suggestions.length - 1
-                              ? BorderSide(color: Colors.white.withValues(alpha: 0.05))
+                              ? BorderSide(
+                                  color: Colors.white.withValues(alpha: 0.05),
+                                )
                               : BorderSide.none,
                         ),
                       ),
@@ -851,7 +1118,9 @@ class _CodeEditorState extends State<CodeEditor> {
                             width: 24,
                             height: 24,
                             decoration: BoxDecoration(
-                              color: _getColorForSuggestion(suggestion).withValues(alpha: 0.2),
+                              color: _getColorForSuggestion(
+                                suggestion,
+                              ).withValues(alpha: 0.2),
                               borderRadius: BorderRadius.circular(4),
                             ),
                             child: Icon(
@@ -871,14 +1140,18 @@ class _CodeEditorState extends State<CodeEditor> {
                                     color: Colors.white,
                                     fontFamily: 'monospace',
                                     fontSize: 14,
-                                    fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                                    fontWeight: isSelected
+                                        ? FontWeight.bold
+                                        : FontWeight.normal,
                                   ),
                                 ),
                                 if (description.isNotEmpty)
                                   Text(
                                     description,
                                     style: TextStyle(
-                                      color: Colors.white.withValues(alpha: 0.5),
+                                      color: Colors.white.withValues(
+                                        alpha: 0.5,
+                                      ),
                                       fontSize: 11,
                                     ),
                                   ),
@@ -898,7 +1171,7 @@ class _CodeEditorState extends State<CodeEditor> {
               ],
             ),
           ),
-        
+
         // Error panel
         if (_syntaxErrors.isNotEmpty)
           Container(
@@ -914,7 +1187,11 @@ class _CodeEditorState extends State<CodeEditor> {
               children: [
                 Row(
                   children: [
-                    const Icon(Icons.warning_amber_rounded, color: Colors.red, size: 18),
+                    const Icon(
+                      Icons.warning_amber_rounded,
+                      color: Colors.red,
+                      size: 18,
+                    ),
                     const SizedBox(width: 8),
                     Text(
                       'Syntax ${_syntaxErrors.length == 1 ? 'Error' : 'Errors'}',
@@ -926,38 +1203,45 @@ class _CodeEditorState extends State<CodeEditor> {
                   ],
                 ),
                 const SizedBox(height: 8),
-                ...(_syntaxErrors.take(3).map((error) => Padding(
-                  padding: const EdgeInsets.only(bottom: 4),
-                  child: Row(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                        decoration: BoxDecoration(
-                          color: Colors.red.withValues(alpha: 0.2),
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        child: Text(
-                          'Line ${error.line + 1}',
-                          style: const TextStyle(
-                            color: Colors.red,
-                            fontSize: 11,
-                            fontFamily: 'monospace',
-                          ),
+                ...(_syntaxErrors
+                    .take(3)
+                    .map(
+                      (error) => Padding(
+                        padding: const EdgeInsets.only(bottom: 4),
+                        child: Row(
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 6,
+                                vertical: 2,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.red.withValues(alpha: 0.2),
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              child: Text(
+                                'Line ${error.line + 1}',
+                                style: const TextStyle(
+                                  color: Colors.red,
+                                  fontSize: 11,
+                                  fontFamily: 'monospace',
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            Expanded(
+                              child: Text(
+                                error.message,
+                                style: TextStyle(
+                                  color: Colors.white.withValues(alpha: 0.8),
+                                  fontSize: 13,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: Text(
-                          error.message,
-                          style: TextStyle(
-                            color: Colors.white.withValues(alpha: 0.8),
-                            fontSize: 13,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ))),
+                    )),
                 if (_syntaxErrors.length > 3)
                   Text(
                     '... and ${_syntaxErrors.length - 3} more',
@@ -981,4 +1265,3 @@ class SyntaxError {
 
   SyntaxError(this.line, this.message);
 }
-

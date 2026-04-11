@@ -33,6 +33,25 @@ class ProfileScreen extends ConsumerWidget {
     return 'User';
   }
 
+  String _formatPreferredLanguage(String languageCode) {
+    switch (languageCode.trim().toLowerCase()) {
+      case 'python':
+        return 'Python';
+      case 'javascript':
+        return 'JavaScript';
+      case 'cplusplus':
+      case 'cpp':
+      case 'c++':
+        return 'C++';
+      case 'sql':
+        return 'SQL';
+      case 'dart':
+        return 'Dart';
+      default:
+        return languageCode.toUpperCase();
+    }
+  }
+
   Future<void> _confirmAndLogout(BuildContext context, WidgetRef ref) async {
     final l10n = AppLocalizations.of(context);
     final confirmed = await showDialog<bool>(
@@ -270,8 +289,9 @@ class ProfileScreen extends ConsumerWidget {
                                   ),
                                   _ProfileMetaChip(
                                     icon: Icons.code_rounded,
-                                    label: userData.preferredLanguage
-                                        .toUpperCase(),
+                                    label: _formatPreferredLanguage(
+                                      userData.preferredLanguage,
+                                    ),
                                   ),
                                   _ProfileMetaChip(
                                     icon: Icons.timer_outlined,

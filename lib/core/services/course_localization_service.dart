@@ -57,6 +57,24 @@ class CourseLocalizationService {
       ],
     ),
     _CourseDefinition(
+      id: 'cplusplus',
+      titleKey: 'cplusplus',
+      titleFallback: 'C++',
+      descriptionKey: 'cplusplus_desc',
+      descriptionFallback:
+          'Build strong programming fundamentals with modern C++',
+      icon: '⚙️',
+      color: Color(0xFF00599C),
+      difficultyKey: 'difficulty_beginner',
+      difficultyFallback: 'Beginner',
+      estimatedHours: 18,
+      tags: [
+        _LocalizedTextDescriptor('tag_programming', 'Programming'),
+        _LocalizedTextDescriptor('tag_beginner_friendly', 'Beginner-friendly'),
+        _LocalizedTextDescriptor('tag_modern', 'Modern'),
+      ],
+    ),
+    _CourseDefinition(
       id: 'htmlcss',
       titleKey: 'html_css',
       titleFallback: 'HTML/CSS',
@@ -140,6 +158,24 @@ class CourseLocalizationService {
         _LocalizedTextDescriptor('tag_programming', 'Programming'),
         _LocalizedTextDescriptor('tag_oop', 'OOP'),
         _LocalizedTextDescriptor('tag_advanced', 'Advanced'),
+      ],
+    ),
+    _CourseDefinition(
+      id: 'cplusplus-intermediate',
+      titleKey: 'cplusplus_intermediate',
+      titleFallback: 'C++ Intermediate',
+      descriptionKey: 'cplusplus_intermediate_desc',
+      descriptionFallback:
+          'Deepen C++ skills with OOP, templates, STL, and memory safety',
+      icon: '⚙️',
+      color: Color(0xFF004482),
+      difficultyKey: 'difficulty_intermediate',
+      difficultyFallback: 'Intermediate',
+      estimatedHours: 14,
+      tags: [
+        _LocalizedTextDescriptor('tag_programming', 'Programming'),
+        _LocalizedTextDescriptor('tag_advanced', 'Advanced'),
+        _LocalizedTextDescriptor('tag_modern', 'Modern'),
       ],
     ),
     _CourseDefinition(

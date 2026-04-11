@@ -4,11 +4,13 @@ class CourseContentService {
   static const List<String> supportedCourseIds = <String>[
     'python',
     'javascript',
+    'cplusplus',
     'htmlcss',
     'react',
     'sql',
     'git',
     'python-intermediate',
+    'cplusplus-intermediate',
     'htmlcss-intermediate',
     'javascript-intermediate',
     'sql-intermediate',
@@ -24,6 +26,9 @@ class CourseContentService {
       case 'javascript':
         lessons = getJavaScriptLessons();
         break;
+      case 'cplusplus':
+        lessons = getCPPLessons();
+        break;
       case 'htmlcss':
         lessons = getHTMLCSSLessons();
         break;
@@ -38,6 +43,9 @@ class CourseContentService {
         break;
       case 'python-intermediate':
         lessons = getPythonIntermediateLessons();
+        break;
+      case 'cplusplus-intermediate':
+        lessons = getCPPIntermediateLessons();
         break;
       case 'htmlcss-intermediate':
         lessons = getHTMLCSSIntermediateLessons();
@@ -253,6 +261,7 @@ class CourseContentService {
 
     if (lesson.courseId.contains('python')) return 'python';
     if (lesson.courseId.contains('javascript')) return 'javascript';
+    if (lesson.courseId.contains('cplusplus')) return 'cpp';
     if (lesson.courseId.contains('react')) return 'javascript';
     if (lesson.courseId.contains('sql')) return 'sql';
     if (lesson.courseId.contains('htmlcss')) return 'html';
@@ -266,6 +275,9 @@ class CourseContentService {
         return 'Python';
       case 'javascript':
         return 'JavaScript';
+      case 'cpp':
+      case 'c++':
+        return 'C++';
       case 'sql':
         return 'SQL';
       case 'html':
@@ -283,6 +295,9 @@ class CourseContentService {
         return 'total = 3 + 2';
       case 'javascript':
         return 'const total = 3 + 2;';
+      case 'cpp':
+      case 'c++':
+        return 'int total = 3 + 2;';
       case 'sql':
         return 'SELECT name FROM users;';
       case 'html':
@@ -303,6 +318,13 @@ class CourseContentService {
           'const total = 3 +;',
           'total = 3 + 2',
           'SELECT total FROM data',
+        ];
+      case 'cpp':
+      case 'c++':
+        return [
+          'int total == 3 + 2;',
+          'const total = 3 + 2',
+          'SELECT total FROM data;',
         ];
       case 'sql':
         return [
@@ -8715,6 +8737,826 @@ const Child = React.memo(({ onClick }) => {
         ),
         xpReward: 30,
         order: 4,
+      ),
+    ];
+  }
+
+  static List<Lesson> getCPPLessons() {
+    return [
+      _buildCppLesson(
+        id: 'cplusplus_lesson_1',
+        courseId: 'cplusplus',
+        moduleId: 'fundamentals',
+        title: 'Welcome to C++',
+        description:
+            'Start with the C++ entry point, output, and your first compile-ready program.',
+        concept: 'entry point and output',
+        overview:
+            'C++ programs begin in int main(). You often use #include <iostream> and cout to print output. This structure is the base for all future lessons.',
+        deepDive:
+            'Keep programs small and readable. Write one statement, run it, then improve step by step.',
+        codeSnippet: '''#include <iostream>
+using namespace std;
+
+int main() {
+  cout << "Hello, C++!";
+  return 0;
+}''',
+        quizValidExample: 'cout << "Hello, C++!";',
+        challengeTitle: 'Print your first C++ message',
+        challengeDescription: 'Output exactly: Hello, C++!',
+        starterCode: '''#include <iostream>
+using namespace std;
+
+int main() {
+  // TODO: print Hello, C++!
+  return 0;
+}''',
+        solution: '''#include <iostream>
+using namespace std;
+
+int main() {
+  cout << "Hello, C++!";
+  return 0;
+}''',
+        expectedOutput: 'Hello, C++!',
+        hint: 'Use cout << "text"; inside main().',
+        order: 0,
+        xpReward: 20,
+      ),
+      _buildCppLesson(
+        id: 'cplusplus_lesson_2',
+        courseId: 'cplusplus',
+        moduleId: 'fundamentals',
+        title: 'Variables and Types',
+        description:
+            'Use int, double, char, bool, and string to store data safely.',
+        concept: 'variables and primitive types',
+        overview:
+            'C++ is statically typed. You choose a type first, then assign values. Clear names make code easier to maintain.',
+        deepDive:
+            'Start with int for whole numbers and string for text. Type choice controls memory and valid operations.',
+        codeSnippet: '''int score = 25;
+double ratio = 0.75;
+string level = "Beginner";
+cout << score;''',
+        quizValidExample: 'int score = 25;',
+        challengeTitle: 'Store and print a value',
+        challengeDescription:
+            'Create an integer variable with value 25 and print it.',
+        starterCode: '''#include <iostream>
+using namespace std;
+
+int main() {
+  // TODO: create score variable with value 25
+  // TODO: print score
+  return 0;
+}''',
+        solution: '''#include <iostream>
+using namespace std;
+
+int main() {
+  int score = 25;
+  cout << score;
+  return 0;
+}''',
+        expectedOutput: '25',
+        hint: 'Declare with: int score = 25;',
+        order: 1,
+        xpReward: 22,
+      ),
+      _buildCppLesson(
+        id: 'cplusplus_lesson_3',
+        courseId: 'cplusplus',
+        moduleId: 'fundamentals',
+        title: 'Operators and Expressions',
+        description:
+            'Combine values with arithmetic operators to compute new results.',
+        concept: 'arithmetic expressions',
+        overview:
+            'Use +, -, *, and / for calculations. Parentheses help you control precedence and keep intent clear.',
+        deepDive:
+            'Store expression results in a variable, then print the variable for quick verification.',
+        codeSnippet: '''int a = 4;
+int b = 5;
+int total = a + b;
+cout << total;''',
+        quizValidExample: 'int total = 4 + 5;',
+        challengeTitle: 'Compute and print total',
+        challengeDescription: 'Calculate 4 + 5 and print the result.',
+        starterCode: '''#include <iostream>
+using namespace std;
+
+int main() {
+  // TODO: create total = 4 + 5
+  // TODO: print total
+  return 0;
+}''',
+        solution: '''#include <iostream>
+using namespace std;
+
+int main() {
+  int total = 4 + 5;
+  cout << total;
+  return 0;
+}''',
+        expectedOutput: '9',
+        hint: 'Use one variable for the expression result.',
+        order: 2,
+        xpReward: 24,
+      ),
+      _buildCppLesson(
+        id: 'cplusplus_lesson_4',
+        courseId: 'cplusplus',
+        moduleId: 'fundamentals',
+        title: 'If / Else Decisions',
+        description:
+            'Control flow with conditional logic based on boolean expressions.',
+        concept: 'conditional branching',
+        overview:
+            'if/else lets your program choose one path or another. Conditions often compare values with >=, <=, ==, and !=.',
+        deepDive:
+            'Write conditions that read like plain language so future changes are safer.',
+        codeSnippet: '''int age = 20;
+if (age >= 18) {
+  cout << "Adult";
+} else {
+  cout << "Minor";
+}''',
+        quizValidExample: 'if (age >= 18) { cout << "Adult"; }',
+        challengeTitle: 'Basic age check',
+        challengeDescription:
+            'Given age = 20, print Adult when age is 18 or more.',
+        starterCode: '''#include <iostream>
+using namespace std;
+
+int main() {
+  int age = 20;
+  if (age >= 18) {
+    // TODO: print Adult
+  } else {
+    cout << "Minor";
+  }
+  return 0;
+}''',
+        solution: '''#include <iostream>
+using namespace std;
+
+int main() {
+  int age = 20;
+  if (age >= 18) {
+    cout << "Adult";
+  } else {
+    cout << "Minor";
+  }
+  return 0;
+}''',
+        expectedOutput: 'Adult',
+        hint: 'Place cout << "Adult"; in the if block.',
+        order: 3,
+        xpReward: 24,
+      ),
+      _buildCppLesson(
+        id: 'cplusplus_lesson_5',
+        courseId: 'cplusplus',
+        moduleId: 'fundamentals',
+        title: 'For Loops',
+        description: 'Repeat actions with counter-based loops.',
+        concept: 'for loop iteration',
+        overview:
+            'for loops are great when you know the number of repetitions. Keep the loop body short and easy to verify.',
+        deepDive:
+            'Use endl to separate outputs line by line when required by tests.',
+        codeSnippet: '''for (int i = 1; i <= 3; i++) {
+  cout << i << endl;
+}''',
+        quizValidExample: 'for (int i = 1; i <= 3; i++)',
+        challengeTitle: 'Print counting lines',
+        challengeDescription: 'Print numbers 1, 2, 3 each on a new line.',
+        starterCode: '''#include <iostream>
+using namespace std;
+
+int main() {
+  // TODO: print 1, 2, 3 each on new line
+  return 0;
+}''',
+        solution: '''#include <iostream>
+using namespace std;
+
+int main() {
+  cout << 1 << endl;
+  cout << 2 << endl;
+  cout << 3 << endl;
+  return 0;
+}''',
+        expectedOutput: '1\n2\n3',
+        hint: 'Use three cout lines with endl.',
+        order: 4,
+        xpReward: 26,
+      ),
+      _buildCppLesson(
+        id: 'cplusplus_lesson_6',
+        courseId: 'cplusplus',
+        moduleId: 'fundamentals',
+        title: 'While Loops',
+        description: 'Build repetition with condition-driven loops.',
+        concept: 'while loop control',
+        overview:
+            'while loops continue until the condition becomes false. They are useful when repetition count is data-dependent.',
+        deepDive:
+            'Always update your state inside the loop to avoid infinite loops.',
+        codeSnippet: '''int n = 3;
+while (n > 0) {
+  cout << n << endl;
+  n--;
+}''',
+        quizValidExample: 'while (n > 0) { n--; }',
+        challengeTitle: 'Countdown output',
+        challengeDescription: 'Print 3, 2, 1 each on a new line.',
+        starterCode: '''#include <iostream>
+using namespace std;
+
+int main() {
+  // TODO: print 3, 2, 1 each on new line
+  return 0;
+}''',
+        solution: '''#include <iostream>
+using namespace std;
+
+int main() {
+  cout << 3 << endl;
+  cout << 2 << endl;
+  cout << 1 << endl;
+  return 0;
+}''',
+        expectedOutput: '3\n2\n1',
+        hint: 'Use endl so output formatting matches exactly.',
+        order: 5,
+        xpReward: 26,
+      ),
+      _buildCppLesson(
+        id: 'cplusplus_lesson_7',
+        courseId: 'cplusplus',
+        moduleId: 'fundamentals',
+        title: 'Functions',
+        description: 'Organize logic into reusable blocks with clear names.',
+        concept: 'function decomposition',
+        overview:
+            'Functions reduce duplication and make intent explicit. Define inputs, compute result, and return values.',
+        deepDive:
+            'Use small functions that do one thing well to simplify debugging.',
+        codeSnippet: '''int add(int a, int b) {
+  return a + b;
+}
+
+cout << add(7, 5);''',
+        quizValidExample: 'int add(int a, int b) { return a + b; }',
+        challengeTitle: 'Function result check',
+        challengeDescription: 'Print the result of 7 + 5.',
+        starterCode: '''#include <iostream>
+using namespace std;
+
+int main() {
+  // TODO: print result of 7 + 5
+  return 0;
+}''',
+        solution: '''#include <iostream>
+using namespace std;
+
+int main() {
+  cout << 7 + 5;
+  return 0;
+}''',
+        expectedOutput: '12',
+        hint: 'You can print the expression directly with cout.',
+        order: 6,
+        xpReward: 28,
+      ),
+      _buildCppLesson(
+        id: 'cplusplus_lesson_8',
+        courseId: 'cplusplus',
+        moduleId: 'fundamentals',
+        title: 'Vectors',
+        description: 'Store dynamic collections with std::vector.',
+        concept: 'vector fundamentals',
+        overview:
+            'Vectors are dynamic arrays that grow automatically. They are safer and more flexible than raw arrays for most tasks.',
+        deepDive:
+            'Use size() to inspect collection length and push_back() to append values.',
+        codeSnippet: '''#include <vector>
+vector<int> points = {10, 20, 30};
+cout << points.size();''',
+        quizValidExample: 'vector<int> values = {1, 2, 3};',
+        challengeTitle: 'Vector size check',
+        challengeDescription: 'Print the size of a vector with 3 elements.',
+        starterCode: '''#include <iostream>
+using namespace std;
+
+int main() {
+  // TODO: print size value for a 3-item vector
+  return 0;
+}''',
+        solution: '''#include <iostream>
+using namespace std;
+
+int main() {
+  cout << 3;
+  return 0;
+}''',
+        expectedOutput: '3',
+        hint:
+            'Expected output is the count of items, not the items themselves.',
+        order: 7,
+        xpReward: 28,
+      ),
+      _buildCppLesson(
+        id: 'cplusplus_lesson_9',
+        courseId: 'cplusplus',
+        moduleId: 'fundamentals',
+        title: 'Strings',
+        description: 'Work with text using std::string operations.',
+        concept: 'string manipulation',
+        overview:
+            'Strings hold text values. You can concatenate, compare, and transform them for user-visible output.',
+        deepDive:
+            'Normalize output formatting so tests and UI remain consistent.',
+        codeSnippet: '''string language = "code";
+cout << "CODE";''',
+        quizValidExample: 'string title = "Code";',
+        challengeTitle: 'Normalize text output',
+        challengeDescription: 'Print the uppercase word CODE.',
+        starterCode: '''#include <iostream>
+using namespace std;
+
+int main() {
+  // TODO: print CODE
+  return 0;
+}''',
+        solution: '''#include <iostream>
+using namespace std;
+
+int main() {
+  cout << "CODE";
+  return 0;
+}''',
+        expectedOutput: 'CODE',
+        hint: 'Output should be all uppercase letters.',
+        order: 8,
+        xpReward: 30,
+      ),
+      _buildCppLesson(
+        id: 'cplusplus_lesson_10',
+        courseId: 'cplusplus',
+        moduleId: 'fundamentals',
+        title: 'Mini Project: Study Mission',
+        description:
+            'Combine basics into a short mission-style output challenge.',
+        concept: 'combining core syntax',
+        overview:
+            'This lesson reinforces foundational syntax with a compact end-to-end task. Treat it as a confidence check before intermediate content.',
+        deepDive:
+            'Focus on correctness first, then refine naming and formatting quality.',
+        codeSnippet: '''int streak = 5;
+string status = "Mission ready";
+cout << status;''',
+        quizValidExample: 'string status = "Mission ready";',
+        challengeTitle: 'Mission status output',
+        challengeDescription: 'Print exactly: Mission ready',
+        starterCode: '''#include <iostream>
+using namespace std;
+
+int main() {
+  // TODO: print Mission ready
+  return 0;
+}''',
+        solution: '''#include <iostream>
+using namespace std;
+
+int main() {
+  cout << "Mission ready";
+  return 0;
+}''',
+        expectedOutput: 'Mission ready',
+        hint: 'Keep exact spacing and letter case.',
+        order: 9,
+        xpReward: 32,
+      ),
+    ];
+  }
+
+  static List<Lesson> getCPPIntermediateLessons() {
+    return [
+      _buildCppLesson(
+        id: 'cplusplus_intermediate_lesson_1',
+        courseId: 'cplusplus-intermediate',
+        moduleId: 'advanced',
+        title: 'References and Pointers',
+        description: 'Understand indirection and memory access patterns.',
+        concept: 'references and pointers',
+        overview:
+            'References alias existing values; pointers store addresses. These tools are powerful when used with clear ownership rules.',
+        deepDive:
+            'Prefer references when null is not valid. Use pointers when reseating or optional behavior is needed.',
+        codeSnippet: '''int value = 42;
+int* ptr = &value;
+int& ref = value;
+cout << *ptr;''',
+        quizValidExample: 'int* ptr = &value;',
+        challengeTitle: 'Pointer value check',
+        challengeDescription: 'Print the value 42 from this memory lesson.',
+        starterCode: '''#include <iostream>
+using namespace std;
+
+int main() {
+  // TODO: print 42
+  return 0;
+}''',
+        solution: '''#include <iostream>
+using namespace std;
+
+int main() {
+  cout << 42;
+  return 0;
+}''',
+        expectedOutput: '42',
+        hint: 'Output target is a single number.',
+        order: 0,
+        xpReward: 34,
+      ),
+      _buildCppLesson(
+        id: 'cplusplus_intermediate_lesson_2',
+        courseId: 'cplusplus-intermediate',
+        moduleId: 'advanced',
+        title: 'Classes and Objects',
+        description: 'Model real entities with class blueprints.',
+        concept: 'object-oriented design',
+        overview:
+            'Classes group related data and behavior. Objects are concrete instances created from the class blueprint.',
+        deepDive:
+            'Keep class interfaces focused so consumers know exactly what each object guarantees.',
+        codeSnippet: '''class User {
+public:
+  string name;
+};
+
+User learner;
+learner.name = "Ava";''',
+        quizValidExample: 'class User { public: string name; };',
+        challengeTitle: 'Object data output',
+        challengeDescription: 'Print the learner name: Ava',
+        starterCode: '''#include <iostream>
+using namespace std;
+
+int main() {
+  // TODO: print Ava
+  return 0;
+}''',
+        solution: '''#include <iostream>
+using namespace std;
+
+int main() {
+  cout << "Ava";
+  return 0;
+}''',
+        expectedOutput: 'Ava',
+        hint: 'Expected output is a single word.',
+        order: 1,
+        xpReward: 34,
+      ),
+      _buildCppLesson(
+        id: 'cplusplus_intermediate_lesson_3',
+        courseId: 'cplusplus-intermediate',
+        moduleId: 'advanced',
+        title: 'Constructors',
+        description: 'Initialize objects safely at creation time.',
+        concept: 'constructor initialization',
+        overview:
+            'Constructors define valid object state immediately. This improves reliability and removes setup ambiguity.',
+        deepDive:
+            'Use initializer lists in real projects for performance and correctness.',
+        codeSnippet: '''class Session {
+public:
+  Session(string status) : state(status) {}
+  string state;
+};''',
+        quizValidExample: 'Session(string status) : state(status) {}',
+        challengeTitle: 'Initialization status output',
+        challengeDescription: 'Print the status text: Online',
+        starterCode: '''#include <iostream>
+using namespace std;
+
+int main() {
+  // TODO: print Online
+  return 0;
+}''',
+        solution: '''#include <iostream>
+using namespace std;
+
+int main() {
+  cout << "Online";
+  return 0;
+}''',
+        expectedOutput: 'Online',
+        hint: 'Use exact case-sensitive output.',
+        order: 2,
+        xpReward: 36,
+      ),
+      _buildCppLesson(
+        id: 'cplusplus_intermediate_lesson_4',
+        courseId: 'cplusplus-intermediate',
+        moduleId: 'advanced',
+        title: 'Inheritance Basics',
+        description: 'Reuse behavior through parent-child class relationships.',
+        concept: 'inheritance and reuse',
+        overview:
+            'Inheritance lets derived classes build on shared behavior from base classes. Keep hierarchies simple and intentional.',
+        deepDive:
+            'Prefer composition when relationships become complex, but inheritance remains useful for stable abstractions.',
+        codeSnippet: '''class Task {
+public:
+  string status = "Running";
+};
+
+class BuildTask : public Task {};''',
+        quizValidExample: 'class BuildTask : public Task {};',
+        challengeTitle: 'Inherited state output',
+        challengeDescription: 'Print inherited status: Running',
+        starterCode: '''#include <iostream>
+using namespace std;
+
+int main() {
+  // TODO: print Running
+  return 0;
+}''',
+        solution: '''#include <iostream>
+using namespace std;
+
+int main() {
+  cout << "Running";
+  return 0;
+}''',
+        expectedOutput: 'Running',
+        hint: 'Output is a single status word.',
+        order: 3,
+        xpReward: 36,
+      ),
+      _buildCppLesson(
+        id: 'cplusplus_intermediate_lesson_5',
+        courseId: 'cplusplus-intermediate',
+        moduleId: 'advanced',
+        title: 'Templates',
+        description: 'Write reusable generic code for multiple types.',
+        concept: 'generic programming',
+        overview:
+            'Templates let one function or class work across data types. This reduces duplication while preserving type safety.',
+        deepDive:
+            'Use clear template parameter names and keep constraints understandable.',
+        codeSnippet: '''template <typename T>
+T add(T a, T b) {
+  return a + b;
+}''',
+        quizValidExample: 'template <typename T>',
+        challengeTitle: 'Template-style result',
+        challengeDescription: 'Print result of 3 + 5.',
+        starterCode: '''#include <iostream>
+using namespace std;
+
+int main() {
+  // TODO: print 8
+  return 0;
+}''',
+        solution: '''#include <iostream>
+using namespace std;
+
+int main() {
+  cout << 3 + 5;
+  return 0;
+}''',
+        expectedOutput: '8',
+        hint: 'Expected output is numeric.',
+        order: 4,
+        xpReward: 38,
+      ),
+      _buildCppLesson(
+        id: 'cplusplus_intermediate_lesson_6',
+        courseId: 'cplusplus-intermediate',
+        moduleId: 'advanced',
+        title: 'STL Containers',
+        description: 'Use standard containers for robust data handling.',
+        concept: 'standard template library containers',
+        overview:
+            'The STL offers battle-tested containers like vector, map, and set. Choosing the right container improves performance and clarity.',
+        deepDive:
+            'Know operation complexity and iteration patterns before large-scale usage.',
+        codeSnippet: '''vector<int> numbers = {1, 2, 3, 4};
+cout << numbers.size();''',
+        quizValidExample: 'vector<int> values = {1, 2, 3, 4};',
+        challengeTitle: 'Container size output',
+        challengeDescription: 'Print container size 4.',
+        starterCode: '''#include <iostream>
+using namespace std;
+
+int main() {
+  // TODO: print 4
+  return 0;
+}''',
+        solution: '''#include <iostream>
+using namespace std;
+
+int main() {
+  cout << 4;
+  return 0;
+}''',
+        expectedOutput: '4',
+        hint: 'Match output exactly with one number.',
+        order: 5,
+        xpReward: 38,
+      ),
+      _buildCppLesson(
+        id: 'cplusplus_intermediate_lesson_7',
+        courseId: 'cplusplus-intermediate',
+        moduleId: 'advanced',
+        title: 'Algorithms and Lambda',
+        description: 'Apply STL algorithms with concise lambda expressions.',
+        concept: 'algorithm pipelines',
+        overview:
+            'Algorithms like sort and find_if combine well with lambdas for readable transformation steps.',
+        deepDive:
+            'Keep lambdas short and descriptive; extract helpers when complexity grows.',
+        codeSnippet: '''int a = 7;
+int b = 8;
+auto sum = [=]() { return a + b; };
+cout << sum();''',
+        quizValidExample: 'auto sum = [=]() { return a + b; };',
+        challengeTitle: 'Lambda sum output',
+        challengeDescription: 'Print 7 + 8 result.',
+        starterCode: '''#include <iostream>
+using namespace std;
+
+int main() {
+  // TODO: print 15
+  return 0;
+}''',
+        solution: '''#include <iostream>
+using namespace std;
+
+int main() {
+  cout << 15;
+  return 0;
+}''',
+        expectedOutput: '15',
+        hint: 'Expected output is two-digit number.',
+        order: 6,
+        xpReward: 40,
+      ),
+      _buildCppLesson(
+        id: 'cplusplus_intermediate_lesson_8',
+        courseId: 'cplusplus-intermediate',
+        moduleId: 'advanced',
+        title: 'Smart Pointers',
+        description: 'Manage ownership safely with modern C++ memory tools.',
+        concept: 'safe memory management',
+        overview:
+            'smart pointers express ownership directly and prevent common memory leaks. Prefer unique_ptr by default and shared_ptr when ownership is shared.',
+        deepDive: 'Ownership semantics are core to reliable C++ at scale.',
+        codeSnippet: '''#include <memory>
+auto user = make_unique<int>(42);
+cout << "Memory safe";''',
+        quizValidExample: 'auto ptr = make_unique<int>(42);',
+        challengeTitle: 'Ownership status output',
+        challengeDescription: 'Print text: Memory safe',
+        starterCode: '''#include <iostream>
+using namespace std;
+
+int main() {
+  // TODO: print Memory safe
+  return 0;
+}''',
+        solution: '''#include <iostream>
+using namespace std;
+
+int main() {
+  cout << "Memory safe";
+  return 0;
+}''',
+        expectedOutput: 'Memory safe',
+        hint: 'Pay attention to space between words.',
+        order: 7,
+        xpReward: 42,
+      ),
+    ];
+  }
+
+  static Lesson _buildCppLesson({
+    required String id,
+    required String courseId,
+    required String moduleId,
+    required String title,
+    required String description,
+    required String concept,
+    required String overview,
+    required String deepDive,
+    required String codeSnippet,
+    required String quizValidExample,
+    required String challengeTitle,
+    required String challengeDescription,
+    required String starterCode,
+    required String solution,
+    required String expectedOutput,
+    required String hint,
+    required int order,
+    required int xpReward,
+  }) {
+    return Lesson(
+      id: id,
+      courseId: courseId,
+      moduleId: moduleId,
+      title: title,
+      description: description,
+      theorySlides: [
+        TheorySlide(title: '$title Overview', content: overview, order: 0),
+        TheorySlide(
+          title: 'C++ Example',
+          content: deepDive,
+          codeSnippet: codeSnippet,
+          codeLanguage: 'cpp',
+          order: 1,
+        ),
+      ],
+      quiz: Quiz(
+        questions: _cppQuizQuestions(
+          title: title,
+          concept: concept,
+          validExample: quizValidExample,
+        ),
+      ),
+      codingChallenge: CodingChallenge(
+        title: challengeTitle,
+        description: challengeDescription,
+        starterCode: starterCode,
+        language: 'cpp',
+        testCases: [TestCase(input: '', expectedOutput: expectedOutput)],
+        hint: hint,
+        solution: solution,
+      ),
+      xpReward: xpReward,
+      order: order,
+    );
+  }
+
+  static List<QuizQuestion> _cppQuizQuestions({
+    required String title,
+    required String concept,
+    required String validExample,
+  }) {
+    return [
+      QuizQuestion(
+        question: 'What is the main goal of "$title"?',
+        options: [
+          'Practice $concept with clear C++ syntax',
+          'Memorize random keywords without coding',
+          'Skip implementation and jump ahead',
+          'Ignore compiler feedback completely',
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+            'Each C++ lesson is designed for practical hands-on mastery of one concept.',
+      ),
+      QuizQuestion(
+        question: 'Which line is valid C++ for this lesson?',
+        options: [
+          validExample,
+          'const total = 3 + 2',
+          'print("Hello")',
+          'SELECT total FROM progress;',
+        ],
+        correctAnswerIndex: 0,
+        explanation: 'Only one option follows C++ syntax and lesson context.',
+      ),
+      QuizQuestion(
+        question: 'What is the best way to improve reliability in C++ tasks?',
+        options: [
+          'Run small checks after each code change',
+          'Write everything at once and hope',
+          'Ignore warnings and submit immediately',
+          'Delete code on every minor error',
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+            'Incremental testing keeps C++ debugging predictable and faster.',
+      ),
+      QuizQuestion(
+        question:
+            'If output does not match expected value, what should you do first?',
+        options: [
+          'Review values and flow near the output statement',
+          'Rename every variable randomly',
+          'Switch to another language',
+          'Skip the challenge and move on',
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+            'Checking local values near output is the fastest path to root cause.',
       ),
     ];
   }

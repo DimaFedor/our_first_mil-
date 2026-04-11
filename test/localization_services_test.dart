@@ -40,4 +40,14 @@ void main() {
       'Ваші перші кроки у світ програмування на Python',
     );
   });
+
+  test('uk locale gracefully falls back for cplusplus lessons', () async {
+    final lessons = await LessonLocalizationService.getLocalizedLessons(
+      courseId: 'cplusplus',
+      uiLocale: const Locale('uk'),
+    );
+
+    expect(lessons, isNotEmpty);
+    expect(lessons.first.title, 'Welcome to C++');
+  });
 }

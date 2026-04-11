@@ -15,6 +15,7 @@ import '../../../shared/widgets/code_editor.dart';
 import '../../../core/services/python_interpreter.dart' as py;
 import '../../../core/services/js_interpreter.dart' as js;
 import '../../../core/services/html_validator.dart';
+import '../../../core/services/cpp_validator.dart';
 import '../widgets/git_challenge_widget.dart';
 
 class LessonScreen extends ConsumerStatefulWidget {
@@ -568,6 +569,9 @@ class _TheorySlideWidget extends StatelessWidget {
         return 'sql';
       case 'git':
         return 'bash';
+      case 'cplusplus':
+      case 'cplusplus-intermediate':
+        return 'cpp';
       default:
         return 'python';
     }
@@ -1313,6 +1317,8 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
           language == 'html' || language == 'html/css' || language == 'css';
       final isSQL = language == 'sql';
       final isReact = language == 'react' || language == 'jsx';
+      final isCpp =
+          language == 'cpp' || language == 'c++' || language == 'cplusplus';
 
       dynamic result;
 
@@ -1325,6 +1331,9 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
       } else if (isSQL) {
         // For SQL, we validate the code matches expected pattern
         result = _validateSQL(code);
+      } else if (isCpp) {
+        final cppValidator = CppValidator();
+        result = cppValidator.execute(code);
       } else {
         // Default to Python
         final pythonInterpreter = py.PythonInterpreter();
