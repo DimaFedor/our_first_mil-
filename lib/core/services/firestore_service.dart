@@ -16,7 +16,15 @@ class FirestoreService {
   CollectionReference get coursesCollection => _firestore.collection('courses');
 
   // Get or Create User Document
-  Future<void> createUserDocument(User user, {String? displayName}) async {
+  Future<void> createUserDocument(
+    User user, {
+    String? displayName,
+    String skillLevel = 'beginner',
+    String preferredLanguage = 'python',
+    String authMethod = 'email',
+    String bio = '',
+    int dailyGoalMinutes = 20,
+  }) async {
     final userDoc = usersCollection.doc(user.uid);
     final docSnapshot = await userDoc.get();
 
@@ -26,6 +34,12 @@ class FirestoreService {
         'email': user.email,
         'displayName': displayName ?? user.displayName ?? 'User',
         'photoURL': user.photoURL,
+        'skillLevel': skillLevel,
+        'preferredLanguage': preferredLanguage,
+        'authMethod': authMethod,
+        'bio': bio,
+        'dailyGoalMinutes': dailyGoalMinutes,
+        'onboardingCompleted': true,
         'totalXP': 0,
         'currentStreak': 0,
         'longestStreak': 0,
@@ -33,6 +47,28 @@ class FirestoreService {
         'lastActive': FieldValue.serverTimestamp(),
       });
     }
+  }
+
+  Future<void> updateUserProfile({
+    required String userId,
+    required String displayName,
+    required String email,
+    required String skillLevel,
+    required String preferredLanguage,
+    String bio = '',
+    int dailyGoalMinutes = 20,
+  }) async {
+    await usersCollection.doc(userId).set({
+      'uid': userId,
+      'displayName': displayName,
+      'email': email,
+      'skillLevel': skillLevel,
+      'preferredLanguage': preferredLanguage,
+      'bio': bio,
+      'dailyGoalMinutes': dailyGoalMinutes,
+      'lastProfileUpdate': FieldValue.serverTimestamp(),
+      'lastActive': FieldValue.serverTimestamp(),
+    }, SetOptions(merge: true));
   }
 
   // Update User Progress

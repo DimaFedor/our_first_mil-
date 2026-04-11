@@ -86,14 +86,25 @@ class ProfileScreen extends ConsumerWidget {
                         .animate()
                         .fadeIn(duration: 600.ms)
                         .slideY(begin: 0.3, end: 0),
-                    IconButton(
-                      icon: Icon(
-                        Icons.settings,
-                        color: onSurface.withValues(alpha: 0.7),
-                      ),
-                      onPressed: () {
-                        context.push('/settings');
-                      },
+                    Row(
+                      children: [
+                        IconButton(
+                          icon: Icon(
+                            Icons.edit_outlined,
+                            color: onSurface.withValues(alpha: 0.7),
+                          ),
+                          onPressed: () => context.push('/edit-profile'),
+                        ),
+                        IconButton(
+                          icon: Icon(
+                            Icons.settings,
+                            color: onSurface.withValues(alpha: 0.7),
+                          ),
+                          onPressed: () {
+                            context.push('/settings');
+                          },
+                        ),
+                      ],
                     ).animate(delay: 200.ms).fadeIn(),
                   ],
                 ),
@@ -140,7 +151,7 @@ class ProfileScreen extends ConsumerWidget {
                                     BoxShadow(
                                       color: const Color(
                                         0xFF0066FF,
-                                      ).withOpacity(0.4),
+                                      ).withValues(alpha: 0.4),
                                       blurRadius: 30,
                                       offset: const Offset(0, 15),
                                     ),
@@ -188,6 +199,49 @@ class ProfileScreen extends ConsumerWidget {
                               color: onSurface.withValues(alpha: 0.65),
                             ),
                           ).animate(delay: 500.ms).fadeIn(),
+
+                          const SizedBox(height: 12),
+                          userDataAsync.when(
+                            data: (userData) {
+                              if (userData == null) return const SizedBox();
+                              return Wrap(
+                                spacing: 8,
+                                runSpacing: 8,
+                                alignment: WrapAlignment.center,
+                                children: [
+                                  _ProfileMetaChip(
+                                    icon: Icons.auto_awesome,
+                                    label:
+                                        '${userData.skillLevel[0].toUpperCase()}${userData.skillLevel.substring(1)}',
+                                  ),
+                                  _ProfileMetaChip(
+                                    icon: Icons.code_rounded,
+                                    label: userData.preferredLanguage
+                                        .toUpperCase(),
+                                  ),
+                                  _ProfileMetaChip(
+                                    icon: Icons.timer_outlined,
+                                    label:
+                                        '${userData.dailyGoalMinutes} min/day',
+                                  ),
+                                ],
+                              );
+                            },
+                            loading: () => const SizedBox(),
+                            error: (_, _) => const SizedBox(),
+                          ),
+
+                          const SizedBox(height: 12),
+                          OutlinedButton.icon(
+                            onPressed: () => context.push('/edit-profile'),
+                            icon: const Icon(Icons.edit_outlined, size: 18),
+                            label: Text(
+                              AppLocalizations.of(
+                                    context,
+                                  )?.get('edit_profile') ??
+                                  'Edit Profile',
+                            ),
+                          ),
 
                           // Level Badge
                           const SizedBox(height: 16),
@@ -238,7 +292,7 @@ class ProfileScreen extends ConsumerWidget {
                               ),
                             ).animate(delay: 550.ms).fadeIn().scale(),
                             loading: () => const SizedBox(height: 36),
-                            error: (_, __) => const SizedBox(),
+                            error: (_, _) => const SizedBox(),
                           ),
                         ],
                       ),
@@ -255,7 +309,7 @@ class ProfileScreen extends ConsumerWidget {
                     levelInfo: levelInfo,
                   ).animate(delay: 350.ms).fadeIn().slideY(begin: 0.3, end: 0),
                   loading: () => const SizedBox(height: 100),
-                  error: (_, __) => const SizedBox(),
+                  error: (_, _) => const SizedBox(),
                 ),
 
                 const SizedBox(height: 24),
@@ -326,12 +380,12 @@ class ProfileScreen extends ConsumerWidget {
                           },
                           loading: () =>
                               const Center(child: CircularProgressIndicator()),
-                          error: (_, __) => const SizedBox(),
+                          error: (_, _) => const SizedBox(),
                         );
                       },
                       loading: () =>
                           const Center(child: CircularProgressIndicator()),
-                      error: (_, __) => const SizedBox(),
+                      error: (_, _) => const SizedBox(),
                     )
                     .animate(delay: 600.ms)
                     .fadeIn()
@@ -345,7 +399,7 @@ class ProfileScreen extends ConsumerWidget {
                     days: userData?.currentStreak ?? 0,
                   ).animate(delay: 700.ms).fadeIn().slideY(begin: 0.3, end: 0),
                   loading: () => const SizedBox(),
-                  error: (_, __) => const SizedBox(),
+                  error: (_, _) => const SizedBox(),
                 ),
 
                 const SizedBox(height: 16),
@@ -394,7 +448,7 @@ class ProfileScreen extends ConsumerWidget {
                     );
                   },
                   loading: () => const SizedBox(),
-                  error: (_, __) => const SizedBox(),
+                  error: (_, _) => const SizedBox(),
                 ),
 
                 const SizedBox(height: 24),
@@ -482,7 +536,7 @@ class ProfileScreen extends ConsumerWidget {
                         .slideY(begin: 0.2, end: 0);
                   },
                   loading: () => const SizedBox(),
-                  error: (_, __) => const SizedBox(),
+                  error: (_, _) => const SizedBox(),
                 ),
 
                 const SizedBox(height: 24),
@@ -570,6 +624,48 @@ class ProfileScreen extends ConsumerWidget {
   }
 }
 
+class _ProfileMetaChip extends StatelessWidget {
+  final IconData icon;
+  final String label;
+
+  const _ProfileMetaChip({required this.icon, required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+    final onSurface = Theme.of(context).colorScheme.onSurface;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+      decoration: BoxDecoration(
+        color: isDarkTheme
+            ? Colors.white.withValues(alpha: 0.08)
+            : Colors.white.withValues(alpha: 0.75),
+        borderRadius: BorderRadius.circular(999),
+        border: Border.all(
+          color: isDarkTheme
+              ? Colors.white.withValues(alpha: 0.12)
+              : const Color(0xFFD6E2FF),
+        ),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: 14, color: onSurface.withValues(alpha: 0.7)),
+          const SizedBox(width: 6),
+          Text(
+            label,
+            style: TextStyle(
+              color: onSurface.withValues(alpha: 0.8),
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class _StatBox extends StatelessWidget {
   final IconData icon;
   final String label;
@@ -592,7 +688,7 @@ class _StatBox extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: gradient[0].withOpacity(0.3),
+            color: gradient[0].withValues(alpha: 0.3),
             blurRadius: 20,
             offset: const Offset(0, 10),
           ),

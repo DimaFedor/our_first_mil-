@@ -91,11 +91,7 @@ class SettingsScreen extends ConsumerWidget {
                       icon: Icons.person_outline,
                       title: context.tr('edit_profile'),
                       subtitle: 'Change your name and email',
-                      onTap: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text(context.tr('coming_soon'))),
-                        );
-                      },
+                      onTap: () => context.push('/edit-profile'),
                       index: 0,
                     ),
                     _buildSettingItem(

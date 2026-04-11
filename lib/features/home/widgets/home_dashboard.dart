@@ -74,6 +74,8 @@ class HomeDashboard extends ConsumerWidget {
                   const SizedBox(height: 18),
                   _HeroStatusCard(
                         userName: userId == null ? null : userName,
+                        skillLevel: userData?.skillLevel,
+                        preferredLanguage: userData?.preferredLanguage,
                         levelInfo: levelInfo,
                         totalXP: totalXP,
                         currentStreak: currentStreak,
@@ -464,6 +466,8 @@ class _HomeHeader extends StatelessWidget {
 
 class _HeroStatusCard extends StatelessWidget {
   final String? userName;
+  final String? skillLevel;
+  final String? preferredLanguage;
   final LevelInfo levelInfo;
   final int totalXP;
   final int currentStreak;
@@ -473,6 +477,8 @@ class _HeroStatusCard extends StatelessWidget {
 
   const _HeroStatusCard({
     required this.userName,
+    required this.skillLevel,
+    required this.preferredLanguage,
     required this.levelInfo,
     required this.totalXP,
     required this.currentStreak,
@@ -491,10 +497,24 @@ class _HeroStatusCard extends StatelessWidget {
         ? '${_greetingForHour(DateTime.now().hour)}, $userName'
         : (AppLocalizations.of(context)?.get('start_journey') ??
               'Start your journey');
+    final learningFocus =
+        (preferredLanguage != null && preferredLanguage!.isNotEmpty)
+        ? preferredLanguage!.toUpperCase()
+        : null;
+    final skillLabel = (skillLevel != null && skillLevel!.isNotEmpty)
+        ? '${skillLevel![0].toUpperCase()}${skillLevel!.substring(1)}'
+        : null;
     final subtitle = totalLessons > 0
         ? (AppLocalizations.of(context)?.get('keep_up_work') ??
               'Keep up the great work!')
         : 'Your first lesson is ready when you are.';
+    String personalizedSubtitle = subtitle;
+    if (learningFocus != null) {
+      personalizedSubtitle = '$personalizedSubtitle · Focus: $learningFocus';
+    }
+    if (skillLabel != null) {
+      personalizedSubtitle = '$personalizedSubtitle · $skillLabel';
+    }
     final primaryLabel = totalLessons > 0
         ? (AppLocalizations.of(context)?.get('continue_learning') ??
               'Continue learning')
@@ -562,7 +582,7 @@ class _HeroStatusCard extends StatelessWidget {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          subtitle,
+                          personalizedSubtitle,
                           style: theme.textTheme.bodyMedium?.copyWith(
                             color: onSurface.withValues(alpha: 0.72),
                           ),

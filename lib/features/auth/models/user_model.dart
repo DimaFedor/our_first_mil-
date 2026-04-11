@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class UserModel {
   final String uid;
   final String email;
@@ -6,6 +8,11 @@ class UserModel {
   final int totalXP;
   final int currentStreak;
   final int longestStreak;
+  final String skillLevel;
+  final String preferredLanguage;
+  final String authMethod;
+  final String bio;
+  final int dailyGoalMinutes;
   final DateTime? createdAt;
   final DateTime? lastActive;
 
@@ -17,6 +24,11 @@ class UserModel {
     this.totalXP = 0,
     this.currentStreak = 0,
     this.longestStreak = 0,
+    this.skillLevel = 'beginner',
+    this.preferredLanguage = 'python',
+    this.authMethod = 'email',
+    this.bio = '',
+    this.dailyGoalMinutes = 20,
     this.createdAt,
     this.lastActive,
   });
@@ -30,16 +42,13 @@ class UserModel {
       totalXP: json['totalXP'] ?? 0,
       currentStreak: json['currentStreak'] ?? 0,
       longestStreak: json['longestStreak'] ?? 0,
-      createdAt: json['createdAt'] != null 
-          ? (json['createdAt'] as dynamic).toDate != null 
-              ? (json['createdAt'] as dynamic).toDate()
-              : null
-          : null,
-      lastActive: json['lastActive'] != null
-          ? (json['lastActive'] as dynamic).toDate != null
-              ? (json['lastActive'] as dynamic).toDate()
-              : null
-          : null,
+      skillLevel: json['skillLevel'] ?? 'beginner',
+      preferredLanguage: json['preferredLanguage'] ?? 'python',
+      authMethod: json['authMethod'] ?? 'email',
+      bio: json['bio'] ?? '',
+      dailyGoalMinutes: json['dailyGoalMinutes'] ?? 20,
+      createdAt: _parseDate(json['createdAt']),
+      lastActive: _parseDate(json['lastActive']),
     );
   }
 
@@ -52,8 +61,21 @@ class UserModel {
       'totalXP': totalXP,
       'currentStreak': currentStreak,
       'longestStreak': longestStreak,
+      'skillLevel': skillLevel,
+      'preferredLanguage': preferredLanguage,
+      'authMethod': authMethod,
+      'bio': bio,
+      'dailyGoalMinutes': dailyGoalMinutes,
       'createdAt': createdAt,
       'lastActive': lastActive,
     };
+  }
+
+  static DateTime? _parseDate(dynamic value) {
+    if (value == null) return null;
+    if (value is DateTime) return value;
+    if (value is Timestamp) return value.toDate();
+    if (value is String) return DateTime.tryParse(value);
+    return null;
   }
 }

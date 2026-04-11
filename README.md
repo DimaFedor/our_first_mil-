@@ -19,6 +19,13 @@
 - **Streak Tracking**: Daily activity calendar
 - **Progress Bars**: Visual progress on all courses
 
+### 🔐 **Next-gen Authentication UX**
+- Email/password login with secure JWT + refresh token handling
+- Google Sign-In support
+- Passwordless magic link flow
+- Gamified signup (skill level + first programming language)
+- Unique "Solve & Login" coding challenge authentication
+
 ### 💻 **Advanced Code Editor**
 - Line numbers
 - Syntax highlighting (Python, JavaScript, HTML/CSS)
@@ -142,7 +149,7 @@ final lesson = Lesson(
 ## 🔧 Configuration
 
 ### Firebase Setup
-1. Enable **Authentication** → Email/Password & Anonymous
+1. Enable **Authentication** → Email/Password, Google, Email Link (passwordless), Anonymous
 2. Enable **Firestore Database**
 3. Create collections:
    - `users`: User profiles
@@ -162,6 +169,13 @@ service cloud.firestore {
   }
 }
 ```
+
+### Auth API Example (Node.js / Express)
+An API reference implementation is included in:
+- `tool/auth_api_example/server.js`
+- `tool/auth_api_example/package.json`
+
+It includes endpoints for `register`, `login`, `google`, `magic-link`, `challenge`, `refresh`, and `logout`, with token rotation and rate limiting.
 
 ### Localization Packs
 The app now loads language metadata and translation packs from JSON assets:
