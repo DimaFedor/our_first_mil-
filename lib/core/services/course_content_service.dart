@@ -16,31 +16,306 @@ class CourseContentService {
   ];
 
   static List<Lesson> getLessonsForCourse(String courseId) {
+    List<Lesson> lessons;
     switch (courseId) {
       case 'python':
-        return getPythonLessons();
+        lessons = getPythonLessons();
+        break;
       case 'javascript':
-        return getJavaScriptLessons();
+        lessons = getJavaScriptLessons();
+        break;
       case 'htmlcss':
-        return getHTMLCSSLessons();
+        lessons = getHTMLCSSLessons();
+        break;
       case 'react':
-        return getReactLessons();
+        lessons = getReactLessons();
+        break;
       case 'sql':
-        return getSQLLessons();
+        lessons = getSQLLessons();
+        break;
       case 'git':
-        return getGitLessons();
+        lessons = getGitLessons();
+        break;
       case 'python-intermediate':
-        return getPythonIntermediateLessons();
+        lessons = getPythonIntermediateLessons();
+        break;
       case 'htmlcss-intermediate':
-        return getHTMLCSSIntermediateLessons();
+        lessons = getHTMLCSSIntermediateLessons();
+        break;
       case 'javascript-intermediate':
-        return getJavaScriptIntermediateLessons();
+        lessons = getJavaScriptIntermediateLessons();
+        break;
       case 'sql-intermediate':
-        return getSQLIntermediateLessons();
+        lessons = getSQLIntermediateLessons();
+        break;
       case 'react-intermediate':
-        return getReactIntermediateLessons();
+        lessons = getReactIntermediateLessons();
+        break;
       default:
-        return const <Lesson>[];
+        lessons = const <Lesson>[];
+    }
+
+    return _expandLessonsToTargetQuizCount(lessons, targetQuestions: 10);
+  }
+
+  static List<Lesson> _expandLessonsToTargetQuizCount(
+    List<Lesson> lessons, {
+    required int targetQuestions,
+  }) {
+    return lessons
+        .map(
+          (lesson) =>
+              _expandLessonQuiz(lesson, targetQuestions: targetQuestions),
+        )
+        .toList(growable: false);
+  }
+
+  static Lesson _expandLessonQuiz(
+    Lesson lesson, {
+    required int targetQuestions,
+  }) {
+    final quiz = lesson.quiz;
+    if (quiz == null || quiz.questions.length >= targetQuestions) {
+      return lesson;
+    }
+
+    final expandedQuestions = [...quiz.questions];
+    final existingQuestionKeys = expandedQuestions
+        .map((question) => question.question.trim().toLowerCase())
+        .toSet();
+
+    final generated = _generateSupplementalQuestions(lesson);
+    for (final candidate in generated) {
+      if (expandedQuestions.length >= targetQuestions) break;
+      final normalized = candidate.question.trim().toLowerCase();
+      final hasValidAnswer =
+          candidate.correctAnswerIndex >= 0 &&
+          candidate.correctAnswerIndex < candidate.options.length;
+      if (!hasValidAnswer) continue;
+      if (existingQuestionKeys.add(normalized)) {
+        expandedQuestions.add(candidate);
+      }
+    }
+
+    var fallbackIndex = 1;
+    while (expandedQuestions.length < targetQuestions) {
+      final fallback = QuizQuestion(
+        question:
+            '${lesson.title} • practice check $fallbackIndex: what is the best next step?',
+        options: [
+          'Apply the concept in a small ${_displayLanguage(_quizLanguage(lesson))} example',
+          'Skip testing and submit immediately',
+          'Delete working code and restart randomly',
+          'Memorize answers without coding',
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+            'A small practical example helps reinforce ${lesson.title} without increasing complexity too quickly.',
+      );
+      fallbackIndex++;
+
+      final normalized = fallback.question.trim().toLowerCase();
+      if (existingQuestionKeys.add(normalized)) {
+        expandedQuestions.add(fallback);
+      }
+    }
+
+    final updated = Map<String, dynamic>.from(lesson.toJson());
+    updated['quiz'] = Quiz(
+      questions: List<QuizQuestion>.unmodifiable(expandedQuestions),
+      xpReward: quiz.xpReward,
+    ).toJson();
+
+    return Lesson.fromJson(updated);
+  }
+
+  static List<QuizQuestion> _generateSupplementalQuestions(Lesson lesson) {
+    final topic = lesson.title.trim();
+    final theoryFocusRaw = lesson.theorySlides.isEmpty
+        ? topic
+        : lesson.theorySlides.first.title.trim();
+    final theoryFocus = theoryFocusRaw.replaceAll(
+      RegExp(r'[^a-zA-Z0-9\s_-]'),
+      '',
+    );
+    final language = _quizLanguage(lesson);
+    final languageName = _displayLanguage(language);
+    final challengeTitle =
+        lesson.codingChallenge?.title.trim().isNotEmpty == true
+        ? lesson.codingChallenge!.title.trim()
+        : 'this challenge';
+    final validSnippet = _validSnippetForLanguage(language);
+    final incorrectSnippets = _incorrectSnippetsForLanguage(language);
+
+    return <QuizQuestion>[
+      QuizQuestion(
+        question: 'What is the main objective of "$topic"?',
+        options: [
+          'Understand and apply the core idea in code',
+          'Memorize random syntax without practice',
+          'Skip examples and only read definitions',
+          'Focus on unrelated advanced topics first',
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+            'Each lesson objective is to build practical skill with one focused concept.',
+      ),
+      QuizQuestion(
+        question: 'Which $languageName example is syntactically valid?',
+        options: [validSnippet, ...incorrectSnippets],
+        correctAnswerIndex: 0,
+        explanation:
+            'This is the correctly formed snippet for $languageName in this lesson context.',
+      ),
+      QuizQuestion(
+        question: 'Which approach best follows this lesson style?',
+        options: [
+          'Solve one small step, test it, then continue',
+          'Write everything at once without checking',
+          'Ignore errors and move to next lesson',
+          'Copy code blindly without understanding',
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+            'The course style is incremental: small steps + quick validation.',
+      ),
+      QuizQuestion(
+        question:
+            'Before submitting "$challengeTitle", what should you verify?',
+        options: [
+          'Output/behavior matches the expected result',
+          'The code has the most lines possible',
+          'Variable names are as short as possible',
+          'No comments are present anywhere',
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+            'Checking expected behavior first prevents common submission mistakes.',
+      ),
+      QuizQuestion(
+        question: 'Which statement best extends "$theoryFocus"?',
+        options: [
+          'Practice the concept with a new input/example',
+          'Switch to a different topic immediately',
+          'Remove all previous code and restart',
+          'Skip coding and only watch explanations',
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+            'Applying the same concept to a fresh example deepens understanding.',
+      ),
+      QuizQuestion(
+        question:
+            'If your answer is wrong, what is the smartest first debug step?',
+        options: [
+          'Check intermediate values and assumptions',
+          'Rewrite from scratch without reviewing',
+          'Guess a random fix and resubmit',
+          'Ignore the failing case',
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+            'Reviewing assumptions and intermediate output is the fastest safe debug path.',
+      ),
+      QuizQuestion(
+        question: 'Which habit improves readability in $languageName code?',
+        options: [
+          'Use clear names and consistent formatting',
+          'Use one-letter names for everything',
+          'Avoid whitespace and structure',
+          'Hide logic in one long line',
+        ],
+        correctAnswerIndex: 0,
+        explanation: 'Readable code is easier to maintain and debug.',
+      ),
+      QuizQuestion(
+        question: 'How should you continue after this "$topic" lesson?',
+        options: [
+          'Do one extra practice variation before moving on',
+          'Skip directly to final project with no review',
+          'Ignore quizzes and challenges entirely',
+          'Only reread notes without coding',
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+            'A quick additional variation locks in the concept and prepares you for harder lessons.',
+      ),
+    ];
+  }
+
+  static String _quizLanguage(Lesson lesson) {
+    final challengeLanguage = lesson.codingChallenge?.language
+        .trim()
+        .toLowerCase();
+    if (challengeLanguage != null && challengeLanguage.isNotEmpty) {
+      return challengeLanguage;
+    }
+
+    if (lesson.courseId.contains('python')) return 'python';
+    if (lesson.courseId.contains('javascript')) return 'javascript';
+    if (lesson.courseId.contains('react')) return 'javascript';
+    if (lesson.courseId.contains('sql')) return 'sql';
+    if (lesson.courseId.contains('htmlcss')) return 'html';
+    if (lesson.courseId.contains('git')) return 'bash';
+    return 'code';
+  }
+
+  static String _displayLanguage(String language) {
+    switch (language) {
+      case 'python':
+        return 'Python';
+      case 'javascript':
+        return 'JavaScript';
+      case 'sql':
+        return 'SQL';
+      case 'html':
+        return 'HTML/CSS';
+      case 'bash':
+        return 'Git CLI';
+      default:
+        return 'code';
+    }
+  }
+
+  static String _validSnippetForLanguage(String language) {
+    switch (language) {
+      case 'python':
+        return 'total = 3 + 2';
+      case 'javascript':
+        return 'const total = 3 + 2;';
+      case 'sql':
+        return 'SELECT name FROM users;';
+      case 'html':
+        return '<h1>Welcome</h1>';
+      case 'bash':
+        return 'git status';
+      default:
+        return 'value = 3 + 2';
+    }
+  }
+
+  static List<String> _incorrectSnippetsForLanguage(String language) {
+    switch (language) {
+      case 'python':
+        return ['total == 3 + 2', 'const total = 3 + 2', 'print total(3 + 2)'];
+      case 'javascript':
+        return [
+          'const total = 3 +;',
+          'total = 3 + 2',
+          'SELECT total FROM data',
+        ];
+      case 'sql':
+        return [
+          'SELECT FROM users name;',
+          'const query = users;',
+          '<sql>SELECT</sql>',
+        ];
+      case 'html':
+        return ['<h1>Welcome', 'color = red;', 'SELECT * FROM page;'];
+      case 'bash':
+        return ['status git', 'git = status', 'print("git status")'];
+      default:
+        return ['value == 3 + 2', 'const value 3 + 2', 'SELECT value'];
     }
   }
 
