@@ -10,6 +10,7 @@ import '../../features/achievements/screens/achievements_screen.dart';
 import '../../features/profile/screens/edit_profile_screen.dart';
 import '../../features/profile/screens/learning_journey_screen.dart';
 import '../../features/settings/screens/settings_screen.dart';
+import '../../features/support/screens/support_screen.dart';
 import '../../shared/widgets/main_navigation.dart';
 
 class AppRouter {
@@ -75,6 +76,11 @@ class AppRouter {
             path: 'learning-journey',
             name: 'learning_journey',
             builder: (context, state) => const LearningJourneyScreen(),
+          ),
+          GoRoute(
+            path: 'support',
+            name: 'support',
+            builder: (context, state) => const SupportScreen(),
           ),
         ],
       ),

@@ -110,6 +110,7 @@ class ProfileScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     final onSurface = Theme.of(context).colorScheme.onSurface;
+    final isUkr = Localizations.localeOf(context).languageCode == 'uk';
     final authState = ref.watch(authStateProvider);
     final currentUser = authState.maybeWhen(
       data: (user) => user,
@@ -642,19 +643,8 @@ class ProfileScreen extends ConsumerWidget {
                 const SizedBox(height: 12),
                 _MenuItem(
                   icon: Icons.help_outline,
-                  title:
-                      AppLocalizations.of(context)?.get('help_support') ??
-                      'Help & Support',
-                  onTap: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          AppLocalizations.of(context)?.get('coming_soon') ??
-                              'Coming soon!',
-                        ),
-                      ),
-                    );
-                  },
+                  title: isUkr ? 'Служба підтримки' : 'Support Service',
+                  onTap: () => context.push('/support'),
                 ),
                 const SizedBox(height: 12),
                 _MenuItem(
