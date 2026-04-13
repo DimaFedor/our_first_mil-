@@ -52,6 +52,25 @@ void main() {
         }
       },
     );
+
+    test('new beginner tracks provide 10 lessons each', () {
+      const newCourseIds = <String>[
+        'programming-fundamentals',
+        'logic-basics',
+        'algorithms-basics',
+        'cli-basics',
+        'internet-basics',
+      ];
+
+      for (final courseId in newCourseIds) {
+        final lessons = CourseContentService.getLessonsForCourse(courseId);
+        expect(
+          lessons.length,
+          10,
+          reason: 'Course $courseId should keep the standard 10-lesson format.',
+        );
+      }
+    });
   });
 }
 
@@ -61,6 +80,16 @@ List<Lesson> _rawLessonsForCourse(String courseId) {
       return CourseContentService.getPythonLessons();
     case 'javascript':
       return CourseContentService.getJavaScriptLessons();
+    case 'programming-fundamentals':
+      return CourseContentService.getProgrammingFundamentalsLessons();
+    case 'logic-basics':
+      return CourseContentService.getLogicBasicsLessons();
+    case 'algorithms-basics':
+      return CourseContentService.getAlgorithmsBasicsLessons();
+    case 'cli-basics':
+      return CourseContentService.getCLIBasicsLessons();
+    case 'internet-basics':
+      return CourseContentService.getInternetBasicsLessons();
     case 'cplusplus':
       return CourseContentService.getCPPLessons();
     case 'htmlcss':

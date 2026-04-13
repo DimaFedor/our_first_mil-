@@ -1,9 +1,30 @@
 import '../../features/lessons/models/lesson_model.dart';
 
+class _IntroLessonSeed {
+  final String title;
+  final String summary;
+  final String lifeExample;
+  final String validSnippet;
+  final String expectedOutput;
+
+  const _IntroLessonSeed({
+    required this.title,
+    required this.summary,
+    required this.lifeExample,
+    required this.validSnippet,
+    required this.expectedOutput,
+  });
+}
+
 class CourseContentService {
   static const List<String> supportedCourseIds = <String>[
     'python',
     'javascript',
+    'programming-fundamentals',
+    'logic-basics',
+    'algorithms-basics',
+    'cli-basics',
+    'internet-basics',
     'cplusplus',
     'htmlcss',
     'react',
@@ -25,6 +46,21 @@ class CourseContentService {
         break;
       case 'javascript':
         lessons = getJavaScriptLessons();
+        break;
+      case 'programming-fundamentals':
+        lessons = getProgrammingFundamentalsLessons();
+        break;
+      case 'logic-basics':
+        lessons = getLogicBasicsLessons();
+        break;
+      case 'algorithms-basics':
+        lessons = getAlgorithmsBasicsLessons();
+        break;
+      case 'cli-basics':
+        lessons = getCLIBasicsLessons();
+        break;
+      case 'internet-basics':
+        lessons = getInternetBasicsLessons();
         break;
       case 'cplusplus':
         lessons = getCPPLessons();
@@ -8739,6 +8775,576 @@ const Child = React.memo(({ onClick }) => {
         order: 4,
       ),
     ];
+  }
+
+  static List<Lesson> getProgrammingFundamentalsLessons() {
+    return _buildIntroTrack(
+      courseId: 'programming-fundamentals',
+      moduleId: 'foundations',
+      lessonIdPrefix: 'programming_fundamentals_lesson_',
+      seeds: const <_IntroLessonSeed>[
+        _IntroLessonSeed(
+          title: 'What Is Programming?',
+          summary:
+              'Programming means giving clear step-by-step instructions to a computer.',
+          lifeExample:
+              'It is like writing a cooking recipe where each action is exact and ordered.',
+          validSnippet: 'print("Step by step")',
+          expectedOutput: 'Step by step',
+        ),
+        _IntroLessonSeed(
+          title: 'Input and Output',
+          summary:
+              'Programs take input (data in) and produce output (result out).',
+          lifeExample:
+              'A vending machine gets your choice as input and returns a drink as output.',
+          validSnippet: 'name = "Alex"\nprint(name)',
+          expectedOutput: 'Alex',
+        ),
+        _IntroLessonSeed(
+          title: 'Data as Information',
+          summary:
+              'Data is the information your program stores, changes, and prints.',
+          lifeExample: 'Your age, score, and user name in an app are all data.',
+          validSnippet: 'age = 18\nprint(age)',
+          expectedOutput: '18',
+        ),
+        _IntroLessonSeed(
+          title: 'Sequence of Steps',
+          summary:
+              'Computers execute instructions in order, one line at a time.',
+          lifeExample: 'You cannot bake a cake before mixing ingredients.',
+          validSnippet: 'print("1. Open app")',
+          expectedOutput: '1. Open app',
+        ),
+        _IntroLessonSeed(
+          title: 'Simple Decisions',
+          summary:
+              'Programs can choose different actions based on a condition.',
+          lifeExample:
+              'If it rains, take an umbrella; otherwise, go without one.',
+          validSnippet:
+              'score = 80\nprint("Pass" if score >= 60 else "Try again")',
+          expectedOutput: 'Pass',
+        ),
+        _IntroLessonSeed(
+          title: 'Repeating Actions',
+          summary: 'Loops help repeat the same task without copy-paste.',
+          lifeExample:
+              'Daily practice reminders are a repeated action in learning apps.',
+          validSnippet: 'for _ in range(2):\n    print("Practice")',
+          expectedOutput: 'Practice',
+        ),
+        _IntroLessonSeed(
+          title: 'Debugging Basics',
+          summary:
+              'Debugging means finding why your program behaves differently.',
+          lifeExample:
+              'Like checking a map when you took the wrong turn on a route.',
+          validSnippet: 'value = 5\nprint(value)',
+          expectedOutput: '5',
+        ),
+        _IntroLessonSeed(
+          title: 'Reading Error Messages',
+          summary: 'Error messages tell what failed and where to look first.',
+          lifeExample:
+              'It is like a warning light in a car dashboard pointing to the problem.',
+          validSnippet: 'print("Check the line number")',
+          expectedOutput: 'Check the line number',
+        ),
+        _IntroLessonSeed(
+          title: 'Clear Naming',
+          summary:
+              'Good variable names make code easier to understand and maintain.',
+          lifeExample: 'A labeled box is easier to find than a box named "x".',
+          validSnippet: 'daily_goal = 20\nprint(daily_goal)',
+          expectedOutput: '20',
+        ),
+        _IntroLessonSeed(
+          title: 'Mini Program Flow',
+          summary:
+              'A simple program combines input, logic, and output in one flow.',
+          lifeExample: 'Study app flow: start lesson, answer quiz, see result.',
+          validSnippet: 'print("Start -> Learn -> Review")',
+          expectedOutput: 'Start -> Learn -> Review',
+        ),
+      ],
+    );
+  }
+
+  static List<Lesson> getLogicBasicsLessons() {
+    return _buildIntroTrack(
+      courseId: 'logic-basics',
+      moduleId: 'logic',
+      lessonIdPrefix: 'logic_basics_lesson_',
+      seeds: const <_IntroLessonSeed>[
+        _IntroLessonSeed(
+          title: 'Variables as Boxes',
+          summary: 'A variable stores one value you can reuse later.',
+          lifeExample: 'Like a labeled drawer where you keep one type of item.',
+          validSnippet: 'coins = 3\nprint(coins)',
+          expectedOutput: '3',
+        ),
+        _IntroLessonSeed(
+          title: 'Updating Values',
+          summary: 'You can change variable values as your logic runs.',
+          lifeExample: 'XP in a game increases after each completed mission.',
+          validSnippet: 'xp = 10\nxp = xp + 5\nprint(xp)',
+          expectedOutput: '15',
+        ),
+        _IntroLessonSeed(
+          title: 'Text and Numbers',
+          summary:
+              'Programs work with different data kinds like text and numbers.',
+          lifeExample: 'A profile name is text, but total points is a number.',
+          validSnippet: 'level = "Beginner"\nprint(level)',
+          expectedOutput: 'Beginner',
+        ),
+        _IntroLessonSeed(
+          title: 'Comparison Operators',
+          summary: 'Comparisons return True or False for decision making.',
+          lifeExample: 'You compare prices before choosing what to buy.',
+          validSnippet: 'print(7 > 3)',
+          expectedOutput: 'True',
+        ),
+        _IntroLessonSeed(
+          title: 'If / Else',
+          summary: 'if/else lets the program branch into different outcomes.',
+          lifeExample:
+              'If battery is low, charge device; else continue using it.',
+          validSnippet: 'age = 19\nprint("Adult" if age >= 18 else "Minor")',
+          expectedOutput: 'Adult',
+        ),
+        _IntroLessonSeed(
+          title: 'While Loop Intro',
+          summary: 'while repeats a block while a condition remains true.',
+          lifeExample: 'Keep studying while your timer has minutes left.',
+          validSnippet:
+              'count = 1\nwhile count < 2:\n    print("Loop")\n    count += 1',
+          expectedOutput: 'Loop',
+        ),
+        _IntroLessonSeed(
+          title: 'For Loop Intro',
+          summary: 'for is useful when you know how many times to repeat.',
+          lifeExample: 'Repeat flashcard review for each card in the deck.',
+          validSnippet: 'for _ in range(1):\n    print("For")',
+          expectedOutput: 'For',
+        ),
+        _IntroLessonSeed(
+          title: 'Combining Conditions',
+          summary: 'Use and/or to combine multiple checks into one decision.',
+          lifeExample:
+              'Discount applies only if user is member and coupon is valid.',
+          validSnippet:
+              'is_member = True\nhas_discount = True\nprint(is_member and has_discount)',
+          expectedOutput: 'True',
+        ),
+        _IntroLessonSeed(
+          title: 'Tiny Function Idea',
+          summary: 'Functions wrap reusable logic into one named block.',
+          lifeExample: 'A reusable checklist for starting each study session.',
+          validSnippet: 'def greet():\n    return "Hi"\nprint(greet())',
+          expectedOutput: 'Hi',
+        ),
+        _IntroLessonSeed(
+          title: 'Logic Checkpoint',
+          summary:
+              'This checkpoint combines variables, conditions, and readable output.',
+          lifeExample:
+              'A weather app decides what advice to show based on temperature.',
+          validSnippet: 'temp = 22\nprint("Warm" if temp > 20 else "Cool")',
+          expectedOutput: 'Warm',
+        ),
+      ],
+    );
+  }
+
+  static List<Lesson> getAlgorithmsBasicsLessons() {
+    return _buildIntroTrack(
+      courseId: 'algorithms-basics',
+      moduleId: 'algorithms',
+      lessonIdPrefix: 'algorithms_basics_lesson_',
+      seeds: const <_IntroLessonSeed>[
+        _IntroLessonSeed(
+          title: 'What Is an Algorithm?',
+          summary: 'An algorithm is a clear method for solving a problem.',
+          lifeExample:
+              'Morning routine: wake up, wash, eat, leave home in order.',
+          validSnippet: 'print("Clear steps")',
+          expectedOutput: 'Clear steps',
+        ),
+        _IntroLessonSeed(
+          title: 'Sequence Algorithm',
+          summary: 'Many algorithms are just steps executed in strict order.',
+          lifeExample:
+              'ATM usage follows fixed sequence: insert card, PIN, choose action.',
+          validSnippet: 'print("Read -> Plan -> Solve")',
+          expectedOutput: 'Read -> Plan -> Solve',
+        ),
+        _IntroLessonSeed(
+          title: 'Counting Pattern',
+          summary: 'Counting accumulates values across repeated steps.',
+          lifeExample: 'You total daily study minutes across a week.',
+          validSnippet: 'total = 1 + 2 + 3\nprint(total)',
+          expectedOutput: '6',
+        ),
+        _IntroLessonSeed(
+          title: 'Find Maximum Value',
+          summary: 'A simple algorithm can find the largest value in data.',
+          lifeExample: 'Find the highest score in your quiz history.',
+          validSnippet: 'scores = [3, 9, 5]\nprint(max(scores))',
+          expectedOutput: '9',
+        ),
+        _IntroLessonSeed(
+          title: 'Simple Search',
+          summary: 'Search checks whether a value exists in a list.',
+          lifeExample: 'Check if your name is in class attendance list.',
+          validSnippet:
+              'items = [2, 4, 6]\nprint("Found" if 4 in items else "Missing")',
+          expectedOutput: 'Found',
+        ),
+        _IntroLessonSeed(
+          title: 'Linear Search Thinking',
+          summary: 'Linear search checks one item at a time from start to end.',
+          lifeExample: 'Looking for keys by checking each pocket in order.',
+          validSnippet:
+              'items = [2, 4, 6]\nprint("Found" if 9 in items else "Not found")',
+          expectedOutput: 'Not found',
+        ),
+        _IntroLessonSeed(
+          title: 'Sorting Idea',
+          summary:
+              'Sorting organizes values so later operations become easier.',
+          lifeExample: 'Sorting books by title makes finding one faster.',
+          validSnippet: 'nums = [3, 1, 2]\nnums.sort()\nprint(nums)',
+          expectedOutput: '[1, 2, 3]',
+        ),
+        _IntroLessonSeed(
+          title: 'Split Big Task',
+          summary:
+              'Breaking a problem into smaller pieces simplifies algorithm design.',
+          lifeExample:
+              'Prepare trip by splitting planning, packing, and transport.',
+          validSnippet: 'print("Split tasks")',
+          expectedOutput: 'Split tasks',
+        ),
+        _IntroLessonSeed(
+          title: 'Efficiency Intuition',
+          summary:
+              'Good algorithms solve the same task with fewer unnecessary steps.',
+          lifeExample: 'Taking shortest path saves time and energy.',
+          validSnippet: 'print("Fewer steps")',
+          expectedOutput: 'Fewer steps',
+        ),
+        _IntroLessonSeed(
+          title: 'Algorithm in Real Life',
+          summary: 'Algorithms are everywhere, not only in coding interviews.',
+          lifeExample:
+              'Choosing bus route by nearest stop, shortest wait, then fastest line.',
+          validSnippet: 'print("Bus route plan")',
+          expectedOutput: 'Bus route plan',
+        ),
+      ],
+    );
+  }
+
+  static List<Lesson> getCLIBasicsLessons() {
+    return _buildIntroTrack(
+      courseId: 'cli-basics',
+      moduleId: 'cli',
+      lessonIdPrefix: 'cli_basics_lesson_',
+      seeds: const <_IntroLessonSeed>[
+        _IntroLessonSeed(
+          title: 'What Is CLI?',
+          summary: 'CLI is a text interface to control your system quickly.',
+          lifeExample:
+              'Like giving direct voice commands instead of tapping many buttons.',
+          validSnippet: 'print("Command line")',
+          expectedOutput: 'Command line',
+        ),
+        _IntroLessonSeed(
+          title: 'Folders and Paths',
+          summary: 'Paths show exactly where files live on your machine.',
+          lifeExample: 'A home address tells where a person lives.',
+          validSnippet: 'print("/home/user")',
+          expectedOutput: '/home/user',
+        ),
+        _IntroLessonSeed(
+          title: 'Navigation Commands',
+          summary: 'Navigation commands move you between folders.',
+          lifeExample:
+              'Changing rooms in a building to reach the one you need.',
+          validSnippet: 'print("cd projects")',
+          expectedOutput: 'cd projects',
+        ),
+        _IntroLessonSeed(
+          title: 'Create Files and Folders',
+          summary: 'You can create structure fast using simple CLI commands.',
+          lifeExample: 'Creating labeled notebooks for each school subject.',
+          validSnippet: 'print("mkdir projects")',
+          expectedOutput: 'mkdir projects',
+        ),
+        _IntroLessonSeed(
+          title: 'Read File Content',
+          summary: 'CLI can quickly show file content without full editor.',
+          lifeExample: 'Reading short notes without opening a large app.',
+          validSnippet: 'print("cat notes.txt")',
+          expectedOutput: 'cat notes.txt',
+        ),
+        _IntroLessonSeed(
+          title: 'Copy and Move',
+          summary: 'Copy duplicates files; move changes their location.',
+          lifeExample: 'Copying a document vs moving it to another drawer.',
+          validSnippet: 'print("cp a.txt b.txt")',
+          expectedOutput: 'cp a.txt b.txt',
+        ),
+        _IntroLessonSeed(
+          title: 'Delete Carefully',
+          summary:
+              'Deletion commands are powerful and should be used carefully.',
+          lifeExample:
+              'Throwing away paper from trash bin, not from archive box.',
+          validSnippet: 'print("rm old.txt")',
+          expectedOutput: 'rm old.txt',
+        ),
+        _IntroLessonSeed(
+          title: 'Command History',
+          summary: 'History helps reuse previous commands and save time.',
+          lifeExample:
+              'Using recent calls list on your phone instead of typing.',
+          validSnippet: 'print("history")',
+          expectedOutput: 'history',
+        ),
+        _IntroLessonSeed(
+          title: 'Search in CLI',
+          summary: 'Search commands help locate text or files quickly.',
+          lifeExample: 'Finding a word in a long PDF using search function.',
+          validSnippet: 'print("grep TODO app.py")',
+          expectedOutput: 'grep TODO app.py',
+        ),
+        _IntroLessonSeed(
+          title: 'Mini CLI Workflow',
+          summary:
+              'Combine navigation, creation, and checks into one mini workflow.',
+          lifeExample:
+              'Open room, place documents, verify placement, and continue.',
+          validSnippet: 'print("navigate -> create -> check")',
+          expectedOutput: 'navigate -> create -> check',
+        ),
+      ],
+    );
+  }
+
+  static List<Lesson> getInternetBasicsLessons() {
+    return _buildIntroTrack(
+      courseId: 'internet-basics',
+      moduleId: 'internet',
+      lessonIdPrefix: 'internet_basics_lesson_',
+      seeds: const <_IntroLessonSeed>[
+        _IntroLessonSeed(
+          title: 'What Is the Internet?',
+          summary: 'The internet is a network of networks sharing information.',
+          lifeExample:
+              'Like roads connecting many cities so data can travel between them.',
+          validSnippet: 'print("Connected networks")',
+          expectedOutput: 'Connected networks',
+        ),
+        _IntroLessonSeed(
+          title: 'Client and Server',
+          summary: 'Client requests data; server sends back a response.',
+          lifeExample:
+              'Restaurant guest orders, kitchen prepares, waiter delivers.',
+          validSnippet: 'print("Client asks, server answers")',
+          expectedOutput: 'Client asks, server answers',
+        ),
+        _IntroLessonSeed(
+          title: 'URL Basics',
+          summary: 'A URL is an address for a resource on the web.',
+          lifeExample: 'Just like a postal address points to one building.',
+          validSnippet: 'print("https://example.com")',
+          expectedOutput: 'https://example.com',
+        ),
+        _IntroLessonSeed(
+          title: 'DNS in Simple Words',
+          summary: 'DNS translates domain names into machine IP addresses.',
+          lifeExample:
+              'Like your phone contacts converting names into phone numbers.',
+          validSnippet: 'print("Domain -> IP")',
+          expectedOutput: 'Domain -> IP',
+        ),
+        _IntroLessonSeed(
+          title: 'HTTP Request/Response',
+          summary: 'HTTP defines how browser and server exchange messages.',
+          lifeExample:
+              'You ask a librarian for a book, they return the requested item.',
+          validSnippet: 'print("200 OK")',
+          expectedOutput: '200 OK',
+        ),
+        _IntroLessonSeed(
+          title: 'Status Codes',
+          summary: 'Status codes explain whether request succeeded or failed.',
+          lifeExample:
+              'Traffic lights quickly show if you can go, wait, or stop.',
+          validSnippet: 'print("404 Not Found")',
+          expectedOutput: '404 Not Found',
+        ),
+        _IntroLessonSeed(
+          title: 'Browser Cache',
+          summary: 'Cache stores copies to load pages faster next time.',
+          lifeExample:
+              'Keeping frequently used notes on your desk for quick access.',
+          validSnippet: 'print("Saved copy")',
+          expectedOutput: 'Saved copy',
+        ),
+        _IntroLessonSeed(
+          title: 'API Basics',
+          summary: 'APIs let apps exchange structured data between systems.',
+          lifeExample:
+              'A waiter carries your order between you and the kitchen.',
+          validSnippet: 'print("Data in JSON")',
+          expectedOutput: 'Data in JSON',
+        ),
+        _IntroLessonSeed(
+          title: 'HTTPS and Security',
+          summary: 'HTTPS encrypts data between browser and server.',
+          lifeExample: 'A sealed envelope protects letter content in transit.',
+          validSnippet: 'print("Encrypted connection")',
+          expectedOutput: 'Encrypted connection',
+        ),
+        _IntroLessonSeed(
+          title: 'Connection Troubleshooting',
+          summary:
+              'Basic network checks help identify where connection breaks.',
+          lifeExample:
+              'When water stops, you check faucet, pipe, then main valve.',
+          validSnippet: 'print("Check DNS and network")',
+          expectedOutput: 'Check DNS and network',
+        ),
+      ],
+    );
+  }
+
+  static List<Lesson> _buildIntroTrack({
+    required String courseId,
+    required String moduleId,
+    required String lessonIdPrefix,
+    required List<_IntroLessonSeed> seeds,
+  }) {
+    return seeds
+        .asMap()
+        .entries
+        .map((entry) {
+          final order = entry.key;
+          final seed = entry.value;
+          return _buildIntroLesson(
+            id: '$lessonIdPrefix${order + 1}',
+            courseId: courseId,
+            moduleId: moduleId,
+            seed: seed,
+            order: order,
+          );
+        })
+        .toList(growable: false);
+  }
+
+  static Lesson _buildIntroLesson({
+    required String id,
+    required String courseId,
+    required String moduleId,
+    required _IntroLessonSeed seed,
+    required int order,
+  }) {
+    return Lesson(
+      id: id,
+      courseId: courseId,
+      moduleId: moduleId,
+      title: seed.title,
+      description: seed.summary,
+      theorySlides: [
+        TheorySlide(
+          title: '${seed.title} - in simple words',
+          content: '${seed.summary}\n\nReal-life example:\n${seed.lifeExample}',
+          order: 0,
+        ),
+        TheorySlide(
+          title: 'Tiny example',
+          content: 'Run this small snippet and inspect the output.',
+          codeSnippet: seed.validSnippet,
+          codeLanguage: 'python',
+          order: 1,
+        ),
+      ],
+      quiz: Quiz(questions: _introQuizQuestions(seed)),
+      codingChallenge: CodingChallenge(
+        title: 'Practice: ${seed.title}',
+        description:
+            'Write a tiny Python snippet that prints exactly: ${seed.expectedOutput}',
+        starterCode: '# TODO: print the expected output\n',
+        language: 'python',
+        testCases: [TestCase(input: '', expectedOutput: seed.expectedOutput)],
+        hint: 'Use print("...") with the same punctuation and spaces.',
+        solution: _pythonSolutionForOutput(seed.expectedOutput),
+      ),
+      xpReward: 18 + (order * 2),
+      order: order,
+    );
+  }
+
+  static List<QuizQuestion> _introQuizQuestions(_IntroLessonSeed seed) {
+    return [
+      QuizQuestion(
+        question: 'What is the main idea of "${seed.title}"?',
+        options: [
+          seed.summary,
+          'Memorize syntax without practice',
+          'Skip examples and only read definitions',
+          'Jump to advanced topics immediately',
+        ],
+        correctAnswerIndex: 0,
+        explanation: 'Beginner lessons focus on one practical idea at a time.',
+      ),
+      QuizQuestion(
+        question: 'Which snippet matches this lesson?',
+        options: [
+          seed.validSnippet,
+          'const value = 3 + 2;',
+          'SELECT value FROM table;',
+          '<h1>Example</h1>',
+        ],
+        correctAnswerIndex: 0,
+        explanation: 'The first option follows the lesson context and syntax.',
+      ),
+      QuizQuestion(
+        question: 'Which real-life analogy fits this lesson best?',
+        options: [
+          seed.lifeExample,
+          'Learning piano by reading only one key',
+          'Driving with eyes closed',
+          'Ignoring all road signs',
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+            'Real-life analogies help beginners understand abstract concepts faster.',
+      ),
+      QuizQuestion(
+        question:
+            'What should you do after finishing this lesson to learn faster?',
+        options: [
+          'Run one extra tiny example by yourself',
+          'Stop practicing and move on',
+          'Delete all code and restart randomly',
+          'Only memorize answers',
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+            'A quick extra example reinforces understanding with minimal effort.',
+      ),
+    ];
+  }
+
+  static String _pythonSolutionForOutput(String output) {
+    final escaped = output.replaceAll(r'\', r'\\').replaceAll('"', r'\"');
+    return 'print("$escaped")';
   }
 
   static List<Lesson> getCPPLessons() {
