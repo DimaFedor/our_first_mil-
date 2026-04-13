@@ -99,6 +99,7 @@ class HomeDashboard extends ConsumerWidget {
                     onProgressTap: () =>
                         ref.read(currentTabProvider.notifier).state = 2,
                     onAchievementsTap: () => context.push('/achievements'),
+                    onRewardsTap: () => context.push('/xp-rewards'),
                     onProfileTap: () =>
                         ref.read(currentTabProvider.notifier).state = 3,
                   ),
@@ -1086,12 +1087,14 @@ class _QuickActionsGrid extends StatelessWidget {
   final VoidCallback onCoursesTap;
   final VoidCallback onProgressTap;
   final VoidCallback onAchievementsTap;
+  final VoidCallback onRewardsTap;
   final VoidCallback onProfileTap;
 
   const _QuickActionsGrid({
     required this.onCoursesTap,
     required this.onProgressTap,
     required this.onAchievementsTap,
+    required this.onRewardsTap,
     required this.onProfileTap,
   });
 
@@ -1118,6 +1121,14 @@ class _QuickActionsGrid extends StatelessWidget {
         icon: Icons.emoji_events_rounded,
         accent: const Color(0xFFF59E0B),
         onTap: onAchievementsTap,
+      ),
+      _QuickAction(
+        label: Localizations.localeOf(context).languageCode == 'uk'
+            ? 'EXP Бонуси'
+            : 'EXP Rewards',
+        icon: Icons.workspace_premium_rounded,
+        accent: const Color(0xFF22C55E),
+        onTap: onRewardsTap,
       ),
       _QuickAction(
         label: AppLocalizations.of(context)?.get('profile') ?? 'Profile',

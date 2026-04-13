@@ -9,6 +9,7 @@ import '../../features/lessons/models/lesson_model.dart';
 import '../../features/achievements/screens/achievements_screen.dart';
 import '../../features/profile/screens/edit_profile_screen.dart';
 import '../../features/profile/screens/learning_journey_screen.dart';
+import '../../features/rewards/screens/xp_rewards_screen.dart';
 import '../../features/settings/screens/settings_screen.dart';
 import '../../features/support/screens/support_screen.dart';
 import '../../shared/widgets/main_navigation.dart';
@@ -81,6 +82,11 @@ class AppRouter {
             path: 'support',
             name: 'support',
             builder: (context, state) => const SupportScreen(),
+          ),
+          GoRoute(
+            path: 'xp-rewards',
+            name: 'xp_rewards',
+            builder: (context, state) => const XPRewardsScreen(),
           ),
         ],
       ),

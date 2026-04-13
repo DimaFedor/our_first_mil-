@@ -1,11 +1,14 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../../../core/services/course_content_service.dart';
 import '../../../core/services/firestore_service.dart';
 import '../../../core/services/cache_service.dart';
 import '../../../core/services/engagement_notification_service.dart';
 import '../../auth/providers/auth_provider.dart';
 import '../../achievements/models/achievement_model.dart';
 import '../../achievements/providers/achievement_provider.dart';
+import '../../rewards/providers/xp_rewards_provider.dart';
+import '../../rewards/services/xp_rewards_service.dart';
 
 // User Progress Model
 class UserProgress {
@@ -153,6 +156,8 @@ final progressActionsProvider = Provider<ProgressActions>((ref) {
   final engagementNotifications = ref.watch(
     engagementNotificationServiceProvider,
   );
+  final rewardsService = ref.watch(xpRewardsServiceProvider);
+  final useLocalMode = ref.watch(useLocalAuthProvider);
   final user = ref.watch(currentUserProvider);
   final achievementActions = ref.watch(achievementActionsProvider);
   return ProgressActions(
@@ -161,6 +166,8 @@ final progressActionsProvider = Provider<ProgressActions>((ref) {
     user?.uid,
     achievementActions,
     engagementNotifications,
+    rewardsService,
+    useLocalMode,
   );
 });
 
@@ -170,6 +177,8 @@ class ProgressActions {
   final String? _userId;
   final AchievementActions _achievementActions;
   final EngagementNotificationService _engagementNotifications;
+  final XPRewardsService _xpRewardsService;
+  final bool _useLocalMode;
 
   ProgressActions(
     this._firestoreService,
@@ -177,6 +186,8 @@ class ProgressActions {
     this._userId,
     this._achievementActions,
     this._engagementNotifications,
+    this._xpRewardsService,
+    this._useLocalMode,
   );
 
   Future<List<Achievement>> completeLesson({
@@ -186,6 +197,16 @@ class ProgressActions {
   }) async {
     final userId = _userId;
     if (userId == null) throw Exception('User not authenticated');
+
+    final existingCourseProgress = await _firestoreService.getUserProgress(
+      userId,
+      courseId,
+    );
+    final alreadyCompletedLessons =
+        (existingCourseProgress?['completedLessons'] as List? ?? [])
+            .map((item) => item.toString())
+            .toSet();
+    final wasAlreadyCompleted = alreadyCompletedLessons.contains(lessonId);
 
     // Update in Firestore
     await _firestoreService.updateProgress(
@@ -199,8 +220,40 @@ class ProgressActions {
     await _firestoreService.updateStreak(userId);
 
     // Cache the updated progress
-    final userData = await _firestoreService.getUserData(userId);
+    var userData = await _firestoreService.getUserData(userId);
     final allProgress = await _firestoreService.getAllUserProgress(userId);
+
+    if (!wasAlreadyCompleted) {
+      Map<String, dynamic>? courseProgressData;
+      for (final progress in allProgress) {
+        if ((progress['courseId']?.toString() ?? '') == courseId) {
+          courseProgressData = progress;
+          break;
+        }
+      }
+
+      final completedInCourse =
+          (courseProgressData?['completedLessons'] as List? ?? []).length;
+      final totalLessonsInCourse = CourseContentService.getLessonsForCourse(
+        courseId,
+      ).length;
+      final courseCompletedNow =
+          totalLessonsInCourse > 0 && completedInCourse >= totalLessonsInCourse;
+      final currentStreakAfterUpdate = userData?['currentStreak'] as int? ?? 0;
+
+      final rewardResult = await _xpRewardsService.processLessonCompletion(
+        userId: userId,
+        useLocalMode: _useLocalMode,
+        courseId: courseId,
+        currentStreak: currentStreakAfterUpdate,
+        baseLessonXp: xpEarned,
+        courseCompletedNow: courseCompletedNow,
+      );
+
+      if (rewardResult.xpEarned > 0 && !_useLocalMode) {
+        userData = await _firestoreService.getUserData(userId);
+      }
+    }
 
     final totalXP = userData?['totalXP'] as int? ?? 0;
     final currentStreak = userData?['currentStreak'] as int? ?? 0;
@@ -228,7 +281,7 @@ class ProgressActions {
     // Cache XP and streak
     await _cacheService.cacheUserXP(
       userId: userId,
-      totalXP: totalXP,
+      totalXP: effectiveTotalXP,
       currentStreak: currentStreak,
     );
 

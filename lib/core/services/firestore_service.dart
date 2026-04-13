@@ -131,26 +131,43 @@ class FirestoreService {
     final now = DateTime.now();
     final currentStreak = data['currentStreak'] as int? ?? 0;
     final longestStreak = data['longestStreak'] as int? ?? 0;
+    final rewardWalletRaw = data['xpRewards'];
+    final rewardWallet = rewardWalletRaw is Map
+        ? Map<String, dynamic>.from(rewardWalletRaw)
+        : <String, dynamic>{};
+    final streakShields = (rewardWallet['streakShields'] as num?)?.toInt() ?? 0;
 
     int newStreak = currentStreak;
+    var consumedStreakShield = false;
 
     if (lastActive != null) {
       final difference = now.difference(lastActive).inDays;
       if (difference == 1) {
         newStreak = currentStreak + 1;
       } else if (difference > 1) {
-        newStreak = 1;
+        if (streakShields > 0 && difference <= 2) {
+          consumedStreakShield = true;
+          newStreak = currentStreak + 1;
+          rewardWallet['streakShields'] = streakShields - 1;
+        } else {
+          newStreak = 1;
+        }
       }
     } else {
       newStreak = 1;
     }
 
-    await userDoc.set({
+    final payload = <String, dynamic>{
       'uid': userId,
       'currentStreak': newStreak,
       'longestStreak': newStreak > longestStreak ? newStreak : longestStreak,
       'lastActive': FieldValue.serverTimestamp(),
-    }, SetOptions(merge: true));
+    };
+    if (consumedStreakShield) {
+      payload['xpRewards'] = rewardWallet;
+    }
+
+    await userDoc.set(payload, SetOptions(merge: true));
   }
 
   // Get User Progress for Course

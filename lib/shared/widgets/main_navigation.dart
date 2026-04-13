@@ -8,6 +8,9 @@ import '../../features/home/widgets/home_dashboard.dart';
 import '../../features/courses/screens/courses_screen.dart';
 import '../../features/profile/screens/profile_screen.dart';
 import '../../features/progress/providers/progress_provider.dart';
+import '../../features/progress/services/xp_system.dart';
+import '../../features/rewards/providers/xp_rewards_provider.dart';
+import '../../features/rewards/screens/xp_rewards_screen.dart';
 import '../../features/progress/screens/progress_screen.dart';
 
 // Current tab provider
@@ -21,6 +24,7 @@ class MainNavigationScreen extends ConsumerStatefulWidget {
     const CoursesScreen(),
     const ProgressScreen(),
     const ProfileScreen(),
+    const XPRewardsScreen(),
   ];
 
   @override
@@ -30,6 +34,7 @@ class MainNavigationScreen extends ConsumerStatefulWidget {
 
 class _MainNavigationScreenState extends ConsumerState<MainNavigationScreen> {
   String _lastNotificationSyncSignature = '';
+  String _lastDailyRewardSyncSignature = '';
 
   @override
   Widget build(BuildContext context) {
@@ -38,15 +43,22 @@ class _MainNavigationScreenState extends ConsumerState<MainNavigationScreen> {
         ? const AsyncValue<UserModel?>.data(null)
         : ref.watch(userDataProvider(userId));
     final allProgressAsync = ref.watch(allUserProgressProvider);
+    final useLocalMode = ref.watch(useLocalAuthProvider);
 
     _syncEngagementNotifications(
       userId: userId,
       userData: userDataAsync.valueOrNull,
       allProgress: allProgressAsync.valueOrNull,
     );
+    _syncDailyReward(
+      userId: userId,
+      useLocalMode: useLocalMode,
+      userData: userDataAsync.valueOrNull,
+    );
 
     final currentTab = ref.watch(currentTabProvider);
     final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+    final isUkr = Localizations.localeOf(context).languageCode == 'uk';
 
     return Scaffold(
       body: IndexedStack(
@@ -111,12 +123,66 @@ class _MainNavigationScreenState extends ConsumerState<MainNavigationScreen> {
                   isSelected: currentTab == 3,
                   onTap: () => ref.read(currentTabProvider.notifier).state = 3,
                 ),
+                _NavBarItem(
+                  icon: Icons.workspace_premium_rounded,
+                  label: isUkr ? 'Бонуси' : 'Rewards',
+                  index: 4,
+                  isSelected: currentTab == 4,
+                  onTap: () => ref.read(currentTabProvider.notifier).state = 4,
+                ),
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  void _syncDailyReward({
+    required String? userId,
+    required bool useLocalMode,
+    required UserModel? userData,
+  }) {
+    if (userId == null || userData == null) return;
+
+    final now = DateTime.now();
+    final month = now.month.toString().padLeft(2, '0');
+    final day = now.day.toString().padLeft(2, '0');
+    final dayKey = '${now.year}-$month-$day';
+    final signature = '$userId|$dayKey';
+    if (signature == _lastDailyRewardSyncSignature) return;
+    _lastDailyRewardSyncSignature = signature;
+
+    Future<void>(() async {
+      final result = await ref
+          .read(xpRewardsServiceProvider)
+          .claimDailyCheckIn(
+            userId: userId,
+            useLocalMode: useLocalMode,
+            currentStreak: userData.currentStreak,
+          );
+      if (!mounted || !result.applied) return;
+
+      ref.invalidate(userDataProvider(userId));
+      ref.invalidate(userXPProvider);
+      ref.invalidate(levelInfoProvider);
+      ref.invalidate(xpRewardsWalletProvider);
+      ref.invalidate(xpRewardsTransactionsProvider);
+
+      final isUkr = Localizations.localeOf(context).languageCode == 'uk';
+      final message = isUkr
+          ? 'Щоденний бонус: +${result.xpEarned} XP та +${result.creditsEarned} кредитів'
+          : 'Daily bonus: +${result.xpEarned} XP and +${result.creditsEarned} credits';
+
+      final messenger = ScaffoldMessenger.maybeOf(context);
+      messenger?.showSnackBar(
+        SnackBar(
+          content: Text(message),
+          duration: const Duration(seconds: 3),
+          backgroundColor: const Color(0xFF2563EB),
+        ),
+      );
+    });
   }
 
   void _syncEngagementNotifications({

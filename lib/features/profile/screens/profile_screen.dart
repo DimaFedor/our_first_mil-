@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../auth/providers/auth_provider.dart';
 import '../../progress/providers/progress_provider.dart';
 import '../../progress/services/xp_system.dart';
+import '../../rewards/providers/xp_rewards_provider.dart';
 import '../../../shared/widgets/level_progress_widget.dart';
 import '../../../shared/widgets/streak_widgets.dart';
 import '../../../shared/widgets/language_stats_card.dart';
@@ -119,6 +120,12 @@ class ProfileScreen extends ConsumerWidget {
     final progressAsync = ref.watch(allUserProgressProvider);
     final levelInfoAsync = ref.watch(levelInfoProvider);
     final userDataAsync = ref.watch(userDataProvider(currentUser?.uid ?? ''));
+    final rewardsWalletAsync = ref.watch(xpRewardsWalletProvider);
+    final hasNeonFrame =
+        rewardsWalletAsync.valueOrNull?.ownedCosmetics.contains(
+          'neon_profile_frame',
+        ) ??
+        false;
 
     return Scaffold(
       body: Container(
@@ -221,6 +228,12 @@ class ProfileScreen extends ConsumerWidget {
                                     ],
                                   ),
                                   shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: hasNeonFrame
+                                        ? const Color(0xFF22C55E)
+                                        : Colors.white.withValues(alpha: 0.18),
+                                    width: hasNeonFrame ? 3 : 1.2,
+                                  ),
                                   boxShadow: [
                                     BoxShadow(
                                       color: const Color(
@@ -229,6 +242,12 @@ class ProfileScreen extends ConsumerWidget {
                                       blurRadius: 30,
                                       offset: const Offset(0, 15),
                                     ),
+                                    if (hasNeonFrame)
+                                      const BoxShadow(
+                                        color: Color(0xFF22C55E),
+                                        blurRadius: 20,
+                                        spreadRadius: 1,
+                                      ),
                                   ],
                                 ),
                                 child: Center(
@@ -639,6 +658,12 @@ class ProfileScreen extends ConsumerWidget {
                       AppLocalizations.of(context)?.get('learning_history') ??
                       'Learning History',
                   onTap: () => context.push('/learning-journey'),
+                ),
+                const SizedBox(height: 12),
+                _MenuItem(
+                  icon: Icons.workspace_premium_outlined,
+                  title: isUkr ? 'EXP Бонуси' : 'EXP Rewards',
+                  onTap: () => context.push('/xp-rewards'),
                 ),
                 const SizedBox(height: 12),
                 _MenuItem(
