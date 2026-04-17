@@ -235,8 +235,6 @@ class _XPRewardsScreenState extends ConsumerState<XPRewardsScreen> {
                         ),
                       ),
                       const SizedBox(height: 16),
-                      _buildRewardsFeedbackCard(onSurface: onSurface),
-                      const SizedBox(height: 12),
                       walletAsync.when(
                         data: (wallet) {
                           final currentStreak =
@@ -332,6 +330,8 @@ class _XPRewardsScreenState extends ConsumerState<XPRewardsScreen> {
                                   ),
                                 ),
                               ),
+                              const SizedBox(height: 18),
+                              _buildRewardsFeedbackCard(onSurface: onSurface),
                             ],
                           );
                         },
