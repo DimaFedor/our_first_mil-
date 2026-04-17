@@ -116,19 +116,19 @@ class _MainNavigationScreenState extends ConsumerState<MainNavigationScreen> {
                   onTap: () => ref.read(currentTabProvider.notifier).state = 2,
                 ),
                 _NavBarItem(
+                  icon: Icons.workspace_premium_rounded,
+                  label: isUkr ? 'Бонуси' : 'Rewards',
+                  index: 4,
+                  isSelected: currentTab == 4,
+                  onTap: () => ref.read(currentTabProvider.notifier).state = 4,
+                ),
+                _NavBarItem(
                   icon: Icons.person_rounded,
                   label:
                       AppLocalizations.of(context)?.get('profile') ?? 'Profile',
                   index: 3,
                   isSelected: currentTab == 3,
                   onTap: () => ref.read(currentTabProvider.notifier).state = 3,
-                ),
-                _NavBarItem(
-                  icon: Icons.workspace_premium_rounded,
-                  label: isUkr ? 'Бонуси' : 'Rewards',
-                  index: 4,
-                  isSelected: currentTab == 4,
-                  onTap: () => ref.read(currentTabProvider.notifier).state = 4,
                 ),
               ],
             ),

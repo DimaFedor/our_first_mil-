@@ -492,6 +492,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
     int xpReward, [
     List<Achievement> unlockedAchievements = const [],
   ]) {
+    final languageCode = Localizations.localeOf(context).languageCode;
+    final isUkr = languageCode == 'uk';
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -548,9 +550,11 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      '🏆 Achievement unlocked',
-                      style: TextStyle(
+                    Text(
+                      isUkr
+                          ? '🏆 Досягнення відкрито'
+                          : '🏆 Achievement unlocked',
+                      style: const TextStyle(
                         color: Colors.amber,
                         fontSize: 13,
                         fontWeight: FontWeight.w700,
@@ -559,7 +563,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
                     const SizedBox(height: 6),
                     ...unlockedAchievements.map(
                       (achievement) => Text(
-                        '${achievement.title} (+${achievement.xpReward} XP)',
+                        '${achievement.titleForLocale(languageCode)} (+${achievement.xpReward} XP)',
                         style: TextStyle(
                           color: Theme.of(dialogContext).colorScheme.onSurface,
                           fontSize: 13,
@@ -597,11 +601,15 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
 
   void _showAchievementNotifications(List<Achievement> achievements) {
     final messenger = ScaffoldMessenger.of(context);
+    final languageCode = Localizations.localeOf(context).languageCode;
+    final isUkr = languageCode == 'uk';
     for (final achievement in achievements) {
       messenger.showSnackBar(
         SnackBar(
           content: Text(
-            '🏆 ${achievement.title} unlocked (+${achievement.xpReward} XP)',
+            isUkr
+                ? '🏆 ${achievement.titleForLocale(languageCode)} відкрито (+${achievement.xpReward} XP)'
+                : '🏆 ${achievement.titleForLocale(languageCode)} unlocked (+${achievement.xpReward} XP)',
           ),
           backgroundColor: const Color(0xFF7C3AED),
           duration: const Duration(seconds: 2),

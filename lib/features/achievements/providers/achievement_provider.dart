@@ -40,6 +40,7 @@ class AchievementActions {
     required int totalLessons,
     required int currentStreak,
     required int totalXP,
+    required int completedCourses,
   }) async {
     if (_userId == null) return [];
 
@@ -63,13 +64,16 @@ class AchievementActions {
         case AchievementType.lessonComplete:
           shouldUnlock = totalLessons >= achievement.requirement;
           break;
+        case AchievementType.courseComplete:
+          shouldUnlock = completedCourses >= achievement.requirement;
+          break;
         case AchievementType.streak:
           shouldUnlock = currentStreak >= achievement.requirement;
           break;
         case AchievementType.xp:
           shouldUnlock = totalXP >= achievement.requirement;
           break;
-        default:
+        case AchievementType.special:
           break;
       }
 

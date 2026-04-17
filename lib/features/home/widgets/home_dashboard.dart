@@ -1592,6 +1592,7 @@ class _AchievementCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final onSurface = Theme.of(context).colorScheme.onSurface;
+    final languageCode = Localizations.localeOf(context).languageCode;
     return Container(
       width: 190,
       padding: const EdgeInsets.all(14),
@@ -1623,7 +1624,7 @@ class _AchievementCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  achievement.title,
+                  achievement.titleForLocale(languageCode),
                   style: TextStyle(
                     color: onSurface,
                     fontWeight: FontWeight.w800,
