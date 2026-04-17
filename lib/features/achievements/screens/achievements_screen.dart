@@ -125,6 +125,7 @@ class _AchievementCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     final onSurface = Theme.of(context).colorScheme.onSurface;
+    final languageCode = Localizations.localeOf(context).languageCode;
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(16),
@@ -170,7 +171,7 @@ class _AchievementCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  achievement.title,
+                  achievement.titleForLocale(languageCode),
                   style: TextStyle(
                     color: isUnlocked
                         ? (isDarkTheme ? Colors.white : onSurface)
@@ -181,7 +182,7 @@ class _AchievementCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  achievement.description,
+                  achievement.descriptionForLocale(languageCode),
                   style: TextStyle(
                     color: isUnlocked
                         ? (isDarkTheme

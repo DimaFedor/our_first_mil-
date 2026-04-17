@@ -258,9 +258,11 @@ class ProgressActions {
     final totalXP = userData?['totalXP'] as int? ?? 0;
     final currentStreak = userData?['currentStreak'] as int? ?? 0;
     int totalLessonsCount = 0;
+    int completedCoursesCount = 0;
     List<String> allCompletedLessons = [];
     bool hasJustCompletedLesson = false;
     for (var progress in allProgress) {
+      final progressCourseId = (progress['courseId']?.toString() ?? '').trim();
       final lessons = (progress['completedLessons'] as List? ?? [])
           .map((e) => e.toString())
           .toList();
@@ -268,6 +270,16 @@ class ProgressActions {
       allCompletedLessons.addAll(lessons);
       if (lessons.contains(lessonId)) {
         hasJustCompletedLesson = true;
+      }
+
+      if (progressCourseId.isNotEmpty) {
+        final totalLessonsInCourse = CourseContentService.getLessonsForCourse(
+          progressCourseId,
+        ).length;
+        if (totalLessonsInCourse > 0 &&
+            lessons.length >= totalLessonsInCourse) {
+          completedCoursesCount += 1;
+        }
       }
     }
 
@@ -300,6 +312,7 @@ class ProgressActions {
           totalLessons: totalLessonsCount,
           currentStreak: currentStreak,
           totalXP: effectiveTotalXP,
+          completedCourses: completedCoursesCount,
         );
 
     await _engagementNotifications.onLessonCompleted(
