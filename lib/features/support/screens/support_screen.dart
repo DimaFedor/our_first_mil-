@@ -9,13 +9,29 @@ import '../models/support_ticket.dart';
 import '../providers/support_provider.dart';
 
 class SupportScreen extends ConsumerStatefulWidget {
-  const SupportScreen({super.key});
+  final String? initialCategory;
+  final String? initialSubject;
+  final String? initialMessage;
+
+  const SupportScreen({
+    super.key,
+    this.initialCategory,
+    this.initialSubject,
+    this.initialMessage,
+  });
 
   @override
   ConsumerState<SupportScreen> createState() => _SupportScreenState();
 }
 
 class _SupportScreenState extends ConsumerState<SupportScreen> {
+  static const Set<String> _supportedCategories = <String>{
+    'technical',
+    'account',
+    'content',
+    'feedback',
+  };
+
   final _formKey = GlobalKey<FormState>();
   final _subjectController = TextEditingController();
   final _messageController = TextEditingController();
@@ -32,6 +48,23 @@ class _SupportScreenState extends ConsumerState<SupportScreen> {
   @override
   void initState() {
     super.initState();
+
+    final initialCategory = widget.initialCategory?.trim().toLowerCase();
+    if (initialCategory != null &&
+        _supportedCategories.contains(initialCategory)) {
+      _selectedCategory = initialCategory;
+    }
+
+    final initialSubject = widget.initialSubject?.trim();
+    if (initialSubject != null && initialSubject.isNotEmpty) {
+      _subjectController.text = initialSubject;
+    }
+
+    final initialMessage = widget.initialMessage?.trim();
+    if (initialMessage != null && initialMessage.isNotEmpty) {
+      _messageController.text = initialMessage;
+    }
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _refreshQueuedCount();
     });

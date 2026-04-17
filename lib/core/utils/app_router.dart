@@ -81,7 +81,14 @@ class AppRouter {
           GoRoute(
             path: 'support',
             name: 'support',
-            builder: (context, state) => const SupportScreen(),
+            builder: (context, state) {
+              final params = state.uri.queryParameters;
+              return SupportScreen(
+                initialCategory: params['category'],
+                initialSubject: params['subject'],
+                initialMessage: params['message'],
+              );
+            },
           ),
           GoRoute(
             path: 'xp-rewards',

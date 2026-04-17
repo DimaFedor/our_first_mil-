@@ -24,6 +24,24 @@ class _XPRewardsScreenState extends ConsumerState<XPRewardsScreen> {
 
   String _tr({required String en, required String uk}) => _isUkr ? uk : en;
 
+  void _openRewardsFeedback() {
+    final subject = _tr(en: 'Idea for EXP Rewards', uk: 'Ідея для EXP бонусів');
+    final message = _tr(
+      en: 'Describe your idea: what should be added or changed in Rewards, and why it would help learners.',
+      uk: 'Опиши свою ідею: що саме варто додати або змінити в Rewards і чому це допоможе учням.',
+    );
+
+    final uri = Uri(
+      path: '/support',
+      queryParameters: <String, String>{
+        'category': 'feedback',
+        'subject': subject,
+        'message': message,
+      },
+    );
+    context.push(uri.toString());
+  }
+
   Future<void> _claimDaily({
     required String userId,
     required bool useLocalMode,
@@ -217,6 +235,8 @@ class _XPRewardsScreenState extends ConsumerState<XPRewardsScreen> {
                         ),
                       ),
                       const SizedBox(height: 16),
+                      _buildRewardsFeedbackCard(onSurface: onSurface),
+                      const SizedBox(height: 12),
                       walletAsync.when(
                         data: (wallet) {
                           final currentStreak =
@@ -407,6 +427,57 @@ class _XPRewardsScreenState extends ConsumerState<XPRewardsScreen> {
                     '${_tr(en: 'Hints', uk: 'Підказки')}: ${wallet.hintTokens}',
               ),
             ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildRewardsFeedbackCard({required Color onSurface}) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.84),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: const Color(0xFFD6E2FF)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const Icon(Icons.campaign_outlined, color: Color(0xFF2563EB)),
+              const SizedBox(width: 8),
+              Text(
+                _tr(en: 'Share your innovation', uk: 'Поділись інновацією'),
+                style: TextStyle(
+                  color: onSurface,
+                  fontWeight: FontWeight.w800,
+                  fontSize: 15,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Text(
+            _tr(
+              en: 'Have an idea for better rewards or perks? Send it to us directly.',
+              uk: 'Маєш ідею для кращих бонусів або перків? Надішли її нам напряму.',
+            ),
+            style: TextStyle(
+              color: onSurface.withValues(alpha: 0.72),
+              fontSize: 13,
+            ),
+          ),
+          const SizedBox(height: 12),
+          SizedBox(
+            width: double.infinity,
+            child: OutlinedButton.icon(
+              onPressed: _openRewardsFeedback,
+              icon: const Icon(Icons.feedback_outlined),
+              label: Text(_tr(en: 'Suggest an idea', uk: 'Запропонувати ідею')),
+            ),
           ),
         ],
       ),
