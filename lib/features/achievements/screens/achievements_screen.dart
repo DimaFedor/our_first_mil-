@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:go_router/go_router.dart';
 import '../models/achievement_model.dart';
 import '../providers/achievement_provider.dart';
 import '../../../core/l10n/app_localizations.dart';
@@ -37,7 +38,7 @@ class AchievementsScreen extends ConsumerWidget {
         child: SafeArea(
           child: Column(
             children: [
-              _buildHeader(),
+              _buildHeader(context),
               Expanded(
                 child: achievementsAsync.when(
                   data: (unlockedAchievements) {
@@ -81,22 +82,31 @@ class AchievementsScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildHeader() {
+  Widget _buildHeader(BuildContext context) {
+    final onSurface = Theme.of(context).colorScheme.onSurface;
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Row(
         children: [
-          const Icon(Icons.emoji_events, color: Colors.amber, size: 32),
-          const SizedBox(width: 12),
-          Builder(
-            builder: (context) => Text(
-              AppLocalizations.of(context)?.get('achievements') ??
-                  'Achievements',
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.onSurface,
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-              ),
+          IconButton(
+            onPressed: () {
+              if (context.canPop()) {
+                context.pop();
+              } else {
+                context.go('/');
+              }
+            },
+            icon: Icon(Icons.arrow_back, color: onSurface),
+          ),
+          const SizedBox(width: 4),
+          const Icon(Icons.emoji_events, color: Colors.amber, size: 30),
+          const SizedBox(width: 10),
+          Text(
+            AppLocalizations.of(context)?.get('achievements') ?? 'Achievements',
+            style: TextStyle(
+              color: onSurface,
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ],
