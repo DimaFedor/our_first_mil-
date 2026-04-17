@@ -306,6 +306,7 @@ class AppLocalizations {
     'no_courses_match_filter_desc':
         'Switch back to all courses to keep exploring your learning paths.',
     'show_all_courses': 'Show all courses',
+    'show_top_3_courses': 'Show top 3 courses',
     'action_review': 'Review',
     'action_resume': 'Resume',
     'action_start': 'Start',
@@ -668,6 +669,7 @@ class AppLocalizations {
     'no_courses_match_filter_desc':
         'Поверніться до всіх курсів, щоб продовжити вивчати доступні шляхи.',
     'show_all_courses': 'Показати всі курси',
+    'show_top_3_courses': 'Показати топ-3 курси',
     'action_review': 'Повторити',
     'action_resume': 'Продовжити',
     'action_start': 'Почати',
@@ -1039,6 +1041,7 @@ class AppLocalizations {
     'no_courses_match_filter_desc':
         'Vuelve a todos los cursos para seguir explorando tus rutas de aprendizaje.',
     'show_all_courses': 'Mostrar todos los cursos',
+    'show_top_3_courses': 'Mostrar top 3 cursos',
     'action_review': 'Revisar',
     'action_resume': 'Reanudar',
     'action_start': 'Empezar',
@@ -1410,6 +1413,7 @@ class AppLocalizations {
     'no_courses_match_filter_desc':
         'Wechsle zurück zu allen Kursen, um weiter Lernpfade zu erkunden.',
     'show_all_courses': 'Alle Kurse anzeigen',
+    'show_top_3_courses': 'Top 3 Kurse anzeigen',
     'action_review': 'Wiederholen',
     'action_resume': 'Fortsetzen',
     'action_start': 'Starten',
@@ -1787,6 +1791,7 @@ class AppLocalizations {
     'no_courses_match_filter_desc':
         'Revenez à tous les cours pour continuer à explorer vos parcours d\'apprentissage.',
     'show_all_courses': 'Afficher tous les cours',
+    'show_top_3_courses': 'Afficher le top 3 des cours',
     'action_review': 'Réviser',
     'action_resume': 'Reprendre',
     'action_start': 'Commencer',
@@ -2156,6 +2161,7 @@ class AppLocalizations {
     'no_courses_match_filter_desc':
         'Wróć do wszystkich kursów, aby dalej odkrywać ścieżki nauki.',
     'show_all_courses': 'Pokaż wszystkie kursy',
+    'show_top_3_courses': 'Pokaż 3 najlepsze kursy',
     'action_review': 'Powtórz',
     'action_resume': 'Wznów',
     'action_start': 'Start',

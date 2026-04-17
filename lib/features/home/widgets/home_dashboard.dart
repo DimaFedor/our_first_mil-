@@ -539,8 +539,7 @@ class _HeroStatusCard extends StatelessWidget {
     final primaryLabel = totalLessons > 0
         ? (AppLocalizations.of(context)?.get('continue_learning') ??
               'Continue learning')
-        : (AppLocalizations.of(context)?.get('start_journey') ??
-              'Start your journey');
+        : (AppLocalizations.of(context)?.get('start_course') ?? 'Start course');
 
     return Container(
       padding: const EdgeInsets.all(20),
@@ -720,17 +719,21 @@ class _LevelOrb extends StatelessWidget {
       width: 100,
       height: 100,
       child: Stack(
+        clipBehavior: Clip.none,
         alignment: Alignment.center,
         children: [
           SizedBox(
             width: 100,
             height: 100,
-            child: CircularProgressIndicator(
-              value: progress,
-              strokeWidth: 8,
-              backgroundColor: Colors.white.withValues(alpha: 0.12),
-              valueColor: const AlwaysStoppedAnimation<Color>(
-                Color(0xFF8B5CF6),
+            child: Padding(
+              padding: const EdgeInsets.all(2),
+              child: CircularProgressIndicator(
+                value: progress,
+                strokeWidth: 8,
+                backgroundColor: Colors.white.withValues(alpha: 0.12),
+                valueColor: const AlwaysStoppedAnimation<Color>(
+                  Color(0xFF8B5CF6),
+                ),
               ),
             ),
           ),
@@ -952,31 +955,12 @@ class _NextStepCard extends StatelessWidget {
               ),
               const SizedBox(width: 8),
               Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Icon(Icons.arrow_forward_rounded, color: course.color),
-                  const SizedBox(height: 18),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 8,
-                    ),
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        colors: [Color(0xFF0066FF), Color(0xFF8B5CF6)],
-                      ),
-                      borderRadius: BorderRadius.circular(999),
-                    ),
-                    child: Text(
-                      buttonLabel,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
+                  const SizedBox(height: 12),
+                  _HeroActionPill(label: buttonLabel),
                 ],
               ),
             ],
@@ -1055,28 +1039,40 @@ class _EmptyContinueCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 12),
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 8,
-                ),
-                decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    colors: [Color(0xFF0066FF), Color(0xFF8B5CF6)],
-                  ),
-                  borderRadius: BorderRadius.circular(999),
-                ),
-                child: Text(
-                  label,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
+              _HeroActionPill(label: label),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _HeroActionPill extends StatelessWidget {
+  final String label;
+
+  const _HeroActionPill({required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      constraints: const BoxConstraints(minWidth: 108, maxWidth: 156),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          colors: [Color(0xFF0066FF), Color(0xFF8B5CF6)],
+        ),
+        borderRadius: BorderRadius.circular(999),
+      ),
+      child: Text(
+        label,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        textAlign: TextAlign.center,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 12,
+          fontWeight: FontWeight.w700,
         ),
       ),
     );

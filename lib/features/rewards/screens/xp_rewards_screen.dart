@@ -270,6 +270,7 @@ class _XPRewardsScreenState extends ConsumerState<XPRewardsScreen> {
                               ],
                               _buildDailyCard(
                                 onSurface: onSurface,
+                                isDarkTheme: isDarkTheme,
                                 canClaimDaily: canClaimDaily,
                                 isLoading: _isClaimingDaily,
                                 onClaim: () => _claimDaily(
@@ -279,7 +280,10 @@ class _XPRewardsScreenState extends ConsumerState<XPRewardsScreen> {
                                 ),
                               ),
                               const SizedBox(height: 16),
-                              _buildEarningRulesCard(onSurface: onSurface),
+                              _buildEarningRulesCard(
+                                onSurface: onSurface,
+                                isDarkTheme: isDarkTheme,
+                              ),
                               const SizedBox(height: 18),
                               Text(
                                 _tr(en: 'Reward Shop', uk: 'Магазин нагород'),
@@ -292,6 +296,7 @@ class _XPRewardsScreenState extends ConsumerState<XPRewardsScreen> {
                               _buildShopGrid(
                                 wallet: wallet,
                                 onSurface: onSurface,
+                                isDarkTheme: isDarkTheme,
                                 onBuy: (itemId) => _purchaseItem(
                                   userId: userId,
                                   useLocalMode: useLocalMode,
@@ -314,6 +319,7 @@ class _XPRewardsScreenState extends ConsumerState<XPRewardsScreen> {
                                 data: (transactions) => _buildTransactionsCard(
                                   transactions: transactions,
                                   onSurface: onSurface,
+                                  isDarkTheme: isDarkTheme,
                                 ),
                                 loading: () => const Center(
                                   child: Padding(
@@ -331,7 +337,10 @@ class _XPRewardsScreenState extends ConsumerState<XPRewardsScreen> {
                                 ),
                               ),
                               const SizedBox(height: 18),
-                              _buildRewardsFeedbackCard(onSurface: onSurface),
+                              _buildRewardsFeedbackCard(
+                                onSurface: onSurface,
+                                isDarkTheme: isDarkTheme,
+                              ),
                             ],
                           );
                         },
@@ -433,15 +442,14 @@ class _XPRewardsScreenState extends ConsumerState<XPRewardsScreen> {
     );
   }
 
-  Widget _buildRewardsFeedbackCard({required Color onSurface}) {
+  Widget _buildRewardsFeedbackCard({
+    required Color onSurface,
+    required bool isDarkTheme,
+  }) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.84),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: const Color(0xFFD6E2FF)),
-      ),
+      decoration: _surfaceCardDecoration(isDarkTheme: isDarkTheme),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -511,17 +519,14 @@ class _XPRewardsScreenState extends ConsumerState<XPRewardsScreen> {
 
   Widget _buildDailyCard({
     required Color onSurface,
+    required bool isDarkTheme,
     required bool canClaimDaily,
     required bool isLoading,
     required VoidCallback onClaim,
   }) {
     return Container(
       padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.84),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: const Color(0xFFD6E2FF)),
-      ),
+      decoration: _surfaceCardDecoration(isDarkTheme: isDarkTheme),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -580,7 +585,10 @@ class _XPRewardsScreenState extends ConsumerState<XPRewardsScreen> {
     );
   }
 
-  Widget _buildEarningRulesCard({required Color onSurface}) {
+  Widget _buildEarningRulesCard({
+    required Color onSurface,
+    required bool isDarkTheme,
+  }) {
     final rules = [
       (
         icon: Icons.login_rounded,
@@ -615,11 +623,7 @@ class _XPRewardsScreenState extends ConsumerState<XPRewardsScreen> {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.84),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: const Color(0xFFD6E2FF)),
-      ),
+      decoration: _surfaceCardDecoration(isDarkTheme: isDarkTheme),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -661,6 +665,7 @@ class _XPRewardsScreenState extends ConsumerState<XPRewardsScreen> {
   Widget _buildShopGrid({
     required RewardWallet wallet,
     required Color onSurface,
+    required bool isDarkTheme,
     required void Function(String itemId) onBuy,
   }) {
     final entries = [
@@ -729,10 +734,8 @@ class _XPRewardsScreenState extends ConsumerState<XPRewardsScreen> {
                   width: width,
                   child: Container(
                     padding: const EdgeInsets.all(14),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.84),
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: const Color(0xFFD6E2FF)),
+                    decoration: _surfaceCardDecoration(
+                      isDarkTheme: isDarkTheme,
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -818,6 +821,7 @@ class _XPRewardsScreenState extends ConsumerState<XPRewardsScreen> {
   Widget _buildTransactionsCard({
     required List<RewardTransaction> transactions,
     required Color onSurface,
+    required bool isDarkTheme,
   }) {
     if (transactions.isEmpty) {
       return _buildMessageCard(
@@ -832,19 +836,41 @@ class _XPRewardsScreenState extends ConsumerState<XPRewardsScreen> {
 
     final displayItems = transactions.take(8).toList(growable: false);
     return Container(
-      decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.84),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: const Color(0xFFD6E2FF)),
-      ),
+      decoration: _surfaceCardDecoration(isDarkTheme: isDarkTheme),
       child: Column(
         children: [
           for (var i = 0; i < displayItems.length; i++) ...[
             _transactionTile(displayItems[i], onSurface),
             if (i != displayItems.length - 1)
-              const Divider(height: 1, indent: 12, endIndent: 12),
+              Divider(
+                height: 1,
+                indent: 12,
+                endIndent: 12,
+                color: onSurface.withValues(alpha: isDarkTheme ? 0.14 : 0.1),
+              ),
           ],
         ],
+      ),
+    );
+  }
+
+  BoxDecoration _surfaceCardDecoration({required bool isDarkTheme}) {
+    return BoxDecoration(
+      gradient: LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: isDarkTheme
+            ? [
+                const Color(0xFF1A1F3A).withValues(alpha: 0.78),
+                const Color(0xFF0F1733).withValues(alpha: 0.66),
+              ]
+            : [Colors.white.withValues(alpha: 0.92), const Color(0xFFF4F7FF)],
+      ),
+      borderRadius: BorderRadius.circular(16),
+      border: Border.all(
+        color: isDarkTheme
+            ? Colors.white.withValues(alpha: 0.14)
+            : const Color(0xFFD6E2FF),
       ),
     );
   }

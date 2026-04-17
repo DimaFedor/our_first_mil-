@@ -120,6 +120,10 @@ class ProfileScreen extends ConsumerWidget {
     final progressAsync = ref.watch(allUserProgressProvider);
     final levelInfoAsync = ref.watch(levelInfoProvider);
     final userDataAsync = ref.watch(userDataProvider(currentUser?.uid ?? ''));
+    final fallbackLevelInfo = XPSystem.getLevelInfo(
+      userDataAsync.valueOrNull?.totalXP ?? 0,
+    );
+    final avatarLevelInfo = levelInfoAsync.valueOrNull ?? fallbackLevelInfo;
     final rewardsWalletAsync = ref.watch(xpRewardsWalletProvider);
     final hasNeonFrame =
         rewardsWalletAsync.valueOrNull?.ownedCosmetics.contains(
@@ -217,52 +221,16 @@ class ProfileScreen extends ConsumerWidget {
                       child: Column(
                         children: [
                           // Avatar
-                          Container(
-                                width: 100,
-                                height: 100,
-                                decoration: BoxDecoration(
-                                  gradient: const LinearGradient(
-                                    colors: [
-                                      Color(0xFF0066FF),
-                                      Color(0xFF8B5CF6),
-                                    ],
-                                  ),
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                    color: hasNeonFrame
-                                        ? const Color(0xFF22C55E)
-                                        : Colors.white.withValues(alpha: 0.18),
-                                    width: hasNeonFrame ? 3 : 1.2,
-                                  ),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: const Color(
-                                        0xFF0066FF,
-                                      ).withValues(alpha: 0.4),
-                                      blurRadius: 30,
-                                      offset: const Offset(0, 15),
-                                    ),
-                                    if (hasNeonFrame)
-                                      const BoxShadow(
-                                        color: Color(0xFF22C55E),
-                                        blurRadius: 20,
-                                        spreadRadius: 1,
-                                      ),
-                                  ],
+                          _ProfileAvatarWithProgress(
+                                initial: _getInitial(
+                                  currentUser?.displayName,
+                                  currentUser?.email,
                                 ),
-                                child: Center(
-                                  child: Text(
-                                    _getInitial(
-                                      currentUser?.displayName,
-                                      currentUser?.email,
-                                    ),
-                                    style: const TextStyle(
-                                      fontSize: 48,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
+                                progress: avatarLevelInfo.isMaxLevel
+                                    ? 1
+                                    : avatarLevelInfo.progress,
+                                hasNeonFrame: hasNeonFrame,
+                                isDarkTheme: isDarkTheme,
                               )
                               .animate(delay: 300.ms)
                               .scale(
@@ -722,6 +690,92 @@ class _ProfileMetaChip extends StatelessWidget {
               color: onSurface.withValues(alpha: 0.8),
               fontSize: 12,
               fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _ProfileAvatarWithProgress extends StatelessWidget {
+  final String initial;
+  final double progress;
+  final bool hasNeonFrame;
+  final bool isDarkTheme;
+
+  const _ProfileAvatarWithProgress({
+    required this.initial,
+    required this.progress,
+    required this.hasNeonFrame,
+    required this.isDarkTheme,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final clampedProgress = progress.clamp(0.0, 1.0).toDouble();
+
+    return SizedBox(
+      width: 116,
+      height: 116,
+      child: Stack(
+        clipBehavior: Clip.none,
+        alignment: Alignment.center,
+        children: [
+          SizedBox(
+            width: 116,
+            height: 116,
+            child: Padding(
+              padding: const EdgeInsets.all(3),
+              child: CircularProgressIndicator(
+                value: clampedProgress,
+                strokeWidth: 8,
+                backgroundColor: isDarkTheme
+                    ? Colors.white.withValues(alpha: 0.14)
+                    : const Color(0xFFD6E2FF),
+                valueColor: const AlwaysStoppedAnimation<Color>(
+                  Color(0xFF8B5CF6),
+                ),
+              ),
+            ),
+          ),
+          Container(
+            width: 96,
+            height: 96,
+            decoration: BoxDecoration(
+              gradient: const LinearGradient(
+                colors: [Color(0xFF0066FF), Color(0xFF8B5CF6)],
+              ),
+              shape: BoxShape.circle,
+              border: Border.all(
+                color: hasNeonFrame
+                    ? const Color(0xFF22C55E)
+                    : Colors.white.withValues(alpha: 0.18),
+                width: hasNeonFrame ? 3 : 1.2,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0xFF0066FF).withValues(alpha: 0.4),
+                  blurRadius: 30,
+                  offset: const Offset(0, 15),
+                ),
+                if (hasNeonFrame)
+                  const BoxShadow(
+                    color: Color(0xFF22C55E),
+                    blurRadius: 20,
+                    spreadRadius: 1,
+                  ),
+              ],
+            ),
+            child: Center(
+              child: Text(
+                initial,
+                style: const TextStyle(
+                  fontSize: 46,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
             ),
           ),
         ],
