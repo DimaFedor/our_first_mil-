@@ -66,6 +66,9 @@ class _CodeEditorState extends State<CodeEditor> {
   String _currentWord = '';
   List<SyntaxError> _syntaxErrors = [];
   bool _showSuggestions = false;
+  String _previousCodeText = '';
+  TextSelection _previousSelection = const TextSelection.collapsed(offset: -1);
+  bool _isApplyingProgrammaticChange = false;
 
   // Autocomplete suggestions with descriptions
   static const pythonCompletions = <String, String>{
@@ -626,6 +629,8 @@ class _CodeEditorState extends State<CodeEditor> {
       text: widget.controller.text,
       language: _languageMode,
     );
+    _previousCodeText = _codeController.text;
+    _previousSelection = _codeController.selection;
     _codeController.addListener(_onCodeChanged);
     widget.controller.addListener(_syncFromExternal);
   }
@@ -641,16 +646,150 @@ class _CodeEditorState extends State<CodeEditor> {
   void _syncFromExternal() {
     if (_codeController.text != widget.controller.text) {
       _codeController.text = widget.controller.text;
+      _previousCodeText = _codeController.text;
+      _previousSelection = _codeController.selection;
     }
   }
 
   void _onCodeChanged() {
+    if (!_isApplyingProgrammaticChange) {
+      _applyAutoIndentIfNeeded();
+    }
+
     if (widget.controller.text != _codeController.text) {
       widget.controller.text = _codeController.text;
     }
     widget.onChanged?.call(_codeController.text);
     _checkSyntax();
     _updateSuggestions();
+
+    _previousCodeText = _codeController.text;
+    _previousSelection = _codeController.selection;
+  }
+
+  void _applyAutoIndentIfNeeded() {
+    final oldText = _previousCodeText;
+    final newText = _codeController.text;
+    final selection = _codeController.selection;
+
+    if (!selection.isCollapsed) return;
+    if (oldText == newText) return;
+
+    final previousOffset = _previousSelection.baseOffset;
+    if (previousOffset < 0 || previousOffset > oldText.length) return;
+
+    final cursor = selection.baseOffset;
+    if (cursor <= 0 || cursor > newText.length) return;
+    if (newText.codeUnitAt(cursor - 1) != '\n'.codeUnitAt(0)) return;
+
+    final commonPrefixLength = _commonPrefixLength(oldText, newText);
+    final commonSuffixLength = _commonSuffixLength(
+      oldText,
+      newText,
+      commonPrefixLength,
+    );
+
+    final insertedStart = commonPrefixLength;
+    final insertedEnd = newText.length - commonSuffixLength;
+    final removedEnd = oldText.length - commonSuffixLength;
+
+    if (insertedStart > insertedEnd || insertedStart > removedEnd) return;
+
+    final inserted = newText.substring(insertedStart, insertedEnd);
+    final removed = oldText.substring(insertedStart, removedEnd);
+
+    // Auto-indent only for a plain Enter key press.
+    if (removed.isNotEmpty || inserted != '\n') return;
+
+    final previousLineEnd = cursor - 1;
+    var previousLineStart = newText.lastIndexOf('\n', previousLineEnd - 1);
+    previousLineStart = previousLineStart == -1 ? 0 : previousLineStart + 1;
+
+    final previousLine = newText.substring(previousLineStart, previousLineEnd);
+    final leadingIndent = _leadingIndentation(previousLine);
+    var indentationToInsert = leadingIndent;
+
+    if (_shouldIncreaseIndent(previousLine)) {
+      indentationToInsert += _indentUnit(leadingIndent);
+    }
+
+    if (indentationToInsert.isEmpty) return;
+
+    final updatedText =
+        newText.substring(0, cursor) +
+        indentationToInsert +
+        newText.substring(cursor);
+
+    _isApplyingProgrammaticChange = true;
+    _codeController.value = _codeController.value.copyWith(
+      text: updatedText,
+      selection: TextSelection.collapsed(
+        offset: cursor + indentationToInsert.length,
+      ),
+      composing: TextRange.empty,
+    );
+    _isApplyingProgrammaticChange = false;
+  }
+
+  int _commonPrefixLength(String a, String b) {
+    final max = a.length < b.length ? a.length : b.length;
+    var index = 0;
+    while (index < max && a.codeUnitAt(index) == b.codeUnitAt(index)) {
+      index++;
+    }
+    return index;
+  }
+
+  int _commonSuffixLength(String a, String b, int prefixLength) {
+    final aRemaining = a.length - prefixLength;
+    final bRemaining = b.length - prefixLength;
+    final max = aRemaining < bRemaining ? aRemaining : bRemaining;
+    var index = 0;
+    while (index < max &&
+        a.codeUnitAt(a.length - 1 - index) ==
+            b.codeUnitAt(b.length - 1 - index)) {
+      index++;
+    }
+    return index;
+  }
+
+  String _leadingIndentation(String line) {
+    final match = RegExp(r'^[\t ]*').firstMatch(line);
+    return match?.group(0) ?? '';
+  }
+
+  String _indentUnit(String currentIndentation) {
+    if (currentIndentation.contains('\t') &&
+        !currentIndentation.contains(' ')) {
+      return '\t';
+    }
+    return '    ';
+  }
+
+  bool _shouldIncreaseIndent(String previousLine) {
+    final trimmed = previousLine.trimRight();
+    if (trimmed.isEmpty) return false;
+
+    final language = widget.language.trim().toLowerCase();
+    if (language == 'python' || language == 'py') {
+      if (trimmed.startsWith('#')) return false;
+      return trimmed.endsWith(':');
+    }
+
+    if (language == 'javascript' ||
+        language == 'js' ||
+        language == 'react' ||
+        language == 'jsx' ||
+        language == 'cpp' ||
+        language == 'c++' ||
+        language == 'cplusplus' ||
+        language == 'css' ||
+        language == 'html' ||
+        language == 'html/css') {
+      return trimmed.endsWith('{');
+    }
+
+    return false;
   }
 
   void _checkSyntax() {
