@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -263,10 +264,38 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
 
   String _getErrorMessage(dynamic error) {
     if (error is AuthFlowException) {
+      switch (error.code) {
+        case 'google-web-client-id-missing':
+          return _t(
+            'auth_google_web_not_configured',
+            'Google Sign-In for web is not configured. Add a Web OAuth client ID.',
+          );
+        case 'google-sign-in-misconfigured':
+          return _t(
+            'auth_google_misconfigured',
+            'Google Sign-In is not configured correctly.',
+          );
+        case 'google-sign-in-cancelled':
+          return _t('auth_google_cancelled', 'Google sign-in was cancelled.');
+        default:
+          break;
+      }
       return error.message;
     }
 
     final message = error.toString().toLowerCase();
+    if (message.contains('clientid not set') ||
+        message.contains('google-signin-client_id')) {
+      return _t(
+        'auth_google_web_not_configured',
+        'Google Sign-In for web is not configured. Add a Web OAuth client ID.',
+      );
+    }
+    if (message.contains('popup_closed_by_user') ||
+        message.contains('cancelled') ||
+        message.contains('canceled')) {
+      return _t('auth_google_cancelled', 'Google sign-in was cancelled.');
+    }
     if (message.contains('wrong-password') || message.contains('incorrect')) {
       return _t('auth_wrong_password', 'Incorrect password.');
     }
@@ -298,7 +327,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
         'Network error. Check your internet connection.',
       );
     }
-    return _t('auth_sign_in_failed', 'Unable to sign in. Please try again.');
+    final fallback = _t(
+      'auth_sign_in_failed',
+      'Unable to sign in. Please try again.',
+    );
+    if (kDebugMode) {
+      return '$fallback ($error)';
+    }
+    return fallback;
   }
 
   @override

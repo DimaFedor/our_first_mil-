@@ -203,6 +203,10 @@ class AppLocalizations {
     'auth_account_exists': 'An account with this email already exists.',
     'auth_weak_password': 'Weak password. Use at least 6 characters.',
     'auth_register_failed': 'Unable to create account. Please try again.',
+    'auth_google_cancelled': 'Google sign-in was cancelled.',
+    'auth_google_web_not_configured':
+        'Google Sign-In for web is not configured. Add a Web OAuth client ID.',
+    'auth_google_misconfigured': 'Google Sign-In is not configured correctly.',
     'dart': 'Dart',
 
     // Validation
@@ -546,6 +550,10 @@ class AppLocalizations {
     'auth_account_exists': 'Акаунт з таким email вже існує.',
     'auth_weak_password': 'Слабкий пароль. Використайте щонайменше 6 символів.',
     'auth_register_failed': 'Не вдалося створити акаунт. Спробуйте ще раз.',
+    'auth_google_cancelled': 'Вхід через Google скасовано.',
+    'auth_google_web_not_configured':
+        'Google Sign-In для вебу не налаштований. Додайте Web OAuth client ID.',
+    'auth_google_misconfigured': 'Google Sign-In налаштований некоректно.',
     'dart': 'Dart',
 
     // Validation
@@ -894,6 +902,11 @@ class AppLocalizations {
     'auth_account_exists': 'Ya existe una cuenta con este correo.',
     'auth_weak_password': 'Contraseña débil. Usa al menos 6 caracteres.',
     'auth_register_failed': 'No se pudo crear la cuenta. Inténtalo de nuevo.',
+    'auth_google_cancelled': 'Se canceló el inicio de sesión con Google.',
+    'auth_google_web_not_configured':
+        'Google Sign-In para web no está configurado. Agrega un client ID OAuth web.',
+    'auth_google_misconfigured':
+        'Google Sign-In no está configurado correctamente.',
     'dart': 'Dart',
 
     // Validation
@@ -1242,6 +1255,11 @@ class AppLocalizations {
     'auth_weak_password': 'Schwaches Passwort. Verwende mindestens 6 Zeichen.',
     'auth_register_failed':
         'Konto konnte nicht erstellt werden. Bitte versuche es erneut.',
+    'auth_google_cancelled': 'Die Google-Anmeldung wurde abgebrochen.',
+    'auth_google_web_not_configured':
+        'Google Sign-In für Web ist nicht konfiguriert. Füge eine Web-OAuth-Client-ID hinzu.',
+    'auth_google_misconfigured':
+        'Google Sign-In ist nicht korrekt konfiguriert.',
     'dart': 'Dart',
 
     // Validation
@@ -1595,6 +1613,11 @@ class AppLocalizations {
         'Mot de passe trop faible. Utilisez au moins 6 caractères.',
     'auth_register_failed':
         'Impossible de créer le compte. Veuillez réessayer.',
+    'auth_google_cancelled': 'La connexion Google a été annulée.',
+    'auth_google_web_not_configured':
+        'Google Sign-In pour le web n’est pas configuré. Ajoutez un client ID OAuth web.',
+    'auth_google_misconfigured':
+        'Google Sign-In n’est pas correctement configuré.',
     'dart': 'Dart',
 
     // Validation
@@ -1945,6 +1968,11 @@ class AppLocalizations {
     'auth_account_exists': 'Konto z tym adresem e-mail już istnieje.',
     'auth_weak_password': 'Słabe hasło. Użyj co najmniej 6 znaków.',
     'auth_register_failed': 'Nie udało się utworzyć konta. Spróbuj ponownie.',
+    'auth_google_cancelled': 'Logowanie przez Google zostało anulowane.',
+    'auth_google_web_not_configured':
+        'Google Sign-In dla weba nie jest skonfigurowany. Dodaj identyfikator klienta OAuth web.',
+    'auth_google_misconfigured':
+        'Google Sign-In nie jest poprawnie skonfigurowany.',
     'dart': 'Dart',
 
     // Validation

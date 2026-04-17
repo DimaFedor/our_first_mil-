@@ -2,16 +2,17 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 
 class FirebaseConfig {
+  static const String webGoogleSignInClientId =
+      '86155501303-irjm5tk28rrif9thhev61uinio025hor.apps.googleusercontent.com';
+
   static Future<void> initialize() async {
-    await Firebase.initializeApp(
-      options: _getFirebaseOptions(),
-    );
+    await Firebase.initializeApp(options: _getFirebaseOptions());
   }
 
   static FirebaseOptions _getFirebaseOptions() {
     // Firebase Configuration for CodeLearn
     // Project: courses-3d6bf
-    
+
     if (kIsWeb) {
       return const FirebaseOptions(
         apiKey: "AIzaSyBGLPmmfL8rYjoinmR2yM0l_qxYW_NFxW0",
@@ -39,7 +40,7 @@ class FirebaseConfig {
         iosBundleId: "com.example.untitled",
       );
     }
-    
+
     throw UnsupportedError('Unsupported platform');
   }
 }

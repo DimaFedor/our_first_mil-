@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../config/firebase_config.dart';
 import '../services/firestore_service.dart';
 import 'auth_flow_exception.dart';
 import 'auth_token_storage_service.dart';
@@ -84,12 +86,19 @@ class AuthService {
     String skillLevel = 'beginner',
     String preferredLanguage = 'python',
   }) async {
-    await _ensureGoogleInitialized();
     try {
+      await _ensureGoogleInitialized();
+      AppLogger.info('Starting Google Sign-In...');
+
       final account = await _googleSignIn.authenticate();
-      final idToken = account.authentication.idToken;
+
+      AppLogger.info('Got Google account: ${account.email}');
+
+      final authentication = account.authentication;
+      final idToken = authentication.idToken;
 
       if (idToken == null || idToken.isEmpty) {
+        AppLogger.error('Google returned null or empty idToken', null);
         throw const AuthFlowException(
           code: 'missing-google-token',
           message: 'Google не повернув токен авторизації.',
@@ -97,10 +106,16 @@ class AuthService {
       }
 
       final credential = GoogleAuthProvider.credential(idToken: idToken);
+      AppLogger.info('Created GoogleAuthProvider credential');
+
       final userCredential = await _auth.signInWithCredential(credential);
+      AppLogger.info(
+        'Firebase sign-in successful for: ${userCredential.user?.email}',
+      );
 
       if (userCredential.user != null) {
         if (userCredential.additionalUserInfo?.isNewUser ?? false) {
+          AppLogger.info('Creating new user document...');
           await _firestoreService.createUserDocument(
             userCredential.user!,
             displayName:
@@ -117,8 +132,44 @@ class AuthService {
       }
 
       return userCredential;
+    } on AuthFlowException {
+      rethrow;
+    } on GoogleSignInException catch (error, stackTrace) {
+      AppLogger.error(
+        'GoogleSignInException in Google Sign-In',
+        error,
+        stackTrace,
+      );
+      switch (error.code) {
+        case GoogleSignInExceptionCode.canceled:
+          throw const AuthFlowException(
+            code: 'google-sign-in-cancelled',
+            message: 'Google sign-in was cancelled.',
+          );
+        case GoogleSignInExceptionCode.clientConfigurationError:
+        case GoogleSignInExceptionCode.providerConfigurationError:
+          throw AuthFlowException(
+            code: 'google-sign-in-misconfigured',
+            message:
+                'Google Sign-In is not configured correctly. ${error.description ?? ''}'
+                    .trim(),
+          );
+        default:
+          throw AuthFlowException(
+            code: 'google-sign-in-error',
+            message:
+                'Google Sign-In failed: ${error.description ?? error.code.name}',
+          );
+      }
     } on FirebaseAuthException catch (e) {
+      AppLogger.error('FirebaseAuthException in Google Sign-In: ${e.code}', e);
       throw _handleAuthException(e);
+    } catch (e, stackTrace) {
+      AppLogger.error('Unexpected error in Google Sign-In: $e', e, stackTrace);
+      throw AuthFlowException(
+        code: 'google-sign-in-error',
+        message: 'Google Sign-In failed: $e',
+      );
     }
   }
 
@@ -308,8 +359,37 @@ class AuthService {
 
   Future<void> _ensureGoogleInitialized() async {
     if (_googleInitialized) return;
-    await _googleSignIn.initialize();
-    _googleInitialized = true;
+    try {
+      if (kIsWeb) {
+        await _googleSignIn.initialize(
+          clientId: FirebaseConfig.webGoogleSignInClientId,
+        );
+      } else {
+        await _googleSignIn.initialize();
+      }
+      _googleInitialized = true;
+    } on AssertionError catch (error, stackTrace) {
+      AppLogger.error(
+        'Google Sign-In initialization assertion failed',
+        error,
+        stackTrace,
+      );
+      throw const AuthFlowException(
+        code: 'google-web-client-id-missing',
+        message:
+            'Google Sign-In for web is not configured. Missing OAuth client ID.',
+      );
+    } catch (error, stackTrace) {
+      AppLogger.error(
+        'Google Sign-In initialization failed',
+        error,
+        stackTrace,
+      );
+      throw AuthFlowException(
+        code: 'google-initialize-failed',
+        message: 'Google Sign-In initialization failed: $error',
+      );
+    }
   }
 
   Future<AuthTokenBundle> _persistSessionTokens(
