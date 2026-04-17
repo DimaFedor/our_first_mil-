@@ -32,6 +32,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   int _currentSlideIndex = 0;
+  bool _quizPassed = false;
 
   @override
   void initState() {
@@ -292,6 +293,12 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
     return _QuizWidget(
       quiz: lesson.quiz!,
       courseColor: widget.course.color,
+      onQuizPassedChanged: (isPassed) {
+        if (_quizPassed == isPassed) return;
+        setState(() {
+          _quizPassed = isPassed;
+        });
+      },
       onComplete: () {
         _tabController.animateTo(2);
       },
@@ -299,6 +306,56 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
   }
 
   Widget _buildCodingTab(Lesson lesson) {
+    if (lesson.quiz != null && !_quizPassed) {
+      final l10n = AppLocalizations.of(context);
+      final onSurface = Theme.of(context).colorScheme.onSurface;
+
+      return Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.lock_outline, color: widget.course.color, size: 52),
+              const SizedBox(height: 16),
+              Text(
+                l10n?.get('quiz_required_for_coding') ??
+                    'Pass the quiz to unlock the coding challenge.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: onSurface,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(height: 20),
+              SizedBox(
+                width: double.infinity,
+                height: 56,
+                child: ElevatedButton(
+                  onPressed: () => _tabController.animateTo(1),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: widget.course.color,
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  child: Text(
+                    l10n?.get('continue_to_quiz') ?? 'Continue to Quiz',
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
     if (lesson.codingChallenge == null) {
       return Center(
         child: Column(
@@ -341,6 +398,17 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
   }
 
   Future<void> _handleLessonCompletion(Lesson lesson) async {
+    if (lesson.quiz != null && !_quizPassed) {
+      final message =
+          AppLocalizations.of(context)?.get('quiz_required_for_completion') ??
+          'Pass the quiz before completing this lesson.';
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(message), backgroundColor: Colors.orange),
+      );
+      _tabController.animateTo(1);
+      return;
+    }
+
     try {
       AppLogger.debug(
         'Completing lesson: course=${widget.course.id}, lesson=${lesson.id}',
@@ -619,11 +687,13 @@ class _TheorySlideWidget extends StatelessWidget {
 class _QuizWidget extends StatefulWidget {
   final Quiz quiz;
   final Color courseColor;
+  final ValueChanged<bool> onQuizPassedChanged;
   final VoidCallback onComplete;
 
   const _QuizWidget({
     required this.quiz,
     required this.courseColor,
+    required this.onQuizPassedChanged,
     required this.onComplete,
   });
 
@@ -631,7 +701,9 @@ class _QuizWidget extends StatefulWidget {
   State<_QuizWidget> createState() => _QuizWidgetState();
 }
 
-class _QuizWidgetState extends State<_QuizWidget> {
+class _QuizWidgetState extends State<_QuizWidget>
+    with AutomaticKeepAliveClientMixin<_QuizWidget> {
+  static const int _passingPercentage = 60;
   int _currentQuestionIndex = 0;
   int? _selectedAnswer;
   bool _showResult = false;
@@ -639,7 +711,18 @@ class _QuizWidgetState extends State<_QuizWidget> {
   bool _quizCompleted = false;
 
   @override
+  bool get wantKeepAlive => true;
+
+  bool _isQuizPassed() {
+    final totalQuestions = widget.quiz.questions.length;
+    if (totalQuestions == 0) return false;
+    final percentage = (_correctAnswers / totalQuestions * 100).round();
+    return percentage >= _passingPercentage;
+  }
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     final onSurface = Theme.of(context).colorScheme.onSurface;
 
@@ -852,10 +935,11 @@ class _QuizWidgetState extends State<_QuizWidget> {
                   child: ElevatedButton(
                     onPressed: () {
                       if (isLastQuestion) {
-                        // Show completion screen instead of directly calling onComplete
+                        final isPassed = _isQuizPassed();
                         setState(() {
                           _quizCompleted = true;
                         });
+                        widget.onQuizPassedChanged(isPassed);
                       } else {
                         setState(() {
                           _currentQuestionIndex++;
@@ -892,9 +976,10 @@ class _QuizWidgetState extends State<_QuizWidget> {
 
   Widget _buildQuizCompletionScreen() {
     final onSurface = Theme.of(context).colorScheme.onSurface;
+    final l10n = AppLocalizations.of(context);
     final totalQuestions = widget.quiz.questions.length;
     final percentage = (_correctAnswers / totalQuestions * 100).round();
-    final isPassed = percentage >= 60;
+    final isPassed = percentage >= _passingPercentage;
 
     return Center(
       child: Padding(
@@ -953,24 +1038,49 @@ class _QuizWidgetState extends State<_QuizWidget> {
             SizedBox(
               width: double.infinity,
               height: 56,
-              child: ElevatedButton(
-                onPressed: widget.onComplete,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: widget.courseColor,
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                child: Text(
-                  AppLocalizations.of(context)?.get('continue_to_coding') ??
-                      'Continue to Coding Challenge',
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              child: isPassed
+                  ? ElevatedButton(
+                      onPressed: widget.onComplete,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: widget.courseColor,
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      child: Text(
+                        l10n?.get('continue_to_coding') ??
+                            'Continue to Coding Challenge',
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    )
+                  : DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: Colors.orange.withValues(alpha: 0.12),
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
+                          color: Colors.orange.withValues(alpha: 0.35),
+                        ),
+                      ),
+                      child: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          child: Text(
+                            l10n?.get('quiz_required_for_coding') ??
+                                'Pass the quiz to unlock the coding challenge.',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: onSurface.withValues(alpha: 0.8),
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
             ).animate(delay: 600.ms).fadeIn().slideY(begin: 0.2, end: 0),
 
             // Retry Button (if failed)
@@ -978,6 +1088,7 @@ class _QuizWidgetState extends State<_QuizWidget> {
               const SizedBox(height: 16),
               TextButton(
                 onPressed: () {
+                  widget.onQuizPassedChanged(false);
                   setState(() {
                     _currentQuestionIndex = 0;
                     _selectedAnswer = null;

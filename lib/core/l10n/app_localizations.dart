@@ -318,6 +318,9 @@ class AppLocalizations {
     'continue': 'Continue',
     'continue_to_quiz': 'Continue to Quiz',
     'continue_to_coding': 'Continue to Coding Challenge',
+    'quiz_required_for_coding': 'Pass the quiz to unlock the coding challenge.',
+    'quiz_required_for_completion':
+        'Pass the quiz before completing this lesson.',
     'quiz_completed': 'Quiz Completed! 🎉',
     'keep_practicing': 'Keep Practicing!',
     'next_question': 'Next Question',
@@ -665,6 +668,10 @@ class AppLocalizations {
     'continue': 'Продовжити',
     'continue_to_quiz': 'Перейти до тесту',
     'continue_to_coding': 'Перейти до завдання з кодування',
+    'quiz_required_for_coding':
+        'Пройдіть тест успішно, щоб розблокувати завдання з кодування.',
+    'quiz_required_for_completion':
+        'Пройдіть тест успішно перед завершенням цього уроку.',
     'quiz_completed': 'Тест завершено! 🎉',
     'keep_practicing': 'Продовжуйте практикуватись!',
     'next_question': 'Наступне питання',
@@ -1018,6 +1025,10 @@ class AppLocalizations {
     'continue': 'Continuar',
     'continue_to_quiz': 'Continuar al cuestionario',
     'continue_to_coding': 'Continuar al desafío de código',
+    'quiz_required_for_coding':
+        'Aprueba el cuestionario para desbloquear el desafío de código.',
+    'quiz_required_for_completion':
+        'Aprueba el cuestionario antes de completar esta lección.',
     'quiz_completed': '¡Cuestionario completado! 🎉',
     'keep_practicing': '¡Sigue practicando!',
     'next_question': 'Siguiente pregunta',
@@ -1371,6 +1382,10 @@ class AppLocalizations {
     'continue': 'Fortfahren',
     'continue_to_quiz': 'Weiter zum Quiz',
     'continue_to_coding': 'Zur Programmieraufgabe',
+    'quiz_required_for_coding':
+        'Bestehe das Quiz, um die Programmieraufgabe freizuschalten.',
+    'quiz_required_for_completion':
+        'Bestehe das Quiz, bevor du diese Lektion abschließt.',
     'quiz_completed': 'Quiz abgeschlossen! 🎉',
     'keep_practicing': 'Weiter üben!',
     'next_question': 'Nächste Frage',
@@ -1730,6 +1745,10 @@ class AppLocalizations {
     'continue': 'Continuer',
     'continue_to_quiz': 'Continuer vers le quiz',
     'continue_to_coding': 'Continuer vers le défi de code',
+    'quiz_required_for_coding':
+        'Réussissez le quiz pour débloquer le défi de code.',
+    'quiz_required_for_completion':
+        'Réussissez le quiz avant de terminer cette leçon.',
     'quiz_completed': 'Quiz terminé ! 🎉',
     'keep_practicing': 'Continuez à pratiquer !',
     'next_question': 'Question suivante',
@@ -2083,6 +2102,9 @@ class AppLocalizations {
     'continue': 'Kontynuuj',
     'continue_to_quiz': 'Przejdź do quizu',
     'continue_to_coding': 'Przejdź do wyzwania kodowania',
+    'quiz_required_for_coding':
+        'Zalicz quiz, aby odblokować wyzwanie kodowania.',
+    'quiz_required_for_completion': 'Zalicz quiz przed ukończeniem tej lekcji.',
     'quiz_completed': 'Quiz ukończony! 🎉',
     'keep_practicing': 'Ćwicz dalej!',
     'next_question': 'Następne pytanie',
