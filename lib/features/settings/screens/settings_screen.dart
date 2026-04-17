@@ -6,6 +6,7 @@ import '../../auth/providers/auth_provider.dart';
 import '../../../core/l10n/app_localizations.dart';
 import '../../../core/l10n/language_catalog.dart';
 import '../../../core/l10n/locale_provider.dart';
+import '../../../core/services/auth_flow_exception.dart';
 import '../../../core/theme/theme_mode_provider.dart';
 
 class SettingsScreen extends ConsumerWidget {
@@ -98,10 +99,19 @@ class SettingsScreen extends ConsumerWidget {
                       context,
                       icon: Icons.lock_outline,
                       title: context.tr('change_password'),
-                      subtitle: 'Update your password',
-                      onTap: () {
+                      subtitle: context.tr('change_password_subtitle'),
+                      onTap: () async {
+                        final changed = await showDialog<bool>(
+                          context: context,
+                          builder: (_) => const _ChangePasswordDialog(),
+                        );
+                        if (!context.mounted || changed != true) return;
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text(context.tr('coming_soon'))),
+                          SnackBar(
+                            content: Text(
+                              context.tr('password_changed_success'),
+                            ),
+                          ),
                         );
                       },
                       index: 1,
@@ -556,6 +566,262 @@ class SettingsScreen extends ConsumerWidget {
         .animate(delay: Duration(milliseconds: 100 * index))
         .fadeIn(duration: 400.ms)
         .slideX(begin: 0.2, end: 0);
+  }
+}
+
+class _ChangePasswordDialog extends ConsumerStatefulWidget {
+  const _ChangePasswordDialog();
+
+  @override
+  ConsumerState<_ChangePasswordDialog> createState() =>
+      _ChangePasswordDialogState();
+}
+
+class _ChangePasswordDialogState extends ConsumerState<_ChangePasswordDialog> {
+  final _currentPasswordController = TextEditingController();
+  final _newPasswordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
+
+  bool _obscureCurrentPassword = true;
+  bool _obscureNewPassword = true;
+  bool _obscureConfirmPassword = true;
+  bool _isSubmitting = false;
+  String? _errorMessage;
+
+  @override
+  void dispose() {
+    _currentPasswordController.dispose();
+    _newPasswordController.dispose();
+    _confirmPasswordController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _submit() async {
+    if (_isSubmitting) return;
+
+    final currentPassword = _currentPasswordController.text.trim();
+    final newPassword = _newPasswordController.text.trim();
+    final confirmPassword = _confirmPasswordController.text.trim();
+
+    if (currentPassword.isEmpty) {
+      setState(() => _errorMessage = context.tr('enter_current_password'));
+      return;
+    }
+    if (newPassword.isEmpty) {
+      setState(() => _errorMessage = context.tr('enter_new_password'));
+      return;
+    }
+    if (newPassword.length < 6) {
+      setState(() => _errorMessage = context.tr('password_too_short'));
+      return;
+    }
+    if (newPassword == currentPassword) {
+      setState(() => _errorMessage = context.tr('new_password_must_differ'));
+      return;
+    }
+    if (confirmPassword != newPassword) {
+      setState(() => _errorMessage = context.tr('passwords_not_match'));
+      return;
+    }
+
+    setState(() {
+      _isSubmitting = true;
+      _errorMessage = null;
+    });
+
+    try {
+      await ref
+          .read(authActionsProvider)
+          .changePassword(
+            currentPassword: currentPassword,
+            newPassword: newPassword,
+          );
+      if (!mounted) return;
+      Navigator.of(context).pop(true);
+    } catch (error) {
+      if (!mounted) return;
+      setState(() {
+        _isSubmitting = false;
+        _errorMessage = _resolveError(error);
+      });
+    }
+  }
+
+  String _resolveError(dynamic error) {
+    if (error is AuthFlowException) {
+      switch (error.code) {
+        case 'password-provider-not-linked':
+          return context.tr('password_change_password_provider_unavailable');
+        case 'invalid-current-password':
+          return context.tr('enter_current_password');
+        case 'invalid-new-password':
+          return context.tr('password_too_short');
+        case 'same-password':
+          return context.tr('new_password_must_differ');
+        case 'requires-recent-login':
+          return context.tr('password_change_requires_recent_login');
+        default:
+          return error.message;
+      }
+    }
+
+    final message = error.toString().toLowerCase();
+    if (message.contains('wrong-password') ||
+        message.contains('wrong password') ||
+        message.contains('invalid-credential') ||
+        message.contains('incorrect')) {
+      return context.tr('auth_wrong_password');
+    }
+    if (message.contains('requires-recent-login')) {
+      return context.tr('password_change_requires_recent_login');
+    }
+    if (message.contains('password-provider-not-linked') ||
+        message.contains('guest accounts')) {
+      return context.tr('password_change_password_provider_unavailable');
+    }
+    if (message.contains('at least 6')) {
+      return context.tr('password_too_short');
+    }
+    if (message.contains('different from')) {
+      return context.tr('new_password_must_differ');
+    }
+    if (message.contains('network')) {
+      return context.tr('auth_network_problem');
+    }
+    return context.tr('password_change_failed');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+    final onSurface = Theme.of(context).colorScheme.onSurface;
+
+    return AlertDialog(
+      backgroundColor: Theme.of(context).colorScheme.surface,
+      title: Text(
+        context.tr('change_password'),
+        style: TextStyle(color: onSurface, fontWeight: FontWeight.w700),
+      ),
+      content: SingleChildScrollView(
+        child: SizedBox(
+          width: 420,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              _buildPasswordField(
+                controller: _currentPasswordController,
+                label: context.tr('current_password'),
+                obscureText: _obscureCurrentPassword,
+                onToggleVisibility: () {
+                  setState(() {
+                    _obscureCurrentPassword = !_obscureCurrentPassword;
+                  });
+                },
+                textInputAction: TextInputAction.next,
+              ),
+              const SizedBox(height: 12),
+              _buildPasswordField(
+                controller: _newPasswordController,
+                label: context.tr('new_password'),
+                obscureText: _obscureNewPassword,
+                onToggleVisibility: () {
+                  setState(() {
+                    _obscureNewPassword = !_obscureNewPassword;
+                  });
+                },
+                textInputAction: TextInputAction.next,
+              ),
+              const SizedBox(height: 12),
+              _buildPasswordField(
+                controller: _confirmPasswordController,
+                label: context.tr('confirm_password'),
+                obscureText: _obscureConfirmPassword,
+                onToggleVisibility: () {
+                  setState(() {
+                    _obscureConfirmPassword = !_obscureConfirmPassword;
+                  });
+                },
+                textInputAction: TextInputAction.done,
+                onSubmitted: (_) => _submit(),
+              ),
+              if (_errorMessage != null) ...[
+                const SizedBox(height: 12),
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.red.withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: Colors.red.withValues(alpha: 0.3),
+                    ),
+                  ),
+                  child: Text(
+                    _errorMessage!,
+                    style: const TextStyle(color: Colors.red, fontSize: 12),
+                  ),
+                ),
+              ],
+            ],
+          ),
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: _isSubmitting ? null : () => Navigator.of(context).pop(),
+          child: Text(context.tr('cancel')),
+        ),
+        ElevatedButton(
+          onPressed: _isSubmitting ? null : _submit,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: isDarkTheme
+                ? Colors.blue.shade400
+                : Colors.blue.shade600,
+            foregroundColor: Colors.white,
+          ),
+          child: _isSubmitting
+              ? const SizedBox(
+                  width: 18,
+                  height: 18,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2.2,
+                    color: Colors.white,
+                  ),
+                )
+              : Text(context.tr('change_password')),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildPasswordField({
+    required TextEditingController controller,
+    required String label,
+    required bool obscureText,
+    required VoidCallback onToggleVisibility,
+    TextInputAction textInputAction = TextInputAction.next,
+    ValueChanged<String>? onSubmitted,
+  }) {
+    final theme = Theme.of(context);
+
+    return TextField(
+      controller: controller,
+      obscureText: obscureText,
+      textInputAction: textInputAction,
+      onSubmitted: onSubmitted,
+      decoration: InputDecoration(
+        labelText: label,
+        filled: true,
+        fillColor: theme.colorScheme.surfaceContainerHighest.withValues(
+          alpha: theme.brightness == Brightness.dark ? 0.35 : 0.75,
+        ),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+        suffixIcon: IconButton(
+          icon: Icon(obscureText ? Icons.visibility_off : Icons.visibility),
+          onPressed: onToggleVisibility,
+        ),
+      ),
+    );
   }
 }
 
