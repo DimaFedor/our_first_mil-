@@ -203,6 +203,45 @@ class LocalAuthService {
     return updatedUser;
   }
 
+  Future<void> changePassword({
+    required String currentPassword,
+    required String newPassword,
+  }) async {
+    final user = _currentUser;
+    if (user == null) {
+      throw 'User not authenticated.';
+    }
+    if (user.isAnonymous) {
+      throw 'Password change is unavailable for guest accounts.';
+    }
+
+    final trimmedCurrent = currentPassword.trim();
+    final trimmedNew = newPassword.trim();
+    if (trimmedCurrent.isEmpty) {
+      throw 'Please enter your current password.';
+    }
+    if (trimmedNew.length < 6) {
+      throw 'Password must be at least 6 characters.';
+    }
+    if (trimmedCurrent == trimmedNew) {
+      throw 'New password must be different from current password.';
+    }
+
+    final users = await _getUsers();
+    final emailKey = user.email.trim().toLowerCase();
+    final userEntry = users[emailKey];
+    if (userEntry is! Map<String, dynamic>) {
+      throw 'Local user was not found.';
+    }
+
+    if (userEntry['password'] != trimmedCurrent) {
+      throw 'Wrong password provided.';
+    }
+
+    users[emailKey] = {'password': trimmedNew, 'user': userEntry['user']};
+    await _saveUsers(users);
+  }
+
   Future<void> signOut() async {
     await _saveCurrentUser(null);
   }

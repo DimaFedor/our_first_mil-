@@ -143,6 +143,8 @@ class AppLocalizations {
     'logout': 'Logout',
     'email': 'Email',
     'password': 'Password',
+    'current_password': 'Current Password',
+    'new_password': 'New Password',
     'confirm_password': 'Confirm Password',
     'full_name': 'Full Name',
     'create_account': 'Create Account',
@@ -184,6 +186,12 @@ class AppLocalizations {
     'hint': 'Hint',
     'reset_password_email_required': 'Enter your email to reset the password.',
     'reset_password_sent': 'Password reset email has been sent.',
+    'password_changed_success': 'Password changed successfully.',
+    'password_change_failed': 'Unable to change password. Please try again.',
+    'password_change_requires_recent_login':
+        'Please sign in again, then change your password.',
+    'password_change_password_provider_unavailable':
+        'Password change is available only for email/password accounts.',
     'continue_as_guest': 'Continue as guest',
     'auth_wrong_password': 'Incorrect password.',
     'auth_user_not_found': 'No user found with this email.',
@@ -212,10 +220,14 @@ class AppLocalizations {
     // Validation
     'enter_email': 'Please enter your email',
     'enter_password': 'Please enter a password',
+    'enter_current_password': 'Please enter your current password',
+    'enter_new_password': 'Please enter a new password',
     'enter_name': 'Please enter your name',
     'invalid_email': 'Please enter a valid email',
     'password_too_short': 'Password must be at least 6 characters',
     'passwords_not_match': 'Passwords do not match',
+    'new_password_must_differ':
+        'New password must be different from current password.',
     'name_too_short': 'Name must be at least 2 characters',
 
     // Home
@@ -410,6 +422,7 @@ class AppLocalizations {
     // Settings
     'account': 'Account',
     'change_password': 'Change Password',
+    'change_password_subtitle': 'Update your password securely',
     'preferences': 'Preferences',
     'theme': 'Theme',
     'system_theme': 'System',
@@ -492,6 +505,8 @@ class AppLocalizations {
     'logout': 'Вийти',
     'email': 'Електронна пошта',
     'password': 'Пароль',
+    'current_password': 'Поточний пароль',
+    'new_password': 'Новий пароль',
     'confirm_password': 'Підтвердіть пароль',
     'full_name': 'Повне ім\'я',
     'create_account': 'Створити акаунт',
@@ -534,6 +549,12 @@ class AppLocalizations {
     'hint': 'Підказка',
     'reset_password_email_required': 'Вкажіть email для скидання пароля.',
     'reset_password_sent': 'Лист для скидання пароля надіслано.',
+    'password_changed_success': 'Пароль успішно змінено.',
+    'password_change_failed': 'Не вдалося змінити пароль. Спробуйте ще раз.',
+    'password_change_requires_recent_login':
+        'Увійдіть повторно, а потім змініть пароль.',
+    'password_change_password_provider_unavailable':
+        'Зміна пароля доступна лише для акаунтів email/пароль.',
     'continue_as_guest': 'Продовжити як гість',
     'auth_wrong_password': 'Неправильний пароль.',
     'auth_user_not_found': 'Користувача з таким email не знайдено.',
@@ -562,10 +583,13 @@ class AppLocalizations {
     // Validation
     'enter_email': 'Введіть email',
     'enter_password': 'Введіть пароль',
+    'enter_current_password': 'Введіть поточний пароль',
+    'enter_new_password': 'Введіть новий пароль',
     'enter_name': 'Введіть ім\'я',
     'invalid_email': 'Введіть дійсний email',
     'password_too_short': 'Пароль має містити щонайменше 6 символів',
     'passwords_not_match': 'Паролі не збігаються',
+    'new_password_must_differ': 'Новий пароль має відрізнятися від поточного.',
     'name_too_short': 'Ім\'я має містити щонайменше 2 символи',
 
     // Home
@@ -761,6 +785,7 @@ class AppLocalizations {
     // Settings
     'account': 'Акаунт',
     'change_password': 'Змінити пароль',
+    'change_password_subtitle': 'Оновіть свій пароль',
     'preferences': 'Налаштування',
     'theme': 'Тема',
     'system_theme': 'Системна тема',
@@ -845,6 +870,8 @@ class AppLocalizations {
     'logout': 'Cerrar sesión',
     'email': 'Correo electrónico',
     'password': 'Contraseña',
+    'current_password': 'Contraseña actual',
+    'new_password': 'Nueva contraseña',
     'confirm_password': 'Confirmar contraseña',
     'full_name': 'Nombre completo',
     'create_account': 'Crear cuenta',
@@ -889,6 +916,13 @@ class AppLocalizations {
     'reset_password_email_required':
         'Ingresa tu correo para restablecer la contraseña.',
     'reset_password_sent': 'Se envió el correo para restablecer la contraseña.',
+    'password_changed_success': 'La contraseña se cambió correctamente.',
+    'password_change_failed':
+        'No se pudo cambiar la contraseña. Inténtalo de nuevo.',
+    'password_change_requires_recent_login':
+        'Vuelve a iniciar sesión y luego cambia tu contraseña.',
+    'password_change_password_provider_unavailable':
+        'El cambio de contraseña solo está disponible para cuentas de correo y contraseña.',
     'continue_as_guest': 'Continuar como invitado',
     'auth_wrong_password': 'Contraseña incorrecta.',
     'auth_user_not_found': 'No se encontró un usuario con este correo.',
@@ -919,10 +953,14 @@ class AppLocalizations {
     // Validation
     'enter_email': 'Por favor ingresa tu correo electrónico',
     'enter_password': 'Por favor ingresa una contraseña',
+    'enter_current_password': 'Ingresa tu contraseña actual',
+    'enter_new_password': 'Ingresa una nueva contraseña',
     'enter_name': 'Por favor ingresa tu nombre',
     'invalid_email': 'Por favor ingresa un correo electrónico válido',
     'password_too_short': 'La contraseña debe tener al menos 6 caracteres',
     'passwords_not_match': 'Las contraseñas no coinciden',
+    'new_password_must_differ':
+        'La nueva contraseña debe ser diferente de la actual.',
     'name_too_short': 'El nombre debe tener al menos 2 caracteres',
 
     // Home
@@ -1118,6 +1156,7 @@ class AppLocalizations {
     // Settings
     'account': 'Cuenta',
     'change_password': 'Cambiar contraseña',
+    'change_password_subtitle': 'Actualiza tu contraseña',
     'preferences': 'Preferencias',
     'theme': 'Tema',
     'system_theme': 'Sistema',
@@ -1200,6 +1239,8 @@ class AppLocalizations {
     'logout': 'Abmelden',
     'email': 'E-Mail',
     'password': 'Passwort',
+    'current_password': 'Aktuelles Passwort',
+    'new_password': 'Neues Passwort',
     'confirm_password': 'Passwort bestätigen',
     'full_name': 'Vollständiger Name',
     'create_account': 'Konto erstellen',
@@ -1244,6 +1285,13 @@ class AppLocalizations {
         'Gib deine E-Mail ein, um das Passwort zurückzusetzen.',
     'reset_password_sent':
         'E-Mail zum Zurücksetzen des Passworts wurde gesendet.',
+    'password_changed_success': 'Passwort erfolgreich geändert.',
+    'password_change_failed':
+        'Passwort konnte nicht geändert werden. Bitte versuche es erneut.',
+    'password_change_requires_recent_login':
+        'Melde dich erneut an und ändere dann dein Passwort.',
+    'password_change_password_provider_unavailable':
+        'Passwortänderung ist nur für E-Mail/Passwort-Konten verfügbar.',
     'continue_as_guest': 'Als Gast fortfahren',
     'auth_wrong_password': 'Falsches Passwort.',
     'auth_user_not_found': 'Kein Benutzer mit dieser E-Mail gefunden.',
@@ -1276,10 +1324,14 @@ class AppLocalizations {
     // Validation
     'enter_email': 'Bitte gib deine E-Mail-Adresse ein',
     'enter_password': 'Bitte gib ein Passwort ein',
+    'enter_current_password': 'Gib dein aktuelles Passwort ein',
+    'enter_new_password': 'Gib ein neues Passwort ein',
     'enter_name': 'Bitte gib deinen Namen ein',
     'invalid_email': 'Bitte gib eine gültige E-Mail-Adresse ein',
     'password_too_short': 'Das Passwort muss mindestens 6 Zeichen lang sein',
     'passwords_not_match': 'Die Passwörter stimmen nicht überein',
+    'new_password_must_differ':
+        'Das neue Passwort muss sich vom aktuellen unterscheiden.',
     'name_too_short': 'Der Name muss mindestens 2 Zeichen lang sein',
 
     // Home
@@ -1475,6 +1527,7 @@ class AppLocalizations {
     // Settings
     'account': 'Konto',
     'change_password': 'Passwort ändern',
+    'change_password_subtitle': 'Aktualisiere dein Passwort',
     'preferences': 'Einstellungen',
     'theme': 'Thema',
     'system_theme': 'System',
@@ -1559,6 +1612,8 @@ class AppLocalizations {
     'logout': 'Déconnexion',
     'email': 'E-mail',
     'password': 'Mot de passe',
+    'current_password': 'Mot de passe actuel',
+    'new_password': 'Nouveau mot de passe',
     'confirm_password': 'Confirmer le mot de passe',
     'full_name': 'Nom complet',
     'create_account': 'Créer un compte',
@@ -1605,6 +1660,13 @@ class AppLocalizations {
     'reset_password_email_required':
         'Entrez votre e-mail pour réinitialiser le mot de passe.',
     'reset_password_sent': 'E-mail de réinitialisation du mot de passe envoyé.',
+    'password_changed_success': 'Mot de passe modifié avec succès.',
+    'password_change_failed':
+        'Impossible de modifier le mot de passe. Réessayez.',
+    'password_change_requires_recent_login':
+        'Reconnectez-vous puis changez votre mot de passe.',
+    'password_change_password_provider_unavailable':
+        'Le changement de mot de passe est disponible uniquement pour les comptes e-mail/mot de passe.',
     'continue_as_guest': 'Continuer en invité',
     'auth_wrong_password': 'Mot de passe incorrect.',
     'auth_user_not_found': 'Aucun utilisateur trouvé avec cet e-mail.',
@@ -1638,10 +1700,14 @@ class AppLocalizations {
     // Validation
     'enter_email': 'Veuillez entrer votre e-mail',
     'enter_password': 'Veuillez entrer un mot de passe',
+    'enter_current_password': 'Saisissez votre mot de passe actuel',
+    'enter_new_password': 'Saisissez un nouveau mot de passe',
     'enter_name': 'Veuillez entrer votre nom',
     'invalid_email': 'Veuillez entrer un e-mail valide',
     'password_too_short': 'Le mot de passe doit contenir au moins 6 caractères',
     'passwords_not_match': 'Les mots de passe ne correspondent pas',
+    'new_password_must_differ':
+        'Le nouveau mot de passe doit être différent de l\'actuel.',
     'name_too_short': 'Le nom doit contenir au moins 2 caractères',
 
     // Home
@@ -1838,6 +1904,7 @@ class AppLocalizations {
     // Settings
     'account': 'Compte',
     'change_password': 'Changer le mot de passe',
+    'change_password_subtitle': 'Mettez à jour votre mot de passe',
     'preferences': 'Préférences',
     'theme': 'Thème',
     'system_theme': 'Système',
@@ -1924,6 +1991,8 @@ class AppLocalizations {
     'logout': 'Wyloguj się',
     'email': 'E-mail',
     'password': 'Hasło',
+    'current_password': 'Aktualne hasło',
+    'new_password': 'Nowe hasło',
     'confirm_password': 'Potwierdź hasło',
     'full_name': 'Pełne imię',
     'create_account': 'Utwórz konto',
@@ -1967,6 +2036,12 @@ class AppLocalizations {
     'hint': 'Wskazówka',
     'reset_password_email_required': 'Podaj e-mail, aby zresetować hasło.',
     'reset_password_sent': 'Wysłano e-mail do resetowania hasła.',
+    'password_changed_success': 'Hasło zostało zmienione.',
+    'password_change_failed': 'Nie udało się zmienić hasła. Spróbuj ponownie.',
+    'password_change_requires_recent_login':
+        'Zaloguj się ponownie, a potem zmień hasło.',
+    'password_change_password_provider_unavailable':
+        'Zmiana hasła jest dostępna tylko dla kont e-mail/hasło.',
     'continue_as_guest': 'Kontynuuj jako gość',
     'auth_wrong_password': 'Nieprawidłowe hasło.',
     'auth_user_not_found': 'Nie znaleziono użytkownika z tym adresem e-mail.',
@@ -1997,10 +2072,13 @@ class AppLocalizations {
     // Validation
     'enter_email': 'Proszę podać adres e-mail',
     'enter_password': 'Proszę podać hasło',
+    'enter_current_password': 'Wpisz aktualne hasło',
+    'enter_new_password': 'Wpisz nowe hasło',
     'enter_name': 'Proszę podać imię',
     'invalid_email': 'Proszę podać prawidłowy adres e-mail',
     'password_too_short': 'Hasło musi mieć co najmniej 6 znaków',
     'passwords_not_match': 'Hasła nie są identyczne',
+    'new_password_must_differ': 'Nowe hasło musi różnić się od obecnego.',
     'name_too_short': 'Imię musi mieć co najmniej 2 znaki',
 
     // Home
@@ -2194,6 +2272,7 @@ class AppLocalizations {
     // Settings
     'account': 'Konto',
     'change_password': 'Zmień hasło',
+    'change_password_subtitle': 'Zaktualizuj swoje hasło',
     'preferences': 'Preferencje',
     'theme': 'Motyw',
     'system_theme': 'System',

@@ -192,6 +192,23 @@ class AuthActions {
     await _authService.resetPassword(email);
   }
 
+  Future<void> changePassword({
+    required String currentPassword,
+    required String newPassword,
+  }) async {
+    if (_useLocal) {
+      await _localAuthService.changePassword(
+        currentPassword: currentPassword,
+        newPassword: newPassword,
+      );
+      return;
+    }
+    await _authService.changePassword(
+      currentPassword: currentPassword,
+      newPassword: newPassword,
+    );
+  }
+
   Future<void> signInWithGoogle({
     String skillLevel = 'beginner',
     String preferredLanguage = 'python',

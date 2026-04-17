@@ -309,6 +309,64 @@ class AuthService {
     }
   }
 
+  Future<void> changePassword({
+    required String currentPassword,
+    required String newPassword,
+  }) async {
+    final user = _auth.currentUser;
+    if (user == null) {
+      throw const AuthFlowException(
+        code: 'not-authenticated',
+        message: 'Користувач не автентифікований.',
+      );
+    }
+
+    final email = user.email?.trim().toLowerCase();
+    final hasPasswordProvider = user.providerData.any(
+      (provider) => provider.providerId == EmailAuthProvider.PROVIDER_ID,
+    );
+    if (email == null || email.isEmpty || !hasPasswordProvider) {
+      throw const AuthFlowException(
+        code: 'password-provider-not-linked',
+        message: 'Password change is unavailable for this account.',
+      );
+    }
+
+    final trimmedCurrent = currentPassword.trim();
+    final trimmedNew = newPassword.trim();
+    if (trimmedCurrent.isEmpty) {
+      throw const AuthFlowException(
+        code: 'invalid-current-password',
+        message: 'Enter your current password.',
+      );
+    }
+    if (trimmedNew.length < 6) {
+      throw const AuthFlowException(
+        code: 'invalid-new-password',
+        message: 'The new password must be at least 6 characters.',
+      );
+    }
+    if (trimmedCurrent == trimmedNew) {
+      throw const AuthFlowException(
+        code: 'same-password',
+        message:
+            'The new password must be different from the current password.',
+      );
+    }
+
+    try {
+      final credential = EmailAuthProvider.credential(
+        email: email,
+        password: trimmedCurrent,
+      );
+      await user.reauthenticateWithCredential(credential);
+      await user.updatePassword(trimmedNew);
+      await _persistSessionTokens(user, forceRefresh: true);
+    } on FirebaseAuthException catch (e) {
+      throw _handleAuthException(e);
+    }
+  }
+
   Future<void> signOut() async {
     await _auth.signOut();
     await _tokenStorage.clearTokenBundle();
@@ -440,6 +498,7 @@ class AuthService {
       case 'user-not-found':
         return 'No user found with this email.';
       case 'wrong-password':
+      case 'invalid-credential':
         return 'Wrong password provided.';
       case 'email-already-in-use':
         return 'An account already exists with this email.';
