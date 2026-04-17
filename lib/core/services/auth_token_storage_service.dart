@@ -2,12 +2,12 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class AuthTokenBundle {
   final String accessToken;
-  final String refreshToken;
+  final String? refreshToken;
   final DateTime expiresAt;
 
   const AuthTokenBundle({
     required this.accessToken,
-    required this.refreshToken,
+    this.refreshToken,
     required this.expiresAt,
   });
 }
@@ -25,10 +25,12 @@ class AuthTokenStorageService {
 
   Future<void> saveTokenBundle(AuthTokenBundle bundle) async {
     await _secureStorage.write(key: _accessTokenKey, value: bundle.accessToken);
-    await _secureStorage.write(
-      key: _refreshTokenKey,
-      value: bundle.refreshToken,
-    );
+    final refreshToken = bundle.refreshToken?.trim();
+    if (refreshToken == null || refreshToken.isEmpty) {
+      await _secureStorage.delete(key: _refreshTokenKey);
+    } else {
+      await _secureStorage.write(key: _refreshTokenKey, value: refreshToken);
+    }
     await _secureStorage.write(
       key: _expiresAtKey,
       value: bundle.expiresAt.toIso8601String(),
@@ -43,13 +45,15 @@ class AuthTokenStorageService {
         ? null
         : DateTime.tryParse(expiresAtRaw);
 
-    if (accessToken == null || refreshToken == null || expiresAt == null) {
+    if (accessToken == null || expiresAt == null) {
       return null;
     }
 
     return AuthTokenBundle(
       accessToken: accessToken,
-      refreshToken: refreshToken,
+      refreshToken: (refreshToken == null || refreshToken.trim().isEmpty)
+          ? null
+          : refreshToken,
       expiresAt: expiresAt,
     );
   }

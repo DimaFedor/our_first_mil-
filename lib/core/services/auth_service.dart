@@ -397,7 +397,7 @@ class AuthService {
     bool forceRefresh = false,
   }) async {
     final accessToken = await user.getIdToken(forceRefresh);
-    final refreshToken = user.refreshToken;
+    final liveRefreshToken = user.refreshToken?.trim();
     final idTokenResult = await user.getIdTokenResult(forceRefresh);
     final expiresAt = idTokenResult.expirationTime;
 
@@ -407,16 +407,21 @@ class AuthService {
         message: 'Не вдалося отримати access token.',
       );
     }
-    if (refreshToken == null || refreshToken.isEmpty) {
-      throw const AuthFlowException(
-        code: 'missing-refresh-token',
-        message: 'Не вдалося отримати refresh token.',
-      );
-    }
     if (expiresAt == null) {
       throw const AuthFlowException(
         code: 'missing-token-expiry',
         message: 'Не вдалося визначити термін дії токена.',
+      );
+    }
+
+    String? refreshToken;
+    if (liveRefreshToken != null && liveRefreshToken.isNotEmpty) {
+      refreshToken = liveRefreshToken;
+    } else {
+      final storedBundle = await _tokenStorage.readTokenBundle();
+      refreshToken = storedBundle?.refreshToken;
+      AppLogger.info(
+        'FirebaseAuth user.refreshToken is unavailable; using stored token when present.',
       );
     }
 
