@@ -174,6 +174,13 @@ class CourseContentService {
   }
 
   static List<QuizQuestion> _generateSupplementalQuestions(Lesson lesson) {
+    if (lesson.courseId == 'python') {
+      final targetedQuestions = _pythonSupplementalQuestions(lesson);
+      if (targetedQuestions.isNotEmpty) {
+        return targetedQuestions;
+      }
+    }
+
     final topic = lesson.title.trim();
     final theoryFocusRaw = lesson.theorySlides.isEmpty
         ? topic
@@ -285,6 +292,638 @@ class CourseContentService {
             'A quick additional variation locks in the concept and prepares you for harder lessons.',
       ),
     ];
+  }
+
+  static List<QuizQuestion> _pythonSupplementalQuestions(Lesson lesson) {
+    switch (lesson.id) {
+      case 'python_lesson_1':
+        return <QuizQuestion>[
+          QuizQuestion(
+            question:
+                'Python is called an interpreted language. What does that mean?',
+            options: [
+              'Code is executed line by line by an interpreter',
+              'Code is only executed after manual translation to C',
+              'Code can only run inside a browser',
+              'Code cannot be reused in projects',
+            ],
+            correctAnswerIndex: 0,
+            explanation:
+                'Python code is run by an interpreter, which executes it directly without a separate compile step in day-to-day workflows.',
+          ),
+          QuizQuestion(
+            question:
+                'What defines a code block in Python instead of curly braces {}?',
+            options: ['Indentation', 'Semicolons', 'Parentheses', 'Comments'],
+            correctAnswerIndex: 0,
+            explanation:
+                'Python uses indentation to define blocks, making structure explicit and readable.',
+          ),
+          QuizQuestion(
+            question: 'Which command installs a third-party Python package?',
+            options: [
+              'pip install requests',
+              'python add requests',
+              'npm install requests',
+              'apt python requests',
+            ],
+            correctAnswerIndex: 0,
+            explanation:
+                'pip is Python’s package manager, and pip install installs packages from package indexes.',
+          ),
+          QuizQuestion(
+            question: 'What is the output type of this expression: 3.14?',
+            options: ['int', 'str', 'float', 'bool'],
+            correctAnswerIndex: 2,
+            explanation:
+                'Values with a decimal point are floating-point numbers (float).',
+          ),
+          QuizQuestion(
+            question: 'Why is Python often recommended for beginners?',
+            options: [
+              'Readable syntax and strong ecosystem',
+              'No need to understand logic',
+              'It only supports small scripts',
+              'It has no errors at runtime',
+            ],
+            correctAnswerIndex: 0,
+            explanation:
+                'Python’s clean syntax and rich libraries make learning and building projects easier.',
+          ),
+          QuizQuestion(
+            question: 'What is the common file extension for Python files?',
+            options: ['.pt', '.py', '.python', '.px'],
+            correctAnswerIndex: 1,
+            explanation:
+                'Python source files are typically saved with the .py extension.',
+          ),
+        ];
+      case 'python_lesson_2':
+        return <QuizQuestion>[
+          QuizQuestion(
+            question: 'Which variable name follows Python naming conventions?',
+            options: ['2score', 'user_name_2', 'user-name', 'class'],
+            correctAnswerIndex: 1,
+            explanation:
+                'Use letters, numbers, and underscores; don’t start with a number or use keywords.',
+          ),
+          QuizQuestion(
+            question: 'What is the difference between = and == in Python?',
+            options: [
+              '= assigns a value, == compares values',
+              '= compares values, == assigns a value',
+              'Both do assignment',
+              'Both do comparison only',
+            ],
+            correctAnswerIndex: 0,
+            explanation: '= is assignment, while == checks equality.',
+          ),
+          QuizQuestion(
+            question: 'What is y after this code? x = 10; y = x; x = 20',
+            options: ['20', '10', '0', 'Error'],
+            correctAnswerIndex: 1,
+            explanation:
+                'y stores the value x had at assignment time, so y remains 10.',
+          ),
+          QuizQuestion(
+            question: 'What type is the value True in Python?',
+            options: ['str', 'int', 'bool', 'float'],
+            correctAnswerIndex: 2,
+            explanation: 'True and False are boolean values (bool).',
+          ),
+          QuizQuestion(
+            question: 'How do you convert the string "42" to an integer?',
+            options: [
+              'number("42")',
+              'int("42")',
+              'str(42)',
+              'float_to_int("42")',
+            ],
+            correctAnswerIndex: 1,
+            explanation:
+                'int("42") parses the numeric string and returns the integer 42.',
+          ),
+          QuizQuestion(
+            question: 'What does this print? age = 18; print(f"Age: {age}")',
+            options: ['Age: {age}', 'Age: 18', '18 Age', 'Error'],
+            correctAnswerIndex: 1,
+            explanation:
+                'f-strings evaluate expressions inside braces and insert values.',
+          ),
+        ];
+      case 'python_lesson_3':
+        return <QuizQuestion>[
+          QuizQuestion(
+            question: 'What is the result of: 2 + 3 * 4?',
+            options: ['20', '14', '24', '11'],
+            correctAnswerIndex: 1,
+            explanation:
+                'Multiplication has higher precedence, so 3 * 4 is done before addition.',
+          ),
+          QuizQuestion(
+            question: 'What is the difference between / and // in Python?',
+            options: [
+              '/ returns float division, // returns floor division',
+              '/ returns integer division, // returns float division',
+              'They are identical',
+              '/ is for strings, // is for numbers',
+            ],
+            correctAnswerIndex: 0,
+            explanation:
+                '/ keeps decimals, while // floors the result to an integer-like value.',
+          ),
+          QuizQuestion(
+            question: 'Which expression checks if n is even?',
+            options: ['n % 2 == 0', 'n / 2 == 0', 'n // 2 == 0', 'n ** 2 == 0'],
+            correctAnswerIndex: 0,
+            explanation: 'An even number leaves remainder 0 when divided by 2.',
+          ),
+          QuizQuestion(
+            question: 'What is round(3.14159, 2)?',
+            options: ['3.14', '3.1', '3.142', '3'],
+            correctAnswerIndex: 0,
+            explanation:
+                'round(value, 2) keeps two digits after the decimal point.',
+          ),
+          QuizQuestion(
+            question: 'What does abs(-9) return?',
+            options: ['-9', '9', '0', 'Error'],
+            correctAnswerIndex: 1,
+            explanation:
+                'abs returns the absolute (non-negative) magnitude of a number.',
+          ),
+          QuizQuestion(
+            question: 'What does pow(2, 5) return?',
+            options: ['10', '25', '32', '64'],
+            correctAnswerIndex: 2,
+            explanation: 'pow(2, 5) is 2 to the power of 5, which equals 32.',
+          ),
+        ];
+      case 'python_lesson_4':
+        return <QuizQuestion>[
+          QuizQuestion(
+            question: 'What is "Python"[1:4]?',
+            options: ['Pyt', 'yth', 'tho', 'Python'],
+            correctAnswerIndex: 1,
+            explanation:
+                'Slicing starts at index 1 and stops before index 4: y, t, h.',
+          ),
+          QuizQuestion(
+            question: 'What does "  hi  ".strip() return?',
+            options: ['"  hi  "', '"hi"', '"  hi"', '"hi  "'],
+            correctAnswerIndex: 1,
+            explanation:
+                'strip removes leading and trailing whitespace from a string.',
+          ),
+          QuizQuestion(
+            question: 'What does "a,b,c".split(",") return?',
+            options: [
+              '["a,b,c"]',
+              '["a", "b", "c"]',
+              '"a b c"',
+              '("a", "b", "c")',
+            ],
+            correctAnswerIndex: 1,
+            explanation:
+                'split creates a list by cutting the string at each separator.',
+          ),
+          QuizQuestion(
+            question: 'What is "-".join(["A", "B", "C"])?',
+            options: ['ABC-', 'A-B-C', '["A-B-C"]', 'A B C'],
+            correctAnswerIndex: 1,
+            explanation: 'join places the separator between each list element.',
+          ),
+          QuizQuestion(
+            question: 'What happens with: s = "hello"; s[0] = "H"?',
+            options: [
+              'String changes to "Hello"',
+              'TypeError because strings are immutable',
+              'It silently does nothing',
+              'It creates a new list',
+            ],
+            correctAnswerIndex: 1,
+            explanation:
+                'Strings cannot be modified in place; create a new string instead.',
+          ),
+          QuizQuestion(
+            question: 'What is "banana".count("a")?',
+            options: ['2', '3', '4', '1'],
+            correctAnswerIndex: 1,
+            explanation: 'The letter "a" appears three times in "banana".',
+          ),
+        ];
+      case 'python_lesson_5':
+        return <QuizQuestion>[
+          QuizQuestion(
+            question: 'What is the result of: (5 > 2) and (3 < 1)?',
+            options: ['True', 'False', '1', 'Error'],
+            correctAnswerIndex: 1,
+            explanation:
+                'The first condition is True, the second is False; True and False is False.',
+          ),
+          QuizQuestion(
+            question: 'What does "py" in "python" evaluate to?',
+            options: ['False', 'True', 'Error', 'None'],
+            correctAnswerIndex: 1,
+            explanation:
+                'The in operator checks membership, and "py" is a substring of "python".',
+          ),
+          QuizQuestion(
+            question: 'Which expression is Python’s ternary conditional form?',
+            options: [
+              'age >= 18 ? "adult" : "minor"',
+              '"adult" if age >= 18 else "minor"',
+              'if age >= 18 then "adult" else "minor"',
+              'choose(age >= 18, "adult", "minor")',
+            ],
+            correctAnswerIndex: 1,
+            explanation:
+                'Python uses value_if_true if condition else value_if_false.',
+          ),
+          QuizQuestion(
+            question: 'Why does the order of if / elif conditions matter?',
+            options: [
+              'Python checks all branches and picks random one',
+              'First matching branch runs, later branches are skipped',
+              'elif runs before if',
+              'Order only matters with else',
+            ],
+            correctAnswerIndex: 1,
+            explanation:
+                'Python evaluates top to bottom and executes the first true branch.',
+          ),
+          QuizQuestion(
+            question: 'What does not (4 > 1) evaluate to?',
+            options: ['True', 'False', '4', 'Error'],
+            correctAnswerIndex: 1,
+            explanation: '4 > 1 is True, and not True becomes False.',
+          ),
+          QuizQuestion(
+            question:
+                'When should you use elif instead of separate if statements?',
+            options: [
+              'When conditions are mutually exclusive',
+              'When you need all branches to run',
+              'Only when checking numbers',
+              'Only inside loops',
+            ],
+            correctAnswerIndex: 0,
+            explanation:
+                'elif is best when exactly one branch should run among alternatives.',
+          ),
+        ];
+      case 'python_lesson_6':
+        return <QuizQuestion>[
+          QuizQuestion(
+            question: 'What is the result of [1, 2, 3][1:3]?',
+            options: ['[1, 2]', '[2, 3]', '[1, 2, 3]', '[3]'],
+            correctAnswerIndex: 1,
+            explanation:
+                'Slice [1:3] starts at index 1 and ends before index 3.',
+          ),
+          QuizQuestion(
+            question: 'What is the difference between append and extend?',
+            options: [
+              'append adds one item, extend adds each item from an iterable',
+              'append removes item, extend adds item',
+              'append sorts list, extend reverses list',
+              'They are identical methods',
+            ],
+            correctAnswerIndex: 0,
+            explanation:
+                'append adds a single object; extend iterates and adds each element.',
+          ),
+          QuizQuestion(
+            question: 'How do you insert "x" at index 1 in list a?',
+            options: [
+              'a.add(1, "x")',
+              'a.insert(1, "x")',
+              'a[1].insert("x")',
+              'a.push("x", 1)',
+            ],
+            correctAnswerIndex: 1,
+            explanation:
+                'insert(index, value) adds an item at a specific position.',
+          ),
+          QuizQuestion(
+            question: 'What does nums.pop() do by default?',
+            options: [
+              'Removes first element',
+              'Removes last element and returns it',
+              'Clears entire list',
+              'Returns list length',
+            ],
+            correctAnswerIndex: 1,
+            explanation:
+                'pop() without index removes and returns the last element.',
+          ),
+          QuizQuestion(
+            question: 'What is [x * x for x in [1, 2, 3]]?',
+            options: ['[1, 2, 3]', '[1, 4, 9]', '[2, 4, 6]', '[1, 8, 27]'],
+            correctAnswerIndex: 1,
+            explanation:
+                'List comprehension applies x * x to each element in the list.',
+          ),
+          QuizQuestion(
+            question: 'How do you copy a list to avoid shared references?',
+            options: [
+              'copy = original',
+              'copy = original.copy()',
+              'copy = link(original)',
+              'copy = same(original)',
+            ],
+            correctAnswerIndex: 1,
+            explanation:
+                'original.copy() (or original[:]) creates a shallow copy with separate list object.',
+          ),
+        ];
+      case 'python_lesson_7':
+        return <QuizQuestion>[
+          QuizQuestion(
+            question: 'What does enumerate(["a", "b"]) produce in a loop?',
+            options: [
+              'Only values a, b',
+              'Pairs (index, value)',
+              'Only indices 0, 1',
+              'A dictionary',
+            ],
+            correctAnswerIndex: 1,
+            explanation:
+                'enumerate provides both index and element during iteration.',
+          ),
+          QuizQuestion(
+            question:
+                'In a while loop, what is necessary to prevent accidental infinite loops?',
+            options: [
+              'Update variables involved in the condition',
+              'Always use break in first line',
+              'Use only print statements',
+              'Avoid boolean conditions',
+            ],
+            correctAnswerIndex: 0,
+            explanation:
+                'The loop condition must eventually become false, often by updating a counter/state variable.',
+          ),
+          QuizQuestion(
+            question: 'What is the difference between break and continue?',
+            options: [
+              'break exits loop, continue skips current iteration',
+              'break skips iteration, continue exits loop',
+              'Both exit loop',
+              'Both restart loop from beginning',
+            ],
+            correctAnswerIndex: 0,
+            explanation:
+                'break ends the loop immediately; continue jumps to the next cycle.',
+          ),
+          QuizQuestion(
+            question: 'What does list(range(1, 10, 3)) return?',
+            options: ['[1, 2, 3]', '[1, 4, 7]', '[1, 3, 6, 9]', '[3, 6, 9]'],
+            correctAnswerIndex: 1,
+            explanation:
+                'range starts at 1, increments by 3, and stops before 10.',
+          ),
+          QuizQuestion(
+            question:
+                'How many total iterations occur in two nested loops: for i in range(2), for j in range(3)?',
+            options: ['5', '6', '3', '2'],
+            correctAnswerIndex: 1,
+            explanation:
+                'Outer loop runs 2 times and inner loop runs 3 times each: 2 * 3 = 6.',
+          ),
+          QuizQuestion(
+            question: 'When does the else block on a for loop execute?',
+            options: [
+              'Only when loop finishes without break',
+              'After every iteration',
+              'Only when break is hit',
+              'Never in Python',
+            ],
+            correctAnswerIndex: 0,
+            explanation:
+                'for...else runs when the loop completes naturally (no break).',
+          ),
+        ];
+      case 'python_lesson_8':
+        return <QuizQuestion>[
+          QuizQuestion(
+            question:
+                'What does user.get("role", "guest") return if role is missing?',
+            options: ['None', '"guest"', 'KeyError', 'False'],
+            correctAnswerIndex: 1,
+            explanation:
+                'get with a default value returns that default when key does not exist.',
+          ),
+          QuizQuestion(
+            question:
+                'How do you update or add key "age" with value 30 in dict d?',
+            options: [
+              'd.set("age", 30)',
+              'd["age"] = 30',
+              'd.add("age", 30)',
+              'update(d, "age", 30)',
+            ],
+            correctAnswerIndex: 1,
+            explanation:
+                'Assigning with brackets creates the key or updates existing value.',
+          ),
+          QuizQuestion(
+            question: 'Which loop gives both key and value?',
+            options: [
+              'for k in d.keys()',
+              'for v in d.values()',
+              'for k, v in d.items()',
+              'for k in d',
+            ],
+            correctAnswerIndex: 2,
+            explanation:
+                'items() returns key-value pairs, which can be unpacked in the loop.',
+          ),
+          QuizQuestion(
+            question:
+                'What happens with duplicate keys in a dictionary literal?',
+            options: [
+              'Python throws KeyError',
+              'Both values are stored',
+              'Last value overrides previous one',
+              'First value always stays',
+            ],
+            correctAnswerIndex: 2,
+            explanation:
+                'Dictionary keys are unique; later duplicate assignments replace earlier values.',
+          ),
+          QuizQuestion(
+            question: 'Which key type is valid for dictionaries?',
+            options: ['list [1,2]', 'dict {"a":1}', 'tuple (1,2)', 'set {1,2}'],
+            correctAnswerIndex: 2,
+            explanation:
+                'Keys must be hashable (immutable types like tuples are allowed; lists/dicts/sets are not).',
+          ),
+          QuizQuestion(
+            question: 'What does d.pop("name") do?',
+            options: [
+              'Returns value for "name" and removes the key',
+              'Returns all keys',
+              'Clears dictionary',
+              'Renames key',
+            ],
+            correctAnswerIndex: 0,
+            explanation: 'pop removes the specified key and returns its value.',
+          ),
+        ];
+      case 'python_lesson_9':
+        return <QuizQuestion>[
+          QuizQuestion(
+            question:
+                'What is the output? def add(a=2, b=3): return a+b; print(add())',
+            options: ['5', '23', 'Error', '0'],
+            correctAnswerIndex: 0,
+            explanation:
+                'Default parameters are used when no arguments are provided.',
+          ),
+          QuizQuestion(
+            question: 'What is the advantage of keyword arguments?',
+            options: [
+              'They make calls clearer and allow reordering',
+              'They run faster than positional arguments',
+              'They remove need for return statements',
+              'They are only for recursive functions',
+            ],
+            correctAnswerIndex: 0,
+            explanation:
+                'Keyword arguments improve readability and let you pass values by name.',
+          ),
+          QuizQuestion(
+            question:
+                'What happens if you access a local variable outside its function?',
+            options: [
+              'It works globally',
+              'NameError',
+              'Returns None',
+              'Converts to global',
+            ],
+            correctAnswerIndex: 1,
+            explanation:
+                'Local variables are scoped to the function body and are unavailable outside it.',
+          ),
+          QuizQuestion(
+            question: 'What does *args collect in a function definition?',
+            options: [
+              'Keyword arguments as dict',
+              'Extra positional arguments as tuple',
+              'Only integer arguments',
+              'Return values',
+            ],
+            correctAnswerIndex: 1,
+            explanation:
+                '*args packs additional positional arguments into a tuple.',
+          ),
+          QuizQuestion(
+            question: 'How can a function return multiple values in Python?',
+            options: [
+              'It cannot return multiple values',
+              'Return values separated by commas (tuple packing)',
+              'Use only print statements',
+              'Use global variables only',
+            ],
+            correctAnswerIndex: 1,
+            explanation:
+                'Python packs comma-separated return values into a tuple.',
+          ),
+          QuizQuestion(
+            question: 'Where is a function docstring typically written?',
+            options: [
+              'Before def keyword',
+              'As first statement inside the function body',
+              'At the end of file only',
+              'Inside print statements',
+            ],
+            correctAnswerIndex: 1,
+            explanation:
+                'A docstring is usually the first string literal inside a function.',
+          ),
+        ];
+      case 'python_lesson_10':
+        return <QuizQuestion>[
+          QuizQuestion(
+            question:
+                'When handling multiple exceptions, why should specific except blocks come before except Exception?',
+            options: [
+              'Specific exceptions otherwise become unreachable',
+              'It makes code run slower',
+              'Python requires alphabetical order',
+              'General exception runs only in debug mode',
+            ],
+            correctAnswerIndex: 0,
+            explanation:
+                'A broad except Exception would catch specific errors first and hide targeted handlers.',
+          ),
+          QuizQuestion(
+            question: 'When does the else block in try/except/else run?',
+            options: [
+              'Only if an exception occurs',
+              'Only if no exception occurs in try block',
+              'Always, before finally',
+              'Only after raise',
+            ],
+            correctAnswerIndex: 1,
+            explanation:
+                'else executes when the try block succeeds without exceptions.',
+          ),
+          QuizQuestion(
+            question: 'What is a good use case for finally?',
+            options: [
+              'Close files or release resources',
+              'Skip error handling entirely',
+              'Replace all except blocks',
+              'Retry code forever',
+            ],
+            correctAnswerIndex: 0,
+            explanation:
+                'finally is ideal for cleanup actions that must always run.',
+          ),
+          QuizQuestion(
+            question: 'How do you intentionally raise a ValueError?',
+            options: [
+              'throw ValueError("bad value")',
+              'raise ValueError("bad value")',
+              'except ValueError("bad value")',
+              'error ValueError("bad value")',
+            ],
+            correctAnswerIndex: 1,
+            explanation:
+                'Use raise with an exception type (and optional message).',
+          ),
+          QuizQuestion(
+            question:
+                'What is better practice for production code: bare except or specific exception types?',
+            options: [
+              'Bare except always',
+              'Specific exception types whenever possible',
+              'Never handle exceptions',
+              'Use only finally',
+            ],
+            correctAnswerIndex: 1,
+            explanation:
+                'Specific catches are safer and avoid masking unrelated bugs.',
+          ),
+          QuizQuestion(
+            question:
+                'If int(user_input) can fail, where should conversion be placed?',
+            options: [
+              'Inside try block with ValueError handler',
+              'Inside finally block',
+              'Outside try/except only',
+              'Inside comments for readability',
+            ],
+            correctAnswerIndex: 0,
+            explanation:
+                'Put risky operations in try and handle expected errors with matching except blocks.',
+          ),
+        ];
+      default:
+        return const <QuizQuestion>[];
+    }
   }
 
   static String _quizLanguage(Lesson lesson) {
