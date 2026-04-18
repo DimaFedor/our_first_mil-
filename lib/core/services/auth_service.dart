@@ -260,6 +260,7 @@ class AuthService {
     required String email,
     required String skillLevel,
     required String preferredLanguage,
+    String? photoURL,
     String bio = '',
     int dailyGoalMinutes = 20,
   }) async {
@@ -300,6 +301,7 @@ class AuthService {
         email: normalizedEmail,
         skillLevel: skillLevel,
         preferredLanguage: preferredLanguage,
+        photoURL: photoURL,
         bio: bio,
         dailyGoalMinutes: dailyGoalMinutes,
       );
@@ -388,6 +390,13 @@ class AuthService {
 
       return credential;
     } on FirebaseAuthException catch (e) {
+      if (e.code == 'operation-not-allowed') {
+        throw const AuthFlowException(
+          code: 'anonymous-sign-in-disabled',
+          message:
+              'Anonymous sign-in is disabled in Firebase. Switching to local guest mode.',
+        );
+      }
       throw _handleAuthException(e);
     }
   }
@@ -507,7 +516,7 @@ class AuthService {
       case 'weak-password':
         return 'The password is too weak (minimum 6 characters).';
       case 'operation-not-allowed':
-        return 'Email/password accounts are not enabled. Please contact support.';
+        return 'This sign-in method is disabled in Firebase Auth. Enable it in Console → Authentication → Sign-in method.';
       case 'network-request-failed':
         return 'Network error. Please check your internet connection.';
       case 'too-many-requests':

@@ -10,6 +10,7 @@ import '../../../shared/widgets/level_progress_widget.dart';
 import '../../../shared/widgets/streak_widgets.dart';
 import '../../../shared/widgets/language_stats_card.dart';
 import '../../../shared/widgets/quick_access_card.dart';
+import '../../../shared/widgets/user_avatar.dart';
 import '../../../core/l10n/app_localizations.dart';
 
 class ProfileScreen extends ConsumerWidget {
@@ -124,6 +125,9 @@ class ProfileScreen extends ConsumerWidget {
       userDataAsync.valueOrNull?.totalXP ?? 0,
     );
     final avatarLevelInfo = levelInfoAsync.valueOrNull ?? fallbackLevelInfo;
+    final photoUrl =
+        userDataAsync.valueOrNull?.photoURL ??
+        currentUser?.photoURL?.toString();
     final rewardsWalletAsync = ref.watch(xpRewardsWalletProvider);
     final hasNeonFrame =
         rewardsWalletAsync.valueOrNull?.ownedCosmetics.contains(
@@ -223,9 +227,12 @@ class ProfileScreen extends ConsumerWidget {
                           // Avatar
                           _ProfileAvatarWithProgress(
                                 initial: _getInitial(
-                                  currentUser?.displayName,
-                                  currentUser?.email,
+                                  userDataAsync.valueOrNull?.displayName ??
+                                      currentUser?.displayName?.toString(),
+                                  userDataAsync.valueOrNull?.email ??
+                                      currentUser?.email?.toString(),
                                 ),
+                                photoUrl: photoUrl,
                                 progress: avatarLevelInfo.isMaxLevel
                                     ? 1
                                     : avatarLevelInfo.progress,
@@ -700,12 +707,14 @@ class _ProfileMetaChip extends StatelessWidget {
 
 class _ProfileAvatarWithProgress extends StatelessWidget {
   final String initial;
+  final String? photoUrl;
   final double progress;
   final bool hasNeonFrame;
   final bool isDarkTheme;
 
   const _ProfileAvatarWithProgress({
     required this.initial,
+    required this.photoUrl,
     required this.progress,
     required this.hasNeonFrame,
     required this.isDarkTheme,
@@ -743,9 +752,6 @@ class _ProfileAvatarWithProgress extends StatelessWidget {
             width: 96,
             height: 96,
             decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                colors: [Color(0xFF0066FF), Color(0xFF8B5CF6)],
-              ),
               shape: BoxShape.circle,
               border: Border.all(
                 color: hasNeonFrame
@@ -767,11 +773,14 @@ class _ProfileAvatarWithProgress extends StatelessWidget {
                   ),
               ],
             ),
-            child: Center(
-              child: Text(
-                initial,
-                style: const TextStyle(
-                  fontSize: 46,
+            child: Padding(
+              padding: const EdgeInsets.all(3),
+              child: UserAvatar(
+                photoUrl: photoUrl,
+                fallbackText: initial,
+                size: 90,
+                fallbackStyle: const TextStyle(
+                  fontSize: 42,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),

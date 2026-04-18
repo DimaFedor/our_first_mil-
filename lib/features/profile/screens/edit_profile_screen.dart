@@ -1,11 +1,16 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../core/l10n/app_localizations.dart';
 import '../../../core/services/auth_flow_exception.dart';
+import '../../../shared/widgets/user_avatar.dart';
 import '../../auth/models/user_model.dart';
 import '../../auth/providers/auth_provider.dart';
+import '../constants/avatar_presets.dart';
 
 class EditProfileScreen extends ConsumerStatefulWidget {
   const EditProfileScreen({super.key});
@@ -25,6 +30,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
   String _skillLevel = 'beginner';
   String _preferredLanguage = 'python';
   double _dailyGoalMinutes = 20;
+  String? _photoUrl;
 
   static const _skillLevelLabels = <String, String>{
     'beginner': 'Beginner',
@@ -58,6 +64,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
     _skillLevel = userData?.skillLevel ?? 'beginner';
     _preferredLanguage = userData?.preferredLanguage ?? 'python';
     _dailyGoalMinutes = (userData?.dailyGoalMinutes ?? 20).toDouble();
+    _photoUrl = userData?.photoURL ?? currentUser?.photoURL?.toString();
     _isHydrated = true;
   }
 
@@ -77,6 +84,9 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
             email: _emailController.text.trim(),
             skillLevel: _skillLevel,
             preferredLanguage: _preferredLanguage,
+            photoURL: (_photoUrl?.trim().isEmpty ?? true)
+                ? null
+                : _photoUrl!.trim(),
             bio: _bioController.text.trim(),
             dailyGoalMinutes: _dailyGoalMinutes.round(),
           );
@@ -110,6 +120,52 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
       return 'Невалідний email.';
     }
     return 'Не вдалося зберегти профіль. Спробуйте ще раз.';
+  }
+
+  Future<void> _pickPhotoFromGallery() async {
+    try {
+      final picked = await ImagePicker().pickImage(
+        source: ImageSource.gallery,
+        maxWidth: 600,
+        maxHeight: 600,
+        imageQuality: 82,
+      );
+      if (picked == null) return;
+
+      final bytes = await picked.readAsBytes();
+      if (bytes.isEmpty || !mounted) return;
+      const maxAvatarBytes = 350 * 1024;
+      if (bytes.length > maxAvatarBytes) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(
+              'Фото завелике. Оберіть зображення до 350KB або менший розмір.',
+            ),
+          ),
+        );
+        return;
+      }
+
+      final mimeType = _inferMimeType(picked.name);
+      setState(() {
+        _photoUrl = 'data:$mimeType;base64,${base64Encode(bytes)}';
+      });
+    } catch (_) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Не вдалося вибрати фото. Спробуйте ще раз.'),
+        ),
+      );
+    }
+  }
+
+  String _inferMimeType(String fileName) {
+    final normalized = fileName.trim().toLowerCase();
+    if (normalized.endsWith('.png')) return 'image/png';
+    if (normalized.endsWith('.webp')) return 'image/webp';
+    if (normalized.endsWith('.gif')) return 'image/gif';
+    return 'image/jpeg';
   }
 
   @override
@@ -179,6 +235,14 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                       ),
                       const SizedBox(height: 20),
                       _buildPreviewCard(),
+                      const SizedBox(height: 16),
+                      _buildSectionCard(
+                        isDarkTheme: isDarkTheme,
+                        child: _buildAvatarPicker(
+                          isDarkTheme: isDarkTheme,
+                          onSurface: onSurface,
+                        ),
+                      ),
                       const SizedBox(height: 16),
                       if (_errorMessage != null)
                         Container(
@@ -383,6 +447,71 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
     );
   }
 
+  Widget _buildAvatarPicker({
+    required bool isDarkTheme,
+    required Color onSurface,
+  }) {
+    final selectedPhoto = _photoUrl?.trim();
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Avatar',
+          style: TextStyle(color: onSurface, fontWeight: FontWeight.w700),
+        ),
+        const SizedBox(height: 6),
+        Text(
+          'Оберіть готовий аватар або завантажте власне фото.',
+          style: TextStyle(
+            color: onSurface.withValues(alpha: 0.72),
+            fontSize: 12,
+          ),
+        ),
+        const SizedBox(height: 12),
+        SizedBox(
+          width: double.infinity,
+          child: OutlinedButton.icon(
+            onPressed: _pickPhotoFromGallery,
+            icon: const Icon(Icons.photo_library_outlined),
+            label: const Text('Завантажити фото'),
+          ),
+        ),
+        const SizedBox(height: 12),
+        Wrap(
+          spacing: 10,
+          runSpacing: 10,
+          children: presetAvatarPaths.map((avatarPath) {
+            final isSelected = selectedPhoto == avatarPath;
+            return GestureDetector(
+              onTap: () => setState(() => _photoUrl = avatarPath),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 180),
+                padding: const EdgeInsets.all(3),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: isSelected
+                        ? const Color(0xFF0066FF)
+                        : (isDarkTheme
+                              ? Colors.white.withValues(alpha: 0.25)
+                              : const Color(0xFFD6E2FF)),
+                    width: isSelected ? 2.5 : 1.2,
+                  ),
+                ),
+                child: UserAvatar(
+                  photoUrl: avatarPath,
+                  fallbackText: 'A',
+                  size: 54,
+                ),
+              ),
+            );
+          }).toList(),
+        ),
+      ],
+    );
+  }
+
   Widget _buildPreviewCard() {
     final name = _nameController.text.trim().isEmpty
         ? 'User'
@@ -411,20 +540,15 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
       child: Row(
         children: [
           Container(
-            width: 56,
-            height: 56,
+            padding: const EdgeInsets.all(2),
             decoration: BoxDecoration(
-              color: Colors.white.withValues(alpha: 0.24),
+              color: Colors.white.withValues(alpha: 0.55),
               shape: BoxShape.circle,
             ),
-            alignment: Alignment.center,
-            child: Text(
-              initial,
-              style: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w800,
-                fontSize: 24,
-              ),
+            child: UserAvatar(
+              photoUrl: _photoUrl,
+              fallbackText: initial,
+              size: 56,
             ),
           ),
           const SizedBox(width: 12),

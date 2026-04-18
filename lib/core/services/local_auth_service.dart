@@ -142,6 +142,7 @@ class LocalAuthService {
     required String email,
     required String skillLevel,
     required String preferredLanguage,
+    String? photoURL,
     String bio = '',
     int dailyGoalMinutes = 20,
   }) async {
@@ -184,6 +185,7 @@ class LocalAuthService {
       email: normalizedEmail,
       skillLevel: skillLevel,
       preferredLanguage: preferredLanguage,
+      photoURL: photoURL,
       bio: bio.trim(),
       dailyGoalMinutes: dailyGoalMinutes,
     );

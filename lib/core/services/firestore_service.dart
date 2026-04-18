@@ -55,10 +55,11 @@ class FirestoreService {
     required String email,
     required String skillLevel,
     required String preferredLanguage,
+    String? photoURL,
     String bio = '',
     int dailyGoalMinutes = 20,
   }) async {
-    await usersCollection.doc(userId).set({
+    final payload = <String, dynamic>{
       'uid': userId,
       'displayName': displayName,
       'email': email,
@@ -68,7 +69,11 @@ class FirestoreService {
       'dailyGoalMinutes': dailyGoalMinutes,
       'lastProfileUpdate': FieldValue.serverTimestamp(),
       'lastActive': FieldValue.serverTimestamp(),
-    }, SetOptions(merge: true));
+    };
+    if (photoURL != null) {
+      payload['photoURL'] = photoURL;
+    }
+    await usersCollection.doc(userId).set(payload, SetOptions(merge: true));
   }
 
   // Update User Progress

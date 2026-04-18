@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/services/auth_challenge_service.dart';
+import '../../../core/services/auth_flow_exception.dart';
 import '../../../core/services/auth_service.dart';
 import '../../../core/services/firestore_service.dart';
 import '../../../core/services/local_auth_service.dart';
@@ -66,6 +67,7 @@ final userDataProvider = StreamProvider.family<UserModel?, String>((ref, uid) {
           uid: user.uid,
           email: user.email,
           displayName: user.displayName,
+          photoURL: user.photoURL,
           skillLevel: user.skillLevel,
           preferredLanguage: user.preferredLanguage,
           authMethod: user.authMethod,
@@ -108,6 +110,7 @@ final userDataProvider = StreamProvider.family<UserModel?, String>((ref, uid) {
 
 final authActionsProvider = Provider<AuthActions>((ref) {
   return AuthActions(
+    ref: ref,
     authService: ref.watch(authServiceProvider),
     localAuthService: ref.watch(localAuthServiceProvider),
     challengeService: ref.watch(authChallengeServiceProvider),
@@ -116,17 +119,20 @@ final authActionsProvider = Provider<AuthActions>((ref) {
 });
 
 class AuthActions {
+  final Ref _ref;
   final AuthService _authService;
   final LocalAuthService _localAuthService;
   final AuthChallengeService _challengeService;
   final bool _useLocal;
 
   AuthActions({
+    required Ref ref,
     required AuthService authService,
     required LocalAuthService localAuthService,
     required AuthChallengeService challengeService,
     required bool useLocal,
-  }) : _authService = authService,
+  }) : _ref = ref,
+       _authService = authService,
        _localAuthService = localAuthService,
        _challengeService = challengeService,
        _useLocal = useLocal;
@@ -182,7 +188,16 @@ class AuthActions {
       await _localAuthService.signInAnonymously();
       return;
     }
-    await _authService.signInAnonymously();
+    try {
+      await _authService.signInAnonymously();
+    } on AuthFlowException catch (error) {
+      if (error.code == 'anonymous-sign-in-disabled') {
+        _ref.read(useLocalAuthProvider.notifier).state = true;
+        await _localAuthService.signInAnonymously();
+        return;
+      }
+      rethrow;
+    }
   }
 
   Future<void> resetPassword(String email) async {
@@ -271,6 +286,7 @@ class AuthActions {
     required String email,
     required String skillLevel,
     required String preferredLanguage,
+    String? photoURL,
     String bio = '',
     int dailyGoalMinutes = 20,
   }) async {
@@ -283,6 +299,7 @@ class AuthActions {
         email: email,
         skillLevel: skillLevel,
         preferredLanguage: preferredLanguage,
+        photoURL: photoURL,
         bio: bio,
         dailyGoalMinutes: dailyGoalMinutes,
       );
@@ -294,6 +311,7 @@ class AuthActions {
       email: email,
       skillLevel: skillLevel,
       preferredLanguage: preferredLanguage,
+      photoURL: photoURL,
       bio: bio,
       dailyGoalMinutes: dailyGoalMinutes,
     );
