@@ -132,93 +132,12 @@ class SettingsScreen extends ConsumerWidget {
                     ),
                     _buildSettingItem(
                       context,
-                      icon: Icons.notifications_outlined,
-                      title: context.tr('notifications'),
-                      subtitle: 'Manage notification preferences',
-                      onTap: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Push notifications coming in v1.1!'),
-                          ),
-                        );
-                      },
-                      index: 3,
-                    ),
-                    _buildSettingItem(
-                      context,
                       icon: Icons.language_outlined,
                       title: context.tr('language'),
                       subtitle:
                           '${currentLanguage.flag} ${currentLanguage.nativeName}',
                       onTap: () => _showLanguageDialog(context),
-                      index: 4,
-                    ),
-
-                    const SizedBox(height: 24),
-
-                    // Data Section
-                    _buildSectionTitle(context, context.tr('data_privacy')),
-                    const SizedBox(height: 12),
-                    _buildSettingItem(
-                      context,
-                      icon: Icons.download_outlined,
-                      title: context.tr('download_data'),
-                      subtitle: 'Export your learning data',
-                      onTap: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text(context.tr('coming_soon'))),
-                        );
-                      },
-                      index: 5,
-                    ),
-                    _buildSettingItem(
-                      context,
-                      icon: Icons.delete_outline,
-                      title: context.tr('clear_cache'),
-                      subtitle: 'Free up storage space',
-                      onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (ctx) => AlertDialog(
-                            backgroundColor: Theme.of(ctx).colorScheme.surface,
-                            title: Text(
-                              '${context.tr('clear_cache')}?',
-                              style: TextStyle(
-                                color: Theme.of(ctx).colorScheme.onSurface,
-                              ),
-                            ),
-                            content: Text(
-                              context.tr('clear_cache_confirm'),
-                              style: TextStyle(
-                                color: Theme.of(
-                                  ctx,
-                                ).colorScheme.onSurface.withValues(alpha: 0.75),
-                              ),
-                            ),
-                            actions: [
-                              TextButton(
-                                onPressed: () => Navigator.pop(ctx),
-                                child: Text(context.tr('cancel')),
-                              ),
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pop(ctx);
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                      content: Text('Cache cleared!'),
-                                    ),
-                                  );
-                                },
-                                child: Text(
-                                  context.tr('delete'),
-                                  style: const TextStyle(color: Colors.red),
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                      index: 6,
+                      index: 3,
                     ),
 
                     const SizedBox(height: 24),
@@ -232,20 +151,8 @@ class SettingsScreen extends ConsumerWidget {
                       title: context.tr('version'),
                       subtitle: context.tr('version_subtitle'),
                       onTap: () {},
-                      index: 7,
+                      index: 4,
                       showArrow: false,
-                    ),
-                    _buildSettingItem(
-                      context,
-                      icon: Icons.description_outlined,
-                      title: context.tr('terms_of_service'),
-                      subtitle: context.tr('terms_subtitle'),
-                      onTap: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text(context.tr('coming_soon'))),
-                        );
-                      },
-                      index: 8,
                     ),
                     _buildSettingItem(
                       context,
@@ -257,7 +164,7 @@ class SettingsScreen extends ConsumerWidget {
                           SnackBar(content: Text(context.tr('coming_soon'))),
                         );
                       },
-                      index: 9,
+                      index: 5,
                     ),
 
                     const SizedBox(height: 24),
@@ -276,57 +183,7 @@ class SettingsScreen extends ConsumerWidget {
                       subtitle: context.tr('sign_out_subtitle'),
                       color: Colors.red,
                       onTap: () => _confirmAndLogout(context, ref),
-                      index: 10,
-                    ),
-                    _buildSettingItem(
-                      context,
-                      icon: Icons.delete_forever,
-                      title: context.tr('delete_account'),
-                      subtitle: context.tr('delete_account_warning'),
-                      color: Colors.red,
-                      onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (ctx) => AlertDialog(
-                            backgroundColor: Theme.of(ctx).colorScheme.surface,
-                            title: Text(
-                              '${context.tr('delete_account')}?',
-                              style: TextStyle(
-                                color: Theme.of(ctx).colorScheme.onSurface,
-                              ),
-                            ),
-                            content: Text(
-                              context.tr('delete_account_warning'),
-                              style: TextStyle(
-                                color: Theme.of(
-                                  ctx,
-                                ).colorScheme.onSurface.withValues(alpha: 0.75),
-                              ),
-                            ),
-                            actions: [
-                              TextButton(
-                                onPressed: () => Navigator.pop(ctx),
-                                child: Text(context.tr('cancel')),
-                              ),
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pop(ctx);
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(context.tr('coming_soon')),
-                                    ),
-                                  );
-                                },
-                                child: Text(
-                                  context.tr('delete'),
-                                  style: const TextStyle(color: Colors.red),
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                      index: 11,
+                      index: 6,
                     ),
 
                     const SizedBox(height: 40),
