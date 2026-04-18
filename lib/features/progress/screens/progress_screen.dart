@@ -13,15 +13,22 @@ import '../../progress/providers/progress_provider.dart';
 import '../../progress/services/xp_system.dart';
 import '../../../shared/widgets/main_navigation.dart';
 
-class ProgressScreen extends ConsumerWidget {
+class ProgressScreen extends ConsumerStatefulWidget {
   const ProgressScreen({super.key});
+
+  @override
+  ConsumerState<ProgressScreen> createState() => _ProgressScreenState();
+}
+
+class _ProgressScreenState extends ConsumerState<ProgressScreen> {
+  bool _showAllCourses = false;
 
   String _t(BuildContext context, String key, String fallback) {
     return AppLocalizations.of(context)?.get(key) ?? fallback;
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     final onSurface = Theme.of(context).colorScheme.onSurface;
     final userId = ref.watch(currentUserUidProvider);
@@ -40,6 +47,11 @@ class ProgressScreen extends ConsumerWidget {
     final levelInfo =
         levelInfoAsync.valueOrNull ?? XPSystem.getLevelInfo(totalXP);
     final snapshots = _buildCourseSnapshots(courses, progressList);
+    final rankedSnapshots = _rankSnapshotsByProgress(snapshots);
+    final hasCollapsedCourses = rankedSnapshots.length > 3;
+    final visibleCourseSnapshots = hasCollapsedCourses && !_showAllCourses
+        ? rankedSnapshots.take(3).toList(growable: false)
+        : rankedSnapshots;
 
     final completedLessons = snapshots.fold<int>(
       0,
@@ -84,7 +96,7 @@ class ProgressScreen extends ConsumerWidget {
           child: RefreshIndicator(
             color: const Color(0xFF0066FF),
             backgroundColor: Theme.of(context).colorScheme.surface,
-            onRefresh: () => _refreshProgress(ref, userId),
+            onRefresh: () => _refreshProgress(userId),
             child: ListView(
               physics: const AlwaysScrollableScrollPhysics(),
               padding: const EdgeInsets.fromLTRB(20, 16, 20, 32),
@@ -235,7 +247,7 @@ class ProgressScreen extends ConsumerWidget {
                     ),
                   ).animate(delay: 300.ms).fadeIn(),
                   const SizedBox(height: 10),
-                  for (final snapshot in snapshots)
+                  for (final snapshot in visibleCourseSnapshots)
                     Padding(
                       padding: const EdgeInsets.only(bottom: 10),
                       child: _CourseProgressCard(
@@ -255,6 +267,35 @@ class ProgressScreen extends ConsumerWidget {
                               ),
                       ),
                     ),
+                  if (hasCollapsedCourses)
+                    Align(
+                      alignment: Alignment.center,
+                      child: TextButton.icon(
+                        onPressed: () {
+                          setState(() {
+                            _showAllCourses = !_showAllCourses;
+                          });
+                        },
+                        icon: Icon(
+                          _showAllCourses
+                              ? Icons.unfold_less_rounded
+                              : Icons.unfold_more_rounded,
+                        ),
+                        label: Text(
+                          _showAllCourses
+                              ? _t(
+                                  context,
+                                  'show_top_3_courses',
+                                  'Show top 3 courses',
+                                )
+                              : _t(
+                                  context,
+                                  'show_all_courses',
+                                  'Show all courses',
+                                ),
+                        ),
+                      ),
+                    ),
                 ],
               ],
             ),
@@ -264,7 +305,7 @@ class ProgressScreen extends ConsumerWidget {
     );
   }
 
-  Future<void> _refreshProgress(WidgetRef ref, String? userId) async {
+  Future<void> _refreshProgress(String? userId) async {
     ref.invalidate(allUserProgressProvider);
     ref.invalidate(levelInfoProvider);
     ref.invalidate(localizedCoursesProvider);
@@ -273,6 +314,27 @@ class ProgressScreen extends ConsumerWidget {
       ref.invalidate(userDataProvider(userId));
     }
     await Future<void>.delayed(const Duration(milliseconds: 250));
+  }
+
+  List<_CourseProgressSnapshot> _rankSnapshotsByProgress(
+    List<_CourseProgressSnapshot> snapshots,
+  ) {
+    final ranked = [...snapshots];
+    ranked.sort((a, b) {
+      final aStarted = a.completedLessons > 0 ? 0 : 1;
+      final bStarted = b.completedLessons > 0 ? 0 : 1;
+      final startedCompare = aStarted.compareTo(bStarted);
+      if (startedCompare != 0) return startedCompare;
+
+      final ratioCompare = b.completionRatio.compareTo(a.completionRatio);
+      if (ratioCompare != 0) return ratioCompare;
+
+      final completedCompare = b.completedLessons.compareTo(a.completedLessons);
+      if (completedCompare != 0) return completedCompare;
+
+      return a.course.order.compareTo(b.course.order);
+    });
+    return ranked;
   }
 
   List<_CourseProgressSnapshot> _buildCourseSnapshots(
