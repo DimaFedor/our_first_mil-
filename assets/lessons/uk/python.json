@@ -53,12 +53,12 @@
           {
             "question": "Яка команда відображає текст у Python?",
             "options": [
-              "показати()",
-              "дисплей()",
-              "друкувати()",
-              "написати()"
+              "print()",
+              "display()",
+              "print()",
+              "write()"
             ],
-            "correctAnswerIndex": 2,
+            "correctAnswerIndex": 0,
             "explanation": "Функція print() використовується для відображення вихідного тексту в Python.",
             "type": "multipleChoice"
           },
@@ -295,7 +295,7 @@
             "type": "multipleChoice"
           },
           {
-            "question": "Якщо x = 5, чому x += 3 дорівнює x?",
+            "question": "if x = 5, чому x += 3 дорівнює x?",
             "options": [
               "5",
               "8",
@@ -303,7 +303,7 @@
               "53"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "x += 3 — це скорочення x = x + 3. Отже, якщо x починається з 5, воно стає 5 + 3 = 8.",
+            "explanation": "x += 3 — це скорочення x = x + 3. Отже, if x починається з 5, воно стає 5 + 3 = 8.",
             "type": "multipleChoice"
           },
           {
@@ -501,7 +501,7 @@
       "theorySlides": [
         {
           "title": "Програми, які думають! 🤔",
-          "content": "Справжні програми повинні приймати рішення на основі різних ситуацій. Оператор «if» дозволяє вашій програмі вибрати, що робити.\n\nПодумайте про це так:\n«Якщо йде дощ, візьміть з собою парасольку»\n«ЯКЩО високий бал, покажи привітання»",
+          "content": "Справжні програми повинні приймати рішення на основі різних ситуацій. Оператор if дозволяє вашій програмі вибрати, що робити.\n\nПодумайте про це так:\n«if йде дощ, візьміть з собою парасольку»\n«if високий бал, покажи привітання»",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -518,7 +518,7 @@
           "order": 1
         },
         {
-          "title": "Якщо-Інакше: два варіанти",
+          "title": "if-else: два варіанти",
           "content": "Використовуйте else для обробки випадку, коли умова хибна:",
           "codeSnippet": "temperature = 25\n\nif temperature > 30:\n    print(\"It's hot! Stay hydrated.\")\nelse:\n    print(\"Nice weather today!\")\n    print(\"Perfect for a walk.\")",
           "codeLanguage": "python",
@@ -528,7 +528,7 @@
         },
         {
           "title": "Кілька умов",
-          "content": "Використовуйте elif (інакше якщо), щоб перевірити кілька умов:",
+          "content": "Використовуйте elif (else if), щоб перевірити кілька умов:",
           "codeSnippet": "score = 85\n\nif score >= 90:\n    grade = \"A\"\nelif score >= 80:\n    grade = \"B\"\nelif score >= 70:\n    grade = \"C\"\nelse:\n    grade = \"Need more practice\"\n\nprint(f\"Your grade: {grade}\")",
           "codeLanguage": "python",
           "imageUrl": null,
@@ -548,7 +548,7 @@
       "quiz": {
         "questions": [
           {
-            "question": "Що станеться, якщо умова в операторі if є хибною?",
+            "question": "Що станеться, якщо умова в if є хибною?",
             "options": [
               "Програма вилітає",
               "Код всередині блоку if пропускається",
@@ -572,19 +572,19 @@
             "type": "multipleChoice"
           },
           {
-            "question": "Яке ключове слово використовується для \"інакше\" в Python?",
+            "question": "Яке ключове слово використовується для else в Python?",
             "options": [
-              "інакше",
+              "else",
               "інше",
               "потім",
               "endif"
             ],
-            "correctAnswerIndex": 1,
+            "correctAnswerIndex": 0,
             "explanation": "Ключове слово «else» обробляє випадок, коли умова if є хибною.",
             "type": "multipleChoice"
           },
           {
-            "question": "Що трапиться, якщо жодна умова не є True і немає іншого?",
+            "question": "Що трапиться, якщо жодна умова не є True і немає else?",
             "options": [
               "Помилка",
               "Нічого не відбувається",
@@ -797,10 +797,10 @@
           {
             "question": "Яке ключове слово виходить із циклу?",
             "options": [
-              "вихід",
-              "перерва",
+              "exit",
+              "break",
               "СТІЙ",
-              "повернення"
+              "return"
             ],
             "correctAnswerIndex": 1,
             "explanation": "break негайно виходить із поточного циклу.",
@@ -821,13 +821,13 @@
           {
             "question": "Яке ключове слово пропускає до наступної ітерації?",
             "options": [
-              "наступний",
-              "продовжувати",
+              "next",
+              "continue",
               "пропустити",
               "пропуск"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "продовження пропускає решту поточної ітерації та переходить до наступної.",
+            "explanation": "continue пропускає решту поточної ітерації та переходить до наступної.",
             "type": "multipleChoice"
           },
           {
@@ -934,7 +934,7 @@
               "Створює ключ"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "Доступ до неіснуючого ключа викликає KeyError. Використовуйте .get(\"key\"), щоб безпечно повернути None.",
+            "explanation": "Доступ до неіснуючого ключа викликає KeyError. Використовуйте .get(\"key\"), щоб безпечно отримати None.",
             "type": "multipleChoice"
           },
           {
@@ -1045,12 +1045,12 @@
             "question": "Що не так із: def greet(name): return f\"Hi {name}\" print(\"Done\")?",
             "options": [
               "нічого",
-              "Код після повернення ніколи не виконується",
+              "Код після return ніколи не виконується",
               "Синтаксична помилка",
               "Функція надто довга"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "return негайно виходить із функції. Код після повернення недоступний.",
+            "explanation": "return негайно виходить із функції. Код після return недоступний.",
             "type": "multipleChoice"
           },
           {
@@ -1080,7 +1080,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Використовуйте * та поверніться.",
+        "hint": "Використовуйте * та return.",
         "solution": "def multiply(a, b):\n    return a * b\n\nprint(multiply(6, 7))",
         "xpReward": 15
       },

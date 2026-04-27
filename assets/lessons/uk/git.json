@@ -18,8 +18,8 @@
           "order": 0
         },
         {
-          "title": "3 основні штати",
-          "content": "У Git для початківців ви можете уявити 3 шари:\n\n1) Робочі файли (те, що ви редагуєте)\n2) Місце проведення (що ви готуєте)\n3) Історія фіксації (те, що ви зберігаєте назавжди)",
+          "title": "3 основні стани",
+          "content": "У Git для початківців ви можете уявити 3 шари:\n\n1) Робочі файли (те, що ви редагуєте)\n2) Stage (що ви готуєте)\n3) Історія коміту (те, що ви зберігаєте назавжди)",
           "codeSnippet": "git status\n# see current state\n\ngit add .\n# stage all current changes\n\ngit commit -m \"Initial layout\"",
           "codeLanguage": "bash",
           "imageUrl": null,
@@ -27,8 +27,8 @@
           "order": 1
         },
         {
-          "title": "Перший потік фіксації",
-          "content": "Комітт — це моментальний знімок. Невеликі чіткі коміти роблять проекти легшими для розуміння.",
+          "title": "Перший потік коміту",
+          "content": "Комміт — це моментальний знімок. Невеликі чіткі коміти роблять проекти легшими для розуміння.",
           "codeSnippet": "git init\ngit status\ngit commit -m \"Initial commit\"",
           "codeLanguage": "bash",
           "imageUrl": null,
@@ -65,10 +65,10 @@
           {
             "question": "Яка команда створює комміт?",
             "options": [
-              "git гілка",
-              "git злиття",
+              "git branch",
+              "git merge",
               "git commit -m \"повідомлення\"",
-              "git перевірка"
+              "git checkout"
             ],
             "correctAnswerIndex": 2,
             "explanation": "Використовуйте git commit із повідомленням, щоб створити новий знімок в історії.",
@@ -116,8 +116,8 @@
       "description": "Створюйте та перемикайте гілки для безпечної паралельної роботи",
       "theorySlides": [
         {
-          "title": "Чому філії важливі 🌿",
-          "content": "Гілки дозволяють тестувати ідеї, не порушуючи основної лінії:\n\n• основний залишається стабільним\n• особливі гілки проводять експерименти\n• об'єднання пізніше об'єднує готову роботу",
+          "title": "Чому гілки важливі 🌿",
+          "content": "Гілки дозволяють тестувати ідеї, не порушуючи основної лінії:\n\n• main залишається стабільним\n• особливі гілки проводять експерименти\n• об'єднання пізніше об'єднує готову роботу",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -208,7 +208,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Послідовність: git commit -> git функція гілки -> git checkout функція -> git commit",
+        "hint": "Послідовність: git commit -> git branch feature -> git checkout функція -> git commit",
         "solution": "git commit -m \"Base commit on main\"\ngit branch feature\ngit checkout feature\ngit commit -m \"Feature work\"",
         "xpReward": 15
       },
@@ -270,7 +270,7 @@
               "На особливості",
               "На головному",
               "На будь-якій гілці",
-              "Жодна філія не перевірена"
+              "Жодна гілка не перевірена"
             ],
             "correctAnswerIndex": 1,
             "explanation": "Ви об’єднуєтеся з тією гілкою, яку наразі перевірили.",

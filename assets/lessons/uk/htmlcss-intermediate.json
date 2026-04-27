@@ -10,7 +10,7 @@
       "theorySlides": [
         {
           "title": "Що таке Flexbox? 📦",
-          "content": "Flexbox — це метод одновимірного макета для рядків або стовпців.\n\nКлючові властивості:\n• дисплей: гнучкий\n• justify-content (головна вісь)\n• align-items (перехресна вісь)\n• флекс-напрямок",
+          "content": "Flexbox — це метод одновимірного макета для рядків або стовпців.\n\nКлючові властивості:\n• display: flex\n• justify-content (головна вісь)\n• align-items (перехресна вісь)\n• flex-direction",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,

@@ -77,13 +77,13 @@
           {
             "question": "Яке ключове слово використовується для визначення таблиці для запиту?",
             "options": [
-              "ОТРИМАТИ",
-              "ВІД",
-              "ТАБЛИЦЯ",
-              "ДЕ"
+              "SELECT",
+              "FROM",
+              "TABLE",
+              "WHERE"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Ключове слово FROM визначає, з якої таблиці отримувати дані. Приклад: ВИБРАТИ ім'я FROM користувачів.",
+            "explanation": "Ключове слово FROM визначає, з якої таблиці отримувати дані. Приклад: SELECT name FROM users.",
             "type": "multipleChoice"
           },
           {
@@ -160,10 +160,10 @@
           {
             "question": "Як вибрати лише стовпці «ім’я» та «електронна адреса» з таблиці «користувачі»?",
             "options": [
-              "SELECT * FROM користувачів;",
-              "ВИБРАТИ ім'я, електронну пошту ВІД користувачів;",
-              "ОТРИМАТИ ім'я, електронну адресу ВІД користувачів;",
-              "SELECT (ім’я електронної пошти) FROM користувачів;"
+              "SELECT * FROM users;",
+              "SELECT name, email FROM users;",
+              "GET name, email FROM users;",
+              "SELECT (name email) FROM users;"
             ],
             "correctAnswerIndex": 1,
             "explanation": "Перелічіть назви стовпців, розділених комами після SELECT: SELECT name, email FROM users;",
@@ -174,8 +174,8 @@
             "options": [
               "ФІЛЬТР",
               "КОЛИ",
-              "ДЕ",
-              "ЯКЩО"
+              "WHERE",
+              "IF"
             ],
             "correctAnswerIndex": 2,
             "explanation": "Речення WHERE використовується для фільтрації записів, які відповідають певній умові.",
@@ -184,13 +184,13 @@
           {
             "question": "Як знайти продукти, ціна яких перевищує 100?",
             "options": [
-              "ВИБРАТИ * З продуктів WHERE ціна > 100;",
-              "ВИБРАТИ * З продуктів, ЯКЩО ціна > 100;",
-              "ВИБРАТИ * З продуктів, КОЛИ ціна > 100;",
-              "ВИБРАТИ * ІЗ товарів З ціною > 100;"
+              "SELECT * FROM products WHERE price > 100;",
+              "SELECT * FROM products IF price > 100;",
+              "SELECT * FROM products WHEN price > 100;",
+              "SELECT * FROM products WITH price > 100;"
             ],
             "correctAnswerIndex": 0,
-            "explanation": "Використовуйте WHERE з оператором >: WHERE ціна > 100",
+            "explanation": "Використовуйте WHERE з оператором >: WHERE price > 100",
             "type": "multipleChoice"
           },
           {
@@ -315,13 +315,13 @@
           {
             "question": "Як знайти імена, які НЕ починаються на «J»?",
             "options": [
-              "WHERE ім'я НЕ ЯК \"J%\"",
+              "WHERE name NOT LIKE 'J%'",
               "WHERE назва UNLIKE 'J%'",
               "WHERE NOT назва = 'J%'",
               "WHERE ім'я <> 'J%'"
             ],
             "correctAnswerIndex": 0,
-            "explanation": "Використовуйте NOT LIKE, щоб заперечити збіг шаблону: WHERE ім'я NOT LIKE 'J%'",
+            "explanation": "Використовуйте NOT LIKE, щоб заперечити збіг шаблону: WHERE name NOT LIKE 'J%'",
             "type": "multipleChoice"
           },
           {
@@ -446,10 +446,10 @@
           {
             "question": "Як отримати 3 найдешевші продукти?",
             "options": [
-              "ВИБРАТИ * З продуктів ORDER BY ціною ASC LIMIT 3;",
-              "ВИБРАТИ * З продуктів ORDER BY price DESC LIMIT 3;",
-              "ВИБРАТИ * З продуктів ОБМЕЖЕННЯ 3 Упорядкувати ЗА ціною;",
-              "ВИБРАТИ ТОП 3 * З продуктів WHERE price = MIN;"
+              "SELECT * FROM products ORDER BY price ASC LIMIT 3;",
+              "SELECT * FROM products ORDER BY price DESC LIMIT 3;",
+              "SELECT * FROM products LIMIT 3 ORDER BY price;",
+              "SELECT TOP 3 * FROM products WHERE price = MIN;"
             ],
             "correctAnswerIndex": 0,
             "explanation": "Сортуйте за ціною в порядку зростання (найнижча спочатку) і обмежтеся до 3 результатів.",
@@ -541,13 +541,13 @@
           {
             "question": "Як знайти середню суму замовлення?",
             "options": [
+              "SELECT AVG(amount) FROM orders;",
               "SELECT AVERAGE(amount) FROM orders;",
-              "ВИБРАТИ СРЕДНЄ (сума) З замовлень;",
               "SELECT MEAN(amount) FROM orders;",
-              "ВИБРАТИ СУМУ(сума)/КІЛЬКІСТЬ(*) З замовлень;"
+              "SELECT SUM(amount)/COUNT FROM orders;"
             ],
-            "correctAnswerIndex": 1,
-            "explanation": "AVG() — стандартна функція SQL для обчислення середніх значень. Хоча варіант D працював би математично, AVG() є чистішим і правильно обробляє NULL.",
+            "correctAnswerIndex": 0,
+            "explanation": "AVG() — стандартна функція SQL для обчислення середніх значень. Саме її слід використовувати для середнього значення.",
             "type": "multipleChoice"
           },
           {
@@ -614,7 +614,7 @@
         },
         {
           "title": "Фільтрування груп за допомогою HAVING",
-          "content": "HAVING фільтрує групи ПІСЛЯ агрегації. Використовуйте його, коли ви хочете фільтрувати на основі сукупних результатів (ДЕ це не можна зробити!).",
+          "content": "HAVING фільтрує групи ПІСЛЯ агрегації. Використовуйте його, коли ви хочете фільтрувати на основі сукупних результатів (WHERE цього зробити не може).",
           "codeSnippet": "-- Categories with more than 10 products\nSELECT category, COUNT(*) AS count\nFROM products\nGROUP BY category\nHAVING COUNT(*) > 10;\n\n-- Customers who spent over $1000\nSELECT customer_id, SUM(amount) AS total\nFROM orders\nGROUP BY customer_id\nHAVING SUM(amount) > 1000;\n\n-- WHERE filters rows, HAVING filters groups\nSELECT category, AVG(price) AS avg_price\nFROM products\nWHERE price > 0        -- Filter rows first\nGROUP BY category\nHAVING AVG(price) > 50; -- Then filter groups",
           "codeLanguage": "sql",
           "imageUrl": null,
@@ -660,10 +660,10 @@
           {
             "question": "Який запит знаходить категорії із середньою ціною понад 50 доларів США?",
             "options": [
-              "ВИБРАТИ категорію FROM продуктів WHERE AVG (ціна) > 50 GROUP BY category;",
-              "ВИБЕРІТЬ категорію ІЗ продуктів, ГРУПУВАЙТЕ ЗА категорією, ЩО МАЄ СРЕДНЄ (ціна) > 50;",
-              "ВИБРАТИ категорію FROM продуктів GROUP BY category WHERE AVG (ціна) > 50;",
-              "ВИБРАТИ категорію, СР (ціна) З продуктів, ЯКІ МАЮТЬ СР (ціна) > 50;"
+              "SELECT category FROM products WHERE AVG(price) > 50 GROUP BY category;",
+              "SELECT category FROM products GROUP BY category HAVING AVG(price) > 50;",
+              "SELECT category FROM products GROUP BY category WHERE AVG(price) > 50;",
+              "SELECT category, AVG(price) FROM products HAVE AVG(price) > 50;"
             ],
             "correctAnswerIndex": 1,
             "explanation": "Ви повинні використовувати HAVING (а не WHERE) для фільтрації агрегатних функцій. HAVING стоїть після GROUP BY.",
@@ -684,10 +684,10 @@
           {
             "question": "У якому порядку виконуються пропозиції SQL?",
             "options": [
-              "ВИБРАТИ → ВІД → ДЕ → ЗГРУПИТИ ЗА",
-              "FROM → ВИБРАТИ → WHERE → GROUP BY",
+              "SELECT → FROM → WHERE → GROUP BY",
+              "FROM → SELECT → WHERE → GROUP BY",
               "FROM → WHERE → GROUP BY → HAVING → SELECT",
-              "ВИБРАТИ → ДЕ → З → ГРУПУВАТИ ЗА"
+              "SELECT → WHERE → FROM → GROUP BY"
             ],
             "correctAnswerIndex": 2,
             "explanation": "SQL виконується в такому порядку: FROM (отримати дані) → WHERE (фільтрувати рядки) → GROUP BY (групувати) → HAVING (фільтрувати групи) → SELECT (стовпці) → ORDER BY (сортувати)",
@@ -732,7 +732,7 @@
           "order": 0
         },
         {
-          "title": "ВНУТРІШНЄ З'ЄДНАННЯ",
+          "title": "INNER JOIN",
           "content": "INNER JOIN повертає лише ті рядки, які мають відповідні значення в обох таблицях. Це найпоширеніший тип об’єднання.",
           "codeSnippet": "-- Get orders with customer names\nSELECT orders.id, users.name, orders.amount\nFROM orders\nINNER JOIN users ON orders.user_id = users.id;\n\n-- Using table aliases for cleaner code\nSELECT o.id, u.name, o.amount\nFROM orders o\nINNER JOIN users u ON o.user_id = u.id;\n\n-- With additional filtering\nSELECT u.name, o.amount, o.order_date\nFROM orders o\nINNER JOIN users u ON o.user_id = u.id\nWHERE o.amount > 100;",
           "codeLanguage": "sql",
@@ -889,10 +889,10 @@
               "SELECT * FROM users WHERE orders = 0;",
               "SELECT * FROM users LEFT JOIN orders ON ... WHERE orders.id IS NULL;",
               "SELECT * FROM користувачів INNER JOIN замовлення ON ... WHERE сума = 0;",
-              "ВИБРАТИ * ВІД користувачів WHERE NOT IN orders;"
+              "SELECT * FROM users WHERE NOT IN orders;"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Використовуйте LEFT JOIN і перевірте наявність NULL у стовпці ключа правої таблиці. Якщо orders.id РАВНИЙ NULL, користувач не має відповідних замовлень.",
+            "explanation": "Використовуйте LEFT JOIN і перевірте наявність NULL у стовпці ключа правої таблиці. Якщо orders.id IS NULL, користувач не має відповідних замовлень.",
             "type": "multipleChoice"
           },
           {
@@ -1003,7 +1003,7 @@
             "type": "multipleChoice"
           },
           {
-            "question": "Що станеться, якщо запустити UPDATE users SET status = 'active'; без КУДИ?",
+            "question": "Що станеться, якщо запустити UPDATE users SET status = 'active'; без WHERE?",
             "options": [
               "Виходить з ладу з помилкою",
               "Він оновлює лише перший рядок",
@@ -1017,13 +1017,13 @@
           {
             "question": "Як змінити ціну товару зі 100 до 90 доларів?",
             "options": [
-              "ОНОВИТИ продукти SET price = 90 WHERE price = 100;",
+              "UPDATE products SET price = 90 WHERE price = 100;",
               "MODIFY products price = 90 WHERE price = 100;",
-              "ЗМІНИТИ продукти ВСТАНОВИТИ ціну 90 WHERE id = ?;",
-              "ОНОВЛЕННЯ ціни = 90 ВІД товарів;"
+              "CHANGE products SET price = 90 WHERE id = ?;",
+              "UPDATE price = 90 FROM products;"
             ],
             "correctAnswerIndex": 0,
-            "explanation": "Використовуйте таблицю UPDATE стовпець SET = значення WHERE умова; щоб змінити певні рядки.",
+            "explanation": "Використовуйте синтаксис UPDATE table SET column = value WHERE condition; щоб змінити певні рядки.",
             "type": "multipleChoice"
           },
           {

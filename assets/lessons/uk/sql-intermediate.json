@@ -9,8 +9,8 @@
       "description": "Об’єднайте дані з кількох таблиць",
       "theorySlides": [
         {
-          "title": "ПРИЄДНУЄМОСЯ 🔗",
-          "content": "Об’єднати рядки з кількох таблиць:\n• **INNER JOIN**: лише відповідні рядки\n• **LEFT JOIN**: усі ліві + відповідні праві\n• **ПРАВО ОБ'ЄДНАТИ**: все праворуч + відповідне ліворуч\n• **ПОВНЕ ПРИЄДНАННЯ**: усе з обох",
+          "title": "JOIN 🔗",
+          "content": "Об’єднати рядки з кількох таблиць:\n• **INNER JOIN**: лише відповідні рядки\n• **LEFT JOIN**: усі ліві + відповідні праві\n• **RIGHT JOIN**: все праворуч + відповідне ліворуч\n• **FULL OUTER JOIN**: усе з обох",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -18,7 +18,7 @@
           "order": 0
         },
         {
-          "title": "ВНУТРІШНЄ З'ЄДНАННЯ",
+          "title": "INNER JOIN",
           "content": "Отримайте відповідні записи з обох таблиць.",
           "codeSnippet": "SELECT users.name, orders.total\nFROM users\nINNER JOIN orders ON users.id = orders.user_id;\n\n-- Only users WITH orders",
           "codeLanguage": "sql",
@@ -27,7 +27,7 @@
           "order": 1
         },
         {
-          "title": "ПРАВИЛЬНО І ПОВНО ПРИЄДНУЙТЕСЯ 🔄",
+          "title": "RIGHT JOIN AND FULL OUTER JOIN 🔄",
           "content": "Інші типи JOIN:\n• **ПРАВЕ ОБ’ЄДНАННЯ**: усі праві рядки таблиці + відповідні ліві\n• **FULL OUTER JOIN**: усі рядки з обох таблиць\n• NULL заповнює відсутні збіги",
           "codeSnippet": "-- RIGHT JOIN: All orders, even without users\nSELECT users.name, orders.total\nFROM users\nRIGHT JOIN orders ON users.id = orders.user_id;\n\n-- FULL JOIN: All users AND all orders\nSELECT users.name, orders.total\nFROM users\nFULL OUTER JOIN orders ON users.id = orders.user_id;",
           "codeLanguage": "sql",
@@ -45,7 +45,7 @@
           "order": 3
         },
         {
-          "title": "Сам ПРИЄДНУЙСЯ 🪞",
+          "title": "Self JOIN 🪞",
           "content": "Приєднати таблицю до себе:\n• Корисно для ієрархічних даних\n• Порівняти рядки в одній таблиці\n• Необхідно використовувати псевдоніми таблиць",
           "codeSnippet": "-- Find employees and their managers\nSELECT \n  e.name AS employee,\n  m.name AS manager\nFROM employees e\nLEFT JOIN employees m ON e.manager_id = m.id;\n\n-- Find pairs of users from same city\nSELECT a.name, b.name, a.city\nFROM users a\nJOIN users b ON a.city = b.city AND a.id < b.id;",
           "codeLanguage": "sql",
@@ -59,10 +59,10 @@
           {
             "question": "Яке JOIN включає всі ліві рядки таблиці?",
             "options": [
-              "ВНУТРІШНЄ З'ЄДНАННЯ",
-              "ЛІВОГО ПРИЄДНАННЯ",
-              "ПРАВО ПРИЄДНУЙТЕСЯ",
-              "ХРЕСНЕ З'ЄДНАННЯ"
+              "INNER JOIN",
+              "LEFT JOIN",
+              "RIGHT JOIN",
+              "CROSS JOIN"
             ],
             "correctAnswerIndex": 1,
             "explanation": "LEFT JOIN зберігає всі рядки з лівої таблиці.",
@@ -93,7 +93,7 @@
             "type": "multipleChoice"
           },
           {
-            "question": "Скільки таблиць можна ОБ'ЄДНАТИ в одному запиті?",
+            "question": "Скільки таблиць можна JOIN в одному запиті?",
             "options": [
               "Тільки 2",
               "Максимум 5",
@@ -109,7 +109,7 @@
       },
       "codingChallenge": {
         "title": "Приєднуйтеся до користувачів і замовлень",
-        "description": "Напишіть запит, щоб отримати:\n• ім'я користувачів\n• замовлення.всього\n\nВикористовуйте LEFT JOIN, щоб включити користувачів, навіть якщо вони не мають замовлень.\n\nСтруктура:\nВИБРАТИ ... ВІД користувачів ЛІВО ПРИЄДНАТИ замовлення ON ...",
+        "description": "Напишіть запит, щоб отримати:\n• users.name\n• orders.total\n\nВикористовуйте LEFT JOIN, щоб включити користувачів, навіть якщо вони не мають замовлень.\n\nСтруктура:\nSELECT ... FROM users LEFT JOIN orders ON ...",
         "starterCode": "-- Select users.name and orders.total\n-- Use LEFT JOIN to include all users\nSELECT users.name, orders.total\nFROM users\n-- Add LEFT JOIN here\n",
         "language": "sql",
         "testCases": [
@@ -184,10 +184,10 @@
           {
             "question": "Де можуть з'являтися підзапити?",
             "options": [
-              "Тільки в ДЕ",
+              "Тільки в WHERE",
               "Тільки в SELECT",
-              "ДЕ, ВИБРАТИ, З",
-              "Тільки в ВІД"
+              "WHERE, SELECT, FROM",
+              "Тільки в FROM"
             ],
             "correctAnswerIndex": 2,
             "explanation": "Підзапити можуть міститися в реченнях SELECT, FROM або WHERE.",
@@ -198,7 +198,7 @@
             "options": [
               "Відповідні рядки",
               "Підрахунок рядків",
-              "ІСТИНА чи НЕПРАВДА",
+              "TRUE or FALSE",
               "NULL"
             ],
             "correctAnswerIndex": 2,
@@ -244,7 +244,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Використовуйте (ВИБЕРІТЬ СЕРЕДНЄ (ціна) З продуктів)",
+        "hint": "Використовуйте (SELECT AVG(price) FROM products)",
         "solution": "SELECT name, price\nFROM products\nWHERE price > (SELECT AVG(price) FROM products);",
         "xpReward": 15
       },
@@ -296,7 +296,7 @@
         },
         {
           "title": "WHERE + GROUP BY + HAVING 🔗",
-          "content": "Ефективно поєднайте всі речення:\n• ДЕ: фільтрувати рядки ПЕРЕД групуванням\n• ГРУПИТИ ЗА: створення груп\n• HAVING: групи фільтрів ПІСЛЯ агрегації",
+          "content": "Ефективно поєднайте всі clauses:\n• WHERE: фільтрувати рядки ПЕРЕД групуванням\n• GROUP BY: створення груп\n• HAVING: фільтр груп ПІСЛЯ агрегації",
           "codeSnippet": "-- 2024 sales by category, only categories > 5000\nSELECT \n  category,\n  SUM(amount) as total\nFROM sales\nWHERE sale_date >= '2024-01-01'   -- Filter rows first\nGROUP BY category                  -- Then group\nHAVING SUM(amount) > 5000          -- Filter groups\nORDER BY total DESC;\n\n-- Active customers with many orders\nSELECT customer_id, COUNT(*) as orders\nFROM orders\nWHERE status = 'completed'\nGROUP BY customer_id\nHAVING COUNT(*) > 5;",
           "codeLanguage": "sql",
           "imageUrl": null,
@@ -311,7 +311,7 @@
             "options": [
               "Те саме",
               "WHERE фільтрує рядки, HAVING фільтрує групи",
-              "МАТИ швидше",
+              "HAVING швидше",
               "WHERE застаріло"
             ],
             "correctAnswerIndex": 1,
@@ -319,7 +319,7 @@
             "type": "multipleChoice"
           },
           {
-            "question": "Що відбувається, коли ви ГРУПУЄТЕ ЗА кількома стовпцями?",
+            "question": "Що відбувається, коли ви використовуєте GROUP BY з кількома стовпцями?",
             "options": [
               "Виникає помилка",
               "Використовується лише перший стовпець",
@@ -345,9 +345,9 @@
           {
             "question": "Який правильний порядок виконання?",
             "options": [
-              "ВИБРАТИ → ВІД → ДЕ",
+              "SELECT → FROM → WHERE",
               "FROM → WHERE → GROUP BY → HAVING",
-              "ГРУПУВАТИ ЗА → ДЕ → МАТИ",
+              "GROUP BY → WHERE → HAVING",
               "HAVING → GROUP BY → WHERE"
             ],
             "correctAnswerIndex": 1,
@@ -459,7 +459,7 @@
             "question": "Як обчислити поточну суму?",
             "options": [
               "GROUP BY із SUM",
-              "SUM() ПОВЕРХ (Упорядкувати за датою)",
+              "SUM() OVER (ORDER BY date)",
               "RUNNING_TOTAL()",
               "CUMULATIVE_SUM()"
             ],
@@ -494,7 +494,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Використовуйте ROW_NUMBER() НАД (Упорядкувати ЗА ціною DESC)",
+        "hint": "Використовуйте ROW_NUMBER() OVER (ORDER BY price DESC)",
         "solution": "SELECT \n  name,\n  price,\n  ROW_NUMBER() OVER (ORDER BY price DESC) as rank\nFROM products;",
         "xpReward": 15
       },
@@ -571,17 +571,17 @@
           {
             "question": "У складеному індексі (A, B, C), які запити його використовують?",
             "options": [
-              "Тільки ДЕ А",
-              "ДЕ А, ДЕ А+В, ДЕ А+В+С",
+              "Тільки WHERE A",
+              "WHERE A, WHERE A+B, WHERE A+B+C",
               "Будь-яка комбінація A, B, C",
-              "Тільки ДЕ A+B+C"
+              "Тільки WHERE A+B+C"
             ],
             "correctAnswerIndex": 1,
             "explanation": "Композитні індекси працюють зліва направо. Для використання індексу запити мають містити крайні ліві стовпці.",
             "type": "multipleChoice"
           },
           {
-            "question": "Що вам допоможе знайти ПОЯСНЕННЯ?",
+            "question": "Що вам допоможе знайти EXPLAIN?",
             "options": [
               "Синтаксичні помилки",
               "Відсутні таблиці",
@@ -601,7 +601,7 @@
               "Підрахунок рядків таблиці"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Мощність - це кількість унікальних значень. Стовпці з високою потужністю (багато унікальних значень) отримують найбільшу користь від індексів.",
+            "explanation": "Кардинальність — це кількість унікальних значень. Стовпці з високою кардинальністю (багато унікальних значень) отримують найбільшу користь від індексів.",
             "type": "multipleChoice"
           }
         ],

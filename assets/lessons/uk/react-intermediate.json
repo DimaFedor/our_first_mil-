@@ -10,7 +10,7 @@
       "theorySlides": [
         {
           "title": "Хуки React 🪝",
-          "content": "Вбудовані гачки:\n• **useState**: локальний стан\n• **useEffect**: побічні ефекти\n• **useContext**: використовувати контекст\n• **useRef**: змінні посилання\n• **useMemo/useCallback**: оптимізація",
+          "content": "Вбудовані гачки:\n• **useState**: локальний стан\n• **useEffect**: побічні ефекти\n• **useContext**: use контекст\n• **useRef**: змінні посилання\n• **useMemo/useCallback**: оптимізація",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -72,7 +72,7 @@
             "type": "multipleChoice"
           },
           {
-            "question": "Чи можна використовувати хуки в операторах if?",
+            "question": "Чи можна use хуки в операторах if?",
             "options": [
               "Так, завжди",
               "Ні, має бути на найвищому рівні",
@@ -114,7 +114,7 @@
       "theorySlides": [
         {
           "title": "Спеціальні гачки 🔧",
-          "content": "Витягти багаторазову логіку:\n• Починайте з префікса \"використовувати\".\n• Можна використовувати інші гачки всередині\n• Поділіться логікою стану, а не станом",
+          "content": "Витягти багаторазову логіку:\n• Починайте з префікса \"use\".\n• Можна use інші гачки всередині\n• Поділіться логікою стану, а не станом",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,

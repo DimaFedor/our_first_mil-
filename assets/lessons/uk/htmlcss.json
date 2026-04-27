@@ -53,10 +53,10 @@
           {
             "question": "Який тег створює абзац?",
             "options": [
-              "<абзац>",
-              "<текст>",
+              "<paragraph>",
+              "<text>",
               "<p>",
-              "<para>"
+              "<p>"
             ],
             "correctAnswerIndex": 2,
             "explanation": "<p> — це тег абзацу в HTML.",
@@ -77,10 +77,10 @@
           {
             "question": "Який розділ містить такі метадані, як заголовок сторінки?",
             "options": [
-              "<тіло>",
-              "<голова>",
+              "<body>",
+              "<head>",
               "<meta>",
-              "<назва>"
+              "<title>"
             ],
             "correctAnswerIndex": 1,
             "explanation": "Розділ <head> містить метадані, включаючи теги <title>, <meta> і посилання на таблиці стилів.",
@@ -750,7 +750,7 @@
             "question": "Як увімкнути Flexbox?",
             "options": [
               "flex: true;",
-              "дисплей: гнучкий;",
+              "display: flex;",
               "компонування: flex;",
               "flexbox: увімкнено;"
             ],

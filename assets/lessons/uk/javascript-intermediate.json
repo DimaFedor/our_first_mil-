@@ -223,7 +223,7 @@
               "2",
               "[2, 3]",
               "3",
-              "невизначений"
+              "undefined"
             ],
             "correctAnswerIndex": 1,
             "explanation": "Відпочинок у деструктуризації збирає решту елементів у масив.",
@@ -322,9 +322,9 @@
             "question": "Що повертає find(), якщо жоден елемент не відповідає?",
             "options": [
               "Порожній масив",
-              "нульовий",
-              "невизначений",
-              "помилковий"
+              "null",
+              "undefined",
+              "false"
             ],
             "correctAnswerIndex": 2,
             "explanation": "find() повертає undefined, якщо жоден елемент не задовольняє умови.",
@@ -335,8 +335,8 @@
             "options": [
               "[3]",
               "3",
-              "правда",
-              "помилковий"
+              "true",
+              "false"
             ],
             "correctAnswerIndex": 2,
             "explanation": "some() повертає true, оскільки принаймні один елемент (3) більший за 2.",
@@ -347,8 +347,8 @@
             "options": [
               "[1,2,3]",
               "3",
-              "правда",
-              "помилковий"
+              "true",
+              "false"
             ],
             "correctAnswerIndex": 2,
             "explanation": "every() повертає true, оскільки всі елементи більші за 0.",
@@ -421,7 +421,7 @@
         },
         {
           "title": "Promise.allSettled() & Promise.race() 🏁",
-          "content": "Більше комбінаторів Promise:\n• allSettled(): чекати всіх, ніколи не відхиляти\n• race(): виграє перший, хто розрахується\n• any(): виграє перший, хто виконав",
+          "content": "Більше комбінаторів Promise:\n• allSettled(): await усіх, ніколи не reject\n• race(): перший settled перемагає\n• any(): перший fulfilled перемагає",
           "codeSnippet": "// Promise.allSettled - get all results regardless of success/failure\nconst promises = [\n  fetch(\"/api/users\"),\n  fetch(\"/api/invalid-endpoint\"), // This might fail\n  fetch(\"/api/posts\")\n];\n\nPromise.allSettled(promises)\n  .then(results => {\n    results.forEach((result, i) => {\n      if (result.status === \"fulfilled\") {\n        console.log(`Promise ${i}: Success`, result.value);\n      } else {\n        console.log(`Promise ${i}: Failed`, result.reason);\n      }\n    });\n  });\n\n// Promise.race - first to complete wins\nconst timeout = new Promise((_, reject) => \n  setTimeout(() => reject(new Error(\"Timeout\")), 5000)\n);\n\nPromise.race([fetchData(), timeout])\n  .then(data => console.log(\"Got data:\", data))\n  .catch(err => console.error(\"Request timed out\"));\n\n// Promise.any - first successful wins (ignores rejections)\nPromise.any([fetchFromServer1(), fetchFromServer2(), fetchFromServer3()])\n  .then(data => console.log(\"First successful:\", data));",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -436,8 +436,8 @@
             "options": [
               "Успіх",
               "Відмова/помилки",
-              "Стан очікування",
-              "Всі держави"
+              "Стан pending",
+              "Усі стани"
             ],
             "correctAnswerIndex": 1,
             "explanation": ".catch() обробляє відхилені обіцянки та помилки.",
@@ -510,7 +510,7 @@
       "theorySlides": [
         {
           "title": "Async/Await ✨",
-          "content": "Напишіть асинхронний код, як sync:\n• **async**: змушує функцію повертати Promise\n• **чекати**: призупиняється, доки не буде вирішено Promise\n• Використовуйте спробувати/виловити помилки",
+          "content": "Напишіть асинхронний код, як sync:\n• **async**: змушує функцію повертати Promise\n• **await**: призупиняється, доки Promise не виконається\n• Використовуйте try/catch для помилок",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -527,8 +527,8 @@
           "order": 1
         },
         {
-          "title": "Спробуйте/зловіть обробку помилок 🛡️",
-          "content": "Правильна обробка помилок за допомогою async/await:\n• Переносити виклики очікування в try/catch\n• Виявляти певні типи помилок\n• Завжди витончено поводьтеся з помилками\n• Можна повторно кинути для більш високого рівня обробки",
+          "title": "try/catch обробка помилок 🛡️",
+          "content": "Правильна обробка помилок за допомогою async/await:\n• Переносьте виклики await у try/catch\n• Виявляйте конкретні типи помилок\n• Завжди обробляйте помилки передбачувано\n• За потреби rethrow для обробки на вищому рівні",
           "codeSnippet": "async function fetchUserData(userId) {\n  try {\n    const response = await fetch(`/api/users/${userId}`);\n    \n    if (!response.ok) {\n      throw new Error(`HTTP error! status: ${response.status}`);\n    }\n    \n    const data = await response.json();\n    return data;\n    \n  } catch (error) {\n    if (error.name === \"TypeError\") {\n      console.error(\"Network error - check connection\");\n    } else if (error.message.includes(\"404\")) {\n      console.error(\"User not found\");\n    } else {\n      console.error(\"Unexpected error:\", error.message);\n    }\n    \n    // Return fallback or re-throw\n    return { error: true, message: error.message };\n  } finally {\n    // Cleanup - always runs\n    console.log(\"Request completed\");\n  }\n}",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -537,7 +537,7 @@
         },
         {
           "title": "Parallel Await із Promise.all 🚀",
-          "content": "Виконайте асинхронні операції паралельно:\n• Послідовне очікування повільне\n• Promise.all() працює паралельно\n• Використовуйте, коли запити незалежні\n• Значне підвищення продуктивності",
+          "content": "Виконайте асинхронні операції паралельно:\n• Послідовний await повільний\n• Promise.all() працює паралельно\n• Використовуйте, коли запити незалежні\n• Значне підвищення продуктивності",
           "codeSnippet": "// ❌ SLOW - Sequential (waits for each)\nasync function getDataSlow() {\n  const users = await fetchUsers();    // 1 second\n  const posts = await fetchPosts();    // 1 second  \n  const comments = await fetchComments(); // 1 second\n  // Total: ~3 seconds\n  return { users, posts, comments };\n}\n\n// ✅ FAST - Parallel (all at once)\nasync function getDataFast() {\n  const [users, posts, comments] = await Promise.all([\n    fetchUsers(),\n    fetchPosts(),\n    fetchComments()\n  ]);\n  // Total: ~1 second (longest request)\n  return { users, posts, comments };\n}\n\n// Mix parallel and sequential when needed\nasync function processOrder(orderId) {\n  // First, get order (need this before anything else)\n  const order = await fetchOrder(orderId);\n  \n  // Then fetch user and items in parallel\n  const [user, items] = await Promise.all([\n    fetchUser(order.userId),\n    fetchItems(order.itemIds)\n  ]);\n  \n  return { order, user, items };\n}",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -546,7 +546,7 @@
         },
         {
           "title": "Розширені асинхронні шаблони 🎯",
-          "content": "Поширені асинхронні шаблони:\n• Асинхронні цикли (for...of з очікуванням)\n• Повторити логіку\n• Обробка часу очікування\n• Асинхронний IIFE",
+          "content": "Поширені асинхронні шаблони:\n• Асинхронні цикли (for...of з await)\n• Retry-логіка\n• Обробка timeout\n• Асинхронний IIFE",
           "codeSnippet": "// Async for...of loop (sequential)\nasync function processItems(items) {\n  for (const item of items) {\n    await processItem(item); // One at a time\n  }\n}\n\n// Retry pattern\nasync function fetchWithRetry(url, retries = 3) {\n  for (let i = 0; i < retries; i++) {\n    try {\n      return await fetch(url).then(r => r.json());\n    } catch (error) {\n      if (i === retries - 1) throw error;\n      console.log(`Retry ${i + 1}/${retries}...`);\n      await delay(1000 * (i + 1)); // Exponential backoff\n    }\n  }\n}\n\n// Timeout wrapper\nasync function fetchWithTimeout(url, timeout = 5000) {\n  const controller = new AbortController();\n  const timeoutId = setTimeout(() => controller.abort(), timeout);\n  \n  try {\n    const response = await fetch(url, { signal: controller.signal });\n    return await response.json();\n  } finally {\n    clearTimeout(timeoutId);\n  }\n}\n\n// Async IIFE (Immediately Invoked Function Expression)\n(async () => {\n  const data = await fetchData();\n  console.log(data);\n})();",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -557,10 +557,10 @@
       "quiz": {
         "questions": [
           {
-            "question": "Де можна використовувати очікування?",
+            "question": "Де можна використовувати await?",
             "options": [
               "Де завгодно",
-              "Внутрішня асинхронна функція",
+              "Лише всередині async function",
               "Тільки в зворотних дзвінках",
               "Тільки на уроках"
             ],
@@ -581,7 +581,7 @@
             "type": "multipleChoice"
           },
           {
-            "question": "Як запустити декілька очікувань паралельно?",
+            "question": "Як запустити декілька await паралельно?",
             "options": [
               "Поставте їх на одній лінії",
               "Використовуйте Promise.all()",
@@ -595,9 +595,9 @@
           {
             "question": "Що завжди повертає асинхронна функція?",
             "options": [
-              "невизначений",
+              "undefined",
               "Безпосереднє значення, що повертається",
-              "Обіцянка",
+              "Promise",
               "Асинхронний об’єкт"
             ],
             "correctAnswerIndex": 2,
@@ -619,7 +619,7 @@
             "isHidden": false
           }
         ],
-        "hint": "await delay(100), потім повертає літерал шаблону",
+        "hint": "await delay(100), потім return шаблонний літерал",
         "solution": "const delay = (ms) => new Promise(r => setTimeout(r, ms));\n\nasync function greet(name) {\n  await delay(100);\n  return `Hello, ${name}!`;\n}\n\ngreet(\"World\").then(console.log);",
         "xpReward": 15
       },

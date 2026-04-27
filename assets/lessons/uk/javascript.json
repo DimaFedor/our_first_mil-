@@ -53,10 +53,10 @@
           {
             "question": "Яка функція відображає вивід у JavaScript?",
             "options": [
-              "друкувати()",
+              "print()",
               "echo()",
               "console.log()",
-              "дисплей()"
+              "display()"
             ],
             "correctAnswerIndex": 2,
             "explanation": "console.log() — це стандартний спосіб виведення повідомлень у JavaScript.",
@@ -173,7 +173,7 @@
             "question": "Що станеться, якщо ви використовуєте змінну перед оголошенням її за допомогою let?",
             "options": [
               "Працює добре",
-              "Ви отримуєте невизначений",
+              "Ви отримуєте undefined",
               "Викидається ReferenceError",
               "Він стає глобальною змінною"
             ],
@@ -197,7 +197,7 @@
             "question": "Що є результатом: typeof null?",
             "options": [
               "\"null\"",
-              "\"невизначений\"",
+              "\"undefined\"",
               "\"об'єкт\"",
               "\"число\""
             ],
@@ -254,7 +254,7 @@
         },
         {
           "title": "Оператори порівняння",
-          "content": "Порівняйте значення, щоб отримати істину чи хибність:\n\n== Рівне значення\n=== Рівне значення І тип\n!= Не дорівнює\n> Більше ніж\n< Менше ніж\n>= Більше або дорівнює\n<= Менше або дорівнює",
+          "content": "Порівняйте значення, щоб отримати true або false:\n\n== Рівне значення\n=== Рівне значення І тип\n!= Не дорівнює\n> Більше ніж\n< Менше ніж\n>= Більше або дорівнює\n<= Менше або дорівнює",
           "codeSnippet": "console.log(5 > 3);   // true\nconsole.log(10 === 10); // true\nconsole.log(5 !== 3);  // true",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -457,12 +457,12 @@
       "id": "js_lesson_5",
       "courseId": "javascript",
       "moduleId": "basics",
-      "title": "Якщо заяви - прийняття рішень",
+      "title": "if statements - прийняття рішень",
       "description": "Навчіться писати код, який робить вибір",
       "theorySlides": [
         {
           "title": "Умовна логіка 🤔",
-          "content": "Програми повинні приймати рішення! Оператори If дозволяють вашому коду вибирати різні шляхи на основі умов.\n\nПодумайте про це так: \"ЯКЩО йде дощ, ТО візьміть парасольку, ІНАКЕ одягніть сонцезахисні окуляри\"",
+          "content": "Програми повинні приймати рішення! Оператор if дозволяє вашому коду вибирати різні шляхи на основі умов.\n\nПодумайте про це так: \"if йде дощ — візьміть парасольку, else — одягніть сонцезахисні окуляри\"",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -470,7 +470,7 @@
           "order": 0
         },
         {
-          "title": "Синтаксис оператора If",
+          "title": "Синтаксис оператора if",
           "content": "Ось як написати оператори if:",
           "codeSnippet": "let age = 18;\n\nif (age >= 18) {\n  console.log(\"You can vote!\");\n} else {\n  console.log(\"Too young to vote\");\n}",
           "codeLanguage": "javascript",
@@ -503,10 +503,10 @@
             "type": "multipleChoice"
           },
           {
-            "question": "Якщо x = 5, що означає (x > 3)?",
+            "question": "if x = 5, що означає (x > 3)?",
             "options": [
-              "правда",
-              "помилковий",
+              "true",
+              "false",
               "5",
               "3"
             ],
@@ -529,8 +529,8 @@
           {
             "question": "Який результат: true && false?",
             "options": [
-              "правда",
-              "помилковий",
+              "true",
+              "false",
               "1",
               "0"
             ],
@@ -543,7 +543,7 @@
       },
       "codingChallenge": {
         "title": "Перевірка віку",
-        "description": "Створіть змінну age=20. Якщо вік >= 18, відображати «Дорослий», інакше відображати «Неповнолітній».",
+        "description": "Створіть змінну age=20. Використайте if: якщо age >= 18 — показати «Дорослий», else — «Неповнолітній».",
         "starterCode": "// Check if someone is an adult\nlet age = 20;\n",
         "language": "javascript",
         "testCases": [
@@ -660,7 +660,7 @@
               "[1]",
               "[2, 3]",
               "[1, 2, 3]",
-              "правда"
+              "true"
             ],
             "correctAnswerIndex": 1,
             "explanation": "filter() створює новий масив з елементами, які пройшли перевірку. Тільки 2 і 3 більші за 1.",
@@ -854,12 +854,12 @@
             "type": "multipleChoice"
           },
           {
-            "question": "Що таке «це» в методі об’єкта?",
+            "question": "Що таке this у методі об’єкта?",
             "options": [
-              "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.",
-              "Невизначено",
+              "Локальна змінна",
+              "undefined",
               "Сам об'єкт",
-              "Вікно"
+              "window"
             ],
             "correctAnswerIndex": 2,
             "explanation": "\"this\" відноситься до об'єкта, якому належить метод.",
@@ -1006,15 +1006,15 @@
             "type": "multipleChoice"
           },
           {
-            "question": "Яка різниця між оголошеннями функцій і функціями зі стрілками щодо «це»?",
+            "question": "Яка різниця між function declaration і arrow function щодо this?",
             "options": [
               "Без різниці",
-              "Функції зі стрілками не мають власного \"це\"",
-              "Функції зі стрілками створюють нове «це»",
+              "Arrow function не має власного this",
+              "Arrow function створює новий this",
               "Оголошення функцій не можуть використовувати \"this\""
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Функції зі стрілками успадковують «this» з навколишньої області (лексичний this). Звичайні функції створюють власний контекст \"цей\".",
+            "explanation": "Arrow function успадковує this з навколишньої області (lexical this). Звичайна function має власний контекст this.",
             "type": "multipleChoice"
           },
           {
@@ -1112,37 +1112,37 @@
           {
             "question": "Яке ключове слово робить функцію асинхронною?",
             "options": [
-              "асинхронний",
-              "чекати",
-              "обіцянка",
-              "відкласти"
+              "async",
+              "await",
+              "Promise",
+              "defer"
             ],
             "correctAnswerIndex": 0,
             "explanation": "Ключове слово async робить функцію асинхронною.",
             "type": "multipleChoice"
           },
           {
-            "question": "Що робить очікування?",
+            "question": "Що робить await?",
             "options": [
               "Зупиняє всю програму",
-              "Призупиняє виконання, доки обіцянка не буде вирішена",
-              "Створює нову обіцянку",
-              "Скасовує обіцянку"
+              "Призупиняє виконання, доки Promise не буде resolved",
+              "Створює новий Promise",
+              "Скасовує Promise"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "await призупиняє виконання асинхронної функції, доки обіцянка не буде вирішено, завдяки чому асинхронний код виглядає синхронним. Працює лише в асинхронних функціях!",
+            "explanation": "await призупиняє виконання async function, доки Promise не буде resolved. Працює лише всередині async function.",
             "type": "multipleChoice"
           },
           {
-            "question": "Які три стани обіцянки?",
+            "question": "Які три стани Promise?",
             "options": [
               "початок, середина, кінець",
-              "очікуваний, виконаний, відхилений",
-              "очікування, зроблено, помилка",
+              "pending, fulfilled, rejected",
+              "waiting, done, error",
               "новий, активний, повний"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Обіцянка може бути в очікуванні (початкова), виконана (успішна) або відхилена (не виконана). Використовуйте .then() для виконаного та .catch() для відхиленого.",
+            "explanation": "Promise може бути в стані pending (початковий), fulfilled (успішно) або rejected (помилка). Використовуйте .then() для fulfilled і .catch() для rejected.",
             "type": "multipleChoice"
           },
           {

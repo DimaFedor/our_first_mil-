@@ -5,12 +5,12 @@
       "id": "python_int_lesson_1",
       "courseId": "python-intermediate",
       "moduleId": "oop",
-      "title": "Класи та об'єкти",
+      "title": "class та об'єкти",
       "description": "Опануйте об’єктно-орієнтоване програмування на Python",
       "theorySlides": [
         {
           "title": "Що таке ООП? 🏗️",
-          "content": "Об’єктно-орієнтоване програмування організовує код в об’єкти – пакети даних і функцій.\n\nКлючові поняття:\n• **Клас**: план для створення об’єктів\n• **Об’єкт**: екземпляр класу\n• **Атрибути**: дані, що зберігаються в об’єкті\n• **Методи**: функції, які належать об’єкту",
+          "content": "Об’єктно-орієнтоване програмування організовує код в об’єкти – пакети даних і функцій.\n\nКлючові поняття:\n• **class**: план для створення об’єктів\n• **Об’єкт**: екземпляр class\n• **Атрибути**: дані, що зберігаються в об’єкті\n• **Методи**: функції, які належать об’єкту",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -27,7 +27,7 @@
           "order": 1
         },
         {
-          "title": "Створення класу",
+          "title": "Створення class",
           "content": "Використовуйте ключове слово class, щоб визначити проект.",
           "codeSnippet": "class Dog:\n    def __init__(self, name, breed):\n        self.name = name\n        self.breed = breed\n    \n    def bark(self):\n        return f\"{self.name} says Woof!\"\n\nmy_dog = Dog(\"Buddy\", \"Golden Retriever\")\nprint(my_dog.bark())",
           "codeLanguage": "python",
@@ -36,8 +36,8 @@
           "order": 2
         },
         {
-          "title": "Сам параметр 🔑",
-          "content": "**self** посилається на поточний екземпляр класу.\n\nЦе дозволяє:\n• Атрибути доступу: self.name\n• Методи виклику: self.bark()\n• Відрізняти екземпляр від змінних класу",
+          "title": "Параметр self 🔑",
+          "content": "**self** посилається на поточний екземпляр class.\n\nЦе дозволяє:\n• Атрибути доступу: self.name\n• Методи виклику: self.bark()\n• Відрізняти екземпляр від змінних class",
           "codeSnippet": "class Person:\n    def __init__(self, name):\n        self.name = name  # Instance attribute\n    \n    def greet(self):\n        return f\"Hi, I am {self.name}\"",
           "codeLanguage": "python",
           "imageUrl": null,
@@ -60,35 +60,35 @@
             "type": "multipleChoice"
           },
           {
-            "question": "Що означає «я»?",
+            "question": "Що означає self?",
             "options": [
-              "Сам клас",
+              "Сам class",
               "Поточний екземпляр",
-              "Батьківський клас",
+              "Батьківський class",
               "Глобальна змінна"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "self посилається на поточний екземпляр класу, який створюється або використовується.",
+            "explanation": "self посилається на поточний екземпляр class, який створюється або використовується.",
             "type": "multipleChoice"
           },
           {
-            "question": "Як створити об’єкт із класу Dog?",
+            "question": "Як створити об’єкт із class Dog?",
             "options": [
               "Dog.new()",
-              "нова собака()",
-              "собака()",
-              "створити собаку"
+              "new Dog()",
+              "Dog()",
+              "create Dog"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "У Python ви створюєте об’єкти, викликаючи назву класу як функцію: Dog()",
+            "explanation": "У Python ви створюєте об’єкти, викликаючи назву class як функцію: Dog()",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Створіть клас автомобіля",
-        "description": "Створіть клас автомобіля:\n1. У __init__ збережіть бренд у self.brand\n2. У describe() поверніть «Brand: X», де X — це бренд\n\nОчікуваний вихід: Бренд: Toyota",
+        "title": "Створіть class Car",
+        "description": "Створіть class Car:\n1. У __init__ збережіть brand у self.brand\n2. У describe() використайте return \"Brand: X\", де X — це brand\n\nОчікуваний вихід: Brand: Toyota",
         "starterCode": "class Car:\n    def __init__(self, brand):\n        # Step 1: Store brand in self.brand\n        self.brand = # your code\n    \n    def describe(self):\n        # Step 2: Return \"Brand: {brand}\"\n        return # your code\n\ncar = Car(\"Toyota\")\nprint(car.describe())",
         "language": "python",
         "testCases": [
@@ -98,7 +98,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Крок 1: self.brand = бренд\nКрок 2: поверніть f\"Бренд: {self.brand}\"",
+        "hint": "Крок 1: self.brand = brand\nКрок 2: return f\"Brand: {self.brand}\"",
         "solution": "class Car:\n    def __init__(self, brand):\n        self.brand = brand\n    \n    def describe(self):\n        return f\"Brand: {self.brand}\"\n\ncar = Car(\"Toyota\")\nprint(car.describe())",
         "xpReward": 15
       },
@@ -110,11 +110,11 @@
       "courseId": "python-intermediate",
       "moduleId": "oop",
       "title": "Спадщина",
-      "description": "Дізнайтеся, як повторно використовувати код із успадкуванням класів",
+      "description": "Дізнайтеся, як повторно використовувати код із успадкуванням class",
       "theorySlides": [
         {
           "title": "Що таке спадщина? 🌳",
-          "content": "Спадкування дозволяє класу успадковувати атрибути та методи від іншого класу.\n\nТермінологія:\n• **Батьківський/базовий клас**: клас, який успадковується\n• **Дочірній/похідний клас**: клас, який успадковує\n• **Перевизначити**: замінити батьківський метод на дочірній",
+          "content": "Спадкування дозволяє class успадковувати атрибути та методи від іншого class.\n\nТермінологія:\n• **Батьківський/базовий class**: class, який успадковується\n• **Дочірній/похідний class**: class, який успадковує\n• **Перевизначити**: замінити батьківський метод на дочірній",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -131,8 +131,8 @@
           "order": 1
         },
         {
-          "title": "Створення дочірніх класів",
-          "content": "Передайте батьківський клас у дужках.",
+          "title": "Створення дочірніх class",
+          "content": "Передайте батьківський class у дужках.",
           "codeSnippet": "class Animal:\n    def __init__(self, name):\n        self.name = name\n\nclass Cat(Animal):\n    def speak(self):\n        return f\"{self.name} says Meow!\"\n\ncat = Cat(\"Whiskers\")\nprint(cat.speak())",
           "codeLanguage": "python",
           "imageUrl": null,
@@ -141,7 +141,7 @@
         },
         {
           "title": "Використання super() 🦸",
-          "content": "super() викликає методи батьківського класу.",
+          "content": "super() викликає методи батьківського class.",
           "codeSnippet": "class Animal:\n    def __init__(self, name):\n        self.name = name\n\nclass Dog(Animal):\n    def __init__(self, name, breed):\n        super().__init__(name)  # Call parent __init__\n        self.breed = breed\n\ndog = Dog(\"Max\", \"Labrador\")\nprint(dog.name, dog.breed)",
           "codeLanguage": "python",
           "imageUrl": null,
@@ -155,24 +155,24 @@
             "question": "Що робить super()?",
             "options": [
               "Створює новий об'єкт",
-              "Викликає методи батьківського класу",
-              "Видаляє клас",
+              "Викликає методи батьківського class",
+              "Видаляє class",
               "Робить код швидшим"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "super() дозволяє викликати методи з батьківського класу.",
+            "explanation": "super() дозволяє викликати методи з батьківського class.",
             "type": "multipleChoice"
           },
           {
-            "question": "Як створити дочірній клас?",
+            "question": "Як створити дочірній class?",
             "options": [
-              "клас Child розширює Parent",
-              "клас Child(Parent)",
-              "клас Дитина: Батько",
+              "class Child extends Parent",
+              "class Child(Parent)",
+              "class Child: Parent",
               "Child = Parent.extend()"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "У Python помістіть назву батьківського класу в дужки: class Child(Parent)",
+            "explanation": "У Python помістіть назву батьківського class у дужки: class Child(Parent)",
             "type": "multipleChoice"
           },
           {
@@ -184,15 +184,15 @@
               "Зробити метод приватним"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Перевизначення означає визначення методу в дочірньому класі з тим самим іменем, що й у батьківського, для заміни поведінки.",
+            "explanation": "Перевизначення означає визначення методу в дочірньому class з тим самим іменем, що й у батьківського, для заміни поведінки.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Створити студентський клас",
-        "description": "Створити клас студента, який успадковує від особи з атрибутом оцінки.",
+        "title": "Створити class Student",
+        "description": "Створіть class Student, який успадковує Person і має атрибут grade.",
         "starterCode": "class Person:\n    def __init__(self, name):\n        self.name = name\n\nclass Student(Person):\n    def __init__(self, name, grade):\n        # Use super() and add grade\n        pass\n    \n    def info(self):\n        # Return \"Name: X, Grade: Y\"\n        pass\n\ns = Student(\"Alex\", 10)\nprint(s.info())",
         "language": "python",
         "testCases": [
@@ -306,7 +306,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Використовуйте, якщо x % 2 == 0 і x**2",
+        "hint": "Використовуйте if x % 2 == 0 та x**2",
         "solution": "squares = [x**2 for x in range(1, 11) if x % 2 == 0]\nprint(squares)",
         "xpReward": 15
       },
@@ -317,12 +317,12 @@
       "id": "python_int_lesson_4",
       "courseId": "python-intermediate",
       "moduleId": "advanced",
-      "title": "Лямбда-функції",
+      "title": "lambda-функції",
       "description": "Створення анонімних функцій",
       "theorySlides": [
         {
-          "title": "Лямбда-функції ⚡",
-          "content": "Лямбда-функції — це невеликі анонімні функції.\n\nСинтаксис: лямбда-аргументи: вираз\n\nІдеально підходить для коротких одноразових заходів.",
+          "title": "lambda-функції ⚡",
+          "content": "lambda-функції — це невеликі анонімні функції.\n\nСинтаксис: lambda arguments: expression\n\nІдеально підходять для коротких одноразових дій.",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -330,8 +330,8 @@
           "order": 0
         },
         {
-          "title": "Лямбда проти звичайних функцій 🆚",
-          "content": "Порівняння:\n\n**Звичайна функція:**\ndef add(a, b):\n    повернути a + b\n\n**Лямбда-функція:**\nдодати = лямбда a, b: a + b\n\nВикористовуйте лямбда для простих одноразових операцій.",
+          "title": "lambda проти звичайних функцій 🆚",
+          "content": "Порівняння:\n\n**Звичайна функція:**\ndef add(a, b):\n    return a + b\n\n**lambda-функція:**\nadd = lambda a, b: a + b\n\nВикористовуйте lambda для простих одноразових операцій.",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -339,7 +339,7 @@
           "order": 1
         },
         {
-          "title": "Лямбда з sorted()",
+          "title": "lambda з sorted()",
           "content": "Сортування за допомогою спеціальних ключів.",
           "codeSnippet": "students = [(\"Alice\", 85), (\"Bob\", 92), (\"Charlie\", 78)]\n\n# Sort by grade (second element)\nsorted_students = sorted(students, key=lambda s: s[1])\nprint(sorted_students)",
           "codeLanguage": "python",
@@ -348,8 +348,8 @@
           "order": 2
         },
         {
-          "title": "Лямбда з map() і filter() 🔧",
-          "content": "Використовуйте лямбда з інструментами функціонального програмування.",
+          "title": "lambda з map() і filter() 🔧",
+          "content": "Використовуйте lambda з інструментами функціонального програмування.",
           "codeSnippet": "numbers = [1, 2, 3, 4, 5]\n\n# Double each number\ndoubled = list(map(lambda x: x*2, numbers))\n# [2, 4, 6, 8, 10]\n\n# Keep only evens\nevens = list(filter(lambda x: x%2==0, numbers))\n# [2, 4]",
           "codeLanguage": "python",
           "imageUrl": null,
@@ -360,27 +360,27 @@
       "quiz": {
         "questions": [
           {
-            "question": "Виправити лямбда, щоб додати два числа?",
+            "question": "Виправити lambda, щоб додати два числа?",
             "options": [
-              "лямбда: a+b",
-              "лямбда a,b: a+b",
-              "def лямбда(a,b)",
+              "lambda: a+b",
+              "lambda a,b: a+b",
+              "def lambda(a,b)",
               "a,b => a+b"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Синтаксис: параметри лямбда: вираз",
+            "explanation": "Синтаксис: lambda parameters: expression",
             "type": "multipleChoice"
           },
           {
-            "question": "Що можуть містити лямбда-функції?",
+            "question": "Що можуть містити lambda-функції?",
             "options": [
               "Кілька заяв",
               "Один вираз",
               "Цикли та блоки if/else",
-              "Визначення класів"
+              "Визначення class"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Лямбда-функції можуть містити лише один вираз, а не кілька операторів.",
+            "explanation": "lambda-функції можуть містити лише один expression, а не кілька statements.",
             "type": "multipleChoice"
           },
           {
@@ -392,7 +392,7 @@
               "Помилка"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "map() застосовує лямбда до кожного елемента: 1²=1, 2²=4, 3²=9",
+            "explanation": "map() застосовує lambda до кожного елемента: 1²=1, 2²=4, 3²=9",
             "type": "multipleChoice"
           }
         ],
@@ -400,7 +400,7 @@
       },
       "codingChallenge": {
         "title": "Сортувати за довжиною",
-        "description": "Сортуйте слова за довжиною за допомогою лямбда.",
+        "description": "Сортуйте слова за довжиною за допомогою lambda.",
         "starterCode": "words = [\"python\", \"is\", \"awesome\"]\n# Sort by length\nresult = sorted(words, key=# your lambda)\nprint(result)",
         "language": "python",
         "testCases": [
@@ -410,7 +410,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Використовуйте лямбда w: len(w)",
+        "hint": "Використовуйте lambda w: len(w)",
         "solution": "words = [\"python\", \"is\", \"awesome\"]\nresult = sorted(words, key=lambda w: len(w))\nprint(result)",
         "xpReward": 15
       },
