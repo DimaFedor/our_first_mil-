@@ -87,28 +87,35 @@ class AuthService {
     String preferredLanguage = 'python',
   }) async {
     try {
-      await _ensureGoogleInitialized();
       AppLogger.info('Starting Google Sign-In...');
+      final UserCredential userCredential;
+      if (kIsWeb) {
+        final provider = GoogleAuthProvider()
+          ..addScope('email')
+          ..addScope('profile')
+          ..setCustomParameters({'prompt': 'select_account'});
+        userCredential = await _auth.signInWithPopup(provider);
+      } else {
+        await _ensureGoogleInitialized();
+        final account = await _googleSignIn.authenticate();
+        AppLogger.info('Got Google account: ${account.email}');
 
-      final account = await _googleSignIn.authenticate();
+        final authentication = account.authentication;
+        final idToken = authentication.idToken;
 
-      AppLogger.info('Got Google account: ${account.email}');
+        if (idToken == null || idToken.isEmpty) {
+          AppLogger.error('Google returned null or empty idToken', null);
+          throw const AuthFlowException(
+            code: 'missing-google-token',
+            message: 'Google не повернув токен авторизації.',
+          );
+        }
 
-      final authentication = account.authentication;
-      final idToken = authentication.idToken;
-
-      if (idToken == null || idToken.isEmpty) {
-        AppLogger.error('Google returned null or empty idToken', null);
-        throw const AuthFlowException(
-          code: 'missing-google-token',
-          message: 'Google не повернув токен авторизації.',
-        );
+        final credential = GoogleAuthProvider.credential(idToken: idToken);
+        AppLogger.info('Created GoogleAuthProvider credential');
+        userCredential = await _auth.signInWithCredential(credential);
       }
 
-      final credential = GoogleAuthProvider.credential(idToken: idToken);
-      AppLogger.info('Created GoogleAuthProvider credential');
-
-      final userCredential = await _auth.signInWithCredential(credential);
       AppLogger.info(
         'Firebase sign-in successful for: ${userCredential.user?.email}',
       );
@@ -163,6 +170,20 @@ class AuthService {
       }
     } on FirebaseAuthException catch (e) {
       AppLogger.error('FirebaseAuthException in Google Sign-In: ${e.code}', e);
+      if (e.code == 'popup-closed-by-user' ||
+          e.code == 'cancelled-popup-request') {
+        throw const AuthFlowException(
+          code: 'google-sign-in-cancelled',
+          message: 'Google sign-in was cancelled.',
+        );
+      }
+      if (e.code == 'popup-blocked') {
+        throw const AuthFlowException(
+          code: 'google-sign-in-popup-blocked',
+          message:
+              'Browser blocked Google sign-in popup. Allow popups and try again.',
+        );
+      }
       throw _handleAuthException(e);
     } catch (e, stackTrace) {
       AppLogger.error('Unexpected error in Google Sign-In: $e', e, stackTrace);

@@ -349,69 +349,90 @@ class OnboardingPage extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-      child: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(24),
-        decoration: BoxDecoration(
-          color: isDarkTheme
-              ? Colors.white.withValues(alpha: 0.06)
-              : Colors.white.withValues(alpha: 0.88),
-          borderRadius: BorderRadius.circular(24),
-          border: Border.all(
-            color: isDarkTheme
-                ? Colors.white.withValues(alpha: 0.12)
-                : const Color(0xFFD6E2FF),
-          ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: 120,
-              height: 120,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(colors: gradient),
-                shape: BoxShape.circle,
-                boxShadow: [
-                  BoxShadow(
-                    color: gradient.first.withValues(alpha: 0.3),
-                    blurRadius: 20,
-                    offset: const Offset(0, 10),
-                  ),
-                ],
-              ),
-              child: Center(
-                child: Text(icon, style: const TextStyle(fontSize: 48)),
-              ),
-            ),
-            const SizedBox(height: 28),
-            Text(
-              titleKey != null
-                  ? (AppLocalizations.of(context)?.get(titleKey!) ?? title)
-                  : title,
-              style: TextStyle(
-                color: onSurface,
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-              ),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 14),
-            Text(
-              descKey != null
-                  ? (AppLocalizations.of(context)?.get(descKey!) ?? description)
-                  : description,
-              style: TextStyle(
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final isCompact = constraints.maxHeight < 420;
+          final contentPadding = isCompact ? 18.0 : 24.0;
+          final minScrollableHeight = constraints.maxHeight > contentPadding * 2
+              ? constraints.maxHeight - (contentPadding * 2)
+              : 0.0;
+
+          return Container(
+            width: double.infinity,
+            padding: EdgeInsets.all(contentPadding),
+            decoration: BoxDecoration(
+              color: isDarkTheme
+                  ? Colors.white.withValues(alpha: 0.06)
+                  : Colors.white.withValues(alpha: 0.88),
+              borderRadius: BorderRadius.circular(24),
+              border: Border.all(
                 color: isDarkTheme
-                    ? Colors.white.withValues(alpha: 0.82)
-                    : onSurface.withValues(alpha: 0.76),
-                fontSize: 17,
-                height: 1.5,
+                    ? Colors.white.withValues(alpha: 0.12)
+                    : const Color(0xFFD6E2FF),
               ),
-              textAlign: TextAlign.center,
             ),
-          ],
-        ),
+            child: SingleChildScrollView(
+              physics: const ClampingScrollPhysics(),
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minHeight: minScrollableHeight),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: isCompact ? 88 : 120,
+                      height: isCompact ? 88 : 120,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(colors: gradient),
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: gradient.first.withValues(alpha: 0.3),
+                            blurRadius: 20,
+                            offset: const Offset(0, 10),
+                          ),
+                        ],
+                      ),
+                      child: Center(
+                        child: Text(
+                          icon,
+                          style: TextStyle(fontSize: isCompact ? 36 : 48),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: isCompact ? 18 : 28),
+                    Text(
+                      titleKey != null
+                          ? (AppLocalizations.of(context)?.get(titleKey!) ??
+                                title)
+                          : title,
+                      style: TextStyle(
+                        color: onSurface,
+                        fontSize: isCompact ? 24 : 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: isCompact ? 10 : 14),
+                    Text(
+                      descKey != null
+                          ? (AppLocalizations.of(context)?.get(descKey!) ??
+                                description)
+                          : description,
+                      style: TextStyle(
+                        color: isDarkTheme
+                            ? Colors.white.withValues(alpha: 0.82)
+                            : onSurface.withValues(alpha: 0.76),
+                        fontSize: isCompact ? 15 : 17,
+                        height: 1.5,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }

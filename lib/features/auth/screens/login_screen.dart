@@ -277,6 +277,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
           );
         case 'google-sign-in-cancelled':
           return _t('auth_google_cancelled', 'Google sign-in was cancelled.');
+        case 'google-sign-in-popup-blocked':
+          return _t(
+            'auth_google_popup_blocked',
+            'Browser blocked Google sign-in popup. Allow popups and try again.',
+          );
         default:
           break;
       }
@@ -292,6 +297,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
       );
     }
     if (message.contains('popup_closed_by_user') ||
+        message.contains('popup-closed-by-user') ||
         message.contains('cancelled') ||
         message.contains('canceled')) {
       return _t('auth_google_cancelled', 'Google sign-in was cancelled.');
