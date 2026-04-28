@@ -464,6 +464,14 @@ class CourseLocalizationService {
       return await RuntimeTranslationService.translateText(
         text: fallbackText,
         targetLanguageCode: languageCode,
+      ).timeout(
+        const Duration(seconds: 5),
+        onTimeout: () {
+          debugPrint(
+            'Runtime translation timed out for "$languageCode". Using fallback text.',
+          );
+          return fallbackText;
+        },
       );
     } catch (e) {
       // If runtime translation fails, fall back to the fallback text

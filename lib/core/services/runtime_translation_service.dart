@@ -94,11 +94,22 @@ class RuntimeTranslationService {
         translatorLanguageCode: translatorCode,
         cacheKey: cacheKey,
       ),
+    ).timeout(
+      const Duration(seconds: 8),
+      onTimeout: () {
+        debugPrint(
+          'Translation timed out for "$normalizedLanguageCode". Using source text.',
+        );
+        return text;
+      },
     );
 
     _pendingTranslations[cacheKey] = translationFuture;
     try {
       return await translationFuture;
+    } catch (e) {
+      debugPrint('Translation error for "$normalizedLanguageCode": $e');
+      return text;
     } finally {
       _pendingTranslations.remove(cacheKey);
     }
@@ -144,18 +155,32 @@ class RuntimeTranslationService {
     }
 
     if (missingTexts.isNotEmpty) {
-      final translatedMissing = await _enqueueTranslation(
-        () => _translateBatchInternal(
-          sourceTexts: missingTexts,
-          translatorLanguageCode: translatorCode,
-        ),
-      );
+      try {
+        final translatedMissing = await _enqueueTranslation(
+          () => _translateBatchInternal(
+            sourceTexts: missingTexts,
+            translatorLanguageCode: translatorCode,
+          ),
+        ).timeout(
+          const Duration(seconds: 10),
+          onTimeout: () {
+            debugPrint(
+              'Batch translation timed out for "$targetLanguageCode". Using source texts.',
+            );
+            return missingTexts;
+          },
+        );
 
-      for (var index = 0; index < missingIndexes.length; index++) {
-        final sourceIndex = missingIndexes[index];
-        final translatedText = translatedMissing[index];
-        translated[sourceIndex] = translatedText;
-        _textCache['$translatorCode|${texts[sourceIndex]}'] = translatedText;
+        for (var index = 0; index < missingIndexes.length; index++) {
+          final sourceIndex = missingIndexes[index];
+          final translatedText = translatedMissing[index];
+          translated[sourceIndex] = translatedText;
+          _textCache['$translatorCode|${texts[sourceIndex]}'] = translatedText;
+        }
+      } catch (e) {
+        debugPrint(
+          'Batch translation failed for "$targetLanguageCode": $e. Using source texts.',
+        );
       }
     }
 

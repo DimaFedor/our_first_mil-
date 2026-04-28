@@ -96,6 +96,14 @@ class LessonLocalizationService {
         localizedLessons = await _autoTranslateLessons(
           lessons: localizedLessons,
           targetLanguageCode: primaryLanguageCode,
+        ).timeout(
+          const Duration(seconds: 15),
+          onTimeout: () {
+            debugPrint(
+              'Auto-translation timed out for "$courseId" ($primaryLanguageCode). Using base lessons.',
+            );
+            return baseLessons;
+          },
         );
       } catch (error) {
         debugPrint(
