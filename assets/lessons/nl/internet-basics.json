@@ -1,0 +1,1705 @@
+{
+  "courseId": "internet-basics",
+  "lessons": [
+    {
+      "id": "internet_basics_lesson_1",
+      "courseId": "internet-basics",
+      "moduleId": "internet",
+      "title": "What Is the Internet?",
+      "description": "The internet is a network of networks sharing information.",
+      "theorySlides": [
+        {
+          "title": "What Is the Internet? - in simple words",
+          "content": "The internet is a network of networks sharing information.\n\nReal-life example:\nLike roads connecting many cities so data can travel between them.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "print(\"Connected networks\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"What Is the Internet?\"?",
+            "options": [
+              "The internet is a network of networks sharing information.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "print(\"Connected networks\")",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "Like roads connecting many cities so data can travel between them.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"What Is the Internet?\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: What Is the Internet?\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"What Is the Internet - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: What Is the Internet?",
+        "description": "Write a tiny Python snippet that prints exactly: Connected networks",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Connected networks",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"Connected networks\")",
+        "xpReward": 15
+      },
+      "xpReward": 18,
+      "order": 0
+    },
+    {
+      "id": "internet_basics_lesson_2",
+      "courseId": "internet-basics",
+      "moduleId": "internet",
+      "title": "Client and Server",
+      "description": "Client requests data; server sends back a response.",
+      "theorySlides": [
+        {
+          "title": "Client and Server - in simple words",
+          "content": "Client requests data; server sends back a response.\n\nReal-life example:\nRestaurant guest orders, kitchen prepares, waiter delivers.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "print(\"Client asks, server answers\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"Client and Server\"?",
+            "options": [
+              "Client requests data; server sends back a response.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "print(\"Client asks, server answers\")",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "Restaurant guest orders, kitchen prepares, waiter delivers.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Client and Server\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: Client and Server\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Client and Server - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: Client and Server",
+        "description": "Write a tiny Python snippet that prints exactly: Client asks, server answers",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Client asks, server answers",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"Client asks, server answers\")",
+        "xpReward": 15
+      },
+      "xpReward": 20,
+      "order": 1
+    },
+    {
+      "id": "internet_basics_lesson_3",
+      "courseId": "internet-basics",
+      "moduleId": "internet",
+      "title": "URL Basics",
+      "description": "A URL is an address for a resource on the web.",
+      "theorySlides": [
+        {
+          "title": "URL Basics - in simple words",
+          "content": "A URL is an address for a resource on the web.\n\nReal-life example:\nJust like a postal address points to one building.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "print(\"https://example.com\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"URL Basics\"?",
+            "options": [
+              "A URL is an address for a resource on the web.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "print(\"https://example.com\")",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "Just like a postal address points to one building.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"URL Basics\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: URL Basics\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"URL Basics - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: URL Basics",
+        "description": "Write a tiny Python snippet that prints exactly: https://example.com",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "https://example.com",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"https://example.com\")",
+        "xpReward": 15
+      },
+      "xpReward": 22,
+      "order": 2
+    },
+    {
+      "id": "internet_basics_lesson_4",
+      "courseId": "internet-basics",
+      "moduleId": "internet",
+      "title": "DNS in Simple Words",
+      "description": "DNS translates domain names into machine IP addresses.",
+      "theorySlides": [
+        {
+          "title": "DNS in Simple Words - in simple words",
+          "content": "DNS translates domain names into machine IP addresses.\n\nReal-life example:\nLike your phone contacts converting names into phone numbers.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "print(\"Domain -> IP\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"DNS in Simple Words\"?",
+            "options": [
+              "DNS translates domain names into machine IP addresses.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "print(\"Domain -> IP\")",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "Like your phone contacts converting names into phone numbers.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"DNS in Simple Words\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: DNS in Simple Words\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"DNS in Simple Words - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: DNS in Simple Words",
+        "description": "Write a tiny Python snippet that prints exactly: Domain -> IP",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Domain -> IP",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"Domain -> IP\")",
+        "xpReward": 15
+      },
+      "xpReward": 24,
+      "order": 3
+    },
+    {
+      "id": "internet_basics_lesson_5",
+      "courseId": "internet-basics",
+      "moduleId": "internet",
+      "title": "HTTP Request/Response",
+      "description": "HTTP defines how browser and server exchange messages.",
+      "theorySlides": [
+        {
+          "title": "HTTP Request/Response - in simple words",
+          "content": "HTTP defines how browser and server exchange messages.\n\nReal-life example:\nYou ask a librarian for a book, they return the requested item.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "print(\"200 OK\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"HTTP Request/Response\"?",
+            "options": [
+              "HTTP defines how browser and server exchange messages.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "print(\"200 OK\")",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "You ask a librarian for a book, they return the requested item.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"HTTP Request/Response\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: HTTP Request/Response\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"HTTP RequestResponse - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: HTTP Request/Response",
+        "description": "Write a tiny Python snippet that prints exactly: 200 OK",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "200 OK",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"200 OK\")",
+        "xpReward": 15
+      },
+      "xpReward": 26,
+      "order": 4
+    },
+    {
+      "id": "internet_basics_lesson_6",
+      "courseId": "internet-basics",
+      "moduleId": "internet",
+      "title": "Status Codes",
+      "description": "Status codes explain whether request succeeded or failed.",
+      "theorySlides": [
+        {
+          "title": "Status Codes - in simple words",
+          "content": "Status codes explain whether request succeeded or failed.\n\nReal-life example:\nTraffic lights quickly show if you can go, wait, or stop.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "print(\"404 Not Found\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"Status Codes\"?",
+            "options": [
+              "Status codes explain whether request succeeded or failed.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "print(\"404 Not Found\")",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "Traffic lights quickly show if you can go, wait, or stop.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Status Codes\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: Status Codes\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Status Codes - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: Status Codes",
+        "description": "Write a tiny Python snippet that prints exactly: 404 Not Found",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "404 Not Found",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"404 Not Found\")",
+        "xpReward": 15
+      },
+      "xpReward": 28,
+      "order": 5
+    },
+    {
+      "id": "internet_basics_lesson_7",
+      "courseId": "internet-basics",
+      "moduleId": "internet",
+      "title": "Browser Cache",
+      "description": "Cache stores copies to load pages faster next time.",
+      "theorySlides": [
+        {
+          "title": "Browser Cache - in simple words",
+          "content": "Cache stores copies to load pages faster next time.\n\nReal-life example:\nKeeping frequently used notes on your desk for quick access.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "print(\"Saved copy\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"Browser Cache\"?",
+            "options": [
+              "Cache stores copies to load pages faster next time.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "print(\"Saved copy\")",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "Keeping frequently used notes on your desk for quick access.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Browser Cache\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: Browser Cache\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Browser Cache - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: Browser Cache",
+        "description": "Write a tiny Python snippet that prints exactly: Saved copy",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Saved copy",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"Saved copy\")",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 6
+    },
+    {
+      "id": "internet_basics_lesson_8",
+      "courseId": "internet-basics",
+      "moduleId": "internet",
+      "title": "API Basics",
+      "description": "APIs let apps exchange structured data between systems.",
+      "theorySlides": [
+        {
+          "title": "API Basics - in simple words",
+          "content": "APIs let apps exchange structured data between systems.\n\nReal-life example:\nA waiter carries your order between you and the kitchen.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "print(\"Data in JSON\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"API Basics\"?",
+            "options": [
+              "APIs let apps exchange structured data between systems.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "print(\"Data in JSON\")",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "A waiter carries your order between you and the kitchen.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"API Basics\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: API Basics\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"API Basics - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: API Basics",
+        "description": "Write a tiny Python snippet that prints exactly: Data in JSON",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Data in JSON",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"Data in JSON\")",
+        "xpReward": 15
+      },
+      "xpReward": 32,
+      "order": 7
+    },
+    {
+      "id": "internet_basics_lesson_9",
+      "courseId": "internet-basics",
+      "moduleId": "internet",
+      "title": "HTTPS and Security",
+      "description": "HTTPS encrypts data between browser and server.",
+      "theorySlides": [
+        {
+          "title": "HTTPS and Security - in simple words",
+          "content": "HTTPS encrypts data between browser and server.\n\nReal-life example:\nA sealed envelope protects letter content in transit.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "print(\"Encrypted connection\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"HTTPS and Security\"?",
+            "options": [
+              "HTTPS encrypts data between browser and server.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "print(\"Encrypted connection\")",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "A sealed envelope protects letter content in transit.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"HTTPS and Security\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: HTTPS and Security\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"HTTPS and Security - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: HTTPS and Security",
+        "description": "Write a tiny Python snippet that prints exactly: Encrypted connection",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Encrypted connection",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"Encrypted connection\")",
+        "xpReward": 15
+      },
+      "xpReward": 34,
+      "order": 8
+    },
+    {
+      "id": "internet_basics_lesson_10",
+      "courseId": "internet-basics",
+      "moduleId": "internet",
+      "title": "Connection Troubleshooting",
+      "description": "Basic network checks help identify where connection breaks.",
+      "theorySlides": [
+        {
+          "title": "Connection Troubleshooting - in simple words",
+          "content": "Basic network checks help identify where connection breaks.\n\nReal-life example:\nWhen water stops, you check faucet, pipe, then main valve.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "print(\"Check DNS and network\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"Connection Troubleshooting\"?",
+            "options": [
+              "Basic network checks help identify where connection breaks.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "print(\"Check DNS and network\")",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "When water stops, you check faucet, pipe, then main valve.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Connection Troubleshooting\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: Connection Troubleshooting\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Connection Troubleshooting - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: Connection Troubleshooting",
+        "description": "Write a tiny Python snippet that prints exactly: Check DNS and network",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Check DNS and network",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"Check DNS and network\")",
+        "xpReward": 15
+      },
+      "xpReward": 36,
+      "order": 9
+    }
+  ]
+}

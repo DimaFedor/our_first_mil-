@@ -5,12 +5,12 @@
       "id": "sql_int_lesson_1",
       "courseId": "sql-intermediate",
       "moduleId": "joins",
-      "title": "SQL JOIN",
+      "title": "SQL JOINs",
       "description": "Об’єднайте дані з кількох таблиць",
       "theorySlides": [
         {
-          "title": "JOIN 🔗",
-          "content": "Об’єднати рядки з кількох таблиць:\n• **INNER JOIN**: лише відповідні рядки\n• **LEFT JOIN**: усі ліві + відповідні праві\n• **RIGHT JOIN**: все праворуч + відповідне ліворуч\n• **FULL OUTER JOIN**: усе з обох",
+          "title": "JOINs 🔗",
+          "content": "Об’єднайте рядки з кількох таблиць:\n• **INNER JOIN**: лише відповідні рядки\n• **LEFT JOIN**: усі ліві + відповідні праві\n• **ПРАВО ОБ'ЄДНАТИ**: все праворуч + відповідне ліворуч\n• **ПОВНЕ ОБ’ЄДНАННЯ**: усе з обох",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -27,8 +27,8 @@
           "order": 1
         },
         {
-          "title": "RIGHT JOIN AND FULL OUTER JOIN 🔄",
-          "content": "Інші типи JOIN:\n• **ПРАВЕ ОБ’ЄДНАННЯ**: усі праві рядки таблиці + відповідні ліві\n• **FULL OUTER JOIN**: усі рядки з обох таблиць\n• NULL заповнює відсутні збіги",
+          "title": "ПРАВО та ПОВНЕ ПРИЄДНАННЯ 🔄",
+          "content": "Більше типів JOIN:\n• **ПРАВЕ ОБ’ЄДНАННЯ**: усі праві рядки таблиці + відповідні ліві\n• **FULL OUTER JOIN**: усі рядки з обох таблиць\n• NULL заповнює відсутні збіги",
           "codeSnippet": "-- RIGHT JOIN: All orders, even without users\nSELECT users.name, orders.total\nFROM users\nRIGHT JOIN orders ON users.id = orders.user_id;\n\n-- FULL JOIN: All users AND all orders\nSELECT users.name, orders.total\nFROM users\nFULL OUTER JOIN orders ON users.id = orders.user_id;",
           "codeLanguage": "sql",
           "imageUrl": null,
@@ -36,8 +36,8 @@
           "order": 2
         },
         {
-          "title": "Кілька приєднань 🔗🔗",
-          "content": "Об’єднайте кілька таблиць разом:\n• Об’єднайте стільки столів, скільки потрібно\n• Кожне JOIN додає більше даних\n• Порядок має значення для читабельності",
+          "title": "Кілька JOIN 🔗🔗",
+          "content": "Об'єднати кілька таблиць разом:\n• Об’єднайте стільки столів, скільки потрібно\n• Кожне JOIN додає більше даних\n• Порядок має значення для зручності читання",
           "codeSnippet": "SELECT \n  u.name,\n  o.order_date,\n  p.product_name,\n  oi.quantity\nFROM users u\nINNER JOIN orders o ON u.id = o.user_id\nINNER JOIN order_items oi ON o.id = oi.order_id\nINNER JOIN products p ON oi.product_id = p.id;",
           "codeLanguage": "sql",
           "imageUrl": null,
@@ -45,7 +45,7 @@
           "order": 3
         },
         {
-          "title": "Self JOIN 🪞",
+          "title": "Приєднатися самостійно 🪞",
           "content": "Приєднати таблицю до себе:\n• Корисно для ієрархічних даних\n• Порівняти рядки в одній таблиці\n• Необхідно використовувати псевдоніми таблиць",
           "codeSnippet": "-- Find employees and their managers\nSELECT \n  e.name AS employee,\n  m.name AS manager\nFROM employees e\nLEFT JOIN employees m ON e.manager_id = m.id;\n\n-- Find pairs of users from same city\nSELECT a.name, b.name, a.city\nFROM users a\nJOIN users b ON a.city = b.city AND a.id < b.id;",
           "codeLanguage": "sql",
@@ -61,7 +61,7 @@
             "options": [
               "INNER JOIN",
               "LEFT JOIN",
-              "RIGHT JOIN",
+              "ПРАВО ПРИЄДНАТИ",
               "CROSS JOIN"
             ],
             "correctAnswerIndex": 1,
@@ -71,29 +71,29 @@
           {
             "question": "Що повертає FULL OUTER JOIN?",
             "options": [
-              "Лише збігаються рядки",
+              "Тільки відповідні рядки",
               "Усі рядки з лівої таблиці",
-              "Усі рядки правої таблиці",
+              "Усі рядки з правої таблиці",
               "Усі рядки з обох таблиць"
             ],
             "correctAnswerIndex": 3,
-            "explanation": "FULL OUTER JOIN повертає всі рядки з обох таблиць, з NULL для невідповідних рядків.",
+            "explanation": "FULL OUTER JOIN повертає всі рядки з обох таблиць із NULL для невідповідних рядків.",
             "type": "multipleChoice"
           },
           {
-            "question": "Коли б ви використовували самостійний JOIN?",
+            "question": "Коли б ви використали self JOIN?",
             "options": [
-              "Дублювати таблицю",
+              "Щоб створити дублікат таблиці",
               "Щоб знайти ієрархічні зв’язки в одній таблиці",
               "Щоб видалити дублікати",
               "Щоб створити резервну копію"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Самооб’єднання корисне для ієрархічних даних, як-от співробітників/керівників, або пошуку зв’язків у одній таблиці.",
+            "explanation": "Власні об’єднання корисні для ієрархічних даних, таких як співробітники/керівники, або для пошуку зв’язків у одній таблиці.",
             "type": "multipleChoice"
           },
           {
-            "question": "Скільки таблиць можна JOIN в одному запиті?",
+            "question": "Скільки таблиць ви можете ПРИЄДНАТИ в одному запиті?",
             "options": [
               "Тільки 2",
               "Максимум 5",
@@ -101,15 +101,87 @@
               "Скільки потрібно"
             ],
             "correctAnswerIndex": 3,
-            "explanation": "Ви можете з’єднати стільки JOIN, скільки потрібно, хоча продуктивність може знизитися з великою кількістю таблиць.",
+            "explanation": "Ви можете ланцюгувати стільки JOIN, скільки потрібно, хоча продуктивність може знизитися з великою кількістю таблиць.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яка основна мета «SQL JOIN»?",
+            "options": [
+              "Зрозумійте та застосуйте основну ідею в коді",
+              "Запам'ятайте довільний синтаксис без практики",
+              "Пропустіть приклади та читайте лише визначення",
+              "Спершу зосередьтеся на непов’язаних складних темах"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Метою кожного уроку є формування практичних навичок за допомогою однієї цілеспрямованої концепції.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який приклад SQL синтаксично дійсний?",
+            "options": [
+              "ВИБРАТИ ім'я ВІД користувачів;",
+              "SELECT FROM ім’я користувача;",
+              "константний запит = користувачі;",
+              "<sql>SELECT</sql>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Це правильно сформований фрагмент для SQL у контексті цього уроку.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який підхід найкраще відповідає цьому стилю уроку?",
+            "options": [
+              "Виконайте один маленький крок, перевірте його, а потім продовжуйте",
+              "Пишіть все відразу без перевірки",
+              "Ігноруйте помилки та переходьте до наступного уроку",
+              "Скопіюйте код наосліп, не розуміючи"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Стиль курсу поетапний: маленькі кроки + швидка перевірка.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Перш ніж надсилати \"Приєднатися до користувачів і замовлення\", що потрібно перевірити?",
+            "options": [
+              "Результат/поведінка відповідає очікуваному результату",
+              "Код містить якомога більше рядків",
+              "Імена змінних мають бути максимально короткими",
+              "Коментарів ніде немає"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Перевірка очікуваної поведінки спочатку запобігає поширеним помилкам подання.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який оператор найкраще розширює \"JOIN\"?",
+            "options": [
+              "Практикуйте концепцію за допомогою нового input/прикладу",
+              "Негайно перейдіть на іншу тему",
+              "Видаліть весь попередній код і перезапустіть",
+              "Пропустіть кодування та дивіться лише пояснення"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Застосування тієї самої концепції до нового прикладу поглиблює розуміння.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Якщо ваша відповідь неправильна, який перший крок налагодження буде найрозумнішим?",
+            "options": [
+              "Перевірте проміжні значення та припущення",
+              "Переписати з нуля без перегляду",
+              "Вгадайте випадкове виправлення та надішліть повторно",
+              "Ігноруйте невдалий відмінок"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Перегляд припущень і проміжних результатів є найшвидшим безпечним шляхом налагодження.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Приєднуйтеся до користувачів і замовлень",
-        "description": "Напишіть запит, щоб отримати:\n• users.name\n• orders.total\n\nВикористовуйте LEFT JOIN, щоб включити користувачів, навіть якщо вони не мають замовлень.\n\nСтруктура:\nSELECT ... FROM users LEFT JOIN orders ON ...",
+        "title": "Приєднати користувачів і замовлення",
+        "description": "Напишіть запит, щоб отримати:\n• ім'я користувачів\n• замовлення.всього\n\nВикористовуйте LEFT JOIN, щоб включити користувачів, навіть якщо вони не мають замовлень.\n\nСтруктура:\nВИБРАТИ ... ВІД користувачів LEFT JOIN orders ON ...",
         "starterCode": "-- Select users.name and orders.total\n-- Use LEFT JOIN to include all users\nSELECT users.name, orders.total\nFROM users\n-- Add LEFT JOIN here\n",
         "language": "sql",
         "testCases": [
@@ -119,7 +191,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Додайте: LEFT JOIN orders ON users.id = orders.user_id",
+        "hint": "Add: LEFT JOIN orders ON users.id = orders.user_id",
         "solution": "SELECT users.name, orders.total\nFROM users\nLEFT JOIN orders ON users.id = orders.user_id;",
         "xpReward": 15
       },
@@ -144,7 +216,7 @@
         },
         {
           "title": "приклад",
-          "content": "Знайдіть зарплату вище середньої.",
+          "content": "Знайти зарплати вище середнього.",
           "codeSnippet": "SELECT name, salary\nFROM employees\nWHERE salary > (\n  SELECT AVG(salary) \n  FROM employees\n);",
           "codeLanguage": "sql",
           "imageUrl": null,
@@ -152,8 +224,8 @@
           "order": 1
         },
         {
-          "title": "Підзапит IN 📋",
-          "content": "Перевірте, чи існує значення в списку:\n• Повертає TRUE, якщо значення відповідає будь-якому результату\n• Альтернатива численним умовам АБО\n• Можна використовувати NOT IN для виключення",
+          "title": "IN Підзапит 📋",
+          "content": "Перевірте, чи існує значення у списку:\n• Повертає TRUE, якщо значення відповідає будь-якому результату\n• Альтернатива численним умовам АБО\n• Можна використовувати NOT IN для виключення",
           "codeSnippet": "-- Find users who made orders\nSELECT name FROM users\nWHERE id IN (\n  SELECT DISTINCT user_id FROM orders\n);\n\n-- Find products NOT ordered\nSELECT name FROM products\nWHERE id NOT IN (\n  SELECT product_id FROM order_items\n);",
           "codeLanguage": "sql",
           "imageUrl": null,
@@ -161,7 +233,7 @@
           "order": 2
         },
         {
-          "title": "ІСНУЄ підзапит ✅",
+          "title": "EXISTS Підзапит ✅",
           "content": "Перевірте, чи підзапит повертає рядки:\n• Повертає TRUE/FALSE\n• Часто швидше, ніж IN\n• Використовуйте для перевірки існування",
           "codeSnippet": "-- Find users who have placed orders\nSELECT name FROM users u\nWHERE EXISTS (\n  SELECT 1 FROM orders o\n  WHERE o.user_id = u.id\n);\n\n-- Find categories with no products\nSELECT name FROM categories c\nWHERE NOT EXISTS (\n  SELECT 1 FROM products p\n  WHERE p.category_id = c.id\n);",
           "codeLanguage": "sql",
@@ -171,7 +243,7 @@
         },
         {
           "title": "Корельовані підзапити 🔄",
-          "content": "Підзапит посилається на зовнішній запит:\n• Виконується один раз на зовнішній ряд\n• Потужніше, але повільніше\n• Використовує псевдоніми зовнішніх таблиць",
+          "content": "Підзапит посилається на зовнішній запит:\n• Виконується один раз на зовнішній ряд\n• Потужніше, але повільніше\n• Використовує псевдоніми зовнішньої таблиці",
           "codeSnippet": "-- Find employees earning more than dept average\nSELECT name, salary, department_id\nFROM employees e1\nWHERE salary > (\n  SELECT AVG(salary)\n  FROM employees e2\n  WHERE e2.department_id = e1.department_id\n);\n\n-- Find latest order per customer\nSELECT * FROM orders o1\nWHERE order_date = (\n  SELECT MAX(order_date) FROM orders o2\n  WHERE o2.customer_id = o1.customer_id\n);",
           "codeLanguage": "sql",
           "imageUrl": null,
@@ -182,23 +254,23 @@
       "quiz": {
         "questions": [
           {
-            "question": "Де можуть з'являтися підзапити?",
+            "question": "Де можуть відображатися підзапити?",
             "options": [
               "Тільки в WHERE",
               "Тільки в SELECT",
               "WHERE, SELECT, FROM",
-              "Тільки в FROM"
+              "Тільки у FROM"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "Підзапити можуть міститися в реченнях SELECT, FROM або WHERE.",
+            "explanation": "Підзапити можуть бути в пропозиціях SELECT, FROM або WHERE.",
             "type": "multipleChoice"
           },
           {
             "question": "Що повертає EXISTS?",
             "options": [
               "Відповідні рядки",
-              "Підрахунок рядків",
-              "TRUE or FALSE",
+              "Кількість рядків",
+              "TRUE або FALSE",
               "NULL"
             ],
             "correctAnswerIndex": 2,
@@ -228,13 +300,85 @@
             "correctAnswerIndex": 1,
             "explanation": "EXISTS може бути швидшим, оскільки він зупиняється, щойно знаходить збіг, тоді як IN оцінює всі значення.",
             "type": "multipleChoice"
+          },
+          {
+            "question": "Яка основна мета «Підзапитів»?",
+            "options": [
+              "Зрозумійте та застосуйте основну ідею в коді",
+              "Запам'ятайте довільний синтаксис без практики",
+              "Пропустіть приклади та читайте лише визначення",
+              "Спершу зосередьтеся на непов’язаних складних темах"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Метою кожного уроку є формування практичних навичок за допомогою однієї цілеспрямованої концепції.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який приклад SQL синтаксично дійсний?",
+            "options": [
+              "ВИБРАТИ ім'я ВІД користувачів;",
+              "SELECT FROM ім’я користувача;",
+              "константний запит = користувачі;",
+              "<sql>SELECT</sql>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Це правильно сформований фрагмент для SQL у контексті цього уроку.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який підхід найкраще відповідає цьому стилю уроку?",
+            "options": [
+              "Виконайте один маленький крок, перевірте його, а потім продовжуйте",
+              "Пишіть все відразу без перевірки",
+              "Ігноруйте помилки та переходьте до наступного уроку",
+              "Скопіюйте код наосліп, не розуміючи"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Стиль курсу поетапний: маленькі кроки + швидка перевірка.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Перш ніж надсилати \"Ціну вище середньої\", що потрібно перевірити?",
+            "options": [
+              "Результат/поведінка відповідає очікуваному результату",
+              "Код містить якомога більше рядків",
+              "Імена змінних мають бути максимально короткими",
+              "Коментарів ніде немає"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Перевірка очікуваної поведінки спочатку запобігає поширеним помилкам подання.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який оператор найкраще розширює \"Підзапити\"?",
+            "options": [
+              "Практикуйте концепцію за допомогою нового input/прикладу",
+              "Негайно перейдіть на іншу тему",
+              "Видаліть весь попередній код і перезапустіть",
+              "Пропустіть кодування та дивіться лише пояснення"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Застосування тієї самої концепції до нового прикладу поглиблює розуміння.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Якщо ваша відповідь неправильна, який перший крок налагодження буде найрозумнішим?",
+            "options": [
+              "Перевірте проміжні значення та припущення",
+              "Переписати з нуля без перегляду",
+              "Вгадайте випадкове виправлення та надішліть повторно",
+              "Ігноруйте невдалий відмінок"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Перегляд припущень і проміжних результатів є найшвидшим безпечним шляхом налагодження.",
+            "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Ціна вище середнього",
-        "description": "Знайдіть продукти за ціною вище середньої.",
+        "title": "Ціна вище середньої",
+        "description": "Знайдіть продукти, ціна яких вище середньої.",
         "starterCode": "-- Find products with price > average price\nSELECT name, price\nFROM products\nWHERE price > \n",
         "language": "sql",
         "testCases": [
@@ -244,7 +388,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Використовуйте (SELECT AVG(price) FROM products)",
+        "hint": "Використовуйте (ВИБЕРІТЬ СРЕДНЄ (ціна) FROM продуктів)",
         "solution": "SELECT name, price\nFROM products\nWHERE price > (SELECT AVG(price) FROM products);",
         "xpReward": 15
       },
@@ -255,8 +399,8 @@
       "id": "sql_int_lesson_3",
       "courseId": "sql-intermediate",
       "moduleId": "aggregation",
-      "title": "ГРУПУВАННЯ ЗА ТА НАЯВНОСТЮ",
-      "description": "Групи агрегатів і фільтрів",
+      "title": "GROUP BY & HAVING",
+      "description": "Агрегування та групи фільтрів",
       "theorySlides": [
         {
           "title": "Групування даних 📊",
@@ -278,7 +422,7 @@
         },
         {
           "title": "Групування кількох стовпців 📊📊",
-          "content": "Згрупувати за кількома стовпцями:\n• Створює унікальні комбінації\n• Більш зерниста агрегація\n• Порядок колонок має значення",
+          "content": "Згрупувати за кількома стовпцями:\n• Створює унікальні комбінації\n• Більш зерниста агрегація\n• Порядок стовпців має значення",
           "codeSnippet": "-- Sales by category AND year\nSELECT \n  category,\n  YEAR(sale_date) as year,\n  SUM(amount) as total,\n  COUNT(*) as num_sales\nFROM sales\nGROUP BY category, YEAR(sale_date)\nORDER BY category, year;\n\n-- Result: Electronics 2023 5000, Electronics 2024 7000...",
           "codeLanguage": "sql",
           "imageUrl": null,
@@ -286,8 +430,8 @@
           "order": 2
         },
         {
-          "title": "НАЯВЛЕННЯ з кількома умовами 🎯",
-          "content": "Групи фільтрів зі складними умовами:\n• Використовуйте AND/OR у HAVING\n• Може поєднувати декілька агрегатів\n• Фільтрувати після групування",
+          "title": "HAVING із кількома умовами 🎯",
+          "content": "Фільтрувати групи зі складними умовами:\n• Використовуйте AND/OR у HAVING\n• Може поєднувати декілька агрегатів\n• Фільтр після групування",
           "codeSnippet": "-- Categories with high sales AND many orders\nSELECT \n  category,\n  SUM(amount) as total,\n  COUNT(*) as orders\nFROM sales\nGROUP BY category\nHAVING SUM(amount) > 1000 \n   AND COUNT(*) >= 10;\n\n-- Customers with avg order > 100 but < 500\nSELECT customer_id, AVG(total) as avg_order\nFROM orders\nGROUP BY customer_id\nHAVING AVG(total) BETWEEN 100 AND 500;",
           "codeLanguage": "sql",
           "imageUrl": null,
@@ -296,7 +440,7 @@
         },
         {
           "title": "WHERE + GROUP BY + HAVING 🔗",
-          "content": "Ефективно поєднайте всі clauses:\n• WHERE: фільтрувати рядки ПЕРЕД групуванням\n• GROUP BY: створення груп\n• HAVING: фільтр груп ПІСЛЯ агрегації",
+          "content": "Ефективно поєднайте всі речення:\n• ДЕ: фільтрувати рядки ПЕРЕД групуванням\n• ГРУПИТИ ЗА: створення груп\n• HAVING: Групи фільтрів ПІСЛЯ агрегації",
           "codeSnippet": "-- 2024 sales by category, only categories > 5000\nSELECT \n  category,\n  SUM(amount) as total\nFROM sales\nWHERE sale_date >= '2024-01-01'   -- Filter rows first\nGROUP BY category                  -- Then group\nHAVING SUM(amount) > 5000          -- Filter groups\nORDER BY total DESC;\n\n-- Active customers with many orders\nSELECT customer_id, COUNT(*) as orders\nFROM orders\nWHERE status = 'completed'\nGROUP BY customer_id\nHAVING COUNT(*) > 5;",
           "codeLanguage": "sql",
           "imageUrl": null,
@@ -319,7 +463,7 @@
             "type": "multipleChoice"
           },
           {
-            "question": "Що відбувається, коли ви використовуєте GROUP BY з кількома стовпцями?",
+            "question": "Що станеться, якщо ви ГРУПУЄТЕ ЗА кількома стовпцями?",
             "options": [
               "Виникає помилка",
               "Використовується лише перший стовпець",
@@ -327,31 +471,103 @@
               "Стовпці об’єднані"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "GROUP BY кількома стовпцями створює групу для кожної унікальної комбінації значень.",
+            "explanation": "GROUP BY кількох стовпців створює групу для кожної унікальної комбінації значень.",
             "type": "multipleChoice"
           },
           {
             "question": "Чи можна використовувати WHERE і HAVING в одному запиті?",
             "options": [
-              "Ні, дозволено лише одну",
-              "Так, WHERE запускається першим",
-              "Так, спочатку запускається HAVING",
+              "Ні, дозволено лише одне",
+              "Так, WHERE запускається спочатку",
+              "Так, HAVING запускається спочатку",
               "Тільки з підзапитами"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "так! WHERE фільтрує рядки перед групуванням, HAVING фільтрує групи після агрегування.",
+            "explanation": "Так! WHERE фільтрує рядки перед групуванням, HAVING фільтрує групи після агрегування.",
             "type": "multipleChoice"
           },
           {
             "question": "Який правильний порядок виконання?",
             "options": [
-              "SELECT → FROM → WHERE",
+              "ВИБРАТИ → FROM → WHERE",
               "FROM → WHERE → GROUP BY → HAVING",
               "GROUP BY → WHERE → HAVING",
               "HAVING → GROUP BY → WHERE"
             ],
             "correctAnswerIndex": 1,
             "explanation": "SQL виконує: FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яка головна мета \"GROUP BY & HAVING\"?",
+            "options": [
+              "Зрозумійте та застосуйте основну ідею в коді",
+              "Запам'ятайте довільний синтаксис без практики",
+              "Пропустіть приклади та читайте лише визначення",
+              "Спершу зосередьтеся на непов’язаних складних темах"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Метою кожного уроку є формування практичних навичок за допомогою однієї цілеспрямованої концепції.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який приклад SQL синтаксично дійсний?",
+            "options": [
+              "ВИБРАТИ ім'я ВІД користувачів;",
+              "SELECT FROM ім’я користувача;",
+              "константний запит = користувачі;",
+              "<sql>SELECT</sql>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Це правильно сформований фрагмент для SQL у контексті цього уроку.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який підхід найкраще відповідає цьому стилю уроку?",
+            "options": [
+              "Виконайте один маленький крок, перевірте його, а потім продовжуйте",
+              "Пишіть все відразу без перевірки",
+              "Ігноруйте помилки та переходьте до наступного уроку",
+              "Скопіюйте код наосліп, не розуміючи"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Стиль курсу поетапний: маленькі кроки + швидка перевірка.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Що потрібно перевірити, перш ніж надсилати \"Клієнти великої кількості\"?",
+            "options": [
+              "Результат/поведінка відповідає очікуваному результату",
+              "Код містить якомога більше рядків",
+              "Імена змінних мають бути максимально короткими",
+              "Коментарів ніде немає"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Перевірка очікуваної поведінки спочатку запобігає поширеним помилкам подання.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який оператор найкраще розширює \"Групування даних\"?",
+            "options": [
+              "Практикуйте концепцію за допомогою нового input/прикладу",
+              "Негайно перейдіть на іншу тему",
+              "Видаліть весь попередній код і перезапустіть",
+              "Пропустіть кодування та дивіться лише пояснення"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Застосування тієї самої концепції до нового прикладу поглиблює розуміння.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Якщо ваша відповідь неправильна, який перший крок налагодження буде найрозумнішим?",
+            "options": [
+              "Перевірте проміжні значення та припущення",
+              "Переписати з нуля без перегляду",
+              "Вгадайте випадкове виправлення та надішліть повторно",
+              "Ігноруйте невдалий відмінок"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Перегляд припущень і проміжних результатів є найшвидшим безпечним шляхом налагодження.",
             "type": "multipleChoice"
           }
         ],
@@ -381,11 +597,11 @@
       "courseId": "sql-intermediate",
       "moduleId": "advanced",
       "title": "Функції вікна",
-      "description": "Розширена аналітика",
+      "description": "Advanced analytics",
       "theorySlides": [
         {
           "title": "Функції вікна 🪟",
-          "content": "Виконайте обчислення по рядках:\n• ROW_NUMBER(): Послідовний номер\n• RANK(): Ранжування з пропусками\n• LAG/LEAD: попередній/наступний рядок\n• SUM() OVER: Загальна сума",
+          "content": "Виконайте обчислення між рядками:\n• ROW_NUMBER(): порядковий номер\n• RANK(): рейтинг із пропусками\n• LAG/LEAD: попередній/наступний рядок\n• SUM() OVER: Загальна сума",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -394,7 +610,7 @@
         },
         {
           "title": "приклад",
-          "content": "Розташувати співробітників за окладом.",
+          "content": "Ранжувати співробітників за зарплатою.",
           "codeSnippet": "SELECT \n  name,\n  salary,\n  ROW_NUMBER() OVER (ORDER BY salary DESC) as rank\nFROM employees;\n\n-- Result: Alex 100k #1, Bob 80k #2...",
           "codeLanguage": "sql",
           "imageUrl": null,
@@ -403,7 +619,7 @@
         },
         {
           "title": "Функції LAG & LEAD ⏮️⏭️",
-          "content": "Доступ до значень попереднього/наступного рядка:\n• **LAG()**: отримати значення з попереднього рядка\n• **LEAD()**: отримати значення з наступного рядка\n• Чудово підходить для порівнянь і трендів",
+          "content": "Доступ до значень попереднього/наступного рядка:\n• **LAG()**: отримати значення з попереднього рядка\n• **LEAD()**: отримати значення з наступного рядка\n• Чудово підходить для порівнянь і тенденцій",
           "codeSnippet": "SELECT \n  sale_date,\n  amount,\n  LAG(amount) OVER (ORDER BY sale_date) as prev_amount,\n  LEAD(amount) OVER (ORDER BY sale_date) as next_amount,\n  amount - LAG(amount) OVER (ORDER BY sale_date) as change\nFROM sales;\n\n-- Result: Shows each sale with previous and next amounts",
           "codeLanguage": "sql",
           "imageUrl": null,
@@ -411,8 +627,8 @@
           "order": 2
         },
         {
-          "title": "Підсумки 📈",
-          "content": "Обчисліть кумулятивні суми:\n• SUM() OVER з ORDER BY\n• Поточна кількість, також можливо середнє значення\n• Скидання за допомогою PARTITION BY",
+          "title": "Поточні підсумки 📈",
+          "content": "Обчислити сукупні суми:\n• SUM() OVER з ORDER BY\n• Поточна кількість, також можливо середнє значення\n• Скидання за допомогою PARTITION BY",
           "codeSnippet": "SELECT \n  order_date,\n  amount,\n  SUM(amount) OVER (ORDER BY order_date) as running_total,\n  COUNT(*) OVER (ORDER BY order_date) as order_num,\n  AVG(amount) OVER (ORDER BY order_date) as running_avg\nFROM orders;\n\n-- Running total per customer\nSELECT customer_id, order_date, amount,\n  SUM(amount) OVER (\n    PARTITION BY customer_id \n    ORDER BY order_date\n  ) as customer_running_total\nFROM orders;",
           "codeLanguage": "sql",
           "imageUrl": null,
@@ -420,8 +636,8 @@
           "order": 3
         },
         {
-          "title": "РОЗБІЛ ЗА ПРИКЛАДАМИ 📊",
-          "content": "Розбийте дані на групи для розрахунків:\n• Як GROUP BY, але зберігає всі рядки\n• Кожна перегородка розраховується окремо\n• Поєднується з будь-якою функцією вікна",
+          "title": "PARTITION BY Приклади 📊",
+          "content": "Розділити дані на групи для обчислень:\n• Як GROUP BY, але зберігає всі рядки\n• Кожна перегородка розраховується окремо\n• Поєднання з будь-якою віконною функцією",
           "codeSnippet": "-- Rank employees within each department\nSELECT \n  name,\n  department,\n  salary,\n  RANK() OVER (\n    PARTITION BY department \n    ORDER BY salary DESC\n  ) as dept_rank\nFROM employees;\n\n-- Percentage of department total\nSELECT \n  name,\n  department,\n  salary,\n  salary * 100.0 / SUM(salary) OVER (\n    PARTITION BY department\n  ) as pct_of_dept\nFROM employees;",
           "codeLanguage": "sql",
           "imageUrl": null,
@@ -434,10 +650,10 @@
           {
             "question": "Що робить PARTITION BY?",
             "options": [
-              "Видаляє розділи",
+              "Видалення розділів",
               "Групи для функції вікна",
               "Створює нову таблицю",
-              "Фільтри рядків"
+              "Фільтри рядки"
             ],
             "correctAnswerIndex": 1,
             "explanation": "PARTITION BY ділить рядки на групи для віконних обчислень.",
@@ -456,10 +672,10 @@
             "type": "multipleChoice"
           },
           {
-            "question": "Як обчислити поточну суму?",
+            "question": "Як обчислити загальну суму?",
             "options": [
               "GROUP BY із SUM",
-              "SUM() OVER (ORDER BY date)",
+              "SUM() OVER (ORDER BY дата)",
               "RUNNING_TOTAL()",
               "CUMULATIVE_SUM()"
             ],
@@ -471,19 +687,91 @@
             "question": "Різниця між ROW_NUMBER і RANK?",
             "options": [
               "Без різниці",
-              "RANK пропускає числа для нічиї",
+              "RANK пропускає числа для рівності",
               "ROW_NUMBER пропускає числа",
               "RANK починається з 0"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "RANK дає однакове число нічиям і пропускає наступні числа. ROW_NUMBER завжди послідовний.",
+            "explanation": "RANK дає однакове число зв’язкам і пропускає наступні числа. ROW_NUMBER завжди послідовний.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яка головна мета «Функції вікна»?",
+            "options": [
+              "Зрозумійте та застосуйте основну ідею в коді",
+              "Запам'ятайте довільний синтаксис без практики",
+              "Пропустіть приклади та читайте лише визначення",
+              "Спершу зосередьтеся на непов’язаних складних темах"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Метою кожного уроку є формування практичних навичок за допомогою однієї цілеспрямованої концепції.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який приклад SQL синтаксично дійсний?",
+            "options": [
+              "ВИБРАТИ ім'я ВІД користувачів;",
+              "SELECT FROM ім’я користувача;",
+              "константний запит = користувачі;",
+              "<sql>SELECT</sql>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Це правильно сформований фрагмент для SQL у контексті цього уроку.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який підхід найкраще відповідає цьому стилю уроку?",
+            "options": [
+              "Виконайте один маленький крок, перевірте його, а потім продовжуйте",
+              "Пишіть все відразу без перевірки",
+              "Ігноруйте помилки та переходьте до наступного уроку",
+              "Скопіюйте код наосліп, не розуміючи"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Стиль курсу поетапний: маленькі кроки + швидка перевірка.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Перш ніж надсилати \"Ранжирування продуктів\", що потрібно перевірити?",
+            "options": [
+              "Результат/поведінка відповідає очікуваному результату",
+              "Код містить якомога більше рядків",
+              "Імена змінних мають бути максимально короткими",
+              "Коментарів ніде немає"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Перевірка очікуваної поведінки спочатку запобігає поширеним помилкам подання.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який оператор найкраще розширює \"Функції вікон\"?",
+            "options": [
+              "Практикуйте концепцію за допомогою нового input/прикладу",
+              "Негайно перейдіть на іншу тему",
+              "Видаліть весь попередній код і перезапустіть",
+              "Пропустіть кодування та дивіться лише пояснення"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Застосування тієї самої концепції до нового прикладу поглиблює розуміння.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Якщо ваша відповідь неправильна, який перший крок налагодження буде найрозумнішим?",
+            "options": [
+              "Перевірте проміжні значення та припущення",
+              "Переписати з нуля без перегляду",
+              "Вгадайте випадкове виправлення та надішліть повторно",
+              "Ігноруйте невдалий відмінок"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Перегляд припущень і проміжних результатів є найшвидшим безпечним шляхом налагодження.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Рейтинг продуктів",
+        "title": "Ранжувати продукти",
         "description": "Розташуйте продукти за ціною за ROW_NUMBER.",
         "starterCode": "-- Add rank by price (highest = 1)\nSELECT \n  name,\n  price,\n  \nFROM products;",
         "language": "sql",
@@ -506,11 +794,11 @@
       "courseId": "sql-intermediate",
       "moduleId": "performance",
       "title": "Індекси та продуктивність",
-      "description": "Оптимізуйте швидкість запитів",
+      "description": "Оптимізація швидкість запиту",
       "theorySlides": [
         {
           "title": "Індекси бази даних ⚡",
-          "content": "Індекси прискорюють запити:\n• Як індекс книг - швидкий пошук\n• Створюйте стовпці, до яких часто звертаються\n• Компроміс: повільніше запис, більше пам’яті",
+          "content": "Індекси прискорюють запити:\n• Як індекс книг - швидкий пошук\n• Створюйте стовпці, до яких часто звертаються\n• Компроміс: повільніший запис, більше пам’яті",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -519,7 +807,7 @@
         },
         {
           "title": "Створення індексів",
-          "content": "Індексувати загальні стовпці пошуку.",
+          "content": "Індекс загальних стовпців пошуку.",
           "codeSnippet": "-- Single column index\nCREATE INDEX idx_email ON users(email);\n\n-- Composite index\nCREATE INDEX idx_name_date \nON orders(customer_name, order_date);\n\n-- Check with EXPLAIN\nEXPLAIN SELECT * FROM users WHERE email = 'test@test.com';",
           "codeLanguage": "sql",
           "imageUrl": null,
@@ -527,8 +815,8 @@
           "order": 1
         },
         {
-          "title": "Композитні індекси 🔗",
-          "content": "Індексуйте кілька стовпців разом:\n• Порядок колонок має значення!\n• Першими використовуються крайні ліві стовпці\n• Чудово підходить для кількох стовпців WHERE/ORDER BY",
+          "title": "Composite Indexes 🔗",
+          "content": "Індексувати кілька стовпців разом:\n• Порядок колонок має значення!\n• Першими використовуються крайні ліві стовпці\n• Чудово підходить для кількох стовпців WHERE/ORDER BY",
           "codeSnippet": "-- Composite index on (last_name, first_name)\nCREATE INDEX idx_name ON users(last_name, first_name);\n\n-- Uses index (starts with last_name)\nSELECT * FROM users WHERE last_name = 'Smith';\n\n-- Uses index (both columns)\nSELECT * FROM users \nWHERE last_name = 'Smith' AND first_name = 'John';\n\n-- Does NOT use index (missing leftmost column)\nSELECT * FROM users WHERE first_name = 'John';",
           "codeLanguage": "sql",
           "imageUrl": null,
@@ -536,8 +824,8 @@
           "order": 2
         },
         {
-          "title": "ПОЯСНІТЬ, проаналізуйте 🔍",
-          "content": "Розуміння виконання запиту:\n• Показує, чи використовується індекс\n• Розкриває повне сканування таблиць\n• Допомагає оптимізувати повільні запити",
+          "title": "EXPLAIN Аналіз 🔍",
+          "content": "Зрозуміти виконання запиту:\n• Показує, чи використовується індекс\n• Розкриває повне сканування таблиць\n• Допомагає оптимізувати повільні запити",
           "codeSnippet": "-- Basic EXPLAIN\nEXPLAIN SELECT * FROM users WHERE email = 'test@example.com';\n\n-- Shows: type, possible_keys, key, rows scanned\n\n-- EXPLAIN ANALYZE (actual execution)\nEXPLAIN ANALYZE SELECT * FROM orders \nWHERE customer_id = 100 AND status = 'pending';\n\n-- Look for:\n-- ✅ \"Using index\" - Good!\n-- ❌ \"Full table scan\" - Needs index\n-- ❌ \"filesort\" - Consider index on ORDER BY",
           "codeLanguage": "sql",
           "imageUrl": null,
@@ -545,7 +833,7 @@
           "order": 3
         },
         {
-          "title": "Index Best Practices 📋",
+          "title": "Індекс Найкращі методи 📋",
           "content": "Коли використовувати індекси:\n• Стовпці в WHERE, JOIN, ORDER BY\n• Стовпці високої потужності (багато унікальних значень)\n• Зовнішні ключі\n\nУникайте індексів на:\n• Часто оновлювані колонки\n• Маленькі столики\n• Низька потужність (кілька унікальних значень)",
           "codeSnippet": "-- Good index candidates\nCREATE INDEX idx_order_date ON orders(order_date);\nCREATE INDEX idx_customer_status ON orders(customer_id, status);\nCREATE INDEX idx_product_category ON products(category_id);\n\n-- Check existing indexes\nSHOW INDEX FROM orders;\n\n-- Remove unused index\nDROP INDEX idx_old_unused ON orders;\n\n-- Unique index (also enforces uniqueness)\nCREATE UNIQUE INDEX idx_email ON users(email);",
           "codeLanguage": "sql",
@@ -560,12 +848,12 @@
             "question": "Коли НЕ використовувати індекси?",
             "options": [
               "На первинних ключах",
-              "На часто оновлюваних колонках",
-              "У стовпцях WHERE",
+              "На часто оновлюваних стовпцях",
+              "На стовпцях WHERE",
               "На стовпцях JOIN"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Часті оновлення сповільнюються з індексами через обслуговування.",
+            "explanation": "Часті оновлення сповільнюються індексами через обслуговування.",
             "type": "multipleChoice"
           },
           {
@@ -589,7 +877,7 @@
               "Дозволи користувача"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "EXPLAIN показує, як база даних виконує запит, включно з тим, які індекси використовуються.",
+            "explanation": "EXPLAIN показує, як база даних виконує запит, зокрема, які індекси використовуються.",
             "type": "multipleChoice"
           },
           {
@@ -598,10 +886,82 @@
               "Розмір індексу",
               "Кількість унікальних значень",
               "Швидкість запиту",
-              "Підрахунок рядків таблиці"
+              "Кількість рядків таблиці"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Кардинальність — це кількість унікальних значень. Стовпці з високою кардинальністю (багато унікальних значень) отримують найбільшу користь від індексів.",
+            "explanation": "Кардинальність — це кількість унікальних значень. Стовпці з високою потужністю (багато унікальних значень) отримують найбільшу користь від індексів.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яка головна мета \"Індекси та продуктивність\"?",
+            "options": [
+              "Зрозумійте та застосуйте основну ідею в коді",
+              "Запам'ятайте довільний синтаксис без практики",
+              "Пропустіть приклади та читайте лише визначення",
+              "Спершу зосередьтеся на непов’язаних складних темах"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Метою кожного уроку є формування практичних навичок за допомогою однієї цілеспрямованої концепції.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який приклад SQL синтаксично дійсний?",
+            "options": [
+              "ВИБРАТИ ім'я ВІД користувачів;",
+              "SELECT FROM ім’я користувача;",
+              "константний запит = користувачі;",
+              "<sql>SELECT</sql>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Це правильно сформований фрагмент для SQL у контексті цього уроку.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який підхід найкраще відповідає цьому стилю уроку?",
+            "options": [
+              "Виконайте один маленький крок, перевірте його, а потім продовжуйте",
+              "Пишіть все відразу без перевірки",
+              "Ігноруйте помилки та переходьте до наступного уроку",
+              "Скопіюйте код наосліп, не розуміючи"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Стиль курсу поетапний: маленькі кроки + швидка перевірка.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Перш ніж надсилати \"Створити індекс\", що потрібно перевірити?",
+            "options": [
+              "Результат/поведінка відповідає очікуваному результату",
+              "Код містить якомога більше рядків",
+              "Імена змінних мають бути максимально короткими",
+              "Коментарів ніде немає"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Перевірка очікуваної поведінки спочатку запобігає поширеним помилкам подання.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який оператор найкраще розширює «Індекси бази даних»?",
+            "options": [
+              "Практикуйте концепцію за допомогою нового input/прикладу",
+              "Негайно перейдіть на іншу тему",
+              "Видаліть весь попередній код і перезапустіть",
+              "Пропустіть кодування та дивіться лише пояснення"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Застосування тієї самої концепції до нового прикладу поглиблює розуміння.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Якщо ваша відповідь неправильна, який перший крок налагодження буде найрозумнішим?",
+            "options": [
+              "Перевірте проміжні значення та припущення",
+              "Переписати з нуля без перегляду",
+              "Вгадайте випадкове виправлення та надішліть повторно",
+              "Ігноруйте невдалий відмінок"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Перегляд припущень і проміжних результатів є найшвидшим безпечним шляхом налагодження.",
             "type": "multipleChoice"
           }
         ],

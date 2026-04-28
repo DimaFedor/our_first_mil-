@@ -264,7 +264,10 @@ JSON structure:
 }
 ```
 
-Any missing translation field automatically falls back to the original English lesson content.
+Any missing translation field is resolved in this order:
+1. Localized overlay value from `assets/lessons/<lang>/<courseId>.json`
+2. Runtime auto-translation to the active UI language
+3. Original English lesson content if runtime translation is unavailable
 
 #### Regenerating translations for all current courses
 1. Export English JSON for all configured courses:

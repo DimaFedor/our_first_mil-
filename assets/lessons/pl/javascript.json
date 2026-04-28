@@ -5,12 +5,12 @@
       "id": "js_lesson_1",
       "courseId": "javascript",
       "moduleId": "basics",
-      "title": "Witamy w JavaScript",
-      "description": "Twoje pierwsze kroki w świecie programowania webowego",
+      "title": "Welcome to JavaScript",
+      "description": "Your first steps into the world of web programming",
       "theorySlides": [
         {
-          "title": "Co to jest JavaScript? 🌐",
-          "content": "JavaScript to język programowania sieci! Sprawia, że ​​strony internetowe są interaktywne i dynamiczne.\n\nKażda witryna, którą odwiedzasz, korzysta z JavaScript:\n• Animacje i efekty\n• Walidacja formularza\n• Interaktywne mapy\n• Gry i aplikacje\n\nTo jeden z najpopularniejszych języków na świecie!",
+          "title": "What is JavaScript? 🌐",
+          "content": "JavaScript is the programming language of the web! It makes websites interactive and dynamic.\n\nEvery website you visit uses JavaScript:\n• Animations and effects\n• Form validation\n• Interactive maps\n• Games and apps\n\nIt's one of the most popular languages in the world!",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -18,8 +18,8 @@
           "order": 0
         },
         {
-          "title": "Wszędzie JavaScript",
-          "content": "JavaScript zaczynał jako język przeglądarki, ale teraz działa wszędzie!\n\n🌐 Frontend: React, Vue, Angular\n⚙️ Backend: Node.js, Express\n📱 Urządzenia mobilne: Reaguj natywnie\n🖥️ Pulpit: Elektron\n🎮 Gry: Phaser, Three.js",
+          "title": "JavaScript Everywhere",
+          "content": "JavaScript started as a browser language, but now it runs everywhere!\n\n🌐 Frontend: React, Vue, Angular\n⚙️ Backend: Node.js, Express\n📱 Mobile: React Native\n🖥️ Desktop: Electron\n🎮 Games: Phaser, Three.js",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -27,8 +27,8 @@
           "order": 1
         },
         {
-          "title": "Twój pierwszy JavaScript",
-          "content": "Napiszmy Twój pierwszy kod JavaScript! Do wyświetlania komunikatów używamy console.log().",
+          "title": "Your First JavaScript",
+          "content": "Let's write your first JavaScript code! We use console.log() to display messages.",
           "codeSnippet": "console.log(\"Hello, World!\");",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -39,59 +39,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Do czego głównie używany jest JavaScript?",
+            "question": "What is JavaScript primarily used for?",
             "options": [
-              "Tworzenie interaktywnych stron internetowych",
-              "Projektowanie grafiki",
-              "Pisanie dokumentów",
-              "Tylko zarządzanie bazami danych"
+              "Making websites interactive",
+              "Designing graphics",
+              "Writing documents",
+              "Managing databases only"
             ],
             "correctAnswerIndex": 0,
-            "explanation": "JavaScript to język sieci, dzięki któremu strony internetowe są dynamiczne i interaktywne!",
+            "explanation": "JavaScript is the language of the web, making websites dynamic and interactive!",
             "type": "multipleChoice"
           },
           {
-            "question": "Która funkcja wyświetla dane wyjściowe w JavaScript?",
+            "question": "Which function displays output in JavaScript?",
             "options": [
-              "wydrukować()",
+              "print()",
               "echo()",
-              "konsola.log()",
-              "wyświetlacz()"
+              "console.log()",
+              "display()"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "console.log() to standardowy sposób wysyłania komunikatów w języku JavaScript.",
+            "explanation": "console.log() is the standard way to output messages in JavaScript.",
             "type": "multipleChoice"
           },
           {
-            "question": "Gdzie można uruchomić kod JavaScript?",
+            "question": "Where can JavaScript code run?",
             "options": [
-              "Tylko w przeglądarkach internetowych",
-              "Tylko na serwerach",
-              "Zarówno przeglądarki, jak i serwery",
-              "Tylko na urządzeniach mobilnych"
+              "Only in web browsers",
+              "Only on servers",
+              "Both browsers and servers",
+              "Only on mobile devices"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "JavaScript działa wszędzie - w przeglądarkach (frontend), na serwerach z Node.js, a nawet w aplikacjach mobilnych/desktopowych!",
+            "explanation": "JavaScript runs everywhere - in browsers (frontend), on servers with Node.js, and even in mobile/desktop apps!",
             "type": "multipleChoice"
           },
           {
-            "question": "Która firma pierwotnie stworzyła JavaScript?",
+            "question": "Which company originally created JavaScript?",
             "options": [
-              "Microsoftu",
+              "Microsoft",
               "Google",
               "Netscape",
-              "Jabłko"
+              "Apple"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "JavaScript został stworzony przez Brendana Eicha w Netscape w 1995 roku w zaledwie 10 dni!",
+            "explanation": "JavaScript was created by Brendan Eich at Netscape in 1995 in just 10 days!",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Welcome to JavaScript\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which JavaScript example is syntactically valid?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "total = 3 + 2",
+              "SELECT total FROM data"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for JavaScript in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Say Hello!\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"What is JavaScript \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Powiedz cześć!",
-        "description": "Napisz kod wyświetlający „Hello, JavaScript!” za pomocą konsoli.log()",
+        "title": "Say Hello!",
+        "description": "Write code that displays \"Hello, JavaScript!\" using console.log()",
         "starterCode": "// Write your code below\n",
         "language": "javascript",
         "testCases": [
@@ -101,7 +173,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Użyj console.log() z wiadomością w cudzysłowie!",
+        "hint": "Use console.log() with your message in quotes!",
         "solution": "console.log(\"Hello, JavaScript!\");",
         "xpReward": 15
       },
@@ -112,12 +184,12 @@
       "id": "js_lesson_2",
       "courseId": "javascript",
       "moduleId": "basics",
-      "title": "Zmienne - przechowywanie danych",
-      "description": "Dowiedz się, jak przechowywać i wykorzystywać informacje w JavaScript",
+      "title": "Variables - Storing Data",
+      "description": "Learn how to store and use information in JavaScript",
       "theorySlides": [
         {
-          "title": "Czym są zmienne? 📦",
-          "content": "Zmienne są kontenerami do przechowywania danych. Pomyśl o nich jak o oznakowanych pudełkach, w których możesz umieścić informacje.\n\nW JavaScript mamy trzy sposoby tworzenia zmiennych:\n• let – dla wartości, które się zmieniają\n• const – dla wartości, które pozostają takie same\n• var – stary sposób (unikaj używania)",
+          "title": "What are Variables? 📦",
+          "content": "Variables are containers for storing data. Think of them as labeled boxes where you can put information.\n\nIn JavaScript, we have three ways to create variables:\n• let - for values that change\n• const - for values that stay the same\n• var - the old way (avoid using)",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -125,8 +197,8 @@
           "order": 0
         },
         {
-          "title": "Tworzenie zmiennych",
-          "content": "Oto jak tworzyć i używać zmiennych:",
+          "title": "Creating Variables",
+          "content": "Here's how to create and use variables:",
           "codeSnippet": "let name = \"Alex\";\nlet age = 25;\nconst PI = 3.14159;\n\nconsole.log(name);  // Alex\nconsole.log(age);   // 25",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -134,8 +206,8 @@
           "order": 1
         },
         {
-          "title": "Typy danych",
-          "content": "JavaScript ma kilka typów danych:\n\n📝 Ciąg znaków: „Witam” (tekst w cudzysłowie)\n🔢 Liczba: 42, 3,14 (cyfry)\n✅ Wartość logiczna: prawda, fałsz\n📋 Tablica: [1, 2, 3] (listy)\n📦 Obiekt: {imię: \"Alex\"} (dane złożone)",
+          "title": "Data Types",
+          "content": "JavaScript has several data types:\n\n📝 String: \"Hello\" (text in quotes)\n🔢 Number: 42, 3.14 (numbers)\n✅ Boolean: true, false\n📋 Array: [1, 2, 3] (lists)\n📦 Object: {name: \"Alex\"} (complex data)",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -146,71 +218,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Które słowo kluczowe tworzy zmienną, której nie można zmienić?",
+            "question": "Which keyword creates a variable that cannot be changed?",
             "options": [
-              "pozwalać",
-              "nasz",
-              "konst",
-              "statyczny"
+              "let",
+              "var",
+              "const",
+              "static"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "const tworzy stałe - wartości, których nie można ponownie przypisać.",
+            "explanation": "const creates constants - values that cannot be reassigned.",
             "type": "multipleChoice"
           },
           {
-            "question": "Jakiego typu jest wartość „Hello”?",
+            "question": "What type is the value \"Hello\"?",
             "options": [
-              "Numer",
-              "Smyczkowy",
-              "Wartość logiczna",
-              "Szyk"
+              "Number",
+              "String",
+              "Boolean",
+              "Array"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Tekst w cudzysłowie nazywany jest ciągiem znaków w JavaScript.",
+            "explanation": "Text in quotes is called a String in JavaScript.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co się stanie, jeśli użyjesz zmiennej przed zadeklarowaniem jej za pomocą let?",
+            "question": "What happens if you use a variable before declaring it with let?",
             "options": [
-              "To działa dobrze",
-              "Otrzymujesz nieokreślony",
-              "Zgłaszany jest błąd ReferenceError",
-              "Staje się zmienną globalną"
+              "It works fine",
+              "You get undefined",
+              "ReferenceError is thrown",
+              "It becomes a global variable"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "Dzięki let zmienne nie są podnoszone jak var. Dostęp do nich przed deklaracją powoduje błąd ReferenceError (tymczasowa martwa strefa).",
+            "explanation": "With let, variables are not hoisted like var. Accessing them before declaration causes a ReferenceError (temporal dead zone).",
             "type": "multipleChoice"
           },
           {
-            "question": "Które stwierdzenie dotyczące stałej jest prawdziwe?",
+            "question": "Which statement about const is true?",
             "options": [
-              "Wartości nie można nigdy modyfikować",
-              "Nie można zmienić odniesienia",
-              "Działa tylko z liczbami",
-              "Tworzy niezmienne obiekty"
+              "The value can never be modified",
+              "The reference cannot be changed",
+              "It only works with numbers",
+              "It creates immutable objects"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "const zapobiega ponownemu przypisaniu zmiennej, ale jeśli jest to obiekt lub tablica, zawartość nadal można modyfikować!",
+            "explanation": "const prevents reassignment of the variable, but if it's an object or array, the contents can still be modified!",
             "type": "multipleChoice"
           },
           {
-            "question": "Jaki jest wynik: typeof null?",
+            "question": "What is the result of: typeof null?",
             "options": [
-              "\"nieważny\"",
-              "„nieokreślony”",
-              "\"obiekt\"",
-              "\"numer\""
+              "\"null\"",
+              "\"undefined\"",
+              "\"object\"",
+              "\"number\""
             ],
             "correctAnswerIndex": 2,
-            "explanation": "To słynne dziwactwo JavaScript! typeof null zwraca „obiekt” - błąd, którego nie można naprawić ze względu na kompatybilność wsteczną.",
+            "explanation": "This is a famous JavaScript quirk! typeof null returns \"object\" - a bug that can't be fixed due to backward compatibility.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Variables - Storing Data\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which JavaScript example is syntactically valid?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "total = 3 + 2",
+              "SELECT total FROM data"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for JavaScript in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Create a Greeting\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"What are Variables \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Utwórz powitanie",
-        "description": "Utwórz zmienną o nazwie „powitanie” o wartości „Witam!” i wyświetlić go.",
+        "title": "Create a Greeting",
+        "description": "Create a variable called \"greeting\" with the value \"Hello!\" and display it.",
         "starterCode": "// Create your variable and display it\n",
         "language": "javascript",
         "testCases": [
@@ -220,7 +352,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Użyj let pozdrowienia = \"Witam!\"; następnie console.log(powitanie);",
+        "hint": "Use let greeting = \"Hello!\"; then console.log(greeting);",
         "solution": "let greeting = \"Hello!\";\nconsole.log(greeting);",
         "xpReward": 15
       },
@@ -231,12 +363,12 @@
       "id": "js_lesson_3",
       "courseId": "javascript",
       "moduleId": "basics",
-      "title": "Operatory — matematyka i logika",
-      "description": "Naucz się wykonywać obliczenia i porównania",
+      "title": "Operators - Math & Logic",
+      "description": "Learn to perform calculations and comparisons",
       "theorySlides": [
         {
-          "title": "Operatory matematyczne ➕",
-          "content": "JavaScript potrafi liczyć! Oto podstawowe operatory:\n\n+ Dodatek\n- Odejmowanie\n* Mnożenie\n/ Podział\n% modułu (pozostała)\n** Potęga (potęga)",
+          "title": "Math Operators ➕",
+          "content": "JavaScript can do math! Here are the basic operators:\n\n+ Addition\n- Subtraction\n* Multiplication\n/ Division\n% Modulus (remainder)\n** Exponentiation (power)",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -244,8 +376,8 @@
           "order": 0
         },
         {
-          "title": "Przykłady matematyczne",
-          "content": "Zobaczmy operatorów w akcji:",
+          "title": "Math Examples",
+          "content": "Let's see operators in action:",
           "codeSnippet": "let sum = 10 + 5;      // 15\nlet diff = 10 - 3;     // 7\nlet product = 4 * 3;   // 12\nlet quotient = 15 / 3; // 5\nlet remainder = 17 % 5; // 2\nlet power = 2 ** 3;    // 8",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -253,8 +385,8 @@
           "order": 1
         },
         {
-          "title": "Operatory porównania",
-          "content": "Porównaj wartości, aby uzyskać prawdę lub fałsz:\n\n== Równa wartość\n=== Taka sama wartość ORAZ typ\n!= Nie równe\n> Większy niż\n< Mniej niż\n>= Większy lub równy\n<= Mniejszy lub równy",
+          "title": "Comparison Operators",
+          "content": "Compare values to get true or false:\n\n== Equal value\n=== Equal value AND type\n!= Not equal\n> Greater than\n< Less than\n>= Greater or equal\n<= Less or equal",
           "codeSnippet": "console.log(5 > 3);   // true\nconsole.log(10 === 10); // true\nconsole.log(5 !== 3);  // true",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -265,7 +397,7 @@
       "quiz": {
         "questions": [
           {
-            "question": "Ile wynosi 17% 5?",
+            "question": "What is 17 % 5?",
             "options": [
               "3",
               "2",
@@ -273,35 +405,35 @@
               "3.4"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Operator modułu zwraca resztę. 17 ÷ 5 = 3 reszta 2.",
+            "explanation": "The modulus operator returns the remainder. 17 ÷ 5 = 3 remainder 2.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co === sprawdza?",
+            "question": "What does === check?",
             "options": [
-              "Tylko wartość",
-              "Tylko wpisz",
-              "Wartość i typ",
-              "Nic"
+              "Value only",
+              "Type only",
+              "Value and type",
+              "Nothing"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "=== sprawdza zarówno wartość ORAZ typ. „5” === 5 jest fałszywe!",
+            "explanation": "=== checks both value AND type. \"5\" === 5 is false!",
             "type": "multipleChoice"
           },
           {
-            "question": "Jaki jest wynik: 5 + „5”?",
+            "question": "What is the result of: 5 + \"5\"?",
             "options": [
               "10",
-              "„55”",
-              "Błąd",
-              "„10”"
+              "\"55\"",
+              "Error",
+              "\"10\""
             ],
             "correctAnswerIndex": 1,
-            "explanation": "JavaScript przekształca liczbę w ciąg znaków i łączy je, co daje liczbę „55”. To jest rodzaj przymusu w akcji!",
+            "explanation": "JavaScript coerces the number to a string and concatenates them, resulting in \"55\". This is type coercion in action!",
             "type": "multipleChoice"
           },
           {
-            "question": "Którego operatora użyłbyś do sprawdzenia, czy dwie wartości NIE są równe pod względem typu ORAZ wartości?",
+            "question": "Which operator would you use to check if two values are NOT equal in type AND value?",
             "options": [
               "!=",
               "!==",
@@ -309,15 +441,87 @@
               "=/="
             ],
             "correctAnswerIndex": 1,
-            "explanation": "!== jest operatorem ścisłej nierówności. Zwraca wartość true, jeśli wartości różnią się wartością LUB typem.",
+            "explanation": "!== is the strict inequality operator. It returns true if values differ in value OR type.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Operators - Math & Logic\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which JavaScript example is syntactically valid?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "total = 3 + 2",
+              "SELECT total FROM data"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for JavaScript in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Calculate the Sum\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Math Operators \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Oblicz sumę",
-        "description": "Utwórz dwie zmienne a=15 i b=25, dodaj je i wyświetl wynik.",
+        "title": "Calculate the Sum",
+        "description": "Create two variables a=15 and b=25, add them, and display the result.",
         "starterCode": "// Create variables a and b, then display their sum\n",
         "language": "javascript",
         "testCases": [
@@ -327,7 +531,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Utwórz a i b, a następnie użyj console.log(a + b)",
+        "hint": "Create a and b, then use console.log(a + b)",
         "solution": "let a = 15;\nlet b = 25;\nconsole.log(a + b);",
         "xpReward": 15
       },
@@ -338,12 +542,12 @@
       "id": "js_lesson_4",
       "courseId": "javascript",
       "moduleId": "basics",
-      "title": "Praca ze stringami",
-      "description": "Opanuj manipulację tekstem w JavaScript",
+      "title": "Working with Strings",
+      "description": "Master text manipulation in JavaScript",
       "theorySlides": [
         {
-          "title": "Ciągi - Dane tekstowe 📝",
-          "content": "Ciągi są wartościami tekstowymi. Możesz je utworzyć za pomocą:\n\n• Pojedyncze cudzysłowy: „Witam”\n• Double quotes: \"Hello\"\n• Backticki: „Hello” (literały szablonu)\n\nBackticki są wyjątkowe - pozwalają na osadzanie zmiennych!",
+          "title": "Strings - Text Data 📝",
+          "content": "Strings are text values. You can create them with:\n\n• Single quotes: 'Hello'\n• Double quotes: \"Hello\"\n• Backticks: `Hello` (template literals)\n\nBackticks are special - they allow embedding variables!",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -351,8 +555,8 @@
           "order": 0
         },
         {
-          "title": "Literały szablonowe",
-          "content": "Literały szablonów umożliwiają osadzanie wyrażeń:",
+          "title": "Template Literals",
+          "content": "Template literals let you embed expressions:",
           "codeSnippet": "let name = \"Alex\";\nlet age = 25;\n\n// Template literal with ${}\nlet message = `Hi, I'm ${name} and I'm ${age} years old!`;\n\nconsole.log(message);\n// Hi, I'm Alex and I'm 25 years old!",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -360,8 +564,8 @@
           "order": 1
         },
         {
-          "title": "Metody ciągów",
-          "content": "Ciągi mają przydatne metody:\n\n.length - uzyskaj długość\n.toUpperCase() - WIELKIE LITERY\n.toLowerCase() – małe litery\n.includes() - sprawdza, czy zawiera\n.slice() - wyodrębnij część",
+          "title": "String Methods",
+          "content": "Strings have useful methods:\n\n.length - get length\n.toUpperCase() - UPPERCASE\n.toLowerCase() - lowercase\n.includes() - check if contains\n.slice() - extract part",
           "codeSnippet": "let text = \"JavaScript\";\nconsole.log(text.length);      // 10\nconsole.log(text.toUpperCase()); // JAVASCRIPT\nconsole.log(text.includes(\"Script\")); // true",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -372,71 +576,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Które cudzysłowy umożliwiają osadzanie zmiennych?",
+            "question": "Which quotes allow embedding variables?",
             "options": [
-              "Pojedyncze cudzysłowy „”",
-              "Podwójne cudzysłowy „”",
-              "Tyłki ``",
-              "Wszystkie"
+              "Single quotes ''",
+              "Double quotes \"\"",
+              "Backticks ``",
+              "All of them"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "Tylko zwroty (literały szablonów) pozwalają na składnię ${variable}.",
+            "explanation": "Only backticks (template literals) allow ${variable} syntax.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co zwraca „hello”.toUpperCase()?",
+            "question": "What does \"hello\".toUpperCase() return?",
             "options": [
-              "Witam",
-              "CZEŚĆ",
-              "Cześć",
-              "Witam"
+              "hello",
+              "HELLO",
+              "Hello",
+              "hELLO"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "toUpperCase() konwertuje wszystkie litery na wielkie.",
+            "explanation": "toUpperCase() converts all letters to uppercase.",
             "type": "multipleChoice"
           },
           {
-            "question": "Jaki jest wynik: „Odpowiedź to 8”?",
+            "question": "What is the output of: `The answer is 8`?",
             "options": [
-              "Odpowiedź brzmi 5 + 3",
-              "Odpowiedź brzmi 8",
-              "Odpowiedź brzmi 8",
-              "Odpowiedź brzmi 53"
+              "The answer is 5 + 3",
+              "The answer is 8",
+              "The answer is 8",
+              "The answer is 53"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "Literały szablonowe (backticks) oceniają wyrażenia wewnątrz ${}. Zatem 5 + 3 daje 8.",
+            "explanation": "Template literals (backticks) evaluate expressions inside ${}. So 5 + 3 becomes 8.",
             "type": "multipleChoice"
           },
           {
-            "question": "Jak uzyskać długość ciągu „cześć”?",
+            "question": "How do you get the length of a string \"hello\"?",
             "options": [
-              "„cześć”. długość()",
-              "„cześć”.rozmiar",
-              "„cześć”. długość",
-              "długość(\"cześć\")"
+              "\"hello\".length()",
+              "\"hello\".size",
+              "\"hello\".length",
+              "length(\"hello\")"
             ],
             "correctAnswerIndex": 2,
-            "explanation": ".length jest właściwością (nie metodą), więc nawiasy nie są potrzebne. „cześć”. długość zwraca 5.",
+            "explanation": ".length is a property (not a method), so no parentheses are needed. \"hello\".length returns 5.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co zwraca „JavaScript”.slice(0, 4)?",
+            "question": "What does \"JavaScript\".slice(0, 4) return?",
             "options": [
-              "\"Jawa\"",
-              "„JavaScript”",
-              "\"Scenariusz\"",
-              "„Jav”"
+              "\"Java\"",
+              "\"JavaScript\"",
+              "\"Script\"",
+              "\"Jav\""
             ],
             "correctAnswerIndex": 0,
-            "explanation": "plasterek(0, 4) wyodrębnia znaki z indeksu 0 do 3 (indeks końcowy jest wyłączny), zwracając „Java”.",
+            "explanation": "slice(0, 4) extracts characters from index 0 to 3 (end index is exclusive), returning \"Java\".",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Working with Strings\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which JavaScript example is syntactically valid?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "total = 3 + 2",
+              "SELECT total FROM data"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for JavaScript in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Introduce Yourself\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Strings - Text Data \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Przedstaw się",
-        "description": "Utwórz zmienną name=\"Coder\" i wyświetl komunikat \"Hello, Coder!\" przy użyciu literałów szablonowych.",
+        "title": "Introduce Yourself",
+        "description": "Create a variable name=\"Coder\" and display \"Hello, Coder!\" using template literals.",
         "starterCode": "// Use template literals to create a greeting\n",
         "language": "javascript",
         "testCases": [
@@ -446,7 +710,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Użyj backticków: `Witajcie, ${name}!`",
+        "hint": "Use backticks: `Hello, ${name}!`",
         "solution": "let name = \"Coder\";\nconsole.log(`Hello, ${name}!`);",
         "xpReward": 15
       },
@@ -457,12 +721,12 @@
       "id": "js_lesson_5",
       "courseId": "javascript",
       "moduleId": "basics",
-      "title": "Instrukcje if - podejmowanie decyzji",
-      "description": "Naucz się pisać kod, który dokonuje wyborów",
+      "title": "If Statements - Making Decisions",
+      "description": "Learn to write code that makes choices",
       "theorySlides": [
         {
-          "title": "Logika warunkowa 🤔",
-          "content": "Programy muszą podejmować decyzje! Instrukcje if pozwalają Twojemu kodowi wybierać różne ścieżki w oparciu o warunki.\n\nPomyśl o tym w ten sposób: „JEŚLI pada deszcz, WTEDY weź parasol, W przeciwnym razie załóż okulary przeciwsłoneczne”",
+          "title": "Conditional Logic 🤔",
+          "content": "Programs need to make decisions! If statements let your code choose different paths based on conditions.\n\nThink of it like: \"IF it's raining, THEN take umbrella, ELSE wear sunglasses\"",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -470,8 +734,8 @@
           "order": 0
         },
         {
-          "title": "Składnia instrukcji if",
-          "content": "Oto jak napisać instrukcje if:",
+          "title": "If Statement Syntax",
+          "content": "Here's how to write if statements:",
           "codeSnippet": "let age = 18;\n\nif (age >= 18) {\n  console.log(\"You can vote!\");\n} else {\n  console.log(\"Too young to vote\");\n}",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -479,8 +743,8 @@
           "order": 1
         },
         {
-          "title": "Wiele warunków",
-          "content": "Użyj else if dla wielu warunków:",
+          "title": "Multiple Conditions",
+          "content": "Use else if for multiple conditions:",
           "codeSnippet": "let score = 85;\n\nif (score >= 90) {\n  console.log(\"A - Excellent!\");\n} else if (score >= 80) {\n  console.log(\"B - Good job!\");\n} else if (score >= 70) {\n  console.log(\"C - Keep trying\");\n} else {\n  console.log(\"Need improvement\");\n}",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -491,59 +755,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Do czego służy blok else?",
+            "question": "What does the else block do?",
             "options": [
-              "Uruchamia się, jeśli warunek jest prawdziwy",
-              "Uruchamia się, jeśli warunek jest fałszywy",
-              "Zawsze biegnie",
-              "Nigdy nie biegnie"
+              "Runs if condition is true",
+              "Runs if condition is false",
+              "Always runs",
+              "Never runs"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Blok else jest wykonywany, gdy warunek if jest fałszywy.",
+            "explanation": "The else block executes when the if condition is false.",
             "type": "multipleChoice"
           },
           {
-            "question": "Jeśli x = 5, do czego prowadzi (x > 3)?",
+            "question": "If x = 5, what does (x > 3) evaluate to?",
             "options": [
-              "PRAWDA",
-              "FAŁSZ",
+              "true",
+              "false",
               "5",
               "3"
             ],
             "correctAnswerIndex": 0,
-            "explanation": "5 jest większe niż 3, więc warunek jest prawdziwy.",
+            "explanation": "5 is greater than 3, so the condition is true.",
             "type": "multipleChoice"
           },
           {
-            "question": "Jaki jest cel instrukcji else if?",
+            "question": "What is the purpose of the else if statement?",
             "options": [
-              "Aby uruchomić kod, gdy wszystkie warunki są fałszywe",
-              "Aby sprawdzić wiele warunków po kolei",
-              "Aby powtórzyć kod wiele razy",
-              "Aby zdefiniować funkcję"
+              "To run code when all conditions are false",
+              "To check multiple conditions sequentially",
+              "To repeat code multiple times",
+              "To define a function"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "else if pozwala przetestować wiele warunków w kolejności. Wykonywany jest pierwszy prawdziwy warunek, pozostałe są pomijane.",
+            "explanation": "else if allows you to test multiple conditions in order. The first true condition executes, then the rest are skipped.",
             "type": "multipleChoice"
           },
           {
-            "question": "Jaki jest wynik: prawda i fałsz?",
+            "question": "What is the result of: true && false?",
             "options": [
-              "PRAWDA",
-              "FAŁSZ",
+              "true",
+              "false",
               "1",
               "0"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Operator && (AND) zwraca wartość true tylko wtedy, gdy OBYDWA operandy są prawdziwe. Tutaj false powoduje, że całe wyrażenie jest fałszywe.",
+            "explanation": "The && (AND) operator returns true only if BOTH operands are true. Here, false makes the whole expression false.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"If Statements - Making Decisions\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which JavaScript example is syntactically valid?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "total = 3 + 2",
+              "SELECT total FROM data"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for JavaScript in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Age Checker\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Conditional Logic \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Kontroler wieku",
-        "description": "Utwórz zmienną wiek=20. Jeśli wiek >= 18, wyświetl „Dorosły”, w przeciwnym razie wyświetl „Nieletni”.",
+        "title": "Age Checker",
+        "description": "Create a variable age=20. If age >= 18, display \"Adult\", else display \"Minor\".",
         "starterCode": "// Check if someone is an adult\nlet age = 20;\n",
         "language": "javascript",
         "testCases": [
@@ -553,7 +889,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Użyj if (wiek >= 18) { console.log(\"Dorosły\"); }",
+        "hint": "Use if (age >= 18) { console.log(\"Adult\"); }",
         "solution": "let age = 20;\nif (age >= 18) {\n  console.log(\"Adult\");\n} else {\n  console.log(\"Minor\");\n}",
         "xpReward": 15
       },
@@ -564,12 +900,12 @@
       "id": "js_lesson_6",
       "courseId": "javascript",
       "moduleId": "data-structures",
-      "title": "Praca z tablicami",
-      "description": "Opanuj tablice JavaScript i ich metody",
+      "title": "Working with Arrays",
+      "description": "Master JavaScript arrays and their methods",
       "theorySlides": [
         {
-          "title": "Co to są tablice? 📚",
-          "content": "Tablice przechowują wiele wartości w jednej zmiennej. Są uporządkowane i mogą przechowywać dowolny typ danych.\n\nTypowe zastosowania:\n• Listy użytkowników\n• Wózki sklepowe\n• Listy odtwarzania\n• Wyniki gier",
+          "title": "What are Arrays? 📚",
+          "content": "Arrays store multiple values in a single variable. They are ordered and can hold any data type.\n\nCommon uses:\n• User lists\n• Shopping carts\n• Playlists\n• Game scores",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -577,8 +913,8 @@
           "order": 0
         },
         {
-          "title": "Tworzenie tablic",
-          "content": "W tablicach używane są nawiasy kwadratowe z wartościami rozdzielonymi przecinkami.",
+          "title": "Creating Arrays",
+          "content": "Arrays use square brackets with comma-separated values.",
           "codeSnippet": "const fruits = [\"apple\", \"banana\", \"orange\"];\nconst numbers = [1, 2, 3, 4, 5];\nconst mixed = [1, \"hello\", true, null];\n\nconsole.log(fruits[0]);  // apple",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -586,8 +922,8 @@
           "order": 1
         },
         {
-          "title": "Metody tablicowe",
-          "content": "JavaScript zapewnia potężne metody tablicowe.",
+          "title": "Array Methods",
+          "content": "JavaScript provides powerful array methods.",
           "codeSnippet": "const arr = [1, 2, 3];\n\n// Add elements\narr.push(4);       // [1,2,3,4]\narr.unshift(0);    // [0,1,2,3,4]\n\n// Remove elements\narr.pop();         // Remove last\narr.shift();       // Remove first\n\nconsole.log(arr);",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -595,8 +931,8 @@
           "order": 2
         },
         {
-          "title": "Przydatne metody tablicowe",
-          "content": "Więcej metod typowych zadań.",
+          "title": "Useful Array Methods",
+          "content": "More methods for common tasks.",
           "codeSnippet": "const numbers = [1, 2, 3, 4, 5];\n\nconsole.log(numbers.length);     // 5\nconsole.log(numbers.includes(3)); // true\nconsole.log(numbers.indexOf(4));  // 3\n\nconst doubled = numbers.map(n => n * 2);\nconsole.log(doubled);  // [2,4,6,8,10]",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -607,71 +943,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Która metoda dodaje element na końcu?",
+            "question": "Which method adds an element to the end?",
             "options": [
-              "dodać()",
-              "naciskać()",
-              "dodać()",
-              "wstawić()"
+              "add()",
+              "push()",
+              "append()",
+              "insert()"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "push() dodaje elementy na koniec tablicy.",
+            "explanation": "push() adds elements to the end of an array.",
             "type": "multipleChoice"
           },
           {
-            "question": "Jak uzyskać dostęp do pierwszego elementu?",
+            "question": "How do you access the first element?",
             "options": [
               "arr[0]",
-              "tablica[1]",
-              "arr.pierwszy",
-              "arr.pierwszy()"
+              "arr[1]",
+              "arr.first",
+              "arr.first()"
             ],
             "correctAnswerIndex": 0,
-            "explanation": "Tablice są indeksowane zerem, więc arr[0] jest pierwszym elementem.",
+            "explanation": "Arrays are zero-indexed, so arr[0] is the first element.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co operator spreadu (...) robi z tablicami?",
+            "question": "What does the spread operator (...) do with arrays?",
             "options": [
-              "Usuwa wszystkie elementy",
-              "Kopiuje lub rozwija elementy tablicy",
-              "Sortuje tablicę",
-              "Odwraca tablicę"
+              "Deletes all elements",
+              "Copies or expands array elements",
+              "Sorts the array",
+              "Reverses the array"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Operator spreadu (...) rozwija elementy tablicy. Przykład: [...arr1, ...arr2] łączy dwie tablice.",
+            "explanation": "The spread operator (...) expands array elements. Example: [...arr1, ...arr2] combines two arrays.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co to jest destrukturyzacja tablic?",
+            "question": "What is array destructuring?",
             "options": [
-              "Usuwanie elementów tablicy",
-              "Wyodrębnianie wartości do zmiennych",
-              "Łączenie wielu tablic",
-              "Sortowanie tablicy"
+              "Deleting array elements",
+              "Extracting values into variables",
+              "Combining multiple arrays",
+              "Sorting an array"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Destrukturyzacja rozpakowuje wartości tablicy: const [a, b] = [1, 2] przypisuje a=1, b=2. To czysty sposób na wyodrębnienie wartości!",
+            "explanation": "Destructuring unpacks array values: const [a, b] = [1, 2] assigns a=1, b=2. It's a clean way to extract values!",
             "type": "multipleChoice"
           },
           {
-            "question": "Co zwraca [1,2,3].filter(n => n > 1)?",
+            "question": "What does [1,2,3].filter(n => n > 1) return?",
             "options": [
               "[1]",
               "[2, 3]",
               "[1, 2, 3]",
-              "PRAWDA"
+              "true"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "filter() tworzy nową tablicę z elementami, które przeszły test. Tylko 2 i 3 są większe od 1.",
+            "explanation": "filter() creates a new array with elements that pass the test. Only 2 and 3 are greater than 1.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Working with Arrays\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which JavaScript example is syntactically valid?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "total = 3 + 2",
+              "SELECT total FROM data"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for JavaScript in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Manage a Task List\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"What are Arrays \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Zarządzaj listą zadań",
-        "description": "Utwórz tablicę z 3 zadaniami, dodaj czwarte zadanie i zarejestruj długość tablicy.",
+        "title": "Manage a Task List",
+        "description": "Create an array with 3 tasks, add a 4th task, and log the array length.",
         "starterCode": "// Create your task array\nconst tasks = [];\n",
         "language": "javascript",
         "testCases": [
@@ -681,7 +1077,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Użyj właściwości push() i .length.",
+        "hint": "Use push() and .length property.",
         "solution": "const tasks = [\"Task 1\", \"Task 2\", \"Task 3\"];\ntasks.push(\"Task 4\");\nconsole.log(tasks.length);",
         "xpReward": 15
       },
@@ -692,12 +1088,12 @@
       "id": "js_lesson_7",
       "courseId": "javascript",
       "moduleId": "control-flow",
-      "title": "Pętle w JavaScript",
-      "description": "Efektywnie iteruj za pomocą for, while i forEach",
+      "title": "Loops in JavaScript",
+      "description": "Iterate efficiently with for, while, and forEach",
       "theorySlides": [
         {
-          "title": "Pętla for 🔄",
-          "content": "Klasyczna pętla for składająca się z trzech części: inicjalizacji, warunku i inkrementacji.",
+          "title": "The for Loop 🔄",
+          "content": "The classic for loop with three parts: initialization, condition, and increment.",
           "codeSnippet": "for (let i = 0; i < 5; i++) {\n  console.log(i);\n}\n// Prints: 0, 1, 2, 3, 4\n\nfor (let i = 0; i < 10; i += 2) {\n  console.log(i);\n}\n// Prints: 0, 2, 4, 6, 8",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -705,8 +1101,8 @@
           "order": 0
         },
         {
-          "title": "Pętla while",
-          "content": "Pętle są kontynuowane, dopóki warunek jest spełniony.",
+          "title": "The while Loop",
+          "content": "Loops continue while a condition is true.",
           "codeSnippet": "let count = 0;\nwhile (count < 5) {\n  console.log(count);\n  count++;\n}\n\n// Be careful with infinite loops!\nlet ready = false;\nwhile (!ready) {\n  // Must set ready = true eventually\n}",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -714,8 +1110,8 @@
           "order": 1
         },
         {
-          "title": "forEach dla tablic",
-          "content": "Nowoczesny sposób na przeglądanie tablic.",
+          "title": "forEach for Arrays",
+          "content": "The modern way to loop through arrays.",
           "codeSnippet": "const fruits = [\"apple\", \"banana\", \"orange\"];\n\nfruits.forEach(fruit => {\n  console.log(fruit);\n});\n\n// With index\nfruits.forEach((fruit, index) => {\n  console.log(index + \": \" + fruit);\n});",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -726,59 +1122,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Co robi i++ w pętli for?",
+            "question": "What does i++ do in a for loop?",
             "options": [
-              "Zmniejsza się I",
-              "Przyrosty tj",
-              "Resetuje m.in",
-              "Podwójne I"
+              "Decreases i",
+              "Increments i",
+              "Resets i",
+              "Doubles i"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "i++ zwiększa i o 1 w każdej iteracji.",
+            "explanation": "i++ increments i by 1 each iteration.",
             "type": "multipleChoice"
           },
           {
-            "question": "Który jest najlepszy do przeglądania tablic?",
+            "question": "Which is best for looping through arrays?",
             "options": [
-              "Do",
-              "chwila",
-              "dla każdego",
-              "Wszyscy są równi"
+              "for",
+              "while",
+              "forEach",
+              "All are equal"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "forEach to najbardziej czytelny i nowoczesny sposób iteracji tablic.",
+            "explanation": "forEach is the most readable and modern way to iterate arrays.",
             "type": "multipleChoice"
           },
           {
-            "question": "Jaka jest kluczowa różnica między for...of i for...in?",
+            "question": "What is the key difference between for...of and for...in?",
             "options": [
-              "Bez różnicy",
-              "for...of iteruje wartości, for...in iteruje klucze",
-              "for...in iteruje wartości, for...of iteruje klucze",
-              "Obydwa iterują w ten sam sposób"
+              "No difference",
+              "for...of iterates values, for...in iterates keys",
+              "for...in iterates values, for...of iterates keys",
+              "Both iterate the same way"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "for...of wykonuje pętle po tablicy WARTOŚCI, natomiast for...in wykonuje pętle po obiektach KLUCZE/indeksy. Użyj for...of dla tablic!",
+            "explanation": "for...of loops through array VALUES, while for...in loops through object KEYS/indices. Use for...of for arrays!",
             "type": "multipleChoice"
           },
           {
-            "question": "Jak wcześniej wyjść z pętli?",
+            "question": "How do you exit a loop early?",
             "options": [
-              "Wyjście",
-              "przerwa",
-              "zatrzymywać się",
-              "powrót"
+              "exit",
+              "break",
+              "stop",
+              "return"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Instrukcja break natychmiast opuszcza bieżącą pętlę. Użyj opcji Kontynuuj, aby przejść do następnej iteracji.",
+            "explanation": "The break statement immediately exits the current loop. Use continue to skip to the next iteration.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Loops in JavaScript\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which JavaScript example is syntactically valid?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "total = 3 + 2",
+              "SELECT total FROM data"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for JavaScript in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Sum Numbers\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"The for Loop \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Suma liczb",
-        "description": "Użyj pętli for, aby obliczyć sumę liczb od 1 do 10 i zapisać ją.",
+        "title": "Sum Numbers",
+        "description": "Use a for loop to calculate the sum of numbers from 1 to 10 and log it.",
         "starterCode": "// Calculate sum of 1 to 10\nlet sum = 0;\n",
         "language": "javascript",
         "testCases": [
@@ -788,7 +1256,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Wykonaj pętlę od 1 do 10 i dodaj każdą liczbę do sumy.",
+        "hint": "Loop from 1 to 10 and add each number to sum.",
         "solution": "let sum = 0;\nfor (let i = 1; i <= 10; i++) {\n  sum += i;\n}\nconsole.log(sum);",
         "xpReward": 15
       },
@@ -799,12 +1267,12 @@
       "id": "js_lesson_8",
       "courseId": "javascript",
       "moduleId": "data-structures",
-      "title": "Obiekty JavaScriptu",
-      "description": "Przechowuj uporządkowane dane za pomocą obiektów",
+      "title": "JavaScript Objects",
+      "description": "Store structured data with objects",
       "theorySlides": [
         {
-          "title": "Czym są obiekty? 🏷️",
-          "content": "Obiekty przechowują dane jako pary klucz-wartość (właściwości). Reprezentują byty ze świata rzeczywistego.\n\nPrzykłady:\n• Profile użytkowników\n• Szczegóły produktu\n• Postacie w grze\n• Ustawienia konfiguracyjne",
+          "title": "What are Objects? 🏷️",
+          "content": "Objects store data as key-value pairs (properties). They represent real-world entities.\n\nExamples:\n• User profiles\n• Product details\n• Game characters\n• Configuration settings",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -812,8 +1280,8 @@
           "order": 0
         },
         {
-          "title": "Tworzenie obiektów",
-          "content": "Obiekty używają nawiasów klamrowych z właściwością: pary wartości.",
+          "title": "Creating Objects",
+          "content": "Objects use curly braces with property: value pairs.",
           "codeSnippet": "const person = {\n  name: \"Alice\",\n  age: 25,\n  city: \"NYC\",\n  isStudent: true\n};\n\nconsole.log(person.name);  // Alice\nconsole.log(person[\"age\"]); // 25",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -821,8 +1289,8 @@
           "order": 1
         },
         {
-          "title": "Metody obiektowe",
-          "content": "Obiekty mogą zawierać funkcje (metody).",
+          "title": "Object Methods",
+          "content": "Objects can contain functions (methods).",
           "codeSnippet": "const user = {\n  name: \"Bob\",\n  age: 30,\n  greet: function() {\n    console.log(\"Hi, I am \" + this.name);\n  },\n  haveBirthday() {\n    this.age++;\n  }\n};\n\nuser.greet();  // Hi, I am Bob",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -830,8 +1298,8 @@
           "order": 2
         },
         {
-          "title": "Manipulacja obiektem",
-          "content": "Dynamicznie dodawaj, aktualizuj lub usuwaj właściwości.",
+          "title": "Object Manipulation",
+          "content": "Add, update, or delete properties dynamically.",
           "codeSnippet": "const car = {\n  brand: \"Toyota\",\n  year: 2020\n};\n\n// Add property\ncar.color = \"red\";\n\n// Update property\ncar.year = 2021;\n\n// Delete property\ndelete car.color;\n\nconsole.log(car);",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -842,71 +1310,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Jak uzyskać dostęp do właściwości obiektu?",
+            "question": "How do you access object properties?",
             "options": [
-              "obj.property lub obj[\"właściwość\"]",
-              "obj->właściwość",
-              "obj(właściwość)",
-              "obj::właściwość"
+              "obj.property or obj[\"property\"]",
+              "obj->property",
+              "obj(property)",
+              "obj::property"
             ],
             "correctAnswerIndex": 0,
-            "explanation": "Aby uzyskać dostęp do właściwości, użyj notacji kropkowej lub nawiasowej.",
+            "explanation": "Use dot notation or bracket notation to access properties.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co to jest „to” w metodzie obiektowej?",
+            "question": "What is \"this\" in an object method?",
             "options": [
-              "Obiekt globalny",
-              "Nieokreślony",
-              "Sam obiekt",
-              "Okno"
+              "The global object",
+              "Undefined",
+              "The object itself",
+              "The window"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "„this” odnosi się do obiektu, do którego należy metoda.",
+            "explanation": "\"this\" refers to the object the method belongs to.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co to jest destrukturyzacja obiektów?",
+            "question": "What is object destructuring?",
             "options": [
-              "Usuwanie właściwości obiektu",
-              "Ekstrakcja właściwości do zmiennych",
-              "Łączenie dwóch obiektów",
-              "Kopiowanie obiektu"
+              "Deleting object properties",
+              "Extracting properties into variables",
+              "Merging two objects",
+              "Copying an object"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Destrukturyzacja wyodrębnia właściwości: const {imię, wiek} = osoba przypisuje osobę.imie do imienia i osobę.wiek do wieku.",
+            "explanation": "Destructuring extracts properties: const {name, age} = person assigns person.name to name and person.age to age.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co zwraca obiekt Object.keys(obj)?",
+            "question": "What does Object.keys(obj) return?",
             "options": [
-              "Tablica wartości",
-              "Tablica nazw właściwości",
-              "Liczba nieruchomości",
-              "Ciąg wszystkich kluczy"
+              "An array of values",
+              "An array of property names",
+              "The number of properties",
+              "A string of all keys"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Object.keys() zwraca tablicę nazw właściwości obiektu (kluczy). Object.values() zwraca wartości.",
+            "explanation": "Object.keys() returns an array of an object's property names (keys). Object.values() returns the values.",
             "type": "multipleChoice"
           },
           {
-            "question": "Jak utworzyć płytką kopię obiektu?",
+            "question": "How do you create a shallow copy of an object?",
             "options": [
-              "obj.kopia()",
-              "{...obiekt}",
-              "obiekt.klon()",
-              "Obiekt.kopia(obj)"
+              "obj.copy()",
+              "{...obj}",
+              "obj.clone()",
+              "Object.copy(obj)"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Operator rozprzestrzeniania {...obj} tworzy płytką kopię. Alternatywnie użyj Object. przypisania ({}, obj).",
+            "explanation": "The spread operator {...obj} creates a shallow copy. Alternatively, use Object.assign({}, obj).",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"JavaScript Objects\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which JavaScript example is syntactically valid?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "total = 3 + 2",
+              "SELECT total FROM data"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for JavaScript in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Create a Product\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"What are Objects \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Stwórz produkt",
-        "description": "Utwórz obiekt „produkt” z nazwą, ceną i właściwościami inStock. Zaloguj nazwę.",
+        "title": "Create a Product",
+        "description": "Create an object \"product\" with name, price, and inStock properties. Log the name.",
         "starterCode": "// Create product object\nconst product = {};\n",
         "language": "javascript",
         "testCases": [
@@ -916,7 +1444,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Użyj składni {klucz: wartość}.",
+        "hint": "Use {key: value} syntax.",
         "solution": "const product = {\n  name: \"Laptop\",\n  price: 999,\n  inStock: true\n};\nconsole.log(product.name);",
         "xpReward": 15
       },
@@ -927,12 +1455,12 @@
       "id": "js_lesson_9",
       "courseId": "javascript",
       "moduleId": "functions",
-      "title": "Funkcje w JavaScript",
-      "description": "Deklaracje funkcji głównych, wyrażenia i strzałki",
+      "title": "Functions in JavaScript",
+      "description": "Master function declarations, expressions, and arrows",
       "theorySlides": [
         {
-          "title": "Podstawy funkcji 📦",
-          "content": "Funkcje to bloki kodu wielokrotnego użytku. JavaScript ma wiele sposobów na ich zdefiniowanie.",
+          "title": "Function Basics 📦",
+          "content": "Functions are reusable blocks of code. JavaScript has multiple ways to define them.",
           "codeSnippet": "// Function declaration\nfunction greet(name) {\n  return \"Hello, \" + name + \"!\";\n}\n\nconsole.log(greet(\"Alice\"));\n// Hello, Alice!",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -940,8 +1468,8 @@
           "order": 0
         },
         {
-          "title": "Funkcje strzałek",
-          "content": "Nowoczesna, zwięzła składnia funkcji.",
+          "title": "Arrow Functions",
+          "content": "Modern, concise syntax for functions.",
           "codeSnippet": "// Traditional\nconst add = function(a, b) {\n  return a + b;\n};\n\n// Arrow function\nconst add = (a, b) => a + b;\n\n// Multiple lines\nconst greet = name => {\n  const message = \"Hello, \" + name;\n  return message;\n};",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -949,8 +1477,8 @@
           "order": 1
         },
         {
-          "title": "Parametry domyślne",
-          "content": "Podaj domyślne wartości parametrów.",
+          "title": "Default Parameters",
+          "content": "Provide default values for parameters.",
           "codeSnippet": "const greet = (name = \"Guest\") => {\n  console.log(\"Welcome, \" + name + \"!\");\n};\n\ngreet();          // Welcome, Guest!\ngreet(\"Alice\");   // Welcome, Alice!",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -958,8 +1486,8 @@
           "order": 2
         },
         {
-          "title": "Funkcje wyższego rzędu",
-          "content": "Funkcje, które przyjmują lub zwracają inne funkcje.",
+          "title": "Higher-Order Functions",
+          "content": "Functions that take or return other functions.",
           "codeSnippet": "const numbers = [1, 2, 3, 4, 5];\n\n// map: transform each element\nconst doubled = numbers.map(n => n * 2);\n\n// filter: keep elements that match\nconst evens = numbers.filter(n => n % 2 === 0);\n\nconsole.log(doubled);  // [2,4,6,8,10]\nconsole.log(evens);    // [2,4]",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -970,71 +1498,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Jaka jest składnia funkcji strzałkowych?",
+            "question": "What is the syntax for arrow functions?",
             "options": [
-              "funkcja => {}",
+              "function => {}",
               "() => {}",
-              "funkcja strzałkowa()",
-              "=> funkcja()"
+              "arrow function()",
+              "=> function()"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Funkcje strzałkowe używają składni () => {}.",
+            "explanation": "Arrow functions use () => {} syntax.",
             "type": "multipleChoice"
           },
           {
-            "question": "Do czego służy metoda map()?",
+            "question": "What does the map() method do?",
             "options": [
-              "Filtruje tablicę",
-              "Przekształca każdy element",
-              "Sortuje tablicę",
-              "Odwraca tablicę"
+              "Filters an array",
+              "Transforms each element",
+              "Sorts an array",
+              "Reverses an array"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "map() tworzy nową tablicę, przekształcając każdy element.",
+            "explanation": "map() creates a new array by transforming each element.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co to jest zamknięcie w JavaScript?",
+            "question": "What is a closure in JavaScript?",
             "options": [
-              "Sposób na zamknięcie funkcji",
-              "Funkcja z dostępem do swojego zewnętrznego zakresu",
-              "Zamknięta pętla",
-              "Typ błędu"
+              "A way to close a function",
+              "A function with access to its outer scope",
+              "A closed loop",
+              "An error type"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Zamknięcie ma miejsce wtedy, gdy funkcja „pamięta” zmienne ze swojego zewnętrznego zakresu, nawet po zakończeniu wykonywania tego zakresu!",
+            "explanation": "A closure is when a function \"remembers\" variables from its outer scope, even after that scope has finished executing!",
             "type": "multipleChoice"
           },
           {
-            "question": "Jaka jest różnica między deklaracjami funkcji a funkcjami strzałkowymi dotyczącymi „tego”?",
+            "question": "What is the difference between function declarations and arrow functions regarding \"this\"?",
             "options": [
-              "Bez różnicy",
-              "Funkcje strzałkowe nie mają własnego „tego”",
-              "Funkcje strzałkowe tworzą nowe „to”",
-              "Deklaracje funkcji nie mogą używać „tego”"
+              "No difference",
+              "Arrow functions don't have their own \"this\"",
+              "Arrow functions create a new \"this\"",
+              "Function declarations can't use \"this\""
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Funkcje strzałkowe dziedziczą „to” z otaczającego ich zakresu (leksykalne to). Funkcje regularne tworzą swój własny „ten” kontekst.",
+            "explanation": "Arrow functions inherit \"this\" from their surrounding scope (lexical this). Regular functions create their own \"this\" context.",
             "type": "multipleChoice"
           },
           {
-            "question": "Do czego służy metoda redukcji()?",
+            "question": "What does the reduce() method do?",
             "options": [
-              "Usuwa elementy z tablicy",
-              "Redukuje tablicę do pojedynczej wartości",
-              "Filtruje elementy tablicy",
-              "Zmniejsza tablicę"
+              "Removes elements from an array",
+              "Reduces array to a single value",
+              "Filters array elements",
+              "Makes array smaller"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "redukcja() wykonuje funkcję redukującą na każdym elemencie, co daje pojedynczą wartość wyjściową. Przykład: zsumuj wszystkie liczby.",
+            "explanation": "reduce() executes a reducer function on each element, resulting in a single output value. Example: sum all numbers.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Functions in JavaScript\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which JavaScript example is syntactically valid?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "total = 3 + 2",
+              "SELECT total FROM data"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for JavaScript in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Square Numbers\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Function Basics \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Liczby kwadratowe",
-        "description": "Utwórz funkcję strzałkową, która pobiera liczbę i zwraca jej kwadrat. Przetestuj z 8.",
+        "title": "Square Numbers",
+        "description": "Create an arrow function that takes a number and returns its square. Test with 8.",
         "starterCode": "// Create square function\nconst square = \n\nconsole.log(square(8));",
         "language": "javascript",
         "testCases": [
@@ -1044,7 +1632,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Użyj składni (n) => n * n.",
+        "hint": "Use (n) => n * n syntax.",
         "solution": "const square = (n) => n * n;\nconsole.log(square(8));",
         "xpReward": 15
       },
@@ -1055,12 +1643,12 @@
       "id": "js_lesson_10",
       "courseId": "javascript",
       "moduleId": "advanced",
-      "title": "Asynchroniczny JavaScript",
-      "description": "Obsługuj synchronizację, obietnice i operacje asynchroniczne",
+      "title": "Asynchronous JavaScript",
+      "description": "Handle timing, promises, and async operations",
       "theorySlides": [
         {
-          "title": "Co to jest asynchronizacja? ⏱️",
-          "content": "Kod asynchroniczny nie czeka na zakończenie operacji. Działa dalej i obsługuje wyniki później.\n\nTypowe operacje asynchroniczne:\n• Żądania sieciowe\n• Odczyt plików\n• Zapytania do bazy danych\n• Timery",
+          "title": "What is Async? ⏱️",
+          "content": "Asynchronous code doesn't wait for operations to complete. It continues running and handles results later.\n\nCommon async operations:\n• Network requests\n• File reading\n• Database queries\n• Timers",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -1068,8 +1656,8 @@
           "order": 0
         },
         {
-          "title": "Oddzwonienia",
-          "content": "Oryginalny sposób obsługi operacji asynchronicznych.",
+          "title": "Callbacks",
+          "content": "The original way to handle async operations.",
           "codeSnippet": "setTimeout(() => {\n  console.log(\"After 2 seconds\");\n}, 2000);\n\nconsole.log(\"Immediately\");\n\n// Output:\n// Immediately\n// After 2 seconds",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -1077,8 +1665,8 @@
           "order": 1
         },
         {
-          "title": "Obietnice",
-          "content": "Nowoczesny sposób obsługi operacji asynchronicznych. Obietnica reprezentuje przyszłą wartość.",
+          "title": "Promises",
+          "content": "Modern way to handle async operations. A promise represents a future value.",
           "codeSnippet": "const promise = new Promise((resolve, reject) => {\n  setTimeout(() => {\n    resolve(\"Success!\");\n  }, 1000);\n});\n\npromise.then(result => {\n  console.log(result);  // Success!\n});",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -1086,8 +1674,8 @@
           "order": 2
         },
         {
-          "title": "Asynchronizacja/Oczekiwanie",
-          "content": "Najczystsza składnia kodu asynchronicznego. Sprawia, że ​​czyta się go jak kod synchroniczny.",
+          "title": "Async/Await",
+          "content": "The cleanest syntax for async code. Makes it read like synchronous code.",
           "codeSnippet": "async function getData() {\n  try {\n    const result = await fetchData();\n    console.log(result);\n  } catch (error) {\n    console.error(error);\n  }\n}\n\ngetData();",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -1098,71 +1686,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Co robi setTimeout()?",
+            "question": "What does setTimeout() do?",
             "options": [
-              "Zatrzymuje czas",
-              "Opóźnia wykonanie",
-              "Mierzy czas",
-              "Pętle na zawsze"
+              "Stops time",
+              "Delays execution",
+              "Measures time",
+              "Loops forever"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "setTimeout() opóźnia wykonanie kodu o określony czas.",
+            "explanation": "setTimeout() delays code execution by a specified time.",
             "type": "multipleChoice"
           },
           {
-            "question": "Jakie słowo kluczowe powoduje asynchronizację funkcji?",
+            "question": "What keyword makes a function async?",
             "options": [
-              "asynchroniczny",
-              "czekać na",
-              "obietnica",
-              "odraczać"
+              "async",
+              "await",
+              "promise",
+              "defer"
             ],
             "correctAnswerIndex": 0,
-            "explanation": "Słowo kluczowe async powoduje, że funkcja jest asynchroniczna.",
+            "explanation": "The async keyword makes a function asynchronous.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co robi oczekiwanie?",
+            "question": "What does await do?",
             "options": [
-              "Zatrzymuje cały program",
-              "Wstrzymuje wykonywanie do czasu rozpatrzenia obietnicy",
-              "Tworzy nową obietnicę",
-              "Anuluje obietnicę"
+              "Stops the entire program",
+              "Pauses execution until promise resolves",
+              "Creates a new promise",
+              "Cancels a promise"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Wait wstrzymuje wykonywanie funkcji asynchronicznej do czasu spełnienia obietnicy, dzięki czemu kod asynchroniczny wygląda na synchroniczny. Działa tylko w funkcjach asynchronicznych!",
+            "explanation": "await pauses async function execution until the promise resolves, making async code look synchronous. Only works inside async functions!",
             "type": "multipleChoice"
           },
           {
-            "question": "Jakie są trzy stany Obietnicy?",
+            "question": "What are the three states of a Promise?",
             "options": [
-              "początek, środek, koniec",
-              "oczekujące, spełnione, odrzucone",
-              "czekam, gotowe, błąd",
-              "nowy, aktywny, kompletny"
+              "start, middle, end",
+              "pending, fulfilled, rejected",
+              "waiting, done, error",
+              "new, active, complete"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Obietnica może być oczekująca (początkowa), spełniona (udana) lub odrzucona (nieudana). Użyj .then() w przypadku spełnienia i .catch() w przypadku odrzucenia.",
+            "explanation": "A Promise can be pending (initial), fulfilled (successful), or rejected (failed). Use .then() for fulfilled and .catch() for rejected.",
             "type": "multipleChoice"
           },
           {
-            "question": "Do czego służy Promise.all()?",
+            "question": "What is Promise.all() used for?",
             "options": [
-              "Bieganie obiecuje pojedynczo",
-              "Równolegle uruchamianie wielu obietnic",
-              "Anulowanie wszystkich obietnic",
-              "Tworzenie nowych obietnic"
+              "Running promises one at a time",
+              "Running multiple promises in parallel",
+              "Canceling all promises",
+              "Creating new promises"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Promise.all() uruchamia jednocześnie wiele obietnic i rozwiązuje je, gdy WSZYSTKIE zostaną ukończone (lub odrzuca, jeśli DOWOLNY się nie powiedzie). Świetne do operacji równoległych!",
+            "explanation": "Promise.all() runs multiple promises concurrently and resolves when ALL complete (or rejects if ANY fails). Great for parallel operations!",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Asynchronous JavaScript\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which JavaScript example is syntactically valid?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "total = 3 + 2",
+              "SELECT total FROM data"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for JavaScript in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Delayed Message\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"What is Async \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Opóźniona wiadomość",
-        "description": "Użyj setTimeout, aby zapisać „Witajcie z przyszłości!” po 0 milisekundach.",
+        "title": "Delayed Message",
+        "description": "Use setTimeout to log \"Hello from the future!\" after 0 milliseconds.",
         "starterCode": "// Use setTimeout\n",
         "language": "javascript",
         "testCases": [
@@ -1172,7 +1820,7 @@
             "isHidden": false
           }
         ],
-        "hint": "setTimeout przyjmuje wywołanie zwrotne i opóźnienie w ms.",
+        "hint": "setTimeout takes a callback and delay in ms.",
         "solution": "setTimeout(() => {\n  console.log(\"Hello from the future!\");\n}, 0);",
         "xpReward": 15
       },

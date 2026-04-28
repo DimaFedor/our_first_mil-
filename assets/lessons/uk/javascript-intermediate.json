@@ -10,7 +10,7 @@
       "theorySlides": [
         {
           "title": "Сучасний синтаксис ES6+ 🚀",
-          "content": "Основні функції ES6+:\n• Деструктуризація\n• Оператор поширення\n• Параметри відпочинку\n• Параметри за замовчуванням\n• Літерали шаблону",
+          "content": "Ключові функції ES6+:\n• Деструктуризація\n• Оператор поширення\n• Параметри відпочинку\n• Параметри за замовчуванням\n• Літерали шаблону",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -18,7 +18,7 @@
           "order": 0
         },
         {
-          "title": "Деструктуризація",
+          "title": "Деструктурування",
           "content": "Вилучення значень із масивів та об’єктів.",
           "codeSnippet": "// Array destructuring\nconst [first, second] = [1, 2, 3];\n\n// Object destructuring\nconst { name, age } = { name: \"Alex\", age: 25 };\n\n// With defaults\nconst { role = \"user\" } = {};\nconsole.log(role); // \"user\"",
           "codeLanguage": "javascript",
@@ -28,7 +28,7 @@
         },
         {
           "title": "Літерали шаблону 📝",
-          "content": "Потужне форматування рядків:\n• Використовуйте зворотні галочки ` замість лапок\n• Вбудовувати вирази за допомогою ${}\n• Вбудовані багаторядкові рядки\n• Шаблони з тегами для індивідуальної обробки",
+          "content": "Потужне форматування рядків:\n• Використовуйте зворотні галочки ` замість лапок\n• Вбудовувати вирази за допомогою ${}\n• Вбудовані багаторядкові рядки\n• Шаблони з тегами для спеціальної обробки",
           "codeSnippet": "// String interpolation\nconst name = \"Alex\";\nconst greeting = `Hello, ${name}!`;\n\n// Expressions in templates\nconst price = 19.99;\nconst qty = 3;\nconsole.log(`Total: $${price * qty}`); // \"Total: $59.97\"\n\n// Multi-line strings\nconst html = `\n  <div class=\"card\">\n    <h2>${name}</h2>\n    <p>Welcome!</p>\n  </div>\n`;",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -37,7 +37,7 @@
         },
         {
           "title": "Параметри за замовчуванням 🎯",
-          "content": "Встановіть значення за замовчуванням для параметрів функції:\n• Значення за замовчуванням, які використовуються, коли аргумент не визначено\n• Може використовувати вирази як типові\n• Попередні параметри доступні в пізніших параметрах за замовчуванням",
+          "content": "Встановити значення за замовчуванням для параметрів функції:\n• Значення за замовчуванням, які використовуються, коли аргумент undefined\n• Може використовувати вирази як типові\n• Попередні параметри доступні в пізніших параметрах за замовчуванням",
           "codeSnippet": "// Basic default parameters\nfunction greet(name = \"Guest\", greeting = \"Hello\") {\n  return `${greeting}, ${name}!`;\n}\n\ngreet();              // \"Hello, Guest!\"\ngreet(\"Alex\");        // \"Hello, Alex!\"\ngreet(\"Alex\", \"Hi\");  // \"Hi, Alex!\"\n\n// Expression as default\nfunction createUser(name, role = \"user\", id = Date.now()) {\n  return { name, role, id };\n}\n\n// Using earlier param in later default\nfunction fetchData(url, timeout = 5000, retries = timeout > 3000 ? 1 : 3) {\n  console.log(`Fetching ${url}, timeout: ${timeout}, retries: ${retries}`);\n}",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -45,8 +45,8 @@
           "order": 3
         },
         {
-          "title": "Розширені літерали об’єктів ⚡",
-          "content": "Коротший синтаксис для об'єктів:\n• Скорочення властивостей\n• Стенографія методу\n• Обчислені назви властивостей",
+          "title": "Покращені об’єктні літерали ⚡",
+          "content": "Коротший синтаксис для об’єктів:\n• Скорочення властивостей\n• Стенографія методу\n• Назви обчислених властивостей",
           "codeSnippet": "const name = \"Alex\";\nconst age = 25;\n\n// Property shorthand\nconst user = { name, age }; // Same as { name: name, age: age }\n\n// Method shorthand\nconst calculator = {\n  add(a, b) { return a + b; },     // Instead of add: function(a,b)\n  subtract(a, b) { return a - b; }\n};\n\n// Computed property names\nconst prop = \"status\";\nconst obj = {\n  [prop]: \"active\",           // { status: \"active\" }\n  [`${prop}Code`]: 200       // { statusCode: 200 }\n};",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -60,21 +60,21 @@
             "question": "Що робить const [a, b] = [1, 2]?",
             "options": [
               "Створює масив",
-              "Деструктурує масив",
+              "Деструктурування масиву",
               "Копіює масив",
               "Помилка"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Деструктуризація масиву призначає елементи масиву змінним.",
+            "explanation": "Деструктурування масиву призначає елементи масиву змінним.",
             "type": "multipleChoice"
           },
           {
             "question": "Який синтаксис правильний для літералів шаблону?",
             "options": [
-              "`Привіт, ${name}`",
+              "`Hello ${name}`",
               "\"Привіт, ${name}\"",
-              "\"Привіт, ${name}\"",
-              "\"Привіт\" + ім'я"
+              "'Привіт, ${name}'",
+              "\"Привіт \" + ім'я"
             ],
             "correctAnswerIndex": 0,
             "explanation": "Літерали шаблону використовують зворотні позначки ` і ${} для інтерполяції.",
@@ -83,33 +83,105 @@
           {
             "question": "Що відбувається, коли ви викликаєте greet() за допомогою функції greet(name = \"World\")?",
             "options": [
-              "Помилка - відсутній аргумент",
+              "Помилка — відсутній аргумент",
               "Повертає undefined",
-              "Використовує \"Світ\" як назву",
+              "Використовує «Світ» як назву",
               "Повертає null"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "Параметри за замовчуванням використовуються, якщо аргументи не визначені або не надані.",
+            "explanation": "Параметри за замовчуванням використовуються, якщо аргументи мають значення undefined або не надаються.",
             "type": "multipleChoice"
           },
           {
-            "question": "Що означає скорочення { name, age }?",
+            "question": "Що означає скорочення { ім'я, вік }?",
             "options": [
-              "{ ім'я: \"ім'я\", вік: \"вік\" }",
-              "{ ім'я: ім'я, вік: вік}",
-              "[ім'я, вік]",
+              "{ name: \"name\", age: \"age\" }",
+              "{ name: name, age: age }",
+              "[ім’я, вік]",
               "Помилка"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Скорочення властивостей створює властивості з іменами та значеннями змінних.",
+            "explanation": "Короткий опис властивості створює властивості з іменами та значеннями змінних.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яка головна мета «Функції ES6+»?",
+            "options": [
+              "Зрозумійте та застосуйте основну ідею в коді",
+              "Запам'ятайте довільний синтаксис без практики",
+              "Пропустіть приклади та читайте лише визначення",
+              "Спершу зосередьтеся на непов’язаних складних темах"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Метою кожного уроку є формування практичних навичок за допомогою однієї цілеспрямованої концепції.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який приклад JavaScript синтаксично дійсний?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "всього = 3 + 2",
+              "ВИБРАТИ всього FROM даних"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Це правильно сформований фрагмент для JavaScript у контексті цього уроку.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який підхід найкраще відповідає цьому стилю уроку?",
+            "options": [
+              "Виконайте один маленький крок, перевірте його, а потім продовжуйте",
+              "Пишіть все відразу без перевірки",
+              "Ігноруйте помилки та переходьте до наступного уроку",
+              "Скопіюйте код наосліп, не розуміючи"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Стиль курсу поетапний: маленькі кроки + швидка перевірка.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Перш ніж надсилати \"Destructure User\", що потрібно перевірити?",
+            "options": [
+              "Результат/поведінка відповідає очікуваному результату",
+              "Код містить якомога більше рядків",
+              "Імена змінних мають бути максимально короткими",
+              "Коментарів ніде немає"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Перевірка очікуваної поведінки спочатку запобігає поширеним помилкам подання.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який оператор найкраще розширює \"Сучасний синтаксис ES6\"?",
+            "options": [
+              "Практикуйте концепцію за допомогою нового input/прикладу",
+              "Негайно перейдіть на іншу тему",
+              "Видаліть весь попередній код і перезапустіть",
+              "Пропустіть кодування та дивіться лише пояснення"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Застосування тієї самої концепції до нового прикладу поглиблює розуміння.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Якщо ваша відповідь неправильна, який перший крок налагодження буде найрозумнішим?",
+            "options": [
+              "Перевірте проміжні значення та припущення",
+              "Переписати з нуля без перегляду",
+              "Вгадайте випадкове виправлення та надішліть повторно",
+              "Ігноруйте невдалий відмінок"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Перегляд припущень і проміжних результатів є найшвидшим безпечним шляхом налагодження.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Деструктурувати користувача",
-        "description": "Витягніть ім’я та електронну адресу з об’єкта користувача за допомогою деструктуризації.\n\nЗамість:\nconst name = user.name;\nconst email = user.email;\n\nВикористання:\nconst { ім'я, адреса електронної пошти } = користувач;",
+        "title": "Деструктурування користувача",
+        "description": "Витягти ім’я та електронну адресу з об’єкта користувача за допомогою деструктуризації.\n\nЗамість:\nconst name = user.name;\nconst email = user.email;\n\nВикористання:\nconst { ім'я, адреса електронної пошти } = користувач;",
         "starterCode": "const user = { name: \"Alex\", email: \"alex@test.com\", age: 25 };\n\n// Use destructuring to extract name and email\nconst { name, email } = // complete this line\n\nconsole.log(name, email);",
         "language": "javascript",
         "testCases": [
@@ -130,12 +202,12 @@
       "id": "js_int_lesson_2",
       "courseId": "javascript-intermediate",
       "moduleId": "es6",
-      "title": "Розкладіть і відпочиньте",
-      "description": "Майстер ... оператор",
+      "title": "Spread & Rest",
+      "description": "Master ... оператор",
       "theorySlides": [
         {
-          "title": "Оператор поширення ... 📤",
-          "content": "Спред розширює елементи:\n• Об’єднати масиви\n• Клонувати об'єкти\n• Передайте аргументи",
+          "title": "Оператор розповсюдження ... 📤",
+          "content": "Spread розгортає елементи:\n• Об’єднати масиви\n• Клонувати об'єкти\n• Передавати аргументи",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -144,7 +216,7 @@
         },
         {
           "title": "Приклади",
-          "content": "Поширення в дії.",
+          "content": "Розповсюдження в дії.",
           "codeSnippet": "// Combine arrays\nconst arr1 = [1, 2];\nconst arr2 = [3, 4];\nconst combined = [...arr1, ...arr2]; // [1,2,3,4]\n\n// Clone & extend object\nconst user = { name: \"Alex\" };\nconst updated = { ...user, age: 25 };",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -152,8 +224,8 @@
           "order": 1
         },
         {
-          "title": "Object Spread Deep Dive 🔄",
-          "content": "Розповсюдження об’єктів для незмінних оновлень:\n• Клонувати об'єкти без мутації\n• Перевизначати певні властивості\n• Об'єднання кількох об'єктів\n• Порядок має значення для перевизначення!",
+          "title": "Об’єкт Поширення Deep Dive 🔄",
+          "content": "Поширення об’єктів для незмінних оновлень:\n• Клонувати об'єкти без мутації\n• Перевизначати певні властивості\n• Об'єднання кількох об'єктів\n• Порядок має значення для перевизначення!",
           "codeSnippet": "// Shallow clone\nconst original = { a: 1, b: 2 };\nconst clone = { ...original };\n\n// Override properties (last value wins)\nconst defaults = { theme: \"light\", lang: \"en\" };\nconst userPrefs = { theme: \"dark\" };\nconst settings = { ...defaults, ...userPrefs };\n// { theme: \"dark\", lang: \"en\" }\n\n// Add new properties\nconst product = { name: \"Phone\", price: 999 };\nconst withDiscount = { ...product, discount: 0.1, finalPrice: 899 };\n\n// Nested objects (shallow copy warning!)\nconst user = { name: \"Alex\", address: { city: \"NYC\" } };\nconst copy = { ...user };\ncopy.address.city = \"LA\"; // Also changes original!",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -161,8 +233,8 @@
           "order": 2
         },
         {
-          "title": "Параметри відпочинку у функціях 📥",
-          "content": "Зберіть решту аргументів:\n• Має бути останнім параметром\n• Створює реальний масив (не об’єкт аргументів)\n• Працює з деструктуризацією",
+          "title": "Параметри Rest у функціях 📥",
+          "content": "Зберіть залишкові аргументи:\n• Має бути останнім параметром\n• Створює реальний масив (не об’єкт аргументів)\n• Працює з деструктуризацією",
           "codeSnippet": "// Collect remaining args\nfunction sum(first, ...rest) {\n  console.log(first);  // 1\n  console.log(rest);   // [2, 3, 4, 5]\n  return rest.reduce((a, b) => a + b, first);\n}\nsum(1, 2, 3, 4, 5); // 15\n\n// With destructuring\nfunction processUser({ name, ...otherProps }) {\n  console.log(name);        // \"Alex\"\n  console.log(otherProps);  // { age: 25, role: \"admin\" }\n}\nprocessUser({ name: \"Alex\", age: 25, role: \"admin\" });\n\n// Real array vs arguments object\nfunction oldWay() {\n  // arguments is array-like, not real array\n  return Array.from(arguments).map(x => x * 2);\n}\nconst newWay = (...nums) => nums.map(x => x * 2); // Cleaner!",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -170,7 +242,7 @@
           "order": 3
         },
         {
-          "title": "Порівняння спреду та залишку 🎯",
+          "title": "Порівняння розвороту та залишку 🎯",
           "content": "Той самий синтаксис, різні контексти:\n• Розповсюдження: розгортання (розпакування)\n• Відпочинок: збирає (пакує)\n• Позиція визначає поведінку",
           "codeSnippet": "// SPREAD - expands elements\nconst nums = [1, 2, 3];\nconsole.log(...nums);        // 1 2 3 (expanded)\nconsole.log(Math.max(...nums)); // 3\n\n// REST - collects elements\nconst [first, ...remaining] = [1, 2, 3, 4];\n// first = 1, remaining = [2, 3, 4]\n\n// Both in same function\nfunction merge(target, ...sources) {\n  // ...sources is REST (collecting args)\n  return sources.reduce((acc, src) => ({\n    ...acc,    // SPREAD (expanding object)\n    ...src     // SPREAD (expanding object)\n  }), target);\n}\n\nmerge({}, { a: 1 }, { b: 2 }); // { a: 1, b: 2 }",
           "codeLanguage": "javascript",
@@ -186,27 +258,27 @@
             "options": [
               "Функція паузи",
               "Зберіть залишкові аргументи",
-              "Нічого не повертати",
-              "Петля"
+              "Нічого не повернути",
+              "Loop"
             ],
             "correctAnswerIndex": 1,
             "explanation": "Rest (...args) збирає решту аргументів у масив.",
             "type": "multipleChoice"
           },
           {
-            "question": "Що дає { ...obj1, ...obj2 }, якщо обидва мають властивість \"x\"?",
+            "question": "Що створює { ...obj1, ...obj2 }, якщо обидва мають властивість \"x\"?",
             "options": [
-              "Помилка - дублікат ключа",
+              "Помилка — дублікат ключа",
               "obj1.x виграє",
               "obj2.x виграє",
               "Обидва значення в масиві"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "У розширенні об’єктів пізніші властивості перекривають попередні.",
+            "explanation": "У розширенні об’єктів пізніші властивості замінюють попередні.",
             "type": "multipleChoice"
           },
           {
-            "question": "Де має бути параметр rest у підписі функції?",
+            "question": "Де має відображатися параметр rest у сигнатурі функції?",
             "options": [
               "Перша позиція",
               "Будь-яка позиція",
@@ -214,7 +286,7 @@
               "Середня позиція"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "Параметр rest має бути останнім параметром у функції.",
+            "explanation": "Параметр Rest має бути останнім параметром у функції.",
             "type": "multipleChoice"
           },
           {
@@ -226,7 +298,79 @@
               "undefined"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Відпочинок у деструктуризації збирає решту елементів у масив.",
+            "explanation": "Rest у деструктуризації збирає елементи, що залишилися, у масив.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яка головна мета \"Spread & Rest\"?",
+            "options": [
+              "Зрозумійте та застосуйте основну ідею в коді",
+              "Запам'ятайте довільний синтаксис без практики",
+              "Пропустіть приклади та читайте лише визначення",
+              "Спершу зосередьтеся на непов’язаних складних темах"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Метою кожного уроку є формування практичних навичок за допомогою однієї цілеспрямованої концепції.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який приклад JavaScript синтаксично дійсний?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "всього = 3 + 2",
+              "ВИБРАТИ всього FROM даних"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Це правильно сформований фрагмент для JavaScript у контексті цього уроку.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який підхід найкраще відповідає цьому стилю уроку?",
+            "options": [
+              "Виконайте один маленький крок, перевірте його, а потім продовжуйте",
+              "Пишіть все відразу без перевірки",
+              "Ігноруйте помилки та переходьте до наступного уроку",
+              "Скопіюйте код наосліп, не розуміючи"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Стиль курсу поетапний: маленькі кроки + швидка перевірка.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Перед надсиланням \"Об'єднання масивів\", що потрібно перевірити?",
+            "options": [
+              "Результат/поведінка відповідає очікуваному результату",
+              "Код містить якомога більше рядків",
+              "Імена змінних мають бути максимально короткими",
+              "Коментарів ніде немає"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Перевірка очікуваної поведінки спочатку запобігає поширеним помилкам подання.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який оператор найкраще розширює \"Оператор поширення\"?",
+            "options": [
+              "Практикуйте концепцію за допомогою нового input/прикладу",
+              "Негайно перейдіть на іншу тему",
+              "Видаліть весь попередній код і перезапустіть",
+              "Пропустіть кодування та дивіться лише пояснення"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Застосування тієї самої концепції до нового прикладу поглиблює розуміння.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Якщо ваша відповідь неправильна, який перший крок налагодження буде найрозумнішим?",
+            "options": [
+              "Перевірте проміжні значення та припущення",
+              "Переписати з нуля без перегляду",
+              "Вгадайте випадкове виправлення та надішліть повторно",
+              "Ігноруйте невдалий відмінок"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Перегляд припущень і проміжних результатів є найшвидшим безпечним шляхом налагодження.",
             "type": "multipleChoice"
           }
         ],
@@ -234,7 +378,7 @@
       },
       "codingChallenge": {
         "title": "Об’єднати масиви",
-        "description": "Об’єднайте два масиви за допомогою оператора розвороту.",
+        "description": "Об’єднати два масиви за допомогою оператора поширення.",
         "starterCode": "const nums1 = [1, 2, 3];\nconst nums2 = [4, 5, 6];\n\n// Use spread to merge\nconst merged = ;\n\nconsole.log(merged);",
         "language": "javascript",
         "testCases": [
@@ -256,10 +400,10 @@
       "courseId": "javascript-intermediate",
       "moduleId": "functional",
       "title": "Методи масиву",
-      "description": "карта, фільтр, зменшення майстерності",
+      "description": "карта, фільтр, зменшити майстерність",
       "theorySlides": [
         {
-          "title": "Функціональні методи масиву 🔧",
+          "title": "Функціональні Методи масиву 🔧",
           "content": "Перетворення масивів без мутації:\n• **map**: трансформуйте кожен елемент\n• **фільтр**: зберігати відповідні елементи\n• **зменшити**: об’єднати до одного значення\n• **знайти**: отримати перший збіг",
           "codeSnippet": null,
           "codeLanguage": null,
@@ -268,7 +412,7 @@
           "order": 0
         },
         {
-          "title": "Методи зчеплення",
+          "title": "Методи з’єднання",
           "content": "Ланцюжок для потужних перетворень.",
           "codeSnippet": "const numbers = [1, 2, 3, 4, 5];\n\nconst result = numbers\n  .filter(n => n > 2)      // [3, 4, 5]\n  .map(n => n * 2)         // [6, 8, 10]\n  .reduce((a, b) => a + b); // 24\n\nconsole.log(result);",
           "codeLanguage": "javascript",
@@ -277,8 +421,8 @@
           "order": 1
         },
         {
-          "title": "find() і findIndex() 🔍",
-          "content": "Пошук окремих елементів:\n• find(): повертає перший відповідний елемент\n• findIndex(): повертає індекс першого збігу\n• Повертає undefined/-1, якщо не знайдено\n• Припиняє пошук після першого збігу",
+          "title": "find() та findIndex() 🔍",
+          "content": "Пошук окремих елементів:\n• find(): повертає перший відповідний елемент\n• findIndex(): повертає індекс першого збігу\n• Повертає undefined/-1, якщо не знайдено\n• Зупиняє пошук після першого збігу",
           "codeSnippet": "const users = [\n  { id: 1, name: \"Alex\", active: false },\n  { id: 2, name: \"Sam\", active: true },\n  { id: 3, name: \"Jordan\", active: true }\n];\n\n// Find first active user\nconst activeUser = users.find(user => user.active);\nconsole.log(activeUser); // { id: 2, name: \"Sam\", active: true }\n\n// Find index of user by id\nconst index = users.findIndex(user => user.id === 3);\nconsole.log(index); // 2\n\n// Not found cases\nconst admin = users.find(user => user.role === \"admin\");\nconsole.log(admin); // undefined\n\nconst adminIndex = users.findIndex(user => user.role === \"admin\");\nconsole.log(adminIndex); // -1",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -286,8 +430,8 @@
           "order": 2
         },
         {
-          "title": "some() і every() ✅",
-          "content": "Умови тестового масиву:\n• some(): принаймні один збіг (АБО)\n• every(): усі мають відповідати (AND)\n• Повертати логічні значення\n• Коротке замикання під час визначення результату",
+          "title": "some() та every() ✅",
+          "content": "Умови тестового масиву:\n• some(): принаймні один збіг (АБО)\n• every(): усі мають збігатися (І)\n• Повертати логічні значення\n• Коротке замикання під час визначення результату",
           "codeSnippet": "const numbers = [1, 2, 3, 4, 5];\n\n// some() - at least one passes test\nconst hasEven = numbers.some(n => n % 2 === 0);\nconsole.log(hasEven); // true (2 and 4 are even)\n\nconst hasNegative = numbers.some(n => n < 0);\nconsole.log(hasNegative); // false\n\n// every() - all must pass test\nconst allPositive = numbers.every(n => n > 0);\nconsole.log(allPositive); // true\n\nconst allEven = numbers.every(n => n % 2 === 0);\nconsole.log(allEven); // false\n\n// Practical example: form validation\nconst fields = [\n  { name: \"email\", valid: true },\n  { name: \"password\", valid: true },\n  { name: \"phone\", valid: false }\n];\nconst formValid = fields.every(field => field.valid);\nconsole.log(formValid); // false",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -295,8 +439,8 @@
           "order": 3
         },
         {
-          "title": "включає() і плоский() 📋",
-          "content": "Більш корисні методи масиву:\n• include(): перевірити, чи існує елемент\n• flat(): зведення вкладених масивів\n• flatMap(): зіставлення, а потім зведення",
+          "title": "includes() і flat() 📋",
+          "content": "Більш корисні методи масиву:\n• includes(): перевірте, чи існує елемент\n• flat(): зведення вкладених масивів\n• flatMap(): зіставлення, а потім зведення",
           "codeSnippet": "// includes() - simple existence check\nconst fruits = [\"apple\", \"banana\", \"orange\"];\nconsole.log(fruits.includes(\"banana\")); // true\nconsole.log(fruits.includes(\"grape\"));  // false\n\n// With fromIndex\nconsole.log(fruits.includes(\"apple\", 1)); // false (starts from index 1)\n\n// flat() - flatten nested arrays\nconst nested = [1, [2, 3], [4, [5, 6]]];\nconsole.log(nested.flat());    // [1, 2, 3, 4, [5, 6]]\nconsole.log(nested.flat(2));   // [1, 2, 3, 4, 5, 6]\nconsole.log(nested.flat(Infinity)); // Flatten all levels\n\n// flatMap() - map + flat(1) combined\nconst sentences = [\"Hello world\", \"How are you\"];\nconst words = sentences.flatMap(s => s.split(\" \"));\nconsole.log(words); // [\"Hello\", \"world\", \"How\", \"are\", \"you\"]",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -309,10 +453,10 @@
           {
             "question": "Що повертає filter()?",
             "options": [
-              "Модифікований масив",
-              "Новий масив із збігами",
+              "Змінений масив",
+              "Новий масив із відповідає",
               "Логічний",
-              "Єдине значення"
+              "Одне значення"
             ],
             "correctAnswerIndex": 1,
             "explanation": "filter() повертає новий масив з елементами, які пройшли перевірку.",
@@ -327,7 +471,7 @@
               "false"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "find() повертає undefined, якщо жоден елемент не задовольняє умови.",
+            "explanation": "find() повертає undefined, якщо жоден елемент не задовольняє умову.",
             "type": "multipleChoice"
           },
           {
@@ -339,7 +483,7 @@
               "false"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "some() повертає true, оскільки принаймні один елемент (3) більший за 2.",
+            "explanation": "some() повертає істину, оскільки принаймні один елемент (3) є більшим за 2.",
             "type": "multipleChoice"
           },
           {
@@ -352,6 +496,78 @@
             ],
             "correctAnswerIndex": 2,
             "explanation": "every() повертає true, оскільки всі елементи більші за 0.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яка головна мета \"Методів масиву\"?",
+            "options": [
+              "Зрозумійте та застосуйте основну ідею в коді",
+              "Запам'ятайте довільний синтаксис без практики",
+              "Пропустіть приклади та читайте лише визначення",
+              "Спершу зосередьтеся на непов’язаних складних темах"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Метою кожного уроку є формування практичних навичок за допомогою однієї цілеспрямованої концепції.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який приклад JavaScript синтаксично дійсний?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "всього = 3 + 2",
+              "ВИБРАТИ всього FROM даних"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Це правильно сформований фрагмент для JavaScript у контексті цього уроку.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який підхід найкраще відповідає цьому стилю уроку?",
+            "options": [
+              "Виконайте один маленький крок, перевірте його, а потім продовжуйте",
+              "Пишіть все відразу без перевірки",
+              "Ігноруйте помилки та переходьте до наступного уроку",
+              "Скопіюйте код наосліп, не розуміючи"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Стиль курсу поетапний: маленькі кроки + швидка перевірка.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Перш ніж надсилати \"Суму квадратів\", що потрібно перевірити?",
+            "options": [
+              "Результат/поведінка відповідає очікуваному результату",
+              "Код містить якомога більше рядків",
+              "Імена змінних мають бути максимально короткими",
+              "Коментарів ніде немає"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Перевірка очікуваної поведінки спочатку запобігає поширеним помилкам подання.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який оператор найкраще розширює \"Методи функціональних масивів\"?",
+            "options": [
+              "Практикуйте концепцію за допомогою нового input/прикладу",
+              "Негайно перейдіть на іншу тему",
+              "Видаліть весь попередній код і перезапустіть",
+              "Пропустіть кодування та дивіться лише пояснення"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Застосування тієї самої концепції до нового прикладу поглиблює розуміння.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Якщо ваша відповідь неправильна, який перший крок налагодження буде найрозумнішим?",
+            "options": [
+              "Перевірте проміжні значення та припущення",
+              "Переписати з нуля без перегляду",
+              "Вгадайте випадкове виправлення та надішліть повторно",
+              "Ігноруйте невдалий відмінок"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Перегляд припущень і проміжних результатів є найшвидшим безпечним шляхом налагодження.",
             "type": "multipleChoice"
           }
         ],
@@ -369,7 +585,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Ланцюговий фільтр, карта, зменшення",
+        "hint": "Ланцюговий фільтр, зіставляти, зменшувати",
         "solution": "const nums = [1, 2, 3, 4, 5, 6];\n\nconst result = nums\n  .filter(n => n % 2 === 0)\n  .map(n => n * n)\n  .reduce((a, b) => a + b);\n\nconsole.log(result);",
         "xpReward": 15
       },
@@ -380,11 +596,11 @@
       "id": "js_int_lesson_4",
       "courseId": "javascript-intermediate",
       "moduleId": "async",
-      "title": "Обіцяє глибоке занурення",
-      "description": "Керувати асинхронними операціями",
+      "title": "Обіцянка Глибоке занурення",
+      "description": "Обробляти асинхронні операції",
       "theorySlides": [
         {
-          "title": "Обіцянки ⏳",
+          "title": "Обіцянка ⏳",
           "content": "Обіцянка представляє майбутню цінність.\n\nдержави:\n• **очікує на розгляд**: Початковий\n• **виконано**: Успіх\n• **відхилено**: помилка",
           "codeSnippet": null,
           "codeLanguage": null,
@@ -394,7 +610,7 @@
         },
         {
           "title": "Створення обіцянок",
-          "content": "Створюйте та ланцюжок обіцянок.",
+          "content": "Створення та ланцюжок обіцянок.",
           "codeSnippet": "const fetchData = () => {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      resolve({ name: \"Data\" });\n    }, 1000);\n  });\n};\n\nfetchData()\n  .then(data => console.log(data))\n  .catch(err => console.error(err));",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -402,8 +618,8 @@
           "order": 1
         },
         {
-          "title": "Promise.all() – Паралельне виконання 🚀",
-          "content": "Запустіть кілька промісів паралельно:\n• Для успіху всі повинні досягти успіху\n• Швидко виходить з ладу при першій відмові\n• Результати в порядку введення\n• Чудово підходить для незалежних асинхронних завдань",
+          "title": "Promise.all() - Паралельне виконання 🚀",
+          "content": "Паралельне виконання кількох обіцянок:\n• Для успіху всі повинні досягти успіху\n• Швидко виходить з ладу при першій відмові\n• Результати в тому самому порядку, що й input\n• Чудово підходить для незалежних асинхронних завдань",
           "codeSnippet": "// Fetch multiple resources in parallel\nconst fetchUser = () => fetch(\"/api/user\").then(r => r.json());\nconst fetchPosts = () => fetch(\"/api/posts\").then(r => r.json());\nconst fetchComments = () => fetch(\"/api/comments\").then(r => r.json());\n\n// All requests run simultaneously\nPromise.all([fetchUser(), fetchPosts(), fetchComments()])\n  .then(([user, posts, comments]) => {\n    console.log(\"User:\", user);\n    console.log(\"Posts:\", posts);\n    console.log(\"Comments:\", comments);\n  })\n  .catch(error => {\n    // If ANY request fails, catch is called\n    console.error(\"One request failed:\", error);\n  });\n\n// Practical example: batch processing\nconst ids = [1, 2, 3, 4, 5];\nconst fetchAllUsers = Promise.all(\n  ids.map(id => fetch(`/api/users/${id}`).then(r => r.json()))\n);",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -411,7 +627,7 @@
           "order": 2
         },
         {
-          "title": "Обіцяйте обробку помилок 🛡️",
+          "title": "Обробка помилок Promise 🛡️",
           "content": "Належні стратегії обробки помилок:\n• .catch() для помилок ланцюжка\n• reject() для явних помилок\n• Поширення помилки через ланцюг\n• finally() для очищення",
           "codeSnippet": "// Basic error handling\nfetchData()\n  .then(data => processData(data))\n  .then(result => saveResult(result))\n  .catch(error => {\n    // Catches errors from ANY step above\n    console.error(\"Error occurred:\", error.message);\n  })\n  .finally(() => {\n    // Always runs - success or failure\n    console.log(\"Cleanup complete\");\n    hideLoadingSpinner();\n  });\n\n// Creating rejected promise\nconst validate = (data) => {\n  return new Promise((resolve, reject) => {\n    if (!data.email) {\n      reject(new Error(\"Email is required\"));\n    } else {\n      resolve(data);\n    }\n  });\n};\n\n// Recovering from errors\nfetchData()\n  .catch(err => {\n    console.warn(\"Fetch failed, using cache\");\n    return getCachedData(); // Return fallback\n  })\n  .then(data => console.log(data)); // Continues with cached data",
           "codeLanguage": "javascript",
@@ -421,7 +637,7 @@
         },
         {
           "title": "Promise.allSettled() & Promise.race() 🏁",
-          "content": "Більше комбінаторів Promise:\n• allSettled(): await усіх, ніколи не reject\n• race(): перший settled перемагає\n• any(): перший fulfilled перемагає",
+          "content": "Більше комбінаторів Promise:\n• allSettled(): чекати всіх, ніколи не відхиляти\n• race(): виграє перший, хто розрахується\n• any(): перший виконавець виграє",
           "codeSnippet": "// Promise.allSettled - get all results regardless of success/failure\nconst promises = [\n  fetch(\"/api/users\"),\n  fetch(\"/api/invalid-endpoint\"), // This might fail\n  fetch(\"/api/posts\")\n];\n\nPromise.allSettled(promises)\n  .then(results => {\n    results.forEach((result, i) => {\n      if (result.status === \"fulfilled\") {\n        console.log(`Promise ${i}: Success`, result.value);\n      } else {\n        console.log(`Promise ${i}: Failed`, result.reason);\n      }\n    });\n  });\n\n// Promise.race - first to complete wins\nconst timeout = new Promise((_, reject) => \n  setTimeout(() => reject(new Error(\"Timeout\")), 5000)\n);\n\nPromise.race([fetchData(), timeout])\n  .then(data => console.log(\"Got data:\", data))\n  .catch(err => console.error(\"Request timed out\"));\n\n// Promise.any - first successful wins (ignores rejections)\nPromise.any([fetchFromServer1(), fetchFromServer2(), fetchFromServer3()])\n  .then(data => console.log(\"First successful:\", data));",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -435,8 +651,8 @@
             "question": "Що обробляє .catch()?",
             "options": [
               "Успіх",
-              "Відмова/помилки",
-              "Стан pending",
+              "Відхилення/помилки",
+              "Стан очікування",
               "Усі стани"
             ],
             "correctAnswerIndex": 1,
@@ -444,12 +660,12 @@
             "type": "multipleChoice"
           },
           {
-            "question": "Що станеться, якщо одне обіцяння в Promise.all() відхилено?",
+            "question": "Що трапиться, якщо одне обіцяння в Promise.all() відхилить?",
             "options": [
               "Інші обіцянки продовжуються",
               "Усі результати повертаються",
               "Entire Promise.all відхиляє",
-              "Ігнорується лише один із помилками"
+              "Ігнорується лише один невдалий"
             ],
             "correctAnswerIndex": 2,
             "explanation": "Promise.all() швидко виходить з ладу - він відхиляє негайно, коли будь-яке обіцяння відхиляється.",
@@ -458,25 +674,97 @@
           {
             "question": "Що робить .finally()?",
             "options": [
-              "Працює лише на успіх",
-              "Працює лише в разі відмови",
-              "Біжить після успіху чи невдачі",
-              "Скасовує обіцянку"
+              "Запускається лише в разі успіху",
+              "Запускається лише в разі помилки",
+              "Запускається після успіху чи невдачі",
+              "Скасування обіцянок"
             ],
             "correctAnswerIndex": 2,
             "explanation": "finally() завжди виконується після виконання обіцянки, незалежно від результату.",
             "type": "multipleChoice"
           },
           {
-            "question": "Який метод чекає всіх обіцянок і ніколи не відкидає?",
+            "question": "Який метод очікує на всі обіцянки та ніколи не відхиляє?",
             "options": [
               "Promise.all()",
-              "Promise.race()",
+              "Обіцянка.race()",
               "Promise.allSettled()",
-              "Promise.any()"
+              "Обіцянка.any()"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "Promise.allSettled() очікує на всі обіцянки та повертає їхні результати, ніколи не відхиляє.",
+            "explanation": "Promise.allSettled() чекає на всіх обіцяє і повертає свої результати, ніколи не відкидає.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яка основна мета \"Promises Deep Dive\"?",
+            "options": [
+              "Зрозумійте та застосуйте основну ідею в коді",
+              "Запам'ятайте довільний синтаксис без практики",
+              "Пропустіть приклади та читайте лише визначення",
+              "Спершу зосередьтеся на непов’язаних складних темах"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Метою кожного уроку є формування практичних навичок за допомогою однієї цілеспрямованої концепції.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який приклад JavaScript синтаксично дійсний?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "всього = 3 + 2",
+              "ВИБРАТИ всього FROM даних"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Це правильно сформований фрагмент для JavaScript у контексті цього уроку.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який підхід найкраще відповідає цьому стилю уроку?",
+            "options": [
+              "Виконайте один маленький крок, перевірте його, а потім продовжуйте",
+              "Пишіть все відразу без перевірки",
+              "Ігноруйте помилки та переходьте до наступного уроку",
+              "Скопіюйте код наосліп, не розуміючи"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Стиль курсу поетапний: маленькі кроки + швидка перевірка.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Перш ніж надсилати \"Створити обіцянку\", що потрібно перевірити?",
+            "options": [
+              "Результат/поведінка відповідає очікуваному результату",
+              "Код містить якомога більше рядків",
+              "Імена змінних мають бути максимально короткими",
+              "Коментарів ніде немає"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Перевірка очікуваної поведінки спочатку запобігає поширеним помилкам подання.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який оператор найкраще розширює \"Обіцянки\"?",
+            "options": [
+              "Практикуйте концепцію за допомогою нового input/прикладу",
+              "Негайно перейдіть на іншу тему",
+              "Видаліть весь попередній код і перезапустіть",
+              "Пропустіть кодування та дивіться лише пояснення"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Застосування тієї самої концепції до нового прикладу поглиблює розуміння.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Якщо ваша відповідь неправильна, який перший крок налагодження буде найрозумнішим?",
+            "options": [
+              "Перевірте проміжні значення та припущення",
+              "Переписати з нуля без перегляду",
+              "Вгадайте випадкове виправлення та надішліть повторно",
+              "Ігноруйте невдалий відмінок"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Перегляд припущень і проміжних результатів є найшвидшим безпечним шляхом налагодження.",
             "type": "multipleChoice"
           }
         ],
@@ -484,7 +772,7 @@
       },
       "codingChallenge": {
         "title": "Створити обіцянку",
-        "description": "Створіть обіцянку, яка після затримки вирішується \"Hello\".",
+        "description": "Створити обіцянку, яка після затримки вирішується \"Привіт\".",
         "starterCode": "const greet = () => {\n  return new Promise((resolve, reject) => {\n    // Resolve with \"Hello\"\n  });\n};\n\ngreet().then(msg => console.log(msg));",
         "language": "javascript",
         "testCases": [
@@ -494,7 +782,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Використовуйте resolve(\"Привіт\")",
+        "hint": "Використовуйте resolve(\"Hello\")",
         "solution": "const greet = () => {\n  return new Promise((resolve, reject) => {\n    resolve(\"Hello\");\n  });\n};\n\ngreet().then(msg => console.log(msg));",
         "xpReward": 15
       },
@@ -506,11 +794,11 @@
       "courseId": "javascript-intermediate",
       "moduleId": "async",
       "title": "Async/Await",
-      "description": "Чистий асинхронний синтаксис",
+      "description": "Очистити асинхронний синтаксис",
       "theorySlides": [
         {
           "title": "Async/Await ✨",
-          "content": "Напишіть асинхронний код, як sync:\n• **async**: змушує функцію повертати Promise\n• **await**: призупиняється, доки Promise не виконається\n• Використовуйте try/catch для помилок",
+          "content": "Напишіть асинхронний код, як sync:\n• **async**: змушує функцію повертати Promise\n• **чекати**: призупиняється, доки не буде вирішено Promise\n• Використовуйте спробу/вилов помилок",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -519,7 +807,7 @@
         },
         {
           "title": "приклад",
-          "content": "Чистий асинхронний код.",
+          "content": "Clean асинхронний код.",
           "codeSnippet": "async function fetchUser() {\n  try {\n    const response = await fetch(\"/api/user\");\n    const data = await response.json();\n    return data;\n  } catch (error) {\n    console.error(\"Failed:\", error);\n  }\n}",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -527,8 +815,8 @@
           "order": 1
         },
         {
-          "title": "try/catch обробка помилок 🛡️",
-          "content": "Правильна обробка помилок за допомогою async/await:\n• Переносьте виклики await у try/catch\n• Виявляйте конкретні типи помилок\n• Завжди обробляйте помилки передбачувано\n• За потреби rethrow для обробки на вищому рівні",
+          "title": "Try/Catch Error Handling 🛡️",
+          "content": "Правильна обробка помилок за допомогою async/await:\n• Переносити виклики очікування в try/catch\n• Виявляти певні типи помилок\n• Завжди витончено поводьтеся з помилками\n• Можна повторно створювати для обробки на вищому рівні",
           "codeSnippet": "async function fetchUserData(userId) {\n  try {\n    const response = await fetch(`/api/users/${userId}`);\n    \n    if (!response.ok) {\n      throw new Error(`HTTP error! status: ${response.status}`);\n    }\n    \n    const data = await response.json();\n    return data;\n    \n  } catch (error) {\n    if (error.name === \"TypeError\") {\n      console.error(\"Network error - check connection\");\n    } else if (error.message.includes(\"404\")) {\n      console.error(\"User not found\");\n    } else {\n      console.error(\"Unexpected error:\", error.message);\n    }\n    \n    // Return fallback or re-throw\n    return { error: true, message: error.message };\n  } finally {\n    // Cleanup - always runs\n    console.log(\"Request completed\");\n  }\n}",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -536,8 +824,8 @@
           "order": 2
         },
         {
-          "title": "Parallel Await із Promise.all 🚀",
-          "content": "Виконайте асинхронні операції паралельно:\n• Послідовний await повільний\n• Promise.all() працює паралельно\n• Використовуйте, коли запити незалежні\n• Значне підвищення продуктивності",
+          "title": "Паралельне очікування з Promise.all 🚀",
+          "content": "Запустіть асинхронні операції паралельно:\n• Послідовне очікування повільне\n• Promise.all() працює паралельно\n• Використовуйте, коли запити незалежні\n• Значне підвищення продуктивності",
           "codeSnippet": "// ❌ SLOW - Sequential (waits for each)\nasync function getDataSlow() {\n  const users = await fetchUsers();    // 1 second\n  const posts = await fetchPosts();    // 1 second  \n  const comments = await fetchComments(); // 1 second\n  // Total: ~3 seconds\n  return { users, posts, comments };\n}\n\n// ✅ FAST - Parallel (all at once)\nasync function getDataFast() {\n  const [users, posts, comments] = await Promise.all([\n    fetchUsers(),\n    fetchPosts(),\n    fetchComments()\n  ]);\n  // Total: ~1 second (longest request)\n  return { users, posts, comments };\n}\n\n// Mix parallel and sequential when needed\nasync function processOrder(orderId) {\n  // First, get order (need this before anything else)\n  const order = await fetchOrder(orderId);\n  \n  // Then fetch user and items in parallel\n  const [user, items] = await Promise.all([\n    fetchUser(order.userId),\n    fetchItems(order.itemIds)\n  ]);\n  \n  return { order, user, items };\n}",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -545,8 +833,8 @@
           "order": 3
         },
         {
-          "title": "Розширені асинхронні шаблони 🎯",
-          "content": "Поширені асинхронні шаблони:\n• Асинхронні цикли (for...of з await)\n• Retry-логіка\n• Обробка timeout\n• Асинхронний IIFE",
+          "title": "Advanced Async Patterns 🎯",
+          "content": "Загальні асинхронні шаблони:\n• Асинхронні цикли (for...of з очікуванням)\n• Повторити логіку\n• Обробка часу очікування\n• Асинхронний IIFE",
           "codeSnippet": "// Async for...of loop (sequential)\nasync function processItems(items) {\n  for (const item of items) {\n    await processItem(item); // One at a time\n  }\n}\n\n// Retry pattern\nasync function fetchWithRetry(url, retries = 3) {\n  for (let i = 0; i < retries; i++) {\n    try {\n      return await fetch(url).then(r => r.json());\n    } catch (error) {\n      if (i === retries - 1) throw error;\n      console.log(`Retry ${i + 1}/${retries}...`);\n      await delay(1000 * (i + 1)); // Exponential backoff\n    }\n  }\n}\n\n// Timeout wrapper\nasync function fetchWithTimeout(url, timeout = 5000) {\n  const controller = new AbortController();\n  const timeoutId = setTimeout(() => controller.abort(), timeout);\n  \n  try {\n    const response = await fetch(url, { signal: controller.signal });\n    return await response.json();\n  } finally {\n    clearTimeout(timeoutId);\n  }\n}\n\n// Async IIFE (Immediately Invoked Function Expression)\n(async () => {\n  const data = await fetchData();\n  console.log(data);\n})();",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -557,51 +845,123 @@
       "quiz": {
         "questions": [
           {
-            "question": "Де можна використовувати await?",
+            "question": "Де можна використовувати очікування?",
             "options": [
-              "Де завгодно",
-              "Лише всередині async function",
-              "Тільки в зворотних дзвінках",
-              "Тільки на уроках"
+              "Будь-де",
+              "Всередині асинхронної функції",
+              "Тільки в зворотних викликах",
+              "Тільки в класах"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "await можна використовувати лише всередині асинхронних функцій.",
+            "explanation": "await можна використовувати лише в асинхронних функціях.",
             "type": "multipleChoice"
           },
           {
             "question": "Яка перевага використання try/catch з async/await?",
             "options": [
               "Робить код швидшим",
-              "Синхронно обробляє помилки",
+              "Обробка помилок у синхронний спосіб",
               "Запобігає всім помилкам",
-              "Не потрібно з async/await"
+              "Не потрібно з async/очікуванням"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "try/catch забезпечує чисту обробку помилок у синхронному стилі для асинхронного коду.",
+            "explanation": "try/catch забезпечує чітку обробку помилок у синхронному стилі для асинхронного коду.",
             "type": "multipleChoice"
           },
           {
-            "question": "Як запустити декілька await паралельно?",
+            "question": "Як запускати декілька очікувань паралельно?",
             "options": [
-              "Поставте їх на одній лінії",
+              "Розмістіть їх в одному рядку",
               "Використовуйте Promise.all()",
-              "Використовуйте async.parallel()",
-              "Не можливо"
+              "Використовуйте асинхронний.parallel()",
+              "Неможливо"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Promise.all() запускає декілька промісів паралельно та очікує всіх результатів.",
+            "explanation": "Promise.all() виконує декілька промісів паралельно та очікує на всі результати.",
             "type": "multipleChoice"
           },
           {
             "question": "Що завжди повертає асинхронна функція?",
             "options": [
               "undefined",
-              "Безпосереднє значення, що повертається",
-              "Promise",
+              "Значення, що повертається безпосередньо",
+              "Обіцянка",
               "Асинхронний об’єкт"
             ],
             "correctAnswerIndex": 2,
             "explanation": "Асинхронні функції завжди повертають Promise, навіть якщо ви повертаєте звичайне значення.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Яка головна мета «Async/Await»?",
+            "options": [
+              "Зрозумійте та застосуйте основну ідею в коді",
+              "Запам'ятайте довільний синтаксис без практики",
+              "Пропустіть приклади та читайте лише визначення",
+              "Спершу зосередьтеся на непов’язаних складних темах"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Метою кожного уроку є формування практичних навичок за допомогою однієї цілеспрямованої концепції.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який приклад JavaScript синтаксично дійсний?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "всього = 3 + 2",
+              "ВИБРАТИ всього FROM даних"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Це правильно сформований фрагмент для JavaScript у контексті цього уроку.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який підхід найкраще відповідає цьому стилю уроку?",
+            "options": [
+              "Виконайте один маленький крок, перевірте його, а потім продовжуйте",
+              "Пишіть все відразу без перевірки",
+              "Ігноруйте помилки та переходьте до наступного уроку",
+              "Скопіюйте код наосліп, не розуміючи"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Стиль курсу поетапний: маленькі кроки + швидка перевірка.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Перш ніж надсилати \"Асинхронне привітання\", що потрібно перевірити?",
+            "options": [
+              "Результат/поведінка відповідає очікуваному результату",
+              "Код містить якомога більше рядків",
+              "Імена змінних мають бути максимально короткими",
+              "Коментарів ніде немає"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Перевірка очікуваної поведінки спочатку запобігає поширеним помилкам подання.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Який оператор найкраще розширює \"AsyncAwait \"?",
+            "options": [
+              "Практикуйте концепцію за допомогою нового input/прикладу",
+              "Негайно перейдіть на іншу тему",
+              "Видаліть весь попередній код і перезапустіть",
+              "Пропустіть кодування та дивіться лише пояснення"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Застосування тієї самої концепції до нового прикладу поглиблює розуміння.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Якщо ваша відповідь неправильна, який перший крок налагодження буде найрозумнішим?",
+            "options": [
+              "Перевірте проміжні значення та припущення",
+              "Переписати з нуля без перегляду",
+              "Вгадайте випадкове виправлення та надішліть повторно",
+              "Ігноруйте невдалий відмінок"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Перегляд припущень і проміжних результатів є найшвидшим безпечним шляхом налагодження.",
             "type": "multipleChoice"
           }
         ],
@@ -609,7 +969,7 @@
       },
       "codingChallenge": {
         "title": "Асинхронне привітання",
-        "description": "Створіть асинхронну функцію, яка повертає привітання.",
+        "description": "Створити асинхронну функцію, яка повертає привітання.",
         "starterCode": "const delay = (ms) => new Promise(r => setTimeout(r, ms));\n\nasync function greet(name) {\n  // await delay, then return \"Hello, {name}!\"\n}\n\ngreet(\"World\").then(console.log);",
         "language": "javascript",
         "testCases": [
@@ -619,7 +979,7 @@
             "isHidden": false
           }
         ],
-        "hint": "await delay(100), потім return шаблонний літерал",
+        "hint": "await delay(100), потім повертає літерал шаблону",
         "solution": "const delay = (ms) => new Promise(r => setTimeout(r, ms));\n\nasync function greet(name) {\n  await delay(100);\n  return `Hello, ${name}!`;\n}\n\ngreet(\"World\").then(console.log);",
         "xpReward": 15
       },

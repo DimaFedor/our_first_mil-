@@ -5,12 +5,12 @@
       "id": "js_int_lesson_1",
       "courseId": "javascript-intermediate",
       "moduleId": "es6",
-      "title": "Funkcje ES6+",
-      "description": "Nowoczesna składnia JavaScript",
+      "title": "ES6+ Features",
+      "description": "Modern JavaScript syntax",
       "theorySlides": [
         {
-          "title": "Nowoczesna składnia ES6+ 🚀",
-          "content": "Kluczowe funkcje ES6+:\n• Destrukturyzacja\n• Operator rozprzestrzeniania\n• Parametry spoczynkowe\n• Parametry domyślne\n• Literały szablonowe",
+          "title": "ES6+ Modern Syntax 🚀",
+          "content": "Key ES6+ features:\n• Destructuring\n• Spread operator\n• Rest parameters\n• Default parameters\n• Template literals",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -18,8 +18,8 @@
           "order": 0
         },
         {
-          "title": "Destrukturyzacja",
-          "content": "Wyodrębniaj wartości z tablic i obiektów.",
+          "title": "Destructuring",
+          "content": "Extract values from arrays and objects.",
           "codeSnippet": "// Array destructuring\nconst [first, second] = [1, 2, 3];\n\n// Object destructuring\nconst { name, age } = { name: \"Alex\", age: 25 };\n\n// With defaults\nconst { role = \"user\" } = {};\nconsole.log(role); // \"user\"",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -27,8 +27,8 @@
           "order": 1
         },
         {
-          "title": "Dosłowne szablony 📝",
-          "content": "Potężne formatowanie ciągów:\n• Używaj odwrotnych znaków ` zamiast cudzysłowów\n• Osadzaj wyrażenia za pomocą ${}\n• Wbudowane ciągi wieloliniowe\n• Oznaczone szablony do niestandardowego przetwarzania",
+          "title": "Template Literals 📝",
+          "content": "Powerful string formatting:\n• Use backticks ` instead of quotes\n• Embed expressions with ${}\n• Multi-line strings built-in\n• Tagged templates for custom processing",
           "codeSnippet": "// String interpolation\nconst name = \"Alex\";\nconst greeting = `Hello, ${name}!`;\n\n// Expressions in templates\nconst price = 19.99;\nconst qty = 3;\nconsole.log(`Total: $${price * qty}`); // \"Total: $59.97\"\n\n// Multi-line strings\nconst html = `\n  <div class=\"card\">\n    <h2>${name}</h2>\n    <p>Welcome!</p>\n  </div>\n`;",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -36,8 +36,8 @@
           "order": 2
         },
         {
-          "title": "Parametry domyślne 🎯",
-          "content": "Ustaw domyślne wartości parametrów funkcji:\n• Wartości domyślne używane, gdy argument jest niezdefiniowany\n• Można używać wyrażeń jako domyślnych\n• Wcześniejsze parametry dostępne w późniejszych ustawieniach domyślnych",
+          "title": "Default Parameters 🎯",
+          "content": "Set default values for function parameters:\n• Defaults used when argument is undefined\n• Can use expressions as defaults\n• Earlier params available in later defaults",
           "codeSnippet": "// Basic default parameters\nfunction greet(name = \"Guest\", greeting = \"Hello\") {\n  return `${greeting}, ${name}!`;\n}\n\ngreet();              // \"Hello, Guest!\"\ngreet(\"Alex\");        // \"Hello, Alex!\"\ngreet(\"Alex\", \"Hi\");  // \"Hi, Alex!\"\n\n// Expression as default\nfunction createUser(name, role = \"user\", id = Date.now()) {\n  return { name, role, id };\n}\n\n// Using earlier param in later default\nfunction fetchData(url, timeout = 5000, retries = timeout > 3000 ? 1 : 3) {\n  console.log(`Fetching ${url}, timeout: ${timeout}, retries: ${retries}`);\n}",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -45,8 +45,8 @@
           "order": 3
         },
         {
-          "title": "Ulepszone literały obiektów ⚡",
-          "content": "Krótsza składnia obiektów:\n• Skrót własności\n• Skrót metody\n• Obliczone nazwy właściwości",
+          "title": "Enhanced Object Literals ⚡",
+          "content": "Shorter syntax for objects:\n• Property shorthand\n• Method shorthand\n• Computed property names",
           "codeSnippet": "const name = \"Alex\";\nconst age = 25;\n\n// Property shorthand\nconst user = { name, age }; // Same as { name: name, age: age }\n\n// Method shorthand\nconst calculator = {\n  add(a, b) { return a + b; },     // Instead of add: function(a,b)\n  subtract(a, b) { return a - b; }\n};\n\n// Computed property names\nconst prop = \"status\";\nconst obj = {\n  [prop]: \"active\",           // { status: \"active\" }\n  [`${prop}Code`]: 200       // { statusCode: 200 }\n};",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -57,59 +57,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Co robi const [a, b] = [1, 2]?",
+            "question": "What does const [a, b] = [1, 2] do?",
             "options": [
-              "Tworzy tablicę",
-              "Niszczy tablicę",
-              "Kopiuje tablicę",
-              "Błąd"
+              "Creates array",
+              "Destructures array",
+              "Copies array",
+              "Error"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Destrukturyzacja tablicy przypisuje elementy tablicy do zmiennych.",
+            "explanation": "Array destructuring assigns array elements to variables.",
             "type": "multipleChoice"
           },
           {
-            "question": "Która składnia jest poprawna dla literałów szablonowych?",
+            "question": "Which syntax is correct for template literals?",
             "options": [
-              "`Witam ${imię}`",
-              "„Witam ${name}”",
-              "„Witam ${name}”",
-              "„Witam” + imię"
+              "`Hello ${name}`",
+              "\"Hello ${name}\"",
+              "'Hello ${name}'",
+              "\"Hello \" + name"
             ],
             "correctAnswerIndex": 0,
-            "explanation": "W literałach szablonowych do interpolacji używane są zwroty ` i ${}.",
+            "explanation": "Template literals use backticks ` and ${} for interpolation.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co się stanie, jeśli wywołasz funkcję greet() z funkcją greet(name = „World”)?",
+            "question": "What happens when you call greet() with function greet(name = \"World\")?",
             "options": [
-              "Błąd – brakujący argument",
-              "Zwraca niezdefiniowany",
-              "Używa słowa „Świat” jako nazwy",
-              "Zwraca wartość zerową"
+              "Error - missing argument",
+              "Returns undefined",
+              "Uses \"World\" as name",
+              "Returns null"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "Parametry domyślne są używane, gdy argumenty są niezdefiniowane lub nie podano.",
+            "explanation": "Default parameters are used when arguments are undefined or not provided.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co oznacza skrót {imię, wiek}?",
+            "question": "What is { name, age } shorthand for?",
             "options": [
-              "{ imię: \"imię\", wiek: \"wiek\" }",
-              "{ imię: imię, wiek: wiek }",
-              "[imię, wiek]",
-              "Błąd"
+              "{ name: \"name\", age: \"age\" }",
+              "{ name: name, age: age }",
+              "[name, age]",
+              "Error"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Skrót właściwości tworzy właściwości o nazwach zmiennych i wartościach.",
+            "explanation": "Property shorthand creates properties with variable names and values.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"ES6+ Features\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which JavaScript example is syntactically valid?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "total = 3 + 2",
+              "SELECT total FROM data"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for JavaScript in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Destructure User\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"ES6 Modern Syntax \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Zniszcz użytkownika",
-        "description": "Wyodrębnij nazwę i adres e-mail z obiektu użytkownika za pomocą destrukturyzacji.\n\nZamiast:\nstała nazwa = nazwa.użytkownika;\nconst email = użytkownik.email;\n\nUżyj:\nconst {nazwa, e-mail } = użytkownik;",
+        "title": "Destructure User",
+        "description": "Extract name and email from the user object using destructuring.\n\nInstead of:\nconst name = user.name;\nconst email = user.email;\n\nUse:\nconst { name, email } = user;",
         "starterCode": "const user = { name: \"Alex\", email: \"alex@test.com\", age: 25 };\n\n// Use destructuring to extract name and email\nconst { name, email } = // complete this line\n\nconsole.log(name, email);",
         "language": "javascript",
         "testCases": [
@@ -119,7 +191,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Uzupełnij linię: const {nazwa, adres e-mail } = użytkownik;",
+        "hint": "Complete the line: const { name, email } = user;",
         "solution": "const user = { name: \"Alex\", email: \"alex@test.com\", age: 25 };\n\nconst { name, email } = user;\n\nconsole.log(name, email);",
         "xpReward": 15
       },
@@ -130,12 +202,12 @@
       "id": "js_int_lesson_2",
       "courseId": "javascript-intermediate",
       "moduleId": "es6",
-      "title": "Rozłóż i odpocznij",
-      "description": "Mistrz... operator",
+      "title": "Spread & Rest",
+      "description": "Master ... operator",
       "theorySlides": [
         {
-          "title": "Operator Rozprzestrzeniania... 📤",
-          "content": "Rozpiętość rozwija elementy:\n• Łącz tablice\n• Klonuj obiekty\n• Przekazuj argumenty",
+          "title": "Spread Operator ... 📤",
+          "content": "Spread expands elements:\n• Combine arrays\n• Clone objects\n• Pass arguments",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -143,8 +215,8 @@
           "order": 0
         },
         {
-          "title": "Przykłady",
-          "content": "Rozprzestrzenianie się w akcji.",
+          "title": "Examples",
+          "content": "Spread in action.",
           "codeSnippet": "// Combine arrays\nconst arr1 = [1, 2];\nconst arr2 = [3, 4];\nconst combined = [...arr1, ...arr2]; // [1,2,3,4]\n\n// Clone & extend object\nconst user = { name: \"Alex\" };\nconst updated = { ...user, age: 25 };",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -152,8 +224,8 @@
           "order": 1
         },
         {
-          "title": "Obiekt Rozłóż Głębokie Nurkowanie 🔄",
-          "content": "Rozprzestrzenianie obiektów dla niezmiennych aktualizacji:\n• Klonuj obiekty bez mutacji\n• Zastąp określone właściwości\n• Połącz wiele obiektów\n• Sprawy porządkowe do zastąpienia!",
+          "title": "Object Spread Deep Dive 🔄",
+          "content": "Object spread for immutable updates:\n• Clone objects without mutation\n• Override specific properties\n• Merge multiple objects\n• Order matters for overrides!",
           "codeSnippet": "// Shallow clone\nconst original = { a: 1, b: 2 };\nconst clone = { ...original };\n\n// Override properties (last value wins)\nconst defaults = { theme: \"light\", lang: \"en\" };\nconst userPrefs = { theme: \"dark\" };\nconst settings = { ...defaults, ...userPrefs };\n// { theme: \"dark\", lang: \"en\" }\n\n// Add new properties\nconst product = { name: \"Phone\", price: 999 };\nconst withDiscount = { ...product, discount: 0.1, finalPrice: 899 };\n\n// Nested objects (shallow copy warning!)\nconst user = { name: \"Alex\", address: { city: \"NYC\" } };\nconst copy = { ...user };\ncopy.address.city = \"LA\"; // Also changes original!",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -161,8 +233,8 @@
           "order": 2
         },
         {
-          "title": "Parametry spoczynkowe w funkcjach 📥",
-          "content": "Zbierz pozostałe argumenty:\n• Musi być ostatnim parametrem\n• Tworzy prawdziwą tablicę (nie obiekt argumentów)\n• Działa z destrukturyzacją",
+          "title": "Rest Parameters in Functions 📥",
+          "content": "Collect remaining arguments:\n• Must be last parameter\n• Creates a real array (not arguments object)\n• Works with destructuring",
           "codeSnippet": "// Collect remaining args\nfunction sum(first, ...rest) {\n  console.log(first);  // 1\n  console.log(rest);   // [2, 3, 4, 5]\n  return rest.reduce((a, b) => a + b, first);\n}\nsum(1, 2, 3, 4, 5); // 15\n\n// With destructuring\nfunction processUser({ name, ...otherProps }) {\n  console.log(name);        // \"Alex\"\n  console.log(otherProps);  // { age: 25, role: \"admin\" }\n}\nprocessUser({ name: \"Alex\", age: 25, role: \"admin\" });\n\n// Real array vs arguments object\nfunction oldWay() {\n  // arguments is array-like, not real array\n  return Array.from(arguments).map(x => x * 2);\n}\nconst newWay = (...nums) => nums.map(x => x * 2); // Cleaner!",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -170,8 +242,8 @@
           "order": 3
         },
         {
-          "title": "Porównanie spreadu i reszty 🎯",
-          "content": "Ta sama składnia, różne konteksty:\n• Rozprzestrzenianie się: rozwija się (rozpakowuje)\n• Odpoczynek: Zbiera (pakuje)\n• Pozycja determinuje zachowanie",
+          "title": "Spread vs Rest Comparison 🎯",
+          "content": "Same syntax, different contexts:\n• Spread: Expands (unpacks)\n• Rest: Collects (packs)\n• Position determines behavior",
           "codeSnippet": "// SPREAD - expands elements\nconst nums = [1, 2, 3];\nconsole.log(...nums);        // 1 2 3 (expanded)\nconsole.log(Math.max(...nums)); // 3\n\n// REST - collects elements\nconst [first, ...remaining] = [1, 2, 3, 4];\n// first = 1, remaining = [2, 3, 4]\n\n// Both in same function\nfunction merge(target, ...sources) {\n  // ...sources is REST (collecting args)\n  return sources.reduce((acc, src) => ({\n    ...acc,    // SPREAD (expanding object)\n    ...src     // SPREAD (expanding object)\n  }), target);\n}\n\nmerge({}, { a: 1 }, { b: 2 }); // { a: 1, b: 2 }",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -182,59 +254,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Co to są parametry spoczynkowe?",
+            "question": "What is rest parameters?",
             "options": [
-              "Funkcja pauzy",
-              "Zbierz pozostałe argumenty",
-              "Nic nie zwracaj",
-              "Pętla"
+              "Pause function",
+              "Collect remaining args",
+              "Return nothing",
+              "Loop"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Reszta (...args) zbiera pozostałe argumenty do tablicy.",
+            "explanation": "Rest (...args) collects remaining arguments into array.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co daje { ...obj1, ...obj2 }, jeśli oba mają właściwość „x”?",
+            "question": "What does { ...obj1, ...obj2 } produce if both have property \"x\"?",
             "options": [
-              "Błąd - zduplikowany klucz",
-              "obj1.x wygrywa",
-              "obj2.x wygrywa",
-              "Obie wartości w tablicy"
+              "Error - duplicate key",
+              "obj1.x wins",
+              "obj2.x wins",
+              "Both values in array"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "W przypadku rozkładu obiektów późniejsze właściwości zastępują wcześniejsze.",
+            "explanation": "In object spread, later properties override earlier ones.",
             "type": "multipleChoice"
           },
           {
-            "question": "Gdzie w sygnaturze funkcji musi pojawić się parametr rest?",
+            "question": "Where must rest parameter appear in function signature?",
             "options": [
-              "Pierwsza pozycja",
-              "Dowolna pozycja",
-              "Ostatnia pozycja",
-              "Pozycja środkowa"
+              "First position",
+              "Any position",
+              "Last position",
+              "Middle position"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "Parametr rest musi być ostatnim parametrem funkcji.",
+            "explanation": "Rest parameter must be the last parameter in a function.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co const [a, ...b] = [1, 2, 3] przypisuje b?",
+            "question": "What does const [a, ...b] = [1, 2, 3] assign to b?",
             "options": [
               "2",
               "[2, 3]",
               "3",
-              "nieokreślony"
+              "undefined"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Reszta w destrukturyzacji zbiera pozostałe elementy w tablicę.",
+            "explanation": "Rest in destructuring collects remaining elements into an array.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Spread & Rest\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which JavaScript example is syntactically valid?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "total = 3 + 2",
+              "SELECT total FROM data"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for JavaScript in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Merge Arrays\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Spread Operator  \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Połącz tablice",
-        "description": "Scal dwie tablice za pomocą operatora rozprzestrzeniania.",
+        "title": "Merge Arrays",
+        "description": "Merge two arrays with spread operator.",
         "starterCode": "const nums1 = [1, 2, 3];\nconst nums2 = [4, 5, 6];\n\n// Use spread to merge\nconst merged = ;\n\nconsole.log(merged);",
         "language": "javascript",
         "testCases": [
@@ -244,7 +388,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Użyj [...num1, ...num2]",
+        "hint": "Use [...nums1, ...nums2]",
         "solution": "const nums1 = [1, 2, 3];\nconst nums2 = [4, 5, 6];\n\nconst merged = [...nums1, ...nums2];\n\nconsole.log(merged);",
         "xpReward": 15
       },
@@ -255,12 +399,12 @@
       "id": "js_int_lesson_3",
       "courseId": "javascript-intermediate",
       "moduleId": "functional",
-      "title": "Metody tablicowe",
-      "description": "mapuj, filtruj, zmniejszaj mistrzostwo",
+      "title": "Array Methods",
+      "description": "map, filter, reduce mastery",
       "theorySlides": [
         {
-          "title": "Metody tablic funkcjonalnych 🔧",
-          "content": "Przekształć tablice bez mutacji:\n• **mapa**: Przekształca każdy element\n• **filtr**: Zachowaj dopasowanie elementów\n• **zmniejsz**: połączenie w jedną wartość\n• **znajdź**: zdobądź pierwszy mecz",
+          "title": "Functional Array Methods 🔧",
+          "content": "Transform arrays without mutation:\n• **map**: Transform each element\n• **filter**: Keep matching elements\n• **reduce**: Combine to single value\n• **find**: Get first match",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -268,8 +412,8 @@
           "order": 0
         },
         {
-          "title": "Metody łączenia",
-          "content": "Łańcuch potężnych przemian.",
+          "title": "Chaining Methods",
+          "content": "Chain for powerful transformations.",
           "codeSnippet": "const numbers = [1, 2, 3, 4, 5];\n\nconst result = numbers\n  .filter(n => n > 2)      // [3, 4, 5]\n  .map(n => n * 2)         // [6, 8, 10]\n  .reduce((a, b) => a + b); // 24\n\nconsole.log(result);",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -277,8 +421,8 @@
           "order": 1
         },
         {
-          "title": "find() i findIndex() 🔍",
-          "content": "Szukaj pojedynczych elementów:\n• find(): Zwraca pierwszy pasujący element\n• findIndex(): Zwraca indeks pierwszego dopasowania\n• Zwraca wartość niezdefiniowaną/-1, jeśli nie została znaleziona\n• Zatrzymuje wyszukiwanie po pierwszym dopasowaniu",
+          "title": "find() and findIndex() 🔍",
+          "content": "Search for single elements:\n• find(): Returns first matching element\n• findIndex(): Returns index of first match\n• Returns undefined/-1 if not found\n• Stops searching after first match",
           "codeSnippet": "const users = [\n  { id: 1, name: \"Alex\", active: false },\n  { id: 2, name: \"Sam\", active: true },\n  { id: 3, name: \"Jordan\", active: true }\n];\n\n// Find first active user\nconst activeUser = users.find(user => user.active);\nconsole.log(activeUser); // { id: 2, name: \"Sam\", active: true }\n\n// Find index of user by id\nconst index = users.findIndex(user => user.id === 3);\nconsole.log(index); // 2\n\n// Not found cases\nconst admin = users.find(user => user.role === \"admin\");\nconsole.log(admin); // undefined\n\nconst adminIndex = users.findIndex(user => user.role === \"admin\");\nconsole.log(adminIndex); // -1",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -286,8 +430,8 @@
           "order": 2
         },
         {
-          "title": "niektóre() i wszystkie() ✅",
-          "content": "Testuj warunki tablicy:\n• Some(): Co najmniej jedno dopasowanie (LUB)\n• Every(): Wszystko musi pasować (ORAZ)\n• Zwraca wartości logiczne\n• Zwarcie podczas ustalania wyniku",
+          "title": "some() and every() ✅",
+          "content": "Test array conditions:\n• some(): At least one matches (OR)\n• every(): All must match (AND)\n• Return boolean values\n• Short-circuit when result is determined",
           "codeSnippet": "const numbers = [1, 2, 3, 4, 5];\n\n// some() - at least one passes test\nconst hasEven = numbers.some(n => n % 2 === 0);\nconsole.log(hasEven); // true (2 and 4 are even)\n\nconst hasNegative = numbers.some(n => n < 0);\nconsole.log(hasNegative); // false\n\n// every() - all must pass test\nconst allPositive = numbers.every(n => n > 0);\nconsole.log(allPositive); // true\n\nconst allEven = numbers.every(n => n % 2 === 0);\nconsole.log(allEven); // false\n\n// Practical example: form validation\nconst fields = [\n  { name: \"email\", valid: true },\n  { name: \"password\", valid: true },\n  { name: \"phone\", valid: false }\n];\nconst formValid = fields.every(field => field.valid);\nconsole.log(formValid); // false",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -295,8 +439,8 @@
           "order": 3
         },
         {
-          "title": "zawiera() i płaska() 📋",
-          "content": "Bardziej przydatne metody tablicowe:\n• zawiera(): sprawdza, czy element istnieje\n• flat(): Spłaszcza zagnieżdżone tablice\n• flatMap(): Mapa, a następnie spłaszczona",
+          "title": "includes() and flat() 📋",
+          "content": "More useful array methods:\n• includes(): Check if element exists\n• flat(): Flatten nested arrays\n• flatMap(): Map then flatten",
           "codeSnippet": "// includes() - simple existence check\nconst fruits = [\"apple\", \"banana\", \"orange\"];\nconsole.log(fruits.includes(\"banana\")); // true\nconsole.log(fruits.includes(\"grape\"));  // false\n\n// With fromIndex\nconsole.log(fruits.includes(\"apple\", 1)); // false (starts from index 1)\n\n// flat() - flatten nested arrays\nconst nested = [1, [2, 3], [4, [5, 6]]];\nconsole.log(nested.flat());    // [1, 2, 3, 4, [5, 6]]\nconsole.log(nested.flat(2));   // [1, 2, 3, 4, 5, 6]\nconsole.log(nested.flat(Infinity)); // Flatten all levels\n\n// flatMap() - map + flat(1) combined\nconst sentences = [\"Hello world\", \"How are you\"];\nconst words = sentences.flatMap(s => s.split(\" \"));\nconsole.log(words); // [\"Hello\", \"world\", \"How\", \"are\", \"you\"]",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -307,59 +451,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Co zwraca funkcja filter()?",
+            "question": "What does filter() return?",
             "options": [
-              "Zmodyfikowana tablica",
-              "Nowa tablica z dopasowaniami",
-              "Wartość logiczna",
-              "Pojedyncza wartość"
+              "Modified array",
+              "New array with matches",
+              "Boolean",
+              "Single value"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "filter() zwraca nową tablicę z elementami, które pomyślnie przeszły test.",
+            "explanation": "filter() returns new array with elements passing the test.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co zwraca funkcja find(), jeśli żaden element nie pasuje?",
+            "question": "What does find() return if no element matches?",
             "options": [
-              "Pusta tablica",
-              "nieważny",
-              "nieokreślony",
-              "FAŁSZ"
+              "Empty array",
+              "null",
+              "undefined",
+              "false"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "find() zwraca wartość niezdefiniowaną, gdy żaden element nie spełnia warunku.",
+            "explanation": "find() returns undefined when no element satisfies the condition.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co zwraca [1,2,3].some(n => n > 2)?",
+            "question": "What does [1,2,3].some(n => n > 2) return?",
             "options": [
               "[3]",
               "3",
-              "PRAWDA",
-              "FAŁSZ"
+              "true",
+              "false"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "Some() zwraca wartość true, ponieważ co najmniej jeden element (3) jest większy niż 2.",
+            "explanation": "some() returns true because at least one element (3) is greater than 2.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co zwraca [1,2,3].every(n => n > 0)?",
+            "question": "What does [1,2,3].every(n => n > 0) return?",
             "options": [
               "[1,2,3]",
               "3",
-              "PRAWDA",
-              "FAŁSZ"
+              "true",
+              "false"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "Every() zwraca wartość true, ponieważ wszystkie elementy są większe niż 0.",
+            "explanation": "every() returns true because all elements are greater than 0.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Array Methods\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which JavaScript example is syntactically valid?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "total = 3 + 2",
+              "SELECT total FROM data"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for JavaScript in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Sum of Squares\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Functional Array Methods \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Suma kwadratów",
-        "description": "Uzyskaj sumę kwadratów liczb parzystych.",
+        "title": "Sum of Squares",
+        "description": "Get sum of squares of even numbers.",
         "starterCode": "const nums = [1, 2, 3, 4, 5, 6];\n\n// Filter evens, square them, sum\nconst result = nums\n\nconsole.log(result);",
         "language": "javascript",
         "testCases": [
@@ -369,7 +585,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Filtr łańcuchowy, mapa, redukcja",
+        "hint": "Chain filter, map, reduce",
         "solution": "const nums = [1, 2, 3, 4, 5, 6];\n\nconst result = nums\n  .filter(n => n % 2 === 0)\n  .map(n => n * n)\n  .reduce((a, b) => a + b);\n\nconsole.log(result);",
         "xpReward": 15
       },
@@ -380,12 +596,12 @@
       "id": "js_int_lesson_4",
       "courseId": "javascript-intermediate",
       "moduleId": "async",
-      "title": "Obiecuje głębokie nurkowanie",
-      "description": "Obsługuj operacje asynchroniczne",
+      "title": "Promises Deep Dive",
+      "description": "Handle async operations",
       "theorySlides": [
         {
-          "title": "Obietnice ⏳",
-          "content": "Obietnica reprezentuje przyszłą wartość.\n\nStany:\n• **w toku**: początkowe\n• **spełniony**: Sukces\n• **odrzucony**: Błąd",
+          "title": "Promises ⏳",
+          "content": "A Promise represents future value.\n\nStates:\n• **pending**: Initial\n• **fulfilled**: Success\n• **rejected**: Error",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -393,8 +609,8 @@
           "order": 0
         },
         {
-          "title": "Tworzenie obietnic",
-          "content": "Twórz i łącz obietnice.",
+          "title": "Creating Promises",
+          "content": "Create and chain promises.",
           "codeSnippet": "const fetchData = () => {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      resolve({ name: \"Data\" });\n    }, 1000);\n  });\n};\n\nfetchData()\n  .then(data => console.log(data))\n  .catch(err => console.error(err));",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -402,8 +618,8 @@
           "order": 1
         },
         {
-          "title": "Promise.all() - wykonanie równoległe 🚀",
-          "content": "Uruchom wiele obietnic równolegle:\n• Aby odnieść sukces, wszystko musi odnieść sukces\n• Szybko kończy się niepowodzeniem przy pierwszym odrzuceniu\n• Wyniki w tej samej kolejności, co dane wejściowe\n• Doskonały do niezależnych zadań asynchronicznych",
+          "title": "Promise.all() - Parallel Execution 🚀",
+          "content": "Run multiple promises in parallel:\n• All must succeed for success\n• Fails fast on first rejection\n• Results in same order as input\n• Great for independent async tasks",
           "codeSnippet": "// Fetch multiple resources in parallel\nconst fetchUser = () => fetch(\"/api/user\").then(r => r.json());\nconst fetchPosts = () => fetch(\"/api/posts\").then(r => r.json());\nconst fetchComments = () => fetch(\"/api/comments\").then(r => r.json());\n\n// All requests run simultaneously\nPromise.all([fetchUser(), fetchPosts(), fetchComments()])\n  .then(([user, posts, comments]) => {\n    console.log(\"User:\", user);\n    console.log(\"Posts:\", posts);\n    console.log(\"Comments:\", comments);\n  })\n  .catch(error => {\n    // If ANY request fails, catch is called\n    console.error(\"One request failed:\", error);\n  });\n\n// Practical example: batch processing\nconst ids = [1, 2, 3, 4, 5];\nconst fetchAllUsers = Promise.all(\n  ids.map(id => fetch(`/api/users/${id}`).then(r => r.json()))\n);",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -411,8 +627,8 @@
           "order": 2
         },
         {
-          "title": "Obiecaj obsługę błędów 🛡️",
-          "content": "Właściwe strategie obsługi błędów:\n• .catch() dla błędów łańcucha\n• odrzuć() w przypadku wyraźnych błędów\n• Propagacja błędów w łańcuchu\n• w końcu() do czyszczenia",
+          "title": "Promise Error Handling 🛡️",
+          "content": "Proper error handling strategies:\n• .catch() for chain errors\n• reject() for explicit failures\n• Error propagation through chain\n• finally() for cleanup",
           "codeSnippet": "// Basic error handling\nfetchData()\n  .then(data => processData(data))\n  .then(result => saveResult(result))\n  .catch(error => {\n    // Catches errors from ANY step above\n    console.error(\"Error occurred:\", error.message);\n  })\n  .finally(() => {\n    // Always runs - success or failure\n    console.log(\"Cleanup complete\");\n    hideLoadingSpinner();\n  });\n\n// Creating rejected promise\nconst validate = (data) => {\n  return new Promise((resolve, reject) => {\n    if (!data.email) {\n      reject(new Error(\"Email is required\"));\n    } else {\n      resolve(data);\n    }\n  });\n};\n\n// Recovering from errors\nfetchData()\n  .catch(err => {\n    console.warn(\"Fetch failed, using cache\");\n    return getCachedData(); // Return fallback\n  })\n  .then(data => console.log(data)); // Continues with cached data",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -420,8 +636,8 @@
           "order": 3
         },
         {
-          "title": "Promise.allSettled() i Promise.race() 🏁",
-          "content": "Więcej kombinatorów obietnic:\n• allSettled(): Czekaj na wszystkich, nigdy nie odrzuca\n• race(): Pierwszy, który rozstrzygnie zwycięstwa\n• any(): Pierwszy, który spełni, wygrywa",
+          "title": "Promise.allSettled() & Promise.race() 🏁",
+          "content": "More Promise combinators:\n• allSettled(): Wait for all, never rejects\n• race(): First to settle wins\n• any(): First to fulfill wins",
           "codeSnippet": "// Promise.allSettled - get all results regardless of success/failure\nconst promises = [\n  fetch(\"/api/users\"),\n  fetch(\"/api/invalid-endpoint\"), // This might fail\n  fetch(\"/api/posts\")\n];\n\nPromise.allSettled(promises)\n  .then(results => {\n    results.forEach((result, i) => {\n      if (result.status === \"fulfilled\") {\n        console.log(`Promise ${i}: Success`, result.value);\n      } else {\n        console.log(`Promise ${i}: Failed`, result.reason);\n      }\n    });\n  });\n\n// Promise.race - first to complete wins\nconst timeout = new Promise((_, reject) => \n  setTimeout(() => reject(new Error(\"Timeout\")), 5000)\n);\n\nPromise.race([fetchData(), timeout])\n  .then(data => console.log(\"Got data:\", data))\n  .catch(err => console.error(\"Request timed out\"));\n\n// Promise.any - first successful wins (ignores rejections)\nPromise.any([fetchFromServer1(), fetchFromServer2(), fetchFromServer3()])\n  .then(data => console.log(\"First successful:\", data));",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -432,59 +648,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Co obsługuje .catch()?",
+            "question": "What does .catch() handle?",
             "options": [
-              "Sukces",
-              "Odrzucenie/błędy",
-              "Stan oczekujący",
-              "Wszystkie stany"
+              "Success",
+              "Rejection/errors",
+              "Pending state",
+              "All states"
             ],
             "correctAnswerIndex": 1,
-            "explanation": ".catch() obsługuje odrzucone obietnice i błędy.",
+            "explanation": ".catch() handles rejected promises and errors.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co się stanie, jeśli jedna obietnica w Promise.all() zostanie odrzucona?",
+            "question": "What happens if one promise in Promise.all() rejects?",
             "options": [
-              "Inne obietnice są kontynuowane",
-              "Zwracane są wszystkie wyniki",
-              "Cała obietnica. Wszystko zostaje odrzucone",
-              "Tylko ten, który zakończył się niepowodzeniem, jest ignorowany"
+              "Other promises continue",
+              "All results are returned",
+              "Entire Promise.all rejects",
+              "Only failed one is ignored"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "Promise.all() kończy się szybko — odrzuca natychmiast, gdy jakakolwiek obietnica zostanie odrzucona.",
+            "explanation": "Promise.all() fails fast - it rejects immediately when any promise rejects.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co robi .finally()?",
+            "question": "What does .finally() do?",
             "options": [
-              "Działa tylko na sukces",
-              "Działa tylko w przypadku awarii",
-              "Działa po sukcesie lub porażce",
-              "Anuluje obietnicę"
+              "Only runs on success",
+              "Only runs on failure",
+              "Runs after success or failure",
+              "Cancels the promise"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "final() zawsze wykonuje się po spełnieniu obietnicy, niezależnie od wyniku.",
+            "explanation": "finally() always executes after the promise settles, regardless of outcome.",
             "type": "multipleChoice"
           },
           {
-            "question": "Która metoda czeka na wszystkie obietnice i nigdy nie odrzuca?",
+            "question": "Which method waits for all promises and never rejects?",
             "options": [
-              "Obiecaj.wszystko()",
-              "Obietnica.rasa()",
-              "Obietnica.allRozliczone()",
-              "Obietnica.dowolna()"
+              "Promise.all()",
+              "Promise.race()",
+              "Promise.allSettled()",
+              "Promise.any()"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "Promise.allSettled() czeka na wszystkie obietnice i zwraca ich wyniki, nigdy nie odrzuca.",
+            "explanation": "Promise.allSettled() waits for all promises and returns their results, never rejects.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Promises Deep Dive\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which JavaScript example is syntactically valid?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "total = 3 + 2",
+              "SELECT total FROM data"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for JavaScript in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Create Promise\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Promises \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Utwórz obietnicę",
-        "description": "Utwórz obietnicę, która po opóźnieniu zakończy się komunikatem „Witam”.",
+        "title": "Create Promise",
+        "description": "Create promise that resolves with \"Hello\" after delay.",
         "starterCode": "const greet = () => {\n  return new Promise((resolve, reject) => {\n    // Resolve with \"Hello\"\n  });\n};\n\ngreet().then(msg => console.log(msg));",
         "language": "javascript",
         "testCases": [
@@ -494,7 +782,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Użyj rozwiązania („Witam”)",
+        "hint": "Use resolve(\"Hello\")",
         "solution": "const greet = () => {\n  return new Promise((resolve, reject) => {\n    resolve(\"Hello\");\n  });\n};\n\ngreet().then(msg => console.log(msg));",
         "xpReward": 15
       },
@@ -505,12 +793,12 @@
       "id": "js_int_lesson_5",
       "courseId": "javascript-intermediate",
       "moduleId": "async",
-      "title": "Asynchronizacja/Oczekiwanie",
-      "description": "Czysta składnia asynchroniczna",
+      "title": "Async/Await",
+      "description": "Clean async syntax",
       "theorySlides": [
         {
-          "title": "Asynchronizacja/Oczekiwanie ✨",
-          "content": "Napisz kod asynchroniczny, taki jak synchronizacja:\n• **async**: Funkcja zwraca Obietnicę\n• **czekaj**: zatrzymuje się do czasu rozpatrzenia Obietnicy\n• Użyj try/catch w przypadku błędów",
+          "title": "Async/Await ✨",
+          "content": "Write async code like sync:\n• **async**: Makes function return Promise\n• **await**: Pauses until Promise resolves\n• Use try/catch for errors",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -518,8 +806,8 @@
           "order": 0
         },
         {
-          "title": "Przykład",
-          "content": "Wyczyść kod asynchroniczny.",
+          "title": "Example",
+          "content": "Clean async code.",
           "codeSnippet": "async function fetchUser() {\n  try {\n    const response = await fetch(\"/api/user\");\n    const data = await response.json();\n    return data;\n  } catch (error) {\n    console.error(\"Failed:\", error);\n  }\n}",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -527,8 +815,8 @@
           "order": 1
         },
         {
-          "title": "Spróbuj/przechwyć obsługę błędów 🛡️",
-          "content": "Prawidłowa obsługa błędów przy async/await:\n• Zawijaj wywołania oczekujące w try/catch\n• Wychwytuj określone typy błędów\n• Zawsze postępuj z błędami z wdziękiem\n• Można rzucić ponownie, aby uzyskać lepszy poziom obsługi",
+          "title": "Try/Catch Error Handling 🛡️",
+          "content": "Proper error handling with async/await:\n• Wrap await calls in try/catch\n• Catch specific error types\n• Always handle errors gracefully\n• Can re-throw for higher-level handling",
           "codeSnippet": "async function fetchUserData(userId) {\n  try {\n    const response = await fetch(`/api/users/${userId}`);\n    \n    if (!response.ok) {\n      throw new Error(`HTTP error! status: ${response.status}`);\n    }\n    \n    const data = await response.json();\n    return data;\n    \n  } catch (error) {\n    if (error.name === \"TypeError\") {\n      console.error(\"Network error - check connection\");\n    } else if (error.message.includes(\"404\")) {\n      console.error(\"User not found\");\n    } else {\n      console.error(\"Unexpected error:\", error.message);\n    }\n    \n    // Return fallback or re-throw\n    return { error: true, message: error.message };\n  } finally {\n    // Cleanup - always runs\n    console.log(\"Request completed\");\n  }\n}",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -536,8 +824,8 @@
           "order": 2
         },
         {
-          "title": "Równolegle czekaj z Promise.all 🚀",
-          "content": "Uruchom operacje asynchroniczne równolegle:\n• Oczekiwanie sekwencyjne jest powolne\n• Promise.all() działa równolegle\n• Używaj, gdy żądania są niezależne\n• Znacząca poprawa wydajności",
+          "title": "Parallel Await with Promise.all 🚀",
+          "content": "Run async operations in parallel:\n• Sequential await is slow\n• Promise.all() runs in parallel\n• Use when requests are independent\n• Significant performance improvement",
           "codeSnippet": "// ❌ SLOW - Sequential (waits for each)\nasync function getDataSlow() {\n  const users = await fetchUsers();    // 1 second\n  const posts = await fetchPosts();    // 1 second  \n  const comments = await fetchComments(); // 1 second\n  // Total: ~3 seconds\n  return { users, posts, comments };\n}\n\n// ✅ FAST - Parallel (all at once)\nasync function getDataFast() {\n  const [users, posts, comments] = await Promise.all([\n    fetchUsers(),\n    fetchPosts(),\n    fetchComments()\n  ]);\n  // Total: ~1 second (longest request)\n  return { users, posts, comments };\n}\n\n// Mix parallel and sequential when needed\nasync function processOrder(orderId) {\n  // First, get order (need this before anything else)\n  const order = await fetchOrder(orderId);\n  \n  // Then fetch user and items in parallel\n  const [user, items] = await Promise.all([\n    fetchUser(order.userId),\n    fetchItems(order.itemIds)\n  ]);\n  \n  return { order, user, items };\n}",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -545,8 +833,8 @@
           "order": 3
         },
         {
-          "title": "Zaawansowane wzorce asynchroniczne 🎯",
-          "content": "Typowe wzorce asynchronizacji:\n• Pętle asynchroniczne (for...of z oczekiwaniem)\n• Logika ponów próbę\n• Obsługa przekroczenia limitu czasu\n• Asynchroniczne IIFE",
+          "title": "Advanced Async Patterns 🎯",
+          "content": "Common async patterns:\n• Async loops (for...of with await)\n• Retry logic\n• Timeout handling\n• Async IIFE",
           "codeSnippet": "// Async for...of loop (sequential)\nasync function processItems(items) {\n  for (const item of items) {\n    await processItem(item); // One at a time\n  }\n}\n\n// Retry pattern\nasync function fetchWithRetry(url, retries = 3) {\n  for (let i = 0; i < retries; i++) {\n    try {\n      return await fetch(url).then(r => r.json());\n    } catch (error) {\n      if (i === retries - 1) throw error;\n      console.log(`Retry ${i + 1}/${retries}...`);\n      await delay(1000 * (i + 1)); // Exponential backoff\n    }\n  }\n}\n\n// Timeout wrapper\nasync function fetchWithTimeout(url, timeout = 5000) {\n  const controller = new AbortController();\n  const timeoutId = setTimeout(() => controller.abort(), timeout);\n  \n  try {\n    const response = await fetch(url, { signal: controller.signal });\n    return await response.json();\n  } finally {\n    clearTimeout(timeoutId);\n  }\n}\n\n// Async IIFE (Immediately Invoked Function Expression)\n(async () => {\n  const data = await fetchData();\n  console.log(data);\n})();",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -557,59 +845,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Gdzie można skorzystać z funkcji czekania?",
+            "question": "Where can you use await?",
             "options": [
-              "Gdziekolwiek",
-              "Wewnątrz funkcji asynchronicznej",
-              "Tylko w wywołaniach zwrotnych",
-              "Tylko na zajęciach"
+              "Anywhere",
+              "Inside async function",
+              "Only in callbacks",
+              "Only in classes"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Wait można używać tylko wewnątrz funkcji asynchronicznych.",
+            "explanation": "await can only be used inside async functions.",
             "type": "multipleChoice"
           },
           {
-            "question": "Jaka jest korzyść z używania try/catch z async/await?",
+            "question": "What is the benefit of using try/catch with async/await?",
             "options": [
-              "Sprawia, że ​​kod jest szybszy",
-              "Obsługuje błędy w sposób synchroniczny",
-              "Zapobiega wszystkim błędom",
-              "Nie potrzebne w przypadku async/await"
+              "Makes code faster",
+              "Handles errors synchronously-looking way",
+              "Prevents all errors",
+              "Not needed with async/await"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "try/catch zapewnia czystą, synchroniczną obsługę błędów dla kodu asynchronicznego.",
+            "explanation": "try/catch provides clean, synchronous-style error handling for async code.",
             "type": "multipleChoice"
           },
           {
-            "question": "Jak uruchomić wiele oczekujeń równolegle?",
+            "question": "How do you run multiple awaits in parallel?",
             "options": [
-              "Umieść je w tej samej linii",
-              "Użyj Promise.all()",
-              "Użyj async.parallel()",
-              "Niemożliwe"
+              "Put them on same line",
+              "Use Promise.all()",
+              "Use async.parallel()",
+              "Not possible"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Promise.all() uruchamia równolegle wiele obietnic i czeka na wszystkie wyniki.",
+            "explanation": "Promise.all() runs multiple promises in parallel and awaits all results.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co zawsze zwraca funkcja asynchroniczna?",
+            "question": "What does an async function always return?",
             "options": [
-              "nieokreślony",
-              "Wartość zwracana bezpośrednio",
-              "Obietnica",
-              "Obiekt asynchroniczny"
+              "undefined",
+              "The return value directly",
+              "A Promise",
+              "An async object"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "Funkcje asynchroniczne zawsze zwracają obietnicę, nawet jeśli zwracana jest zwykła wartość.",
+            "explanation": "Async functions always return a Promise, even if you return a plain value.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Async/Await\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which JavaScript example is syntactically valid?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "total = 3 + 2",
+              "SELECT total FROM data"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for JavaScript in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Async Greeting\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"AsyncAwait \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Powitanie asynchroniczne",
-        "description": "Utwórz funkcję asynchroniczną, która zwraca powitanie.",
+        "title": "Async Greeting",
+        "description": "Create async function that returns greeting.",
         "starterCode": "const delay = (ms) => new Promise(r => setTimeout(r, ms));\n\nasync function greet(name) {\n  // await delay, then return \"Hello, {name}!\"\n}\n\ngreet(\"World\").then(console.log);",
         "language": "javascript",
         "testCases": [
@@ -619,7 +979,7 @@
             "isHidden": false
           }
         ],
-        "hint": "czekaj na opóźnienie (100), a następnie zwróć literał szablonu",
+        "hint": "await delay(100) then return template literal",
         "solution": "const delay = (ms) => new Promise(r => setTimeout(r, ms));\n\nasync function greet(name) {\n  await delay(100);\n  return `Hello, ${name}!`;\n}\n\ngreet(\"World\").then(console.log);",
         "xpReward": 15
       },

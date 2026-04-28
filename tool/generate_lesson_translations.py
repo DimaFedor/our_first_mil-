@@ -4,11 +4,13 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import random
+import re
 import time
 from pathlib import Path
 from typing import Any
 
-from deep_translator import GoogleTranslator
+import requests
 
 SKIP_TRANSLATION_KEYS = {
     "id",
@@ -27,6 +29,40 @@ SKIP_TRANSLATION_KEYS = {
 TRANSLATOR_LANGUAGE_MAP = {
     "zh": "zh-CN",
 }
+
+PROTECTED_PROGRAMMING_TERMS = [
+    "console.log",
+    "__init__",
+    "print",
+    "input",
+    "self",
+    "init",
+    "len",
+    "append",
+    "dict",
+    "tuple",
+    "int",
+    "float",
+    "str",
+    "bool",
+    "None",
+    "True",
+    "False",
+    "null",
+    "undefined",
+    "printf",
+    "scanf",
+    "cout",
+    "cin",
+    "println",
+]
+
+FENCED_CODE_PATTERN = re.compile(r"```[\s\S]*?```", re.MULTILINE)
+INLINE_CODE_PATTERN = re.compile(r"`[^`\n]+`")
+FUNCTION_CALL_PATTERN = re.compile(r"(?<![A-Za-z0-9_])[A-Za-z_][A-Za-z0-9_]*\(\)")
+GOOGLE_TRANSLATE_URL = "https://translate.googleapis.com/translate_a/single"
+BATCH_SEPARATOR = " __COPILOT_SPLIT__ "
+REQUEST_PAUSE_SECONDS = 0.12
 
 DEFAULT_LANGUAGES = [
     "uk",
@@ -97,6 +133,41 @@ def should_translate(parent_key: str | None, value: str) -> bool:
     return True
 
 
+def protect_text(text: str) -> tuple[str, dict[str, str]]:
+    protected = text
+    placeholders: dict[str, str] = {}
+    placeholder_index = 0
+
+    def reserve_placeholder(value: str) -> str:
+        nonlocal placeholder_index
+        placeholder = f"__COPILOT_KEEP_{placeholder_index}__"
+        placeholder_index += 1
+        placeholders[placeholder] = value
+        return placeholder
+
+    def protect_pattern(input_text: str, pattern: re.Pattern[str]) -> str:
+        return pattern.sub(lambda match: reserve_placeholder(match.group(0)), input_text)
+
+    protected = protect_pattern(protected, FENCED_CODE_PATTERN)
+    protected = protect_pattern(protected, INLINE_CODE_PATTERN)
+    protected = protect_pattern(protected, FUNCTION_CALL_PATTERN)
+
+    for term in PROTECTED_PROGRAMMING_TERMS:
+        term_pattern = re.compile(
+            rf"(?<![A-Za-z0-9_]){re.escape(term)}(?![A-Za-z0-9_])"
+        )
+        protected = protect_pattern(protected, term_pattern)
+
+    return protected, placeholders
+
+
+def restore_text(text: str, placeholders: dict[str, str]) -> str:
+    restored = text
+    for placeholder, original in placeholders.items():
+        restored = restored.replace(placeholder, original)
+    return restored
+
+
 def collect_translatable_strings(
     value: Any,
     parent_key: str | None,
@@ -143,33 +214,101 @@ def chunked(values: list[str], size: int) -> list[list[str]]:
 
 
 def translate_chunk(
-    translator: GoogleTranslator,
+    target_language_code: str,
     chunk: list[str],
 ) -> list[str]:
-    for attempt in range(3):
-        try:
-            translated = translator.translate_batch(chunk)
-            if len(translated) == len(chunk):
-                return translated
-        except Exception:
-            if attempt == 2:
-                break
-            time.sleep(0.35 * (attempt + 1))
+    protected_items = [protect_text(text) for text in chunk]
 
-    fallback_results: list[str] = []
-    for text in chunk:
-        translated_text = text
+    def translate_text_with_google(text: str) -> str:
+        for attempt in range(7):
+            try:
+                response = requests.post(
+                    GOOGLE_TRANSLATE_URL,
+                    params={
+                        "client": "gtx",
+                        "sl": "auto",
+                        "tl": target_language_code,
+                        "dt": "t",
+                    },
+                    data={"q": text},
+                    timeout=30,
+                )
+
+                if response.status_code == 429:
+                    backoff_seconds = min(90.0, (2**attempt) + random.random())
+                    time.sleep(backoff_seconds)
+                    continue
+
+                response.raise_for_status()
+                decoded = response.json()
+                if not isinstance(decoded, list) or not decoded:
+                    return text
+                sentence_blocks = decoded[0]
+                if not isinstance(sentence_blocks, list):
+                    return text
+                translated_parts: list[str] = []
+                for sentence in sentence_blocks:
+                    if (
+                        isinstance(sentence, list)
+                        and sentence
+                        and isinstance(sentence[0], str)
+                    ):
+                        translated_parts.append(sentence[0])
+                translated_text = "".join(translated_parts)
+                if REQUEST_PAUSE_SECONDS > 0:
+                    time.sleep(REQUEST_PAUSE_SECONDS)
+                return translated_text or text
+            except requests.RequestException:
+                if attempt == 6:
+                    raise
+                time.sleep(min(20.0, 0.8 * (attempt + 1)))
+
+        return text
+
+    def translate_items(items: list[tuple[str, dict[str, str]]], source: list[str]) -> list[str]:
+        protected_texts = [item[0] for item in items]
+        placeholders_list = [item[1] for item in items]
+
         for attempt in range(3):
             try:
-                translated_text = translator.translate(text)
-                break
+                translated_batch = translate_text_with_google(
+                    BATCH_SEPARATOR.join(protected_texts)
+                )
+                translated = translated_batch.split(BATCH_SEPARATOR)
+                if len(translated) == len(source):
+                    return [
+                        restore_text(translated_text or source_text, placeholders)
+                        for source_text, placeholders, translated_text in zip(
+                            source,
+                            placeholders_list,
+                            translated,
+                        )
+                    ]
             except Exception:
-                if attempt == 2:
-                    translated_text = text
-                else:
+                if attempt < 2:
                     time.sleep(0.35 * (attempt + 1))
-        fallback_results.append(translated_text)
-    return fallback_results
+
+        if len(items) == 1:
+            source_text = source[0]
+            protected_text, placeholders = items[0]
+            translated_text = source_text
+            for attempt in range(3):
+                try:
+                    translated_text = translate_text_with_google(protected_text)
+                    break
+                except Exception:
+                    if attempt == 2:
+                        translated_text = source_text
+                    else:
+                        time.sleep(0.35 * (attempt + 1))
+            return [restore_text(translated_text, placeholders)]
+
+        midpoint = len(items) // 2
+        left = translate_items(items[:midpoint], source[:midpoint])
+        right = translate_items(items[midpoint:], source[midpoint:])
+        return left + right
+
+    return translate_items(protected_items, chunk)
 
 
 def build_translations_map(
@@ -177,12 +316,12 @@ def build_translations_map(
     language_code: str,
     batch_size: int,
     cache: dict[str, str],
+    cache_file: Path | None = None,
 ) -> dict[str, str]:
     if not strings:
         return {}
 
     translator_code = TRANSLATOR_LANGUAGE_MAP.get(language_code, language_code)
-    translator = GoogleTranslator(source="auto", target=translator_code)
 
     uncached_strings = [
         text for text in strings if f"{language_code}|{text}" not in cache
@@ -191,15 +330,17 @@ def build_translations_map(
     total_chunks = len(chunks)
 
     for chunk_index, chunk in enumerate(chunks, start=1):
-        translated_chunk = translate_chunk(translator, chunk)
+        translated_chunk = translate_chunk(translator_code, chunk)
         for source_text, translated_text in zip(chunk, translated_chunk):
             cache[f"{language_code}|{source_text}"] = translated_text or source_text
 
-        if chunk_index % 10 == 0 or chunk_index == total_chunks:
-            print(
-                f"  [{language_code}] translated {chunk_index}/{max(total_chunks, 1)} chunks",
-                flush=True,
-            )
+        if cache_file is not None:
+            save_cache(cache_file, cache)
+
+        print(
+            f"  [{language_code}] translated {chunk_index}/{max(total_chunks, 1)} chunks",
+            flush=True,
+        )
 
     return {text: cache.get(f"{language_code}|{text}", text) for text in strings}
 
@@ -256,22 +397,30 @@ def main() -> None:
         target_dir = assets_root / normalized_language
         target_dir.mkdir(parents=True, exist_ok=True)
 
+        all_strings: set[str] = set()
+        for payload in course_payloads.values():
+            collect_translatable_strings(payload, None, all_strings)
+
+        print(
+            f"  [{normalized_language}] unique source strings: {len(all_strings)}",
+            flush=True,
+        )
+        translations_map = build_translations_map(
+            strings=sorted(all_strings),
+            language_code=normalized_language,
+            batch_size=args.batch_size,
+            cache=translation_cache,
+            cache_file=cache_file,
+        )
+        save_cache(cache_file, translation_cache)
+
         for index, (course_id, payload) in enumerate(course_payloads.items(), start=1):
-            course_strings: set[str] = set()
-            collect_translatable_strings(payload, None, course_strings)
-            translations_map = build_translations_map(
-                strings=sorted(course_strings),
-                language_code=normalized_language,
-                batch_size=args.batch_size,
-                cache=translation_cache,
-            )
             translated_payload = apply_translations(payload, None, translations_map)
             output_file = target_dir / f"{course_id}.json"
             output_file.write_text(
                 json.dumps(translated_payload, ensure_ascii=False, indent=2),
                 encoding="utf-8",
             )
-            save_cache(cache_file, translation_cache)
             print(
                 f"  [{normalized_language}] {index}/{len(course_payloads)} {course_id}",
                 flush=True,

@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
@@ -39,6 +38,7 @@ class LessonLocalizationService {
     required String courseId,
     required Locale uiLocale,
     String? forcedLanguageCode,
+    bool allowRuntimeTranslation = true,
   }) async {
     final baseLessons = CourseContentService.getLessonsForCourse(courseId);
     if (baseLessons.isEmpty) {
@@ -88,18 +88,14 @@ class LessonLocalizationService {
 
     var localizedLessons = baseLessons;
     final shouldAttemptRuntimeAutoTranslation =
+        allowRuntimeTranslation &&
         primaryLanguageCode != _fallbackLanguageCode &&
-        !hasFullOverlayForCourse &&
-        mergedTranslations.isNotEmpty;
+        !hasFullOverlayForCourse;
     if (shouldAttemptRuntimeAutoTranslation) {
       try {
         localizedLessons = await _autoTranslateLessons(
           lessons: localizedLessons,
           targetLanguageCode: primaryLanguageCode,
-        ).timeout(const Duration(seconds: 8));
-      } on TimeoutException {
-        debugPrint(
-          'Runtime lesson translation timed out for "$courseId" ($primaryLanguageCode); using base lesson copy.',
         );
       } catch (error) {
         debugPrint(
@@ -118,7 +114,16 @@ class LessonLocalizationService {
     }
 
     final immutableLessons = List<Lesson>.unmodifiable(localizedLessons);
-    _localizedLessonsCache[localizedCacheKey] = immutableLessons;
+    final shouldCacheLessons =
+        primaryLanguageCode == _fallbackLanguageCode ||
+        mergedTranslations.isNotEmpty ||
+        _hasMeaningfulLocalization(
+          baseLessons: baseLessons,
+          localizedLessons: immutableLessons,
+        );
+    if (shouldCacheLessons) {
+      _localizedLessonsCache[localizedCacheKey] = immutableLessons;
+    }
     return immutableLessons;
   }
 
@@ -415,14 +420,10 @@ class LessonLocalizationService {
     required Lesson lesson,
     required String targetLanguageCode,
   }) async {
-    final translatedTitleFuture = _translateText(
+    final translatedCoreFuture = _translateBatch(<String>[
       lesson.title,
-      targetLanguageCode,
-    );
-    final translatedDescriptionFuture = _translateText(
       lesson.description,
-      targetLanguageCode,
-    );
+    ], targetLanguageCode);
     final translatedSlidesFuture = _autoTranslateTheorySlides(
       slides: lesson.theorySlides,
       targetLanguageCode: targetLanguageCode,
@@ -435,13 +436,14 @@ class LessonLocalizationService {
       challenge: lesson.codingChallenge,
       targetLanguageCode: targetLanguageCode,
     );
+    final translatedCore = await translatedCoreFuture;
 
     return Lesson(
       id: lesson.id,
       courseId: lesson.courseId,
       moduleId: lesson.moduleId,
-      title: await translatedTitleFuture,
-      description: await translatedDescriptionFuture,
+      title: translatedCore[0],
+      description: translatedCore[1],
       theorySlides: await translatedSlidesFuture,
       quiz: await translatedQuizFuture,
       codingChallenge: await translatedChallengeFuture,
@@ -454,28 +456,34 @@ class LessonLocalizationService {
     required List<TheorySlide> slides,
     required String targetLanguageCode,
   }) async {
-    final translatedSlides = await Future.wait(
-      slides.map((slide) async {
-        final translatedTitleFuture = _translateText(
-          slide.title,
-          targetLanguageCode,
-        );
-        final translatedContentFuture = _translateText(
-          slide.content,
-          targetLanguageCode,
-        );
+    if (slides.isEmpty) {
+      return const <TheorySlide>[];
+    }
 
-        return TheorySlide(
-          title: await translatedTitleFuture,
-          content: await translatedContentFuture,
-          codeSnippet: slide.codeSnippet,
-          codeLanguage: slide.codeLanguage,
-          imageUrl: slide.imageUrl,
-          lottieUrl: slide.lottieUrl,
-          order: slide.order,
-        );
-      }),
+    final sourceTexts = <String>[
+      for (final slide in slides) ...<String>[slide.title, slide.content],
+    ];
+    final translatedTexts = await _translateBatch(
+      sourceTexts,
+      targetLanguageCode,
     );
+
+    var cursor = 0;
+    final translatedSlides = slides
+        .map((slide) {
+          final translatedTitle = translatedTexts[cursor++];
+          final translatedContent = translatedTexts[cursor++];
+          return TheorySlide(
+            title: translatedTitle,
+            content: translatedContent,
+            codeSnippet: slide.codeSnippet,
+            codeLanguage: slide.codeLanguage,
+            imageUrl: slide.imageUrl,
+            lottieUrl: slide.lottieUrl,
+            order: slide.order,
+          );
+        })
+        .toList(growable: false);
 
     return List<TheorySlide>.unmodifiable(translatedSlides);
   }
@@ -490,25 +498,34 @@ class LessonLocalizationService {
 
     final translatedQuestions = await Future.wait(
       quiz.questions.map((question) async {
-        final translatedQuestionFuture = _translateText(
+        final hasExplanation =
+            question.explanation != null &&
+            question.explanation!.trim().isNotEmpty;
+        final sourceTexts = <String>[
           question.question,
+          ...question.options,
+          if (hasExplanation) question.explanation!,
+        ];
+        final translatedTexts = await _translateBatch(
+          sourceTexts,
           targetLanguageCode,
-        );
-        final translatedExplanationFuture = _translateOptionalText(
-          question.explanation,
-          targetLanguageCode,
-        );
-        final translatedOptionsFuture = Future.wait(
-          question.options.map(
-            (option) => _translateText(option, targetLanguageCode),
-          ),
         );
 
+        final optionsStart = 1;
+        final optionsEnd = optionsStart + question.options.length;
+        final translatedOptions = translatedTexts.sublist(
+          optionsStart,
+          optionsEnd,
+        );
+        final translatedExplanation = hasExplanation
+            ? translatedTexts[optionsEnd]
+            : question.explanation;
+
         return QuizQuestion(
-          question: await translatedQuestionFuture,
-          options: await translatedOptionsFuture,
+          question: translatedTexts.first,
+          options: translatedOptions,
           correctAnswerIndex: question.correctAnswerIndex,
-          explanation: await translatedExplanationFuture,
+          explanation: translatedExplanation,
           type: question.type,
         );
       }),
@@ -528,48 +545,37 @@ class LessonLocalizationService {
       return null;
     }
 
-    final translatedTitleFuture = _translateText(
+    final hasHint = challenge.hint != null && challenge.hint!.trim().isNotEmpty;
+    final sourceTexts = <String>[
       challenge.title,
-      targetLanguageCode,
-    );
-    final translatedDescriptionFuture = _translateText(
       challenge.description,
+      if (hasHint) challenge.hint!,
+    ];
+    final translatedTexts = await _translateBatch(
+      sourceTexts,
       targetLanguageCode,
     );
-    final translatedHintFuture = _translateOptionalText(
-      challenge.hint,
-      targetLanguageCode,
-    );
-
-    final translatedHint = await translatedHintFuture;
 
     return CodingChallenge(
-      title: await translatedTitleFuture,
-      description: await translatedDescriptionFuture,
+      title: translatedTexts[0],
+      description: translatedTexts[1],
       starterCode: challenge.starterCode,
       language: challenge.language,
       testCases: challenge.testCases,
-      hint: translatedHint,
+      hint: hasHint ? translatedTexts[2] : challenge.hint,
       solution: challenge.solution,
       xpReward: challenge.xpReward,
     );
   }
 
-  static Future<String> _translateText(String text, String targetLanguageCode) {
-    return RuntimeTranslationService.translateText(
-      text: text,
+  static Future<List<String>> _translateBatch(
+    List<String> texts,
+    String targetLanguageCode,
+  ) {
+    return RuntimeTranslationService.translateBatch(
+      texts: texts,
       targetLanguageCode: targetLanguageCode,
     );
-  }
-
-  static Future<String?> _translateOptionalText(
-    String? text,
-    String targetLanguageCode,
-  ) async {
-    if (text == null || text.trim().isEmpty) {
-      return text;
-    }
-    return _translateText(text, targetLanguageCode);
   }
 
   static bool _hasComprehensiveOverlayForCourse({
@@ -601,6 +607,94 @@ class LessonLocalizationService {
     }
 
     return true;
+  }
+
+  static bool _hasMeaningfulLocalization({
+    required List<Lesson> baseLessons,
+    required List<Lesson> localizedLessons,
+  }) {
+    if (baseLessons.length != localizedLessons.length) {
+      return true;
+    }
+
+    for (var index = 0; index < baseLessons.length; index++) {
+      final baseLesson = baseLessons[index];
+      final localizedLesson = localizedLessons[index];
+      if (baseLesson.title != localizedLesson.title ||
+          baseLesson.description != localizedLesson.description) {
+        return true;
+      }
+
+      if (baseLesson.theorySlides.length !=
+          localizedLesson.theorySlides.length) {
+        return true;
+      }
+      for (
+        var slideIndex = 0;
+        slideIndex < baseLesson.theorySlides.length;
+        slideIndex++
+      ) {
+        final baseSlide = baseLesson.theorySlides[slideIndex];
+        final localizedSlide = localizedLesson.theorySlides[slideIndex];
+        if (baseSlide.title != localizedSlide.title ||
+            baseSlide.content != localizedSlide.content) {
+          return true;
+        }
+      }
+
+      final baseQuiz = baseLesson.quiz;
+      final localizedQuiz = localizedLesson.quiz;
+      if (baseQuiz == null && localizedQuiz != null ||
+          baseQuiz != null && localizedQuiz == null) {
+        return true;
+      }
+      if (baseQuiz != null && localizedQuiz != null) {
+        if (baseQuiz.questions.length != localizedQuiz.questions.length) {
+          return true;
+        }
+        for (
+          var questionIndex = 0;
+          questionIndex < baseQuiz.questions.length;
+          questionIndex++
+        ) {
+          final baseQuestion = baseQuiz.questions[questionIndex];
+          final localizedQuestion = localizedQuiz.questions[questionIndex];
+          if (baseQuestion.question != localizedQuestion.question ||
+              baseQuestion.explanation != localizedQuestion.explanation) {
+            return true;
+          }
+          if (baseQuestion.options.length != localizedQuestion.options.length) {
+            return true;
+          }
+          for (
+            var optionIndex = 0;
+            optionIndex < baseQuestion.options.length;
+            optionIndex++
+          ) {
+            if (baseQuestion.options[optionIndex] !=
+                localizedQuestion.options[optionIndex]) {
+              return true;
+            }
+          }
+        }
+      }
+
+      final baseChallenge = baseLesson.codingChallenge;
+      final localizedChallenge = localizedLesson.codingChallenge;
+      if (baseChallenge == null && localizedChallenge != null ||
+          baseChallenge != null && localizedChallenge == null) {
+        return true;
+      }
+      if (baseChallenge != null && localizedChallenge != null) {
+        if (baseChallenge.title != localizedChallenge.title ||
+            baseChallenge.description != localizedChallenge.description ||
+            baseChallenge.hint != localizedChallenge.hint) {
+          return true;
+        }
+      }
+    }
+
+    return false;
   }
 
   static Map<String, dynamic> _mergeMaps(

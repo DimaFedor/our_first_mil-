@@ -5,12 +5,12 @@
       "id": "python_int_lesson_1",
       "courseId": "python-intermediate",
       "moduleId": "oop",
-      "title": "Klasy i obiekty",
-      "description": "Opanuj programowanie obiektowe w Pythonie",
+      "title": "Classes and Objects",
+      "description": "Master Object-Oriented Programming in Python",
       "theorySlides": [
         {
-          "title": "Co to jest OOP? 🏗️",
-          "content": "Programowanie obiektowe organizuje kod w obiekty - pakiety danych i funkcjonalności.\n\nKluczowe pojęcia:\n• **Klasa**: Plan tworzenia obiektów\n• **Obiekt**: Instancja klasy\n• **Atrybuty**: Dane przechowywane w obiekcie\n• **Metody**: Funkcje należące do obiektu",
+          "title": "What is OOP? 🏗️",
+          "content": "Object-Oriented Programming organizes code into objects - bundles of data and functionality.\n\nKey concepts:\n• **Class**: A blueprint for creating objects\n• **Object**: An instance of a class\n• **Attributes**: Data stored in an object\n• **Methods**: Functions that belong to an object",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -18,8 +18,8 @@
           "order": 0
         },
         {
-          "title": "Dlaczego warto używać OOP? 💡",
-          "content": "Korzyści z OOP:\n\n✅ **Modułowość** – Kod jest zorganizowany w samodzielne jednostki\n✅ **Ponowne użycie** – utwórz raz, użyj wiele razy\n✅ **Łatwość konserwacji** - Łatwa aktualizacja i naprawa\n✅ **Modelowanie w świecie rzeczywistym** – Obiekty reprezentują prawdziwe rzeczy",
+          "title": "Why Use OOP? 💡",
+          "content": "Benefits of OOP:\n\n✅ **Modularity** - Code is organized into self-contained units\n✅ **Reusability** - Create once, use many times\n✅ **Maintainability** - Easy to update and fix\n✅ **Real-world modeling** - Objects represent real things",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -27,8 +27,8 @@
           "order": 1
         },
         {
-          "title": "Tworzenie klasy",
-          "content": "Użyj słowa kluczowego class, aby zdefiniować plan.",
+          "title": "Creating a Class",
+          "content": "Use the class keyword to define a blueprint.",
           "codeSnippet": "class Dog:\n    def __init__(self, name, breed):\n        self.name = name\n        self.breed = breed\n    \n    def bark(self):\n        return f\"{self.name} says Woof!\"\n\nmy_dog = Dog(\"Buddy\", \"Golden Retriever\")\nprint(my_dog.bark())",
           "codeLanguage": "python",
           "imageUrl": null,
@@ -36,8 +36,8 @@
           "order": 2
         },
         {
-          "title": "Parametr własny 🔑",
-          "content": "**self** odnosi się do bieżącej instancji klasy.\n\nUmożliwia:\n• Atrybuty dostępu: nazwa.własna\n• Metody wywoływania: self.bark()\n• Odróżnij instancję od zmiennych klasowych",
+          "title": "The self Parameter 🔑",
+          "content": "**self** refers to the current instance of the class.\n\nIt allows you to:\n• Access attributes: self.name\n• Call methods: self.bark()\n• Distinguish instance from class variables",
           "codeSnippet": "class Person:\n    def __init__(self, name):\n        self.name = name  # Instance attribute\n    \n    def greet(self):\n        return f\"Hi, I am {self.name}\"",
           "codeLanguage": "python",
           "imageUrl": null,
@@ -48,47 +48,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Do czego służy __init__?",
+            "question": "What is __init__ used for?",
             "options": [
-              "Zainicjuj atrybuty obiektu",
-              "Usuń obiekt",
-              "Wydrukuj obiekt",
-              "Importuj moduły"
+              "Initialize object attributes",
+              "Delete object",
+              "Print object",
+              "Import modules"
             ],
             "correctAnswerIndex": 0,
-            "explanation": "__init__ to konstruktor, który ustawia stan początkowy podczas tworzenia obiektu.",
+            "explanation": "__init__ is the constructor that sets up initial state when an object is created.",
             "type": "multipleChoice"
           },
           {
-            "question": "Do czego odnosi się słowo „ja”?",
+            "question": "What does \"self\" refer to?",
             "options": [
-              "Sama klasa",
-              "Bieżąca instancja",
-              "Klasa nadrzędna",
-              "Zmienna globalna"
+              "The class itself",
+              "The current instance",
+              "The parent class",
+              "A global variable"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "self odnosi się do bieżącej instancji tworzonej lub używanej klasy.",
+            "explanation": "self refers to the current instance of the class being created or used.",
             "type": "multipleChoice"
           },
           {
-            "question": "Jak utworzyć obiekt z klasy Pies?",
+            "question": "How do you create an object from class Dog?",
             "options": [
-              "Pies.nowy()",
-              "nowy pies()",
-              "Pies()",
-              "utwórz psa"
+              "Dog.new()",
+              "new Dog()",
+              "Dog()",
+              "create Dog"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "W Pythonie obiekty tworzysz wywołując nazwę klasy jak funkcję: Dog()",
+            "explanation": "In Python, you create objects by calling the class name like a function: Dog()",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Classes and Objects\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Create a Car Class\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"What is OOP \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which habit improves readability in Python code?",
+            "options": [
+              "Use clear names and consistent formatting",
+              "Use one-letter names for everything",
+              "Avoid whitespace and structure",
+              "Hide logic in one long line"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Readable code is easier to maintain and debug.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Utwórz klasę samochodu",
-        "description": "Utwórz klasę samochodu:\n1. W __init__ przechowuj markę w self.brand\n2. W opisie() zwróć „Marka: X”, gdzie X to marka\n\nOczekiwana produkcja: Marka: Toyota",
+        "title": "Create a Car Class",
+        "description": "Create a Car class:\n1. In __init__, store brand in self.brand\n2. In describe(), return \"Brand: X\" where X is the brand\n\nExpected output: Brand: Toyota",
         "starterCode": "class Car:\n    def __init__(self, brand):\n        # Step 1: Store brand in self.brand\n        self.brand = # your code\n    \n    def describe(self):\n        # Step 2: Return \"Brand: {brand}\"\n        return # your code\n\ncar = Car(\"Toyota\")\nprint(car.describe())",
         "language": "python",
         "testCases": [
@@ -98,7 +182,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Krok 1: self.brand = marka\nKrok 2: zwróć f\"Marka: {self.brand}\"",
+        "hint": "Step 1: self.brand = brand\nStep 2: return f\"Brand: {self.brand}\"",
         "solution": "class Car:\n    def __init__(self, brand):\n        self.brand = brand\n    \n    def describe(self):\n        return f\"Brand: {self.brand}\"\n\ncar = Car(\"Toyota\")\nprint(car.describe())",
         "xpReward": 15
       },
@@ -109,12 +193,12 @@
       "id": "python_int_lesson_2",
       "courseId": "python-intermediate",
       "moduleId": "oop",
-      "title": "Dziedzictwo",
-      "description": "Dowiedz się, jak ponownie wykorzystać kod z dziedziczeniem klas",
+      "title": "Inheritance",
+      "description": "Learn how to reuse code with class inheritance",
       "theorySlides": [
         {
-          "title": "Co to jest dziedziczenie? 🌳",
-          "content": "Dziedziczenie pozwala klasie dziedziczyć atrybuty i metody z innej klasy.\n\nTerminologia:\n• **Klasa nadrzędna/bazowa**: Klasa, z której jest dziedziczony\n• **Klasa podrzędna/pochodna**: Klasa, która dziedziczy\n• **Zastąp**: Zamień metodę nadrzędną na metodę podrzędną",
+          "title": "What is Inheritance? 🌳",
+          "content": "Inheritance allows a class to inherit attributes and methods from another class.\n\nTerminology:\n• **Parent/Base class**: The class being inherited from\n• **Child/Derived class**: The class that inherits\n• **Override**: Replace parent method in child",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -122,8 +206,8 @@
           "order": 0
         },
         {
-          "title": "Dlaczego dziedziczenie? 🎯",
-          "content": "Korzyści:\n\n✅ **SUSZ** – Nie powtarzaj się\n✅ **Hierarchia** - Modeluj prawdziwe relacje\n✅ **Rozszerz** – Dodaj funkcje bez zmiany oryginału\n✅ **Polimorfizm** – ten sam interfejs, inne zachowanie",
+          "title": "Why Inheritance? 🎯",
+          "content": "Benefits:\n\n✅ **DRY** - Don't Repeat Yourself\n✅ **Hierarchy** - Model real relationships\n✅ **Extend** - Add features without changing original\n✅ **Polymorphism** - Same interface, different behavior",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -131,8 +215,8 @@
           "order": 1
         },
         {
-          "title": "Tworzenie klas podrzędnych",
-          "content": "Podaj klasę nadrzędną w nawiasach.",
+          "title": "Creating Child Classes",
+          "content": "Pass the parent class in parentheses.",
           "codeSnippet": "class Animal:\n    def __init__(self, name):\n        self.name = name\n\nclass Cat(Animal):\n    def speak(self):\n        return f\"{self.name} says Meow!\"\n\ncat = Cat(\"Whiskers\")\nprint(cat.speak())",
           "codeLanguage": "python",
           "imageUrl": null,
@@ -140,8 +224,8 @@
           "order": 2
         },
         {
-          "title": "Używanie super() 🦸",
-          "content": "super() wywołuje metody klasy nadrzędnej.",
+          "title": "Using super() 🦸",
+          "content": "super() calls the parent class methods.",
           "codeSnippet": "class Animal:\n    def __init__(self, name):\n        self.name = name\n\nclass Dog(Animal):\n    def __init__(self, name, breed):\n        super().__init__(name)  # Call parent __init__\n        self.breed = breed\n\ndog = Dog(\"Max\", \"Labrador\")\nprint(dog.name, dog.breed)",
           "codeLanguage": "python",
           "imageUrl": null,
@@ -152,47 +236,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Co robi super()?",
+            "question": "What does super() do?",
             "options": [
-              "Tworzy nowy obiekt",
-              "Wywołuje metody klasy nadrzędnej",
-              "Usuwa klasę",
-              "Sprawia, że ​​kod jest szybszy"
+              "Creates new object",
+              "Calls parent class methods",
+              "Deletes class",
+              "Makes code faster"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "super() umożliwia wywoływanie metod z klasy nadrzędnej.",
+            "explanation": "super() allows calling methods from the parent class.",
             "type": "multipleChoice"
           },
           {
-            "question": "Jak utworzyć klasę podrzędną?",
+            "question": "How do you create a child class?",
             "options": [
-              "klasa Dziecko rozszerza Rodzica",
-              "klasa Dziecko (Rodzic)",
-              "klasa Dziecko: Rodzic",
-              "Dziecko = Rodzic.extend()"
+              "class Child extends Parent",
+              "class Child(Parent)",
+              "class Child: Parent",
+              "Child = Parent.extend()"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "W Pythonie nazwę klasy nadrzędnej umieść w nawiasie: class Child(Parent)",
+            "explanation": "In Python, put the parent class name in parentheses: class Child(Parent)",
             "type": "multipleChoice"
           },
           {
-            "question": "Co to jest zastępowanie metody?",
+            "question": "What is method overriding?",
             "options": [
-              "Usuwanie metody",
-              "Redefinicja metody nadrzędnej w podrzędnej",
-              "Dwukrotne wywołanie metody",
-              "Ustawianie metody jako prywatnej"
+              "Deleting a method",
+              "Redefining parent method in child",
+              "Calling a method twice",
+              "Making method private"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Zastąpienie oznacza zdefiniowanie metody w klasie podrzędnej o tej samej nazwie co rodzic w celu zastąpienia zachowania.",
+            "explanation": "Override means defining a method in child class with same name as parent to replace behavior.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Inheritance\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Create Student Class\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"What is Inheritance \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which habit improves readability in Python code?",
+            "options": [
+              "Use clear names and consistent formatting",
+              "Use one-letter names for everything",
+              "Avoid whitespace and structure",
+              "Hide logic in one long line"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Readable code is easier to maintain and debug.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Utwórz klasę ucznia",
-        "description": "Utwórz klasę Studenta dziedziczącą po Osobie z atrybutem oceny.",
+        "title": "Create Student Class",
+        "description": "Create Student class inheriting from Person with grade attribute.",
         "starterCode": "class Person:\n    def __init__(self, name):\n        self.name = name\n\nclass Student(Person):\n    def __init__(self, name, grade):\n        # Use super() and add grade\n        pass\n    \n    def info(self):\n        # Return \"Name: X, Grade: Y\"\n        pass\n\ns = Student(\"Alex\", 10)\nprint(s.info())",
         "language": "python",
         "testCases": [
@@ -202,7 +370,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Użyj super().__init__(nazwa), a następnie self.grade = ocena",
+        "hint": "Use super().__init__(name) then self.grade = grade",
         "solution": "class Person:\n    def __init__(self, name):\n        self.name = name\n\nclass Student(Person):\n    def __init__(self, name, grade):\n        super().__init__(name)\n        self.grade = grade\n    \n    def info(self):\n        return f\"Name: {self.name}, Grade: {self.grade}\"\n\ns = Student(\"Alex\", 10)\nprint(s.info())",
         "xpReward": 15
       },
@@ -213,12 +381,12 @@
       "id": "python_int_lesson_3",
       "courseId": "python-intermediate",
       "moduleId": "advanced",
-      "title": "Lista wyrażeń",
-      "description": "Napisz elegancki kod w języku Python",
+      "title": "List Comprehensions",
+      "description": "Write elegant, Pythonic code",
       "theorySlides": [
         {
-          "title": "Lista wyrażeń ✨",
-          "content": "Rozumienie list zapewnia zwięzły sposób tworzenia list.\n\nSkładnia: [wyrażenie elementu w iterowalności]\nZ filtrem: [wyrażenie elementu w warunku iterowalnym, jeśli]",
+          "title": "List Comprehensions ✨",
+          "content": "List comprehensions provide a concise way to create lists.\n\nSyntax: [expression for item in iterable]\nWith filter: [expression for item in iterable if condition]",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -226,8 +394,8 @@
           "order": 0
         },
         {
-          "title": "Dlaczego wyrażenia listowe? 🚀",
-          "content": "Korzyści:\n\n✅ **Czytelny** – Wyraźny zamiar w jednym wierszu\n✅ **Szybki** - Bardziej wydajny niż pętle\n✅ **Pythonic** – „Sposób Pythona”\n✅ **Elastyczny** – Filtruj i przekształcaj razem",
+          "title": "Why List Comprehensions? 🚀",
+          "content": "Benefits:\n\n✅ **Readable** - Clear intent in one line\n✅ **Fast** - More efficient than loops\n✅ **Pythonic** - The \"Python way\"\n✅ **Flexible** - Filter and transform together",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -235,8 +403,8 @@
           "order": 1
         },
         {
-          "title": "Podstawowe przykłady",
-          "content": "Przekształcaj i filtruj dane w jednym wierszu.",
+          "title": "Basic Examples",
+          "content": "Transform and filter data in one line.",
           "codeSnippet": "# Squares of 1-5\nsquares = [x**2 for x in range(1, 6)]\nprint(squares)  # [1, 4, 9, 16, 25]\n\n# Even numbers only\nevens = [x for x in range(10) if x % 2 == 0]\nprint(evens)  # [0, 2, 4, 6, 8]",
           "codeLanguage": "python",
           "imageUrl": null,
@@ -244,8 +412,8 @@
           "order": 2
         },
         {
-          "title": "Zagnieżdżone wyrażenia 🔄",
-          "content": "Twórz struktury 2D lub spłaszczaj listy.",
+          "title": "Nested Comprehensions 🔄",
+          "content": "Create 2D structures or flatten lists.",
           "codeSnippet": "# Flatten a 2D list\nmatrix = [[1, 2], [3, 4], [5, 6]]\nflat = [num for row in matrix for num in row]\nprint(flat)  # [1, 2, 3, 4, 5, 6]\n\n# Create multiplication table\ntable = [[i*j for j in range(1,4)] for i in range(1,4)]\n# [[1,2,3], [2,4,6], [3,6,9]]",
           "codeLanguage": "python",
           "imageUrl": null,
@@ -256,19 +424,19 @@
       "quiz": {
         "questions": [
           {
-            "question": "Co to jest [x*2 dla x w [1,2,3]]?",
+            "question": "What is [x*2 for x in [1,2,3]]?",
             "options": [
               "[1,2,3]",
               "[2,4,6]",
               "[1,4,9]",
-              "Błąd"
+              "Error"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Każdy element jest mnożony przez 2.",
+            "explanation": "Each element is multiplied by 2.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co zwraca [x dla x w zakresie (5), jeśli x > 2]?",
+            "question": "What does [x for x in range(5) if x > 2] return?",
             "options": [
               "[0,1,2]",
               "[3,4]",
@@ -276,27 +444,111 @@
               "[0,1,2,3,4]"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Tylko wartości większe od 2 przechodzą przez filtr: 3 i 4.",
+            "explanation": "Only values greater than 2 pass the filter: 3 and 4.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co jest równoważne: wynik = []; dla x w elementach: wynik.append(x*2)?",
+            "question": "Which is equivalent to: result = []; for x in items: result.append(x*2)?",
             "options": [
-              "[x*2 w elementach]",
-              "[x*2 dla x w elementach]",
-              "[dla x w pozycjach: x*2]",
-              "przedmioty.mapa(x*2)"
+              "[x*2 in items]",
+              "[x*2 for x in items]",
+              "[for x in items: x*2]",
+              "items.map(x*2)"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Składnia rozumienia listy: [wyrażenie elementu w iterowalności]",
+            "explanation": "List comprehension syntax: [expression for item in iterable]",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"List Comprehensions\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Squares of Evens\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"List Comprehensions \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which habit improves readability in Python code?",
+            "options": [
+              "Use clear names and consistent formatting",
+              "Use one-letter names for everything",
+              "Avoid whitespace and structure",
+              "Hide logic in one long line"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Readable code is easier to maintain and debug.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Kwadraty parzyste",
-        "description": "Utwórz listę kwadratów liczb parzystych od 1 do 10.",
+        "title": "Squares of Evens",
+        "description": "Create list of squares of even numbers from 1 to 10.",
         "starterCode": "# Create squares of even numbers 1-10\n# Expected: [4, 16, 36, 64, 100]\nsquares = # Your code\nprint(squares)",
         "language": "python",
         "testCases": [
@@ -306,7 +558,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Użyj, jeśli x % 2 == 0 i x**2",
+        "hint": "Use if x % 2 == 0 and x**2",
         "solution": "squares = [x**2 for x in range(1, 11) if x % 2 == 0]\nprint(squares)",
         "xpReward": 15
       },
@@ -317,12 +569,12 @@
       "id": "python_int_lesson_4",
       "courseId": "python-intermediate",
       "moduleId": "advanced",
-      "title": "Funkcje lambdy",
-      "description": "Twórz anonimowe funkcje",
+      "title": "Lambda Functions",
+      "description": "Create anonymous functions",
       "theorySlides": [
         {
-          "title": "Funkcje lambda ⚡",
-          "content": "Funkcje Lambda to małe funkcje anonimowe.\n\nSkładnia: argumenty lambda: wyrażenie\n\nIdealny na krótkie, jednorazowe uroczystości.",
+          "title": "Lambda Functions ⚡",
+          "content": "Lambda functions are small anonymous functions.\n\nSyntax: lambda args: expression\n\nPerfect for short, one-time functions.",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -330,8 +582,8 @@
           "order": 0
         },
         {
-          "title": "Lambda a funkcje regularne 🆚",
-          "content": "Porównanie:\n\n**Zwykła funkcja:**\nzdecydowanie dodaj(a, b):\n    zwróć + b\n\n**Funkcja Lambda:**\nadd = lambda a, b: a + b\n\nUżyj lambda do prostych, jednorazowych operacji.",
+          "title": "Lambda vs Regular Functions 🆚",
+          "content": "Comparison:\n\n**Regular function:**\ndef add(a, b):\n    return a + b\n\n**Lambda function:**\nadd = lambda a, b: a + b\n\nUse lambda for simple, single-use operations.",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -339,8 +591,8 @@
           "order": 1
         },
         {
-          "title": "Lambda z sortowaną()",
-          "content": "Sortuj za pomocą niestandardowych kluczy.",
+          "title": "Lambda with sorted()",
+          "content": "Sort with custom keys.",
           "codeSnippet": "students = [(\"Alice\", 85), (\"Bob\", 92), (\"Charlie\", 78)]\n\n# Sort by grade (second element)\nsorted_students = sorted(students, key=lambda s: s[1])\nprint(sorted_students)",
           "codeLanguage": "python",
           "imageUrl": null,
@@ -348,8 +600,8 @@
           "order": 2
         },
         {
-          "title": "Lambda z map() i filter() 🔧",
-          "content": "Używaj lambdy z funkcjonalnymi narzędziami programowania.",
+          "title": "Lambda with map() & filter() 🔧",
+          "content": "Use lambda with functional programming tools.",
           "codeSnippet": "numbers = [1, 2, 3, 4, 5]\n\n# Double each number\ndoubled = list(map(lambda x: x*2, numbers))\n# [2, 4, 6, 8, 10]\n\n# Keep only evens\nevens = list(filter(lambda x: x%2==0, numbers))\n# [2, 4]",
           "codeLanguage": "python",
           "imageUrl": null,
@@ -360,7 +612,7 @@
       "quiz": {
         "questions": [
           {
-            "question": "Poprawna lambda, aby dodać dwie liczby?",
+            "question": "Correct lambda to add two numbers?",
             "options": [
               "lambda: a+b",
               "lambda a,b: a+b",
@@ -368,39 +620,123 @@
               "a,b => a+b"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Składnia: parametry lambda: wyrażenie",
+            "explanation": "Syntax: lambda parameters: expression",
             "type": "multipleChoice"
           },
           {
-            "question": "Co mogą zawierać funkcje lambda?",
+            "question": "What can lambda functions contain?",
             "options": [
-              "Wiele stwierdzeń",
-              "Pojedyncze wyrażenie",
-              "Pętle i bloki if/else",
-              "Definicje klas"
+              "Multiple statements",
+              "A single expression",
+              "Loops and if/else blocks",
+              "Class definitions"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Funkcje lambda mogą zawierać tylko jedno wyrażenie, a nie wiele instrukcji.",
+            "explanation": "Lambda functions can only contain a single expression, not multiple statements.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co zwraca map(lambda x: x**2, [1,2,3])?",
+            "question": "What does map(lambda x: x**2, [1,2,3]) return?",
             "options": [
               "[1,2,3]",
               "[1,4,9]",
               "6",
-              "Błąd"
+              "Error"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "map() stosuje lambdę do każdego elementu: 1²=1, 2²=4, 3²=9",
+            "explanation": "map() applies the lambda to each element: 1²=1, 2²=4, 3²=9",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Lambda Functions\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Sort by Length\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Lambda Functions \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which habit improves readability in Python code?",
+            "options": [
+              "Use clear names and consistent formatting",
+              "Use one-letter names for everything",
+              "Avoid whitespace and structure",
+              "Hide logic in one long line"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Readable code is easier to maintain and debug.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Sortuj według długości",
-        "description": "Sortuj słowa według długości za pomocą lambdy.",
+        "title": "Sort by Length",
+        "description": "Sort words by length using lambda.",
         "starterCode": "words = [\"python\", \"is\", \"awesome\"]\n# Sort by length\nresult = sorted(words, key=# your lambda)\nprint(result)",
         "language": "python",
         "testCases": [
@@ -410,7 +746,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Użyj lambda w: len(w)",
+        "hint": "Use lambda w: len(w)",
         "solution": "words = [\"python\", \"is\", \"awesome\"]\nresult = sorted(words, key=lambda w: len(w))\nprint(result)",
         "xpReward": 15
       },
@@ -421,12 +757,12 @@
       "id": "python_int_lesson_5",
       "courseId": "python-intermediate",
       "moduleId": "errors",
-      "title": "Obsługa wyjątków",
-      "description": "Obchodź się z błędami z wdziękiem",
+      "title": "Exception Handling",
+      "description": "Handle errors gracefully",
       "theorySlides": [
         {
-          "title": "Spróbuj/Wyjątek 🛡️",
-          "content": "Obsługuj błędy bez zawieszania programu.\n\nTypowe wyjątki:\n• ValueError - zły typ wartości\n• TypeError - błędna operacja na typie\n• ZeroDivisionError – dzielenie przez zero\n• FileNotFoundError – brakujący plik",
+          "title": "Try/Except 🛡️",
+          "content": "Handle errors without crashing your program.\n\nCommon exceptions:\n• ValueError - wrong value type\n• TypeError - wrong operation on type\n• ZeroDivisionError - divide by zero\n• FileNotFoundError - missing file",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -434,8 +770,8 @@
           "order": 0
         },
         {
-          "title": "Po co obsługiwać wyjątki? 💡",
-          "content": "Korzyści:\n\n✅ **Ładna porażka** – Aplikacja nie ulega awarii\n✅ **Przyjazny dla użytkownika** - Wyświetlaj pomocne komunikaty o błędach\n✅ **Odzyskiwanie** – wypróbuj alternatywne podejścia\n✅ **Logowanie** — śledzenie błędów w celu debugowania",
+          "title": "Why Handle Exceptions? 💡",
+          "content": "Benefits:\n\n✅ **Graceful failure** - App doesn't crash\n✅ **User-friendly** - Show helpful error messages\n✅ **Recovery** - Try alternative approaches\n✅ **Logging** - Track errors for debugging",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -443,8 +779,8 @@
           "order": 1
         },
         {
-          "title": "Podstawowa składnia",
-          "content": "Zawiń ryzykowny kod w try/except.",
+          "title": "Basic Syntax",
+          "content": "Wrap risky code in try/except.",
           "codeSnippet": "try:\n    result = 10 / 0\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero!\")\nfinally:\n    print(\"This always runs\")",
           "codeLanguage": "python",
           "imageUrl": null,
@@ -452,8 +788,8 @@
           "order": 2
         },
         {
-          "title": "Wiele wyjątków 🎯",
-          "content": "Obsługuj różne błędy w różny sposób.",
+          "title": "Multiple Exceptions 🎯",
+          "content": "Handle different errors differently.",
           "codeSnippet": "try:\n    value = int(input(\"Enter number: \"))\n    result = 100 / value\nexcept ValueError:\n    print(\"Not a valid number!\")\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero!\")\nexcept Exception as e:\n    print(f\"Unknown error: {e}\")",
           "codeLanguage": "python",
           "imageUrl": null,
@@ -464,47 +800,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Który blok zawsze działa?",
+            "question": "Which block always runs?",
             "options": [
-              "próbować",
-              "z wyjątkiem",
-              "Wreszcie",
-              "wznosić"
+              "try",
+              "except",
+              "finally",
+              "raise"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "w końcu zawsze wykonuje się, niezależnie od wyjątków.",
+            "explanation": "finally always executes, regardless of exceptions.",
             "type": "multipleChoice"
           },
           {
-            "question": "Jak złapać KAŻDY wyjątek?",
+            "question": "How do you catch ANY exception?",
             "options": [
-              "z wyjątkiem:",
-              "z wyjątkiem wszystkich:",
-              "z wyjątkiem *:",
-              "złapać:"
+              "except:",
+              "except All:",
+              "except *:",
+              "catch:"
             ],
             "correctAnswerIndex": 0,
-            "explanation": "Samo „z wyjątkiem:” przechwytuje wszystkie wyjątki (chociaż preferowane jest „z wyjątkiem wyjątku:”).",
+            "explanation": "A bare \"except:\" catches all exceptions (though \"except Exception:\" is preferred).",
             "type": "multipleChoice"
           },
           {
-            "question": "Co oznacza „podniesienie”?",
+            "question": "What does \"raise\" do?",
             "options": [
-              "Złap wyjątek",
-              "Utwórz/zgłoś wyjątek",
-              "Błąd drukowania",
-              "Wyjdź z programu"
+              "Catch exception",
+              "Create/throw exception",
+              "Print error",
+              "Exit program"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "raise tworzy i zgłasza wyjątek, który można przechwycić metodą try/except.",
+            "explanation": "raise creates and throws an exception that can be caught by try/except.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Exception Handling\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Safe Division\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"TryExcept \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which habit improves readability in Python code?",
+            "options": [
+              "Use clear names and consistent formatting",
+              "Use one-letter names for everything",
+              "Avoid whitespace and structure",
+              "Hide logic in one long line"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Readable code is easier to maintain and debug.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Bezpieczny Oddział",
-        "description": "Utwórz Safe_divide, który w przypadku niepowodzenia zwróci „Błąd”.",
+        "title": "Safe Division",
+        "description": "Create safe_divide that returns \"Error\" on failure.",
         "starterCode": "def safe_divide(a, b):\n    # Return result or \"Error\"\n    pass\n\nprint(safe_divide(10, 2))\nprint(safe_divide(10, 0))",
         "language": "python",
         "testCases": [
@@ -514,7 +934,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Użyj try/except ZeroDivisionError",
+        "hint": "Use try/except ZeroDivisionError",
         "solution": "def safe_divide(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return \"Error\"\n\nprint(safe_divide(10, 2))\nprint(safe_divide(10, 0))",
         "xpReward": 15
       },

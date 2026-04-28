@@ -5,12 +5,12 @@
       "id": "htmlcss_int_lesson_1",
       "courseId": "htmlcss-intermediate",
       "moduleId": "layout",
-      "title": "Układ Flexboxa",
-      "description": "Opanuj elastyczny układ pudełek",
+      "title": "Flexbox Layout",
+      "description": "Master flexible box layout",
       "theorySlides": [
         {
-          "title": "Co to jest Flexbox? 📦",
-          "content": "Flexbox to jednowymiarowa metoda układu wierszy lub kolumn.\n\nKluczowe właściwości:\n• wyświetlacz: elastyczny\n• justify-content (oś główna)\n• wyrównanie elementów (oś poprzeczna)\n• kierunek elastyczny",
+          "title": "What is Flexbox? 📦",
+          "content": "Flexbox is a one-dimensional layout method for rows or columns.\n\nKey properties:\n• display: flex\n• justify-content (main axis)\n• align-items (cross axis)\n• flex-direction",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -18,8 +18,8 @@
           "order": 0
         },
         {
-          "title": "Siekiery Flexbox 🎯",
-          "content": "Dwie osie w Flexboxie:\n\n**Oś główna** – Kierunek przepływu elementów (wiersz/kolumna)\n• Justify-content kontroluje to\n\n**Oś poprzeczna** – prostopadle do głównej\n• Align-Items kontroluje to",
+          "title": "Flexbox Axes 🎯",
+          "content": "Two axes in flexbox:\n\n**Main Axis** - Direction items flow (row/column)\n• justify-content controls this\n\n**Cross Axis** - Perpendicular to main\n• align-items controls this",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -27,8 +27,8 @@
           "order": 1
         },
         {
-          "title": "Centrowanie z Flexboxem",
-          "content": "Łatwo centruj elementy.",
+          "title": "Centering with Flexbox",
+          "content": "Center items easily.",
           "codeSnippet": ".container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100vh;\n}",
           "codeLanguage": "css",
           "imageUrl": null,
@@ -36,8 +36,8 @@
           "order": 2
         },
         {
-          "title": "Właściwości elementu elastycznego 🔧",
-          "content": "Kontroluj poszczególne elementy:",
+          "title": "Flex Item Properties 🔧",
+          "content": "Control individual items:",
           "codeSnippet": ".item {\n  flex-grow: 1;    /* Can grow */\n  flex-shrink: 0;  /* Won't shrink */\n  flex-basis: 200px; /* Starting size */\n  \n  /* Shorthand: flex: grow shrink basis */\n  flex: 1 0 200px;\n}",
           "codeLanguage": "css",
           "imageUrl": null,
@@ -48,47 +48,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Która nieruchomość skupia się na głównej osi?",
+            "question": "Which property centers on main axis?",
             "options": [
-              "wyrównaj-przedmioty",
-              "uzasadnij-treść",
-              "kierunek flex",
-              "owinięcie elastyczne"
+              "align-items",
+              "justify-content",
+              "flex-direction",
+              "flex-wrap"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "justify-content kontroluje wyrównanie osi głównej.",
+            "explanation": "justify-content controls main axis alignment.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co robi kierunek flex: kolumna?",
+            "question": "What does flex-direction: column do?",
             "options": [
-              "Przedmioty obok siebie",
-              "Elementy ułożone pionowo",
-              "Sprawia, że ​​kolumny są równe",
-              "Ukrywa przedmioty"
+              "Items side by side",
+              "Items stacked vertically",
+              "Makes columns equal",
+              "Hides items"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "kolumna zmienia oś główną na pionową, układając elementy od góry do dołu.",
+            "explanation": "column changes the main axis to vertical, stacking items top to bottom.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co oznacza flex: 1?",
+            "question": "What does flex: 1 mean?",
             "options": [
-              "Stała szerokość 1px",
-              "Przedmiot zajmuje równą część miejsca",
-              "Widoczny tylko 1 element",
-              "Błąd"
+              "Fixed width of 1px",
+              "Item takes equal share of space",
+              "Only 1 item visible",
+              "Error"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "flex: 1 oznacza flex-grow: 1, pozwalając przedmiotowi rosnąć i wypełniać dostępną przestrzeń.",
+            "explanation": "flex: 1 means flex-grow: 1, allowing the item to grow and fill available space.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Flexbox Layout\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which code example is syntactically valid?",
+            "options": [
+              "value = 3 + 2",
+              "value == 3 + 2",
+              "const value 3 + 2",
+              "SELECT value"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for code in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Center a Box\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"What is Flexbox \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which habit improves readability in code code?",
+            "options": [
+              "Use clear names and consistent formatting",
+              "Use one-letter names for everything",
+              "Avoid whitespace and structure",
+              "Hide logic in one long line"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Readable code is easier to maintain and debug.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Wyśrodkuj pudełko",
-        "description": "Wyśrodkuj element div za pomocą Flexbox.",
+        "title": "Center a Box",
+        "description": "Center a div using flexbox.",
         "starterCode": ".container {\n  height: 200px;\n  /* Add flexbox centering */\n}",
         "language": "css",
         "testCases": [
@@ -98,7 +182,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Użyj display: flex z wyjustowaniem treści i wyrównaniem elementów",
+        "hint": "Use display: flex with justify-content and align-items center",
         "solution": ".container {\n  height: 200px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}",
         "xpReward": 15
       },
@@ -109,12 +193,12 @@
       "id": "htmlcss_int_lesson_2",
       "courseId": "htmlcss-intermediate",
       "moduleId": "layout",
-      "title": "Siatka CSS",
-      "description": "Twórz dwuwymiarowe układy",
+      "title": "CSS Grid",
+      "description": "Create two-dimensional layouts",
       "theorySlides": [
         {
-          "title": "Siatka CSS 🔲",
-          "content": "CSS Grid tworzy układy z wierszami ORAZ kolumnami.\n\nKluczowe właściwości:\n• kolumny szablonów siatki\n• wiersze szablonu siatki\n• luka\n• jednostka fr (ułamek)",
+          "title": "CSS Grid 🔲",
+          "content": "CSS Grid creates layouts with rows AND columns.\n\nKey properties:\n• grid-template-columns\n• grid-template-rows\n• gap\n• fr unit (fraction)",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -122,8 +206,8 @@
           "order": 0
         },
         {
-          "title": "Siatka kontra Flexbox 🆚",
-          "content": "Kiedy stosować które:\n\n**Siatka:** układy 2D (wiersze ORAZ kolumny)\n• Układy stron\n• Siatki kart\n• Złożone struktury\n\n**Flexbox:** układy 1D (wiersz LUB kolumna)\n• Paski nawigacyjne\n• Centrowanie\n• Pojedynczy wiersz/kolumna",
+          "title": "Grid vs Flexbox 🆚",
+          "content": "When to use which:\n\n**Grid:** 2D layouts (rows AND columns)\n• Page layouts\n• Card grids\n• Complex structures\n\n**Flexbox:** 1D layouts (row OR column)\n• Navigation bars\n• Centering\n• Single row/column",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -131,8 +215,8 @@
           "order": 1
         },
         {
-          "title": "Responsywna siatka",
-          "content": "Twórz responsywne siatki.",
+          "title": "Responsive Grid",
+          "content": "Create responsive grids.",
           "codeSnippet": ".grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));\n  gap: 16px;\n}",
           "codeLanguage": "css",
           "imageUrl": null,
@@ -140,8 +224,8 @@
           "order": 2
         },
         {
-          "title": "Obszary siatki 🗺️",
-          "content": "Nazwij obszary układów wizualnych.",
+          "title": "Grid Areas 🗺️",
+          "content": "Name areas for visual layouts.",
           "codeSnippet": ".layout {\n  display: grid;\n  grid-template-areas:\n    \"header header\"\n    \"sidebar main\"\n    \"footer footer\";\n  grid-template-columns: 200px 1fr;\n}\n\n.header { grid-area: header; }\n.sidebar { grid-area: sidebar; }",
           "codeLanguage": "css",
           "imageUrl": null,
@@ -152,47 +236,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Co oznacza 1fr?",
+            "question": "What does 1fr mean?",
             "options": [
-              "1 piksel",
-              "1 część przestrzeni",
-              "1 ramka",
-              "1 rząd"
+              "1 pixel",
+              "1 fraction of space",
+              "1 frame",
+              "1 row"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "fr to jednostka ułamkowa dostępnej przestrzeni.",
+            "explanation": "fr is a fraction unit for available space.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co robi automatyczne dopasowanie w funkcji powtarzania ()?",
+            "question": "What does auto-fit do in repeat()?",
             "options": [
-              "Stałe kolumny",
-              "Wypełnia wiersz dowolną liczbą kolumn",
-              "Pojedyncza kolumna",
-              "Błąd"
+              "Fixed columns",
+              "Fills row with as many columns as fit",
+              "Single column",
+              "Error"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "automatyczne dopasowanie tworzy tyle kolumn, ile zmieści się w dostępnej przestrzeni.",
+            "explanation": "auto-fit creates as many columns as can fit in the available space.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co tworzy siatkę 2x2?",
+            "question": "Which creates a 2x2 grid?",
             "options": [
-              "siatka: 2x2",
-              "szablon siatki: 2 2",
-              "kolumny szablonów siatki: 1fr 1fr; wiersze szablonu siatki: 1fr 1fr",
-              "kolumny: 2; rzędy: 2"
+              "grid: 2x2",
+              "grid-template: 2 2",
+              "grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr",
+              "columns: 2; rows: 2"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "Zdefiniuj zarówno kolumny, jak i wiersze za pomocą kolumn i wierszy szablonu siatki.",
+            "explanation": "Define both columns and rows with grid-template-columns and grid-template-rows.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"CSS Grid\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which code example is syntactically valid?",
+            "options": [
+              "value = 3 + 2",
+              "value == 3 + 2",
+              "const value 3 + 2",
+              "SELECT value"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for code in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Create 3-Column Grid\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"CSS Grid \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which habit improves readability in code code?",
+            "options": [
+              "Use clear names and consistent formatting",
+              "Use one-letter names for everything",
+              "Avoid whitespace and structure",
+              "Hide logic in one long line"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Readable code is easier to maintain and debug.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Utwórz 3-kolumnową siatkę",
-        "description": "Utwórz równą 3-kolumnową siatkę ze szczeliną.",
+        "title": "Create 3-Column Grid",
+        "description": "Create equal 3-column grid with gap.",
         "starterCode": ".grid {\n  /* Create 3 equal columns with 16px gap */\n}",
         "language": "css",
         "testCases": [
@@ -202,7 +370,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Użyj powtórzenia (3, 1fr) dla 3 równych kolumn",
+        "hint": "Use repeat(3, 1fr) for 3 equal columns",
         "solution": ".grid {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 16px;\n}",
         "xpReward": 15
       },
@@ -213,12 +381,12 @@
       "id": "htmlcss_int_lesson_3",
       "courseId": "htmlcss-intermediate",
       "moduleId": "modern",
-      "title": "Zmienne CSS",
-      "description": "Użyj niestandardowych właściwości dla łatwego w utrzymaniu CSS",
+      "title": "CSS Variables",
+      "description": "Use custom properties for maintainable CSS",
       "theorySlides": [
         {
-          "title": "Zmienne CSS ✨",
-          "content": "Przechowuj i ponownie wykorzystuj wartości w całym arkuszu stylów.\n\nZdefiniuj za pomocą --name, użyj z var(--name)",
+          "title": "CSS Variables ✨",
+          "content": "Store and reuse values throughout your stylesheet.\n\nDefine with --name, use with var(--name)",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -226,8 +394,8 @@
           "order": 0
         },
         {
-          "title": "Przykład",
-          "content": "Określ kolory i odstępy.",
+          "title": "Example",
+          "content": "Define colors and spacing.",
           "codeSnippet": ":root {\n  --primary: #0066ff;\n  --spacing: 16px;\n}\n\n.button {\n  background: var(--primary);\n  padding: var(--spacing);\n}",
           "codeLanguage": "css",
           "imageUrl": null,
@@ -238,23 +406,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Jak zdefiniować zmienną CSS?",
+            "question": "How to define a CSS variable?",
             "options": [
-              "$zmienna: wartość",
-              "@var: wartość",
-              "--var: wartość",
-              "zmienna = wartość"
+              "$var: value",
+              "@var: value",
+              "--var: value",
+              "var = value"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "Zmienne CSS używają przedrostka z podwójnym myślnikiem.",
+            "explanation": "CSS variables use double-dash prefix.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"CSS Variables\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which code example is syntactically valid?",
+            "options": [
+              "value = 3 + 2",
+              "value == 3 + 2",
+              "const value 3 + 2",
+              "SELECT value"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for code in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Define and Use Variable\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"CSS Variables \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which habit improves readability in code code?",
+            "options": [
+              "Use clear names and consistent formatting",
+              "Use one-letter names for everything",
+              "Avoid whitespace and structure",
+              "Hide logic in one long line"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Readable code is easier to maintain and debug.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How should you continue after this \"CSS Variables\" lesson?",
+            "options": [
+              "Do one extra practice variation before moving on",
+              "Skip directly to final project with no review",
+              "Ignore quizzes and challenges entirely",
+              "Only reread notes without coding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick additional variation locks in the concept and prepares you for harder lessons.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "CSS Variables • practice check 1: what is the best next step?",
+            "options": [
+              "Apply the concept in a small code example",
+              "Skip testing and submit immediately",
+              "Delete working code and restart randomly",
+              "Memorize answers without coding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A small practical example helps reinforce CSS Variables without increasing complexity too quickly.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Zdefiniuj i użyj zmiennej",
-        "description": "Utwórz --primary color i użyj go.",
+        "title": "Define and Use Variable",
+        "description": "Create --primary color and use it.",
         "starterCode": ":root {\n  /* Define --primary as #0066ff */\n}\n\n.btn {\n  /* Use --primary for background */\n}",
         "language": "css",
         "testCases": [
@@ -264,7 +540,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Zdefiniuj w :root, użyj z var()",
+        "hint": "Define in :root, use with var()",
         "solution": ":root {\n  --primary: #0066ff;\n}\n\n.btn {\n  background: var(--primary);\n}",
         "xpReward": 15
       },
@@ -275,12 +551,12 @@
       "id": "htmlcss_int_lesson_4",
       "courseId": "htmlcss-intermediate",
       "moduleId": "animations",
-      "title": "Animacje CSS",
-      "description": "Twórz płynne animacje",
+      "title": "CSS Animations",
+      "description": "Create smooth animations",
       "theorySlides": [
         {
-          "title": "Animacje CSS 🎬",
-          "content": "Dwa typy:\n• **Przejścia**: Pomiędzy dwoma stanami\n• **Klatki kluczowe**: animacje wieloetapowe",
+          "title": "CSS Animations 🎬",
+          "content": "Two types:\n• **Transitions**: Between two states\n• **Keyframes**: Multi-step animations",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -288,8 +564,8 @@
           "order": 0
         },
         {
-          "title": "Klatki kluczowe",
-          "content": "Zdefiniuj kroki animacji.",
+          "title": "Keyframes",
+          "content": "Define animation steps.",
           "codeSnippet": "@keyframes fadeIn {\n  from { opacity: 0; }\n  to { opacity: 1; }\n}\n\n.element {\n  animation: fadeIn 0.5s ease;\n}",
           "codeLanguage": "css",
           "imageUrl": null,
@@ -300,23 +576,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Co robi nieskończony?",
+            "question": "What does infinite do?",
             "options": [
-              "Działa szybciej",
-              "Pętle na zawsze",
-              "Zwiększa rozmiar",
-              "Pauzuje"
+              "Runs faster",
+              "Loops forever",
+              "Increases size",
+              "Pauses"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "nieskończony powoduje, że animacja powtarza się w nieskończoność.",
+            "explanation": "infinite makes the animation repeat forever.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"CSS Animations\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which code example is syntactically valid?",
+            "options": [
+              "value = 3 + 2",
+              "value == 3 + 2",
+              "const value 3 + 2",
+              "SELECT value"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for code in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Pulse Animation\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"CSS Animations \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which habit improves readability in code code?",
+            "options": [
+              "Use clear names and consistent formatting",
+              "Use one-letter names for everything",
+              "Avoid whitespace and structure",
+              "Hide logic in one long line"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Readable code is easier to maintain and debug.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How should you continue after this \"CSS Animations\" lesson?",
+            "options": [
+              "Do one extra practice variation before moving on",
+              "Skip directly to final project with no review",
+              "Ignore quizzes and challenges entirely",
+              "Only reread notes without coding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick additional variation locks in the concept and prepares you for harder lessons.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "CSS Animations • practice check 1: what is the best next step?",
+            "options": [
+              "Apply the concept in a small code example",
+              "Skip testing and submit immediately",
+              "Delete working code and restart randomly",
+              "Memorize answers without coding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A small practical example helps reinforce CSS Animations without increasing complexity too quickly.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Animacja pulsu",
-        "description": "Utwórz animację pulsu skalowaną od 1 do 1,1.",
+        "title": "Pulse Animation",
+        "description": "Create a pulse animation that scales 1 to 1.1.",
         "starterCode": "@keyframes pulse {\n  /* 0%: scale(1), 50%: scale(1.1), 100%: scale(1) */\n}\n\n.box {\n  animation: pulse 1s infinite;\n}",
         "language": "css",
         "testCases": [
@@ -326,7 +710,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Użyj transformacji: skala() w każdej klatce kluczowej",
+        "hint": "Use transform: scale() at each keyframe",
         "solution": "@keyframes pulse {\n  0% { transform: scale(1); }\n  50% { transform: scale(1.1); }\n  100% { transform: scale(1); }\n}\n\n.box {\n  animation: pulse 1s infinite;\n}",
         "xpReward": 15
       },
@@ -337,12 +721,12 @@
       "id": "htmlcss_int_lesson_5",
       "courseId": "htmlcss-intermediate",
       "moduleId": "responsive",
-      "title": "Zapytania o media",
-      "description": "Twórz responsywne układy",
+      "title": "Media Queries",
+      "description": "Build responsive layouts",
       "theorySlides": [
         {
-          "title": "Responsywny projekt 📱",
-          "content": "Zastosuj różne style w zależności od rozmiaru ekranu.\n\nPunkty przerwania:\n• Telefon komórkowy: < 768 pikseli\n• Tablet: 768 pikseli - 1024 pikseli\n• Pulpit: > 1024px",
+          "title": "Responsive Design 📱",
+          "content": "Apply different styles based on screen size.\n\nBreakpoints:\n• Mobile: < 768px\n• Tablet: 768px - 1024px\n• Desktop: > 1024px",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -350,8 +734,8 @@
           "order": 0
         },
         {
-          "title": "Najpierw mobilność",
-          "content": "Zacznij od urządzeń mobilnych, dodaj style komputerów stacjonarnych.",
+          "title": "Mobile First",
+          "content": "Start with mobile, add desktop styles.",
           "codeSnippet": ".container {\n  padding: 16px;\n}\n\n@media (min-width: 768px) {\n  .container {\n    padding: 32px;\n    max-width: 1200px;\n  }\n}",
           "codeLanguage": "css",
           "imageUrl": null,
@@ -362,23 +746,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Co to jest mobile-first?",
+            "question": "What is mobile-first?",
             "options": [
-              "Obsługuj tylko urządzenia mobilne",
-              "Najpierw napisz mobilny CSS, dodaj komputer",
-              "Najpierw przetestuj urządzenie mobilne",
-              "Ignoruj ​​​​pulpit"
+              "Only support mobile",
+              "Write mobile CSS first, add desktop",
+              "Test mobile first",
+              "Ignore desktop"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Mobile-first wykorzystuje style podstawowe dla urządzeń mobilnych, a zapytania o media dla większych ekranów.",
+            "explanation": "Mobile-first uses base styles for mobile, media queries for larger screens.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Media Queries\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which code example is syntactically valid?",
+            "options": [
+              "value = 3 + 2",
+              "value == 3 + 2",
+              "const value 3 + 2",
+              "SELECT value"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for code in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Responsive Grid\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Responsive Design \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which habit improves readability in code code?",
+            "options": [
+              "Use clear names and consistent formatting",
+              "Use one-letter names for everything",
+              "Avoid whitespace and structure",
+              "Hide logic in one long line"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Readable code is easier to maintain and debug.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How should you continue after this \"Media Queries\" lesson?",
+            "options": [
+              "Do one extra practice variation before moving on",
+              "Skip directly to final project with no review",
+              "Ignore quizzes and challenges entirely",
+              "Only reread notes without coding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick additional variation locks in the concept and prepares you for harder lessons.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Media Queries • practice check 1: what is the best next step?",
+            "options": [
+              "Apply the concept in a small code example",
+              "Skip testing and submit immediately",
+              "Delete working code and restart randomly",
+              "Memorize answers without coding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A small practical example helps reinforce Media Queries without increasing complexity too quickly.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Responsywna siatka",
-        "description": "Utwórz siatkę składającą się z 1 kolumny na telefonie komórkowym i 2 na tablecie (768px+).",
+        "title": "Responsive Grid",
+        "description": "Create grid that is 1 column on mobile, 2 on tablet (768px+).",
         "starterCode": ".grid {\n  display: grid;\n  grid-template-columns: 1fr;\n}\n\n/* Add media query for 768px+ */",
         "language": "css",
         "testCases": [
@@ -388,7 +880,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Użyj @media (min. szerokość: 768 pikseli)",
+        "hint": "Use @media (min-width: 768px)",
         "solution": ".grid {\n  display: grid;\n  grid-template-columns: 1fr;\n}\n\n@media (min-width: 768px) {\n  .grid {\n    grid-template-columns: 1fr 1fr;\n  }\n}",
         "xpReward": 15
       },

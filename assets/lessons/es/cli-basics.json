@@ -1,0 +1,1705 @@
+{
+  "courseId": "cli-basics",
+  "lessons": [
+    {
+      "id": "cli_basics_lesson_1",
+      "courseId": "cli-basics",
+      "moduleId": "cli",
+      "title": "What Is CLI?",
+      "description": "CLI is a text interface to control your system quickly.",
+      "theorySlides": [
+        {
+          "title": "What Is CLI? - in simple words",
+          "content": "CLI is a text interface to control your system quickly.\n\nReal-life example:\nLike giving direct voice commands instead of tapping many buttons.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "print(\"Command line\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"What Is CLI?\"?",
+            "options": [
+              "CLI is a text interface to control your system quickly.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "print(\"Command line\")",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "Like giving direct voice commands instead of tapping many buttons.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"What Is CLI?\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: What Is CLI?\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"What Is CLI - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: What Is CLI?",
+        "description": "Write a tiny Python snippet that prints exactly: Command line",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Command line",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"Command line\")",
+        "xpReward": 15
+      },
+      "xpReward": 18,
+      "order": 0
+    },
+    {
+      "id": "cli_basics_lesson_2",
+      "courseId": "cli-basics",
+      "moduleId": "cli",
+      "title": "Folders and Paths",
+      "description": "Paths show exactly where files live on your machine.",
+      "theorySlides": [
+        {
+          "title": "Folders and Paths - in simple words",
+          "content": "Paths show exactly where files live on your machine.\n\nReal-life example:\nA home address tells where a person lives.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "print(\"/home/user\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"Folders and Paths\"?",
+            "options": [
+              "Paths show exactly where files live on your machine.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "print(\"/home/user\")",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "A home address tells where a person lives.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Folders and Paths\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: Folders and Paths\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Folders and Paths - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: Folders and Paths",
+        "description": "Write a tiny Python snippet that prints exactly: /home/user",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "/home/user",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"/home/user\")",
+        "xpReward": 15
+      },
+      "xpReward": 20,
+      "order": 1
+    },
+    {
+      "id": "cli_basics_lesson_3",
+      "courseId": "cli-basics",
+      "moduleId": "cli",
+      "title": "Navigation Commands",
+      "description": "Navigation commands move you between folders.",
+      "theorySlides": [
+        {
+          "title": "Navigation Commands - in simple words",
+          "content": "Navigation commands move you between folders.\n\nReal-life example:\nChanging rooms in a building to reach the one you need.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "print(\"cd projects\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"Navigation Commands\"?",
+            "options": [
+              "Navigation commands move you between folders.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "print(\"cd projects\")",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "Changing rooms in a building to reach the one you need.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Navigation Commands\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: Navigation Commands\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Navigation Commands - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: Navigation Commands",
+        "description": "Write a tiny Python snippet that prints exactly: cd projects",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "cd projects",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"cd projects\")",
+        "xpReward": 15
+      },
+      "xpReward": 22,
+      "order": 2
+    },
+    {
+      "id": "cli_basics_lesson_4",
+      "courseId": "cli-basics",
+      "moduleId": "cli",
+      "title": "Create Files and Folders",
+      "description": "You can create structure fast using simple CLI commands.",
+      "theorySlides": [
+        {
+          "title": "Create Files and Folders - in simple words",
+          "content": "You can create structure fast using simple CLI commands.\n\nReal-life example:\nCreating labeled notebooks for each school subject.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "print(\"mkdir projects\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"Create Files and Folders\"?",
+            "options": [
+              "You can create structure fast using simple CLI commands.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "print(\"mkdir projects\")",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "Creating labeled notebooks for each school subject.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Create Files and Folders\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: Create Files and Folders\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Create Files and Folders - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: Create Files and Folders",
+        "description": "Write a tiny Python snippet that prints exactly: mkdir projects",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "mkdir projects",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"mkdir projects\")",
+        "xpReward": 15
+      },
+      "xpReward": 24,
+      "order": 3
+    },
+    {
+      "id": "cli_basics_lesson_5",
+      "courseId": "cli-basics",
+      "moduleId": "cli",
+      "title": "Read File Content",
+      "description": "CLI can quickly show file content without full editor.",
+      "theorySlides": [
+        {
+          "title": "Read File Content - in simple words",
+          "content": "CLI can quickly show file content without full editor.\n\nReal-life example:\nReading short notes without opening a large app.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "print(\"cat notes.txt\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"Read File Content\"?",
+            "options": [
+              "CLI can quickly show file content without full editor.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "print(\"cat notes.txt\")",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "Reading short notes without opening a large app.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Read File Content\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: Read File Content\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Read File Content - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: Read File Content",
+        "description": "Write a tiny Python snippet that prints exactly: cat notes.txt",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "cat notes.txt",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"cat notes.txt\")",
+        "xpReward": 15
+      },
+      "xpReward": 26,
+      "order": 4
+    },
+    {
+      "id": "cli_basics_lesson_6",
+      "courseId": "cli-basics",
+      "moduleId": "cli",
+      "title": "Copy and Move",
+      "description": "Copy duplicates files; move changes their location.",
+      "theorySlides": [
+        {
+          "title": "Copy and Move - in simple words",
+          "content": "Copy duplicates files; move changes their location.\n\nReal-life example:\nCopying a document vs moving it to another drawer.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "print(\"cp a.txt b.txt\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"Copy and Move\"?",
+            "options": [
+              "Copy duplicates files; move changes their location.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "print(\"cp a.txt b.txt\")",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "Copying a document vs moving it to another drawer.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Copy and Move\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: Copy and Move\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Copy and Move - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: Copy and Move",
+        "description": "Write a tiny Python snippet that prints exactly: cp a.txt b.txt",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "cp a.txt b.txt",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"cp a.txt b.txt\")",
+        "xpReward": 15
+      },
+      "xpReward": 28,
+      "order": 5
+    },
+    {
+      "id": "cli_basics_lesson_7",
+      "courseId": "cli-basics",
+      "moduleId": "cli",
+      "title": "Delete Carefully",
+      "description": "Deletion commands are powerful and should be used carefully.",
+      "theorySlides": [
+        {
+          "title": "Delete Carefully - in simple words",
+          "content": "Deletion commands are powerful and should be used carefully.\n\nReal-life example:\nThrowing away paper from trash bin, not from archive box.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "print(\"rm old.txt\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"Delete Carefully\"?",
+            "options": [
+              "Deletion commands are powerful and should be used carefully.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "print(\"rm old.txt\")",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "Throwing away paper from trash bin, not from archive box.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Delete Carefully\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: Delete Carefully\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Delete Carefully - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: Delete Carefully",
+        "description": "Write a tiny Python snippet that prints exactly: rm old.txt",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "rm old.txt",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"rm old.txt\")",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 6
+    },
+    {
+      "id": "cli_basics_lesson_8",
+      "courseId": "cli-basics",
+      "moduleId": "cli",
+      "title": "Command History",
+      "description": "History helps reuse previous commands and save time.",
+      "theorySlides": [
+        {
+          "title": "Command History - in simple words",
+          "content": "History helps reuse previous commands and save time.\n\nReal-life example:\nUsing recent calls list on your phone instead of typing.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "print(\"history\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"Command History\"?",
+            "options": [
+              "History helps reuse previous commands and save time.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "print(\"history\")",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "Using recent calls list on your phone instead of typing.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Command History\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: Command History\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Command History - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: Command History",
+        "description": "Write a tiny Python snippet that prints exactly: history",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "history",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"history\")",
+        "xpReward": 15
+      },
+      "xpReward": 32,
+      "order": 7
+    },
+    {
+      "id": "cli_basics_lesson_9",
+      "courseId": "cli-basics",
+      "moduleId": "cli",
+      "title": "Search in CLI",
+      "description": "Search commands help locate text or files quickly.",
+      "theorySlides": [
+        {
+          "title": "Search in CLI - in simple words",
+          "content": "Search commands help locate text or files quickly.\n\nReal-life example:\nFinding a word in a long PDF using search function.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "print(\"grep TODO app.py\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"Search in CLI\"?",
+            "options": [
+              "Search commands help locate text or files quickly.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "print(\"grep TODO app.py\")",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "Finding a word in a long PDF using search function.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Search in CLI\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: Search in CLI\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Search in CLI - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: Search in CLI",
+        "description": "Write a tiny Python snippet that prints exactly: grep TODO app.py",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "grep TODO app.py",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"grep TODO app.py\")",
+        "xpReward": 15
+      },
+      "xpReward": 34,
+      "order": 8
+    },
+    {
+      "id": "cli_basics_lesson_10",
+      "courseId": "cli-basics",
+      "moduleId": "cli",
+      "title": "Mini CLI Workflow",
+      "description": "Combine navigation, creation, and checks into one mini workflow.",
+      "theorySlides": [
+        {
+          "title": "Mini CLI Workflow - in simple words",
+          "content": "Combine navigation, creation, and checks into one mini workflow.\n\nReal-life example:\nOpen room, place documents, verify placement, and continue.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "print(\"navigate -> create -> check\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"Mini CLI Workflow\"?",
+            "options": [
+              "Combine navigation, creation, and checks into one mini workflow.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "print(\"navigate -> create -> check\")",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "Open room, place documents, verify placement, and continue.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Mini CLI Workflow\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: Mini CLI Workflow\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Mini CLI Workflow - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: Mini CLI Workflow",
+        "description": "Write a tiny Python snippet that prints exactly: navigate -> create -> check",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "navigate -> create -> check",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"navigate -> create -> check\")",
+        "xpReward": 15
+      },
+      "xpReward": 36,
+      "order": 9
+    }
+  ]
+}

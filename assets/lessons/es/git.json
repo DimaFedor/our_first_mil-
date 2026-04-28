@@ -5,12 +5,12 @@
       "id": "git_lesson_1",
       "courseId": "git",
       "moduleId": "foundations",
-      "title": "Conceptos básicos de Git: instantáneas y confirmaciones",
-      "description": "Comprenda qué rastrea Git y cree su primera confirmación",
+      "title": "Git Basics: Snapshots and Commits",
+      "description": "Understand what Git tracks and create your first commit",
       "theorySlides": [
         {
-          "title": "¿Qué es Git? 🌱",
-          "content": "Git es un sistema de control de versiones. Piensa en ello como una máquina del tiempo para tu proyecto:\n\n• Guardar puntos de control (confirmaciones)\n• Regrese con seguridad\n• Comparar cambios\n• Colaborar sin sobrescribirse entre sí",
+          "title": "What is Git? 🌱",
+          "content": "Git is a version control system. Think of it as a time machine for your project:\n\n• Save checkpoints (commits)\n• Go back safely\n• Compare changes\n• Collaborate without overwriting each other",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -18,8 +18,8 @@
           "order": 0
         },
         {
-          "title": "Los 3 estados centrales",
-          "content": "En Git para principiantes, puedes imaginar 3 capas:\n\n1) Archivos de trabajo (lo que editas)\n2) Área de preparación (lo que preparas)\n3) Historial de confirmaciones (lo que guardas para siempre)",
+          "title": "The 3 Core States",
+          "content": "In beginner Git, you can imagine 3 layers:\n\n1) Working files (what you edit)\n2) Staging area (what you prepare)\n3) Commit history (what you save forever)",
           "codeSnippet": "git status\n# see current state\n\ngit add .\n# stage all current changes\n\ngit commit -m \"Initial layout\"",
           "codeLanguage": "bash",
           "imageUrl": null,
@@ -27,8 +27,8 @@
           "order": 1
         },
         {
-          "title": "Primer flujo de confirmación",
-          "content": "Una confirmación es una instantánea. Los compromisos pequeños y claros hacen que los proyectos sean más fáciles de entender.",
+          "title": "First Commit Flow",
+          "content": "A commit is a snapshot. Small, clear commits make projects easier to understand.",
           "codeSnippet": "git init\ngit status\ngit commit -m \"Initial commit\"",
           "codeLanguage": "bash",
           "imageUrl": null,
@@ -39,59 +39,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "¿Cuál es el propósito principal de Git?",
+            "question": "What is the main purpose of Git?",
             "options": [
-              "Construir componentes de interfaz de usuario",
-              "Seguimiento y gestión del historial de códigos",
-              "Ejecutar consultas SQL",
-              "Implementar aplicaciones automáticamente"
+              "Build UI components",
+              "Track and manage code history",
+              "Run SQL queries",
+              "Deploy apps automatically"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Git sirve para realizar un seguimiento de los cambios de archivos a lo largo del tiempo y coordinar el trabajo de forma segura.",
+            "explanation": "Git is for tracking file changes over time and coordinating work safely.",
             "type": "multipleChoice"
           },
           {
-            "question": "¿Qué representa un compromiso?",
+            "question": "What does a commit represent?",
             "options": [
-              "Un nombre de sucursal",
-              "Una dependencia del proyecto",
-              "Una instantánea guardada de los cambios",
-              "Un servidor remoto"
+              "A branch name",
+              "A project dependency",
+              "A saved snapshot of changes",
+              "A remote server"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "Una confirmación es una instantánea guardada de su código en un momento específico.",
+            "explanation": "A commit is a saved snapshot of your code at a specific moment.",
             "type": "multipleChoice"
           },
           {
-            "question": "¿Qué comando crea una confirmación?",
+            "question": "Which command creates a commit?",
             "options": [
-              "rama git",
-              "git fusionar",
-              "git commit -m \"mensaje\"",
-              "git pago"
+              "git branch",
+              "git merge",
+              "git commit -m \"message\"",
+              "git checkout"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "Utilice git commit con un mensaje para crear una nueva instantánea en el historial.",
+            "explanation": "Use git commit with a message to create a new snapshot in history.",
             "type": "multipleChoice"
           },
           {
-            "question": "¿Por qué los mensajes de confirmación deberían ser claros?",
+            "question": "Why should commit messages be clear?",
             "options": [
-              "Cambian el color de las ramas",
-              "Ayudan a los compañeros de equipo a comprender qué cambió.",
-              "Hacen fusiones más rápidas",
-              "Reducen el tamaño del archivo"
+              "They change branch colors",
+              "They help teammates understand what changed",
+              "They make merges faster",
+              "They reduce file size"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Los buenos mensajes de confirmación hacen que el historial del proyecto sea legible para usted y su equipo.",
+            "explanation": "Good commit messages make project history readable for you and your team.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Git Basics: Snapshots and Commits\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which code example is syntactically valid?",
+            "options": [
+              "value = 3 + 2",
+              "value == 3 + 2",
+              "const value 3 + 2",
+              "SELECT value"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for code in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Create your first commit\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"What is Git \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Crea tu primer compromiso",
-        "description": "Ejecute comandos para que su repositorio finalice con una nueva confirmación en main.",
+        "title": "Create your first commit",
+        "description": "Run commands so your repository ends with one new commit on main.",
         "starterCode": "# Inspect the repo first\ngit status\n\n# Create your first commit\n",
         "language": "git",
         "testCases": [
@@ -101,7 +173,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Uso: git commit -m \"Compromiso inicial\"",
+        "hint": "Use: git commit -m \"Initial commit\"",
         "solution": "git status\ngit commit -m \"Initial commit\"",
         "xpReward": 15
       },
@@ -112,12 +184,12 @@
       "id": "git_lesson_2",
       "courseId": "git",
       "moduleId": "branching",
-      "title": "Ramas: Trabajo Aislado",
-      "description": "Cree y cambie de sucursales para trabajar de forma segura en paralelo",
+      "title": "Branches: Isolated Work",
+      "description": "Create and switch branches to work safely in parallel",
       "theorySlides": [
         {
-          "title": "Por qué son importantes las sucursales 🌿",
-          "content": "Las ramas te permiten probar ideas sin romper tu línea principal:\n\n• principal se mantiene estable\n• las ramas de características contienen experimentos\n• fusionar más tarde combina el trabajo terminado",
+          "title": "Why Branches Matter 🌿",
+          "content": "Branches let you test ideas without breaking your main line:\n\n• main stays stable\n• feature branches hold experiments\n• merging later combines finished work",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -125,8 +197,8 @@
           "order": 0
         },
         {
-          "title": "Crear y mover",
-          "content": "Utilice rama + pago (o pago -b) para crear espacios de trabajo aislados.",
+          "title": "Create and Move",
+          "content": "Use branch + checkout (or checkout -b) to create isolated workspaces.",
           "codeSnippet": "git branch feature/login\ngit checkout feature/login\n# now commits go to feature/login",
           "codeLanguage": "bash",
           "imageUrl": null,
@@ -134,8 +206,8 @@
           "order": 1
         },
         {
-          "title": "Atajo: finalizar compra -b",
-          "content": "Crea y cambia con un solo comando. Ideal para inicios rápidos de funciones.",
+          "title": "Shortcut: checkout -b",
+          "content": "Create and switch in one command. Great for fast feature starts.",
           "codeSnippet": "git checkout -b feature/navbar\ngit commit -m \"Add navbar structure\"",
           "codeLanguage": "bash",
           "imageUrl": null,
@@ -146,59 +218,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "¿Cuál es la mejor razón para utilizar una rama de funciones?",
+            "question": "What is the best reason to use a feature branch?",
             "options": [
-              "Para evitar compromisos por completo",
-              "Para aislar el trabajo del principal",
-              "Para acelerar internet",
-              "Para borrar el historial antiguo"
+              "To avoid commits entirely",
+              "To isolate work from main",
+              "To speed up internet",
+              "To delete old history"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Las ramas aíslan el trabajo sin terminar y protegen la rama estable.",
+            "explanation": "Branches isolate unfinished work and protect the stable branch.",
             "type": "multipleChoice"
           },
           {
-            "question": "¿Qué hace la función git checkout -b?",
+            "question": "What does git checkout -b feature do?",
             "options": [
-              "Elimina la rama de características",
-              "Crea y cambia a la rama de funciones.",
-              "Fusiona la función en la principal",
-              "Lista todas las sucursales"
+              "Deletes feature branch",
+              "Creates and switches to feature branch",
+              "Merges feature into main",
+              "Lists all branches"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "checkout -b es un atajo para la creación de ramas + cambio.",
+            "explanation": "checkout -b is a shortcut for branch creation + switch.",
             "type": "multipleChoice"
           },
           {
-            "question": "Después de pagar la función, ¿a dónde van las nuevas confirmaciones?",
+            "question": "After checkout to feature, where do new commits go?",
             "options": [
-              "principal",
-              "característica",
-              "solo control remoto",
-              "en ningún lugar"
+              "main",
+              "feature",
+              "remote only",
+              "nowhere"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Los compromisos se adjuntan a la rama actualmente desprotegida.",
+            "explanation": "Commits are attached to the currently checked-out branch.",
             "type": "multipleChoice"
           },
           {
-            "question": "¿Por qué mantener limpio el main mientras se aprende?",
+            "question": "Why keep main clean while learning?",
             "options": [
-              "Para reducir el uso de la CPU",
-              "Para mantener un progreso estable y evitar confusiones",
-              "Para hacer las confirmaciones invisibles",
-              "Para deshabilitar fusiones"
+              "To reduce CPU usage",
+              "To keep stable progress and avoid confusion",
+              "To make commits invisible",
+              "To disable merges"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Una rama principal limpia hace que el historial y los lanzamientos del proyecto sean más seguros.",
+            "explanation": "A clean main branch makes project history and releases safer.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Branches: Isolated Work\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which code example is syntactically valid?",
+            "options": [
+              "value = 3 + 2",
+              "value == 3 + 2",
+              "const value 3 + 2",
+              "SELECT value"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for code in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Create and advance a feature branch\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Why Branches Matter \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Crear y avanzar una rama de funciones",
-        "description": "Cree una confirmación en principal, luego vaya a la función y cree una confirmación más allí.",
+        "title": "Create and advance a feature branch",
+        "description": "Create a commit on main, then move to feature and create one more commit there.",
         "starterCode": "# 1) Make a baseline commit on main\n# 2) Create feature branch\n# 3) Switch to feature\n# 4) Create a feature commit\n",
         "language": "git",
         "testCases": [
@@ -208,7 +352,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Secuencia: git commit -> función de rama de git -> función de pago de git -> confirmación de git",
+        "hint": "Sequence: git commit -> git branch feature -> git checkout feature -> git commit",
         "solution": "git commit -m \"Base commit on main\"\ngit branch feature\ngit checkout feature\ngit commit -m \"Feature work\"",
         "xpReward": 15
       },
@@ -219,12 +363,12 @@
       "id": "git_lesson_3",
       "courseId": "git",
       "moduleId": "merging",
-      "title": "Fusionar fundamentos",
-      "description": "Devuelva el trabajo de funciones terminado a la página principal mediante confirmaciones de combinación",
+      "title": "Merge Fundamentals",
+      "description": "Bring finished feature work back into main using merge commits",
       "theorySlides": [
         {
-          "title": "¿Qué es la fusión? 🔀",
-          "content": "La fusión combina historias de dos ramas.\n\nCuando ambas ramas se movieron, Git crea una confirmación de fusión con dos padres.",
+          "title": "What is Merge? 🔀",
+          "content": "Merging combines histories from two branches.\n\nWhen both branches moved, Git creates a merge commit with two parents.",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -232,8 +376,8 @@
           "order": 0
         },
         {
-          "title": "Flujo de trabajo de fusión básico",
-          "content": "Por lo general, se fusiona con principal después de que el trabajo de funciones esté listo.",
+          "title": "Basic Merge Workflow",
+          "content": "You usually merge into main after feature work is ready.",
           "codeSnippet": "git checkout main\ngit merge feature\n# main now includes feature history",
           "codeLanguage": "bash",
           "imageUrl": null,
@@ -241,8 +385,8 @@
           "order": 1
         },
         {
-          "title": "Piensa en gráficos",
-          "content": "Git es un gráfico de confirmación, no una copia de carpeta. Los nombres de las ramas son etiquetas móviles que apuntan a las confirmaciones.",
+          "title": "Think in Graphs",
+          "content": "Git is a commit graph, not a folder copy. Branch names are movable labels pointing at commits.",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -253,59 +397,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "¿Qué hace la función git merge desde main?",
+            "question": "What does git merge feature do from main?",
             "options": [
-              "Elimina la característica",
-              "Mueve la función a principal sin historial",
-              "Combina el historial de funciones en principal",
-              "Crea un nuevo repositorio"
+              "Deletes feature",
+              "Moves feature to main without history",
+              "Combines feature history into main",
+              "Creates a new repository"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "Merge integra el historial de otra sucursal en la sucursal actual.",
+            "explanation": "Merge integrates another branch history into the current branch.",
             "type": "multipleChoice"
           },
           {
-            "question": "¿Dónde deberías estar antes de fusionar la función con la principal?",
+            "question": "Where should you be before merging feature into main?",
             "options": [
-              "En función",
-              "en principal",
-              "En cualquier sucursal",
-              "Ninguna sucursal registrada"
+              "On feature",
+              "On main",
+              "On any branch",
+              "No branch checked out"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Te fusionas con la sucursal que actualmente has retirado.",
+            "explanation": "You merge into the branch you currently have checked out.",
             "type": "multipleChoice"
           },
           {
-            "question": "¿Qué es un compromiso de fusión?",
+            "question": "What is a merge commit?",
             "options": [
-              "Un compromiso sin padre",
-              "Un compromiso con exactamente un padre",
-              "Un compromiso con dos padres uniendo historias.",
-              "Una confirmación eliminada"
+              "A commit with no parent",
+              "A commit with exactly one parent",
+              "A commit with two parents joining histories",
+              "A deleted commit"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "Una confirmación de fusión conecta dos líneas del historial.",
+            "explanation": "A merge commit connects two lines of history.",
             "type": "multipleChoice"
           },
           {
-            "question": "¿Por qué es útil visualizar ramas?",
+            "question": "Why is visualizing branches useful?",
             "options": [
-              "Cambia la sintaxis del comando.",
-              "Ayuda a comprender las relaciones comprometidas.",
-              "Elimina conflictos automáticamente.",
-              "Desactiva el pago"
+              "It changes command syntax",
+              "It helps understand commit relationships",
+              "It removes conflicts automatically",
+              "It disables checkout"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Ver el gráfico hace que sea más fácil razonar sobre el movimiento de las ramas y las fusiones.",
+            "explanation": "Seeing the graph makes branch movement and merges easier to reason about.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Merge Fundamentals\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which code example is syntactically valid?",
+            "options": [
+              "value = 3 + 2",
+              "value == 3 + 2",
+              "const value 3 + 2",
+              "SELECT value"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for code in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Merge feature back to main\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"What is Merge \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Fusionar función de nuevo a principal",
-        "description": "Simule un ciclo de rama completo: confirme en principal, confirme en función y luego fusione en principal.",
+        "title": "Merge feature back to main",
+        "description": "Simulate a full branch cycle: commit on main, commit on feature, then merge into main.",
         "starterCode": "# Build this flow:\n# main commit -> feature commit -> merge feature into main\n",
         "language": "git",
         "testCases": [
@@ -315,7 +531,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Primero realice confirmaciones en ambas ramas, luego verifique la función principal y de combinación.",
+        "hint": "Do commits on both branches first, then checkout main and merge feature.",
         "solution": "git commit -m \"Base on main\"\ngit branch feature\ngit checkout feature\ngit commit -m \"Feature commit\"\ngit checkout main\ngit merge feature",
         "xpReward": 15
       },
@@ -326,12 +542,12 @@
       "id": "git_lesson_4",
       "courseId": "git",
       "moduleId": "workflow",
-      "title": "Misión de flujo de trabajo de sucursal para principiantes",
-      "description": "Practique un flujo de trabajo de sucursal de un extremo a otro usando checkout -b y merge",
+      "title": "Beginner Branch Workflow Mission",
+      "description": "Practice an end-to-end branch workflow using checkout -b and merge",
       "theorySlides": [
         {
-          "title": "Patrón de flujo de trabajo diario",
-          "content": "Un flujo práctico para principiantes:\n\n1) Empezar desde principal\n2) Crear sucursal con checkout -b\n3) Confirmar trabajo de funciones\n4) Volver a principal\n5) Fusionar rama",
+          "title": "Daily Workflow Pattern",
+          "content": "A practical beginner flow:\n\n1) Start from main\n2) Create branch with checkout -b\n3) Commit feature work\n4) Return to main\n5) Merge branch",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -339,8 +555,8 @@
           "order": 0
         },
         {
-          "title": "¿Por qué esto funciona?",
-          "content": "Este flujo de trabajo mantiene los cambios enfocados, revisables y fáciles de revertir si es necesario.",
+          "title": "Why this works",
+          "content": "This workflow keeps changes focused, reviewable, and easy to rollback if needed.",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -348,8 +564,8 @@
           "order": 1
         },
         {
-          "title": "Comandos de misión",
-          "content": "Utilice esta idea exacta en su desafío final para principiantes.",
+          "title": "Mission Commands",
+          "content": "Use this exact idea in your final beginner challenge.",
           "codeSnippet": "git commit -m \"Main baseline\"\ngit checkout -b bugfix\ngit commit -m \"Fix issue\"\ngit checkout main\ngit commit -m \"Main update\"\ngit merge bugfix",
           "codeLanguage": "bash",
           "imageUrl": null,
@@ -360,59 +576,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "¿Cuál es el mejor comando para crear y cambiar de rama rápidamente?",
+            "question": "What is the best command to create and switch branches fast?",
             "options": [
-              "git fusionar -b",
-              "git checkout -b <nombre>",
-              "estado de git -b",
-              "git confirmar -b"
+              "git merge -b",
+              "git checkout -b <name>",
+              "git status -b",
+              "git commit -b"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "checkout -b combina la creación de sucursales y el cambio de sucursales.",
+            "explanation": "checkout -b combines branch creation and branch switch.",
             "type": "multipleChoice"
           },
           {
-            "question": "En este flujo de trabajo, ¿cuándo se fusiona?",
+            "question": "In this workflow, when do you merge?",
             "options": [
-              "Antes de cualquier compromiso",
-              "Después de que la rama de características tenga confirmaciones significativas",
-              "Sólo cuando la sucursal está vacía",
-              "Inmediatamente después de git init"
+              "Before any commit",
+              "After feature branch has meaningful commits",
+              "Only when branch is empty",
+              "Immediately after git init"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Se fusiona después de implementar y confirmar el trabajo de funciones.",
+            "explanation": "You merge after implementing and committing feature work.",
             "type": "multipleChoice"
           },
           {
-            "question": "¿Por qué comprometerse con main antes de fusionarse en esta misión?",
+            "question": "Why commit on main before merge in this mission?",
             "options": [
-              "Crear historias divergentes para una práctica de fusión realista",
-              "Para eliminar rama de característica",
-              "Para evitar confirmaciones en la función",
-              "Para deshabilitar las confirmaciones de fusión"
+              "To create diverging histories for realistic merge practice",
+              "To delete feature branch",
+              "To avoid commits on feature",
+              "To disable merge commits"
             ],
             "correctAnswerIndex": 0,
-            "explanation": "Una fusión realista a menudo une dos ramas que avanzaron.",
+            "explanation": "A realistic merge often joins two branches that both moved forward.",
             "type": "multipleChoice"
           },
           {
-            "question": "¿Qué debe verificar después de la fusión?",
+            "question": "What should you verify after merge?",
             "options": [
-              "Rama HEAD y forma del gráfico.",
-              "Sólo recuento de archivos",
-              "conexión a internet",
-              "Versión del compilador"
+              "HEAD branch and graph shape",
+              "Only file count",
+              "Internet connection",
+              "Compiler version"
             ],
             "correctAnswerIndex": 0,
-            "explanation": "Verifique los punteros de rama y confirme el gráfico para confirmar la corrección del flujo de trabajo.",
+            "explanation": "Check branch pointers and commit graph to confirm workflow correctness.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Beginner Branch Workflow Mission\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which code example is syntactically valid?",
+            "options": [
+              "value = 3 + 2",
+              "value == 3 + 2",
+              "const value 3 + 2",
+              "SELECT value"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for code in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Workflow mission: bugfix merge\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Daily Workflow Pattern\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Misión del flujo de trabajo: fusión de corrección de errores",
-        "description": "Utilice checkout -b, cree confirmaciones en ambas ramas y finalice fusionándolas con main.",
+        "title": "Workflow mission: bugfix merge",
+        "description": "Use checkout -b, create commits on both branches, and finish with a merge into main.",
         "starterCode": "# Build this mission flow with real git commands\n",
         "language": "git",
         "testCases": [
@@ -422,7 +710,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Pruebe: confirmación principal -> pago -b corrección de errores -> confirmación de corrección de errores -> pago principal -> confirmación principal -> fusión de corrección de errores",
+        "hint": "Try: main commit -> checkout -b bugfix -> bugfix commit -> checkout main -> main commit -> merge bugfix",
         "solution": "git commit -m \"Main baseline\"\ngit checkout -b bugfix\ngit commit -m \"Fix bug\"\ngit checkout main\ngit commit -m \"Main progress\"\ngit merge bugfix",
         "xpReward": 15
       },

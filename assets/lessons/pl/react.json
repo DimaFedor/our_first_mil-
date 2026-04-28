@@ -5,12 +5,12 @@
       "id": "react_lesson_1",
       "courseId": "react",
       "moduleId": "basics",
-      "title": "Wprowadzenie do Reagowania",
-      "description": "Dowiedz się, czym jest React, podstawy JSX i komponenty",
+      "title": "Introduction to React",
+      "description": "Learn what React is, JSX basics, and components",
       "theorySlides": [
         {
-          "title": "Co to jest Reaguj? ⚛️",
-          "content": "React to biblioteka JavaScript służąca do tworzenia interfejsów użytkownika. Stworzony przez Facebooka, pozwala budować złożone interfejsy użytkownika z małych elementów wielokrotnego użytku zwanych komponentami.\n\nDlaczego reagować?\n• Architektura oparta na komponentach\n• Wirtualny DOM do szybkich aktualizacji\n• Duży ekosystem i społeczność\n• Używany przez Facebook, Netflix, Instagram",
+          "title": "What is React? ⚛️",
+          "content": "React is a JavaScript library for building user interfaces. Created by Facebook, it lets you build complex UIs from small, reusable pieces called components.\n\nWhy React?\n• Component-based architecture\n• Virtual DOM for fast updates\n• Large ecosystem and community\n• Used by Facebook, Netflix, Instagram",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -18,8 +18,8 @@
           "order": 0
         },
         {
-          "title": "JSX – JavaScript XML",
-          "content": "JSX umożliwia pisanie kodu podobnego do HTML w JavaScript:",
+          "title": "JSX - JavaScript XML",
+          "content": "JSX lets you write HTML-like code in JavaScript:",
           "codeSnippet": "function Welcome() {\n  const name = \"Sarah\";\n  return (\n    <div>\n      <h1>Hello, {name}!</h1>\n      <p>Welcome to React</p>\n    </div>\n  );\n}\n\n// You can embed JavaScript expressions in curly braces {}",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -27,8 +27,8 @@
           "order": 1
         },
         {
-          "title": "Twój pierwszy komponent",
-          "content": "Komponenty to elementy interfejsu użytkownika, które można ponownie wykorzystać. Zacznij od prostej funkcji:",
+          "title": "Your First Component",
+          "content": "Components are reusable pieces of UI. Start with a simple function:",
           "codeSnippet": "function Button() {\n  return <button>Click me!</button>;\n}\n\n// Use it in your app\nfunction App() {\n  return (\n    <div>\n      <h1>My App</h1>\n      <Button />\n    </div>\n  );\n}",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -39,71 +39,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Co to jest Reaguj?",
+            "question": "What is React?",
             "options": [
-              "Język programowania",
-              "Biblioteka JavaScript do tworzenia interfejsów użytkownika",
-              "Baza danych",
-              "Framework CSS"
+              "A programming language",
+              "A JavaScript library for building UIs",
+              "A database",
+              "A CSS framework"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "React to biblioteka JavaScript zaprojektowana specjalnie do tworzenia interfejsów użytkownika, a nie pełnego frameworku lub języka.",
+            "explanation": "React is a JavaScript library specifically designed for building user interfaces, not a full framework or language.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co oznacza JSX?",
+            "question": "What does JSX stand for?",
             "options": [
-              "Rozszerzenie składni Java",
-              "XML JavaScriptu",
-              "Składnia JSON",
-              "Po prostu prosty X"
+              "Java Syntax Extension",
+              "JavaScript XML",
+              "JSON Syntax",
+              "Just Simple X"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "JSX oznacza JavaScript XML. Umożliwia pisanie składni podobnej do HTML w JavaScript.",
+            "explanation": "JSX stands for JavaScript XML. It allows you to write HTML-like syntax in JavaScript.",
             "type": "multipleChoice"
           },
           {
-            "question": "Jak osadzić wyrażenia JavaScript w JSX?",
+            "question": "How do you embed JavaScript expressions in JSX?",
             "options": [
-              "Użyj nawiasów kwadratowych []",
-              "Użyj nawiasów klamrowych {}",
-              "Użyj nawiasów ()",
-              "Użyj znaków dolara $$"
+              "Use square brackets []",
+              "Use curly braces {}",
+              "Use parentheses ()",
+              "Use dollar signs $$"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "W JSX nawiasy klamrowe {} służą do osadzania wyrażeń JavaScript, takich jak {name} lub {2 + 2}.",
+            "explanation": "In JSX, curly braces {} are used to embed JavaScript expressions, like {name} or {2 + 2}.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co to jest komponent React?",
+            "question": "What is a React component?",
             "options": [
-              "Plik CSS",
-              "Fragment interfejsu użytkownika wielokrotnego użytku",
-              "Tabela bazy danych",
-              "Serwer WWW"
+              "A CSS file",
+              "A reusable piece of UI",
+              "A database table",
+              "A web server"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Komponent React to element interfejsu użytkownika wielokrotnego użytku, który można łączyć z innymi komponentami w celu tworzenia złożonych interfejsów.",
+            "explanation": "A React component is a reusable piece of UI that can be combined with other components to build complex interfaces.",
             "type": "multipleChoice"
           },
           {
-            "question": "Która firma stworzyła React?",
+            "question": "Which company created React?",
             "options": [
               "Google",
-              "Microsoftu",
-              "Facebooku",
-              "Jabłko"
+              "Microsoft",
+              "Facebook",
+              "Apple"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "React został stworzony przez Facebooka (obecnie Meta) i jest używany w wielu ich produktach.",
+            "explanation": "React was created by Facebook (now Meta) and is used in many of their products.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Introduction to React\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which JavaScript example is syntactically valid?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "total = 3 + 2",
+              "SELECT total FROM data"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for JavaScript in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Create a Greeting Component\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"What is React \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Utwórz komponent powitalny",
-        "description": "Utwórz komponent funkcji, który zwraca element h1 z tekstem „Hello, React!”",
+        "title": "Create a Greeting Component",
+        "description": "Create a function component that returns an h1 element with the text \"Hello, React!\"",
         "starterCode": "function Greeting() {\n  // Your code here\n}\n",
         "language": "javascript",
         "testCases": [
@@ -113,7 +173,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Zwróć JSX ze znacznikiem <h1> zawierającym tekst powitania.",
+        "hint": "Return JSX with an <h1> tag containing the greeting text.",
         "solution": "function Greeting() {\n  return <h1>Hello, React!</h1>;\n}",
         "xpReward": 15
       },
@@ -124,12 +184,12 @@
       "id": "react_lesson_2",
       "courseId": "react",
       "moduleId": "basics",
-      "title": "Komponenty i rekwizyty",
-      "description": "Opanuj komponenty funkcjonalne, rekwizyty i kompozycję",
+      "title": "Components & Props",
+      "description": "Master functional components, props, and composition",
       "theorySlides": [
         {
-          "title": "Zrozumienie rekwizytów 📦",
-          "content": "Rekwizyty (właściwości) umożliwiają przekazywanie danych do komponentów, dzięki czemu można je ponownie wykorzystać:\n\n• Rekwizyty są tylko do odczytu\n• Przekazywane jak atrybuty HTML\n• Dostęp w parametrach funkcji\n• Może przekazywać ciągi znaków, liczby, obiekty i funkcje",
+          "title": "Understanding Props 📦",
+          "content": "Props (properties) let you pass data to components, making them reusable:\n\n• Props are read-only\n• Passed like HTML attributes\n• Accessed in function parameters\n• Can pass strings, numbers, objects, functions",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -137,8 +197,8 @@
           "order": 0
         },
         {
-          "title": "Korzystanie z rekwizytów",
-          "content": "Przekaż dane do komponentów za pomocą rekwizytów:",
+          "title": "Using Props",
+          "content": "Pass data to components with props:",
           "codeSnippet": "function Welcome(props) {\n  return <h1>Hello, {props.name}!</h1>;\n}\n\n// Destructure props for cleaner code\nfunction Welcome({ name, age }) {\n  return (\n    <div>\n      <h1>Hello, {name}!</h1>\n      <p>You are {age} years old</p>\n    </div>\n  );\n}\n\n// Usage\n<Welcome name=\"John\" age={25} />",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -146,8 +206,8 @@
           "order": 1
         },
         {
-          "title": "Skład komponentu",
-          "content": "Twórz złożone interfejsy użytkownika, łącząc komponenty:",
+          "title": "Component Composition",
+          "content": "Build complex UIs by combining components:",
           "codeSnippet": "function Avatar({ src, name }) {\n  return <img src={src} alt={name} />;\n}\n\nfunction UserCard({ user }) {\n  return (\n    <div className=\"card\">\n      <Avatar src={user.avatar} name={user.name} />\n      <h2>{user.name}</h2>\n      <p>{user.email}</p>\n    </div>\n  );\n}",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -158,59 +218,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Czym są rekwizyty w React?",
+            "question": "What are props in React?",
             "options": [
-              "Właściwości przekazywane do komponentów",
-              "Zasady stylizacji CSS",
-              "Połączenia z bazami danych",
-              "Komunikaty o błędach"
+              "Properties passed to components",
+              "CSS styling rules",
+              "Database connections",
+              "Error messages"
             ],
             "correctAnswerIndex": 0,
-            "explanation": "Rekwizyty to właściwości przekazywane z komponentów nadrzędnych do komponentów podrzędnych w celu udostępniania danych.",
+            "explanation": "Props are properties passed from parent to child components to share data.",
             "type": "multipleChoice"
           },
           {
-            "question": "Czy możesz modyfikować właściwości wewnątrz komponentu?",
+            "question": "Can you modify props inside a component?",
             "options": [
-              "Tak, kiedykolwiek",
-              "Nie, rekwizyty są tylko do odczytu",
-              "Tylko za specjalnym pozwoleniem",
-              "Tylko w komponentach klasowych"
+              "Yes, anytime",
+              "No, props are read-only",
+              "Only with special permission",
+              "Only in class components"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Rekwizyty są tylko do odczytu. Komponentom nigdy nie wolno modyfikować własnych właściwości — powinny działać jak czyste funkcje.",
+            "explanation": "Props are read-only. Components must never modify their own props - they should act like pure functions.",
             "type": "multipleChoice"
           },
           {
-            "question": "Jak przekazać liczbę jako rekwizyt?",
+            "question": "How do you pass a number as a prop?",
             "options": [
-              "<Wiek komponentu=\"25\" />",
-              "<Wiek komponentu={25} />",
-              "<Wiek komponentu=25 />",
-              "<Komponent [wiek]=25 />"
+              "<Component age=\"25\" />",
+              "<Component age={25} />",
+              "<Component age=25 />",
+              "<Component [age]=25 />"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Wartości niebędące ciągami znaków muszą być przekazywane w nawiasach klamrowych: {25} dla liczb, {true} dla wartości logicznych itp.",
+            "explanation": "Non-string values must be passed in curly braces: {25} for numbers, {true} for booleans, etc.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co to jest skład komponentów?",
+            "question": "What is component composition?",
             "options": [
-              "Pisanie CSS dla komponentów",
-              "Tworzenie złożonych interfejsów użytkownika poprzez łączenie prostych komponentów",
-              "Kompilacja kodu React",
-              "Testowanie komponentów"
+              "Writing CSS for components",
+              "Building complex UIs by combining simple components",
+              "Compiling React code",
+              "Testing components"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Kompozycja komponentów to praktyka budowania złożonych interfejsów użytkownika poprzez łączenie prostszych komponentów nadających się do ponownego użycia.",
+            "explanation": "Component composition is the practice of building complex UIs by combining simpler, reusable components.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Components & Props\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which JavaScript example is syntactically valid?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "total = 3 + 2",
+              "SELECT total FROM data"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for JavaScript in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Create a User Card\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Understanding Props \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Utwórz kartę użytkownika",
-        "description": "Utwórz komponent UserCard, który akceptuje rekwizyty dotyczące nazwy i adresu e-mail i wyświetla je w elemencie div.",
+        "title": "Create a User Card",
+        "description": "Create a UserCard component that accepts name and email props and displays them in a div.",
         "starterCode": "function UserCard({ name, email }) {\n  // Your code here\n}\n",
         "language": "javascript",
         "testCases": [
@@ -220,7 +352,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Zwróć element div z wyświetloną nazwą i adresem e-mail.",
+        "hint": "Return a div with the name and email displayed.",
         "solution": "function UserCard({ name, email }) {\n  return (\n    <div>\n      <h2>{name}</h2>\n      <p>{email}</p>\n    </div>\n  );\n}",
         "xpReward": 15
       },
@@ -231,12 +363,12 @@
       "id": "react_lesson_3",
       "courseId": "react",
       "moduleId": "basics",
-      "title": "Zarządzanie Państwem",
-      "description": "Dowiedz się, jak używać haka stanu, aktualizacji stanu i kontrolowanych komponentów",
+      "title": "State Management",
+      "description": "Learn useState hook, state updates, and controlled components",
       "theorySlides": [
         {
-          "title": "Stan zrozumienia 🔄",
-          "content": "Stan to dane, które zmieniają się w czasie. W przeciwieństwie do właściwości, stanem zarządza się w komponencie.\n\nKiedy stan się zmienia:\n• React ponownie renderuje komponent\n• Interfejs użytkownika aktualizuje się automatycznie\n• Interakcje użytkownika mogą modyfikować stan\n\nUżyj haka useState, aby dodać stan!",
+          "title": "Understanding State 🔄",
+          "content": "State is data that changes over time. Unlike props, state is managed within the component.\n\nWhen state changes:\n• React re-renders the component\n• UI updates automatically\n• User interactions can modify state\n\nUse the useState hook to add state!",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -244,8 +376,8 @@
           "order": 0
         },
         {
-          "title": "Hak useState",
-          "content": "useState zwraca bieżący stan i funkcję aktualizującą:",
+          "title": "The useState Hook",
+          "content": "useState returns current state and an updater function:",
           "codeSnippet": "import { useState } from \"react\";\n\nfunction Counter() {\n  const [count, setCount] = useState(0);\n\n  return (\n    <div>\n      <p>Count: {count}</p>\n      <button onClick={() => setCount(count + 1)}>\n        Increment\n      </button>\n    </div>\n  );\n}",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -253,8 +385,8 @@
           "order": 1
         },
         {
-          "title": "Kontrolowane komponenty",
-          "content": "Kontroluj wejścia formularza za pomocą stanu:",
+          "title": "Controlled Components",
+          "content": "Control form inputs with state:",
           "codeSnippet": "function NameForm() {\n  const [name, setName] = useState(\"\");\n\n  return (\n    <div>\n      <input\n        type=\"text\"\n        value={name}\n        onChange={(e) => setName(e.target.value)}\n      />\n      <p>Hello, {name}!</p>\n    </div>\n  );\n}",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -265,71 +397,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Co to jest stan w React?",
+            "question": "What is state in React?",
             "options": [
-              "Style CSS",
-              "Dane, które mogą zmieniać się w czasie",
-              "Struktura HTML",
-              "Zewnętrzne dane API"
+              "CSS styles",
+              "Data that can change over time",
+              "HTML structure",
+              "External API data"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Stan to dane zarządzane w komponencie, które mogą zmieniać się w czasie, powodując ponowne renderowanie po aktualizacji.",
+            "explanation": "State is data managed within a component that can change over time, triggering re-renders when updated.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co zwraca useState?",
+            "question": "What does useState return?",
             "options": [
-              "Tylko wartość stanu",
-              "Tablica zawierająca [stan, setState]",
-              "Obiekt z właściwościami stanu",
-              "Obietnica"
+              "Just the state value",
+              "An array with [state, setState]",
+              "An object with state properties",
+              "A promise"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "useState zwraca tablicę zawierającą dwa elementy: aktualną wartość stanu i funkcję umożliwiającą jej aktualizację.",
+            "explanation": "useState returns an array with two elements: the current state value and a function to update it.",
             "type": "multipleChoice"
           },
           {
-            "question": "Jak zaktualizować stan?",
+            "question": "How do you update state?",
             "options": [
-              "Bezpośrednio zmodyfikuj zmienną stanu",
-              "Użyj funkcji setState z useState",
-              "Zmień rekwizyty",
-              "Załaduj ponownie stronę"
+              "Directly modify the state variable",
+              "Use the setState function from useState",
+              "Change props",
+              "Reload the page"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Zawsze używaj funkcji setState zwracanej przez useState. Nigdy nie modyfikuj stanu bezpośrednio.",
+            "explanation": "Always use the setState function returned by useState. Never modify state directly.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co to jest komponent kontrolowany?",
+            "question": "What is a controlled component?",
             "options": [
-              "Komponent o wielu funkcjach",
-              "Wejście, którego wartość jest kontrolowana przez stan React",
-              "Składnik, którego nie można zmienić",
-              "Komponent w stylu CSS"
+              "A component with many features",
+              "An input whose value is controlled by React state",
+              "A component that can't change",
+              "A CSS-styled component"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Kontrolowany komponent to wejście formularza, którego wartość jest kontrolowana przez stan React za pomocą wartości i właściwości onChange.",
+            "explanation": "A controlled component is a form input whose value is controlled by React state via value and onChange props.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co się stanie, gdy stan zostanie zaktualizowany?",
+            "question": "What happens when state updates?",
             "options": [
-              "Nic",
-              "Komponent jest ponownie renderowany",
-              "Strona się odświeża",
-              "Wszystkie komponenty uruchamiają się ponownie"
+              "Nothing",
+              "The component re-renders",
+              "The page refreshes",
+              "All components restart"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Po aktualizacji stanu React ponownie renderuje komponent, aby odzwierciedlić nowy stan w interfejsie użytkownika.",
+            "explanation": "When state updates, React re-renders the component to reflect the new state in the UI.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"State Management\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which JavaScript example is syntactically valid?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "total = 3 + 2",
+              "SELECT total FROM data"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for JavaScript in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Create a Toggle Button\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Understanding State \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Utwórz przycisk przełączający",
-        "description": "Utwórz komponent z przyciskiem, który przełącza między „ON” i „OFF” za pomocą useState.",
+        "title": "Create a Toggle Button",
+        "description": "Create a component with a button that toggles between \"ON\" and \"OFF\" using useState.",
         "starterCode": "import { useState } from \"react\";\n\nfunction Toggle() {\n  // Your code here\n}\n",
         "language": "javascript",
         "testCases": [
@@ -339,7 +531,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Użyj useState z wartością logiczną i przełącz ją po kliknięciu przycisku.",
+        "hint": "Use useState with a boolean value and toggle it on button click.",
         "solution": "import { useState } from \"react\";\n\nfunction Toggle() {\n  const [isOn, setIsOn] = useState(false);\n  return (\n    <button onClick={() => setIsOn(!isOn)}>\n      {isOn ? \"ON\" : \"OFF\"}\n    </button>\n  );\n}",
         "xpReward": 15
       },
@@ -350,12 +542,12 @@
       "id": "react_lesson_4",
       "courseId": "react",
       "moduleId": "intermediate",
-      "title": "Obsługa zdarzeń",
-      "description": "Opanuj onClick, onChange i obsługę formularzy",
+      "title": "Handling Events",
+      "description": "Master onClick, onChange, and form handling",
       "theorySlides": [
         {
-          "title": "Reaguj na wydarzenia 🖱️",
-          "content": "React obsługuje zdarzenia podobne do HTML, ale z nazewnictwem camelCase:\n\n• onClick (nie onclick)\n• onChange (nie onchange)\n• onSubmit (nie onsubmit)\n\nObsługa zdarzeń to funkcje, a nie ciągi znaków!\n<button onClick={handleClick}> ✅\n<button onClick=\"handleClick()\"> ❌",
+          "title": "React Events 🖱️",
+          "content": "React handles events similar to HTML, but with camelCase naming:\n\n• onClick (not onclick)\n• onChange (not onchange)\n• onSubmit (not onsubmit)\n\nEvent handlers are functions, not strings!\n<button onClick={handleClick}> ✅\n<button onClick=\"handleClick()\"> ❌",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -363,8 +555,8 @@
           "order": 0
         },
         {
-          "title": "Obsługa zdarzeń",
-          "content": "Obsługuj interakcje użytkowników z funkcjami zdarzeń:",
+          "title": "Event Handlers",
+          "content": "Handle user interactions with event functions:",
           "codeSnippet": "function Button() {\n  const handleClick = () => {\n    alert(\"Button clicked!\");\n  };\n\n  // Pass parameters using arrow function\n  const handleClickWithParam = (name) => {\n    alert(`Hello, ${name}!`);\n  };\n\n  return (\n    <div>\n      <button onClick={handleClick}>Click me</button>\n      <button onClick={() => handleClickWithParam(\"Alice\")}>\n        Greet Alice\n      </button>\n    </div>\n  );\n}",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -372,8 +564,8 @@
           "order": 1
         },
         {
-          "title": "Obsługa formularzy",
-          "content": "Obsługuj przesyłanie formularzy w React:",
+          "title": "Form Handling",
+          "content": "Handle form submissions in React:",
           "codeSnippet": "function LoginForm() {\n  const [email, setEmail] = useState(\"\");\n\n  const handleSubmit = (e) => {\n    e.preventDefault(); // Prevent page reload\n    console.log(\"Submitted:\", email);\n  };\n\n  return (\n    <form onSubmit={handleSubmit}>\n      <input\n        type=\"email\"\n        value={email}\n        onChange={(e) => setEmail(e.target.value)}\n      />\n      <button type=\"submit\">Login</button>\n    </form>\n  );\n}",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -384,7 +576,7 @@
       "quiz": {
         "questions": [
           {
-            "question": "Jaki jest właściwy sposób obsługi zdarzenia kliknięcia?",
+            "question": "What is the correct way to handle a click event?",
             "options": [
               "<button onclick=\"handleClick\">",
               "<button onClick={handleClick}>",
@@ -392,51 +584,123 @@
               "<button click={handleClick}>"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "React używa camelCase (onClick) i oczekuje odwołania do funkcji, a nie ciągu znaków.",
+            "explanation": "React uses camelCase (onClick) and expects a function reference, not a string.",
             "type": "multipleChoice"
           },
           {
-            "question": "Dlaczego używamy e.preventDefault() w procedurach obsługi formularzy?",
+            "question": "Why do we use e.preventDefault() in form handlers?",
             "options": [
-              "Aby formularze były szybsze",
-              "Aby zapobiec ponownemu załadowaniu strony domyślnej",
-              "Aby sprawdzić wprowadzone dane",
-              "Aby nadać styl formularzowi"
+              "To make forms faster",
+              "To prevent the default page reload",
+              "To validate inputs",
+              "To style the form"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "e.preventDefault() zatrzymuje domyślne zachowanie przesyłania formularza, które spowodowałoby ponowne załadowanie strony.",
+            "explanation": "e.preventDefault() stops the default form submission behavior which would reload the page.",
             "type": "multipleChoice"
           },
           {
-            "question": "Jak przekazać parametry do procedury obsługi zdarzeń?",
+            "question": "How do you pass parameters to an event handler?",
             "options": [
-              "onClick={uchwytClick(param)}",
+              "onClick={handleClick(param)}",
               "onClick={() => handleClick(param)}",
-              "onClick=\"uchwytKliknięcie(parametr)\"",
-              "onClick[uchwytClick(param)]"
+              "onClick=\"handleClick(param)\"",
+              "onClick[handleClick(param)]"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Zawiń wywołanie funkcji w funkcję strzałkową, aby przekazać parametry: onClick={() => handleClick(param)}",
+            "explanation": "Wrap the function call in an arrow function to pass parameters: onClick={() => handleClick(param)}",
             "type": "multipleChoice"
           },
           {
-            "question": "Co zapewnia obiekt zdarzenia „e”?",
+            "question": "What does the event object \"e\" provide?",
             "options": [
-              "Tylko typ zdarzenia",
-              "Informacje o zdarzeniu i elemencie docelowym",
-              "Style CSS",
-              "Rekwizyty komponentów"
+              "Only the event type",
+              "Information about the event and target element",
+              "CSS styles",
+              "Component props"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Obiekt zdarzenia zawiera szczegółowe informacje na temat zdarzenia, w tym element docelowy, typ zdarzenia i pomocne metody.",
+            "explanation": "The event object provides details about the event, including the target element, event type, and helpful methods.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Handling Events\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which JavaScript example is syntactically valid?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "total = 3 + 2",
+              "SELECT total FROM data"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for JavaScript in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Create a Form with Submit Handler\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"React Events \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Utwórz formularz za pomocą modułu obsługi przesyłania",
-        "description": "Utwórz formularz, który przechwytuje wprowadzoną nazwę i rejestruje ją po przesłaniu. Użyj e.preventDefault().",
+        "title": "Create a Form with Submit Handler",
+        "description": "Create a form that captures a name input and logs it on submit. Use e.preventDefault().",
         "starterCode": "import { useState } from \"react\";\n\nfunction NameForm() {\n  const [name, setName] = useState(\"\");\n  // Your code here\n}\n",
         "language": "javascript",
         "testCases": [
@@ -446,7 +710,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Utwórz formularz z procedurą obsługi onSubmit, która zapobiega domyślności i wprowadzaniu danych za pomocą onChange.",
+        "hint": "Create a form with onSubmit handler that prevents default and an input with onChange.",
         "solution": "import { useState } from \"react\";\n\nfunction NameForm() {\n  const [name, setName] = useState(\"\");\n  \n  const handleSubmit = (e) => {\n    e.preventDefault();\n    console.log(name);\n  };\n  \n  return (\n    <form onSubmit={handleSubmit}>\n      <input value={name} onChange={(e) => setName(e.target.value)} />\n      <button type=\"submit\">Submit</button>\n    </form>\n  );\n}",
         "xpReward": 15
       },
@@ -457,12 +721,12 @@
       "id": "react_lesson_5",
       "courseId": "react",
       "moduleId": "intermediate",
-      "title": "Listy i klucze",
-      "description": "Renderuj listy za pomocą .map() i zrozum unikalne klucze",
+      "title": "Lists & Keys",
+      "description": "Render lists with .map() and understand unique keys",
       "theorySlides": [
         {
-          "title": "Renderowanie list 📋",
-          "content": "Użyj funkcji .map() JavaScript, aby renderować listy elementów:\n\n• Przekształć dane tablicowe w JSX\n• Każdy przedmiot wymaga unikalnego „kluczowego” rekwizytu\n• Klawisze pomagają React zidentyfikować, które elementy zostały zmienione\n• Klucze powinny być stabilne i unikalne",
+          "title": "Rendering Lists 📋",
+          "content": "Use JavaScript's .map() to render lists of elements:\n\n• Transform array data into JSX\n• Each item needs a unique \"key\" prop\n• Keys help React identify which items changed\n• Keys should be stable and unique",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -470,8 +734,8 @@
           "order": 0
         },
         {
-          "title": "Używanie .map() dla list",
-          "content": "Przekształć tablice w elementy React:",
+          "title": "Using .map() for Lists",
+          "content": "Transform arrays into React elements:",
           "codeSnippet": "function FruitList() {\n  const fruits = [\"Apple\", \"Banana\", \"Orange\"];\n\n  return (\n    <ul>\n      {fruits.map((fruit, index) => (\n        <li key={index}>{fruit}</li>\n      ))}\n    </ul>\n  );\n}\n\n// With objects\nfunction UserList({ users }) {\n  return (\n    <div>\n      {users.map(user => (\n        <div key={user.id}>\n          <h3>{user.name}</h3>\n          <p>{user.email}</p>\n        </div>\n      ))}\n    </div>\n  );\n}",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -479,8 +743,8 @@
           "order": 1
         },
         {
-          "title": "Zrozumienie kluczy",
-          "content": "Klawisze pomagają React skutecznie identyfikować elementy listy:",
+          "title": "Understanding Keys",
+          "content": "Keys help React identify list items efficiently:",
           "codeSnippet": "// ❌ Bad: Using index (can cause bugs)\nfruits.map((fruit, index) => <li key={index}>{fruit}</li>)\n\n// ✅ Good: Using unique ID\nusers.map(user => <div key={user.id}>{user.name}</div>)\n\n// ✅ Good: If no ID, use unique property\nproducts.map(product => (\n  <div key={product.sku}>{product.name}</div>\n))\n\n// Keys must be unique among siblings, not globally",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -491,71 +755,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Która metoda jest używana do renderowania list w React?",
+            "question": "Which method is used to render lists in React?",
             "options": [
               ".forEach()",
-              ".mapa()",
-              ".filtr()",
-              ".zmniejszyć()"
+              ".map()",
+              ".filter()",
+              ".reduce()"
             ],
             "correctAnswerIndex": 1,
-            "explanation": ".map() przekształca tablicę w nową tablicę elementów JSX, dzięki czemu idealnie nadaje się do renderowania list.",
+            "explanation": ".map() transforms an array into a new array of JSX elements, making it perfect for rendering lists.",
             "type": "multipleChoice"
           },
           {
-            "question": "Dlaczego elementy listy potrzebują kluczowego rekwizytu?",
+            "question": "Why do list items need a key prop?",
             "options": [
-              "Do stylizacji",
-              "Aby pomóc React zidentyfikować, które elementy uległy zmianie",
-              "Aby były klikalne",
-              "To opcjonalne"
+              "For styling",
+              "To help React identify which items changed",
+              "To make them clickable",
+              "It's optional"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Klawisze pomagają React zidentyfikować, które elementy zostały zmienione, dodane lub usunięte, umożliwiając skuteczne aktualizacje.",
+            "explanation": "Keys help React identify which items have changed, been added, or removed, enabling efficient updates.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co wyróżnia dobry klucz?",
+            "question": "What makes a good key?",
             "options": [
-              "Dowolna liczba losowa",
-              "Indeks tablicy",
-              "Stabilny, unikalny identyfikator, taki jak identyfikator",
-              "Wartość przedmiotu"
+              "Any random number",
+              "The array index",
+              "A stable, unique identifier like an ID",
+              "The item's value"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "Dobre klucze to stabilne i unikalne identyfikatory, takie jak identyfikatory baz danych, a nie indeksy tablicy, które mogą się zmieniać.",
+            "explanation": "Good keys are stable and unique identifiers like database IDs, not array indices which can change.",
             "type": "multipleChoice"
           },
           {
-            "question": "Kiedy można używać indeksu jako klucza?",
+            "question": "When can you use index as a key?",
             "options": [
-              "Zawsze",
-              "Nigdy",
-              "Tylko jeśli lista jest statyczna i nie można zmienić jej kolejności",
-              "Tylko w przypadku małych list"
+              "Always",
+              "Never",
+              "Only if the list is static and won't reorder",
+              "Only for small lists"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "Indeks może być używany w ostateczności w przypadku list statycznych, których kolejność nie ulegnie zmianie, ale unikalne identyfikatory są zawsze lepsze.",
+            "explanation": "Index can be used as a last resort for static lists that won't reorder, but unique IDs are always better.",
             "type": "multipleChoice"
           },
           {
-            "question": "Czy klucze muszą być globalnie unikalne?",
+            "question": "Do keys need to be globally unique?",
             "options": [
-              "Tak, w całej aplikacji",
-              "Nie, tylko wyjątkowy wśród rodzeństwa",
-              "Tak, w całym komponencie",
-              "Nie muszą być wyjątkowe"
+              "Yes, across the entire app",
+              "No, only unique among siblings",
+              "Yes, across the component",
+              "They don't need to be unique"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Klucze muszą być unikalne tylko wśród rodzeństwa (elementy na tej samej liście), a nie globalnie w całej aplikacji.",
+            "explanation": "Keys only need to be unique among siblings (items in the same list), not globally across the app.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Lists & Keys\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which JavaScript example is syntactically valid?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "total = 3 + 2",
+              "SELECT total FROM data"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for JavaScript in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Render a List of Names\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Rendering Lists \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Renderuj listę nazw",
-        "description": "Utwórz komponent, który renderuje ul z elementami listy dla każdej nazwy w tablicy.",
+        "title": "Render a List of Names",
+        "description": "Create a component that renders a ul with list items for each name in the array.",
         "starterCode": "function NameList() {\n  const names = [\"Alice\", \"Bob\", \"Charlie\"];\n  // Your code here\n}\n",
         "language": "javascript",
         "testCases": [
@@ -565,7 +889,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Użyj .map(), aby przekształcić tablicę nazw na elementy <li> za pomocą kluczy.",
+        "hint": "Use .map() to transform the names array into <li> elements with keys.",
         "solution": "function NameList() {\n  const names = [\"Alice\", \"Bob\", \"Charlie\"];\n  return (\n    <ul>\n      {names.map((name, index) => (\n        <li key={index}>{name}</li>\n      ))}\n    </ul>\n  );\n}",
         "xpReward": 15
       },
@@ -576,12 +900,12 @@
       "id": "react_lesson_6",
       "courseId": "react",
       "moduleId": "intermediate",
-      "title": "Renderowanie warunkowe",
-      "description": "Poznaj operatory trójskładnikowe, operator && i wiele warunków",
+      "title": "Conditional Rendering",
+      "description": "Learn ternary operators, && operator, and multiple conditions",
       "theorySlides": [
         {
-          "title": "Renderowanie warunkowe 🔀",
-          "content": "Pokaż inny interfejs użytkownika w zależności od warunków:\n\n• Operator trójskładnikowy: warunek? prawda: fałsz\n• Operator AND: warunek && <Komponent />\n• Instrukcje if (poza JSX)\n• Wczesne powroty\n\nWybierz odpowiednie podejście do czytelności!",
+          "title": "Conditional Rendering 🔀",
+          "content": "Show different UI based on conditions:\n\n• Ternary operator: condition ? true : false\n• AND operator: condition && <Component />\n• If statements (outside JSX)\n• Early returns\n\nChoose the right approach for readability!",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -589,8 +913,8 @@
           "order": 0
         },
         {
-          "title": "Operatory trójskładnikowe i operatory AND",
-          "content": "Typowe wzorce renderowania warunkowego:",
+          "title": "Ternary & AND Operators",
+          "content": "Common patterns for conditional rendering:",
           "codeSnippet": "function Greeting({ isLoggedIn, username }) {\n  // Ternary: show one thing or another\n  return (\n    <div>\n      {isLoggedIn ? (\n        <h1>Welcome back, {username}!</h1>\n      ) : (\n        <h1>Please log in</h1>\n      )}\n    </div>\n  );\n}\n\nfunction Notification({ hasMessages, count }) {\n  // AND: show something or nothing\n  return (\n    <div>\n      {hasMessages && <span>You have {count} messages</span>}\n    </div>\n  );\n}",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -598,8 +922,8 @@
           "order": 1
         },
         {
-          "title": "Wiele warunków",
-          "content": "Obsługuj złożone warunki za pomocą instrukcji if lub wczesnych zwrotów:",
+          "title": "Multiple Conditions",
+          "content": "Handle complex conditions with if statements or early returns:",
           "codeSnippet": "function UserStatus({ user }) {\n  // Early return pattern\n  if (!user) {\n    return <p>No user found</p>;\n  }\n  \n  if (!user.isActive) {\n    return <p>Account inactive</p>;\n  }\n  \n  // Multiple conditions\n  let status;\n  if (user.isPremium) {\n    status = \"Premium Member\";\n  } else if (user.isVerified) {\n    status = \"Verified User\";\n  } else {\n    status = \"Basic User\";\n  }\n  \n  return <p>Status: {status}</p>;\n}",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -610,59 +934,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Jak wygląda operator trójskładnikowy?",
+            "question": "What does the ternary operator look like?",
             "options": [
-              "Jeśli ? wtedy: jeszcze",
-              "stan : schorzenie ? prawda: fałsz",
-              "warunek i wartość",
-              "warunek || wartość"
+              "if ? then : else",
+              "condition ? true : false",
+              "condition && value",
+              "condition || value"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Operator trójskładnikowy postępuje według wzorca: warunek ? wartośćIfTrue: wartośćIfFalse",
+            "explanation": "The ternary operator follows the pattern: condition ? valueIfTrue : valueIfFalse",
             "type": "multipleChoice"
           },
           {
-            "question": "Kiedy należy używać operatora &&?",
+            "question": "When should you use the && operator?",
             "options": [
-              "Aby pokazać to czy tamto",
-              "Aby pokazać coś albo nic",
-              "Aby przejść przez tablice",
-              "Aby zaktualizować stan"
+              "To show one thing or another",
+              "To show something or nothing",
+              "To loop through arrays",
+              "To update state"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Użyj &&, jeśli chcesz coś pokazać tylko wtedy, gdy warunek jest spełniony, w przeciwnym razie nie pokazuj nic.",
+            "explanation": "Use && when you want to show something only if a condition is true, otherwise show nothing.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co to jest wcześniejszy powrót?",
+            "question": "What is an early return?",
             "options": [
-              "Zwracanie wielu wartości",
-              "Powrót przed osiągnięciem końca funkcji",
-              "Zwracane tablice",
-              "Powracające obietnice"
+              "Returning multiple values",
+              "Returning before reaching the end of the function",
+              "Returning arrays",
+              "Returning promises"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Wczesne powroty wychodzą z funkcji przed dotarciem do końca, przydatne przy obsłudze przypadków brzegowych w pierwszej kolejności.",
+            "explanation": "Early returns exit the function before reaching the end, useful for handling edge cases first.",
             "type": "multipleChoice"
           },
           {
-            "question": "Czy możesz używać instrukcji if w JSX?",
+            "question": "Can you use if statements inside JSX?",
             "options": [
-              "Tak, bezpośrednio",
-              "Nie, zamiast tego użyj trójskładnikowego lub &&",
-              "Tylko w komponentach klasowych",
-              "Tylko ze specjalną składnią"
+              "Yes, directly",
+              "No, use ternary or && instead",
+              "Only in class components",
+              "Only with special syntax"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Instrukcje if nie mogą być używane bezpośrednio w JSX. Użyj operatorów trójskładnikowych, && lub zdefiniuj zmienne poza JSX.",
+            "explanation": "If statements can't be used directly in JSX. Use ternary operators, &&, or define variables outside JSX.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Conditional Rendering\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which JavaScript example is syntactically valid?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "total = 3 + 2",
+              "SELECT total FROM data"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for JavaScript in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Conditional Welcome Message\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Conditional Rendering \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Warunkowa wiadomość powitalna",
-        "description": "Utwórz komponent wyświetlający komunikat „Witamy!” jeśli isLoggedIn ma wartość true, w przeciwnym razie pokaż „Proszę się zalogować”.",
+        "title": "Conditional Welcome Message",
+        "description": "Create a component that shows \"Welcome!\" if isLoggedIn is true, otherwise show \"Please log in\".",
         "starterCode": "function WelcomeMessage({ isLoggedIn }) {\n  // Your code here\n}\n",
         "language": "javascript",
         "testCases": [
@@ -672,7 +1068,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Użyj operatora trójskładnikowego: isLoggedIn? \"Powitanie!\" : \"Proszę się zalogować\"",
+        "hint": "Use a ternary operator: isLoggedIn ? \"Welcome!\" : \"Please log in\"",
         "solution": "function WelcomeMessage({ isLoggedIn }) {\n  return (\n    <div>\n      {isLoggedIn ? <p>Welcome!</p> : <p>Please log in</p>}\n    </div>\n  );\n}",
         "xpReward": 15
       },
@@ -683,12 +1079,12 @@
       "id": "react_lesson_7",
       "courseId": "react",
       "moduleId": "advanced",
-      "title": "użyj haka efektowego",
-      "description": "Opanuj efekty uboczne, czyszczenie i zależności",
+      "title": "useEffect Hook",
+      "description": "Master side effects, cleanup, and dependencies",
       "theorySlides": [
         {
-          "title": "Zrozumienie skutków ubocznych 🌊",
-          "content": "Efekty uboczne to operacje wykraczające poza komponent:\n\n• Pobieranie danych z API\n• Konfigurowanie subskrypcji\n• Ręczna zmiana DOM\n• Ustawianie timerów\n\nuseEffect działa po renderowaniu, utrzymując komponent w czystości!",
+          "title": "Understanding Side Effects 🌊",
+          "content": "Side effects are operations that reach outside your component:\n\n• Fetching data from APIs\n• Setting up subscriptions\n• Manually changing the DOM\n• Setting timers\n\nuseEffect runs after render, keeping your component pure!",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -696,8 +1092,8 @@
           "order": 0
         },
         {
-          "title": "Korzystanie z useEffect",
-          "content": "useEffect przyjmuje funkcję i opcjonalne zależności:",
+          "title": "Using useEffect",
+          "content": "useEffect takes a function and optional dependencies:",
           "codeSnippet": "import { useState, useEffect } from \"react\";\n\nfunction Timer() {\n  const [seconds, setSeconds] = useState(0);\n\n  useEffect(() => {\n    // Runs after every render\n    const interval = setInterval(() => {\n      setSeconds(s => s + 1);\n    }, 1000);\n\n    // Cleanup function\n    return () => clearInterval(interval);\n  }, []); // Empty deps = run once\n\n  return <p>Seconds: {seconds}</p>;\n}",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -705,8 +1101,8 @@
           "order": 1
         },
         {
-          "title": "Tablica zależności",
-          "content": "Kontroluj, kiedy useEffect działa z tablicą zależności:",
+          "title": "Dependency Array",
+          "content": "Control when useEffect runs with the dependency array:",
           "codeSnippet": "// Run on every render\nuseEffect(() => {\n  console.log(\"Every render\");\n});\n\n// Run once on mount\nuseEffect(() => {\n  console.log(\"Component mounted\");\n}, []);\n\n// Run when dependencies change\nuseEffect(() => {\n  console.log(\"Count changed:\", count);\n}, [count]);\n\n// Multiple dependencies\nuseEffect(() => {\n  fetchUser(userId, filter);\n}, [userId, filter]);",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -717,71 +1113,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Jaki jest efekt uboczny w React?",
+            "question": "What is a side effect in React?",
             "options": [
-              "Animacja CSS",
-              "Operacja wpływająca na coś poza komponentem",
-              "Błąd renderowania",
-              "Aktualizacja rekwizytów"
+              "A CSS animation",
+              "An operation that affects something outside the component",
+              "A rendering error",
+              "A prop update"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Efekty uboczne to operacje, które wchodzą w interakcję z systemami poza komponentem, takie jak interfejsy API, liczniki czasu lub subskrypcje.",
+            "explanation": "Side effects are operations that interact with systems outside the component, like APIs, timers, or subscriptions.",
             "type": "multipleChoice"
           },
           {
-            "question": "Kiedy działa useEffect?",
+            "question": "When does useEffect run?",
             "options": [
-              "Przed renderowaniem",
-              "Podczas renderowania",
-              "Po renderowaniu",
-              "Nigdy automatycznie"
+              "Before render",
+              "During render",
+              "After render",
+              "Never automatically"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "useEffect działa po zatwierdzeniu renderowania na ekranie, utrzymując fazę renderowania w czystości.",
+            "explanation": "useEffect runs after the render is committed to the screen, keeping the render phase pure.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co oznacza pusta tablica zależności []?",
+            "question": "What does an empty dependency array [] mean?",
             "options": [
-              "Uruchamiaj przy każdym renderowaniu",
-              "Nigdy nie biegaj",
-              "Uruchom raz, gdy komponent zostanie zamontowany",
-              "Uruchom, gdy jakikolwiek stan się zmieni"
+              "Run on every render",
+              "Never run",
+              "Run once when component mounts",
+              "Run when any state changes"
             ],
             "correctAnswerIndex": 2,
-            "explanation": "Pusta tablica zależności oznacza, że ​​efekt zostanie uruchomiony raz po zamontowaniu komponentu, np. komponentDidMount.",
+            "explanation": "An empty dependency array means the effect runs once when the component mounts, like componentDidMount.",
             "type": "multipleChoice"
           },
           {
-            "question": "Dlaczego zwracamy funkcję czyszczącą?",
+            "question": "Why do we return a cleanup function?",
             "options": [
-              "Aby zaoszczędzić pamięć",
-              "Aby usunąć detektory zdarzeń, wyczyścić liczniki czasu, anulować subskrypcje",
-              "Aby zaktualizować stan",
-              "Jest to opcjonalne i nic nie robi"
+              "To save memory",
+              "To remove event listeners, clear timers, cancel subscriptions",
+              "To update state",
+              "It's optional and does nothing"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Funkcja czyszczenia usuwa skutki uboczne po odmontowaniu komponentu lub przed ponownym uruchomieniem efektu.",
+            "explanation": "The cleanup function removes side effects when the component unmounts or before the effect runs again.",
             "type": "multipleChoice"
           },
           {
-            "question": "Co się stanie, jeśli zapomnisz o zależnościach?",
+            "question": "What happens if you forget dependencies?",
             "options": [
-              "Nic",
-              "Twój efekt może używać nieaktualnych wartości",
-              "Aplikacja ulega awarii",
-              "Efekty działają szybciej"
+              "Nothing",
+              "Your effect might use stale values",
+              "The app crashes",
+              "Effects run faster"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Brakujące zależności mogą spowodować, że efekt użyje nieaktualnych wartości. Zawsze uwzględniaj wartości, od których zależy efekt.",
+            "explanation": "Missing dependencies can cause your effect to use stale values. Always include values your effect depends on.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"useEffect Hook\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which JavaScript example is syntactically valid?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "total = 3 + 2",
+              "SELECT total FROM data"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for JavaScript in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Fetch Data on Mount\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Understanding Side Effects \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Pobierz dane na Mount",
-        "description": "Utwórz komponent, który rejestruje „Pobrane dane” raz podczas montażu za pomocą useEffect.",
+        "title": "Fetch Data on Mount",
+        "description": "Create a component that logs \"Data fetched\" once when it mounts using useEffect.",
         "starterCode": "import { useEffect } from \"react\";\n\nfunction DataFetcher() {\n  // Your code here\n}\n",
         "language": "javascript",
         "testCases": [
@@ -791,7 +1247,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Użyj useEffect z pustą tablicą zależności, aby uruchomić raz na montowaniu.",
+        "hint": "Use useEffect with an empty dependency array to run once on mount.",
         "solution": "import { useEffect } from \"react\";\n\nfunction DataFetcher() {\n  useEffect(() => {\n    console.log(\"Data fetched\");\n  }, []);\n  \n  return <div>Check the console</div>;\n}",
         "xpReward": 15
       },
@@ -802,12 +1258,12 @@
       "id": "react_lesson_8",
       "courseId": "react",
       "moduleId": "advanced",
-      "title": "Tworzenie aplikacji Todo",
-      "description": "Połącz wszystkie koncepcje w funkcjonalną aplikację „todo”.",
+      "title": "Building a Todo App",
+      "description": "Combine all concepts into a functional todo application",
       "theorySlides": [
         {
-          "title": "Planowanie projektu 🎯",
-          "content": "Stwórzmy aplikację do zrobienia, łączącą wszystko, czego się nauczyłeś:\n\n• Zarządzanie stanem (useState)\n• Obsługa formularzy (zdarzenia)\n• Listy i klucze (.map)\n• Renderowanie warunkowe\n• Skład komponentów\n\nTutaj wszystko się łączy!",
+          "title": "Project Planning 🎯",
+          "content": "Let's build a todo app combining everything you've learned:\n\n• State management (useState)\n• Form handling (events)\n• Lists and keys (.map)\n• Conditional rendering\n• Component composition\n\nThis is where it all comes together!",
           "codeSnippet": null,
           "codeLanguage": null,
           "imageUrl": null,
@@ -815,8 +1271,8 @@
           "order": 0
         },
         {
-          "title": "Cała struktura aplikacji",
-          "content": "Podziel aplikację na komponenty:",
+          "title": "Todo App Structure",
+          "content": "Break the app into components:",
           "codeSnippet": "function TodoApp() {\n  const [todos, setTodos] = useState([]);\n  const [input, setInput] = useState(\"\");\n\n  const addTodo = () => {\n    if (input.trim()) {\n      setTodos([...todos, { id: Date.now(), text: input, done: false }]);\n      setInput(\"\");\n    }\n  };\n\n  const toggleTodo = (id) => {\n    setTodos(todos.map(todo => \n      todo.id === id ? { ...todo, done: !todo.done } : todo\n    ));\n  };\n\n  return (\n    <div>\n      <h1>My Todos</h1>\n      <input value={input} onChange={(e) => setInput(e.target.value)} />\n      <button onClick={addTodo}>Add</button>\n      {/* Todo list here */}\n    </div>\n  );\n}",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -824,8 +1280,8 @@
           "order": 1
         },
         {
-          "title": "Renderowanie elementów do wykonania",
-          "content": "Wyświetl listę rzeczy do zrobienia ze stylem warunkowym:",
+          "title": "Rendering Todo Items",
+          "content": "Display the todo list with conditional styling:",
           "codeSnippet": "function TodoApp() {\n  // ... previous code ...\n\n  return (\n    <div>\n      <h1>My Todos</h1>\n      <input value={input} onChange={(e) => setInput(e.target.value)} />\n      <button onClick={addTodo}>Add</button>\n      \n      <ul>\n        {todos.map(todo => (\n          <li\n            key={todo.id}\n            onClick={() => toggleTodo(todo.id)}\n            style={{ textDecoration: todo.done ? \"line-through\" : \"none\" }}\n          >\n            {todo.text}\n          </li>\n        ))}\n      </ul>\n    </div>\n  );\n}",
           "codeLanguage": "javascript",
           "imageUrl": null,
@@ -836,59 +1292,131 @@
       "quiz": {
         "questions": [
           {
-            "question": "Dlaczego warto dzielić aplikacje na wiele komponentów?",
+            "question": "Why should you break apps into multiple components?",
             "options": [
-              "Aby powiększyć pliki",
-              "Ze względu na możliwość ponownego użycia i łatwość konserwacji",
-              "Jest to wymagane przez React",
-              "Żeby było wolniej"
+              "To make files bigger",
+              "For reusability and maintainability",
+              "It's required by React",
+              "To make it slower"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Dzielenie aplikacji na komponenty poprawia możliwość ponownego użycia, łatwość konserwacji i sprawia, że ​​kod jest łatwiejszy do zrozumienia.",
+            "explanation": "Breaking apps into components improves reusability, maintainability, and makes code easier to understand.",
             "type": "multipleChoice"
           },
           {
-            "question": "Jak dodać nowy element do tablicy w stanie?",
+            "question": "How do you add a new item to an array in state?",
             "options": [
-              "todos.push(nowyprzedmiot)",
-              "setAll([...wszystko, nowyprzedmiot])",
-              "wszystko = [...wszystko, nowyElement]",
-              "setAll(all.push(newItem))"
+              "todos.push(newItem)",
+              "setTodos([...todos, newItem])",
+              "todos = [...todos, newItem]",
+              "setTodos(todos.push(newItem))"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Użyj operatora spreadu, aby utworzyć nową tablicę: setTodos([...todos, newItem]). Nigdy nie mutuj stanu bezpośrednio.",
+            "explanation": "Use the spread operator to create a new array: setTodos([...todos, newItem]). Never mutate state directly.",
             "type": "multipleChoice"
           },
           {
-            "question": "Do czego przydatna jest funkcja Date.now()?",
+            "question": "What is Date.now() useful for?",
             "options": [
-              "Daty stylizacji",
-              "Generowanie unikalnych identyfikatorów",
-              "Czas formatowania",
-              "Tworzenie kalendarzy"
+              "Styling dates",
+              "Generating unique IDs",
+              "Formatting time",
+              "Creating calendars"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Date.now() zwraca bieżący znacznik czasu w milisekundach, dzięki czemu jest przydatna do generowania prostych unikalnych identyfikatorów.",
+            "explanation": "Date.now() returns the current timestamp in milliseconds, making it useful for generating simple unique IDs.",
             "type": "multipleChoice"
           },
           {
-            "question": "Jak zaktualizować określony element w tablicy?",
+            "question": "How do you update a specific item in an array?",
             "options": [
-              "Zmień to bezpośrednio",
-              "Użyj .map(), aby utworzyć nową tablicę",
-              "Użyj .push()",
-              "Usuń i utwórz ponownie tablicę"
+              "Change it directly",
+              "Use .map() to create a new array",
+              "Use .push()",
+              "Delete and recreate the array"
             ],
             "correctAnswerIndex": 1,
-            "explanation": "Użyj .map() do iteracji i warunkowej aktualizacji określonego elementu, tworząc nową tablicę bez mutowania stanu.",
+            "explanation": "Use .map() to iterate and conditionally update the specific item, creating a new array without mutating state.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Building a Todo App\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which JavaScript example is syntactically valid?",
+            "options": [
+              "const total = 3 + 2;",
+              "const total = 3 +;",
+              "total = 3 + 2",
+              "SELECT total FROM data"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for JavaScript in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Create a Simple Todo App\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Project Planning \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
             "type": "multipleChoice"
           }
         ],
         "xpReward": 5
       },
       "codingChallenge": {
-        "title": "Utwórz prostą aplikację Todo",
-        "description": "Zbuduj podstawową aplikację do wykonywania zadań z dodatkowymi funkcjami. Wyświetlaj zadania na liście.",
+        "title": "Create a Simple Todo App",
+        "description": "Build a basic todo app with add functionality. Display todos in a list.",
         "starterCode": "import { useState } from \"react\";\n\nfunction TodoApp() {\n  const [todos, setTodos] = useState([]);\n  const [input, setInput] = useState(\"\");\n  // Your code here\n}\n",
         "language": "javascript",
         "testCases": [
@@ -898,7 +1426,7 @@
             "isHidden": false
           }
         ],
-        "hint": "Utwórz dane wejściowe, przycisk i listę. Użyj stanu, aby zarządzać tablicą zadań i wartością wejściową.",
+        "hint": "Create input, button, and list. Use state to manage todos array and input value.",
         "solution": "import { useState } from \"react\";\n\nfunction TodoApp() {\n  const [todos, setTodos] = useState([]);\n  const [input, setInput] = useState(\"\");\n  \n  const addTodo = () => {\n    if (input.trim()) {\n      setTodos([...todos, { id: Date.now(), text: input }]);\n      setInput(\"\");\n    }\n  };\n  \n  return (\n    <div>\n      <input value={input} onChange={(e) => setInput(e.target.value)} />\n      <button onClick={addTodo}>Add</button>\n      <ul>\n        {todos.map(todo => <li key={todo.id}>{todo.text}</li>)}\n      </ul>\n    </div>\n  );\n}",
         "xpReward": 15
       },

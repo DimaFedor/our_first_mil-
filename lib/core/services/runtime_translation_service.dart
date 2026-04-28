@@ -10,6 +10,47 @@ class RuntimeTranslationService {
 
   static const String _fallbackLanguageCode = 'en';
   static const int _maxChunkLength = 1800;
+  static const Duration _requestTimeout = Duration(seconds: 30);
+  static const int _maxTranslationAttempts = 7;
+  static const Duration _minRetryDelay = Duration(milliseconds: 800);
+  static const Duration _betweenSuccessfulRequestsDelay = Duration(
+    milliseconds: 120,
+  );
+  static const String _batchSeparator = '<<<COPILOT_TRANSLATION_SPLIT>>>';
+  static const List<String> _protectedProgrammingTerms = <String>[
+    'console.log',
+    '__init__',
+    'print',
+    'input',
+    'self',
+    'init',
+    'len',
+    'append',
+    'dict',
+    'tuple',
+    'int',
+    'float',
+    'str',
+    'bool',
+    'None',
+    'True',
+    'False',
+    'null',
+    'undefined',
+    'printf',
+    'scanf',
+    'cout',
+    'cin',
+    'println',
+  ];
+  static final RegExp _fencedCodePattern = RegExp(
+    r'```[\s\S]*?```',
+    multiLine: true,
+  );
+  static final RegExp _inlineCodePattern = RegExp(r'`[^`\n]+`');
+  static final RegExp _functionCallPattern = RegExp(
+    r'(?<![A-Za-z0-9_])[A-Za-z_][A-Za-z0-9_]*\(\)',
+  );
 
   static final Map<String, String> _textCache = <String, String>{};
   static final Map<String, Future<String>> _pendingTranslations =
@@ -63,12 +104,118 @@ class RuntimeTranslationService {
     }
   }
 
+  static Future<List<String>> translateBatch({
+    required List<String> texts,
+    required String targetLanguageCode,
+  }) async {
+    if (texts.isEmpty) {
+      return const <String>[];
+    }
+
+    final normalizedLanguageCode = _normalizeLanguageCode(targetLanguageCode);
+    if (normalizedLanguageCode == _fallbackLanguageCode) {
+      return List<String>.unmodifiable(texts);
+    }
+
+    final translatorCode = _toTranslatorLanguageCode(normalizedLanguageCode);
+    if (translatorCode == null) {
+      return List<String>.unmodifiable(texts);
+    }
+
+    final translated = List<String>.from(texts);
+    final missingIndexes = <int>[];
+    final missingTexts = <String>[];
+
+    for (var index = 0; index < texts.length; index++) {
+      final sourceText = texts[index];
+      if (sourceText.trim().isEmpty) {
+        continue;
+      }
+
+      final cacheKey = '$translatorCode|$sourceText';
+      final cached = _textCache[cacheKey];
+      if (cached != null) {
+        translated[index] = cached;
+        continue;
+      }
+
+      missingIndexes.add(index);
+      missingTexts.add(sourceText);
+    }
+
+    if (missingTexts.isNotEmpty) {
+      final translatedMissing = await _enqueueTranslation(
+        () => _translateBatchInternal(
+          sourceTexts: missingTexts,
+          translatorLanguageCode: translatorCode,
+        ),
+      );
+
+      for (var index = 0; index < missingIndexes.length; index++) {
+        final sourceIndex = missingIndexes[index];
+        final translatedText = translatedMissing[index];
+        translated[sourceIndex] = translatedText;
+        _textCache['$translatorCode|${texts[sourceIndex]}'] = translatedText;
+      }
+    }
+
+    return List<String>.unmodifiable(translated);
+  }
+
+  static Future<List<String>> _translateBatchInternal({
+    required List<String> sourceTexts,
+    required String translatorLanguageCode,
+  }) async {
+    if (sourceTexts.isEmpty) {
+      return const <String>[];
+    }
+
+    final protectedTexts = sourceTexts
+        .map(_protectText)
+        .toList(growable: false);
+    final joinedSource = protectedTexts
+        .map((entry) => entry.text)
+        .join(_batchSeparator);
+
+    try {
+      final translatedJoined = await _translateChunkWithGoogle(
+        chunk: joinedSource,
+        targetLanguageCode: translatorLanguageCode,
+      );
+      final translatedParts = translatedJoined.split(_batchSeparator);
+      if (translatedParts.length == sourceTexts.length) {
+        return List<String>.generate(sourceTexts.length, (index) {
+          final restored = _restoreProtectedTokens(
+            text: translatedParts[index],
+            placeholders: protectedTexts[index].placeholders,
+          );
+          return restored.trim().isEmpty ? sourceTexts[index] : restored;
+        }, growable: false);
+      }
+    } catch (_) {
+      // Fall back to single-string translation path below.
+    }
+
+    final fallbackResults = <String>[];
+    for (final sourceText in sourceTexts) {
+      fallbackResults.add(
+        await _translateInternal(
+          sourceText: sourceText,
+          translatorLanguageCode: translatorLanguageCode,
+          cacheKey: '$translatorLanguageCode|$sourceText',
+        ),
+      );
+    }
+    return List<String>.unmodifiable(fallbackResults);
+  }
+
   static Future<String> _translateInternal({
     required String sourceText,
     required String translatorLanguageCode,
     required String cacheKey,
   }) async {
-    final chunks = _splitTextForTranslation(sourceText);
+    final protectedSource = _protectText(sourceText);
+    final chunks = _splitTextForTranslation(protectedSource.text);
     if (chunks.isEmpty) {
       _textCache[cacheKey] = sourceText;
       return sourceText;
@@ -85,9 +232,13 @@ class RuntimeTranslationService {
         translatedChunks.add(translatedChunk);
       }
 
-      final resolvedText = translatedChunks.join().trim().isEmpty
+      final translatedText = translatedChunks.join();
+      final resolvedText = translatedText.trim().isEmpty
           ? sourceText
-          : translatedChunks.join();
+          : _restoreProtectedTokens(
+              text: translatedText,
+              placeholders: protectedSource.placeholders,
+            );
       _textCache[cacheKey] = resolvedText;
       return resolvedText;
     } catch (error) {
@@ -110,24 +261,56 @@ class RuntimeTranslationService {
         'sl': 'auto',
         'tl': targetLanguageCode,
         'dt': 't',
-        'q': chunk,
       },
     );
 
-    final response = await http.get(uri);
-    if (response.statusCode != 200) {
-      throw StateError(
-        'Google translation API returned ${response.statusCode} for "$targetLanguageCode".',
-      );
+    for (var attempt = 0; attempt < _maxTranslationAttempts; attempt++) {
+      try {
+        final response = await http
+            .post(
+              uri,
+              headers: const <String, String>{
+                'Content-Type': 'application/x-www-form-urlencoded',
+              },
+              body: <String, String>{'q': chunk},
+            )
+            .timeout(_requestTimeout);
+
+        if (response.statusCode == 429) {
+          await Future<void>.delayed(_retryDelayForAttempt(attempt));
+          continue;
+        }
+
+        if (response.statusCode != 200) {
+          throw StateError(
+            'Google translation API returned ${response.statusCode} for "$targetLanguageCode".',
+          );
+        }
+
+        final decodedBody = jsonDecode(response.body);
+        final translatedChunk = _extractTranslatedChunk(decodedBody);
+        await Future<void>.delayed(_betweenSuccessfulRequestsDelay);
+        if (translatedChunk == null || translatedChunk.trim().isEmpty) {
+          return chunk;
+        }
+
+        return translatedChunk;
+      } on TimeoutException {
+        if (attempt == _maxTranslationAttempts - 1) {
+          rethrow;
+        }
+        await Future<void>.delayed(_retryDelayForAttempt(attempt));
+      } on http.ClientException {
+        if (attempt == _maxTranslationAttempts - 1) {
+          rethrow;
+        }
+        await Future<void>.delayed(_retryDelayForAttempt(attempt));
+      }
     }
 
-    final decodedBody = jsonDecode(response.body);
-    final translatedChunk = _extractTranslatedChunk(decodedBody);
-    if (translatedChunk == null || translatedChunk.trim().isEmpty) {
-      return chunk;
-    }
-
-    return translatedChunk;
+    throw StateError(
+      'Google translation API rate limit persisted for "$targetLanguageCode".',
+    );
   }
 
   static String? _extractTranslatedChunk(dynamic decodedBody) {
@@ -196,10 +379,10 @@ class RuntimeTranslationService {
     return parts;
   }
 
-  static Future<String> _enqueueTranslation(
-    Future<String> Function() translationTask,
+  static Future<T> _enqueueTranslation<T>(
+    Future<T> Function() translationTask,
   ) {
-    final completer = Completer<String>();
+    final completer = Completer<T>();
 
     _translationQueue = _translationQueue.then((_) async {
       try {
@@ -246,4 +429,79 @@ class RuntimeTranslationService {
         return null;
     }
   }
+
+  static Duration _retryDelayForAttempt(int attempt) {
+    final cappedExponent = math.min(attempt, 6);
+    final baseSeconds = math.pow(2, cappedExponent).toInt();
+    final jitterMilliseconds = (math.Random().nextDouble() * 1000).round();
+    final duration = Duration(
+      seconds: baseSeconds,
+      milliseconds: jitterMilliseconds,
+    );
+    if (duration < _minRetryDelay) {
+      return _minRetryDelay;
+    }
+    return duration;
+  }
+
+  static _ProtectedText _protectText(String sourceText) {
+    if (sourceText.trim().isEmpty) {
+      return const _ProtectedText(text: '', placeholders: <String, String>{});
+    }
+
+    var protectedText = sourceText;
+    final placeholders = <String, String>{};
+    var placeholderIndex = 0;
+
+    String reservePlaceholder(String value) {
+      final placeholder = '__COPILOT_KEEP_${placeholderIndex++}__';
+      placeholders[placeholder] = value;
+      return placeholder;
+    }
+
+    String protectWithPattern(String input, RegExp pattern) {
+      return input.replaceAllMapped(
+        pattern,
+        (match) => reservePlaceholder(match.group(0)!),
+      );
+    }
+
+    protectedText = protectWithPattern(protectedText, _fencedCodePattern);
+    protectedText = protectWithPattern(protectedText, _inlineCodePattern);
+    protectedText = protectWithPattern(protectedText, _functionCallPattern);
+
+    for (final term in _protectedProgrammingTerms) {
+      final termPattern = RegExp(
+        '(?<![A-Za-z0-9_])${RegExp.escape(term)}(?![A-Za-z0-9_])',
+      );
+      protectedText = protectWithPattern(protectedText, termPattern);
+    }
+
+    return _ProtectedText(
+      text: protectedText,
+      placeholders: Map<String, String>.unmodifiable(placeholders),
+    );
+  }
+
+  static String _restoreProtectedTokens({
+    required String text,
+    required Map<String, String> placeholders,
+  }) {
+    if (placeholders.isEmpty || text.isEmpty) {
+      return text;
+    }
+
+    var restored = text;
+    for (final entry in placeholders.entries) {
+      restored = restored.replaceAll(entry.key, entry.value);
+    }
+    return restored;
+  }
+}
+
+class _ProtectedText {
+  final String text;
+  final Map<String, String> placeholders;
+
+  const _ProtectedText({required this.text, required this.placeholders});
 }

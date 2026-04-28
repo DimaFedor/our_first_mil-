@@ -1,0 +1,1365 @@
+{
+  "courseId": "cplusplus-intermediate",
+  "lessons": [
+    {
+      "id": "cplusplus_intermediate_lesson_1",
+      "courseId": "cplusplus-intermediate",
+      "moduleId": "advanced",
+      "title": "References and Pointers",
+      "description": "Understand indirection and memory access patterns.",
+      "theorySlides": [
+        {
+          "title": "References and Pointers Overview",
+          "content": "References alias existing values; pointers store addresses. These tools are powerful when used with clear ownership rules.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "C++ Example",
+          "content": "Prefer references when null is not valid. Use pointers when reseating or optional behavior is needed.",
+          "codeSnippet": "int value = 42;\nint* ptr = &value;\nint& ref = value;\ncout << *ptr;",
+          "codeLanguage": "cpp",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main goal of \"References and Pointers\"?",
+            "options": [
+              "Practice references and pointers with clear C++ syntax",
+              "Memorize random keywords without coding",
+              "Skip implementation and jump ahead",
+              "Ignore compiler feedback completely"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each C++ lesson is designed for practical hands-on mastery of one concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which line is valid C++ for this lesson?",
+            "options": [
+              "int* ptr = &value;",
+              "const total = 3 + 2",
+              "print(\"Hello\")",
+              "SELECT total FROM progress;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Only one option follows C++ syntax and lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the best way to improve reliability in C++ tasks?",
+            "options": [
+              "Run small checks after each code change",
+              "Write everything at once and hope",
+              "Ignore warnings and submit immediately",
+              "Delete code on every minor error"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Incremental testing keeps C++ debugging predictable and faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If output does not match expected value, what should you do first?",
+            "options": [
+              "Review values and flow near the output statement",
+              "Rename every variable randomly",
+              "Switch to another language",
+              "Skip the challenge and move on"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking local values near output is the fastest path to root cause.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"References and Pointers\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which C++ example is syntactically valid?",
+            "options": [
+              "int total = 3 + 2;",
+              "int total == 3 + 2;",
+              "const total = 3 + 2",
+              "SELECT total FROM data;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for C++ in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Pointer value check\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"References and Pointers Overview\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Pointer value check",
+        "description": "Print the value 42 from this memory lesson.",
+        "starterCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n  // TODO: print 42\n  return 0;\n}",
+        "language": "cpp",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "42",
+            "isHidden": false
+          }
+        ],
+        "hint": "Output target is a single number.",
+        "solution": "#include <iostream>\nusing namespace std;\n\nint main() {\n  cout << 42;\n  return 0;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 34,
+      "order": 0
+    },
+    {
+      "id": "cplusplus_intermediate_lesson_2",
+      "courseId": "cplusplus-intermediate",
+      "moduleId": "advanced",
+      "title": "Classes and Objects",
+      "description": "Model real entities with class blueprints.",
+      "theorySlides": [
+        {
+          "title": "Classes and Objects Overview",
+          "content": "Classes group related data and behavior. Objects are concrete instances created from the class blueprint.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "C++ Example",
+          "content": "Keep class interfaces focused so consumers know exactly what each object guarantees.",
+          "codeSnippet": "class User {\npublic:\n  string name;\n};\n\nUser learner;\nlearner.name = \"Ava\";",
+          "codeLanguage": "cpp",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main goal of \"Classes and Objects\"?",
+            "options": [
+              "Practice object-oriented design with clear C++ syntax",
+              "Memorize random keywords without coding",
+              "Skip implementation and jump ahead",
+              "Ignore compiler feedback completely"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each C++ lesson is designed for practical hands-on mastery of one concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which line is valid C++ for this lesson?",
+            "options": [
+              "class User { public: string name; };",
+              "const total = 3 + 2",
+              "print(\"Hello\")",
+              "SELECT total FROM progress;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Only one option follows C++ syntax and lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the best way to improve reliability in C++ tasks?",
+            "options": [
+              "Run small checks after each code change",
+              "Write everything at once and hope",
+              "Ignore warnings and submit immediately",
+              "Delete code on every minor error"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Incremental testing keeps C++ debugging predictable and faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If output does not match expected value, what should you do first?",
+            "options": [
+              "Review values and flow near the output statement",
+              "Rename every variable randomly",
+              "Switch to another language",
+              "Skip the challenge and move on"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking local values near output is the fastest path to root cause.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Classes and Objects\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which C++ example is syntactically valid?",
+            "options": [
+              "int total = 3 + 2;",
+              "int total == 3 + 2;",
+              "const total = 3 + 2",
+              "SELECT total FROM data;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for C++ in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Object data output\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Classes and Objects Overview\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Object data output",
+        "description": "Print the learner name: Ava",
+        "starterCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n  // TODO: print Ava\n  return 0;\n}",
+        "language": "cpp",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Ava",
+            "isHidden": false
+          }
+        ],
+        "hint": "Expected output is a single word.",
+        "solution": "#include <iostream>\nusing namespace std;\n\nint main() {\n  cout << \"Ava\";\n  return 0;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 34,
+      "order": 1
+    },
+    {
+      "id": "cplusplus_intermediate_lesson_3",
+      "courseId": "cplusplus-intermediate",
+      "moduleId": "advanced",
+      "title": "Constructors",
+      "description": "Initialize objects safely at creation time.",
+      "theorySlides": [
+        {
+          "title": "Constructors Overview",
+          "content": "Constructors define valid object state immediately. This improves reliability and removes setup ambiguity.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "C++ Example",
+          "content": "Use initializer lists in real projects for performance and correctness.",
+          "codeSnippet": "class Session {\npublic:\n  Session(string status) : state(status) {}\n  string state;\n};",
+          "codeLanguage": "cpp",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main goal of \"Constructors\"?",
+            "options": [
+              "Practice constructor initialization with clear C++ syntax",
+              "Memorize random keywords without coding",
+              "Skip implementation and jump ahead",
+              "Ignore compiler feedback completely"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each C++ lesson is designed for practical hands-on mastery of one concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which line is valid C++ for this lesson?",
+            "options": [
+              "Session(string status) : state(status) {}",
+              "const total = 3 + 2",
+              "print(\"Hello\")",
+              "SELECT total FROM progress;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Only one option follows C++ syntax and lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the best way to improve reliability in C++ tasks?",
+            "options": [
+              "Run small checks after each code change",
+              "Write everything at once and hope",
+              "Ignore warnings and submit immediately",
+              "Delete code on every minor error"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Incremental testing keeps C++ debugging predictable and faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If output does not match expected value, what should you do first?",
+            "options": [
+              "Review values and flow near the output statement",
+              "Rename every variable randomly",
+              "Switch to another language",
+              "Skip the challenge and move on"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking local values near output is the fastest path to root cause.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Constructors\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which C++ example is syntactically valid?",
+            "options": [
+              "int total = 3 + 2;",
+              "int total == 3 + 2;",
+              "const total = 3 + 2",
+              "SELECT total FROM data;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for C++ in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Initialization status output\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Constructors Overview\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Initialization status output",
+        "description": "Print the status text: Online",
+        "starterCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n  // TODO: print Online\n  return 0;\n}",
+        "language": "cpp",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Online",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use exact case-sensitive output.",
+        "solution": "#include <iostream>\nusing namespace std;\n\nint main() {\n  cout << \"Online\";\n  return 0;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 36,
+      "order": 2
+    },
+    {
+      "id": "cplusplus_intermediate_lesson_4",
+      "courseId": "cplusplus-intermediate",
+      "moduleId": "advanced",
+      "title": "Inheritance Basics",
+      "description": "Reuse behavior through parent-child class relationships.",
+      "theorySlides": [
+        {
+          "title": "Inheritance Basics Overview",
+          "content": "Inheritance lets derived classes build on shared behavior from base classes. Keep hierarchies simple and intentional.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "C++ Example",
+          "content": "Prefer composition when relationships become complex, but inheritance remains useful for stable abstractions.",
+          "codeSnippet": "class Task {\npublic:\n  string status = \"Running\";\n};\n\nclass BuildTask : public Task {};",
+          "codeLanguage": "cpp",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main goal of \"Inheritance Basics\"?",
+            "options": [
+              "Practice inheritance and reuse with clear C++ syntax",
+              "Memorize random keywords without coding",
+              "Skip implementation and jump ahead",
+              "Ignore compiler feedback completely"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each C++ lesson is designed for practical hands-on mastery of one concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which line is valid C++ for this lesson?",
+            "options": [
+              "class BuildTask : public Task {};",
+              "const total = 3 + 2",
+              "print(\"Hello\")",
+              "SELECT total FROM progress;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Only one option follows C++ syntax and lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the best way to improve reliability in C++ tasks?",
+            "options": [
+              "Run small checks after each code change",
+              "Write everything at once and hope",
+              "Ignore warnings and submit immediately",
+              "Delete code on every minor error"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Incremental testing keeps C++ debugging predictable and faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If output does not match expected value, what should you do first?",
+            "options": [
+              "Review values and flow near the output statement",
+              "Rename every variable randomly",
+              "Switch to another language",
+              "Skip the challenge and move on"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking local values near output is the fastest path to root cause.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Inheritance Basics\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which C++ example is syntactically valid?",
+            "options": [
+              "int total = 3 + 2;",
+              "int total == 3 + 2;",
+              "const total = 3 + 2",
+              "SELECT total FROM data;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for C++ in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Inherited state output\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Inheritance Basics Overview\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Inherited state output",
+        "description": "Print inherited status: Running",
+        "starterCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n  // TODO: print Running\n  return 0;\n}",
+        "language": "cpp",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Running",
+            "isHidden": false
+          }
+        ],
+        "hint": "Output is a single status word.",
+        "solution": "#include <iostream>\nusing namespace std;\n\nint main() {\n  cout << \"Running\";\n  return 0;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 36,
+      "order": 3
+    },
+    {
+      "id": "cplusplus_intermediate_lesson_5",
+      "courseId": "cplusplus-intermediate",
+      "moduleId": "advanced",
+      "title": "Templates",
+      "description": "Write reusable generic code for multiple types.",
+      "theorySlides": [
+        {
+          "title": "Templates Overview",
+          "content": "Templates let one function or class work across data types. This reduces duplication while preserving type safety.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "C++ Example",
+          "content": "Use clear template parameter names and keep constraints understandable.",
+          "codeSnippet": "template <typename T>\nT add(T a, T b) {\n  return a + b;\n}",
+          "codeLanguage": "cpp",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main goal of \"Templates\"?",
+            "options": [
+              "Practice generic programming with clear C++ syntax",
+              "Memorize random keywords without coding",
+              "Skip implementation and jump ahead",
+              "Ignore compiler feedback completely"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each C++ lesson is designed for practical hands-on mastery of one concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which line is valid C++ for this lesson?",
+            "options": [
+              "template <typename T>",
+              "const total = 3 + 2",
+              "print(\"Hello\")",
+              "SELECT total FROM progress;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Only one option follows C++ syntax and lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the best way to improve reliability in C++ tasks?",
+            "options": [
+              "Run small checks after each code change",
+              "Write everything at once and hope",
+              "Ignore warnings and submit immediately",
+              "Delete code on every minor error"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Incremental testing keeps C++ debugging predictable and faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If output does not match expected value, what should you do first?",
+            "options": [
+              "Review values and flow near the output statement",
+              "Rename every variable randomly",
+              "Switch to another language",
+              "Skip the challenge and move on"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking local values near output is the fastest path to root cause.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Templates\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which C++ example is syntactically valid?",
+            "options": [
+              "int total = 3 + 2;",
+              "int total == 3 + 2;",
+              "const total = 3 + 2",
+              "SELECT total FROM data;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for C++ in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Template-style result\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Templates Overview\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Template-style result",
+        "description": "Print result of 3 + 5.",
+        "starterCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n  // TODO: print 8\n  return 0;\n}",
+        "language": "cpp",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "8",
+            "isHidden": false
+          }
+        ],
+        "hint": "Expected output is numeric.",
+        "solution": "#include <iostream>\nusing namespace std;\n\nint main() {\n  cout << 3 + 5;\n  return 0;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 38,
+      "order": 4
+    },
+    {
+      "id": "cplusplus_intermediate_lesson_6",
+      "courseId": "cplusplus-intermediate",
+      "moduleId": "advanced",
+      "title": "STL Containers",
+      "description": "Use standard containers for robust data handling.",
+      "theorySlides": [
+        {
+          "title": "STL Containers Overview",
+          "content": "The STL offers battle-tested containers like vector, map, and set. Choosing the right container improves performance and clarity.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "C++ Example",
+          "content": "Know operation complexity and iteration patterns before large-scale usage.",
+          "codeSnippet": "vector<int> numbers = {1, 2, 3, 4};\ncout << numbers.size();",
+          "codeLanguage": "cpp",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main goal of \"STL Containers\"?",
+            "options": [
+              "Practice standard template library containers with clear C++ syntax",
+              "Memorize random keywords without coding",
+              "Skip implementation and jump ahead",
+              "Ignore compiler feedback completely"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each C++ lesson is designed for practical hands-on mastery of one concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which line is valid C++ for this lesson?",
+            "options": [
+              "vector<int> values = {1, 2, 3, 4};",
+              "const total = 3 + 2",
+              "print(\"Hello\")",
+              "SELECT total FROM progress;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Only one option follows C++ syntax and lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the best way to improve reliability in C++ tasks?",
+            "options": [
+              "Run small checks after each code change",
+              "Write everything at once and hope",
+              "Ignore warnings and submit immediately",
+              "Delete code on every minor error"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Incremental testing keeps C++ debugging predictable and faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If output does not match expected value, what should you do first?",
+            "options": [
+              "Review values and flow near the output statement",
+              "Rename every variable randomly",
+              "Switch to another language",
+              "Skip the challenge and move on"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking local values near output is the fastest path to root cause.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"STL Containers\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which C++ example is syntactically valid?",
+            "options": [
+              "int total = 3 + 2;",
+              "int total == 3 + 2;",
+              "const total = 3 + 2",
+              "SELECT total FROM data;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for C++ in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Container size output\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"STL Containers Overview\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Container size output",
+        "description": "Print container size 4.",
+        "starterCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n  // TODO: print 4\n  return 0;\n}",
+        "language": "cpp",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "4",
+            "isHidden": false
+          }
+        ],
+        "hint": "Match output exactly with one number.",
+        "solution": "#include <iostream>\nusing namespace std;\n\nint main() {\n  cout << 4;\n  return 0;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 38,
+      "order": 5
+    },
+    {
+      "id": "cplusplus_intermediate_lesson_7",
+      "courseId": "cplusplus-intermediate",
+      "moduleId": "advanced",
+      "title": "Algorithms and Lambda",
+      "description": "Apply STL algorithms with concise lambda expressions.",
+      "theorySlides": [
+        {
+          "title": "Algorithms and Lambda Overview",
+          "content": "Algorithms like sort and find_if combine well with lambdas for readable transformation steps.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "C++ Example",
+          "content": "Keep lambdas short and descriptive; extract helpers when complexity grows.",
+          "codeSnippet": "int a = 7;\nint b = 8;\nauto sum = [=]() { return a + b; };\ncout << sum();",
+          "codeLanguage": "cpp",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main goal of \"Algorithms and Lambda\"?",
+            "options": [
+              "Practice algorithm pipelines with clear C++ syntax",
+              "Memorize random keywords without coding",
+              "Skip implementation and jump ahead",
+              "Ignore compiler feedback completely"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each C++ lesson is designed for practical hands-on mastery of one concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which line is valid C++ for this lesson?",
+            "options": [
+              "auto sum = [=]() { return a + b; };",
+              "const total = 3 + 2",
+              "print(\"Hello\")",
+              "SELECT total FROM progress;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Only one option follows C++ syntax and lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the best way to improve reliability in C++ tasks?",
+            "options": [
+              "Run small checks after each code change",
+              "Write everything at once and hope",
+              "Ignore warnings and submit immediately",
+              "Delete code on every minor error"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Incremental testing keeps C++ debugging predictable and faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If output does not match expected value, what should you do first?",
+            "options": [
+              "Review values and flow near the output statement",
+              "Rename every variable randomly",
+              "Switch to another language",
+              "Skip the challenge and move on"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking local values near output is the fastest path to root cause.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Algorithms and Lambda\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which C++ example is syntactically valid?",
+            "options": [
+              "int total = 3 + 2;",
+              "int total == 3 + 2;",
+              "const total = 3 + 2",
+              "SELECT total FROM data;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for C++ in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Lambda sum output\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Algorithms and Lambda Overview\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Lambda sum output",
+        "description": "Print 7 + 8 result.",
+        "starterCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n  // TODO: print 15\n  return 0;\n}",
+        "language": "cpp",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "15",
+            "isHidden": false
+          }
+        ],
+        "hint": "Expected output is two-digit number.",
+        "solution": "#include <iostream>\nusing namespace std;\n\nint main() {\n  cout << 15;\n  return 0;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 40,
+      "order": 6
+    },
+    {
+      "id": "cplusplus_intermediate_lesson_8",
+      "courseId": "cplusplus-intermediate",
+      "moduleId": "advanced",
+      "title": "Smart Pointers",
+      "description": "Manage ownership safely with modern C++ memory tools.",
+      "theorySlides": [
+        {
+          "title": "Smart Pointers Overview",
+          "content": "smart pointers express ownership directly and prevent common memory leaks. Prefer unique_ptr by default and shared_ptr when ownership is shared.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "C++ Example",
+          "content": "Ownership semantics are core to reliable C++ at scale.",
+          "codeSnippet": "#include <memory>\nauto user = make_unique<int>(42);\ncout << \"Memory safe\";",
+          "codeLanguage": "cpp",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main goal of \"Smart Pointers\"?",
+            "options": [
+              "Practice safe memory management with clear C++ syntax",
+              "Memorize random keywords without coding",
+              "Skip implementation and jump ahead",
+              "Ignore compiler feedback completely"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each C++ lesson is designed for practical hands-on mastery of one concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which line is valid C++ for this lesson?",
+            "options": [
+              "auto ptr = make_unique<int>(42);",
+              "const total = 3 + 2",
+              "print(\"Hello\")",
+              "SELECT total FROM progress;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Only one option follows C++ syntax and lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the best way to improve reliability in C++ tasks?",
+            "options": [
+              "Run small checks after each code change",
+              "Write everything at once and hope",
+              "Ignore warnings and submit immediately",
+              "Delete code on every minor error"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Incremental testing keeps C++ debugging predictable and faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If output does not match expected value, what should you do first?",
+            "options": [
+              "Review values and flow near the output statement",
+              "Rename every variable randomly",
+              "Switch to another language",
+              "Skip the challenge and move on"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking local values near output is the fastest path to root cause.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Smart Pointers\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which C++ example is syntactically valid?",
+            "options": [
+              "int total = 3 + 2;",
+              "int total == 3 + 2;",
+              "const total = 3 + 2",
+              "SELECT total FROM data;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for C++ in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Ownership status output\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Smart Pointers Overview\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Ownership status output",
+        "description": "Print text: Memory safe",
+        "starterCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n  // TODO: print Memory safe\n  return 0;\n}",
+        "language": "cpp",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Memory safe",
+            "isHidden": false
+          }
+        ],
+        "hint": "Pay attention to space between words.",
+        "solution": "#include <iostream>\nusing namespace std;\n\nint main() {\n  cout << \"Memory safe\";\n  return 0;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 42,
+      "order": 7
+    }
+  ]
+}

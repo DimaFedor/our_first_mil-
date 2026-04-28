@@ -41,13 +41,13 @@ void main() {
     );
   });
 
-  test('uk locale gracefully falls back for cplusplus lessons', () async {
+  test('uk locale localizes cplusplus lessons', () async {
     final lessons = await LessonLocalizationService.getLocalizedLessons(
       courseId: 'cplusplus',
       uiLocale: const Locale('uk'),
     );
 
     expect(lessons, isNotEmpty);
-    expect(lessons.first.title, 'Welcome to C++');
+    expect(lessons.first.title, 'Ласкаво просимо до C++');
   });
 }
