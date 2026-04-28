@@ -269,11 +269,42 @@ Any missing translation field is resolved in this order:
 2. Runtime auto-translation to the active UI language
 3. Original English lesson content if runtime translation is unavailable
 
+#### Language Coverage
+
+Current translation status (18 courses × 18 UI languages):
+
+| Language | Code | Status | Method |
+|----------|------|--------|--------|
+| English | en | ✓ 18/18 | Built-in |
+| Ukrainian | uk | ✓ 18/18 | Overlay |
+| Spanish | es | ✓ 18/18 | Overlay |
+| German | de | ✓ 18/18 | Overlay |
+| French | fr | ✓ 18/18 | Overlay |
+| Polish | pl | ✓ 18/18 | Overlay |
+| Italian | it | ✓ 18/18 | Overlay |
+| Portuguese | pt | ✓ 18/18 | Overlay |
+| Dutch | nl | ✓ 18/18 | Overlay |
+| Czech | cs | ⏳ Generating | Overlay |
+| Romanian | ro | ⏳ Generating | Overlay |
+| Turkish | tr | ⏳ Generating | Overlay |
+| Swedish | sv | ⏳ Generating | Overlay |
+| Japanese | ja | ⏳ Generating | Overlay |
+| Korean | ko | ⏳ Generating | Overlay |
+| Chinese | zh | ⏳ Generating | Overlay |
+| Hindi | hi | ⏳ Generating | Overlay |
+| Arabic | ar | ⏳ Generating | Overlay |
+
+**Translation Pipeline:**
+- Overlay files in `assets/lessons/<lang>/<courseId>.json` contain pre-translated course content
+- Runtime fallback: if a language/content lacks an overlay, `RuntimeTranslationService` auto-translates via Google Translate API with 429 rate-limit handling
+- English fallback: if runtime translation unavailable, original English content is used
+- All programming keywords (print, self, cout, etc.) are protected from translation
+
 #### Regenerating translations for all current courses
 1. Export English JSON for all configured courses:
-   - `dart run tool/export_lessons_to_json.dart assets/lessons/en`
+   - `dart tool/export_lessons_to_json.dart`
 2. Generate translated overlays for target languages:
-   - `python tool/generate_lesson_translations.py --source-dir assets/lessons/en --assets-dir assets/lessons --languages uk pl`
+   - `python tool/generate_lesson_translations.py --languages uk es de fr pl it pt nl cs ro tr sv ja ko zh hi ar --batch-size 5`
 3. Run `flutter pub get` after adding new language directories/files in `assets/lessons/`.
 
 #### Future courses
