@@ -1,0 +1,1840 @@
+{
+  "courseId": "htmlcss",
+  "lessons": [
+    {
+      "id": "html_lesson_1",
+      "courseId": "html_css",
+      "moduleId": "basics",
+      "title": "Welcome to HTML",
+      "description": "Learn the building blocks of every website",
+      "theorySlides": [
+        {
+          "title": "What is HTML? 🏗️",
+          "content": "HTML (HyperText Markup Language) is the skeleton of every website. It defines the structure and content of web pages.\n\nHTML uses \"tags\" to mark up content:\n• <p> for paragraphs\n• <h1> for headings\n• <img> for images\n• <a> for links",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "HTML Structure",
+          "content": "Every HTML document has a basic structure:",
+          "codeSnippet": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>My Page</title>\n  </head>\n  <body>\n    <h1>Hello World!</h1>\n    <p>Welcome to my website.</p>\n  </body>\n</html>",
+          "codeLanguage": "html",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Tags and Elements",
+          "content": "Most HTML tags come in pairs:\n\n<tagname>content</tagname>\n\n• Opening tag: <p>\n• Content: Hello\n• Closing tag: </p>\n\nSome tags are self-closing: <img />, <br />, <hr />",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What does HTML stand for?",
+            "options": [
+              "HyperText Markup Language",
+              "High Tech Modern Language",
+              "Home Tool Markup Language",
+              "Hyperlink Text Making Language"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "HTML = HyperText Markup Language, the standard for web pages.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which tag creates a paragraph?",
+            "options": [
+              "<paragraph>",
+              "<text>",
+              "<p>",
+              "<para>"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "<p> is the paragraph tag in HTML.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the purpose of the <!DOCTYPE html> declaration?",
+            "options": [
+              "It makes the page colorful",
+              "It tells the browser this is an HTML5 document",
+              "It creates a title",
+              "It is optional and does nothing"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "The <!DOCTYPE html> declaration tells the browser to render the page in HTML5 standards mode.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which section contains metadata like the page title?",
+            "options": [
+              "<body>",
+              "<head>",
+              "<meta>",
+              "<title>"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "The <head> section contains metadata including the <title>, <meta> tags, and links to stylesheets.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Welcome to HTML\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which HTML/CSS example is syntactically valid?",
+            "options": [
+              "<h1>Welcome</h1>",
+              "<h1>Welcome",
+              "color = red;",
+              "SELECT * FROM page;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for HTML/CSS in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Create a Heading\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"What is HTML \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Create a Heading",
+        "description": "Write an h1 heading that says \"Hello, World!\"",
+        "starterCode": "<!-- Write your HTML below -->\n",
+        "language": "html",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Hello, World!",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use <h1>Your text here</h1>",
+        "solution": "<h1>Hello, World!</h1>",
+        "xpReward": 15
+      },
+      "xpReward": 15,
+      "order": 0
+    },
+    {
+      "id": "html_lesson_2",
+      "courseId": "html_css",
+      "moduleId": "basics",
+      "title": "Text Elements",
+      "description": "Learn to format text with HTML",
+      "theorySlides": [
+        {
+          "title": "Headings 📰",
+          "content": "HTML has 6 heading levels, from h1 (largest) to h6 (smallest):\n\n<h1> - Main heading\n<h2> - Section heading\n<h3> - Subsection\n<h4>, <h5>, <h6> - Smaller headings\n\nUse headings to organize your content logically!",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Text Formatting",
+          "content": "Format your text with these tags:",
+          "codeSnippet": "<p>This is a paragraph.</p>\n<strong>Bold text</strong>\n<em>Italic text</em>\n<u>Underlined text</u>\n<mark>Highlighted text</mark>\n<del>Deleted text</del>",
+          "codeLanguage": "html",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Line Breaks & Dividers",
+          "content": "Control spacing with:\n\n<br> - Line break (new line)\n<hr> - Horizontal rule (divider line)\n\nThese are self-closing tags - no closing tag needed!",
+          "codeSnippet": "<p>First line<br>Second line</p>\n<hr>\n<p>After the line</p>",
+          "codeLanguage": "html",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Which is the largest heading?",
+            "options": [
+              "<h6>",
+              "<h1>",
+              "<h3>",
+              "<heading>"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "<h1> is the largest heading, <h6> is the smallest.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How do you make text bold?",
+            "options": [
+              "<bold>",
+              "<b> or <strong>",
+              "<fat>",
+              "<heavy>"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "<strong> (semantic) or <b> (visual) make text bold.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the difference between <strong> and <b>?",
+            "options": [
+              "No difference at all",
+              "<strong> has semantic importance, <b> is just visual",
+              "<strong> is bigger",
+              "<b> is deprecated"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "<strong> indicates semantic importance (for screen readers), while <b> is purely visual formatting.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which tag creates a line break?",
+            "options": [
+              "<break>",
+              "<lb>",
+              "<br>",
+              "<newline>"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "<br> creates a line break without starting a new paragraph.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Why should you use semantic HTML elements?",
+            "options": [
+              "They make pages load faster",
+              "They improve accessibility and SEO",
+              "They add automatic styling",
+              "They are required by all browsers"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Semantic HTML improves accessibility for screen readers and helps search engines understand your content structure.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Text Elements\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which HTML/CSS example is syntactically valid?",
+            "options": [
+              "<h1>Welcome</h1>",
+              "<h1>Welcome",
+              "color = red;",
+              "SELECT * FROM page;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for HTML/CSS in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Format Some Text\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Headings \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Format Some Text",
+        "description": "Create a paragraph with the word \"important\" in bold.",
+        "starterCode": "<!-- Create a paragraph with bold text -->\n",
+        "language": "html",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "important",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use <p> for paragraph and <strong> for bold.",
+        "solution": "<p>This is <strong>important</strong> information.</p>",
+        "xpReward": 15
+      },
+      "xpReward": 20,
+      "order": 1
+    },
+    {
+      "id": "html_lesson_3",
+      "courseId": "html_css",
+      "moduleId": "basics",
+      "title": "Links and Images",
+      "description": "Add links and images to your pages",
+      "theorySlides": [
+        {
+          "title": "Creating Links 🔗",
+          "content": "The <a> tag creates hyperlinks. The href attribute specifies the destination:",
+          "codeSnippet": "<a href=\"https://google.com\">Visit Google</a>\n\n<!-- Open in new tab -->\n<a href=\"https://google.com\" target=\"_blank\">\n  Open in new tab\n</a>",
+          "codeLanguage": "html",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Adding Images 🖼️",
+          "content": "The <img> tag displays images. It's self-closing!",
+          "codeSnippet": "<img src=\"photo.jpg\" alt=\"A beautiful photo\">\n\n<!-- With size -->\n<img src=\"logo.png\" alt=\"Logo\" width=\"200\" height=\"100\">",
+          "codeLanguage": "html",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Image as Link",
+          "content": "You can make an image clickable by wrapping it in a link:",
+          "codeSnippet": "<a href=\"https://example.com\">\n  <img src=\"banner.jpg\" alt=\"Click me!\">\n</a>",
+          "codeLanguage": "html",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What attribute specifies link destination?",
+            "options": [
+              "src",
+              "href",
+              "link",
+              "url"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "href (hypertext reference) specifies where the link goes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does the alt attribute do?",
+            "options": [
+              "Changes image size",
+              "Provides alternative text for accessibility",
+              "Makes image alternate colors",
+              "Nothing important"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "alt provides text description for screen readers and when image fails to load.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How do you open a link in a new tab?",
+            "options": [
+              "target=\"_blank\"",
+              "newtab=\"true\"",
+              "window=\"new\"",
+              "open=\"tab\""
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The target=\"_blank\" attribute opens links in a new browser tab or window.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the correct format for an absolute URL?",
+            "options": [
+              "page.html",
+              "../folder/page.html",
+              "https://example.com/page.html",
+              "/page.html"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "An absolute URL includes the full protocol (https://) and domain name.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Why is the alt attribute important for images?",
+            "options": [
+              "It makes images load faster",
+              "It improves accessibility and SEO",
+              "It changes image quality",
+              "It is not important"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "The alt attribute helps visually impaired users and search engines understand image content.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Links and Images\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which HTML/CSS example is syntactically valid?",
+            "options": [
+              "<h1>Welcome</h1>",
+              "<h1>Welcome",
+              "color = red;",
+              "SELECT * FROM page;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for HTML/CSS in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Create a Link\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Creating Links \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Create a Link",
+        "description": "Create a link to https://flutter.dev with text \"Flutter\"",
+        "starterCode": "<!-- Create your link here -->\n",
+        "language": "html",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Flutter",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use <a href=\"url\">text</a>",
+        "solution": "<a href=\"https://flutter.dev\">Flutter</a>",
+        "xpReward": 15
+      },
+      "xpReward": 20,
+      "order": 2
+    },
+    {
+      "id": "css_lesson_1",
+      "courseId": "html_css",
+      "moduleId": "styling",
+      "title": "Welcome to CSS",
+      "description": "Learn to style your web pages",
+      "theorySlides": [
+        {
+          "title": "What is CSS? 🎨",
+          "content": "CSS (Cascading Style Sheets) controls how HTML elements look.\n\nIf HTML is the skeleton, CSS is the skin, clothes, and makeup!\n\nWith CSS you control:\n• Colors\n• Fonts\n• Spacing\n• Layout\n• Animations",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "CSS Syntax",
+          "content": "CSS rules have a selector and declarations:",
+          "codeSnippet": "selector {\n  property: value;\n  property: value;\n}\n\n/* Example */\nh1 {\n  color: blue;\n  font-size: 24px;\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Adding CSS",
+          "content": "Three ways to add CSS:\n\n1. Inline: <p style=\"color: red;\">\n2. Internal: <style> in <head>\n3. External: separate .css file (best!)",
+          "codeSnippet": "<!-- Internal CSS -->\n<head>\n  <style>\n    p { color: blue; }\n  </style>\n</head>",
+          "codeLanguage": "html",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What does CSS stand for?",
+            "options": [
+              "Cascading Style Sheets",
+              "Creative Style System",
+              "Computer Style Sheets",
+              "Colorful Style Sheets"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "CSS = Cascading Style Sheets.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which is the best way to add CSS?",
+            "options": [
+              "Inline",
+              "Internal",
+              "External file",
+              "All are equal"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "External CSS files are best for maintainability and reusability.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is CSS specificity?",
+            "options": [
+              "How fast CSS loads",
+              "The priority system for conflicting styles",
+              "The size of CSS files",
+              "How specific a color is"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "CSS specificity determines which style rules apply when multiple rules target the same element. Inline > ID > Class > Element.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which CSS selector has the highest specificity?",
+            "options": [
+              "Element selector (p)",
+              "Class selector (.box)",
+              "ID selector (#header)",
+              "Inline style"
+            ],
+            "correctAnswerIndex": 3,
+            "explanation": "Inline styles have the highest specificity, followed by IDs, classes, and element selectors.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does the \"Cascading\" in CSS mean?",
+            "options": [
+              "Styles flow like a waterfall",
+              "Multiple stylesheets can be combined",
+              "Styles cascade from parent to child elements",
+              "All of the above"
+            ],
+            "correctAnswerIndex": 3,
+            "explanation": "Cascading refers to how styles from multiple sources combine, inherit from parent to child, and override each other based on specificity.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Welcome to CSS\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which code example is syntactically valid?",
+            "options": [
+              "value = 3 + 2",
+              "value == 3 + 2",
+              "const value 3 + 2",
+              "SELECT value"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for code in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Color a Heading\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"What is CSS \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Color a Heading",
+        "description": "Write CSS to make h1 elements red.",
+        "starterCode": "/* Write your CSS rule */\n",
+        "language": "css",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "red",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use h1 { color: red; }",
+        "solution": "h1 {\n  color: red;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 25,
+      "order": 3
+    },
+    {
+      "id": "css_lesson_2",
+      "courseId": "html_css",
+      "moduleId": "styling",
+      "title": "Colors and Backgrounds",
+      "description": "Master colors in CSS",
+      "theorySlides": [
+        {
+          "title": "Color Values 🌈",
+          "content": "CSS supports many color formats:\n\n• Named: red, blue, green\n• Hex: #FF0000, #00FF00\n• RGB: rgb(255, 0, 0)\n• RGBA: rgba(255, 0, 0, 0.5)\n• HSL: hsl(0, 100%, 50%)",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Text and Background Colors",
+          "content": "Two main color properties:",
+          "codeSnippet": ".card {\n  color: #333;           /* text color */\n  background-color: #f0f0f0; /* bg color */\n}\n\n.button {\n  color: white;\n  background-color: #007bff;\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Gradients",
+          "content": "Create beautiful gradients:",
+          "codeSnippet": ".gradient-box {\n  background: linear-gradient(\n    to right,\n    #ff6b6b,\n    #4ecdc4\n  );\n}\n\n.radial {\n  background: radial-gradient(\n    circle,\n    white,\n    blue\n  );\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is #FF0000?",
+            "options": [
+              "Green",
+              "Blue",
+              "Red",
+              "Yellow"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "#FF0000 is red (full red, no green, no blue).",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does rgba(0,0,0,0.5) create?",
+            "options": [
+              "Solid black",
+              "Semi-transparent black",
+              "White",
+              "Transparent"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "The 0.5 alpha value makes it 50% transparent.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the difference between RGB and HSL?",
+            "options": [
+              "No difference",
+              "RGB uses red/green/blue, HSL uses hue/saturation/lightness",
+              "HSL is faster",
+              "RGB is deprecated"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "RGB defines colors by mixing red, green, and blue values. HSL uses hue (color), saturation (intensity), and lightness, which is often more intuitive.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How do you create a linear gradient from top to bottom?",
+            "options": [
+              "background: gradient(top, blue, red);",
+              "background: linear-gradient(blue, red);",
+              "gradient: linear(blue, red);",
+              "background-gradient: top-bottom;"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "linear-gradient() creates gradients. Without a direction, it defaults to top-to-bottom.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Colors and Backgrounds\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which code example is syntactically valid?",
+            "options": [
+              "value = 3 + 2",
+              "value == 3 + 2",
+              "const value 3 + 2",
+              "SELECT value"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for code in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Style a Box\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Color Values \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Style a Box",
+        "description": "Create CSS for .box with white text and blue background.",
+        "starterCode": "/* Style the box class */\n",
+        "language": "css",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "blue",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use .box { color: white; background-color: blue; }",
+        "solution": ".box {\n  color: white;\n  background-color: blue;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 4
+    },
+    {
+      "id": "html_lesson_6",
+      "courseId": "html-css",
+      "moduleId": "css-layout",
+      "title": "CSS Box Model",
+      "description": "Understand margins, padding, and borders",
+      "theorySlides": [
+        {
+          "title": "The Box Model 📦",
+          "content": "Every HTML element is a box! The box model consists of:\n\n• Content - The actual text/image\n• Padding - Space around content\n• Border - Line around padding\n• Margin - Space outside border",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Padding",
+          "content": "Padding creates space inside the element, between content and border.",
+          "codeSnippet": ".box {\n  padding: 20px;              /* all sides */\n  padding: 10px 20px;         /* top/bottom, left/right */\n  padding: 10px 20px 15px 5px; /* top, right, bottom, left */\n  padding-top: 10px;          /* specific side */\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Margin",
+          "content": "Margin creates space outside the element, separating it from other elements.",
+          "codeSnippet": ".box {\n  margin: 20px;              /* all sides */\n  margin: 10px auto;         /* center horizontally */\n  margin-bottom: 30px;       /* specific side */\n  margin: 0;                 /* remove default margins */\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Border",
+          "content": "Borders wrap around padding and content.",
+          "codeSnippet": ".box {\n  border: 2px solid black;      /* shorthand */\n  border-width: 2px;\n  border-style: solid;          /* solid, dashed, dotted */\n  border-color: #333;\n  border-radius: 10px;          /* rounded corners */\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What does padding affect?",
+            "options": [
+              "Space outside element",
+              "Space inside element",
+              "Border width",
+              "Font size"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Padding creates space inside the element, between content and border.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How do you center an element horizontally with margin?",
+            "options": [
+              "margin: center;",
+              "margin: 0 auto;",
+              "margin: auto 0;",
+              "margin: middle;"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "margin: 0 auto; sets top/bottom to 0 and left/right to auto, centering the element.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the default box-sizing value?",
+            "options": [
+              "box-sizing: border-box;",
+              "box-sizing: content-box;",
+              "box-sizing: padding-box;",
+              "box-sizing: auto;"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "By default, box-sizing is content-box, where width/height only apply to content. border-box includes padding and border in the dimensions.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What happens when you set box-sizing: border-box?",
+            "options": [
+              "Removes all borders",
+              "Padding and border are included in the element's width/height",
+              "Makes the box bigger",
+              "Changes the border style"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "border-box makes width/height include padding and border, making sizing more predictable.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is margin collapse?",
+            "options": [
+              "When margins get smaller",
+              "When vertical margins between elements combine into one",
+              "When margins disappear",
+              "A CSS error"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Margin collapse occurs when vertical margins of adjacent elements overlap, and the larger margin wins.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"CSS Box Model\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which code example is syntactically valid?",
+            "options": [
+              "value = 3 + 2",
+              "value == 3 + 2",
+              "const value 3 + 2",
+              "SELECT value"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for code in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Style a Card\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"The Box Model \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Style a Card",
+        "description": "Create a CSS class called \"card\" with 20px padding, 10px margin, and a 1px solid gray border.",
+        "starterCode": "/* Style your card */\n.card {\n  \n}",
+        "language": "css",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "padding",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use padding, margin, and border properties.",
+        "solution": ".card {\n  padding: 20px;\n  margin: 10px;\n  border: 1px solid gray;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 5
+    },
+    {
+      "id": "html_lesson_7",
+      "courseId": "html-css",
+      "moduleId": "css-layout",
+      "title": "Flexbox Layout",
+      "description": "Create flexible layouts with CSS Flexbox",
+      "theorySlides": [
+        {
+          "title": "What is Flexbox? 🎯",
+          "content": "Flexbox is a powerful layout system that makes it easy to:\n\n• Align items horizontally or vertically\n• Distribute space between items\n• Create responsive layouts\n• Center content perfectly",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Flex Container",
+          "content": "Enable flexbox by setting display: flex on the parent container.",
+          "codeSnippet": ".container {\n  display: flex;\n  flex-direction: row;     /* row, column */\n  justify-content: center; /* horizontal align */\n  align-items: center;     /* vertical align */\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "justify-content",
+          "content": "Controls alignment along the main axis (horizontal by default).",
+          "codeSnippet": ".container {\n  display: flex;\n  justify-content: flex-start;    /* start */\n  justify-content: flex-end;      /* end */\n  justify-content: center;        /* center */\n  justify-content: space-between; /* spread */\n  justify-content: space-around;  /* equal space */\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Flex Items",
+          "content": "Control how individual items grow, shrink, or align.",
+          "codeSnippet": ".item {\n  flex: 1;           /* grow to fill space */\n  flex-grow: 1;      /* growth factor */\n  flex-shrink: 0;    /* dont shrink */\n  align-self: center; /* override container align */\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "How do you enable Flexbox?",
+            "options": [
+              "flex: true;",
+              "display: flex;",
+              "layout: flex;",
+              "flexbox: on;"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Set display: flex on the container element to enable Flexbox.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which property centers items horizontally in a flex row?",
+            "options": [
+              "align-items: center",
+              "justify-content: center",
+              "text-align: center",
+              "vertical-align: middle"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "justify-content controls alignment along the main axis (horizontal in row direction).",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does flex-direction: column do?",
+            "options": [
+              "Creates multiple columns",
+              "Makes items stack vertically",
+              "Centers items",
+              "Makes items grow"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "flex-direction: column changes the main axis to vertical, making items stack from top to bottom.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does flex: 1 do to a flex item?",
+            "options": [
+              "Makes it 1 pixel wide",
+              "Makes it grow to fill available space",
+              "Makes it disappear",
+              "Makes it the first item"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "flex: 1 makes the item grow to fill available space, with a flex-grow factor of 1.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "When would you use flex-wrap: wrap?",
+            "options": [
+              "To wrap text inside items",
+              "To allow items to wrap to next line when container is too small",
+              "To remove gaps between items",
+              "To center items"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "flex-wrap: wrap allows flex items to wrap to multiple lines instead of shrinking or overflowing.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Flexbox Layout\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which code example is syntactically valid?",
+            "options": [
+              "value = 3 + 2",
+              "value == 3 + 2",
+              "const value 3 + 2",
+              "SELECT value"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for code in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Center Everything\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"What is Flexbox \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Center Everything",
+        "description": "Create a flex container that centers its children both horizontally and vertically.",
+        "starterCode": ".center-box {\n  display: flex;\n  \n}",
+        "language": "css",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "justify-content",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use justify-content and align-items both set to center.",
+        "solution": ".center-box {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 35,
+      "order": 6
+    },
+    {
+      "id": "html_lesson_8",
+      "courseId": "html-css",
+      "moduleId": "css-layout",
+      "title": "CSS Grid Basics",
+      "description": "Build two-dimensional layouts with CSS Grid",
+      "theorySlides": [
+        {
+          "title": "What is CSS Grid? 📐",
+          "content": "CSS Grid is perfect for 2D layouts with rows AND columns.\n\nUse cases:\n• Page layouts\n• Image galleries\n• Card grids\n• Dashboard layouts",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Grid Container",
+          "content": "Enable grid and define columns and rows.",
+          "codeSnippet": ".grid {\n  display: grid;\n  grid-template-columns: 1fr 1fr 1fr; /* 3 equal cols */\n  grid-template-rows: 100px 200px;    /* 2 rows */\n  gap: 20px;                          /* spacing */\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Grid Units",
+          "content": "Different ways to size grid tracks.",
+          "codeSnippet": ".grid {\n  /* Fixed pixels */\n  grid-template-columns: 200px 200px;\n  \n  /* Fractional units (proportional) */\n  grid-template-columns: 1fr 2fr;  /* 1:2 ratio */\n  \n  /* Repeat function */\n  grid-template-columns: repeat(3, 1fr);\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Placing Items",
+          "content": "Control where items appear in the grid.",
+          "codeSnippet": ".item {\n  grid-column: 1 / 3;  /* span cols 1-2 */\n  grid-row: 1 / 2;     /* row 1 only */\n  \n  /* Shorthand */\n  grid-area: 1 / 1 / 2 / 3;\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What does \"1fr\" mean in CSS Grid?",
+            "options": [
+              "1 pixel",
+              "1 percent",
+              "1 fraction of available space",
+              "1 row"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "fr is a fractional unit that divides available space proportionally.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How do you create 4 equal columns?",
+            "options": [
+              "grid-columns: 4",
+              "grid-template-columns: repeat(4, 1fr)",
+              "columns: 4",
+              "grid: 4-col"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "repeat(4, 1fr) creates 4 columns, each taking 1 fraction of space.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the purpose of the gap property in Grid?",
+            "options": [
+              "Creates gaps in text",
+              "Sets spacing between grid items",
+              "Removes grid lines",
+              "Makes items transparent"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "The gap property (or grid-gap) sets spacing between rows and columns in a grid layout.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does grid-column: 1 / 3 mean?",
+            "options": [
+              "Create 1 to 3 columns",
+              "Item spans from column line 1 to 3",
+              "Item is in column 1 or 3",
+              "Divide column by 3"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "grid-column: 1 / 3 makes the item span from grid line 1 to line 3, covering 2 columns.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "When should you use Grid instead of Flexbox?",
+            "options": [
+              "Grid is always better",
+              "For complex 2D layouts with rows AND columns",
+              "For simple one-dimensional layouts",
+              "They are identical"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Use Grid for 2D layouts where you need control over both rows and columns. Use Flexbox for simpler 1D layouts.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"CSS Grid Basics\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which code example is syntactically valid?",
+            "options": [
+              "value = 3 + 2",
+              "value == 3 + 2",
+              "const value 3 + 2",
+              "SELECT value"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for code in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Create a Grid\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"What is CSS Grid \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Create a Grid",
+        "description": "Create a grid with 3 equal columns and 20px gap between items.",
+        "starterCode": ".gallery {\n  display: grid;\n  \n}",
+        "language": "css",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "repeat",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use grid-template-columns with repeat() and gap.",
+        "solution": ".gallery {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 20px;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 35,
+      "order": 7
+    },
+    {
+      "id": "html_lesson_9",
+      "courseId": "html-css",
+      "moduleId": "responsive",
+      "title": "Responsive Design",
+      "description": "Make your websites work on all screen sizes",
+      "theorySlides": [
+        {
+          "title": "Why Responsive? 📱",
+          "content": "Users browse on many devices:\n\n• Desktop computers (1920px+)\n• Laptops (1024-1920px)\n• Tablets (768-1024px)\n• Phones (320-768px)\n\nYour design must adapt to all of them!",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Viewport Meta Tag",
+          "content": "Essential for mobile browsers to render correctly.",
+          "codeSnippet": "<!-- In your HTML <head> -->\n<meta name=\"viewport\" \n      content=\"width=device-width, initial-scale=1.0\">",
+          "codeLanguage": "html",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Media Queries",
+          "content": "Apply different styles based on screen size.",
+          "codeSnippet": "/* Default styles for mobile */\n.container {\n  width: 100%;\n}\n\n/* Styles for tablets and up */\n@media (min-width: 768px) {\n  .container {\n    width: 750px;\n  }\n}\n\n/* Styles for desktop */\n@media (min-width: 1200px) {\n  .container {\n    width: 1140px;\n  }\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Mobile-First Approach",
+          "content": "Start with mobile styles, then add complexity for larger screens.",
+          "codeSnippet": "/* Mobile-first: single column */\n.grid {\n  display: flex;\n  flex-direction: column;\n}\n\n/* Tablet: 2 columns */\n@media (min-width: 768px) {\n  .grid {\n    flex-direction: row;\n    flex-wrap: wrap;\n  }\n  .item { width: 50%; }\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What does the viewport meta tag do?",
+            "options": [
+              "Makes text bigger",
+              "Controls page width on mobile",
+              "Adds animations",
+              "Changes colors"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "The viewport meta tag tells mobile browsers how to render the page width.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the mobile-first approach?",
+            "options": [
+              "Only support mobile",
+              "Design mobile last",
+              "Start with mobile, add for larger screens",
+              "Ignore mobile"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Mobile-first means writing base styles for mobile, then using media queries to enhance for larger screens.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does min-width in a media query mean?",
+            "options": [
+              "Maximum screen size",
+              "Applies styles when screen is AT LEAST this wide",
+              "Minimum font size",
+              "Minimum margin"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "@media (min-width: 768px) means \"apply these styles when the viewport is 768px or wider\".",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What are common responsive breakpoints?",
+            "options": [
+              "100px, 200px, 300px",
+              "480px (mobile), 768px (tablet), 1024px (desktop)",
+              "Only 1920px",
+              "Breakpoints are not needed"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Common breakpoints target mobile (~480px), tablet (~768px), and desktop (~1024px+) devices.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Why use relative units (%, em, rem) instead of pixels for responsive design?",
+            "options": [
+              "They look cooler",
+              "They adapt better to different screen sizes and user preferences",
+              "They load faster",
+              "Pixels are deprecated"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Relative units scale proportionally and respect user accessibility settings, making designs more flexible and accessible.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Responsive Design\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which code example is syntactically valid?",
+            "options": [
+              "value = 3 + 2",
+              "value == 3 + 2",
+              "const value 3 + 2",
+              "SELECT value"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for code in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Write a Media Query\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Why Responsive \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Write a Media Query",
+        "description": "Write a media query that changes .box width to 500px on screens 768px or wider.",
+        "starterCode": ".box {\n  width: 100%;\n}\n\n/* Add media query below */\n",
+        "language": "css",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "@media",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use @media (min-width: 768px) { ... }",
+        "solution": ".box {\n  width: 100%;\n}\n\n@media (min-width: 768px) {\n  .box {\n    width: 500px;\n  }\n}",
+        "xpReward": 15
+      },
+      "xpReward": 40,
+      "order": 8
+    },
+    {
+      "id": "html_lesson_10",
+      "courseId": "html-css",
+      "moduleId": "animations",
+      "title": "CSS Transitions & Animations",
+      "description": "Add motion and interactivity to your designs",
+      "theorySlides": [
+        {
+          "title": "CSS Transitions ✨",
+          "content": "Transitions smoothly animate changes between two states.\n\nUse for:\n• Hover effects\n• Focus states\n• Color changes\n• Size changes",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Transition Properties",
+          "content": "Control what animates and how.",
+          "codeSnippet": ".button {\n  background: blue;\n  transition: background 0.3s ease;\n}\n\n.button:hover {\n  background: darkblue;\n}\n\n/* Multiple properties */\n.card {\n  transition: transform 0.3s, box-shadow 0.3s;\n}\n\n.card:hover {\n  transform: translateY(-5px);\n  box-shadow: 0 10px 20px rgba(0,0,0,0.2);\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "CSS Animations",
+          "content": "For more complex, multi-step animations, use @keyframes.",
+          "codeSnippet": "@keyframes pulse {\n  0% {\n    transform: scale(1);\n  }\n  50% {\n    transform: scale(1.1);\n  }\n  100% {\n    transform: scale(1);\n  }\n}\n\n.heart {\n  animation: pulse 1s infinite;\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Animation Properties",
+          "content": "Fine-tune your animations.",
+          "codeSnippet": ".element {\n  animation-name: slide-in;\n  animation-duration: 0.5s;\n  animation-timing-function: ease-out;\n  animation-delay: 0.2s;\n  animation-iteration-count: 1;\n  animation-fill-mode: forwards;\n  \n  /* Shorthand */\n  animation: slide-in 0.5s ease-out 0.2s forwards;\n}",
+          "codeLanguage": "css",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the difference between transition and animation?",
+            "options": [
+              "No difference",
+              "Transition needs 2 states, animation uses keyframes",
+              "Animation is faster",
+              "Transition is for colors only"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Transitions animate between two states, while animations use @keyframes for complex multi-step sequences.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does \"infinite\" do in animation-iteration-count?",
+            "options": [
+              "Run once",
+              "Run twice",
+              "Loop forever",
+              "Stop animation"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "infinite makes the animation repeat indefinitely.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the purpose of animation-timing-function?",
+            "options": [
+              "Sets animation duration",
+              "Controls the speed curve of the animation",
+              "Delays the animation",
+              "Names the animation"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "animation-timing-function (ease, linear, ease-in, ease-out, etc.) controls how the animation progresses over time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "When should you use transitions vs animations?",
+            "options": [
+              "They are the same",
+              "Transitions for simple 2-state changes, animations for complex sequences",
+              "Always use animations",
+              "Transitions are deprecated"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Use transitions for simple state changes (hover effects). Use @keyframes animations for multi-step, complex motion.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does animation-fill-mode: forwards do?",
+            "options": [
+              "Plays animation forward",
+              "Keeps the final animation state after completion",
+              "Moves element forward",
+              "Increases speed"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "forwards makes the element retain the styles from the last keyframe after the animation completes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"CSS Transitions & Animations\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which code example is syntactically valid?",
+            "options": [
+              "value = 3 + 2",
+              "value == 3 + 2",
+              "const value 3 + 2",
+              "SELECT value"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for code in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Add a Hover Effect\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"CSS Transitions \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Add a Hover Effect",
+        "description": "Make a button that smoothly changes background color on hover over 0.3 seconds.",
+        "starterCode": ".button {\n  background: #3498db;\n  color: white;\n  padding: 10px 20px;\n  /* Add transition */\n}\n\n.button:hover {\n  background: #2980b9;\n}",
+        "language": "css",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "transition",
+            "isHidden": false
+          }
+        ],
+        "hint": "Add transition: background 0.3s; to .button",
+        "solution": ".button {\n  background: #3498db;\n  color: white;\n  padding: 10px 20px;\n  transition: background 0.3s;\n}\n\n.button:hover {\n  background: #2980b9;\n}",
+        "xpReward": 15
+      },
+      "xpReward": 45,
+      "order": 9
+    }
+  ]
+}

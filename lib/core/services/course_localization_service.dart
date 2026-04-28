@@ -460,10 +460,18 @@ class CourseLocalizationService {
       return localizedText;
     }
 
-    return RuntimeTranslationService.translateText(
-      text: fallbackText,
-      targetLanguageCode: languageCode,
-    );
+    try {
+      return await RuntimeTranslationService.translateText(
+        text: fallbackText,
+        targetLanguageCode: languageCode,
+      );
+    } catch (e) {
+      // If runtime translation fails, fall back to the fallback text
+      debugPrint(
+        'Runtime translation failed for "$languageCode": $e. Using fallback text.',
+      );
+      return fallbackText;
+    }
   }
 
   static _CourseDefinition _buildFallbackDefinition(String courseId) {

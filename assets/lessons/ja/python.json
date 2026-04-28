@@ -1,0 +1,1867 @@
+{
+  "courseId": "python",
+  "lessons": [
+    {
+      "id": "python_lesson_1",
+      "courseId": "python",
+      "moduleId": "basics",
+      "title": "Welcome to Python",
+      "description": "Your first steps into the world of Python programming",
+      "theorySlides": [
+        {
+          "title": "What is Python? 🐍",
+          "content": "Python is one of the world's most popular programming languages. It's used by companies like Google, Netflix, and Instagram to build amazing software.\n\nPython is known for being:\n• Easy to read and write\n• Powerful yet simple\n• Perfect for beginners\n• Used everywhere: web development, data science, AI, and more!",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Why Choose Python?",
+          "content": "Python was designed to be simple and readable. Unlike other programming languages that use lots of symbols and brackets, Python uses plain English words.\n\nPython powers:\n🌐 Websites (Instagram, Pinterest)\n🤖 AI and Machine Learning (Tesla, Spotify)\n📊 Data Analysis (Netflix recommendations)\n🎮 Games (Civilization IV)",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Your First Python Program",
+          "content": "Every programmer starts with \"Hello, World!\" - a simple program that displays text on the screen.",
+          "codeSnippet": "print(\"Hello, World!\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What makes Python special compared to other programming languages?",
+            "options": [
+              "It's easy to read and write",
+              "It only works on Windows",
+              "It's the fastest language",
+              "It can only build games"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Python's main strength is its readability and simplicity, making it perfect for beginners while still being powerful enough for experts.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which command displays text in Python?",
+            "options": [
+              "show()",
+              "display()",
+              "print()",
+              "write()"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "The print() function is used to display text output in Python.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What punctuation must surround text in print()?",
+            "options": [
+              "Square brackets []",
+              "Curly braces {}",
+              "Quotes \"\" or ''",
+              "Parentheses ()"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Text (strings) in Python must be wrapped in quotes - either single '' or double \"\".",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which company uses Python?",
+            "options": [
+              "Google",
+              "Netflix",
+              "Instagram",
+              "All of the above"
+            ],
+            "correctAnswerIndex": 3,
+            "explanation": "Python is used by many major companies including Google, Netflix, Instagram, Spotify, and more!",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Python is called an interpreted language. What does that mean?",
+            "options": [
+              "Code is executed line by line by an interpreter",
+              "Code is only executed after manual translation to C",
+              "Code can only run inside a browser",
+              "Code cannot be reused in projects"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Python code is run by an interpreter, which executes it directly without a separate compile step in day-to-day workflows.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What defines a code block in Python instead of curly braces {}?",
+            "options": [
+              "Indentation",
+              "Semicolons",
+              "Parentheses",
+              "Comments"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Python uses indentation to define blocks, making structure explicit and readable.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which command installs a third-party Python package?",
+            "options": [
+              "pip install requests",
+              "python add requests",
+              "npm install requests",
+              "apt python requests"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "pip is Python’s package manager, and pip install installs packages from package indexes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the output type of this expression: 3.14?",
+            "options": [
+              "int",
+              "str",
+              "float",
+              "bool"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Values with a decimal point are floating-point numbers (float).",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Why is Python often recommended for beginners?",
+            "options": [
+              "Readable syntax and strong ecosystem",
+              "No need to understand logic",
+              "It only supports small scripts",
+              "It has no errors at runtime"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Python’s clean syntax and rich libraries make learning and building projects easier.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the common file extension for Python files?",
+            "options": [
+              ".pt",
+              ".py",
+              ".python",
+              ".px"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Python source files are typically saved with the .py extension.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Say Hello!",
+        "description": "Write a program that displays \"Hello, Python!\" to the screen.",
+        "starterCode": "# Write your code below\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Hello, Python!",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use the print() function to display text. Remember to put your text in quotes!",
+        "solution": "print(\"Hello, Python!\")",
+        "xpReward": 15
+      },
+      "xpReward": 15,
+      "order": 0
+    },
+    {
+      "id": "python_lesson_2",
+      "courseId": "python",
+      "moduleId": "basics",
+      "title": "Variables - Storing Information",
+      "description": "Learn how to store and use data in your programs",
+      "theorySlides": [
+        {
+          "title": "What are Variables? 📦",
+          "content": "Think of variables like labeled boxes that store information. You can put different types of data in these boxes and use them later.\n\nFor example:\n• A box labeled \"name\" might contain \"Alice\"\n• A box labeled \"age\" might contain 25\n• A box labeled \"is_student\" might contain True",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Creating Variables",
+          "content": "In Python, creating a variable is super simple! You just write the name, an equals sign, and the value.",
+          "codeSnippet": "name = \"Alex\"\nage = 20\nheight = 5.8\nis_student = True",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Types of Data",
+          "content": "Python automatically understands different types of data:\n\n• Text (String): \"Hello\", \"Python\", \"123 Main St\"\n• Numbers (Integer): 5, 42, -10, 0\n• Decimal Numbers (Float): 3.14, 2.5, -1.2\n• True/False (Boolean): True, False",
+          "codeSnippet": "message = \"Welcome!\"  # Text\nscore = 100          # Whole number\nprice = 19.99        # Decimal\nis_open = True       # True/False",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Using Variables",
+          "content": "Once you create a variable, you can use it anywhere in your program by writing its name.",
+          "codeSnippet": "player_name = \"Maya\"\npoints = 150\n\nprint(\"Player:\", player_name)\nprint(\"Points:\", points)\nprint(\"Great job\", player_name, \"!\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "How do you create a variable called \"score\" with the value 100?",
+            "options": [
+              "create score = 100",
+              "score = 100",
+              "var score = 100",
+              "score := 100"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "In Python, you create variables using the assignment operator (=). Just write: score = 100",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What type of data is \"Hello World\"?",
+            "options": [
+              "Integer",
+              "Float",
+              "String",
+              "Boolean"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Text in quotes is called a String. \"Hello World\" is a string because it contains text characters.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which of these is a valid variable name?",
+            "options": [
+              "2name",
+              "my-age",
+              "player_score",
+              "print"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Variable names can contain letters, numbers, and underscores, but cannot start with a number or contain hyphens.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the value of x after: x = 5; x = 10?",
+            "options": [
+              "5",
+              "10",
+              "15",
+              "Error"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Variables can be reassigned. The second assignment (x = 10) replaces the first value.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What type is the value True?",
+            "options": [
+              "String",
+              "Integer",
+              "Boolean",
+              "Float"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "True and False are Boolean values - they represent yes/no or on/off states.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which variable name follows Python naming conventions?",
+            "options": [
+              "2score",
+              "user_name_2",
+              "user-name",
+              "class"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Use letters, numbers, and underscores; don’t start with a number or use keywords.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the difference between = and == in Python?",
+            "options": [
+              "= assigns a value, == compares values",
+              "= compares values, == assigns a value",
+              "Both do assignment",
+              "Both do comparison only"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "= is assignment, while == checks equality.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is y after this code? x = 10; y = x; x = 20",
+            "options": [
+              "20",
+              "10",
+              "0",
+              "Error"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "y stores the value x had at assignment time, so y remains 10.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What type is the value True in Python?",
+            "options": [
+              "str",
+              "int",
+              "bool",
+              "float"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "True and False are boolean values (bool).",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How do you convert the string \"42\" to an integer?",
+            "options": [
+              "number(\"42\")",
+              "int(\"42\")",
+              "str(42)",
+              "float_to_int(\"42\")"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "int(\"42\") parses the numeric string and returns the integer 42.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Personal Info Card",
+        "description": "Create two variables:\n• name = \"Alex\"\n• age = 25\n\nThen print each on separate lines:\nName: Alex\nAge: 25",
+        "starterCode": "# Step 1: Create variables\nname = # add \"Alex\" here\nage = # add 25 here\n\n# Step 2: Print them\nprint(\"Name:\", name)\nprint(\"Age:\", age)",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Name: Alex\nAge: 25",
+            "isHidden": false
+          }
+        ],
+        "hint": "Replace the comments with values: name = \"Alex\" (with quotes for text) and age = 25 (no quotes for numbers).",
+        "solution": "name = \"Alex\"\nage = 25\n\nprint(\"Name:\", name)\nprint(\"Age:\", age)",
+        "xpReward": 15
+      },
+      "xpReward": 20,
+      "order": 1
+    },
+    {
+      "id": "python_lesson_3",
+      "courseId": "python",
+      "moduleId": "basics",
+      "title": "Math in Python",
+      "description": "Learn to do calculations and work with numbers",
+      "theorySlides": [
+        {
+          "title": "Python is a Great Calculator! 🔢",
+          "content": "Python can perform all basic math operations and much more. You can use it like a powerful calculator!",
+          "codeSnippet": "print(5 + 3)    # Addition: 8\nprint(10 - 4)   # Subtraction: 6\nprint(6 * 7)    # Multiplication: 42\nprint(15 / 3)   # Division: 5.0",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Math with Variables",
+          "content": "You can use variables in math operations, making your calculations dynamic and reusable.",
+          "codeSnippet": "price = 25\nquantity = 3\ntotal = price * quantity\n\nprint(\"Total cost:\", total)  # Total cost: 75",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Special Math Operations",
+          "content": "Python has some special math operators that are really useful:",
+          "codeSnippet": "print(10 ** 2)   # Power: 10 squared = 100\nprint(17 // 5)   # Floor division: 3\nprint(17 % 5)    # Modulo (remainder): 2",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Updating Variables",
+          "content": "You can change a variable's value by assigning it a new value. You can even use the variable's current value to calculate the new one!",
+          "codeSnippet": "score = 100\nprint(\"Current score:\", score)\n\nscore = score + 50  # Add 50 points\nprint(\"New score:\", score)\n\n# Shortcut: score += 50 does the same thing",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What does 10 ** 3 equal in Python?",
+            "options": [
+              "30",
+              "103",
+              "1000",
+              "13"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "** is the power operator. 10 ** 3 means 10 to the power of 3, which is 10 × 10 × 10 = 1000.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If x = 5, what will x += 3 make x equal to?",
+            "options": [
+              "5",
+              "8",
+              "3",
+              "53"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "x += 3 is shorthand for x = x + 3. So if x starts at 5, it becomes 5 + 3 = 8.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does the % operator do?",
+            "options": [
+              "Calculates percentage",
+              "Finds the remainder after division",
+              "Multiplies by 100",
+              "Converts to decimal"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "The % operator (modulo) returns the remainder after division. For example, 17 % 5 = 2.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is 15 // 4 in Python?",
+            "options": [
+              "3.75",
+              "3",
+              "4",
+              "3.7"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "// is floor division - it divides and rounds down to the nearest whole number. 15 / 4 = 3.75, but 15 // 4 = 3.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which operator has the highest priority (executes first)?",
+            "options": [
+              "+ (addition)",
+              "* (multiplication)",
+              "** (power)",
+              "- (subtraction)"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Python follows math order of operations: ** (power) is calculated first, then * and /, then + and -.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the result of: 2 + 3 * 4?",
+            "options": [
+              "20",
+              "14",
+              "24",
+              "11"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Multiplication has higher precedence, so 3 * 4 is done before addition.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the difference between / and // in Python?",
+            "options": [
+              "/ returns float division, // returns floor division",
+              "/ returns integer division, // returns float division",
+              "They are identical",
+              "/ is for strings, // is for numbers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "/ keeps decimals, while // floors the result to an integer-like value.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which expression checks if n is even?",
+            "options": [
+              "n % 2 == 0",
+              "n / 2 == 0",
+              "n // 2 == 0",
+              "n ** 2 == 0"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "An even number leaves remainder 0 when divided by 2.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is round(3.14159, 2)?",
+            "options": [
+              "3.14",
+              "3.1",
+              "3.142",
+              "3"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "round(value, 2) keeps two digits after the decimal point.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does abs(-9) return?",
+            "options": [
+              "-9",
+              "9",
+              "0",
+              "Error"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "abs returns the absolute (non-negative) magnitude of a number.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Calculate Circle Area",
+        "description": "Given a radius, calculate the area of a circle using the formula: area = 3.14 * radius * radius",
+        "starterCode": "# Given radius\nradius = 5\n\n# Calculate area (use 3.14 for pi)\narea = \n\nprint(\"Area:\", area)",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Area: 78.5",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use the formula: area = 3.14 * radius * radius. Remember that radius * radius is the same as radius ** 2.",
+        "solution": "radius = 5\narea = 3.14 * radius * radius\nprint(\"Area:\", area)",
+        "xpReward": 15
+      },
+      "xpReward": 20,
+      "order": 2
+    },
+    {
+      "id": "python_lesson_4",
+      "courseId": "python",
+      "moduleId": "basics",
+      "title": "Working with Text",
+      "description": "Master text manipulation and string operations",
+      "theorySlides": [
+        {
+          "title": "Strings are Powerful! 📝",
+          "content": "In programming, text is called a \"string\" because it's like a string of characters tied together. Python has many tools to work with text.",
+          "codeSnippet": "message = \"Hello, World!\"\nname = \"Python\"\nsentence = \"Learning \" + name + \" is fun!\"",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Combining Text (Concatenation)",
+          "content": "You can join strings together using the + operator, just like adding numbers!",
+          "codeSnippet": "first_name = \"John\"\nlast_name = \"Doe\"\nfull_name = first_name + \" \" + last_name\n\nprint(full_name)  # John Doe",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Useful String Methods",
+          "content": "Strings come with built-in \"methods\" - special functions that can transform them:",
+          "codeSnippet": "text = \"Hello World\"\n\nprint(text.upper())     # HELLO WORLD\nprint(text.lower())     # hello world\nprint(text.title())     # Hello World\nprint(len(text))        # 11 (length)",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "F-strings: The Modern Way",
+          "content": "F-strings are the most elegant way to combine text and variables in Python:",
+          "codeSnippet": "name = \"Alice\"\nage = 30\nscore = 95.5\n\n# Old way:\nmessage1 = \"Hi \" + name + \", you are \" + str(age)\n\n# F-string way (modern):\nmessage2 = f\"Hi {name}, you are {age} years old!\"\nmessage3 = f\"Your score is {score}%\"",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "How do you combine \"Hello\" and \"World\" with a space between?",
+            "options": [
+              "\"Hello\" + \"World\"",
+              "\"Hello\" + \" \" + \"World\"",
+              "\"Hello\" & \" \" & \"World\"",
+              "\"Hello\" * \"World\""
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "To combine strings with a space, use: \"Hello\" + \" \" + \"World\" which gives \"Hello World\".",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does \"python\".upper() return?",
+            "options": [
+              "\"PYTHON\"",
+              "\"Python\"",
+              "\"python\"",
+              "Error"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The .upper() method converts all letters to uppercase, so \"python\" becomes \"PYTHON\".",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which is an f-string?",
+            "options": [
+              "\"Hello \" + name",
+              "f\"Hello {name}\"",
+              "\"Hello {name}\"",
+              "\"Hello %s\" % name"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "F-strings start with f and use {variable_name} syntax: f\"Hello {name}\"",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does len(\"Python\") return?",
+            "options": [
+              "5",
+              "6",
+              "7",
+              "Error"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "len() returns the number of characters in a string. \"Python\" has 6 characters.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How do you get the first character of text = \"Hello\"?",
+            "options": [
+              "text.first()",
+              "text[0]",
+              "text[1]",
+              "text.get(0)"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Use square brackets with index. In Python, indexing starts at 0, so text[0] is the first character.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is \"Python\"[1:4]?",
+            "options": [
+              "Pyt",
+              "yth",
+              "tho",
+              "Python"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Slicing starts at index 1 and stops before index 4: y, t, h.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does \"  hi  \".strip() return?",
+            "options": [
+              "\"  hi  \"",
+              "\"hi\"",
+              "\"  hi\"",
+              "\"hi  \""
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "strip removes leading and trailing whitespace from a string.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does \"a,b,c\".split(\",\") return?",
+            "options": [
+              "[\"a,b,c\"]",
+              "[\"a\", \"b\", \"c\"]",
+              "\"a b c\"",
+              "(\"a\", \"b\", \"c\")"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "split creates a list by cutting the string at each separator.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is \"-\".join([\"A\", \"B\", \"C\"])?",
+            "options": [
+              "ABC-",
+              "A-B-C",
+              "[\"A-B-C\"]",
+              "A B C"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "join places the separator between each list element.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What happens with: s = \"hello\"; s[0] = \"H\"?",
+            "options": [
+              "String changes to \"Hello\"",
+              "TypeError because strings are immutable",
+              "It silently does nothing",
+              "It creates a new list"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Strings cannot be modified in place; create a new string instead.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Build a Username",
+        "description": "Create a username by combining first name, last name initial, and birth year.",
+        "starterCode": "first_name = \"john\"\nlast_name = \"doe\"\nbirth_year = 1995\n\n# Create username: firstname + first letter of lastname + year\n# Example: john + d + 1995 = \"johnd1995\"\nusername = \n\nprint(username)",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "johnd1995",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use string concatenation (+) or an f-string. To get the first letter of last_name, use last_name[0]. Convert birth_year to string with str().",
+        "solution": "first_name = \"john\"\nlast_name = \"doe\"\nbirth_year = 1995\n\nusername = first_name + last_name[0] + str(birth_year)\nprint(username)",
+        "xpReward": 15
+      },
+      "xpReward": 25,
+      "order": 3
+    },
+    {
+      "id": "python_lesson_5",
+      "courseId": "python",
+      "moduleId": "control_flow",
+      "title": "Making Decisions",
+      "description": "Learn how programs make choices using if statements",
+      "theorySlides": [
+        {
+          "title": "Programs That Think! 🤔",
+          "content": "Real programs need to make decisions based on different situations. The \"if\" statement lets your program choose what to do.\n\nThink of it like:\n\"IF it's raining, bring an umbrella\"\n\"IF the score is high, show congratulations\"",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Basic If Statement",
+          "content": "The if statement checks if something is true, then runs code only if it is:",
+          "codeSnippet": "age = 18\n\nif age >= 18:\n    print(\"You can vote!\")\n    print(\"Welcome to adulthood!\")\n\nprint(\"This always runs\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "If-Else: Two Choices",
+          "content": "Use else to handle the case when the condition is false:",
+          "codeSnippet": "temperature = 25\n\nif temperature > 30:\n    print(\"It's hot! Stay hydrated.\")\nelse:\n    print(\"Nice weather today!\")\n    print(\"Perfect for a walk.\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Multiple Conditions",
+          "content": "Use elif (else if) to check multiple conditions:",
+          "codeSnippet": "score = 85\n\nif score >= 90:\n    grade = \"A\"\nelif score >= 80:\n    grade = \"B\"\nelif score >= 70:\n    grade = \"C\"\nelse:\n    grade = \"Need more practice\"\n\nprint(f\"Your grade: {grade}\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        },
+        {
+          "title": "Comparison Operators",
+          "content": "These operators help you compare values:",
+          "codeSnippet": "# Comparison operators\nprint(5 == 5)    # Equal to: True\nprint(5 != 3)    # Not equal: True\nprint(7 > 5)     # Greater than: True\nprint(4 < 8)     # Less than: True\nprint(5 >= 5)    # Greater or equal: True\nprint(3 <= 10)   # Less or equal: True",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 4
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What happens if the condition in an if statement is false?",
+            "options": [
+              "The program crashes",
+              "The code inside the if block is skipped",
+              "The code runs anyway",
+              "Python shows an error"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "When an if condition is false, Python skips all the code inside that if block.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does the == operator do?",
+            "options": [
+              "Assigns a value",
+              "Checks if two values are equal",
+              "Adds two numbers",
+              "Prints a value"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "== checks if two values are equal and returns True or False. Don't confuse it with = which assigns values.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which keyword is used for \"otherwise\" in Python?",
+            "options": [
+              "otherwise",
+              "else",
+              "then",
+              "endif"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "The \"else\" keyword handles the case when the if condition is false.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What happens if no condition is True and there is no else?",
+            "options": [
+              "Error",
+              "Nothing happens",
+              "Program crashes",
+              "Prints None"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "If no condition matches and there is no else block, Python simply skips the entire if statement.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which operator means \"not equal\"?",
+            "options": [
+              "<>",
+              "!=",
+              "=/=",
+              "<!="
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "!= checks if two values are NOT equal. Example: 5 != 3 returns True.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the result of: (5 > 2) and (3 < 1)?",
+            "options": [
+              "True",
+              "False",
+              "1",
+              "Error"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "The first condition is True, the second is False; True and False is False.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does \"py\" in \"python\" evaluate to?",
+            "options": [
+              "False",
+              "True",
+              "Error",
+              "None"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "The in operator checks membership, and \"py\" is a substring of \"python\".",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which expression is Python’s ternary conditional form?",
+            "options": [
+              "age >= 18 ? \"adult\" : \"minor\"",
+              "\"adult\" if age >= 18 else \"minor\"",
+              "if age >= 18 then \"adult\" else \"minor\"",
+              "choose(age >= 18, \"adult\", \"minor\")"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Python uses value_if_true if condition else value_if_false.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Why does the order of if / elif conditions matter?",
+            "options": [
+              "Python checks all branches and picks random one",
+              "First matching branch runs, later branches are skipped",
+              "elif runs before if",
+              "Order only matters with else"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Python evaluates top to bottom and executes the first true branch.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does not (4 > 1) evaluate to?",
+            "options": [
+              "True",
+              "False",
+              "4",
+              "Error"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "4 > 1 is True, and not True becomes False.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Age Category Checker",
+        "description": "Write a program that categorizes people by age: Child (0-12), Teen (13-19), Adult (20-64), Senior (65+)",
+        "starterCode": "age = 16\n\n# Write if-elif-else statements to categorize the age\n# Print the appropriate category\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Teen",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use if-elif-else with age ranges. Check from youngest to oldest or use appropriate comparison operators.",
+        "solution": "age = 16\n\nif age <= 12:\n    print(\"Child\")\nelif age <= 19:\n    print(\"Teen\")\nelif age <= 64:\n    print(\"Adult\")\nelse:\n    print(\"Senior\")",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 4
+    },
+    {
+      "id": "python_lesson_6",
+      "courseId": "python",
+      "moduleId": "data-structures",
+      "title": "Working with Lists",
+      "description": "Learn to store multiple items in ordered collections",
+      "theorySlides": [
+        {
+          "title": "What are Lists? 📝",
+          "content": "Lists let you store multiple items in a single variable. They are ordered, changeable, and allow duplicate values.\n\nReal-world examples:\n• Shopping list\n• Playlist of songs\n• List of high scores\n• Todo items",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Creating Lists",
+          "content": "Lists are created using square brackets [], with items separated by commas.",
+          "codeSnippet": "fruits = [\"apple\", \"banana\", \"cherry\"]\nnumbers = [1, 2, 3, 4, 5]\nmixed = [1, \"hello\", True, 3.14]\n\nprint(fruits)",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Accessing List Items",
+          "content": "Access items by their index number. Python uses zero-based indexing (first item is 0).",
+          "codeSnippet": "fruits = [\"apple\", \"banana\", \"cherry\"]\n\nprint(fruits[0])   # apple\nprint(fruits[1])   # banana\nprint(fruits[-1])  # cherry (last item)",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "List Methods",
+          "content": "Python provides many built-in methods to modify lists.",
+          "codeSnippet": "fruits = [\"apple\", \"banana\"]\n\n# Add item\nfruits.append(\"cherry\")\n\n# Remove item\nfruits.remove(\"banana\")\n\n# Sort list\nfruits.sort()\n\nprint(fruits)",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Which index accesses the first element?",
+            "options": [
+              "0",
+              "1",
+              "-1",
+              "first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Python uses zero-based indexing: index 0 is the first element.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which method adds an item to the end?",
+            "options": [
+              "add()",
+              "append()",
+              "push()",
+              "insert()"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "append() adds a single item to the end of a list.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does fruits[-1] return if fruits = [\"a\", \"b\", \"c\"]?",
+            "options": [
+              "\"a\"",
+              "\"b\"",
+              "\"c\"",
+              "Error"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Negative indexing starts from the end. -1 is the last item, -2 is second to last, etc.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How do you change the second item in a list?",
+            "options": [
+              "list[2] = value",
+              "list[1] = value",
+              "list.set(1, value)",
+              "list.change(2, value)"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "The second item has index 1 (since indexing starts at 0). Use list[1] = value to change it.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the result of [1, 2, 3][1:3]?",
+            "options": [
+              "[1, 2]",
+              "[2, 3]",
+              "[1, 2, 3]",
+              "[3]"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Slice [1:3] starts at index 1 and ends before index 3.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the difference between append and extend?",
+            "options": [
+              "append adds one item, extend adds each item from an iterable",
+              "append removes item, extend adds item",
+              "append sorts list, extend reverses list",
+              "They are identical methods"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "append adds a single object; extend iterates and adds each element.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How do you insert \"x\" at index 1 in list a?",
+            "options": [
+              "a.add(1, \"x\")",
+              "a.insert(1, \"x\")",
+              "a[1].insert(\"x\")",
+              "a.push(\"x\", 1)"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "insert(index, value) adds an item at a specific position.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does nums.pop() do by default?",
+            "options": [
+              "Removes first element",
+              "Removes last element and returns it",
+              "Clears entire list",
+              "Returns list length"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "pop() without index removes and returns the last element.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is [x * x for x in [1, 2, 3]]?",
+            "options": [
+              "[1, 2, 3]",
+              "[1, 4, 9]",
+              "[2, 4, 6]",
+              "[1, 8, 27]"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "List comprehension applies x * x to each element in the list.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How do you copy a list to avoid shared references?",
+            "options": [
+              "copy = original",
+              "copy = original.copy()",
+              "copy = link(original)",
+              "copy = same(original)"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "original.copy() (or original[:]) creates a shallow copy with separate list object.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Shopping List",
+        "description": "Create a list with these 3 items: \"milk\", \"bread\", \"eggs\"\nThen add \"butter\" to the list.\nFinally, print the total count (should be 4).",
+        "starterCode": "# Step 1: Create the list\nshopping = [\"milk\", \"bread\", \"eggs\"]\n\n# Step 2: Add \"butter\" using append()\n\n\n# Step 3: Print the count using len()\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "4",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use shopping.append(\"butter\") to add an item, then print(len(shopping)) to print the count.",
+        "solution": "shopping = [\"milk\", \"bread\", \"eggs\"]\nshopping.append(\"butter\")\nprint(len(shopping))",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 5
+    },
+    {
+      "id": "python_lesson_7",
+      "courseId": "python",
+      "moduleId": "control-flow",
+      "title": "Loops and Iteration",
+      "description": "Repeat actions efficiently with for and while loops",
+      "theorySlides": [
+        {
+          "title": "The for Loop 🔄",
+          "content": "Loops let you repeat code multiple times. The for loop iterates over sequences.",
+          "codeSnippet": "fruits = [\"apple\", \"banana\", \"cherry\"]\n\nfor fruit in fruits:\n    print(fruit)\n\n# Loop through range\nfor i in range(5):\n    print(i)  # 0, 1, 2, 3, 4",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "The range() Function",
+          "content": "range() generates sequences of numbers for loops.",
+          "codeSnippet": "# range(stop)\nfor i in range(3):\n    print(i)  # 0, 1, 2\n\n# range(start, stop, step)\nfor i in range(0, 10, 2):\n    print(i)  # 0, 2, 4, 6, 8",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "The while Loop",
+          "content": "while loops continue as long as a condition is True.",
+          "codeSnippet": "count = 0\nwhile count < 5:\n    print(count)\n    count += 1  # Important!",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What does range(3) generate?",
+            "options": [
+              "0, 1, 2",
+              "1, 2, 3",
+              "0, 1, 2, 3",
+              "1, 2"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "range(3) generates 0, 1, 2 (up to but not including 3).",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which keyword exits a loop?",
+            "options": [
+              "exit",
+              "break",
+              "stop",
+              "return"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "break immediately exits the current loop.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does range(2, 8, 2) generate?",
+            "options": [
+              "2, 4, 6",
+              "2, 4, 6, 8",
+              "2, 3, 4, 5, 6, 7",
+              "4, 6"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "range(2, 8, 2) starts at 2, ends before 8, step 2 → gives 2, 4, 6.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which keyword skips to the next iteration?",
+            "options": [
+              "next",
+              "continue",
+              "skip",
+              "pass"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "continue skips the rest of the current iteration and moves to the next one.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is wrong with: while True: print(\"Hi\")?",
+            "options": [
+              "Syntax error",
+              "Infinite loop (runs forever)",
+              "Prints nothing",
+              "Prints once"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Since the condition is always True, this loop never stops - it is an infinite loop!",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does enumerate([\"a\", \"b\"]) produce in a loop?",
+            "options": [
+              "Only values a, b",
+              "Pairs (index, value)",
+              "Only indices 0, 1",
+              "A dictionary"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "enumerate provides both index and element during iteration.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "In a while loop, what is necessary to prevent accidental infinite loops?",
+            "options": [
+              "Update variables involved in the condition",
+              "Always use break in first line",
+              "Use only print statements",
+              "Avoid boolean conditions"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The loop condition must eventually become false, often by updating a counter/state variable.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the difference between break and continue?",
+            "options": [
+              "break exits loop, continue skips current iteration",
+              "break skips iteration, continue exits loop",
+              "Both exit loop",
+              "Both restart loop from beginning"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "break ends the loop immediately; continue jumps to the next cycle.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does list(range(1, 10, 3)) return?",
+            "options": [
+              "[1, 2, 3]",
+              "[1, 4, 7]",
+              "[1, 3, 6, 9]",
+              "[3, 6, 9]"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "range starts at 1, increments by 3, and stops before 10.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How many total iterations occur in two nested loops: for i in range(2), for j in range(3)?",
+            "options": [
+              "5",
+              "6",
+              "3",
+              "2"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Outer loop runs 2 times and inner loop runs 3 times each: 2 * 3 = 6.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Print Even Numbers",
+        "description": "Print all even numbers from 0 to 10.",
+        "starterCode": "# Print even numbers 0-10\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "0\n2\n4\n6\n8\n10",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use range(0, 11, 2).",
+        "solution": "for i in range(0, 11, 2):\n    print(i)",
+        "xpReward": 15
+      },
+      "xpReward": 35,
+      "order": 6
+    },
+    {
+      "id": "python_lesson_8",
+      "courseId": "python",
+      "moduleId": "data-structures",
+      "title": "Dictionaries",
+      "description": "Store data in key-value pairs",
+      "theorySlides": [
+        {
+          "title": "What are Dictionaries? 🗂️",
+          "content": "Dictionaries store data as key-value pairs. Each key is unique and maps to a value.\n\nLike a real dictionary:\nWord (key) → Definition (value)\n\nIn programming:\n\"name\" → \"Alice\"\n\"age\" → 25",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Creating Dictionaries",
+          "content": "Use curly braces {} with key:value pairs.",
+          "codeSnippet": "person = {\n    \"name\": \"Alice\",\n    \"age\": 25,\n    \"city\": \"NYC\"\n}\n\nprint(person[\"name\"])",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Dictionary Methods",
+          "content": "Useful methods for working with dictionaries.",
+          "codeSnippet": "person = {\"name\": \"Alice\", \"age\": 25}\n\n# Get all keys\nprint(person.keys())\n\n# Get all values\nprint(person.values())\n\n# Check if key exists\nif \"name\" in person:\n    print(\"Found!\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "How do you access a dictionary value?",
+            "options": [
+              "dict.key",
+              "dict[\"key\"]",
+              "dict(key)",
+              "dict->key"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Use bracket notation: dict[\"key\"].",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which method returns all keys?",
+            "options": [
+              "get_keys()",
+              "keys()",
+              "all_keys()",
+              "getKeys()"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "The keys() method returns all dictionary keys.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What happens if you access a key that does not exist?",
+            "options": [
+              "Returns None",
+              "Returns \"\"",
+              "KeyError",
+              "Creates the key"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Accessing a non-existent key raises a KeyError. Use .get(\"key\") to safely return None instead.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Can dictionary keys be lists?",
+            "options": [
+              "Yes",
+              "No",
+              "Only empty lists",
+              "Only small lists"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Dictionary keys must be immutable (unchangeable). Lists can change, so they cannot be keys.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does user.get(\"role\", \"guest\") return if role is missing?",
+            "options": [
+              "None",
+              "\"guest\"",
+              "KeyError",
+              "False"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "get with a default value returns that default when key does not exist.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How do you update or add key \"age\" with value 30 in dict d?",
+            "options": [
+              "d.set(\"age\", 30)",
+              "d[\"age\"] = 30",
+              "d.add(\"age\", 30)",
+              "update(d, \"age\", 30)"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Assigning with brackets creates the key or updates existing value.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which loop gives both key and value?",
+            "options": [
+              "for k in d.keys()",
+              "for v in d.values()",
+              "for k, v in d.items()",
+              "for k in d"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "items() returns key-value pairs, which can be unpacked in the loop.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What happens with duplicate keys in a dictionary literal?",
+            "options": [
+              "Python throws KeyError",
+              "Both values are stored",
+              "Last value overrides previous one",
+              "First value always stays"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Dictionary keys are unique; later duplicate assignments replace earlier values.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which key type is valid for dictionaries?",
+            "options": [
+              "list [1,2]",
+              "dict {\"a\":1}",
+              "tuple (1,2)",
+              "set {1,2}"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Keys must be hashable (immutable types like tuples are allowed; lists/dicts/sets are not).",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does d.pop(\"name\") do?",
+            "options": [
+              "Returns value for \"name\" and removes the key",
+              "Returns all keys",
+              "Clears dictionary",
+              "Renames key"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "pop removes the specified key and returns its value.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Student Record",
+        "description": "Create a dictionary with name, age, grade. Print the name.",
+        "starterCode": "# Create student dict\nstudent = {}\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Alice",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use {\"key\": \"value\"} syntax.",
+        "solution": "student = {\"name\": \"Alice\", \"age\": 20, \"grade\": \"A\"}\nprint(student[\"name\"])",
+        "xpReward": 15
+      },
+      "xpReward": 35,
+      "order": 7
+    },
+    {
+      "id": "python_lesson_9",
+      "courseId": "python",
+      "moduleId": "functions",
+      "title": "Creating Functions",
+      "description": "Write reusable code blocks",
+      "theorySlides": [
+        {
+          "title": "What are Functions? ⚙️",
+          "content": "Functions are reusable blocks of code that perform specific tasks.\n\nBenefits:\n• Avoid code repetition\n• Organize complex programs\n• Make code easier to test\n• Enable code sharing",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Defining Functions",
+          "content": "Use the def keyword to create functions.",
+          "codeSnippet": "def greet():\n    print(\"Hello!\")\n\n# Call the function\ngreet()\ngreet()  # Can call multiple times",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Function Parameters",
+          "content": "Functions can accept input values (parameters).",
+          "codeSnippet": "def greet(name):\n    print(f\"Hello, {name}!\")\n\ngreet(\"Alice\")\ngreet(\"Bob\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Return Values",
+          "content": "Functions can return values using return.",
+          "codeSnippet": "def add(a, b):\n    return a + b\n\nresult = add(5, 3)\nprint(result)  # 8",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What keyword defines a function?",
+            "options": [
+              "function",
+              "def",
+              "func",
+              "define"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "The def keyword defines functions in Python.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does a function return by default?",
+            "options": [
+              "0",
+              "None",
+              "Empty string",
+              "Error"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Functions without return statements return None.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is wrong with: def greet(name): return f\"Hi {name}\" print(\"Done\")?",
+            "options": [
+              "Nothing",
+              "Code after return never executes",
+              "Syntax error",
+              "Function is too long"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "return exits the function immediately. Code after return is unreachable.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What are parameters?",
+            "options": [
+              "Return values",
+              "Input values the function receives",
+              "Errors",
+              "Function names"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Parameters are variables that receive values when the function is called.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the output? def add(a=2, b=3): return a+b; print(add())",
+            "options": [
+              "5",
+              "23",
+              "Error",
+              "0"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Default parameters are used when no arguments are provided.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the advantage of keyword arguments?",
+            "options": [
+              "They make calls clearer and allow reordering",
+              "They run faster than positional arguments",
+              "They remove need for return statements",
+              "They are only for recursive functions"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Keyword arguments improve readability and let you pass values by name.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What happens if you access a local variable outside its function?",
+            "options": [
+              "It works globally",
+              "NameError",
+              "Returns None",
+              "Converts to global"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Local variables are scoped to the function body and are unavailable outside it.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does *args collect in a function definition?",
+            "options": [
+              "Keyword arguments as dict",
+              "Extra positional arguments as tuple",
+              "Only integer arguments",
+              "Return values"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "*args packs additional positional arguments into a tuple.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How can a function return multiple values in Python?",
+            "options": [
+              "It cannot return multiple values",
+              "Return values separated by commas (tuple packing)",
+              "Use only print statements",
+              "Use global variables only"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Python packs comma-separated return values into a tuple.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Where is a function docstring typically written?",
+            "options": [
+              "Before def keyword",
+              "As first statement inside the function body",
+              "At the end of file only",
+              "Inside print statements"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "A docstring is usually the first string literal inside a function.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Calculator Function",
+        "description": "Create a multiply function that returns the product of two numbers.",
+        "starterCode": "def multiply(a, b):\n    # Your code\n    pass\n\nprint(multiply(6, 7))",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "42",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use * and return.",
+        "solution": "def multiply(a, b):\n    return a * b\n\nprint(multiply(6, 7))",
+        "xpReward": 15
+      },
+      "xpReward": 40,
+      "order": 8
+    },
+    {
+      "id": "python_lesson_10",
+      "courseId": "python",
+      "moduleId": "advanced",
+      "title": "Handling Errors",
+      "description": "Deal with errors gracefully in your code",
+      "theorySlides": [
+        {
+          "title": "What are Exceptions? ⚠️",
+          "content": "Exceptions are errors that occur during program execution.\n\nCommon exceptions:\n• ZeroDivisionError (divide by 0)\n• ValueError (wrong value type)\n• TypeError (wrong data type)\n• FileNotFoundError (missing file)",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Try and Except",
+          "content": "Handle errors with try/except blocks to prevent crashes.",
+          "codeSnippet": "try:\n    result = 10 / 0\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero!\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Multiple Exceptions",
+          "content": "Handle different error types separately.",
+          "codeSnippet": "try:\n    num = int(input(\"Enter number: \"))\n    result = 10 / num\nexcept ValueError:\n    print(\"Invalid number!\")\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero!\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Finally Block",
+          "content": "Code in finally always runs, whether an error occurred or not.",
+          "codeSnippet": "try:\n    file = open(\"data.txt\")\n    # Do something\nexcept FileNotFoundError:\n    print(\"File not found!\")\nfinally:\n    print(\"Cleanup complete\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Which block handles exceptions?",
+            "options": [
+              "catch",
+              "except",
+              "error",
+              "handle"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "The except block catches and handles exceptions.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "When does the finally block execute?",
+            "options": [
+              "Only on error",
+              "Only on success",
+              "Always",
+              "Never"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "finally always executes, regardless of errors.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What exception occurs when dividing by zero?",
+            "options": [
+              "ValueError",
+              "TypeError",
+              "ZeroDivisionError",
+              "MathError"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "ZeroDivisionError is raised when you try to divide a number by zero.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How do you catch any exception?",
+            "options": [
+              "except All:",
+              "except *:",
+              "except Exception:",
+              "except Error:"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "except Exception: catches most exceptions. You can also use except: alone to catch all.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "When handling multiple exceptions, why should specific except blocks come before except Exception?",
+            "options": [
+              "Specific exceptions otherwise become unreachable",
+              "It makes code run slower",
+              "Python requires alphabetical order",
+              "General exception runs only in debug mode"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A broad except Exception would catch specific errors first and hide targeted handlers.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "When does the else block in try/except/else run?",
+            "options": [
+              "Only if an exception occurs",
+              "Only if no exception occurs in try block",
+              "Always, before finally",
+              "Only after raise"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "else executes when the try block succeeds without exceptions.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is a good use case for finally?",
+            "options": [
+              "Close files or release resources",
+              "Skip error handling entirely",
+              "Replace all except blocks",
+              "Retry code forever"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "finally is ideal for cleanup actions that must always run.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How do you intentionally raise a ValueError?",
+            "options": [
+              "throw ValueError(\"bad value\")",
+              "raise ValueError(\"bad value\")",
+              "except ValueError(\"bad value\")",
+              "error ValueError(\"bad value\")"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Use raise with an exception type (and optional message).",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is better practice for production code: bare except or specific exception types?",
+            "options": [
+              "Bare except always",
+              "Specific exception types whenever possible",
+              "Never handle exceptions",
+              "Use only finally"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Specific catches are safer and avoid masking unrelated bugs.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If int(user_input) can fail, where should conversion be placed?",
+            "options": [
+              "Inside try block with ValueError handler",
+              "Inside finally block",
+              "Outside try/except only",
+              "Inside comments for readability"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Put risky operations in try and handle expected errors with matching except blocks.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Safe Division",
+        "description": "Create a safe division that catches ZeroDivisionError and prints \"Cannot divide by zero!\"",
+        "starterCode": "# Safe division\ntry:\n    result = 10 / 0\n    # Your code here\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Cannot divide by zero!",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use except ZeroDivisionError.",
+        "solution": "try:\n    result = 10 / 0\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero!\")",
+        "xpReward": 15
+      },
+      "xpReward": 45,
+      "order": 9
+    }
+  ]
+}

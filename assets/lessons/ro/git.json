@@ -1,0 +1,721 @@
+{
+  "courseId": "git",
+  "lessons": [
+    {
+      "id": "git_lesson_1",
+      "courseId": "git",
+      "moduleId": "foundations",
+      "title": "Git Basics: Snapshots and Commits",
+      "description": "Understand what Git tracks and create your first commit",
+      "theorySlides": [
+        {
+          "title": "What is Git? 🌱",
+          "content": "Git is a version control system. Think of it as a time machine for your project:\n\n• Save checkpoints (commits)\n• Go back safely\n• Compare changes\n• Collaborate without overwriting each other",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "The 3 Core States",
+          "content": "In beginner Git, you can imagine 3 layers:\n\n1) Working files (what you edit)\n2) Staging area (what you prepare)\n3) Commit history (what you save forever)",
+          "codeSnippet": "git status\n# see current state\n\ngit add .\n# stage all current changes\n\ngit commit -m \"Initial layout\"",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "First Commit Flow",
+          "content": "A commit is a snapshot. Small, clear commits make projects easier to understand.",
+          "codeSnippet": "git init\ngit status\ngit commit -m \"Initial commit\"",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main purpose of Git?",
+            "options": [
+              "Build UI components",
+              "Track and manage code history",
+              "Run SQL queries",
+              "Deploy apps automatically"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Git is for tracking file changes over time and coordinating work safely.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does a commit represent?",
+            "options": [
+              "A branch name",
+              "A project dependency",
+              "A saved snapshot of changes",
+              "A remote server"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "A commit is a saved snapshot of your code at a specific moment.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which command creates a commit?",
+            "options": [
+              "git branch",
+              "git merge",
+              "git commit -m \"message\"",
+              "git checkout"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Use git commit with a message to create a new snapshot in history.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Why should commit messages be clear?",
+            "options": [
+              "They change branch colors",
+              "They help teammates understand what changed",
+              "They make merges faster",
+              "They reduce file size"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Good commit messages make project history readable for you and your team.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Git Basics: Snapshots and Commits\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which code example is syntactically valid?",
+            "options": [
+              "value = 3 + 2",
+              "value == 3 + 2",
+              "const value 3 + 2",
+              "SELECT value"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for code in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Create your first commit\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"What is Git \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Create your first commit",
+        "description": "Run commands so your repository ends with one new commit on main.",
+        "starterCode": "# Inspect the repo first\ngit status\n\n# Create your first commit\n",
+        "language": "git",
+        "testCases": [
+          {
+            "input": "Goal: stay on main and create the first commit (C1) in history.",
+            "expectedOutput": "HEAD=main\nHAS_BRANCH=main\nMIN_COMMITS=2\nBRANCH_AT=main:C1",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use: git commit -m \"Initial commit\"",
+        "solution": "git status\ngit commit -m \"Initial commit\"",
+        "xpReward": 15
+      },
+      "xpReward": 25,
+      "order": 0
+    },
+    {
+      "id": "git_lesson_2",
+      "courseId": "git",
+      "moduleId": "branching",
+      "title": "Branches: Isolated Work",
+      "description": "Create and switch branches to work safely in parallel",
+      "theorySlides": [
+        {
+          "title": "Why Branches Matter 🌿",
+          "content": "Branches let you test ideas without breaking your main line:\n\n• main stays stable\n• feature branches hold experiments\n• merging later combines finished work",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Create and Move",
+          "content": "Use branch + checkout (or checkout -b) to create isolated workspaces.",
+          "codeSnippet": "git branch feature/login\ngit checkout feature/login\n# now commits go to feature/login",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Shortcut: checkout -b",
+          "content": "Create and switch in one command. Great for fast feature starts.",
+          "codeSnippet": "git checkout -b feature/navbar\ngit commit -m \"Add navbar structure\"",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the best reason to use a feature branch?",
+            "options": [
+              "To avoid commits entirely",
+              "To isolate work from main",
+              "To speed up internet",
+              "To delete old history"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Branches isolate unfinished work and protect the stable branch.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does git checkout -b feature do?",
+            "options": [
+              "Deletes feature branch",
+              "Creates and switches to feature branch",
+              "Merges feature into main",
+              "Lists all branches"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "checkout -b is a shortcut for branch creation + switch.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "After checkout to feature, where do new commits go?",
+            "options": [
+              "main",
+              "feature",
+              "remote only",
+              "nowhere"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Commits are attached to the currently checked-out branch.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Why keep main clean while learning?",
+            "options": [
+              "To reduce CPU usage",
+              "To keep stable progress and avoid confusion",
+              "To make commits invisible",
+              "To disable merges"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "A clean main branch makes project history and releases safer.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Branches: Isolated Work\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which code example is syntactically valid?",
+            "options": [
+              "value = 3 + 2",
+              "value == 3 + 2",
+              "const value 3 + 2",
+              "SELECT value"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for code in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Create and advance a feature branch\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Why Branches Matter \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Create and advance a feature branch",
+        "description": "Create a commit on main, then move to feature and create one more commit there.",
+        "starterCode": "# 1) Make a baseline commit on main\n# 2) Create feature branch\n# 3) Switch to feature\n# 4) Create a feature commit\n",
+        "language": "git",
+        "testCases": [
+          {
+            "input": "Goal: finish on feature branch with separate tips for main and feature.",
+            "expectedOutput": "HEAD=feature\nHAS_BRANCH=main\nHAS_BRANCH=feature\nMIN_COMMITS=3\nBRANCH_AT=main:C1\nBRANCH_AT=feature:C2\nBRANCHES_DIFFER=main:feature",
+            "isHidden": false
+          }
+        ],
+        "hint": "Sequence: git commit -> git branch feature -> git checkout feature -> git commit",
+        "solution": "git commit -m \"Base commit on main\"\ngit branch feature\ngit checkout feature\ngit commit -m \"Feature work\"",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 1
+    },
+    {
+      "id": "git_lesson_3",
+      "courseId": "git",
+      "moduleId": "merging",
+      "title": "Merge Fundamentals",
+      "description": "Bring finished feature work back into main using merge commits",
+      "theorySlides": [
+        {
+          "title": "What is Merge? 🔀",
+          "content": "Merging combines histories from two branches.\n\nWhen both branches moved, Git creates a merge commit with two parents.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Basic Merge Workflow",
+          "content": "You usually merge into main after feature work is ready.",
+          "codeSnippet": "git checkout main\ngit merge feature\n# main now includes feature history",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Think in Graphs",
+          "content": "Git is a commit graph, not a folder copy. Branch names are movable labels pointing at commits.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What does git merge feature do from main?",
+            "options": [
+              "Deletes feature",
+              "Moves feature to main without history",
+              "Combines feature history into main",
+              "Creates a new repository"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Merge integrates another branch history into the current branch.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Where should you be before merging feature into main?",
+            "options": [
+              "On feature",
+              "On main",
+              "On any branch",
+              "No branch checked out"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "You merge into the branch you currently have checked out.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is a merge commit?",
+            "options": [
+              "A commit with no parent",
+              "A commit with exactly one parent",
+              "A commit with two parents joining histories",
+              "A deleted commit"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "A merge commit connects two lines of history.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Why is visualizing branches useful?",
+            "options": [
+              "It changes command syntax",
+              "It helps understand commit relationships",
+              "It removes conflicts automatically",
+              "It disables checkout"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Seeing the graph makes branch movement and merges easier to reason about.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Merge Fundamentals\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which code example is syntactically valid?",
+            "options": [
+              "value = 3 + 2",
+              "value == 3 + 2",
+              "const value 3 + 2",
+              "SELECT value"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for code in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Merge feature back to main\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"What is Merge \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Merge feature back to main",
+        "description": "Simulate a full branch cycle: commit on main, commit on feature, then merge into main.",
+        "starterCode": "# Build this flow:\n# main commit -> feature commit -> merge feature into main\n",
+        "language": "git",
+        "testCases": [
+          {
+            "input": "Goal: end on main with a merge commit, while feature still points to its latest feature commit.",
+            "expectedOutput": "HEAD=main\nHAS_BRANCH=main\nHAS_BRANCH=feature\nMIN_COMMITS=4\nBRANCH_AT=feature:C2\nBRANCH_AT=main:C3\nMERGE_COMMIT_ON=main",
+            "isHidden": false
+          }
+        ],
+        "hint": "Do commits on both branches first, then checkout main and merge feature.",
+        "solution": "git commit -m \"Base on main\"\ngit branch feature\ngit checkout feature\ngit commit -m \"Feature commit\"\ngit checkout main\ngit merge feature",
+        "xpReward": 15
+      },
+      "xpReward": 35,
+      "order": 2
+    },
+    {
+      "id": "git_lesson_4",
+      "courseId": "git",
+      "moduleId": "workflow",
+      "title": "Beginner Branch Workflow Mission",
+      "description": "Practice an end-to-end branch workflow using checkout -b and merge",
+      "theorySlides": [
+        {
+          "title": "Daily Workflow Pattern",
+          "content": "A practical beginner flow:\n\n1) Start from main\n2) Create branch with checkout -b\n3) Commit feature work\n4) Return to main\n5) Merge branch",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Why this works",
+          "content": "This workflow keeps changes focused, reviewable, and easy to rollback if needed.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Mission Commands",
+          "content": "Use this exact idea in your final beginner challenge.",
+          "codeSnippet": "git commit -m \"Main baseline\"\ngit checkout -b bugfix\ngit commit -m \"Fix issue\"\ngit checkout main\ngit commit -m \"Main update\"\ngit merge bugfix",
+          "codeLanguage": "bash",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the best command to create and switch branches fast?",
+            "options": [
+              "git merge -b",
+              "git checkout -b <name>",
+              "git status -b",
+              "git commit -b"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "checkout -b combines branch creation and branch switch.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "In this workflow, when do you merge?",
+            "options": [
+              "Before any commit",
+              "After feature branch has meaningful commits",
+              "Only when branch is empty",
+              "Immediately after git init"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "You merge after implementing and committing feature work.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Why commit on main before merge in this mission?",
+            "options": [
+              "To create diverging histories for realistic merge practice",
+              "To delete feature branch",
+              "To avoid commits on feature",
+              "To disable merge commits"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A realistic merge often joins two branches that both moved forward.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you verify after merge?",
+            "options": [
+              "HEAD branch and graph shape",
+              "Only file count",
+              "Internet connection",
+              "Compiler version"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Check branch pointers and commit graph to confirm workflow correctness.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Beginner Branch Workflow Mission\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which code example is syntactically valid?",
+            "options": [
+              "value = 3 + 2",
+              "value == 3 + 2",
+              "const value 3 + 2",
+              "SELECT value"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for code in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Workflow mission: bugfix merge\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Daily Workflow Pattern\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Workflow mission: bugfix merge",
+        "description": "Use checkout -b, create commits on both branches, and finish with a merge into main.",
+        "starterCode": "# Build this mission flow with real git commands\n",
+        "language": "git",
+        "testCases": [
+          {
+            "input": "Goal: final graph should include bugfix branch and a merge commit on main.",
+            "expectedOutput": "HEAD=main\nHAS_BRANCH=main\nHAS_BRANCH=bugfix\nMIN_COMMITS=5\nBRANCH_AT=bugfix:C2\nBRANCH_AT=main:C4\nMERGE_COMMIT_ON=main",
+            "isHidden": false
+          }
+        ],
+        "hint": "Try: main commit -> checkout -b bugfix -> bugfix commit -> checkout main -> main commit -> merge bugfix",
+        "solution": "git commit -m \"Main baseline\"\ngit checkout -b bugfix\ngit commit -m \"Fix bug\"\ngit checkout main\ngit commit -m \"Main progress\"\ngit merge bugfix",
+        "xpReward": 15
+      },
+      "xpReward": 40,
+      "order": 3
+    }
+  ]
+}

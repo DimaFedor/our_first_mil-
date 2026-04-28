@@ -1,0 +1,1705 @@
+{
+  "courseId": "logic-basics",
+  "lessons": [
+    {
+      "id": "logic_basics_lesson_1",
+      "courseId": "logic-basics",
+      "moduleId": "logic",
+      "title": "Variables as Boxes",
+      "description": "A variable stores one value you can reuse later.",
+      "theorySlides": [
+        {
+          "title": "Variables as Boxes - in simple words",
+          "content": "A variable stores one value you can reuse later.\n\nReal-life example:\nLike a labeled drawer where you keep one type of item.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "coins = 3\nprint(coins)",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"Variables as Boxes\"?",
+            "options": [
+              "A variable stores one value you can reuse later.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "coins = 3\nprint(coins)",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "Like a labeled drawer where you keep one type of item.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Variables as Boxes\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: Variables as Boxes\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Variables as Boxes - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: Variables as Boxes",
+        "description": "Write a tiny Python snippet that prints exactly: 3",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "3",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"3\")",
+        "xpReward": 15
+      },
+      "xpReward": 18,
+      "order": 0
+    },
+    {
+      "id": "logic_basics_lesson_2",
+      "courseId": "logic-basics",
+      "moduleId": "logic",
+      "title": "Updating Values",
+      "description": "You can change variable values as your logic runs.",
+      "theorySlides": [
+        {
+          "title": "Updating Values - in simple words",
+          "content": "You can change variable values as your logic runs.\n\nReal-life example:\nXP in a game increases after each completed mission.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "xp = 10\nxp = xp + 5\nprint(xp)",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"Updating Values\"?",
+            "options": [
+              "You can change variable values as your logic runs.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "xp = 10\nxp = xp + 5\nprint(xp)",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "XP in a game increases after each completed mission.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Updating Values\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: Updating Values\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Updating Values - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: Updating Values",
+        "description": "Write a tiny Python snippet that prints exactly: 15",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "15",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"15\")",
+        "xpReward": 15
+      },
+      "xpReward": 20,
+      "order": 1
+    },
+    {
+      "id": "logic_basics_lesson_3",
+      "courseId": "logic-basics",
+      "moduleId": "logic",
+      "title": "Text and Numbers",
+      "description": "Programs work with different data kinds like text and numbers.",
+      "theorySlides": [
+        {
+          "title": "Text and Numbers - in simple words",
+          "content": "Programs work with different data kinds like text and numbers.\n\nReal-life example:\nA profile name is text, but total points is a number.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "level = \"Beginner\"\nprint(level)",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"Text and Numbers\"?",
+            "options": [
+              "Programs work with different data kinds like text and numbers.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "level = \"Beginner\"\nprint(level)",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "A profile name is text, but total points is a number.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Text and Numbers\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: Text and Numbers\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Text and Numbers - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: Text and Numbers",
+        "description": "Write a tiny Python snippet that prints exactly: Beginner",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Beginner",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"Beginner\")",
+        "xpReward": 15
+      },
+      "xpReward": 22,
+      "order": 2
+    },
+    {
+      "id": "logic_basics_lesson_4",
+      "courseId": "logic-basics",
+      "moduleId": "logic",
+      "title": "Comparison Operators",
+      "description": "Comparisons return True or False for decision making.",
+      "theorySlides": [
+        {
+          "title": "Comparison Operators - in simple words",
+          "content": "Comparisons return True or False for decision making.\n\nReal-life example:\nYou compare prices before choosing what to buy.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "print(7 > 3)",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"Comparison Operators\"?",
+            "options": [
+              "Comparisons return True or False for decision making.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "print(7 > 3)",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "You compare prices before choosing what to buy.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Comparison Operators\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: Comparison Operators\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Comparison Operators - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: Comparison Operators",
+        "description": "Write a tiny Python snippet that prints exactly: True",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "True",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"True\")",
+        "xpReward": 15
+      },
+      "xpReward": 24,
+      "order": 3
+    },
+    {
+      "id": "logic_basics_lesson_5",
+      "courseId": "logic-basics",
+      "moduleId": "logic",
+      "title": "If / Else",
+      "description": "if/else lets the program branch into different outcomes.",
+      "theorySlides": [
+        {
+          "title": "If / Else - in simple words",
+          "content": "if/else lets the program branch into different outcomes.\n\nReal-life example:\nIf battery is low, charge device; else continue using it.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "age = 19\nprint(\"Adult\" if age >= 18 else \"Minor\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"If / Else\"?",
+            "options": [
+              "if/else lets the program branch into different outcomes.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "age = 19\nprint(\"Adult\" if age >= 18 else \"Minor\")",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "If battery is low, charge device; else continue using it.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"If / Else\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: If / Else\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"If  Else - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: If / Else",
+        "description": "Write a tiny Python snippet that prints exactly: Adult",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Adult",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"Adult\")",
+        "xpReward": 15
+      },
+      "xpReward": 26,
+      "order": 4
+    },
+    {
+      "id": "logic_basics_lesson_6",
+      "courseId": "logic-basics",
+      "moduleId": "logic",
+      "title": "While Loop Intro",
+      "description": "while repeats a block while a condition remains true.",
+      "theorySlides": [
+        {
+          "title": "While Loop Intro - in simple words",
+          "content": "while repeats a block while a condition remains true.\n\nReal-life example:\nKeep studying while your timer has minutes left.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "count = 1\nwhile count < 2:\n    print(\"Loop\")\n    count += 1",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"While Loop Intro\"?",
+            "options": [
+              "while repeats a block while a condition remains true.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "count = 1\nwhile count < 2:\n    print(\"Loop\")\n    count += 1",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "Keep studying while your timer has minutes left.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"While Loop Intro\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: While Loop Intro\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"While Loop Intro - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: While Loop Intro",
+        "description": "Write a tiny Python snippet that prints exactly: Loop",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Loop",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"Loop\")",
+        "xpReward": 15
+      },
+      "xpReward": 28,
+      "order": 5
+    },
+    {
+      "id": "logic_basics_lesson_7",
+      "courseId": "logic-basics",
+      "moduleId": "logic",
+      "title": "For Loop Intro",
+      "description": "for is useful when you know how many times to repeat.",
+      "theorySlides": [
+        {
+          "title": "For Loop Intro - in simple words",
+          "content": "for is useful when you know how many times to repeat.\n\nReal-life example:\nRepeat flashcard review for each card in the deck.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "for _ in range(1):\n    print(\"For\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"For Loop Intro\"?",
+            "options": [
+              "for is useful when you know how many times to repeat.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "for _ in range(1):\n    print(\"For\")",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "Repeat flashcard review for each card in the deck.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"For Loop Intro\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: For Loop Intro\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"For Loop Intro - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: For Loop Intro",
+        "description": "Write a tiny Python snippet that prints exactly: For",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "For",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"For\")",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 6
+    },
+    {
+      "id": "logic_basics_lesson_8",
+      "courseId": "logic-basics",
+      "moduleId": "logic",
+      "title": "Combining Conditions",
+      "description": "Use and/or to combine multiple checks into one decision.",
+      "theorySlides": [
+        {
+          "title": "Combining Conditions - in simple words",
+          "content": "Use and/or to combine multiple checks into one decision.\n\nReal-life example:\nDiscount applies only if user is member and coupon is valid.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "is_member = True\nhas_discount = True\nprint(is_member and has_discount)",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"Combining Conditions\"?",
+            "options": [
+              "Use and/or to combine multiple checks into one decision.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "is_member = True\nhas_discount = True\nprint(is_member and has_discount)",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "Discount applies only if user is member and coupon is valid.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Combining Conditions\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: Combining Conditions\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Combining Conditions - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: Combining Conditions",
+        "description": "Write a tiny Python snippet that prints exactly: True",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "True",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"True\")",
+        "xpReward": 15
+      },
+      "xpReward": 32,
+      "order": 7
+    },
+    {
+      "id": "logic_basics_lesson_9",
+      "courseId": "logic-basics",
+      "moduleId": "logic",
+      "title": "Tiny Function Idea",
+      "description": "Functions wrap reusable logic into one named block.",
+      "theorySlides": [
+        {
+          "title": "Tiny Function Idea - in simple words",
+          "content": "Functions wrap reusable logic into one named block.\n\nReal-life example:\nA reusable checklist for starting each study session.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "def greet():\n    return \"Hi\"\nprint(greet())",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"Tiny Function Idea\"?",
+            "options": [
+              "Functions wrap reusable logic into one named block.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "def greet():\n    return \"Hi\"\nprint(greet())",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "A reusable checklist for starting each study session.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Tiny Function Idea\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: Tiny Function Idea\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Tiny Function Idea - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: Tiny Function Idea",
+        "description": "Write a tiny Python snippet that prints exactly: Hi",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Hi",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"Hi\")",
+        "xpReward": 15
+      },
+      "xpReward": 34,
+      "order": 8
+    },
+    {
+      "id": "logic_basics_lesson_10",
+      "courseId": "logic-basics",
+      "moduleId": "logic",
+      "title": "Logic Checkpoint",
+      "description": "This checkpoint combines variables, conditions, and readable output.",
+      "theorySlides": [
+        {
+          "title": "Logic Checkpoint - in simple words",
+          "content": "This checkpoint combines variables, conditions, and readable output.\n\nReal-life example:\nA weather app decides what advice to show based on temperature.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Tiny example",
+          "content": "Run this small snippet and inspect the output.",
+          "codeSnippet": "temp = 22\nprint(\"Warm\" if temp > 20 else \"Cool\")",
+          "codeLanguage": "python",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What is the main idea of \"Logic Checkpoint\"?",
+            "options": [
+              "This checkpoint combines variables, conditions, and readable output.",
+              "Memorize syntax without practice",
+              "Skip examples and only read definitions",
+              "Jump to advanced topics immediately"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Beginner lessons focus on one practical idea at a time.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which snippet matches this lesson?",
+            "options": [
+              "temp = 22\nprint(\"Warm\" if temp > 20 else \"Cool\")",
+              "const value = 3 + 2;",
+              "SELECT value FROM table;",
+              "<h1>Example</h1>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The first option follows the lesson context and syntax.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which real-life analogy fits this lesson best?",
+            "options": [
+              "A weather app decides what advice to show based on temperature.",
+              "Learning piano by reading only one key",
+              "Driving with eyes closed",
+              "Ignoring all road signs"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Real-life analogies help beginners understand abstract concepts faster.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do after finishing this lesson to learn faster?",
+            "options": [
+              "Run one extra tiny example by yourself",
+              "Stop practicing and move on",
+              "Delete all code and restart randomly",
+              "Only memorize answers"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "A quick extra example reinforces understanding with minimal effort.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Logic Checkpoint\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which Python example is syntactically valid?",
+            "options": [
+              "total = 3 + 2",
+              "total == 3 + 2",
+              "const total = 3 + 2",
+              "print total(3 + 2)"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for Python in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Practice: Logic Checkpoint\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Logic Checkpoint - in simple words\"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Practice: Logic Checkpoint",
+        "description": "Write a tiny Python snippet that prints exactly: Warm",
+        "starterCode": "# TODO: print the expected output\n",
+        "language": "python",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "Warm",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use print(\"...\") with the same punctuation and spaces.",
+        "solution": "print(\"Warm\")",
+        "xpReward": 15
+      },
+      "xpReward": 36,
+      "order": 9
+    }
+  ]
+}

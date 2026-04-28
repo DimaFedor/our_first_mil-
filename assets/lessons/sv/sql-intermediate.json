@@ -1,0 +1,990 @@
+{
+  "courseId": "sql-intermediate",
+  "lessons": [
+    {
+      "id": "sql_int_lesson_1",
+      "courseId": "sql-intermediate",
+      "moduleId": "joins",
+      "title": "SQL JOINs",
+      "description": "Combine data from multiple tables",
+      "theorySlides": [
+        {
+          "title": "JOINs 🔗",
+          "content": "Combine rows from multiple tables:\n• **INNER JOIN**: Matching rows only\n• **LEFT JOIN**: All left + matching right\n• **RIGHT JOIN**: All right + matching left\n• **FULL JOIN**: All from both",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "INNER JOIN",
+          "content": "Get matching records from both tables.",
+          "codeSnippet": "SELECT users.name, orders.total\nFROM users\nINNER JOIN orders ON users.id = orders.user_id;\n\n-- Only users WITH orders",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "RIGHT & FULL JOIN 🔄",
+          "content": "More JOIN types:\n• **RIGHT JOIN**: All right table rows + matching left\n• **FULL OUTER JOIN**: All rows from both tables\n• NULL fills missing matches",
+          "codeSnippet": "-- RIGHT JOIN: All orders, even without users\nSELECT users.name, orders.total\nFROM users\nRIGHT JOIN orders ON users.id = orders.user_id;\n\n-- FULL JOIN: All users AND all orders\nSELECT users.name, orders.total\nFROM users\nFULL OUTER JOIN orders ON users.id = orders.user_id;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Multiple JOINs 🔗🔗",
+          "content": "Chain multiple tables together:\n• Join as many tables as needed\n• Each JOIN adds more data\n• Order matters for readability",
+          "codeSnippet": "SELECT \n  u.name,\n  o.order_date,\n  p.product_name,\n  oi.quantity\nFROM users u\nINNER JOIN orders o ON u.id = o.user_id\nINNER JOIN order_items oi ON o.id = oi.order_id\nINNER JOIN products p ON oi.product_id = p.id;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        },
+        {
+          "title": "Self JOIN 🪞",
+          "content": "Join a table to itself:\n• Useful for hierarchical data\n• Compare rows in same table\n• Must use table aliases",
+          "codeSnippet": "-- Find employees and their managers\nSELECT \n  e.name AS employee,\n  m.name AS manager\nFROM employees e\nLEFT JOIN employees m ON e.manager_id = m.id;\n\n-- Find pairs of users from same city\nSELECT a.name, b.name, a.city\nFROM users a\nJOIN users b ON a.city = b.city AND a.id < b.id;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 4
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Which JOIN includes all left table rows?",
+            "options": [
+              "INNER JOIN",
+              "LEFT JOIN",
+              "RIGHT JOIN",
+              "CROSS JOIN"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "LEFT JOIN keeps all rows from left table.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does FULL OUTER JOIN return?",
+            "options": [
+              "Only matching rows",
+              "All rows from left table",
+              "All rows from right table",
+              "All rows from both tables"
+            ],
+            "correctAnswerIndex": 3,
+            "explanation": "FULL OUTER JOIN returns all rows from both tables, with NULL for non-matching rows.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "When would you use a self JOIN?",
+            "options": [
+              "To duplicate a table",
+              "To find hierarchical relationships in same table",
+              "To delete duplicates",
+              "To create a backup"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Self JOINs are useful for hierarchical data like employees/managers or finding relationships within the same table.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How many tables can you JOIN in one query?",
+            "options": [
+              "Only 2",
+              "Maximum 5",
+              "Maximum 10",
+              "As many as needed"
+            ],
+            "correctAnswerIndex": 3,
+            "explanation": "You can chain as many JOINs as needed, though performance may decrease with many tables.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"SQL JOINs\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which SQL example is syntactically valid?",
+            "options": [
+              "SELECT name FROM users;",
+              "SELECT FROM users name;",
+              "const query = users;",
+              "<sql>SELECT</sql>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for SQL in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Join Users and Orders\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"JOINs \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Join Users and Orders",
+        "description": "Write a query to get:\n• users.name\n• orders.total\n\nUse LEFT JOIN to include users even if they have no orders.\n\nStructure:\nSELECT ... FROM users LEFT JOIN orders ON ...",
+        "starterCode": "-- Select users.name and orders.total\n-- Use LEFT JOIN to include all users\nSELECT users.name, orders.total\nFROM users\n-- Add LEFT JOIN here\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT users.name, orders.total FROM users LEFT JOIN orders ON users.id = orders.user_id;",
+            "isHidden": false
+          }
+        ],
+        "hint": "Add: LEFT JOIN orders ON users.id = orders.user_id",
+        "solution": "SELECT users.name, orders.total\nFROM users\nLEFT JOIN orders ON users.id = orders.user_id;",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 0
+    },
+    {
+      "id": "sql_int_lesson_2",
+      "courseId": "sql-intermediate",
+      "moduleId": "advanced",
+      "title": "Subqueries",
+      "description": "Queries within queries",
+      "theorySlides": [
+        {
+          "title": "Subqueries 📦",
+          "content": "A query nested inside another query.\n\nUseful for:\n• Filtering with computed values\n• Creating temp result sets\n• Complex conditions",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Example",
+          "content": "Find above-average salaries.",
+          "codeSnippet": "SELECT name, salary\nFROM employees\nWHERE salary > (\n  SELECT AVG(salary) \n  FROM employees\n);",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "IN Subquery 📋",
+          "content": "Check if value exists in a list:\n• Returns TRUE if value matches any result\n• Alternative to multiple OR conditions\n• Can use NOT IN for exclusion",
+          "codeSnippet": "-- Find users who made orders\nSELECT name FROM users\nWHERE id IN (\n  SELECT DISTINCT user_id FROM orders\n);\n\n-- Find products NOT ordered\nSELECT name FROM products\nWHERE id NOT IN (\n  SELECT product_id FROM order_items\n);",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "EXISTS Subquery ✅",
+          "content": "Check if subquery returns any rows:\n• Returns TRUE/FALSE\n• Often faster than IN\n• Use for existence checks",
+          "codeSnippet": "-- Find users who have placed orders\nSELECT name FROM users u\nWHERE EXISTS (\n  SELECT 1 FROM orders o\n  WHERE o.user_id = u.id\n);\n\n-- Find categories with no products\nSELECT name FROM categories c\nWHERE NOT EXISTS (\n  SELECT 1 FROM products p\n  WHERE p.category_id = c.id\n);",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        },
+        {
+          "title": "Correlated Subqueries 🔄",
+          "content": "Subquery references outer query:\n• Executes once per outer row\n• More powerful but slower\n• Uses outer table aliases",
+          "codeSnippet": "-- Find employees earning more than dept average\nSELECT name, salary, department_id\nFROM employees e1\nWHERE salary > (\n  SELECT AVG(salary)\n  FROM employees e2\n  WHERE e2.department_id = e1.department_id\n);\n\n-- Find latest order per customer\nSELECT * FROM orders o1\nWHERE order_date = (\n  SELECT MAX(order_date) FROM orders o2\n  WHERE o2.customer_id = o1.customer_id\n);",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 4
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Where can subqueries appear?",
+            "options": [
+              "Only in WHERE",
+              "Only in SELECT",
+              "WHERE, SELECT, FROM",
+              "Only in FROM"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Subqueries can be in SELECT, FROM, or WHERE clauses.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does EXISTS return?",
+            "options": [
+              "The matching rows",
+              "A count of rows",
+              "TRUE or FALSE",
+              "NULL"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "EXISTS returns TRUE if the subquery returns any rows, FALSE otherwise.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is a correlated subquery?",
+            "options": [
+              "A subquery with GROUP BY",
+              "A subquery that references the outer query",
+              "A subquery with JOIN",
+              "A subquery with ORDER BY"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "A correlated subquery references columns from the outer query and executes once per outer row.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "When is EXISTS often better than IN?",
+            "options": [
+              "For small datasets",
+              "When checking if rows exist (not values)",
+              "For string comparisons",
+              "Never"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "EXISTS can be faster because it stops as soon as it finds a match, while IN evaluates all values.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Subqueries\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which SQL example is syntactically valid?",
+            "options": [
+              "SELECT name FROM users;",
+              "SELECT FROM users name;",
+              "const query = users;",
+              "<sql>SELECT</sql>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for SQL in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Above Average Price\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Subqueries \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Above Average Price",
+        "description": "Find products priced above average.",
+        "starterCode": "-- Find products with price > average price\nSELECT name, price\nFROM products\nWHERE price > \n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT name, price FROM products WHERE price > (SELECT AVG(price) FROM products);",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use (SELECT AVG(price) FROM products)",
+        "solution": "SELECT name, price\nFROM products\nWHERE price > (SELECT AVG(price) FROM products);",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 1
+    },
+    {
+      "id": "sql_int_lesson_3",
+      "courseId": "sql-intermediate",
+      "moduleId": "aggregation",
+      "title": "GROUP BY & HAVING",
+      "description": "Aggregate and filter groups",
+      "theorySlides": [
+        {
+          "title": "Grouping Data 📊",
+          "content": "GROUP BY groups rows for aggregation.\n\nHAVING filters groups (like WHERE for aggregates).\n\nOrder: WHERE → GROUP BY → HAVING → ORDER BY",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Example",
+          "content": "Find categories with high sales.",
+          "codeSnippet": "SELECT category, SUM(amount) as total\nFROM sales\nGROUP BY category\nHAVING SUM(amount) > 1000\nORDER BY total DESC;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Multiple Column Grouping 📊📊",
+          "content": "Group by multiple columns:\n• Creates unique combinations\n• More granular aggregation\n• Order of columns matters",
+          "codeSnippet": "-- Sales by category AND year\nSELECT \n  category,\n  YEAR(sale_date) as year,\n  SUM(amount) as total,\n  COUNT(*) as num_sales\nFROM sales\nGROUP BY category, YEAR(sale_date)\nORDER BY category, year;\n\n-- Result: Electronics 2023 5000, Electronics 2024 7000...",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "HAVING with Multiple Conditions 🎯",
+          "content": "Filter groups with complex conditions:\n• Use AND/OR in HAVING\n• Can combine multiple aggregates\n• Filter after grouping",
+          "codeSnippet": "-- Categories with high sales AND many orders\nSELECT \n  category,\n  SUM(amount) as total,\n  COUNT(*) as orders\nFROM sales\nGROUP BY category\nHAVING SUM(amount) > 1000 \n   AND COUNT(*) >= 10;\n\n-- Customers with avg order > 100 but < 500\nSELECT customer_id, AVG(total) as avg_order\nFROM orders\nGROUP BY customer_id\nHAVING AVG(total) BETWEEN 100 AND 500;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        },
+        {
+          "title": "WHERE + GROUP BY + HAVING 🔗",
+          "content": "Combine all clauses effectively:\n• WHERE: Filter rows BEFORE grouping\n• GROUP BY: Create groups\n• HAVING: Filter groups AFTER aggregation",
+          "codeSnippet": "-- 2024 sales by category, only categories > 5000\nSELECT \n  category,\n  SUM(amount) as total\nFROM sales\nWHERE sale_date >= '2024-01-01'   -- Filter rows first\nGROUP BY category                  -- Then group\nHAVING SUM(amount) > 5000          -- Filter groups\nORDER BY total DESC;\n\n-- Active customers with many orders\nSELECT customer_id, COUNT(*) as orders\nFROM orders\nWHERE status = 'completed'\nGROUP BY customer_id\nHAVING COUNT(*) > 5;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 4
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "Difference between WHERE and HAVING?",
+            "options": [
+              "Same thing",
+              "WHERE filters rows, HAVING filters groups",
+              "HAVING is faster",
+              "WHERE is deprecated"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "WHERE filters before grouping, HAVING after.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What happens when you GROUP BY multiple columns?",
+            "options": [
+              "Error occurs",
+              "Only first column is used",
+              "Creates unique combinations of all columns",
+              "Columns are merged"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "GROUP BY multiple columns creates a group for each unique combination of values.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Can you use WHERE and HAVING in the same query?",
+            "options": [
+              "No, only one allowed",
+              "Yes, WHERE runs first",
+              "Yes, HAVING runs first",
+              "Only with subqueries"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Yes! WHERE filters rows before grouping, HAVING filters groups after aggregation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which is correct execution order?",
+            "options": [
+              "SELECT → FROM → WHERE",
+              "FROM → WHERE → GROUP BY → HAVING",
+              "GROUP BY → WHERE → HAVING",
+              "HAVING → GROUP BY → WHERE"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "SQL executes: FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"GROUP BY & HAVING\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which SQL example is syntactically valid?",
+            "options": [
+              "SELECT name FROM users;",
+              "SELECT FROM users name;",
+              "const query = users;",
+              "<sql>SELECT</sql>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for SQL in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"High Volume Customers\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Grouping Data \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "High Volume Customers",
+        "description": "Find customers with more than 5 orders.",
+        "starterCode": "-- Find customers with > 5 orders\nSELECT customer_id, COUNT(*) as order_count\nFROM orders\n\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT customer_id, COUNT(*) as order_count FROM orders GROUP BY customer_id HAVING COUNT(*) > 5;",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use GROUP BY and HAVING COUNT(*) > 5",
+        "solution": "SELECT customer_id, COUNT(*) as order_count\nFROM orders\nGROUP BY customer_id\nHAVING COUNT(*) > 5;",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 2
+    },
+    {
+      "id": "sql_int_lesson_4",
+      "courseId": "sql-intermediate",
+      "moduleId": "advanced",
+      "title": "Window Functions",
+      "description": "Advanced analytics",
+      "theorySlides": [
+        {
+          "title": "Window Functions 🪟",
+          "content": "Perform calculations across rows:\n• ROW_NUMBER(): Sequential number\n• RANK(): Rank with gaps\n• LAG/LEAD: Previous/next row\n• SUM() OVER: Running total",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Example",
+          "content": "Rank employees by salary.",
+          "codeSnippet": "SELECT \n  name,\n  salary,\n  ROW_NUMBER() OVER (ORDER BY salary DESC) as rank\nFROM employees;\n\n-- Result: Alex 100k #1, Bob 80k #2...",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "LAG & LEAD Functions ⏮️⏭️",
+          "content": "Access previous/next row values:\n• **LAG()**: Get value from previous row\n• **LEAD()**: Get value from next row\n• Great for comparisons and trends",
+          "codeSnippet": "SELECT \n  sale_date,\n  amount,\n  LAG(amount) OVER (ORDER BY sale_date) as prev_amount,\n  LEAD(amount) OVER (ORDER BY sale_date) as next_amount,\n  amount - LAG(amount) OVER (ORDER BY sale_date) as change\nFROM sales;\n\n-- Result: Shows each sale with previous and next amounts",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "Running Totals 📈",
+          "content": "Calculate cumulative sums:\n• SUM() OVER with ORDER BY\n• Running count, avg also possible\n• Resets with PARTITION BY",
+          "codeSnippet": "SELECT \n  order_date,\n  amount,\n  SUM(amount) OVER (ORDER BY order_date) as running_total,\n  COUNT(*) OVER (ORDER BY order_date) as order_num,\n  AVG(amount) OVER (ORDER BY order_date) as running_avg\nFROM orders;\n\n-- Running total per customer\nSELECT customer_id, order_date, amount,\n  SUM(amount) OVER (\n    PARTITION BY customer_id \n    ORDER BY order_date\n  ) as customer_running_total\nFROM orders;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        },
+        {
+          "title": "PARTITION BY Examples 📊",
+          "content": "Divide data into groups for calculations:\n• Like GROUP BY but keeps all rows\n• Each partition calculated separately\n• Combine with any window function",
+          "codeSnippet": "-- Rank employees within each department\nSELECT \n  name,\n  department,\n  salary,\n  RANK() OVER (\n    PARTITION BY department \n    ORDER BY salary DESC\n  ) as dept_rank\nFROM employees;\n\n-- Percentage of department total\nSELECT \n  name,\n  department,\n  salary,\n  salary * 100.0 / SUM(salary) OVER (\n    PARTITION BY department\n  ) as pct_of_dept\nFROM employees;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 4
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What does PARTITION BY do?",
+            "options": [
+              "Deletes partitions",
+              "Groups for window function",
+              "Creates new table",
+              "Filters rows"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "PARTITION BY divides rows into groups for window calculations.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does LAG() return?",
+            "options": [
+              "Next row value",
+              "Previous row value",
+              "Current row value",
+              "Random row value"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "LAG() returns the value from the previous row in the result set.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How do you calculate a running total?",
+            "options": [
+              "GROUP BY with SUM",
+              "SUM() OVER (ORDER BY date)",
+              "RUNNING_TOTAL()",
+              "CUMULATIVE_SUM()"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "SUM() OVER with ORDER BY calculates a running total that accumulates row by row.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Difference between ROW_NUMBER and RANK?",
+            "options": [
+              "No difference",
+              "RANK skips numbers for ties",
+              "ROW_NUMBER skips numbers",
+              "RANK starts at 0"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "RANK gives same number to ties and skips next numbers. ROW_NUMBER is always sequential.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Window Functions\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which SQL example is syntactically valid?",
+            "options": [
+              "SELECT name FROM users;",
+              "SELECT FROM users name;",
+              "const query = users;",
+              "<sql>SELECT</sql>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for SQL in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Rank Products\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Window Functions \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Rank Products",
+        "description": "Rank products by price with ROW_NUMBER.",
+        "starterCode": "-- Add rank by price (highest = 1)\nSELECT \n  name,\n  price,\n  \nFROM products;",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "ROW_NUMBER() OVER (ORDER BY price DESC) as rank",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use ROW_NUMBER() OVER (ORDER BY price DESC)",
+        "solution": "SELECT \n  name,\n  price,\n  ROW_NUMBER() OVER (ORDER BY price DESC) as rank\nFROM products;",
+        "xpReward": 15
+      },
+      "xpReward": 35,
+      "order": 3
+    },
+    {
+      "id": "sql_int_lesson_5",
+      "courseId": "sql-intermediate",
+      "moduleId": "performance",
+      "title": "Indexes & Performance",
+      "description": "Optimize query speed",
+      "theorySlides": [
+        {
+          "title": "Database Indexes ⚡",
+          "content": "Indexes speed up queries:\n• Like book index - fast lookup\n• Create on frequently queried columns\n• Trade-off: Slower writes, more storage",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Creating Indexes",
+          "content": "Index common search columns.",
+          "codeSnippet": "-- Single column index\nCREATE INDEX idx_email ON users(email);\n\n-- Composite index\nCREATE INDEX idx_name_date \nON orders(customer_name, order_date);\n\n-- Check with EXPLAIN\nEXPLAIN SELECT * FROM users WHERE email = 'test@test.com';",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Composite Indexes 🔗",
+          "content": "Index multiple columns together:\n• Column order matters!\n• Leftmost columns used first\n• Great for multi-column WHERE/ORDER BY",
+          "codeSnippet": "-- Composite index on (last_name, first_name)\nCREATE INDEX idx_name ON users(last_name, first_name);\n\n-- Uses index (starts with last_name)\nSELECT * FROM users WHERE last_name = 'Smith';\n\n-- Uses index (both columns)\nSELECT * FROM users \nWHERE last_name = 'Smith' AND first_name = 'John';\n\n-- Does NOT use index (missing leftmost column)\nSELECT * FROM users WHERE first_name = 'John';",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        },
+        {
+          "title": "EXPLAIN Analyze 🔍",
+          "content": "Understand query execution:\n• Shows if index is used\n• Reveals full table scans\n• Helps optimize slow queries",
+          "codeSnippet": "-- Basic EXPLAIN\nEXPLAIN SELECT * FROM users WHERE email = 'test@example.com';\n\n-- Shows: type, possible_keys, key, rows scanned\n\n-- EXPLAIN ANALYZE (actual execution)\nEXPLAIN ANALYZE SELECT * FROM orders \nWHERE customer_id = 100 AND status = 'pending';\n\n-- Look for:\n-- ✅ \"Using index\" - Good!\n-- ❌ \"Full table scan\" - Needs index\n-- ❌ \"filesort\" - Consider index on ORDER BY",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 3
+        },
+        {
+          "title": "Index Best Practices 📋",
+          "content": "When to use indexes:\n• Columns in WHERE, JOIN, ORDER BY\n• High cardinality columns (many unique values)\n• Foreign keys\n\nAvoid indexes on:\n• Frequently updated columns\n• Small tables\n• Low cardinality (few unique values)",
+          "codeSnippet": "-- Good index candidates\nCREATE INDEX idx_order_date ON orders(order_date);\nCREATE INDEX idx_customer_status ON orders(customer_id, status);\nCREATE INDEX idx_product_category ON products(category_id);\n\n-- Check existing indexes\nSHOW INDEX FROM orders;\n\n-- Remove unused index\nDROP INDEX idx_old_unused ON orders;\n\n-- Unique index (also enforces uniqueness)\nCREATE UNIQUE INDEX idx_email ON users(email);",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 4
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "When NOT to use indexes?",
+            "options": [
+              "On primary keys",
+              "On frequently updated columns",
+              "On WHERE columns",
+              "On JOIN columns"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Frequent updates slow down with indexes due to maintenance.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "In composite index (A, B, C), which queries use it?",
+            "options": [
+              "Only WHERE A",
+              "WHERE A, WHERE A+B, WHERE A+B+C",
+              "Any combination of A, B, C",
+              "Only WHERE A+B+C"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Composite indexes work left-to-right. Queries must include leftmost columns to use the index.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does EXPLAIN help you find?",
+            "options": [
+              "Syntax errors",
+              "Missing tables",
+              "Query execution plan and index usage",
+              "User permissions"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "EXPLAIN shows how the database executes a query, including which indexes are used.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is \"cardinality\" in index context?",
+            "options": [
+              "Index size",
+              "Number of unique values",
+              "Query speed",
+              "Table row count"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Cardinality is the number of unique values. High cardinality columns (many unique values) benefit most from indexes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Indexes & Performance\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which SQL example is syntactically valid?",
+            "options": [
+              "SELECT name FROM users;",
+              "SELECT FROM users name;",
+              "const query = users;",
+              "<sql>SELECT</sql>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for SQL in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Create Index\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Database Indexes \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If your answer is wrong, what is the smartest first debug step?",
+            "options": [
+              "Check intermediate values and assumptions",
+              "Rewrite from scratch without reviewing",
+              "Guess a random fix and resubmit",
+              "Ignore the failing case"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Reviewing assumptions and intermediate output is the fastest safe debug path.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Create Index",
+        "description": "Create index on products category column.",
+        "starterCode": "-- Create index on category column\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "CREATE INDEX idx_category ON products(category);",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use CREATE INDEX idx_name ON table(column)",
+        "solution": "CREATE INDEX idx_category ON products(category);",
+        "xpReward": 15
+      },
+      "xpReward": 30,
+      "order": 4
+    }
+  ]
+}

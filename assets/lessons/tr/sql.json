@@ -1,0 +1,1795 @@
+{
+  "courseId": "sql",
+  "lessons": [
+    {
+      "id": "sql_lesson_1",
+      "courseId": "sql",
+      "moduleId": "basics",
+      "title": "Introduction to SQL",
+      "description": "Discover the language that powers databases worldwide",
+      "theorySlides": [
+        {
+          "title": "What is SQL? 🗄️",
+          "content": "SQL (Structured Query Language) is the standard language for working with databases. It's used by millions of applications worldwide to store, retrieve, and manage data.\n\nSQL allows you to:\n• Store data in organized tables\n• Retrieve exactly the data you need\n• Update and delete information\n• Create complex reports and analysis",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Understanding Databases",
+          "content": "A database is like a digital filing cabinet. It contains tables, which are like spreadsheets with rows and columns.\n\n📊 Table Example: \"users\"\n┌────┬──────────┬─────────────────┐\n│ id │ name     │ email           │\n├────┼──────────┼─────────────────┤\n│ 1  │ Alice    │ alice@email.com │\n│ 2  │ Bob      │ bob@email.com   │\n└────┴──────────┴─────────────────┘\n\nEach row is a record, each column is a field.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Your First SELECT Query",
+          "content": "The SELECT statement retrieves data from a database. It's the most common SQL command you'll use.",
+          "codeSnippet": "-- Get all data from the users table\nSELECT * FROM users;\n\n-- Get only names from the users table\nSELECT name FROM users;\n\n-- Get multiple columns\nSELECT name, email FROM users;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What does SQL stand for?",
+            "options": [
+              "Simple Query Language",
+              "Structured Query Language",
+              "Standard Question Language",
+              "Sequential Query Logic"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "SQL stands for Structured Query Language. It's the standard language for managing and querying relational databases.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does the * symbol mean in SELECT * FROM users?",
+            "options": [
+              "Select the first row only",
+              "Select all columns",
+              "Select random data",
+              "Delete all data"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "The asterisk (*) is a wildcard that means \"all columns\". SELECT * retrieves every column from the specified table.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "In a database table, what is a row called?",
+            "options": [
+              "A field",
+              "A column",
+              "A record",
+              "A query"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Each row in a table is called a record. It represents a single entry with values for each column.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which keyword is used to specify which table to query?",
+            "options": [
+              "GET",
+              "FROM",
+              "TABLE",
+              "WHERE"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "The FROM keyword specifies which table to retrieve data from. Example: SELECT name FROM users.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the purpose of SQL?",
+            "options": [
+              "Create websites",
+              "Manage and query databases",
+              "Design user interfaces",
+              "Send emails"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "SQL is specifically designed to manage and query relational databases, allowing you to store, retrieve, update, and delete data.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Introduction to SQL\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which SQL example is syntactically valid?",
+            "options": [
+              "SELECT name FROM users;",
+              "SELECT FROM users name;",
+              "const query = users;",
+              "<sql>SELECT</sql>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for SQL in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Your First Query\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"What is SQL \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Your First Query",
+        "description": "Write a SQL query to select ALL columns from the \"products\" table.",
+        "starterCode": "-- Select all columns from the products table\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT * FROM products;",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use SELECT * to get all columns, and FROM to specify the table name.",
+        "solution": "SELECT * FROM products;",
+        "xpReward": 15
+      },
+      "xpReward": 15,
+      "order": 0
+    },
+    {
+      "id": "sql_lesson_2",
+      "courseId": "sql",
+      "moduleId": "basics",
+      "title": "SELECT Basics",
+      "description": "Master the fundamentals of querying data",
+      "theorySlides": [
+        {
+          "title": "Selecting Specific Columns 📋",
+          "content": "Instead of selecting everything with *, you can choose exactly which columns you need. This is more efficient and makes your queries clearer.",
+          "codeSnippet": "-- Select specific columns\nSELECT name, price FROM products;\n\n-- Select with a different order\nSELECT price, name, category FROM products;\n\n-- Columns can be listed in any order you want",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Filtering with WHERE",
+          "content": "The WHERE clause filters results to show only rows that match a condition. It's like asking \"show me only the items that...\"",
+          "codeSnippet": "-- Find products with price greater than 50\nSELECT name, price FROM products\nWHERE price > 50;\n\n-- Find a specific user by name\nSELECT * FROM users\nWHERE name = 'Alice';\n\n-- Find products in a specific category\nSELECT * FROM products\nWHERE category = 'Electronics';",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Comparison Operators",
+          "content": "SQL supports various operators for comparing values:\n\n• = Equal to\n• != or <> Not equal to\n• > Greater than\n• < Less than\n• >= Greater than or equal\n• <= Less than or equal",
+          "codeSnippet": "-- Find products priced at exactly 29.99\nSELECT * FROM products WHERE price = 29.99;\n\n-- Find orders with quantity less than 10\nSELECT * FROM orders WHERE quantity < 10;\n\n-- Find users who are NOT admins\nSELECT * FROM users WHERE role != 'admin';",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "How do you select only the \"name\" and \"email\" columns from a \"users\" table?",
+            "options": [
+              "SELECT * FROM users;",
+              "SELECT name, email FROM users;",
+              "GET name, email FROM users;",
+              "SELECT (name email) FROM users;"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "List the column names separated by commas after SELECT: SELECT name, email FROM users;",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which keyword is used to filter results?",
+            "options": [
+              "FILTER",
+              "WHEN",
+              "WHERE",
+              "IF"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "The WHERE clause is used to filter records that match a specific condition.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How do you find products where price is greater than 100?",
+            "options": [
+              "SELECT * FROM products WHERE price > 100;",
+              "SELECT * FROM products IF price > 100;",
+              "SELECT * FROM products WHEN price > 100;",
+              "SELECT * FROM products WITH price > 100;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Use WHERE with the > operator: WHERE price > 100",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What operator means \"not equal to\" in SQL?",
+            "options": [
+              "==",
+              "!==",
+              "!= or <>",
+              "=/="
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "In SQL, both != and <> mean \"not equal to\". Both are valid and widely used.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How should text values be written in SQL conditions?",
+            "options": [
+              "In double quotes: \"value\"",
+              "In single quotes: 'value'",
+              "In backticks: `value`",
+              "Without any quotes: value"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "In SQL, text (string) values should be enclosed in single quotes, like 'Alice' or 'Electronics'.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"SELECT Basics\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which SQL example is syntactically valid?",
+            "options": [
+              "SELECT name FROM users;",
+              "SELECT FROM users name;",
+              "const query = users;",
+              "<sql>SELECT</sql>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for SQL in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Filter Products\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Selecting Specific Columns \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Filter Products",
+        "description": "Write a query to select the name and price of all products where the price is less than or equal to 50.",
+        "starterCode": "-- Get name and price for affordable products\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT name, price FROM products WHERE price <= 50;",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use SELECT to choose columns, FROM for the table, and WHERE with <= for the condition.",
+        "solution": "SELECT name, price FROM products WHERE price <= 50;",
+        "xpReward": 15
+      },
+      "xpReward": 18,
+      "order": 1
+    },
+    {
+      "id": "sql_lesson_3",
+      "courseId": "sql",
+      "moduleId": "basics",
+      "title": "Filtering Data",
+      "description": "Learn advanced filtering with AND, OR, and pattern matching",
+      "theorySlides": [
+        {
+          "title": "Combining Conditions with AND & OR 🔍",
+          "content": "You can combine multiple conditions using AND (both must be true) or OR (at least one must be true).",
+          "codeSnippet": "-- AND: Both conditions must be true\nSELECT * FROM products\nWHERE category = 'Electronics' AND price < 500;\n\n-- OR: At least one condition must be true\nSELECT * FROM products\nWHERE category = 'Books' OR category = 'Music';\n\n-- Combining AND and OR (use parentheses!)\nSELECT * FROM products\nWHERE (category = 'Electronics' OR category = 'Gadgets')\nAND price < 100;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "IN, BETWEEN, and NOT",
+          "content": "SQL provides shortcuts for common filtering patterns:\n\n• IN: Match any value in a list\n• BETWEEN: Match a range of values\n• NOT: Negate a condition",
+          "codeSnippet": "-- IN: Instead of multiple OR conditions\nSELECT * FROM products\nWHERE category IN ('Electronics', 'Computers', 'Phones');\n\n-- BETWEEN: Range of values (inclusive)\nSELECT * FROM products\nWHERE price BETWEEN 10 AND 50;\n\n-- NOT: Exclude matches\nSELECT * FROM products\nWHERE category NOT IN ('Clothing', 'Food');",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Pattern Matching with LIKE",
+          "content": "The LIKE operator lets you search for patterns in text using wildcards:\n\n• % matches any sequence of characters\n• _ matches exactly one character",
+          "codeSnippet": "-- Names starting with 'A'\nSELECT * FROM users WHERE name LIKE 'A%';\n\n-- Names ending with 'son'\nSELECT * FROM users WHERE name LIKE '%son';\n\n-- Names containing 'ann'\nSELECT * FROM users WHERE name LIKE '%ann%';\n\n-- Emails from gmail\nSELECT * FROM users WHERE email LIKE '%@gmail.com';\n\n-- Names with exactly 4 characters\nSELECT * FROM users WHERE name LIKE '____';",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What does AND require for a row to be selected?",
+            "options": [
+              "At least one condition must be true",
+              "All conditions must be true",
+              "No conditions need to be true",
+              "Exactly one condition must be true"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "AND requires ALL conditions to be true. If any condition is false, the row is not selected.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which is the correct way to match values 10, 20, or 30?",
+            "options": [
+              "WHERE value = 10 OR 20 OR 30",
+              "WHERE value IN (10, 20, 30)",
+              "WHERE value BETWEEN 10 AND 30",
+              "WHERE value = (10, 20, 30)"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "IN allows you to specify multiple values: WHERE value IN (10, 20, 30). Note that BETWEEN would include all numbers from 10 to 30, not just 10, 20, and 30.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does the % wildcard match in LIKE?",
+            "options": [
+              "Exactly one character",
+              "Only numbers",
+              "Any sequence of characters (including none)",
+              "Only spaces"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "The % wildcard matches zero or more characters of any type. For example, 'A%' matches 'A', 'Alice', and 'Amazing'.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How do you find names that do NOT start with 'J'?",
+            "options": [
+              "WHERE name NOT LIKE 'J%'",
+              "WHERE name UNLIKE 'J%'",
+              "WHERE NOT name = 'J%'",
+              "WHERE name <> 'J%'"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Use NOT LIKE to negate a pattern match: WHERE name NOT LIKE 'J%'",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does BETWEEN 5 AND 10 include?",
+            "options": [
+              "Only 5 and 10",
+              "6, 7, 8, and 9 only",
+              "5, 6, 7, 8, 9, and 10",
+              "Everything except 5 and 10"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "BETWEEN is inclusive, meaning it includes both the start and end values. BETWEEN 5 AND 10 includes 5, 6, 7, 8, 9, and 10.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Filtering Data\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which SQL example is syntactically valid?",
+            "options": [
+              "SELECT name FROM users;",
+              "SELECT FROM users name;",
+              "const query = users;",
+              "<sql>SELECT</sql>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for SQL in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Complex Filter\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Combining Conditions with AND  OR \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Complex Filter",
+        "description": "Write a query to find all users whose name starts with 'J' AND whose email contains 'gmail'.",
+        "starterCode": "-- Find users with specific name and email patterns\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT * FROM users WHERE name LIKE 'J%' AND email LIKE '%gmail%';",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use LIKE with % wildcard for pattern matching. Combine conditions with AND.",
+        "solution": "SELECT * FROM users WHERE name LIKE 'J%' AND email LIKE '%gmail%';",
+        "xpReward": 15
+      },
+      "xpReward": 20,
+      "order": 2
+    },
+    {
+      "id": "sql_lesson_4",
+      "courseId": "sql",
+      "moduleId": "basics",
+      "title": "Sorting & Limiting Results",
+      "description": "Control the order and quantity of your results",
+      "theorySlides": [
+        {
+          "title": "Ordering Results with ORDER BY 📊",
+          "content": "The ORDER BY clause sorts your results. By default, it sorts in ascending order (A-Z, 0-9).",
+          "codeSnippet": "-- Sort by name alphabetically (A to Z)\nSELECT * FROM users ORDER BY name;\n\n-- Sort by price, lowest first (ascending)\nSELECT * FROM products ORDER BY price ASC;\n\n-- Sort by price, highest first (descending)\nSELECT * FROM products ORDER BY price DESC;\n\n-- Sort by multiple columns\nSELECT * FROM products\nORDER BY category ASC, price DESC;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Limiting Results with LIMIT",
+          "content": "LIMIT restricts how many rows are returned. This is essential for pagination and getting top/bottom results.",
+          "codeSnippet": "-- Get only the first 10 products\nSELECT * FROM products LIMIT 10;\n\n-- Get the 5 most expensive products\nSELECT * FROM products\nORDER BY price DESC\nLIMIT 5;\n\n-- Pagination: Skip first 20, get next 10\nSELECT * FROM products\nLIMIT 10 OFFSET 20;\n\n-- Alternative syntax: LIMIT offset, count\nSELECT * FROM products LIMIT 20, 10;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Handling NULL Values",
+          "content": "NULL represents missing or unknown data. It requires special handling in SQL.",
+          "codeSnippet": "-- Find rows where email is NULL (missing)\nSELECT * FROM users WHERE email IS NULL;\n\n-- Find rows where email exists (is NOT NULL)\nSELECT * FROM users WHERE email IS NOT NULL;\n\n-- WRONG: This won't work!\nSELECT * FROM users WHERE email = NULL;\n\n-- NULLs sort last in ASC, first in DESC\n-- Use NULLS FIRST or NULLS LAST to control\nSELECT * FROM users\nORDER BY last_login DESC NULLS LAST;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "How do you sort results from highest to lowest?",
+            "options": [
+              "ORDER BY column ASC",
+              "ORDER BY column DESC",
+              "SORT BY column DOWN",
+              "ORDER BY column REVERSE"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "DESC (descending) sorts from highest to lowest. ASC (ascending) sorts from lowest to highest.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does LIMIT 5 do?",
+            "options": [
+              "Skips the first 5 rows",
+              "Returns only the first 5 rows",
+              "Returns rows where a column equals 5",
+              "Groups results into 5 categories"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "LIMIT 5 restricts the result set to only the first 5 rows returned by the query.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How do you check if a value is NULL?",
+            "options": [
+              "WHERE column = NULL",
+              "WHERE column == NULL",
+              "WHERE column IS NULL",
+              "WHERE column EQUALS NULL"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "NULL requires the IS operator, not =. Use WHERE column IS NULL or WHERE column IS NOT NULL.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does OFFSET 10 do with LIMIT 5?",
+            "options": [
+              "Returns 10 rows starting from row 5",
+              "Returns 5 rows, skipping the first 10",
+              "Returns rows 5 through 10",
+              "Returns 15 rows total"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "OFFSET 10 skips the first 10 rows. Combined with LIMIT 5, you get rows 11-15.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How do you get the 3 cheapest products?",
+            "options": [
+              "SELECT * FROM products ORDER BY price ASC LIMIT 3;",
+              "SELECT * FROM products ORDER BY price DESC LIMIT 3;",
+              "SELECT * FROM products LIMIT 3 ORDER BY price;",
+              "SELECT TOP 3 * FROM products WHERE price = MIN;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Sort by price in ascending order (lowest first) and limit to 3 results.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Sorting & Limiting Results\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which SQL example is syntactically valid?",
+            "options": [
+              "SELECT name FROM users;",
+              "SELECT FROM users name;",
+              "const query = users;",
+              "<sql>SELECT</sql>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for SQL in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Top Products\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Ordering Results with ORDER BY \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Top Products",
+        "description": "Write a query to get the 5 most expensive products. Show only the name and price columns, sorted by price from highest to lowest.",
+        "starterCode": "-- Get the top 5 expensive products\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT name, price FROM products ORDER BY price DESC LIMIT 5;",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use ORDER BY with DESC for highest first, then LIMIT to restrict results.",
+        "solution": "SELECT name, price FROM products ORDER BY price DESC LIMIT 5;",
+        "xpReward": 15
+      },
+      "xpReward": 18,
+      "order": 3
+    },
+    {
+      "id": "sql_lesson_5",
+      "courseId": "sql",
+      "moduleId": "intermediate",
+      "title": "Aggregate Functions",
+      "description": "Perform calculations on groups of data",
+      "theorySlides": [
+        {
+          "title": "What are Aggregate Functions? 📈",
+          "content": "Aggregate functions perform calculations on multiple rows and return a single value. They're essential for data analysis and reporting.\n\n• COUNT() - Number of rows\n• SUM() - Total of values\n• AVG() - Average of values\n• MIN() - Smallest value\n• MAX() - Largest value",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "COUNT, SUM, and AVG",
+          "content": "These are the most commonly used aggregate functions:",
+          "codeSnippet": "-- Count total number of products\nSELECT COUNT(*) FROM products;\n\n-- Count products in a category\nSELECT COUNT(*) FROM products\nWHERE category = 'Electronics';\n\n-- Sum of all order amounts\nSELECT SUM(amount) FROM orders;\n\n-- Average product price\nSELECT AVG(price) FROM products;\n\n-- Count non-NULL emails\nSELECT COUNT(email) FROM users;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "MIN, MAX, and Column Aliases",
+          "content": "Find extreme values and give your results meaningful names:",
+          "codeSnippet": "-- Find the cheapest product price\nSELECT MIN(price) AS lowest_price FROM products;\n\n-- Find the most expensive product price  \nSELECT MAX(price) AS highest_price FROM products;\n\n-- Combine multiple aggregates\nSELECT \n  COUNT(*) AS total_products,\n  AVG(price) AS average_price,\n  MIN(price) AS min_price,\n  MAX(price) AS max_price\nFROM products;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What does COUNT(*) return?",
+            "options": [
+              "The sum of all values",
+              "The total number of rows",
+              "The average of all values",
+              "The number of columns"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "COUNT(*) counts all rows in the result set, including rows with NULL values.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What's the difference between COUNT(*) and COUNT(column)?",
+            "options": [
+              "No difference",
+              "COUNT(*) counts all rows, COUNT(column) only counts non-NULL values",
+              "COUNT(*) is faster",
+              "COUNT(column) counts all rows"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "COUNT(*) counts all rows, while COUNT(column) only counts rows where that specific column is not NULL.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How do you find the average order amount?",
+            "options": [
+              "SELECT AVERAGE(amount) FROM orders;",
+              "SELECT AVG(amount) FROM orders;",
+              "SELECT MEAN(amount) FROM orders;",
+              "SELECT SUM(amount)/COUNT(*) FROM orders;"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "AVG() is the standard SQL function for calculating averages. While option D would work mathematically, AVG() is cleaner and handles NULLs correctly.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does AS do in \"SELECT COUNT(*) AS total\"?",
+            "options": [
+              "Filters the count",
+              "Creates a column alias (name)",
+              "Sorts the results",
+              "Groups the data"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "AS creates an alias, giving the result column a custom name. \"AS total\" means the count will appear in a column named \"total\".",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which function finds the highest value?",
+            "options": [
+              "TOP()",
+              "HIGHEST()",
+              "MAX()",
+              "GREATEST()"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "MAX() returns the maximum (highest) value in a column. It works with numbers, dates, and text.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Aggregate Functions\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which SQL example is syntactically valid?",
+            "options": [
+              "SELECT name FROM users;",
+              "SELECT FROM users name;",
+              "const query = users;",
+              "<sql>SELECT</sql>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for SQL in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Order Statistics\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"What are Aggregate Functions \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Order Statistics",
+        "description": "Write a query that shows the total number of orders, the sum of all amounts, and the average amount from the \"orders\" table. Use aliases: total_orders, total_amount, avg_amount.",
+        "starterCode": "-- Calculate order statistics\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT COUNT(*) AS total_orders, SUM(amount) AS total_amount, AVG(amount) AS avg_amount FROM orders;",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use COUNT(*), SUM(), and AVG() with AS to create aliases for each result.",
+        "solution": "SELECT COUNT(*) AS total_orders, SUM(amount) AS total_amount, AVG(amount) AS avg_amount FROM orders;",
+        "xpReward": 15
+      },
+      "xpReward": 20,
+      "order": 4
+    },
+    {
+      "id": "sql_lesson_6",
+      "courseId": "sql",
+      "moduleId": "intermediate",
+      "title": "GROUP BY & HAVING",
+      "description": "Group data and filter aggregated results",
+      "theorySlides": [
+        {
+          "title": "Grouping Data with GROUP BY 📊",
+          "content": "GROUP BY divides rows into groups based on column values, allowing you to apply aggregate functions to each group separately.",
+          "codeSnippet": "-- Count products per category\nSELECT category, COUNT(*) AS product_count\nFROM products\nGROUP BY category;\n\n-- Total sales per customer\nSELECT customer_id, SUM(amount) AS total_spent\nFROM orders\nGROUP BY customer_id;\n\n-- Average price by category\nSELECT category, AVG(price) AS avg_price\nFROM products\nGROUP BY category;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Filtering Groups with HAVING",
+          "content": "HAVING filters groups AFTER aggregation. Use it when you want to filter based on aggregate results (WHERE can't do this!).",
+          "codeSnippet": "-- Categories with more than 10 products\nSELECT category, COUNT(*) AS count\nFROM products\nGROUP BY category\nHAVING COUNT(*) > 10;\n\n-- Customers who spent over $1000\nSELECT customer_id, SUM(amount) AS total\nFROM orders\nGROUP BY customer_id\nHAVING SUM(amount) > 1000;\n\n-- WHERE filters rows, HAVING filters groups\nSELECT category, AVG(price) AS avg_price\nFROM products\nWHERE price > 0        -- Filter rows first\nGROUP BY category\nHAVING AVG(price) > 50; -- Then filter groups",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Complete GROUP BY Example",
+          "content": "Here's a real-world example combining everything:",
+          "codeSnippet": "-- Sales report by category and month\nSELECT \n  category,\n  COUNT(*) AS num_orders,\n  SUM(amount) AS total_sales,\n  AVG(amount) AS avg_order\nFROM orders\nWHERE status = 'completed'\nGROUP BY category\nHAVING SUM(amount) >= 1000\nORDER BY total_sales DESC;\n\n-- Query execution order:\n-- 1. FROM (get table)\n-- 2. WHERE (filter rows)\n-- 3. GROUP BY (create groups)\n-- 4. HAVING (filter groups)\n-- 5. SELECT (choose columns)\n-- 6. ORDER BY (sort results)",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What does GROUP BY do?",
+            "options": [
+              "Sorts the results",
+              "Divides rows into groups for aggregation",
+              "Limits the number of results",
+              "Joins two tables together"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "GROUP BY divides rows into groups based on one or more columns, so aggregate functions can be applied to each group separately.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What's the difference between WHERE and HAVING?",
+            "options": [
+              "They are the same",
+              "WHERE filters before grouping, HAVING filters after",
+              "HAVING is faster",
+              "WHERE only works with numbers"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "WHERE filters individual rows before they are grouped. HAVING filters groups after aggregation. Use HAVING when filtering on aggregate results like COUNT() or SUM().",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which query finds categories with average price over $50?",
+            "options": [
+              "SELECT category FROM products WHERE AVG(price) > 50 GROUP BY category;",
+              "SELECT category FROM products GROUP BY category HAVING AVG(price) > 50;",
+              "SELECT category FROM products GROUP BY category WHERE AVG(price) > 50;",
+              "SELECT category, AVG(price) FROM products HAVING AVG(price) > 50;"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "You must use HAVING (not WHERE) to filter on aggregate functions. HAVING comes after GROUP BY.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "When using GROUP BY, what can appear in SELECT?",
+            "options": [
+              "Any columns you want",
+              "Only the grouped columns and aggregate functions",
+              "Only aggregate functions",
+              "Only the grouped columns"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "In a GROUP BY query, SELECT can only include columns that are in the GROUP BY clause, or columns wrapped in aggregate functions.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What order are SQL clauses executed?",
+            "options": [
+              "SELECT → FROM → WHERE → GROUP BY",
+              "FROM → SELECT → WHERE → GROUP BY",
+              "FROM → WHERE → GROUP BY → HAVING → SELECT",
+              "SELECT → WHERE → FROM → GROUP BY"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "SQL executes in this order: FROM (get data) → WHERE (filter rows) → GROUP BY (group) → HAVING (filter groups) → SELECT (columns) → ORDER BY (sort)",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"GROUP BY & HAVING\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which SQL example is syntactically valid?",
+            "options": [
+              "SELECT name FROM users;",
+              "SELECT FROM users name;",
+              "const query = users;",
+              "<sql>SELECT</sql>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for SQL in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Category Analysis\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Grouping Data with GROUP BY \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Category Analysis",
+        "description": "Write a query to show each category and its product count from the \"products\" table. Only include categories that have more than 5 products. Order by count descending.",
+        "starterCode": "-- Show categories with more than 5 products\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT category, COUNT(*) AS product_count FROM products GROUP BY category HAVING COUNT(*) > 5 ORDER BY product_count DESC;",
+            "isHidden": false
+          }
+        ],
+        "hint": "GROUP BY category, use HAVING to filter groups with COUNT(*) > 5, then ORDER BY.",
+        "solution": "SELECT category, COUNT(*) AS product_count FROM products GROUP BY category HAVING COUNT(*) > 5 ORDER BY product_count DESC;",
+        "xpReward": 15
+      },
+      "xpReward": 22,
+      "order": 5
+    },
+    {
+      "id": "sql_lesson_7",
+      "courseId": "sql",
+      "moduleId": "intermediate",
+      "title": "JOIN Basics",
+      "description": "Combine data from multiple tables",
+      "theorySlides": [
+        {
+          "title": "Why Use JOINs? 🔗",
+          "content": "Real databases split data across multiple tables to avoid duplication. JOINs let you combine related data from different tables.\n\nExample Tables:\n• users: id, name, email\n• orders: id, user_id, amount, date\n\nThe user_id in orders links to id in users. This relationship lets us see which user made each order.",
+          "codeSnippet": null,
+          "codeLanguage": null,
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "INNER JOIN",
+          "content": "INNER JOIN returns only rows that have matching values in both tables. It's the most common type of join.",
+          "codeSnippet": "-- Get orders with customer names\nSELECT orders.id, users.name, orders.amount\nFROM orders\nINNER JOIN users ON orders.user_id = users.id;\n\n-- Using table aliases for cleaner code\nSELECT o.id, u.name, o.amount\nFROM orders o\nINNER JOIN users u ON o.user_id = u.id;\n\n-- With additional filtering\nSELECT u.name, o.amount, o.order_date\nFROM orders o\nINNER JOIN users u ON o.user_id = u.id\nWHERE o.amount > 100;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Understanding JOIN Syntax",
+          "content": "The ON clause specifies how tables relate to each other:",
+          "codeSnippet": "-- Full syntax breakdown\nSELECT \n  products.name AS product_name,\n  categories.name AS category_name\nFROM products                    -- First table\nINNER JOIN categories            -- Second table\nON products.category_id = categories.id;  -- Link\n\n-- Join products with their orders\nSELECT p.name, o.quantity, o.order_date\nFROM products p\nINNER JOIN order_items o ON p.id = o.product_id;\n\n-- You can also just write JOIN (INNER is default)\nSELECT * FROM orders\nJOIN users ON orders.user_id = users.id;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What does an INNER JOIN return?",
+            "options": [
+              "All rows from both tables",
+              "Only rows that have matching values in both tables",
+              "All rows from the left table",
+              "All rows from the right table"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "INNER JOIN returns only the rows where there is a match in both tables based on the join condition.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does the ON clause specify?",
+            "options": [
+              "Which columns to display",
+              "How the tables are related",
+              "The order of results",
+              "How many rows to return"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "The ON clause defines the relationship between tables by specifying which columns should match (e.g., orders.user_id = users.id).",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is a table alias?",
+            "options": [
+              "A way to rename a table permanently",
+              "A short name for a table in a query",
+              "A backup of the table",
+              "A type of join"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "A table alias is a temporary short name (like \"u\" for \"users\") that makes queries easier to write and read.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If orders has 100 rows and users has 50, how many rows could INNER JOIN return maximum?",
+            "options": [
+              "Exactly 100",
+              "Exactly 50",
+              "Up to 100 (if all orders have matching users)",
+              "150"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "INNER JOIN returns only matching rows. If all 100 orders have valid user_ids that exist in users, you get 100 rows. Unmatched rows are excluded.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Is \"JOIN\" the same as \"INNER JOIN\"?",
+            "options": [
+              "No, they are different",
+              "Yes, JOIN defaults to INNER JOIN",
+              "JOIN returns more rows",
+              "INNER JOIN is faster"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "In SQL, JOIN without a prefix defaults to INNER JOIN. They produce the same results.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"JOIN Basics\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which SQL example is syntactically valid?",
+            "options": [
+              "SELECT name FROM users;",
+              "SELECT FROM users name;",
+              "const query = users;",
+              "<sql>SELECT</sql>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for SQL in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Join Orders with Users\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Why Use JOINs \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Join Orders with Users",
+        "description": "Write a query to show each order with the customer's name. Select the order id, user name, and amount. Use table aliases (o for orders, u for users).",
+        "starterCode": "-- Join orders with users to see customer names\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT o.id, u.name, o.amount FROM orders o INNER JOIN users u ON o.user_id = u.id;",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use FROM orders o, then INNER JOIN users u ON o.user_id = u.id",
+        "solution": "SELECT o.id, u.name, o.amount FROM orders o INNER JOIN users u ON o.user_id = u.id;",
+        "xpReward": 15
+      },
+      "xpReward": 22,
+      "order": 6
+    },
+    {
+      "id": "sql_lesson_8",
+      "courseId": "sql",
+      "moduleId": "intermediate",
+      "title": "Advanced JOINs",
+      "description": "Master LEFT JOIN, RIGHT JOIN, and multiple table joins",
+      "theorySlides": [
+        {
+          "title": "LEFT JOIN - Keep All Left Rows 👈",
+          "content": "LEFT JOIN returns all rows from the left table, plus matching rows from the right table. If there's no match, NULL values fill in for the right table columns.",
+          "codeSnippet": "-- All users, even those with no orders\nSELECT u.name, o.amount\nFROM users u\nLEFT JOIN orders o ON u.id = o.user_id;\n\n-- Result might include:\n-- Alice  | 99.99\n-- Bob    | 150.00\n-- Carol  | NULL    ← Carol has no orders\n\n-- Find users who have never ordered\nSELECT u.name, u.email\nFROM users u\nLEFT JOIN orders o ON u.id = o.user_id\nWHERE o.id IS NULL;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "RIGHT JOIN & Visual Guide",
+          "content": "RIGHT JOIN is the opposite of LEFT - it keeps all rows from the right table.\n\n📊 JOIN Types Visual:\n\nINNER: Only matching rows (A ∩ B)\nLEFT:  All from left + matches (A + A∩B)\nRIGHT: All from right + matches (B + A∩B)",
+          "codeSnippet": "-- All products, even those never ordered\nSELECT p.name, o.quantity\nFROM order_items o\nRIGHT JOIN products p ON o.product_id = p.id;\n\n-- RIGHT JOIN is less common - you can usually\n-- rewrite it as LEFT JOIN by swapping tables:\nSELECT p.name, o.quantity\nFROM products p\nLEFT JOIN order_items o ON p.id = o.product_id;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Joining Multiple Tables",
+          "content": "You can chain multiple JOINs to combine data from several related tables:",
+          "codeSnippet": "-- Orders with user names and product details\nSELECT \n  u.name AS customer,\n  p.name AS product,\n  oi.quantity,\n  o.order_date\nFROM orders o\nINNER JOIN users u ON o.user_id = u.id\nINNER JOIN order_items oi ON o.id = oi.order_id\nINNER JOIN products p ON oi.product_id = p.id\nWHERE o.order_date >= '2024-01-01';\n\n-- Mix JOIN types as needed\nSELECT u.name, COUNT(o.id) AS order_count\nFROM users u\nLEFT JOIN orders o ON u.id = o.user_id\nGROUP BY u.id, u.name;",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What does LEFT JOIN return that INNER JOIN doesn't?",
+            "options": [
+              "More columns",
+              "Unmatched rows from the left table (with NULLs)",
+              "Faster results",
+              "Sorted results"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "LEFT JOIN includes all rows from the left table, even if there's no match in the right table. Unmatched right columns show as NULL.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How do you find users who have NO orders?",
+            "options": [
+              "SELECT * FROM users WHERE orders = 0;",
+              "SELECT * FROM users LEFT JOIN orders ON ... WHERE orders.id IS NULL;",
+              "SELECT * FROM users INNER JOIN orders ON ... WHERE amount = 0;",
+              "SELECT * FROM users WHERE NOT IN orders;"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Use LEFT JOIN and check for NULL in the right table's key column. If orders.id IS NULL, the user has no matching orders.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "If users has 100 rows and orders has 50, what's the minimum LEFT JOIN result?",
+            "options": [
+              "50 rows",
+              "100 rows",
+              "150 rows",
+              "0 rows"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "LEFT JOIN always returns at least as many rows as the left table. All 100 users will appear, even those without orders.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Can you use multiple JOINs in one query?",
+            "options": [
+              "No, only one JOIN allowed",
+              "Yes, chain them one after another",
+              "Only with subqueries",
+              "Only with UNION"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "You can chain multiple JOINs to combine data from many tables. Each JOIN adds another table to the result.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "RIGHT JOIN users ON orders.user_id = users.id is equivalent to:",
+            "options": [
+              "LEFT JOIN orders ON users.id = orders.user_id",
+              "INNER JOIN with the tables swapped",
+              "LEFT JOIN users ON orders.user_id = users.id",
+              "None of the above"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "RIGHT JOIN table_a is equivalent to LEFT JOIN with the tables swapped. Most developers prefer LEFT JOIN for consistency.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Advanced JOINs\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which SQL example is syntactically valid?",
+            "options": [
+              "SELECT name FROM users;",
+              "SELECT FROM users name;",
+              "const query = users;",
+              "<sql>SELECT</sql>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for SQL in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Find Inactive Users\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"LEFT JOIN - Keep All Left Rows \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Find Inactive Users",
+        "description": "Write a query to find all users who have never placed an order. Use LEFT JOIN and check for NULL. Show only the user name and email.",
+        "starterCode": "-- Find users with no orders\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "SELECT u.name, u.email FROM users u LEFT JOIN orders o ON u.id = o.user_id WHERE o.id IS NULL;",
+            "isHidden": false
+          }
+        ],
+        "hint": "LEFT JOIN keeps all users. Where there's no matching order, order columns will be NULL.",
+        "solution": "SELECT u.name, u.email FROM users u LEFT JOIN orders o ON u.id = o.user_id WHERE o.id IS NULL;",
+        "xpReward": 15
+      },
+      "xpReward": 23,
+      "order": 7
+    },
+    {
+      "id": "sql_lesson_9",
+      "courseId": "sql",
+      "moduleId": "advanced",
+      "title": "Modifying Data",
+      "description": "Learn to insert, update, and delete data safely",
+      "theorySlides": [
+        {
+          "title": "Inserting Data with INSERT 📝",
+          "content": "The INSERT statement adds new rows to a table. You can insert single or multiple rows at once.",
+          "codeSnippet": "-- Insert a single row (specify columns)\nINSERT INTO users (name, email)\nVALUES ('Alice', 'alice@email.com');\n\n-- Insert with all columns (order matters!)\nINSERT INTO products\nVALUES (1, 'Laptop', 999.99, 'Electronics');\n\n-- Insert multiple rows at once\nINSERT INTO users (name, email) VALUES\n  ('Bob', 'bob@email.com'),\n  ('Carol', 'carol@email.com'),\n  ('Dave', 'dave@email.com');",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Updating Data with UPDATE",
+          "content": "UPDATE modifies existing rows. ALWAYS use WHERE to specify which rows to update!",
+          "codeSnippet": "-- Update a specific user's email\nUPDATE users\nSET email = 'newemail@example.com'\nWHERE id = 5;\n\n-- Update multiple columns\nUPDATE products\nSET price = 899.99, category = 'Sale'\nWHERE id = 10;\n\n-- Update based on conditions\nUPDATE products\nSET price = price * 0.9  -- 10% discount\nWHERE category = 'Clearance';\n\n-- ⚠️ DANGEROUS: Updates ALL rows!\nUPDATE users SET status = 'active';",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Deleting Data with DELETE",
+          "content": "DELETE removes rows from a table. Be very careful - this is permanent!",
+          "codeSnippet": "-- Delete a specific row\nDELETE FROM users WHERE id = 5;\n\n-- Delete rows matching a condition\nDELETE FROM orders\nWHERE status = 'cancelled'\nAND created_at < '2023-01-01';\n\n-- ⚠️ DANGEROUS: Deletes ALL rows!\nDELETE FROM users;\n\n-- Safety tip: Test with SELECT first!\nSELECT * FROM orders\nWHERE status = 'cancelled';  -- Preview\n-- Then change SELECT to DELETE\n\n-- Use transactions for safety\nBEGIN TRANSACTION;\nDELETE FROM orders WHERE id = 100;\n-- Check results, then:\nCOMMIT;  -- Save changes\n-- Or: ROLLBACK;  -- Undo changes",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What's the correct syntax to insert a new user?",
+            "options": [
+              "ADD INTO users VALUES ('John', 'john@email.com');",
+              "INSERT users (name, email) ('John', 'john@email.com');",
+              "INSERT INTO users (name, email) VALUES ('John', 'john@email.com');",
+              "CREATE ROW users ('John', 'john@email.com');"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "The correct syntax is INSERT INTO table (columns) VALUES (values);",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What happens if you run UPDATE users SET status = 'active'; without WHERE?",
+            "options": [
+              "It fails with an error",
+              "It updates only the first row",
+              "It updates ALL rows in the table",
+              "Nothing happens"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "Without a WHERE clause, UPDATE affects ALL rows in the table. This is a common and dangerous mistake!",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "How do you change a product's price from $100 to $90?",
+            "options": [
+              "UPDATE products SET price = 90 WHERE price = 100;",
+              "MODIFY products price = 90 WHERE price = 100;",
+              "CHANGE products SET price 90 WHERE id = ?;",
+              "UPDATE price = 90 FROM products;"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Use UPDATE table SET column = value WHERE condition; to modify specific rows.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What should you do before running a DELETE?",
+            "options": [
+              "Run COMMIT first",
+              "Test with SELECT using the same WHERE clause",
+              "Nothing, just run it",
+              "Create a new table"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "Always preview what will be deleted by running a SELECT with the same WHERE clause first. This prevents accidental data loss.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does ROLLBACK do in a transaction?",
+            "options": [
+              "Saves all changes",
+              "Undoes all changes since BEGIN TRANSACTION",
+              "Deletes the table",
+              "Locks the database"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "ROLLBACK undoes all changes made since the transaction began. COMMIT saves them. Transactions let you test changes safely.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Modifying Data\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which SQL example is syntactically valid?",
+            "options": [
+              "SELECT name FROM users;",
+              "SELECT FROM users name;",
+              "const query = users;",
+              "<sql>SELECT</sql>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for SQL in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Add a New Product\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"Inserting Data with INSERT \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Add a New Product",
+        "description": "Write an INSERT statement to add a new product with name \"Wireless Mouse\", price 29.99, and category \"Electronics\" to the products table.",
+        "starterCode": "-- Insert a new product\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "INSERT INTO products (name, price, category) VALUES ('Wireless Mouse', 29.99, 'Electronics');",
+            "isHidden": false
+          }
+        ],
+        "hint": "Use INSERT INTO table (columns) VALUES (values); - remember to quote text values.",
+        "solution": "INSERT INTO products (name, price, category) VALUES ('Wireless Mouse', 29.99, 'Electronics');",
+        "xpReward": 15
+      },
+      "xpReward": 23,
+      "order": 8
+    },
+    {
+      "id": "sql_lesson_10",
+      "courseId": "sql",
+      "moduleId": "advanced",
+      "title": "Creating Tables",
+      "description": "Design and create your own database tables",
+      "theorySlides": [
+        {
+          "title": "CREATE TABLE Basics 🏗️",
+          "content": "CREATE TABLE defines a new table with columns and their data types. Each column needs a name and type.",
+          "codeSnippet": "-- Basic table creation\nCREATE TABLE users (\n  id INT,\n  name VARCHAR(100),\n  email VARCHAR(255),\n  age INT,\n  created_at TIMESTAMP\n);\n\n-- Common data types:\n-- INT: Whole numbers (1, 42, -10)\n-- DECIMAL(10,2): Decimal numbers (99.99)\n-- VARCHAR(n): Text up to n characters\n-- TEXT: Long text (no limit)\n-- BOOLEAN: true/false\n-- DATE: Dates (2024-01-15)\n-- TIMESTAMP: Date + time",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 0
+        },
+        {
+          "title": "Primary Keys & Auto Increment",
+          "content": "A PRIMARY KEY uniquely identifies each row. AUTO_INCREMENT generates unique IDs automatically.",
+          "codeSnippet": "-- Table with primary key and auto-increment\nCREATE TABLE products (\n  id INT PRIMARY KEY AUTO_INCREMENT,\n  name VARCHAR(255) NOT NULL,\n  price DECIMAL(10, 2) NOT NULL,\n  description TEXT,\n  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n);\n\n-- PostgreSQL uses SERIAL instead:\nCREATE TABLE products (\n  id SERIAL PRIMARY KEY,\n  name VARCHAR(255) NOT NULL,\n  price DECIMAL(10, 2) NOT NULL\n);",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 1
+        },
+        {
+          "title": "Constraints & Foreign Keys",
+          "content": "Constraints enforce rules on your data to maintain integrity:",
+          "codeSnippet": "-- Table with various constraints\nCREATE TABLE orders (\n  id INT PRIMARY KEY AUTO_INCREMENT,\n  user_id INT NOT NULL,\n  amount DECIMAL(10, 2) NOT NULL CHECK (amount > 0),\n  status VARCHAR(50) DEFAULT 'pending',\n  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\n  \n  -- Foreign key links to users table\n  FOREIGN KEY (user_id) REFERENCES users(id)\n);\n\n-- Constraints explained:\n-- NOT NULL: Column cannot be empty\n-- UNIQUE: All values must be different\n-- CHECK: Values must meet a condition\n-- DEFAULT: Value if none provided\n-- FOREIGN KEY: Must match a value in another table",
+          "codeLanguage": "sql",
+          "imageUrl": null,
+          "lottieUrl": null,
+          "order": 2
+        }
+      ],
+      "quiz": {
+        "questions": [
+          {
+            "question": "What does PRIMARY KEY ensure?",
+            "options": [
+              "The column is always sorted",
+              "Each row has a unique identifier",
+              "The column can be NULL",
+              "The table loads faster"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "PRIMARY KEY ensures each row has a unique, non-null identifier. It's essential for identifying and linking records.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which data type is best for storing prices like $99.99?",
+            "options": [
+              "INT",
+              "VARCHAR(10)",
+              "DECIMAL(10, 2)",
+              "FLOAT"
+            ],
+            "correctAnswerIndex": 2,
+            "explanation": "DECIMAL(10, 2) stores exact decimal numbers with 2 decimal places - perfect for money. FLOAT can have rounding errors.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does NOT NULL mean?",
+            "options": [
+              "The column can only store NULL",
+              "The column must always have a value",
+              "The column is a primary key",
+              "The column stores zero"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "NOT NULL means the column cannot be empty - every row must have a value for that column.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does a FOREIGN KEY do?",
+            "options": [
+              "Creates a new table",
+              "Links to a row in another table",
+              "Makes the column unique",
+              "Encrypts the data"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "A FOREIGN KEY creates a relationship between tables by referencing the primary key of another table, ensuring referential integrity.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What does DEFAULT 'pending' do?",
+            "options": [
+              "Makes the column required",
+              "Sets the value to 'pending' if not provided",
+              "Only allows the value 'pending'",
+              "Names the column 'pending'"
+            ],
+            "correctAnswerIndex": 1,
+            "explanation": "DEFAULT specifies a value to use when no value is provided during INSERT. In this case, the status would be 'pending' by default.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "What is the main objective of \"Creating Tables\"?",
+            "options": [
+              "Understand and apply the core idea in code",
+              "Memorize random syntax without practice",
+              "Skip examples and only read definitions",
+              "Focus on unrelated advanced topics first"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Each lesson objective is to build practical skill with one focused concept.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which SQL example is syntactically valid?",
+            "options": [
+              "SELECT name FROM users;",
+              "SELECT FROM users name;",
+              "const query = users;",
+              "<sql>SELECT</sql>"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "This is the correctly formed snippet for SQL in this lesson context.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which approach best follows this lesson style?",
+            "options": [
+              "Solve one small step, test it, then continue",
+              "Write everything at once without checking",
+              "Ignore errors and move to next lesson",
+              "Copy code blindly without understanding"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "The course style is incremental: small steps + quick validation.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Before submitting \"Create a Customers Table\", what should you verify?",
+            "options": [
+              "Output/behavior matches the expected result",
+              "The code has the most lines possible",
+              "Variable names are as short as possible",
+              "No comments are present anywhere"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Checking expected behavior first prevents common submission mistakes.",
+            "type": "multipleChoice"
+          },
+          {
+            "question": "Which statement best extends \"CREATE TABLE Basics \"?",
+            "options": [
+              "Practice the concept with a new input/example",
+              "Switch to a different topic immediately",
+              "Remove all previous code and restart",
+              "Skip coding and only watch explanations"
+            ],
+            "correctAnswerIndex": 0,
+            "explanation": "Applying the same concept to a fresh example deepens understanding.",
+            "type": "multipleChoice"
+          }
+        ],
+        "xpReward": 5
+      },
+      "codingChallenge": {
+        "title": "Create a Customers Table",
+        "description": "Create a \"customers\" table with: id (integer, primary key, auto increment), name (varchar 100, not null), email (varchar 255, unique), and created_at (timestamp with default current timestamp).",
+        "starterCode": "-- Create the customers table\n",
+        "language": "sql",
+        "testCases": [
+          {
+            "input": "",
+            "expectedOutput": "CREATE TABLE customers (\n  id INT PRIMARY KEY AUTO_INCREMENT,\n  name VARCHAR(100) NOT NULL,\n  email VARCHAR(255) UNIQUE,\n  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n);",
+            "isHidden": false
+          }
+        ],
+        "hint": "Define each column with its type and constraints. Use commas between columns.",
+        "solution": "CREATE TABLE customers (\n  id INT PRIMARY KEY AUTO_INCREMENT,\n  name VARCHAR(100) NOT NULL,\n  email VARCHAR(255) UNIQUE,\n  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n);",
+        "xpReward": 15
+      },
+      "xpReward": 25,
+      "order": 9
+    }
+  ]
+}
