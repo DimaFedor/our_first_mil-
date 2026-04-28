@@ -25,6 +25,17 @@ final firestoreServiceProvider = Provider<FirestoreService>((ref) {
   return FirestoreService();
 });
 
+/// Initialize session on app start - checks token validity and updates streak
+final sessionInitializationProvider = FutureProvider<bool>((ref) async {
+  final useLocal = ref.watch(useLocalAuthProvider);
+  if (useLocal) {
+    return false;
+  }
+  
+  final authService = ref.watch(authServiceProvider);
+  return authService.initializeSessionOnAppStart();
+});
+
 final authStateProvider = StreamProvider<dynamic>((ref) {
   final useLocal = ref.watch(useLocalAuthProvider);
   if (useLocal) {
@@ -279,6 +290,15 @@ class AuthActions {
       throw 'Token refresh is not available in offline mode.';
     }
     await _authService.refreshJwtToken();
+  }
+
+  /// Switch Google Account
+  /// Signs out from Google to force account selection on next login
+  Future<void> switchGoogleAccount() async {
+    if (_useLocal) {
+      throw 'Google account switching is not available in offline mode.';
+    }
+    await _authService.googleSignOutForAccountSwitch();
   }
 
   Future<void> updateProfile({

@@ -234,6 +234,15 @@ class AppLocalizations {
     'start_journey': 'Start Your Journey',
     'continue_learning': 'Continue Learning',
     'level': 'Level',
+    'greeting_morning': 'Good morning',
+    'greeting_afternoon': 'Good afternoon',
+    'greeting_evening': 'Good evening',
+    'progress_to_next_level': 'to the next level',
+    'your_first_badge': 'Your first badge',
+
+    // Course Groups
+    'course_group_beginner': 'Beginner Friendly',
+    'course_group_intermediate': 'Intermediate',
 
     // Courses
     'courses': 'Courses',
@@ -597,6 +606,15 @@ class AppLocalizations {
     'start_journey': 'Почніть свою подорож',
     'continue_learning': 'Продовжити навчання',
     'level': 'Рівень',
+    'greeting_morning': 'Доброго ранку',
+    'greeting_afternoon': 'Добрий день',
+    'greeting_evening': 'Добрий вечір',
+    'progress_to_next_level': 'до наступного рівня',
+    'your_first_badge': 'Ваш перший бейдж',
+
+    // Course Groups
+    'course_group_beginner': 'Для Початківців',
+    'course_group_intermediate': 'Середній рівень',
 
     // Courses
     'courses': 'Курси',

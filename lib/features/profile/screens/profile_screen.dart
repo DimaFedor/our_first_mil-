@@ -318,7 +318,7 @@ class ProfileScreen extends ConsumerWidget {
                             data: (levelInfo) => Container(
                               padding: const EdgeInsets.symmetric(
                                 horizontal: 16,
-                                vertical: 8,
+                                vertical: 12,
                               ),
                               decoration: BoxDecoration(
                                 gradient: const LinearGradient(
@@ -334,29 +334,63 @@ class ProfileScreen extends ConsumerWidget {
                                       : Colors.black.withValues(alpha: 0.18),
                                 ),
                               ),
-                              child: Row(
+                              child: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Text(
-                                    levelInfo.badge,
-                                    style: const TextStyle(fontSize: 18),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        levelInfo.badge,
+                                        style: const TextStyle(fontSize: 18),
+                                      ),
+                                      const SizedBox(width: 8),
+                                      Text(
+                                        'Level ${levelInfo.level} - ${levelInfo.title}',
+                                        style: const TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                          shadows: [
+                                            Shadow(
+                                              color: Colors.black54,
+                                              offset: Offset(0, 1),
+                                              blurRadius: 2,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  const SizedBox(width: 8),
-                                  Text(
-                                    'Level ${levelInfo.level} - ${levelInfo.title}',
-                                    style: const TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                      shadows: [
-                                        Shadow(
-                                          color: Colors.black54,
-                                          offset: Offset(0, 1),
-                                          blurRadius: 2,
+                                  if (!levelInfo.isMaxLevel) ...[
+                                    const SizedBox(height: 10),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.circular(999),
+                                            child: LinearProgressIndicator(
+                                              value: levelInfo.progress,
+                                              minHeight: 6,
+                                              backgroundColor: Colors.white.withValues(alpha: 0.2),
+                                              valueColor: const AlwaysStoppedAnimation<Color>(
+                                                Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(width: 8),
+                                        Text(
+                                          '${(levelInfo.progress * 100).round()}%',
+                                          style: const TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white,
+                                          ),
                                         ),
                                       ],
                                     ),
-                                  ),
+                                  ],
                                 ],
                               ),
                             ).animate(delay: 550.ms).fadeIn().scale(),
@@ -422,6 +456,9 @@ class ProfileScreen extends ConsumerWidget {
                                         )?.get('current_streak') ??
                                         'Streak',
                                     value: '${userData?.currentStreak ?? 0}',
+                                    suffix:
+                                        AppLocalizations.of(context)?.get('days') ??
+                                        'days',
                                     gradient: const [
                                       Color(0xFFEF4444),
                                       Color(0xFFF97316),
@@ -797,6 +834,7 @@ class _StatBox extends StatelessWidget {
   final IconData icon;
   final String label;
   final String value;
+  final String? suffix;
   final List<Color> gradient;
 
   const _StatBox({
@@ -804,6 +842,7 @@ class _StatBox extends StatelessWidget {
     required this.label,
     required this.value,
     required this.gradient,
+    this.suffix,
   });
 
   @override
@@ -825,13 +864,31 @@ class _StatBox extends StatelessWidget {
         children: [
           Icon(icon, color: Colors.white, size: 32),
           const SizedBox(height: 12),
-          Text(
-            value,
-            style: const TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.baseline,
+            textBaseline: TextBaseline.alphabetic,
+            children: [
+              Text(
+                value,
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              if (suffix != null) ...[
+                const SizedBox(width: 4),
+                Text(
+                  suffix!,
+                  style: const TextStyle(
+                    fontSize: 12,
+                    color: Colors.white70,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ],
           ),
           const SizedBox(height: 4),
           Text(

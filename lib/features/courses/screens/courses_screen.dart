@@ -67,6 +67,7 @@ class _CoursesScreenState extends ConsumerState<CoursesScreen> {
             data: (courses) {
               final snapshots = _buildSnapshots(courses, progressList);
               final filteredSnapshots = _filterSnapshots(snapshots);
+              final courseGroups = _buildCourseGroups(filteredSnapshots);
               final stats = _CourseStats.fromSnapshots(snapshots);
               final featuredSnapshot = filteredSnapshots.isEmpty
                   ? null
@@ -188,33 +189,101 @@ class _CoursesScreenState extends ConsumerState<CoursesScreen> {
                         else
                           SliverPadding(
                             padding: const EdgeInsets.fromLTRB(20, 0, 20, 24),
-                            sliver: SliverGrid(
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: crossAxisCount,
-                                    crossAxisSpacing: 16,
-                                    mainAxisSpacing: 16,
-                                    mainAxisExtent: crossAxisCount == 1
-                                        ? 340
-                                        : 348,
-                                  ),
-                              delegate: SliverChildBuilderDelegate((
-                                context,
-                                index,
-                              ) {
-                                final snapshot = filteredSnapshots[index];
-                                return _CourseCard(
-                                      snapshot: snapshot,
-                                      isDarkTheme: isDarkTheme,
-                                      onTap: () =>
-                                          _openCourse(context, snapshot),
-                                    )
-                                    .animate(
-                                      delay: Duration(milliseconds: 70 * index),
-                                    )
-                                    .fadeIn(duration: 500.ms)
-                                    .slideY(begin: 0.12, end: 0);
-                              }, childCount: filteredSnapshots.length),
+                            sliver: SliverList(
+                              delegate: SliverChildBuilderDelegate(
+                                (context, groupIndex) {
+                                  final group = courseGroups[groupIndex];
+                                  final l10n = AppLocalizations.of(context);
+                                  String groupTitle = group.title;
+                                  
+                                  if (group.title == 'Beginner Friendly') {
+                                    groupTitle = l10n?.get('course_group_beginner') ?? group.title;
+                                  } else if (group.title == 'Intermediate') {
+                                    groupTitle = l10n?.get('course_group_intermediate') ?? group.title;
+                                  }
+                                  
+                                  return Padding(
+                                    padding: const EdgeInsets.only(bottom: 32),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        // Group header
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              bottom: 16),
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                group.icon,
+                                                style: const TextStyle(
+                                                    fontSize: 24),
+                                              ),
+                                              const SizedBox(width: 10),
+                                              Text(
+                                                groupTitle,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .titleLarge
+                                                    ?.copyWith(
+                                                      fontWeight:
+                                                          FontWeight.w800,
+                                                      color: group.color,
+                                                    ),
+                                              ),
+                                              const SizedBox(width: 8),
+                                              Text(
+                                                '(${group.courses.length})',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .titleMedium
+                                                    ?.copyWith(
+                                                      color: Colors.grey,
+                                                    ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        // Courses grid
+                                        GridView.builder(
+                                          shrinkWrap: true,
+                                          physics:
+                                              const NeverScrollableScrollPhysics(),
+                                          gridDelegate:
+                                              SliverGridDelegateWithFixedCrossAxisCount(
+                                                crossAxisCount: crossAxisCount,
+                                                crossAxisSpacing: 16,
+                                                mainAxisSpacing: 16,
+                                                mainAxisExtent: crossAxisCount ==
+                                                        1
+                                                    ? 340
+                                                    : 348,
+                                              ),
+                                          itemCount: group.courses.length,
+                                          itemBuilder: (context, courseIndex) {
+                                            final snapshot =
+                                                group.courses[courseIndex];
+                                            return _CourseCard(
+                                                  snapshot: snapshot,
+                                                  isDarkTheme: isDarkTheme,
+                                                  onTap: () =>
+                                                      _openCourse(context, snapshot),
+                                                )
+                                                .animate(
+                                                  delay: Duration(
+                                                      milliseconds:
+                                                          70 * courseIndex),
+                                                )
+                                                .fadeIn(duration: 500.ms)
+                                                .slideY(begin: 0.12, end: 0);
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                                childCount: courseGroups.length,
+                              ),
                             ),
                           ),
                       ],
@@ -329,6 +398,40 @@ class _CoursesScreenState extends ConsumerState<CoursesScreen> {
         count: snapshots.where((snapshot) => snapshot.isNew).length,
       ),
     ];
+  }
+
+  /// Group courses by difficulty level (Beginner, Intermediate)
+  List<_CourseGroup> _buildCourseGroups(List<_CourseSnapshot> snapshots) {
+    final beginnerCourses = <_CourseSnapshot>[];
+    final intermediateCourses = <_CourseSnapshot>[];
+
+    for (final snapshot in snapshots) {
+      if (snapshot.course.difficulty.toLowerCase().contains('intermediate')) {
+        intermediateCourses.add(snapshot);
+      } else {
+        beginnerCourses.add(snapshot);
+      }
+    }
+
+    final groups = <_CourseGroup>[];
+    if (beginnerCourses.isNotEmpty) {
+      groups.add(_CourseGroup(
+        title: 'Beginner Friendly',
+        icon: '🌱',
+        courses: beginnerCourses,
+        color: const Color(0xFF10B981),
+      ));
+    }
+    if (intermediateCourses.isNotEmpty) {
+      groups.add(_CourseGroup(
+        title: 'Intermediate',
+        icon: '🚀',
+        courses: intermediateCourses,
+        color: const Color(0xFF8B5CF6),
+      ));
+    }
+
+    return groups;
   }
 
   CourseProgress? _findProgress(
@@ -2213,6 +2316,20 @@ class _ActionPill extends StatelessWidget {
       ),
     );
   }
+}
+
+class _CourseGroup {
+  final String title;
+  final String icon;
+  final List<_CourseSnapshot> courses;
+  final Color color;
+
+  _CourseGroup({
+    required this.title,
+    required this.icon,
+    required this.courses,
+    required this.color,
+  });
 }
 
 class _HeroGlowOrb extends StatelessWidget {

@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -97,6 +98,9 @@ class AuthService {
         userCredential = await _auth.signInWithPopup(provider);
       } else {
         await _ensureGoogleInitialized();
+        // Note: authenticate() will reuse cached Google account if available
+        // To force account selection, call googleSignOutForAccountSwitch() first
+        // then call signInWithGoogle() again
         final account = await _googleSignIn.authenticate();
         AppLogger.info('Got Google account: ${account.email}');
 
@@ -392,8 +396,25 @@ class AuthService {
 
   Future<void> signOut() async {
     await _auth.signOut();
+    // Also sign out from Google to clear cached account on next sign-in
+    try {
+      await _googleSignIn.signOut();
+    } catch (e) {
+      AppLogger.info('Google sign out skipped (not signed in or error): $e');
+    }
     await _tokenStorage.clearTokenBundle();
     await _tokenStorage.clearPendingMagicEmail();
+  }
+
+  /// Force user to select Google account on next sign-in
+  /// Clears the cached account but keeps user logged into Firebase
+  Future<void> googleSignOutForAccountSwitch() async {
+    try {
+      await _googleSignIn.signOut();
+      AppLogger.info('Google account cache cleared, user can select different account');
+    } catch (e) {
+      AppLogger.error('Failed to sign out from Google', e);
+    }
   }
 
   Future<UserCredential> signInAnonymously() async {
@@ -443,6 +464,61 @@ class AuthService {
 
   Future<AuthTokenBundle?> getStoredTokenBundle() {
     return _tokenStorage.readTokenBundle();
+  }
+
+  /// Initialize session on app start
+  /// Checks if user is still logged in and refreshes token if needed
+  /// Also updates streak for the day
+  /// Logs out if user is inactive for more than 30 days
+  Future<bool> initializeSessionOnAppStart() async {
+    try {
+      final user = _auth.currentUser;
+      
+      // User is logged in
+      if (user != null) {
+        // Check if user is inactive for more than 30 days
+        final userData = await _firestoreService.usersCollection.doc(user.uid).get();
+        if (userData.exists) {
+          final data = userData.data() as Map<String, dynamic>?;
+          if (data != null) {
+            final lastActive = (data['lastActive'] as Timestamp?)?.toDate();
+            if (lastActive != null) {
+              final daysSinceLastActive = DateTime.now().difference(lastActive).inDays;
+              if (daysSinceLastActive > 30) {
+                AppLogger.info('User inactive for $daysSinceLastActive days, logging out');
+                await _auth.signOut();
+                await _tokenStorage.clearTokenBundle();
+                return false;
+              }
+            }
+          }
+        }
+        
+        // Check if token is expired or about to expire (within 5 minutes)
+        final storedBundle = await _tokenStorage.readTokenBundle();
+        if (storedBundle != null) {
+          final now = DateTime.now();
+          final expiresAt = storedBundle.expiresAt;
+          final timeUntilExpiry = expiresAt.difference(now).inMinutes;
+          
+          // Token expired or expiring soon - refresh it
+          if (timeUntilExpiry <= 5) {
+            AppLogger.info('Token expiring soon or expired, refreshing...');
+            await refreshJwtToken();
+          }
+        }
+        
+        // Update streak for today
+        await _firestoreService.updateStreak(user.uid);
+        
+        return true;
+      }
+      
+      return false;
+    } catch (e) {
+      AppLogger.error('Session initialization failed', e);
+      return false;
+    }
   }
 
   Future<void> _ensureGoogleInitialized() async {

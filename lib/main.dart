@@ -8,6 +8,7 @@ import 'core/utils/app_router.dart';
 import 'core/l10n/app_localizations.dart';
 import 'core/l10n/language_catalog.dart';
 import 'core/l10n/locale_provider.dart';
+import 'features/auth/providers/auth_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,6 +30,9 @@ class CodeBattleApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // Initialize session on app start
+    ref.watch(sessionInitializationProvider);
+    
     final selectedLocale = ref.watch(localeProvider);
     final themeMode = ref.watch(appThemeModeProvider);
     final supportedLocalesAsync = ref.watch(supportedLocalesProvider);

@@ -518,7 +518,7 @@ class _HeroStatusCard extends StatelessWidget {
     final onSurface = theme.colorScheme.onSurface;
     final hasUser = userName != null && userName!.isNotEmpty;
     final greeting = hasUser
-        ? '${_greetingForHour(DateTime.now().hour)}, $userName'
+        ? '${_greetingForHour(DateTime.now().hour, context)}, $userName'
         : (AppLocalizations.of(context)?.get('start_journey') ??
               'Start your journey');
     final learningFocus = _formatLanguageFocus(preferredLanguage);
@@ -680,7 +680,7 @@ class _HeroStatusCard extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               Text(
-                '${(levelInfo.progress * 100).round()}% to the next level',
+                '${(levelInfo.progress * 100).round()}% ${AppLocalizations.of(context)?.get('progress_to_next_level') ?? 'to the next level'}',
                 style: theme.textTheme.bodySmall?.copyWith(
                   color: onSurface.withValues(alpha: 0.58),
                 ),
@@ -1645,10 +1645,11 @@ class _AchievementCard extends StatelessWidget {
   }
 }
 
-String _greetingForHour(int hour) {
-  if (hour < 12) return 'Good morning';
-  if (hour < 18) return 'Good afternoon';
-  return 'Good evening';
+String _greetingForHour(int hour, BuildContext context) {
+  final l10n = AppLocalizations.of(context);
+  if (hour < 12) return l10n?.get('greeting_morning') ?? 'Good morning';
+  if (hour < 18) return l10n?.get('greeting_afternoon') ?? 'Good afternoon';
+  return l10n?.get('greeting_evening') ?? 'Good evening';
 }
 
 class _HomeCourseSnapshot {
