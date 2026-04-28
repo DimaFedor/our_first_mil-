@@ -515,7 +515,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
                 shape: BoxShape.circle,
               ),
               child: const Icon(Icons.check, color: Colors.white, size: 48),
-            ).animate().scale(duration: 600.ms, curve: Curves.elasticOut),
+            ).animate().scale(duration: 400.ms, curve: Curves.easeOut),
             const SizedBox(height: 24),
             Text(
               AppLocalizations.of(context)?.get('lesson_completed') ??
@@ -1010,7 +1010,7 @@ class _QuizWidgetState extends State<_QuizWidget>
                 size: 60,
                 color: isPassed ? Colors.green : Colors.orange,
               ),
-            ).animate().scale(duration: 500.ms, curve: Curves.elasticOut),
+            ).animate().scale(duration: 400.ms, curve: Curves.easeOut),
 
             const SizedBox(height: 32),
 
@@ -1380,11 +1380,11 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
                   ),
                 )
                 .animate()
-                .scale(duration: 300.ms, curve: Curves.elasticOut)
+                .scale(duration: 300.ms, curve: Curves.easeOut)
                 .then()
                 .shimmer(
-                  duration: 500.ms,
-                  color: Colors.green.withValues(alpha: 0.5),
+                  duration: 300.ms,
+                  color: Colors.green.withValues(alpha: 0.3),
                 ),
             const SizedBox(height: 16),
             SizedBox(
