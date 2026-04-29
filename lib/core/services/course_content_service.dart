@@ -16,6 +16,36 @@ class _IntroLessonSeed {
   });
 }
 
+class _CliLessonSeed {
+  final String title;
+  final String summary;
+  final String whyItMatters;
+  final String visualization;
+  final String commandDemo;
+  final String keyCommand;
+  final String wrongCommand;
+  final String challengeDescription;
+  final String starterCode;
+  final String solution;
+  final String expectedOutput;
+  final String hint;
+
+  const _CliLessonSeed({
+    required this.title,
+    required this.summary,
+    required this.whyItMatters,
+    required this.visualization,
+    required this.commandDemo,
+    required this.keyCommand,
+    required this.wrongCommand,
+    required this.challengeDescription,
+    required this.starterCode,
+    required this.solution,
+    required this.expectedOutput,
+    required this.hint,
+  });
+}
+
 class CourseContentService {
   static const List<String> supportedCourseIds = <String>[
     'python',
@@ -9688,90 +9718,330 @@ const Child = React.memo(({ onClick }) => {
   }
 
   static List<Lesson> getCLIBasicsLessons() {
-    return _buildIntroTrack(
-      courseId: 'cli-basics',
-      moduleId: 'cli',
-      lessonIdPrefix: 'cli_basics_lesson_',
-      seeds: const <_IntroLessonSeed>[
-        _IntroLessonSeed(
-          title: 'What Is CLI?',
-          summary: 'CLI is a text interface to control your system quickly.',
-          lifeExample:
-              'Like giving direct voice commands instead of tapping many buttons.',
-          validSnippet: 'print("Command line")',
-          expectedOutput: 'Command line',
+    const seeds = <_CliLessonSeed>[
+      _CliLessonSeed(
+        title: 'Ubuntu CLI: Terminal Mindset',
+        summary:
+            'Learn how terminal sessions, prompt, and current directory shape every command you run.',
+        whyItMatters:
+            'Developers use terminal-first workflows for speed, automation, and reproducibility.',
+        visualization:
+            'Session model:\n[you@machine] -> [shell] -> [current directory] -> [commands] -> [output]',
+        commandDemo: 'pwd\nls',
+        keyCommand: 'pwd',
+        wrongCommand: 'path',
+        challengeDescription:
+            'Move into the projects directory and confirm your location.',
+        starterCode: '# Go to projects and show current directory\n',
+        solution: 'cd projects\npwd',
+        expectedOutput: '/home/ubuntu/projects',
+        hint: 'Use cd first, then pwd.',
+      ),
+      _CliLessonSeed(
+        title: 'Filesystem Navigation in Ubuntu',
+        summary:
+            'Master absolute vs relative paths and quickly inspect the current directory.',
+        whyItMatters:
+            'Correct path usage prevents mistakes in scripts and deployment commands.',
+        visualization:
+            'Path model:\n/\n├── home\n│   └── ubuntu\n│       ├── projects\n│       └── notes',
+        commandDemo: 'cd /home/ubuntu\nls -a',
+        keyCommand: 'ls -a',
+        wrongCommand: 'ls /a',
+        challengeDescription:
+            'List current directory including hidden files.',
+        starterCode: '# Show all files, including hidden\n',
+        solution: 'ls -a',
+        expectedOutput:
+            '.bashrc\n.profile\ndownloads\nnotes\nprojects\nreadme.md\ntodo.txt',
+        hint: 'Add -a to ls.',
+      ),
+      _CliLessonSeed(
+        title: 'Create Project Structure',
+        summary:
+            'Use mkdir, touch, and ls to bootstrap a working folder in seconds.',
+        whyItMatters:
+            'Fast project scaffolding is core for backend tasks and scripting workflows.',
+        visualization:
+            'Before:\nprojects/\nAfter:\nprojects/\n└── sandbox/\n    └── script.sh',
+        commandDemo: 'mkdir sandbox\ncd sandbox\ntouch script.sh\nls',
+        keyCommand: 'mkdir',
+        wrongCommand: 'mkfolder',
+        challengeDescription:
+            'Create sandbox folder, move into it, create script.sh, and verify with ls.',
+        starterCode: '# Create sandbox workspace and verify file\n',
+        solution: 'mkdir sandbox\ncd sandbox\ntouch script.sh\nls',
+        expectedOutput: 'script.sh',
+        hint: 'Chain mkdir, cd, touch, then ls.',
+      ),
+      _CliLessonSeed(
+        title: 'Read and Inspect Files',
+        summary:
+            'Use cat to inspect text files and understand operational logs quickly.',
+        whyItMatters:
+            'Incident response often starts with reading config and log files in terminal.',
+        visualization:
+            'File inspection flow:\n[file path] -> cat -> [raw lines] -> [decision]',
+        commandDemo: 'cat notes/today.txt',
+        keyCommand: 'cat',
+        wrongCommand: 'open',
+        challengeDescription: 'Print the content of notes/today.txt.',
+        starterCode: '# Show the full content of notes/today.txt\n',
+        solution: 'cat notes/today.txt',
+        expectedOutput:
+            'TODO: finish CLI homework\nTODO: run tests\nDONE: clean desktop',
+        hint: 'Use cat with relative path notes/today.txt.',
+      ),
+      _CliLessonSeed(
+        title: 'Copy and Move Without GUI',
+        summary:
+            'Manipulate files safely using cp and mv in repeatable command sequences.',
+        whyItMatters:
+            'CLI file operations are the basis of deployment scripts and CI/CD tasks.',
+        visualization:
+            'Flow:\ntodo.txt --cp--> backup.txt --mv--> notes/backup.txt',
+        commandDemo: 'cp todo.txt backup.txt\nmv backup.txt notes/backup.txt\nls notes',
+        keyCommand: 'cp',
+        wrongCommand: 'copy',
+        challengeDescription:
+            'Copy todo.txt to backup.txt, move backup into notes, then list notes folder.',
+        starterCode: '# Copy and move files, then list notes directory\n',
+        solution: 'cp todo.txt backup.txt\nmv backup.txt notes/backup.txt\nls notes',
+        expectedOutput: 'backup.txt\ntoday.txt',
+        hint: 'Use cp then mv, and finish with ls notes.',
+      ),
+      _CliLessonSeed(
+        title: 'Search Text with grep',
+        summary:
+            'Extract useful lines from logs and notes using grep filters.',
+        whyItMatters:
+            'grep is one of the highest-impact tools for debugging and operations.',
+        visualization:
+            'grep pipeline:\n[large file] --grep "TODO"--> [only matching lines]',
+        commandDemo: 'grep TODO notes/today.txt',
+        keyCommand: 'grep',
+        wrongCommand: 'search',
+        challengeDescription:
+            'Find all TODO lines in notes/today.txt.',
+        starterCode: '# Filter only TODO lines from the notes file\n',
+        solution: 'grep TODO notes/today.txt',
+        expectedOutput: 'TODO: finish CLI homework\nTODO: run tests',
+        hint: 'grep <pattern> <file>',
+      ),
+      _CliLessonSeed(
+        title: 'Find Files by Pattern',
+        summary:
+            'Use find to locate files recursively by name pattern.',
+        whyItMatters:
+            'Real projects have deep trees; fast search prevents manual navigation waste.',
+        visualization:
+            'Recursive scan:\n. -> notes/today.txt\n. -> todo.txt',
+        commandDemo: 'find . -name "*.txt"',
+        keyCommand: 'find',
+        wrongCommand: 'lookup',
+        challengeDescription:
+            'Find every .txt file from current directory.',
+        starterCode: '# Find all text files recursively\n',
+        solution: 'find . -name "*.txt"',
+        expectedOutput: './notes/today.txt\n./todo.txt',
+        hint: 'Use find . -name "*.txt".',
+      ),
+      _CliLessonSeed(
+        title: 'Reuse Commands with history',
+        summary:
+            'Track and reuse terminal commands to speed up repetitive tasks.',
+        whyItMatters:
+            'History-driven workflow dramatically reduces typing and operational errors.',
+        visualization:
+            'history stack:\n1 pwd\n2 ls\n3 history',
+        commandDemo: 'pwd\nls\nhistory',
+        keyCommand: 'history',
+        wrongCommand: 'recent',
+        challengeDescription:
+            'Run pwd and ls, then print command history.',
+        starterCode: '# Execute two commands and print shell history\n',
+        solution: 'pwd\nls\nhistory',
+        expectedOutput: '1 pwd\n2 ls\n3 history',
+        hint: 'Run pwd, then ls, then history.',
+      ),
+      _CliLessonSeed(
+        title: 'Mini Ubuntu CLI Workflow',
+        summary:
+            'Combine navigation, file creation, redirection, and validation into one realistic flow.',
+        whyItMatters:
+            'Real work is command chains, not isolated one-liners.',
+        visualization:
+            'Workflow:\nmkdir -> cd -> touch -> echo > file -> cat file',
+        commandDemo:
+            'mkdir projects/cli-lab\ncd projects/cli-lab\ntouch commands.md\necho "CLI is power" > commands.md\ncat commands.md',
+        keyCommand: 'echo "..." > file',
+        wrongCommand: 'write file',
+        challengeDescription:
+            'Create projects/cli-lab, write "CLI is power" into commands.md, then print file content.',
+        starterCode:
+            '# Build a tiny CLI lab and save one line into commands.md\n',
+        solution:
+            'mkdir projects/cli-lab\ncd projects/cli-lab\ntouch commands.md\necho "CLI is power" > commands.md\ncat commands.md',
+        expectedOutput: 'CLI is power',
+        hint: 'Use > redirection to write file content.',
+      ),
+      _CliLessonSeed(
+        title: 'Safe Cleanup Commands',
+        summary:
+            'Practice rm and rmdir safely and verify cleanup results immediately.',
+        whyItMatters:
+            'Cleanup discipline avoids data loss in production and local environments.',
+        visualization:
+            'Cleanup sequence:\nmkdir temp -> touch temp/log.txt -> rm -> rmdir -> ls',
+        commandDemo:
+            'mkdir temp\ntouch temp/log.txt\nrm temp/log.txt\nrmdir temp\nls',
+        keyCommand: 'rm',
+        wrongCommand: 'delete',
+        challengeDescription:
+            'Create temp/log.txt, remove the file and directory, then list home directory.',
+        starterCode: '# Clean up temporary folder and verify result\n',
+        solution:
+            'mkdir temp\ntouch temp/log.txt\nrm temp/log.txt\nrmdir temp\nls',
+        expectedOutput: 'downloads\nnotes\nprojects\nreadme.md\ntodo.txt',
+        hint: 'rmdir works only after directory becomes empty.',
+      ),
+    ];
+
+    return seeds.asMap().entries.map((entry) {
+      final index = entry.key;
+      final seed = entry.value;
+      return _buildCliUbuntuLesson(
+        id: 'cli_ubuntu_lesson_${index + 1}',
+        courseId: 'cli-basics',
+        seed: seed,
+        order: index,
+      );
+    }).toList(growable: false);
+  }
+
+  static Lesson _buildCliUbuntuLesson({
+    required String id,
+    required String courseId,
+    required _CliLessonSeed seed,
+    required int order,
+  }) {
+    return Lesson(
+      id: id,
+      courseId: courseId,
+      moduleId: 'ubuntu-cli',
+      title: seed.title,
+      description: seed.summary,
+      theorySlides: [
+        TheorySlide(
+          title: '${seed.title} — Concept',
+          content: '${seed.summary}\n\nWhy this matters:\n${seed.whyItMatters}',
+          order: 0,
         ),
-        _IntroLessonSeed(
-          title: 'Folders and Paths',
-          summary: 'Paths show exactly where files live on your machine.',
-          lifeExample: 'A home address tells where a person lives.',
-          validSnippet: 'print("/home/user")',
-          expectedOutput: '/home/user',
+        TheorySlide(
+          title: '${seed.title} — Visualization',
+          content: seed.visualization,
+          codeSnippet: seed.commandDemo,
+          codeLanguage: 'bash',
+          order: 1,
         ),
-        _IntroLessonSeed(
-          title: 'Navigation Commands',
-          summary: 'Navigation commands move you between folders.',
-          lifeExample:
-              'Changing rooms in a building to reach the one you need.',
-          validSnippet: 'print("cd projects")',
-          expectedOutput: 'cd projects',
-        ),
-        _IntroLessonSeed(
-          title: 'Create Files and Folders',
-          summary: 'You can create structure fast using simple CLI commands.',
-          lifeExample: 'Creating labeled notebooks for each school subject.',
-          validSnippet: 'print("mkdir projects")',
-          expectedOutput: 'mkdir projects',
-        ),
-        _IntroLessonSeed(
-          title: 'Read File Content',
-          summary: 'CLI can quickly show file content without full editor.',
-          lifeExample: 'Reading short notes without opening a large app.',
-          validSnippet: 'print("cat notes.txt")',
-          expectedOutput: 'cat notes.txt',
-        ),
-        _IntroLessonSeed(
-          title: 'Copy and Move',
-          summary: 'Copy duplicates files; move changes their location.',
-          lifeExample: 'Copying a document vs moving it to another drawer.',
-          validSnippet: 'print("cp a.txt b.txt")',
-          expectedOutput: 'cp a.txt b.txt',
-        ),
-        _IntroLessonSeed(
-          title: 'Delete Carefully',
-          summary:
-              'Deletion commands are powerful and should be used carefully.',
-          lifeExample:
-              'Throwing away paper from trash bin, not from archive box.',
-          validSnippet: 'print("rm old.txt")',
-          expectedOutput: 'rm old.txt',
-        ),
-        _IntroLessonSeed(
-          title: 'Command History',
-          summary: 'History helps reuse previous commands and save time.',
-          lifeExample:
-              'Using recent calls list on your phone instead of typing.',
-          validSnippet: 'print("history")',
-          expectedOutput: 'history',
-        ),
-        _IntroLessonSeed(
-          title: 'Search in CLI',
-          summary: 'Search commands help locate text or files quickly.',
-          lifeExample: 'Finding a word in a long PDF using search function.',
-          validSnippet: 'print("grep TODO app.py")',
-          expectedOutput: 'grep TODO app.py',
-        ),
-        _IntroLessonSeed(
-          title: 'Mini CLI Workflow',
-          summary:
-              'Combine navigation, creation, and checks into one mini workflow.',
-          lifeExample:
-              'Open room, place documents, verify placement, and continue.',
-          validSnippet: 'print("navigate -> create -> check")',
-          expectedOutput: 'navigate -> create -> check',
+        TheorySlide(
+          title: '${seed.title} — Practice Pattern',
+          content:
+              'Use this repeatable flow:\n1) Understand current state\n2) Run minimal command\n3) Validate output immediately\n4) Continue with next step.\n\nCommand reference:\n${seed.commandDemo}',
+          codeSnippet: seed.commandDemo,
+          codeLanguage: 'bash',
+          order: 2,
         ),
       ],
+      quiz: Quiz(questions: _cliQuizQuestions(seed)),
+      codingChallenge: CodingChallenge(
+        title: 'Ubuntu CLI Practice: ${seed.title}',
+        description: seed.challengeDescription,
+        starterCode: seed.starterCode,
+        language: 'bash',
+        testCases: [TestCase(input: '', expectedOutput: seed.expectedOutput)],
+        hint: seed.hint,
+        solution: seed.solution,
+      ),
+      xpReward: 22 + order * 2,
+      order: order,
     );
+  }
+
+  static List<QuizQuestion> _cliQuizQuestions(_CliLessonSeed seed) {
+    return <QuizQuestion>[
+      QuizQuestion(
+        question: 'What is the core goal of "${seed.title}"?',
+        options: [
+          seed.summary,
+          'Avoid terminal usage and rely only on GUI',
+          'Memorize random flags without understanding',
+          'Skip validation after commands',
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+            'Each CLI lesson focuses on practical terminal behavior, not memorization only.',
+      ),
+      QuizQuestion(
+        question: 'Which command best matches this lesson?',
+        options: [
+          seed.keyCommand,
+          seed.wrongCommand,
+          'print("terminal")',
+          '<command></command>',
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+            'The key command is the central operation for this lesson workflow.',
+      ),
+      QuizQuestion(
+        question: 'What is the best CLI learning loop?',
+        options: [
+          'Run one command, inspect output, then continue',
+          'Run many commands blindly and hope for success',
+          'Never check output',
+          'Skip practice and only read docs',
+        ],
+        correctAnswerIndex: 0,
+        explanation: 'Short feedback loops make terminal learning fast and safe.',
+      ),
+      QuizQuestion(
+        question: 'Why is output validation important in Ubuntu CLI?',
+        options: [
+          'It confirms command impact before the next step',
+          'It slows you down without benefit',
+          'It is needed only for GUI apps',
+          'It replaces command syntax knowledge',
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+            'CLI commands can change files quickly; immediate validation prevents cascading mistakes.',
+      ),
+      QuizQuestion(
+        question: 'Which command style is production-friendly?',
+        options: [
+          'Small, explicit, and verifiable command chain',
+          'Very long unverified command copied from memory',
+          'Commands without paths',
+          'Deleting files before checking location',
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+            'Reliable ops workflows prioritize clarity, repeatability, and verification.',
+      ),
+      QuizQuestion(
+        question: 'After finishing this lesson, what should you do next?',
+        options: [
+          'Repeat challenge with a tiny variation',
+          'Stop practicing terminal forever',
+          'Delete all notes immediately',
+          'Ignore command errors',
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+            'One extra variation cements skill transfer to real Ubuntu tasks.',
+      ),
+    ];
   }
 
   static List<Lesson> getInternetBasicsLessons() {

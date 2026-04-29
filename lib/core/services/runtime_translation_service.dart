@@ -12,9 +12,9 @@ class RuntimeTranslationService {
   static const int _maxChunkLength = 1800;
   static const Duration _requestTimeout = Duration(seconds: 30);
   static const int _maxTranslationAttempts = 7;
-  static const Duration _minRetryDelay = Duration(milliseconds: 800);
+  static const Duration _minRetryDelay = Duration(milliseconds: 300);
   static const Duration _betweenSuccessfulRequestsDelay = Duration(
-    milliseconds: 120,
+    milliseconds: 40,
   );
   static const String _batchSeparator = '<<<COPILOT_TRANSLATION_SPLIT>>>';
   static const List<String> _protectedProgrammingTerms = <String>[
@@ -95,7 +95,7 @@ class RuntimeTranslationService {
         cacheKey: cacheKey,
       ),
     ).timeout(
-      const Duration(seconds: 8),
+      const Duration(seconds: 15),
       onTimeout: () {
         debugPrint(
           'Translation timed out for "$normalizedLanguageCode". Using source text.',
@@ -162,7 +162,7 @@ class RuntimeTranslationService {
             translatorLanguageCode: translatorCode,
           ),
         ).timeout(
-          const Duration(seconds: 10),
+          const Duration(seconds: 20),
           onTimeout: () {
             debugPrint(
               'Batch translation timed out for "$targetLanguageCode". Using source texts.',

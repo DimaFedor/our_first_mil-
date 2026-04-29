@@ -97,7 +97,7 @@ class LessonLocalizationService {
           lessons: localizedLessons,
           targetLanguageCode: primaryLanguageCode,
         ).timeout(
-          const Duration(seconds: 15),
+          const Duration(seconds: 45),
           onTimeout: () {
             debugPrint(
               'Auto-translation timed out for "$courseId" ($primaryLanguageCode). Using base lessons.',

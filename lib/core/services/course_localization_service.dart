@@ -465,7 +465,7 @@ class CourseLocalizationService {
         text: fallbackText,
         targetLanguageCode: languageCode,
       ).timeout(
-        const Duration(seconds: 5),
+        const Duration(seconds: 20),
         onTimeout: () {
           debugPrint(
             'Runtime translation timed out for "$languageCode". Using fallback text.',
