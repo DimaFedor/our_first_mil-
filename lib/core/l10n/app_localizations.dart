@@ -470,6 +470,16 @@ class AppLocalizations {
     'your_courses': 'Your Courses',
     'browse_all_courses': 'Browse All Courses',
     'lessons_completed_suffix': 'lessons completed',
+    'first_lesson_ready': 'Your first lesson is ready when you are.',
+    'max_level_reached': 'Max level reached',
+    'xp_to_next_level_text': 'XP to Level',
+    'level_abbrev': 'Lv',
+    'max_level_display': 'MAX',
+    'course_complete_text': 'Course complete',
+    'lessons_progress': 'lessons',
+    'review_course_momentum': 'Review the course and keep your momentum going',
+    'open_first_course': 'Open your first course and build momentum from day one.',
+    'exp_rewards': 'EXP Rewards',
 
     // Onboarding
     'onboarding_title_1': 'Learn to Code',
@@ -843,6 +853,16 @@ class AppLocalizations {
     'your_courses': 'Ваші курси',
     'browse_all_courses': 'Переглянути всі курси',
     'lessons_completed_suffix': 'уроків завершено',
+    'first_lesson_ready': 'Ваш перший урок готовий, коли будете готові ви.',
+    'max_level_reached': 'Максимальний рівень досягнуто',
+    'xp_to_next_level_text': 'XP до рівня',
+    'level_abbrev': 'Рів',
+    'max_level_display': 'MAX',
+    'course_complete_text': 'Курс завершено',
+    'lessons_progress': 'уроків',
+    'review_course_momentum': 'Повторіть курс і збережіть момент.',
+    'open_first_course': 'Відкрийте свій перший курс і почніть з першого дня.',
+    'exp_rewards': 'EXP Бонуси',
 
     // Onboarding
     'onboarding_title_1': 'Вчіться програмувати',

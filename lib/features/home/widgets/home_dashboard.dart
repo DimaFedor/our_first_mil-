@@ -528,7 +528,8 @@ class _HeroStatusCard extends StatelessWidget {
     final subtitle = totalLessons > 0
         ? (AppLocalizations.of(context)?.get('keep_up_work') ??
               'Keep up the great work!')
-        : 'Your first lesson is ready when you are.';
+        : (AppLocalizations.of(context)?.get('first_lesson_ready') ??
+              'Your first lesson is ready when you are.');
     String personalizedSubtitle = subtitle;
     if (learningFocus != null) {
       personalizedSubtitle = '$personalizedSubtitle · Focus: $learningFocus';
@@ -618,8 +619,9 @@ class _HeroStatusCard extends StatelessWidget {
                         const SizedBox(height: 6),
                         Text(
                           levelInfo.isMaxLevel
-                              ? 'Max level reached'
-                              : '${levelInfo.xpNeededForNextLevel} XP to Level ${levelInfo.level + 1}',
+                              ? (AppLocalizations.of(context)?.get('max_level_reached') ??
+                                    'Max level reached')
+                              : '${levelInfo.xpNeededForNextLevel} ${AppLocalizations.of(context)?.get('xp_to_next_level_text') ?? 'XP to Level'} ${levelInfo.level + 1}',
                           style: theme.textTheme.bodySmall?.copyWith(
                             color: onSurface.withValues(alpha: 0.62),
                           ),
@@ -758,12 +760,16 @@ class _LevelOrb extends StatelessWidget {
               children: [
                 Text(levelInfo.badge, style: const TextStyle(fontSize: 24)),
                 const SizedBox(height: 2),
-                Text(
-                  levelInfo.isMaxLevel ? 'MAX' : 'Lv ${levelInfo.level}',
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 11,
-                    fontWeight: FontWeight.w700,
+                Builder(
+                  builder: (context) => Text(
+                    levelInfo.isMaxLevel
+                        ? (AppLocalizations.of(context)?.get('max_level_display') ?? 'MAX')
+                        : '${AppLocalizations.of(context)?.get('level_abbrev') ?? 'Lv'} ${levelInfo.level}',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 11,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
               ],
@@ -868,11 +874,13 @@ class _NextStepCard extends StatelessWidget {
     final course = recommendation.course;
     final nextLesson = recommendation.nextLesson;
     final progressText = recommendation.isCompleted
-        ? 'Course complete'
-        : '${recommendation.completedLessons}/${recommendation.totalLessons} lessons';
+        ? (AppLocalizations.of(context)?.get('course_complete_text') ??
+              'Course complete')
+        : '${recommendation.completedLessons}/${recommendation.totalLessons} ${AppLocalizations.of(context)?.get('lessons_progress') ?? 'lessons'}';
     final secondaryText = nextLesson != null
         ? '${nextLesson.title} • +${nextLesson.xpReward} XP'
-        : 'Review the course and keep your momentum going';
+        : (AppLocalizations.of(context)?.get('review_course_momentum') ??
+              'Review the course and keep your momentum going');
 
     return Material(
       color: Colors.transparent,
@@ -1030,7 +1038,8 @@ class _EmptyContinueCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'Open your first course and build momentum from day one.',
+                      AppLocalizations.of(context)?.get('open_first_course') ??
+                          'Open your first course and build momentum from day one.',
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         color: onSurface.withValues(alpha: 0.68),
                       ),
@@ -1119,9 +1128,8 @@ class _QuickActionsGrid extends StatelessWidget {
         onTap: onAchievementsTap,
       ),
       _QuickAction(
-        label: Localizations.localeOf(context).languageCode == 'uk'
-            ? 'EXP Бонуси'
-            : 'EXP Rewards',
+        label: AppLocalizations.of(context)?.get('exp_rewards') ??
+            'EXP Rewards',
         icon: Icons.workspace_premium_rounded,
         accent: const Color(0xFF22C55E),
         onTap: onRewardsTap,
