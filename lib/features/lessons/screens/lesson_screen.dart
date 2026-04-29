@@ -12,10 +12,12 @@ import '../../courses/models/course_model.dart';
 import '../../progress/providers/progress_provider.dart';
 import '../../../shared/widgets/code_block.dart';
 import '../../../shared/widgets/code_editor.dart';
+import '../../../shared/widgets/filesystem_viewer.dart';
 import '../../../core/services/python_interpreter.dart' as py;
 import '../../../core/services/js_interpreter.dart' as js;
 import '../../../core/services/html_validator.dart';
 import '../../../core/services/cpp_validator.dart';
+import '../../../core/services/bash_interpreter.dart' as bash;
 import '../widgets/git_challenge_widget.dart';
 
 class LessonScreen extends ConsumerStatefulWidget {
@@ -33,6 +35,9 @@ class _LessonScreenState extends ConsumerState<LessonScreen>
   late TabController _tabController;
   int _currentSlideIndex = 0;
   bool _quizPassed = false;
+  String _fsCurrentDirectory = '/home/ubuntu';
+  Map<String, bool> _fsContents = {};
+  List<String> _fsAllDirectories = ['/home/ubuntu', '/home/ubuntu/projects'];
 
   @override
   void initState() {
@@ -1141,17 +1146,77 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
   bool _isRunning = false;
   String _output = '';
   bool _hasError = false;
+  // Filesystem visualization for bash challenges
+  String _fsCurrentDirectory = '/home/ubuntu';
+  Map<String, bool> _fsContents = {};
+  List<String> _fsAllDirectories = ['/home/ubuntu', '/home/ubuntu/projects'];
 
   @override
   void initState() {
     super.initState();
     _codeController = TextEditingController(text: widget.challenge.starterCode);
+    _initializeFilesystem();
   }
 
   @override
   void dispose() {
     _codeController.dispose();
     super.dispose();
+  }
+
+  void _initializeFilesystem() {
+    setState(() {
+      _fsCurrentDirectory = '/home/ubuntu';
+      _fsContents = {
+        'README.md': false,
+        'script.sh': false,
+        'projects': true,
+        '.bashrc': false,
+      };
+    });
+  }
+
+  void _navigateInFilesystem(String path) {
+    setState(() {
+      _fsCurrentDirectory = path;
+      if (path == '/home/ubuntu') {
+        _fsContents = {
+          'README.md': false,
+          'script.sh': false,
+          'projects': true,
+          '.bashrc': false,
+        };
+      } else if (path == '/home/ubuntu/projects') {
+        _fsContents = {
+          'web-app': true,
+          'cli-tool': true,
+          'test.py': false,
+        };
+      } else if (path == '/home/ubuntu/projects/web-app') {
+        _fsContents = {
+          'index.html': false,
+          'style.css': false,
+          'app.js': false,
+          'assets': true,
+        };
+      } else if (path == '/home/ubuntu/projects/cli-tool') {
+        _fsContents = {
+          'main.py': false,
+          'utils.py': false,
+          'config.ini': false,
+        };
+      } else if (path == '/home/ubuntu/projects/web-app/assets') {
+        _fsContents = {
+          'logo.png': false,
+          'favicon.ico': false,
+        };
+      }
+    });
+  }
+
+  bool _isBashChallenge() {
+    final language = widget.challenge.language.toLowerCase();
+    return language == 'bash' || language == 'shell' || language == 'sh';
   }
 
   @override
@@ -1226,11 +1291,40 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
           const SizedBox(height: 24),
 
           // Code Editor with syntax highlighting and autocomplete
-          CodeEditor(
-            controller: _codeController,
-            language: widget.challenge.language,
-            accentColor: widget.courseColor,
-          ),
+          if (_isBashChallenge())
+            SizedBox(
+              height: 500,
+              child: Row(
+                children: [
+                  // Filesystem viewer on left
+                  Expanded(
+                    flex: 2,
+                    child: FileSystemViewer(
+                      currentDirectory: _fsCurrentDirectory,
+                      contents: _fsContents,
+                      allDirectories: _fsAllDirectories,
+                      onNavigate: _navigateInFilesystem,
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  // Code editor on right
+                  Expanded(
+                    flex: 3,
+                    child: CodeEditor(
+                      controller: _codeController,
+                      language: widget.challenge.language,
+                      accentColor: widget.courseColor,
+                    ),
+                  ),
+                ],
+              ),
+            )
+          else
+            CodeEditor(
+              controller: _codeController,
+              language: widget.challenge.language,
+              accentColor: widget.courseColor,
+            ),
           const SizedBox(height: 16),
 
           // Hint Button
@@ -1438,6 +1532,7 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
       final isReact = language == 'react' || language == 'jsx';
       final isCpp =
           language == 'cpp' || language == 'c++' || language == 'cplusplus';
+      final isBash = language == 'bash' || language == 'shell' || language == 'sh';
 
       dynamic result;
 
@@ -1453,6 +1548,18 @@ class _CodingChallengeWidgetState extends State<_CodingChallengeWidget> {
       } else if (isCpp) {
         final cppValidator = CppValidator();
         result = cppValidator.execute(code);
+      } else if (isBash) {
+        final bashInterpreter = bash.BashInterpreter();
+        result = bashInterpreter.execute(code);
+        // Sync filesystem state with interpreter
+        Future.microtask(() {
+          if (mounted && result.variables != null) {
+            final newPwd = result.variables!['pwd'] as String?;
+            if (newPwd != null && newPwd != _fsCurrentDirectory) {
+              _navigateInFilesystem(newPwd);
+            }
+          }
+        });
       } else {
         // Default to Python
         final pythonInterpreter = py.PythonInterpreter();

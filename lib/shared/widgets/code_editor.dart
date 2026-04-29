@@ -5,6 +5,7 @@ import 'package:highlight/languages/javascript.dart';
 import 'package:highlight/languages/xml.dart';
 import 'package:highlight/languages/css.dart';
 import 'package:highlight/languages/sql.dart';
+import 'package:highlight/languages/bash.dart';
 
 // Custom theme with VS Code-like colors
 const codeTheme = {
@@ -575,6 +576,54 @@ class _CodeEditorState extends State<CodeEditor> {
     'null': 'Null value',
   };
 
+  // Bash completions
+  static const bashCompletions = <String, String>{
+    'pwd': 'Print working directory',
+    'cd': 'Change directory',
+    'ls': 'List directory contents',
+    'ls -a': 'List including hidden files',
+    'ls -l': 'List with details',
+    'mkdir': 'Make directory',
+    'touch': 'Create or update file',
+    'cat': 'Display file content',
+    'echo': 'Print text',
+    'cp': 'Copy file',
+    'mv': 'Move or rename file',
+    'rm': 'Remove file',
+    'rmdir': 'Remove empty directory',
+    'grep': 'Search text pattern',
+    'find': 'Find files',
+    'find . -name': 'Find files by name',
+    'history': 'Show command history',
+    '>': 'Redirect output to file',
+    '>>': 'Append output to file',
+    '|': 'Pipe to next command',
+    'apt-get': 'Install packages',
+    'sudo': 'Run as superuser',
+    'which': 'Find command path',
+    'man': 'Show manual',
+    'chmod': 'Change permissions',
+    'chown': 'Change owner',
+    'tar': 'Archive files',
+    'zip': 'Compress files',
+    'unzip': 'Extract archive',
+    'wget': 'Download files',
+    'curl': 'Fetch URLs',
+    'git': 'Version control',
+    'ssh': 'Secure shell',
+    'scp': 'Secure copy',
+    'top': 'System monitor',
+    'ps': 'Process status',
+    'kill': 'Terminate process',
+    'df': 'Disk usage',
+    'du': 'Directory size',
+    'uname': 'System information',
+    'whoami': 'Current user',
+    'date': 'Show date/time',
+    'clear': 'Clear terminal',
+    'exit': 'Exit terminal',
+  };
+
   /// Get completions based on language
   Map<String, String> get _completions {
     switch (widget.language.toLowerCase()) {
@@ -594,6 +643,10 @@ class _CodeEditorState extends State<CodeEditor> {
       case 'css':
       case 'html/css':
         return htmlCompletions;
+      case 'bash':
+      case 'shell':
+      case 'sh':
+        return bashCompletions;
       default:
         return pythonCompletions;
     }
@@ -617,6 +670,10 @@ class _CodeEditorState extends State<CodeEditor> {
         return xml;
       case 'css':
         return css;
+      case 'bash':
+      case 'shell':
+      case 'sh':
+        return bash;
       default:
         return python;
     }

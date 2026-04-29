@@ -971,6 +971,7 @@ class CourseContentService {
     if (lesson.courseId.contains('sql')) return 'sql';
     if (lesson.courseId.contains('htmlcss')) return 'html';
     if (lesson.courseId.contains('git')) return 'bash';
+    if (lesson.courseId.contains('cli')) return 'bash';
     return 'code';
   }
 
@@ -988,7 +989,9 @@ class CourseContentService {
       case 'html':
         return 'HTML/CSS';
       case 'bash':
-        return 'Git CLI';
+      case 'shell':
+      case 'sh':
+        return 'Ubuntu CLI';
       default:
         return 'code';
     }
