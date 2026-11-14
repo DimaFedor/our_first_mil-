@@ -1,0 +1,14 @@
+name: codelearn_firebase
+publish_to: none
+version: 0.1.0
+environment:
+  sdk: ^3.10.8
+dependencies:
+  codelearn_next:
+    path: ../..
+  firebase_core: ^4.0.0
+  firebase_auth: ^6.0.0
+  cloud_functions: ^6.0.0
+  flutter:
+    sdk: flutter
+  sembast: any

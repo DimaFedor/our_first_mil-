@@ -1,0 +1,272 @@
+{
+  "@@locale": "uk",
+  "appTitle": "CodeLearn",
+  "home": "Сьогодні",
+  "courses": "Курси",
+  "journey": "Твій шлях",
+  "rewards": "Бонуси",
+  "profile": "Профіль",
+  "settings": "Налаштування",
+  "continueLearning": "Продовжити навчання",
+  "startLearning": "Почати навчання",
+  "welcomeTitle": "Маленькі кроки. Справжні навички.",
+  "welcomeBody": "Навчайся на практиці. Формуй звичку програмувати — урок за уроком.",
+  "dailyGoal": "Ціль на сьогодні",
+  "lessonGoal": "Пройди один урок",
+  "goalComplete": "Ціль дня виконана",
+  "level": "Рівень",
+  "streak": "Серія днів",
+  "completed": "Завершено",
+  "lessons": "Уроки",
+  "all": "Усі",
+  "inProgress": "У процесі",
+  "beginner": "Основи",
+  "intermediate": "Поглиблення",
+  "searchCourses": "Знайди наступну навичку",
+  "noResults": "Курсів не знайдено",
+  "trySearch": "Спробуй інший запит або фільтр.",
+  "back": "Назад",
+  "next": "Далі",
+  "theory": "Теорія",
+  "quiz": "Тест",
+  "practice": "Практика",
+  "checkAnswer": "Перевірити відповідь",
+  "correct": "Правильно!",
+  "incorrect": "Поки не так. Розберімося разом.",
+  "retryQuiz": "Пройти тест знову",
+  "quizPassed": "Час застосувати знання",
+  "quizFailed": "Ще трохи практики",
+  "runCode": "Запустити й перевірити",
+  "running": "Перевіряємо…",
+  "output": "Результат",
+  "testPassed": "Усі перевірки пройдено",
+  "testFailed": "Продовжуй — переглянь підказки",
+  "completeLesson": "Завершити урок",
+  "lessonComplete": "Ще один крок уперед!",
+  "alreadyCompleted": "Повторення завершено. Прогрес збережено.",
+  "nextLesson": "Наступний урок",
+  "returnCourse": "До курсу",
+  "locked": "Спочатку заверши попередній урок",
+  "quizRequired": "Пройди тест, щоб відкрити практику.",
+  "hint": "Скористатися підказкою",
+  "hintEmpty": "Отримай підказки в розділі бонусів.",
+  "draftSaved": "Чернетку збережено на цьому пристрої",
+  "resetCode": "Скинути код",
+  "savePortfolio": "Зберегти в портфоліо",
+  "portfolio": "Портфоліо коду",
+  "portfolioEmpty": "Тут будуть твої рішення",
+  "portfolioEmptyBody": "Збережи код з уроку або додай власний фрагмент.",
+  "addSnippet": "Додати фрагмент",
+  "title": "Назва",
+  "code": "Код",
+  "notes": "Нотатки",
+  "save": "Зберегти",
+  "cancel": "Скасувати",
+  "delete": "Видалити",
+  "deleteConfirm": "Видалити цей фрагмент?",
+  "achievements": "Досягнення",
+  "firstLesson": "Перший крок",
+  "fiveLessons": "Набираєш темп",
+  "tenLessons": "Звичка навчатися",
+  "firstCourse": "Першопроходець",
+  "weekStreak": "Сім днів зростання",
+  "xpMilestone": "Колекціонер досвіду",
+  "skillMap": "Карта навичок",
+  "missions": "Завдання дня",
+  "missionLesson": "Заверши урок сьогодні",
+  "missionPortfolio": "Збережи рішення сьогодні",
+  "insights": "Твоє навчання",
+  "noInsights": "Пройди урок, щоб побачити свій розвиток.",
+  "practiceAgain": "Повтори цю навичку",
+  "wallet": "Твої кредити",
+  "dailyReward": "Щоденний бонус",
+  "claim": "Отримати бонус",
+  "claimed": "До завтра",
+  "shop": "Бонуси для твого розвитку",
+  "buy": "Отримати",
+  "owned": "Придбано",
+  "insufficientCredits": "Поки недостатньо кредитів",
+  "booster": "Буст XP",
+  "boosterBody": "На 25% більше XP за наступні 3 уроки",
+  "shield": "Захист серії",
+  "shieldBody": "Захист від одного пропущеного дня",
+  "hints": "Набір підказок",
+  "hintsBody": "5 підказок для складних завдань",
+  "frame": "Рамка «Аврора»",
+  "frameBody": "Додай характеру своєму профілю",
+  "transactions": "Останні операції",
+  "noTransactions": "Тут з’являться твої нагороди.",
+  "purchaseComplete": "Додано до твоїх бонусів",
+  "uiLanguage": "Мова інтерфейсу",
+  "learningLanguage": "Мова навчання",
+  "theme": "Оформлення",
+  "system": "Системне",
+  "light": "Світле",
+  "dark": "Темне",
+  "sound": "Звукові ефекти",
+  "volume": "Гучність",
+  "haptics": "Тактильний відгук",
+  "previewSound": "Прослухати звук",
+  "reminders": "Нагадування про навчання",
+  "reminderBody": "М’яке нагадування о 19:00",
+  "guest": "Допитливий розробник",
+  "guestMode": "Гостьовий профіль",
+  "localBody": "Твоє навчання зберігається на цьому пристрої.",
+  "displayName": "Твоє ім’я",
+  "bio": "Про тебе",
+  "editProfile": "Редагувати профіль",
+  "signIn": "Увійти",
+  "signUp": "Створити акаунт",
+  "email": "Електронна пошта",
+  "password": "Пароль",
+  "signOut": "Вийти",
+  "google": "Продовжити з Google",
+  "magicLink": "Надіслати посилання для входу",
+  "resetPassword": "Відновити пароль",
+  "authUnavailable": "Хмарні акаунти в цій збірці ще не налаштовані. Можна продовжувати навчання як гість.",
+  "authError": "Не вдалося увійти. Перевір дані та з’єднання.",
+  "emailSent": "Перевір електронну пошту",
+  "support": "Допомога та відгук",
+  "supportBody": "Розкажи про проблему або запропонуй покращення.",
+  "message": "Повідомлення",
+  "send": "Надіслати",
+  "queued": "Збережено. Очікує синхронізації.",
+  "sync": "Синхронізувати",
+  "synced": "Усе збережено",
+  "syncPending": "Очікує синхронізації",
+  "syncError": "Не вдалося синхронізувати. Зміни збережені на цьому пристрої.",
+  "errorTitle": "Потрібна твоя увага",
+  "retry": "Спробувати знову",
+  "notFound": "Цю сторінку не знайдено.",
+  "sourceFallback": "Урок показано англійською, поки його переклад оновлюється.",
+  "simulatorNotice": "Навчальне середовище: підтримує синтаксис цього курсу.",
+  "testLabel": "Перевірка",
+  "unsupportedCode": "Цей синтаксис поки не підтримується навчальним середовищем.",
+  "saved": "Збережено",
+  "requiredField": "Заповни це поле",
+  "invalidEmail": "Вкажи коректну електронну адресу",
+  "exportData": "Експортувати мої дані",
+  "importData": "Імпортувати дані",
+  "importHelp": "Встав експорт CodeLearn. Наявні завершення буде збережено.",
+  "exportHelp": "Скопіюй резервну копію та збережи в надійному місці.",
+  "importFailed": "Резервна копія некоректна або несумісна.",
+  "welcomeAction": "Почнімо створювати",
+  "onboardingStep1": "Зрозумій",
+  "onboardingStep2": "Спробуй",
+  "onboardingStep3": "Зроби звичкою",
+  "onboardingBody1": "Короткі уроки, що роблять складні ідеї зрозумілими.",
+  "onboardingBody2": "Пиши код, досліджуй гілки й навчайся на власних спробах.",
+  "onboardingBody3": "Зберігай прогрес і зростай щодня.",
+  "skip": "Пропустити",
+  "newAchievement": "Нове досягнення",
+  "correctCount": "Правильних відповідей: {count} із {total}",
+  "@correctCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "courseProgress": "Уроків пройдено: {completed} із {total}",
+  "@courseProgress": {
+    "placeholders": {
+      "completed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "dayCount": "{count, plural, =0{Серію ще не розпочато} one{{count} день} few{{count} дні} many{{count} днів} other{{count} дня}}",
+  "@dayCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "lessonCount": "{count, plural, one{{count} урок} few{{count} уроки} many{{count} уроків} other{{count} уроку}}",
+  "@lessonCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "completionReward": "+{xp} XP · +{credits} кредитів",
+  "@completionReward": {
+    "placeholders": {
+      "xp": {
+        "type": "int"
+      },
+      "credits": {
+        "type": "int"
+      }
+    }
+  },
+  "nextLevel": "Ще {xp} XP до наступного рівня",
+  "@nextLevel": {
+    "placeholders": {
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "accountMerge": "Гостьовий прогрес буде об’єднано з твоїм акаунтом.",
+  "practiceChecks": "Перевірок пройдено: {passed} із {total}",
+  "@practiceChecks": {
+    "placeholders": {
+      "passed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "cancelRun": "Зупинити",
+  "permissionDenied": "Дозвіл не надано. Його можна ввімкнути в системних налаштуваннях.",
+  "learningFocus": "Твій напрям",
+  "dailyMinutes": "Щоденна ціль (хвилини)",
+  "codeChallenge": "Розминка з кодом",
+  "challengePrompt": "Що виведе print(3 * 2 + 1)?",
+  "challengeAnswer": "Твоя відповідь",
+  "challengeSuccess": "Чудово! Тепер увійди у свій акаунт.",
+  "sessionRestore": "Продовжуй із місця зупинки",
+  "minutesLabel": "хвилин",
+  "pendingRewards": "Хмарні винагороди підтверджуються після синхронізації.",
+  "statusActive": "Активно",
+  "loadMore": "Показати ще",
+  "achievementLessons": "Пройди уроків: {count}",
+  "achievementStreak": "Серія на {count} днів",
+  "achievementCourses": "Заверши курсів: {count}",
+  "@achievementLessons": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@achievementStreak": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@achievementCourses": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "outputMismatch": "Вивід не збігається з очікуваним результатом.",
+  "executionTimeout": "Виконання тривало надто довго. Спробуй менший приклад.",
+  "executionStopped": "Виконання зупинено.",
+  "practiceUnavailable": "Не вдалося запустити практику. Онови сторінку та спробуй знову."
+}

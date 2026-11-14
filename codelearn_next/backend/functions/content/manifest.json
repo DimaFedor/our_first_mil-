@@ -1,0 +1,1017 @@
+{
+  "internet_basics_lesson_1": {
+    "id": "internet_basics_lesson_1",
+    "courseId": "internet-basics",
+    "xp": 18,
+    "version": 1,
+    "courseSize": 10
+  },
+  "internet_basics_lesson_2": {
+    "id": "internet_basics_lesson_2",
+    "courseId": "internet-basics",
+    "xp": 20,
+    "version": 1,
+    "courseSize": 10
+  },
+  "internet_basics_lesson_3": {
+    "id": "internet_basics_lesson_3",
+    "courseId": "internet-basics",
+    "xp": 22,
+    "version": 1,
+    "courseSize": 10
+  },
+  "internet_basics_lesson_4": {
+    "id": "internet_basics_lesson_4",
+    "courseId": "internet-basics",
+    "xp": 24,
+    "version": 1,
+    "courseSize": 10
+  },
+  "internet_basics_lesson_5": {
+    "id": "internet_basics_lesson_5",
+    "courseId": "internet-basics",
+    "xp": 26,
+    "version": 1,
+    "courseSize": 10
+  },
+  "internet_basics_lesson_6": {
+    "id": "internet_basics_lesson_6",
+    "courseId": "internet-basics",
+    "xp": 28,
+    "version": 1,
+    "courseSize": 10
+  },
+  "internet_basics_lesson_7": {
+    "id": "internet_basics_lesson_7",
+    "courseId": "internet-basics",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 10
+  },
+  "internet_basics_lesson_8": {
+    "id": "internet_basics_lesson_8",
+    "courseId": "internet-basics",
+    "xp": 32,
+    "version": 1,
+    "courseSize": 10
+  },
+  "internet_basics_lesson_9": {
+    "id": "internet_basics_lesson_9",
+    "courseId": "internet-basics",
+    "xp": 34,
+    "version": 1,
+    "courseSize": 10
+  },
+  "internet_basics_lesson_10": {
+    "id": "internet_basics_lesson_10",
+    "courseId": "internet-basics",
+    "xp": 36,
+    "version": 1,
+    "courseSize": 10
+  },
+  "react_int_lesson_1": {
+    "id": "react_int_lesson_1",
+    "courseId": "react-intermediate",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 5
+  },
+  "react_int_lesson_2": {
+    "id": "react_int_lesson_2",
+    "courseId": "react-intermediate",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 5
+  },
+  "react_int_lesson_3": {
+    "id": "react_int_lesson_3",
+    "courseId": "react-intermediate",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 5
+  },
+  "react_int_lesson_4": {
+    "id": "react_int_lesson_4",
+    "courseId": "react-intermediate",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 5
+  },
+  "react_int_lesson_5": {
+    "id": "react_int_lesson_5",
+    "courseId": "react-intermediate",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 5
+  },
+  "htmlcss_int_lesson_1": {
+    "id": "htmlcss_int_lesson_1",
+    "courseId": "htmlcss-intermediate",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 5
+  },
+  "htmlcss_int_lesson_2": {
+    "id": "htmlcss_int_lesson_2",
+    "courseId": "htmlcss-intermediate",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 5
+  },
+  "htmlcss_int_lesson_3": {
+    "id": "htmlcss_int_lesson_3",
+    "courseId": "htmlcss-intermediate",
+    "xp": 25,
+    "version": 1,
+    "courseSize": 5
+  },
+  "htmlcss_int_lesson_4": {
+    "id": "htmlcss_int_lesson_4",
+    "courseId": "htmlcss-intermediate",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 5
+  },
+  "htmlcss_int_lesson_5": {
+    "id": "htmlcss_int_lesson_5",
+    "courseId": "htmlcss-intermediate",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 5
+  },
+  "programming_fundamentals_lesson_1": {
+    "id": "programming_fundamentals_lesson_1",
+    "courseId": "programming-fundamentals",
+    "xp": 18,
+    "version": 1,
+    "courseSize": 10
+  },
+  "programming_fundamentals_lesson_2": {
+    "id": "programming_fundamentals_lesson_2",
+    "courseId": "programming-fundamentals",
+    "xp": 20,
+    "version": 1,
+    "courseSize": 10
+  },
+  "programming_fundamentals_lesson_3": {
+    "id": "programming_fundamentals_lesson_3",
+    "courseId": "programming-fundamentals",
+    "xp": 22,
+    "version": 1,
+    "courseSize": 10
+  },
+  "programming_fundamentals_lesson_4": {
+    "id": "programming_fundamentals_lesson_4",
+    "courseId": "programming-fundamentals",
+    "xp": 24,
+    "version": 1,
+    "courseSize": 10
+  },
+  "programming_fundamentals_lesson_5": {
+    "id": "programming_fundamentals_lesson_5",
+    "courseId": "programming-fundamentals",
+    "xp": 26,
+    "version": 1,
+    "courseSize": 10
+  },
+  "programming_fundamentals_lesson_6": {
+    "id": "programming_fundamentals_lesson_6",
+    "courseId": "programming-fundamentals",
+    "xp": 28,
+    "version": 1,
+    "courseSize": 10
+  },
+  "programming_fundamentals_lesson_7": {
+    "id": "programming_fundamentals_lesson_7",
+    "courseId": "programming-fundamentals",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 10
+  },
+  "programming_fundamentals_lesson_8": {
+    "id": "programming_fundamentals_lesson_8",
+    "courseId": "programming-fundamentals",
+    "xp": 32,
+    "version": 1,
+    "courseSize": 10
+  },
+  "programming_fundamentals_lesson_9": {
+    "id": "programming_fundamentals_lesson_9",
+    "courseId": "programming-fundamentals",
+    "xp": 34,
+    "version": 1,
+    "courseSize": 10
+  },
+  "programming_fundamentals_lesson_10": {
+    "id": "programming_fundamentals_lesson_10",
+    "courseId": "programming-fundamentals",
+    "xp": 36,
+    "version": 1,
+    "courseSize": 10
+  },
+  "sql_lesson_1": {
+    "id": "sql_lesson_1",
+    "courseId": "sql",
+    "xp": 15,
+    "version": 1,
+    "courseSize": 10
+  },
+  "sql_lesson_2": {
+    "id": "sql_lesson_2",
+    "courseId": "sql",
+    "xp": 18,
+    "version": 1,
+    "courseSize": 10
+  },
+  "sql_lesson_3": {
+    "id": "sql_lesson_3",
+    "courseId": "sql",
+    "xp": 20,
+    "version": 1,
+    "courseSize": 10
+  },
+  "sql_lesson_4": {
+    "id": "sql_lesson_4",
+    "courseId": "sql",
+    "xp": 18,
+    "version": 1,
+    "courseSize": 10
+  },
+  "sql_lesson_5": {
+    "id": "sql_lesson_5",
+    "courseId": "sql",
+    "xp": 20,
+    "version": 1,
+    "courseSize": 10
+  },
+  "sql_lesson_6": {
+    "id": "sql_lesson_6",
+    "courseId": "sql",
+    "xp": 22,
+    "version": 1,
+    "courseSize": 10
+  },
+  "sql_lesson_7": {
+    "id": "sql_lesson_7",
+    "courseId": "sql",
+    "xp": 22,
+    "version": 1,
+    "courseSize": 10
+  },
+  "sql_lesson_8": {
+    "id": "sql_lesson_8",
+    "courseId": "sql",
+    "xp": 23,
+    "version": 1,
+    "courseSize": 10
+  },
+  "sql_lesson_9": {
+    "id": "sql_lesson_9",
+    "courseId": "sql",
+    "xp": 23,
+    "version": 1,
+    "courseSize": 10
+  },
+  "sql_lesson_10": {
+    "id": "sql_lesson_10",
+    "courseId": "sql",
+    "xp": 25,
+    "version": 1,
+    "courseSize": 10
+  },
+  "react_lesson_1": {
+    "id": "react_lesson_1",
+    "courseId": "react",
+    "xp": 15,
+    "version": 1,
+    "courseSize": 8
+  },
+  "react_lesson_2": {
+    "id": "react_lesson_2",
+    "courseId": "react",
+    "xp": 18,
+    "version": 1,
+    "courseSize": 8
+  },
+  "react_lesson_3": {
+    "id": "react_lesson_3",
+    "courseId": "react",
+    "xp": 20,
+    "version": 1,
+    "courseSize": 8
+  },
+  "react_lesson_4": {
+    "id": "react_lesson_4",
+    "courseId": "react",
+    "xp": 22,
+    "version": 1,
+    "courseSize": 8
+  },
+  "react_lesson_5": {
+    "id": "react_lesson_5",
+    "courseId": "react",
+    "xp": 20,
+    "version": 1,
+    "courseSize": 8
+  },
+  "react_lesson_6": {
+    "id": "react_lesson_6",
+    "courseId": "react",
+    "xp": 20,
+    "version": 1,
+    "courseSize": 8
+  },
+  "react_lesson_7": {
+    "id": "react_lesson_7",
+    "courseId": "react",
+    "xp": 25,
+    "version": 1,
+    "courseSize": 8
+  },
+  "react_lesson_8": {
+    "id": "react_lesson_8",
+    "courseId": "react",
+    "xp": 25,
+    "version": 1,
+    "courseSize": 8
+  },
+  "cplusplus_lesson_1": {
+    "id": "cplusplus_lesson_1",
+    "courseId": "cplusplus",
+    "xp": 20,
+    "version": 1,
+    "courseSize": 10
+  },
+  "cplusplus_lesson_2": {
+    "id": "cplusplus_lesson_2",
+    "courseId": "cplusplus",
+    "xp": 22,
+    "version": 1,
+    "courseSize": 10
+  },
+  "cplusplus_lesson_3": {
+    "id": "cplusplus_lesson_3",
+    "courseId": "cplusplus",
+    "xp": 24,
+    "version": 1,
+    "courseSize": 10
+  },
+  "cplusplus_lesson_4": {
+    "id": "cplusplus_lesson_4",
+    "courseId": "cplusplus",
+    "xp": 24,
+    "version": 1,
+    "courseSize": 10
+  },
+  "cplusplus_lesson_5": {
+    "id": "cplusplus_lesson_5",
+    "courseId": "cplusplus",
+    "xp": 26,
+    "version": 1,
+    "courseSize": 10
+  },
+  "cplusplus_lesson_6": {
+    "id": "cplusplus_lesson_6",
+    "courseId": "cplusplus",
+    "xp": 26,
+    "version": 1,
+    "courseSize": 10
+  },
+  "cplusplus_lesson_7": {
+    "id": "cplusplus_lesson_7",
+    "courseId": "cplusplus",
+    "xp": 28,
+    "version": 1,
+    "courseSize": 10
+  },
+  "cplusplus_lesson_8": {
+    "id": "cplusplus_lesson_8",
+    "courseId": "cplusplus",
+    "xp": 28,
+    "version": 1,
+    "courseSize": 10
+  },
+  "cplusplus_lesson_9": {
+    "id": "cplusplus_lesson_9",
+    "courseId": "cplusplus",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 10
+  },
+  "cplusplus_lesson_10": {
+    "id": "cplusplus_lesson_10",
+    "courseId": "cplusplus",
+    "xp": 32,
+    "version": 1,
+    "courseSize": 10
+  },
+  "cli_ubuntu_lesson_1": {
+    "id": "cli_ubuntu_lesson_1",
+    "courseId": "cli-basics",
+    "xp": 22,
+    "version": 1,
+    "courseSize": 10
+  },
+  "cli_ubuntu_lesson_2": {
+    "id": "cli_ubuntu_lesson_2",
+    "courseId": "cli-basics",
+    "xp": 24,
+    "version": 1,
+    "courseSize": 10
+  },
+  "cli_ubuntu_lesson_3": {
+    "id": "cli_ubuntu_lesson_3",
+    "courseId": "cli-basics",
+    "xp": 26,
+    "version": 1,
+    "courseSize": 10
+  },
+  "cli_ubuntu_lesson_4": {
+    "id": "cli_ubuntu_lesson_4",
+    "courseId": "cli-basics",
+    "xp": 28,
+    "version": 1,
+    "courseSize": 10
+  },
+  "cli_ubuntu_lesson_5": {
+    "id": "cli_ubuntu_lesson_5",
+    "courseId": "cli-basics",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 10
+  },
+  "cli_ubuntu_lesson_6": {
+    "id": "cli_ubuntu_lesson_6",
+    "courseId": "cli-basics",
+    "xp": 32,
+    "version": 1,
+    "courseSize": 10
+  },
+  "cli_ubuntu_lesson_7": {
+    "id": "cli_ubuntu_lesson_7",
+    "courseId": "cli-basics",
+    "xp": 34,
+    "version": 1,
+    "courseSize": 10
+  },
+  "cli_ubuntu_lesson_8": {
+    "id": "cli_ubuntu_lesson_8",
+    "courseId": "cli-basics",
+    "xp": 36,
+    "version": 1,
+    "courseSize": 10
+  },
+  "cli_ubuntu_lesson_9": {
+    "id": "cli_ubuntu_lesson_9",
+    "courseId": "cli-basics",
+    "xp": 38,
+    "version": 1,
+    "courseSize": 10
+  },
+  "cli_ubuntu_lesson_10": {
+    "id": "cli_ubuntu_lesson_10",
+    "courseId": "cli-basics",
+    "xp": 40,
+    "version": 1,
+    "courseSize": 10
+  },
+  "js_lesson_1": {
+    "id": "js_lesson_1",
+    "courseId": "javascript",
+    "xp": 15,
+    "version": 1,
+    "courseSize": 10
+  },
+  "js_lesson_2": {
+    "id": "js_lesson_2",
+    "courseId": "javascript",
+    "xp": 20,
+    "version": 1,
+    "courseSize": 10
+  },
+  "js_lesson_3": {
+    "id": "js_lesson_3",
+    "courseId": "javascript",
+    "xp": 20,
+    "version": 1,
+    "courseSize": 10
+  },
+  "js_lesson_4": {
+    "id": "js_lesson_4",
+    "courseId": "javascript",
+    "xp": 25,
+    "version": 1,
+    "courseSize": 10
+  },
+  "js_lesson_5": {
+    "id": "js_lesson_5",
+    "courseId": "javascript",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 10
+  },
+  "js_lesson_6": {
+    "id": "js_lesson_6",
+    "courseId": "javascript",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 10
+  },
+  "js_lesson_7": {
+    "id": "js_lesson_7",
+    "courseId": "javascript",
+    "xp": 35,
+    "version": 1,
+    "courseSize": 10
+  },
+  "js_lesson_8": {
+    "id": "js_lesson_8",
+    "courseId": "javascript",
+    "xp": 35,
+    "version": 1,
+    "courseSize": 10
+  },
+  "js_lesson_9": {
+    "id": "js_lesson_9",
+    "courseId": "javascript",
+    "xp": 40,
+    "version": 1,
+    "courseSize": 10
+  },
+  "js_lesson_10": {
+    "id": "js_lesson_10",
+    "courseId": "javascript",
+    "xp": 45,
+    "version": 1,
+    "courseSize": 10
+  },
+  "python_lesson_1": {
+    "id": "python_lesson_1",
+    "courseId": "python",
+    "xp": 15,
+    "version": 1,
+    "courseSize": 10
+  },
+  "python_lesson_2": {
+    "id": "python_lesson_2",
+    "courseId": "python",
+    "xp": 20,
+    "version": 1,
+    "courseSize": 10
+  },
+  "python_lesson_3": {
+    "id": "python_lesson_3",
+    "courseId": "python",
+    "xp": 20,
+    "version": 1,
+    "courseSize": 10
+  },
+  "python_lesson_4": {
+    "id": "python_lesson_4",
+    "courseId": "python",
+    "xp": 25,
+    "version": 1,
+    "courseSize": 10
+  },
+  "python_lesson_5": {
+    "id": "python_lesson_5",
+    "courseId": "python",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 10
+  },
+  "python_lesson_6": {
+    "id": "python_lesson_6",
+    "courseId": "python",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 10
+  },
+  "python_lesson_7": {
+    "id": "python_lesson_7",
+    "courseId": "python",
+    "xp": 35,
+    "version": 1,
+    "courseSize": 10
+  },
+  "python_lesson_8": {
+    "id": "python_lesson_8",
+    "courseId": "python",
+    "xp": 35,
+    "version": 1,
+    "courseSize": 10
+  },
+  "python_lesson_9": {
+    "id": "python_lesson_9",
+    "courseId": "python",
+    "xp": 40,
+    "version": 1,
+    "courseSize": 10
+  },
+  "python_lesson_10": {
+    "id": "python_lesson_10",
+    "courseId": "python",
+    "xp": 45,
+    "version": 1,
+    "courseSize": 10
+  },
+  "sql_int_lesson_1": {
+    "id": "sql_int_lesson_1",
+    "courseId": "sql-intermediate",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 5
+  },
+  "sql_int_lesson_2": {
+    "id": "sql_int_lesson_2",
+    "courseId": "sql-intermediate",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 5
+  },
+  "sql_int_lesson_3": {
+    "id": "sql_int_lesson_3",
+    "courseId": "sql-intermediate",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 5
+  },
+  "sql_int_lesson_4": {
+    "id": "sql_int_lesson_4",
+    "courseId": "sql-intermediate",
+    "xp": 35,
+    "version": 1,
+    "courseSize": 5
+  },
+  "sql_int_lesson_5": {
+    "id": "sql_int_lesson_5",
+    "courseId": "sql-intermediate",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 5
+  },
+  "html_lesson_1": {
+    "id": "html_lesson_1",
+    "courseId": "html_css",
+    "xp": 15,
+    "version": 1,
+    "courseSize": 10
+  },
+  "html_lesson_2": {
+    "id": "html_lesson_2",
+    "courseId": "html_css",
+    "xp": 20,
+    "version": 1,
+    "courseSize": 10
+  },
+  "html_lesson_3": {
+    "id": "html_lesson_3",
+    "courseId": "html_css",
+    "xp": 20,
+    "version": 1,
+    "courseSize": 10
+  },
+  "css_lesson_1": {
+    "id": "css_lesson_1",
+    "courseId": "html_css",
+    "xp": 25,
+    "version": 1,
+    "courseSize": 10
+  },
+  "css_lesson_2": {
+    "id": "css_lesson_2",
+    "courseId": "html_css",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 10
+  },
+  "html_lesson_6": {
+    "id": "html_lesson_6",
+    "courseId": "html-css",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 10
+  },
+  "html_lesson_7": {
+    "id": "html_lesson_7",
+    "courseId": "html-css",
+    "xp": 35,
+    "version": 1,
+    "courseSize": 10
+  },
+  "html_lesson_8": {
+    "id": "html_lesson_8",
+    "courseId": "html-css",
+    "xp": 35,
+    "version": 1,
+    "courseSize": 10
+  },
+  "html_lesson_9": {
+    "id": "html_lesson_9",
+    "courseId": "html-css",
+    "xp": 40,
+    "version": 1,
+    "courseSize": 10
+  },
+  "html_lesson_10": {
+    "id": "html_lesson_10",
+    "courseId": "html-css",
+    "xp": 45,
+    "version": 1,
+    "courseSize": 10
+  },
+  "python_int_lesson_1": {
+    "id": "python_int_lesson_1",
+    "courseId": "python-intermediate",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 5
+  },
+  "python_int_lesson_2": {
+    "id": "python_int_lesson_2",
+    "courseId": "python-intermediate",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 5
+  },
+  "python_int_lesson_3": {
+    "id": "python_int_lesson_3",
+    "courseId": "python-intermediate",
+    "xp": 25,
+    "version": 1,
+    "courseSize": 5
+  },
+  "python_int_lesson_4": {
+    "id": "python_int_lesson_4",
+    "courseId": "python-intermediate",
+    "xp": 25,
+    "version": 1,
+    "courseSize": 5
+  },
+  "python_int_lesson_5": {
+    "id": "python_int_lesson_5",
+    "courseId": "python-intermediate",
+    "xp": 25,
+    "version": 1,
+    "courseSize": 5
+  },
+  "algorithms_basics_lesson_1": {
+    "id": "algorithms_basics_lesson_1",
+    "courseId": "algorithms-basics",
+    "xp": 18,
+    "version": 1,
+    "courseSize": 10
+  },
+  "algorithms_basics_lesson_2": {
+    "id": "algorithms_basics_lesson_2",
+    "courseId": "algorithms-basics",
+    "xp": 20,
+    "version": 1,
+    "courseSize": 10
+  },
+  "algorithms_basics_lesson_3": {
+    "id": "algorithms_basics_lesson_3",
+    "courseId": "algorithms-basics",
+    "xp": 22,
+    "version": 1,
+    "courseSize": 10
+  },
+  "algorithms_basics_lesson_4": {
+    "id": "algorithms_basics_lesson_4",
+    "courseId": "algorithms-basics",
+    "xp": 24,
+    "version": 1,
+    "courseSize": 10
+  },
+  "algorithms_basics_lesson_5": {
+    "id": "algorithms_basics_lesson_5",
+    "courseId": "algorithms-basics",
+    "xp": 26,
+    "version": 1,
+    "courseSize": 10
+  },
+  "algorithms_basics_lesson_6": {
+    "id": "algorithms_basics_lesson_6",
+    "courseId": "algorithms-basics",
+    "xp": 28,
+    "version": 1,
+    "courseSize": 10
+  },
+  "algorithms_basics_lesson_7": {
+    "id": "algorithms_basics_lesson_7",
+    "courseId": "algorithms-basics",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 10
+  },
+  "algorithms_basics_lesson_8": {
+    "id": "algorithms_basics_lesson_8",
+    "courseId": "algorithms-basics",
+    "xp": 32,
+    "version": 1,
+    "courseSize": 10
+  },
+  "algorithms_basics_lesson_9": {
+    "id": "algorithms_basics_lesson_9",
+    "courseId": "algorithms-basics",
+    "xp": 34,
+    "version": 1,
+    "courseSize": 10
+  },
+  "algorithms_basics_lesson_10": {
+    "id": "algorithms_basics_lesson_10",
+    "courseId": "algorithms-basics",
+    "xp": 36,
+    "version": 1,
+    "courseSize": 10
+  },
+  "cplusplus_intermediate_lesson_1": {
+    "id": "cplusplus_intermediate_lesson_1",
+    "courseId": "cplusplus-intermediate",
+    "xp": 34,
+    "version": 1,
+    "courseSize": 8
+  },
+  "cplusplus_intermediate_lesson_2": {
+    "id": "cplusplus_intermediate_lesson_2",
+    "courseId": "cplusplus-intermediate",
+    "xp": 34,
+    "version": 1,
+    "courseSize": 8
+  },
+  "cplusplus_intermediate_lesson_3": {
+    "id": "cplusplus_intermediate_lesson_3",
+    "courseId": "cplusplus-intermediate",
+    "xp": 36,
+    "version": 1,
+    "courseSize": 8
+  },
+  "cplusplus_intermediate_lesson_4": {
+    "id": "cplusplus_intermediate_lesson_4",
+    "courseId": "cplusplus-intermediate",
+    "xp": 36,
+    "version": 1,
+    "courseSize": 8
+  },
+  "cplusplus_intermediate_lesson_5": {
+    "id": "cplusplus_intermediate_lesson_5",
+    "courseId": "cplusplus-intermediate",
+    "xp": 38,
+    "version": 1,
+    "courseSize": 8
+  },
+  "cplusplus_intermediate_lesson_6": {
+    "id": "cplusplus_intermediate_lesson_6",
+    "courseId": "cplusplus-intermediate",
+    "xp": 38,
+    "version": 1,
+    "courseSize": 8
+  },
+  "cplusplus_intermediate_lesson_7": {
+    "id": "cplusplus_intermediate_lesson_7",
+    "courseId": "cplusplus-intermediate",
+    "xp": 40,
+    "version": 1,
+    "courseSize": 8
+  },
+  "cplusplus_intermediate_lesson_8": {
+    "id": "cplusplus_intermediate_lesson_8",
+    "courseId": "cplusplus-intermediate",
+    "xp": 42,
+    "version": 1,
+    "courseSize": 8
+  },
+  "js_int_lesson_1": {
+    "id": "js_int_lesson_1",
+    "courseId": "javascript-intermediate",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 5
+  },
+  "js_int_lesson_2": {
+    "id": "js_int_lesson_2",
+    "courseId": "javascript-intermediate",
+    "xp": 25,
+    "version": 1,
+    "courseSize": 5
+  },
+  "js_int_lesson_3": {
+    "id": "js_int_lesson_3",
+    "courseId": "javascript-intermediate",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 5
+  },
+  "js_int_lesson_4": {
+    "id": "js_int_lesson_4",
+    "courseId": "javascript-intermediate",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 5
+  },
+  "js_int_lesson_5": {
+    "id": "js_int_lesson_5",
+    "courseId": "javascript-intermediate",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 5
+  },
+  "git_lesson_1": {
+    "id": "git_lesson_1",
+    "courseId": "git",
+    "xp": 25,
+    "version": 1,
+    "courseSize": 4
+  },
+  "git_lesson_2": {
+    "id": "git_lesson_2",
+    "courseId": "git",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 4
+  },
+  "git_lesson_3": {
+    "id": "git_lesson_3",
+    "courseId": "git",
+    "xp": 35,
+    "version": 1,
+    "courseSize": 4
+  },
+  "git_lesson_4": {
+    "id": "git_lesson_4",
+    "courseId": "git",
+    "xp": 40,
+    "version": 1,
+    "courseSize": 4
+  },
+  "logic_basics_lesson_1": {
+    "id": "logic_basics_lesson_1",
+    "courseId": "logic-basics",
+    "xp": 18,
+    "version": 1,
+    "courseSize": 10
+  },
+  "logic_basics_lesson_2": {
+    "id": "logic_basics_lesson_2",
+    "courseId": "logic-basics",
+    "xp": 20,
+    "version": 1,
+    "courseSize": 10
+  },
+  "logic_basics_lesson_3": {
+    "id": "logic_basics_lesson_3",
+    "courseId": "logic-basics",
+    "xp": 22,
+    "version": 1,
+    "courseSize": 10
+  },
+  "logic_basics_lesson_4": {
+    "id": "logic_basics_lesson_4",
+    "courseId": "logic-basics",
+    "xp": 24,
+    "version": 1,
+    "courseSize": 10
+  },
+  "logic_basics_lesson_5": {
+    "id": "logic_basics_lesson_5",
+    "courseId": "logic-basics",
+    "xp": 26,
+    "version": 1,
+    "courseSize": 10
+  },
+  "logic_basics_lesson_6": {
+    "id": "logic_basics_lesson_6",
+    "courseId": "logic-basics",
+    "xp": 28,
+    "version": 1,
+    "courseSize": 10
+  },
+  "logic_basics_lesson_7": {
+    "id": "logic_basics_lesson_7",
+    "courseId": "logic-basics",
+    "xp": 30,
+    "version": 1,
+    "courseSize": 10
+  },
+  "logic_basics_lesson_8": {
+    "id": "logic_basics_lesson_8",
+    "courseId": "logic-basics",
+    "xp": 32,
+    "version": 1,
+    "courseSize": 10
+  },
+  "logic_basics_lesson_9": {
+    "id": "logic_basics_lesson_9",
+    "courseId": "logic-basics",
+    "xp": 34,
+    "version": 1,
+    "courseSize": 10
+  },
+  "logic_basics_lesson_10": {
+    "id": "logic_basics_lesson_10",
+    "courseId": "logic-basics",
+    "xp": 36,
+    "version": 1,
+    "courseSize": 10
+  }
+}

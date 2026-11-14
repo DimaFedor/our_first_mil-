@@ -1,0 +1,1 @@
+{"name":"codelearn-runtime","private":true,"type":"module","scripts":{"build":"node build.mjs","test":"node check.mjs"},"dependencies":{"@babel/standalone":"^7.26.0","pyodide":"0.27.7"},"devDependencies":{"esbuild":"^0.25.0"}}

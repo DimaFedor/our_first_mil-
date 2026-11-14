@@ -1,0 +1,1527 @@
+[
+  {
+    "locale": "tr",
+    "lessonId": "algorithms_basics_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "algorithms_basics_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "algorithms_basics_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "algorithms_basics_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "algorithms_basics_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "algorithms_basics_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "algorithms_basics_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "algorithms_basics_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "algorithms_basics_lesson_9",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "algorithms_basics_lesson_10",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "internet_basics_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "internet_basics_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "internet_basics_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "internet_basics_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "internet_basics_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "internet_basics_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "internet_basics_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "internet_basics_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "internet_basics_lesson_9",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "internet_basics_lesson_10",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "python_int_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "python_int_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "python_int_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "python_int_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "python_int_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "react_int_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "react_int_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "react_int_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "react_int_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "react_int_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cplusplus_intermediate_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cplusplus_intermediate_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cplusplus_intermediate_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cplusplus_intermediate_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cplusplus_intermediate_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cplusplus_intermediate_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cplusplus_intermediate_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cplusplus_intermediate_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "html_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "html_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "html_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "css_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "css_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "html_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "html_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "html_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "html_lesson_9",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "html_lesson_10",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "programming_fundamentals_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "programming_fundamentals_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "programming_fundamentals_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "programming_fundamentals_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "programming_fundamentals_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "programming_fundamentals_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "programming_fundamentals_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "programming_fundamentals_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "programming_fundamentals_lesson_9",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "programming_fundamentals_lesson_10",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "react_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "react_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "react_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "react_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "react_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "react_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "react_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "react_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "sql_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "sql_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "sql_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "sql_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "sql_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "sql_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "sql_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "sql_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "sql_lesson_9",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "sql_lesson_10",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "sql_int_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "sql_int_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "sql_int_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "sql_int_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "sql_int_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cplusplus_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cplusplus_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cplusplus_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cplusplus_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cplusplus_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cplusplus_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cplusplus_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cplusplus_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cplusplus_lesson_9",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cplusplus_lesson_10",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "js_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "js_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "js_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "js_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "js_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "js_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "js_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "js_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "js_lesson_9",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "js_lesson_10",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "pl",
+    "lessonId": "cli_ubuntu_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "pl",
+    "lessonId": "cli_ubuntu_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "pl",
+    "lessonId": "cli_ubuntu_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "pl",
+    "lessonId": "cli_ubuntu_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "pl",
+    "lessonId": "cli_ubuntu_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "pl",
+    "lessonId": "cli_ubuntu_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "pl",
+    "lessonId": "cli_ubuntu_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "pl",
+    "lessonId": "cli_ubuntu_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "pl",
+    "lessonId": "cli_ubuntu_lesson_9",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "pl",
+    "lessonId": "cli_ubuntu_lesson_10",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "sv",
+    "lessonId": "cli_ubuntu_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "sv",
+    "lessonId": "cli_ubuntu_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "sv",
+    "lessonId": "cli_ubuntu_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "sv",
+    "lessonId": "cli_ubuntu_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "sv",
+    "lessonId": "cli_ubuntu_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "sv",
+    "lessonId": "cli_ubuntu_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "sv",
+    "lessonId": "cli_ubuntu_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "sv",
+    "lessonId": "cli_ubuntu_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "sv",
+    "lessonId": "cli_ubuntu_lesson_9",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "sv",
+    "lessonId": "cli_ubuntu_lesson_10",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ja",
+    "lessonId": "cli_ubuntu_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ja",
+    "lessonId": "cli_ubuntu_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ja",
+    "lessonId": "cli_ubuntu_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ja",
+    "lessonId": "cli_ubuntu_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ja",
+    "lessonId": "cli_ubuntu_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ja",
+    "lessonId": "cli_ubuntu_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ja",
+    "lessonId": "cli_ubuntu_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ja",
+    "lessonId": "cli_ubuntu_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ja",
+    "lessonId": "cli_ubuntu_lesson_9",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ja",
+    "lessonId": "cli_ubuntu_lesson_10",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "it",
+    "lessonId": "cli_ubuntu_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "it",
+    "lessonId": "cli_ubuntu_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "it",
+    "lessonId": "cli_ubuntu_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "it",
+    "lessonId": "cli_ubuntu_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "it",
+    "lessonId": "cli_ubuntu_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "it",
+    "lessonId": "cli_ubuntu_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "it",
+    "lessonId": "cli_ubuntu_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "it",
+    "lessonId": "cli_ubuntu_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "it",
+    "lessonId": "cli_ubuntu_lesson_9",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "it",
+    "lessonId": "cli_ubuntu_lesson_10",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "cs",
+    "lessonId": "cli_ubuntu_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "cs",
+    "lessonId": "cli_ubuntu_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "cs",
+    "lessonId": "cli_ubuntu_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "cs",
+    "lessonId": "cli_ubuntu_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "cs",
+    "lessonId": "cli_ubuntu_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "cs",
+    "lessonId": "cli_ubuntu_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "cs",
+    "lessonId": "cli_ubuntu_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "cs",
+    "lessonId": "cli_ubuntu_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "cs",
+    "lessonId": "cli_ubuntu_lesson_9",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "cs",
+    "lessonId": "cli_ubuntu_lesson_10",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ro",
+    "lessonId": "cli_ubuntu_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ro",
+    "lessonId": "cli_ubuntu_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ro",
+    "lessonId": "cli_ubuntu_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ro",
+    "lessonId": "cli_ubuntu_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ro",
+    "lessonId": "cli_ubuntu_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ro",
+    "lessonId": "cli_ubuntu_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ro",
+    "lessonId": "cli_ubuntu_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ro",
+    "lessonId": "cli_ubuntu_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ro",
+    "lessonId": "cli_ubuntu_lesson_9",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ro",
+    "lessonId": "cli_ubuntu_lesson_10",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "pt",
+    "lessonId": "cli_ubuntu_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "pt",
+    "lessonId": "cli_ubuntu_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "pt",
+    "lessonId": "cli_ubuntu_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "pt",
+    "lessonId": "cli_ubuntu_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "pt",
+    "lessonId": "cli_ubuntu_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "pt",
+    "lessonId": "cli_ubuntu_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "pt",
+    "lessonId": "cli_ubuntu_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "pt",
+    "lessonId": "cli_ubuntu_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "pt",
+    "lessonId": "cli_ubuntu_lesson_9",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "pt",
+    "lessonId": "cli_ubuntu_lesson_10",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "zh",
+    "lessonId": "cli_ubuntu_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "zh",
+    "lessonId": "cli_ubuntu_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "zh",
+    "lessonId": "cli_ubuntu_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "zh",
+    "lessonId": "cli_ubuntu_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "zh",
+    "lessonId": "cli_ubuntu_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "zh",
+    "lessonId": "cli_ubuntu_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "zh",
+    "lessonId": "cli_ubuntu_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "zh",
+    "lessonId": "cli_ubuntu_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "zh",
+    "lessonId": "cli_ubuntu_lesson_9",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "zh",
+    "lessonId": "cli_ubuntu_lesson_10",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "uk",
+    "lessonId": "cli_ubuntu_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "uk",
+    "lessonId": "cli_ubuntu_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "uk",
+    "lessonId": "cli_ubuntu_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "uk",
+    "lessonId": "cli_ubuntu_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "uk",
+    "lessonId": "cli_ubuntu_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "uk",
+    "lessonId": "cli_ubuntu_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "uk",
+    "lessonId": "cli_ubuntu_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "uk",
+    "lessonId": "cli_ubuntu_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "uk",
+    "lessonId": "cli_ubuntu_lesson_9",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "uk",
+    "lessonId": "cli_ubuntu_lesson_10",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ar",
+    "lessonId": "cli_ubuntu_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ar",
+    "lessonId": "cli_ubuntu_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ar",
+    "lessonId": "cli_ubuntu_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ar",
+    "lessonId": "cli_ubuntu_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ar",
+    "lessonId": "cli_ubuntu_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ar",
+    "lessonId": "cli_ubuntu_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ar",
+    "lessonId": "cli_ubuntu_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ar",
+    "lessonId": "cli_ubuntu_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ar",
+    "lessonId": "cli_ubuntu_lesson_9",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ar",
+    "lessonId": "cli_ubuntu_lesson_10",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "nl",
+    "lessonId": "cli_ubuntu_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "nl",
+    "lessonId": "cli_ubuntu_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "nl",
+    "lessonId": "cli_ubuntu_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "nl",
+    "lessonId": "cli_ubuntu_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "nl",
+    "lessonId": "cli_ubuntu_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "nl",
+    "lessonId": "cli_ubuntu_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "nl",
+    "lessonId": "cli_ubuntu_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "nl",
+    "lessonId": "cli_ubuntu_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "nl",
+    "lessonId": "cli_ubuntu_lesson_9",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "nl",
+    "lessonId": "cli_ubuntu_lesson_10",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "hi",
+    "lessonId": "cli_ubuntu_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "hi",
+    "lessonId": "cli_ubuntu_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "hi",
+    "lessonId": "cli_ubuntu_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "hi",
+    "lessonId": "cli_ubuntu_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "hi",
+    "lessonId": "cli_ubuntu_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "hi",
+    "lessonId": "cli_ubuntu_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "hi",
+    "lessonId": "cli_ubuntu_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "hi",
+    "lessonId": "cli_ubuntu_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "hi",
+    "lessonId": "cli_ubuntu_lesson_9",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "hi",
+    "lessonId": "cli_ubuntu_lesson_10",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "de",
+    "lessonId": "cli_ubuntu_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "de",
+    "lessonId": "cli_ubuntu_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "de",
+    "lessonId": "cli_ubuntu_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "de",
+    "lessonId": "cli_ubuntu_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "de",
+    "lessonId": "cli_ubuntu_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "de",
+    "lessonId": "cli_ubuntu_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "de",
+    "lessonId": "cli_ubuntu_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "de",
+    "lessonId": "cli_ubuntu_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "de",
+    "lessonId": "cli_ubuntu_lesson_9",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "de",
+    "lessonId": "cli_ubuntu_lesson_10",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ko",
+    "lessonId": "cli_ubuntu_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ko",
+    "lessonId": "cli_ubuntu_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ko",
+    "lessonId": "cli_ubuntu_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ko",
+    "lessonId": "cli_ubuntu_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ko",
+    "lessonId": "cli_ubuntu_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ko",
+    "lessonId": "cli_ubuntu_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ko",
+    "lessonId": "cli_ubuntu_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ko",
+    "lessonId": "cli_ubuntu_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ko",
+    "lessonId": "cli_ubuntu_lesson_9",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "ko",
+    "lessonId": "cli_ubuntu_lesson_10",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "fr",
+    "lessonId": "cli_ubuntu_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "fr",
+    "lessonId": "cli_ubuntu_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "fr",
+    "lessonId": "cli_ubuntu_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "fr",
+    "lessonId": "cli_ubuntu_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "fr",
+    "lessonId": "cli_ubuntu_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "fr",
+    "lessonId": "cli_ubuntu_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "fr",
+    "lessonId": "cli_ubuntu_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "fr",
+    "lessonId": "cli_ubuntu_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "fr",
+    "lessonId": "cli_ubuntu_lesson_9",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "fr",
+    "lessonId": "cli_ubuntu_lesson_10",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "es",
+    "lessonId": "cli_ubuntu_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "es",
+    "lessonId": "cli_ubuntu_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "es",
+    "lessonId": "cli_ubuntu_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "es",
+    "lessonId": "cli_ubuntu_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "es",
+    "lessonId": "cli_ubuntu_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "es",
+    "lessonId": "cli_ubuntu_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "es",
+    "lessonId": "cli_ubuntu_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "es",
+    "lessonId": "cli_ubuntu_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "es",
+    "lessonId": "cli_ubuntu_lesson_9",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "es",
+    "lessonId": "cli_ubuntu_lesson_10",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cli_ubuntu_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cli_ubuntu_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cli_ubuntu_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cli_ubuntu_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cli_ubuntu_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cli_ubuntu_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cli_ubuntu_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cli_ubuntu_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cli_ubuntu_lesson_9",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "cli_ubuntu_lesson_10",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "logic_basics_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "logic_basics_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "logic_basics_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "logic_basics_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "logic_basics_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "logic_basics_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "logic_basics_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "logic_basics_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "logic_basics_lesson_9",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "logic_basics_lesson_10",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "htmlcss_int_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "htmlcss_int_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "htmlcss_int_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "htmlcss_int_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "htmlcss_int_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "js_int_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "js_int_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "js_int_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "js_int_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "js_int_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "git_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "git_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "git_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "git_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "python_lesson_1",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "python_lesson_2",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "python_lesson_3",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "python_lesson_4",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "python_lesson_5",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "python_lesson_6",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "python_lesson_7",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "python_lesson_8",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "python_lesson_9",
+    "reason": "source_changed"
+  },
+  {
+    "locale": "tr",
+    "lessonId": "python_lesson_10",
+    "reason": "source_changed"
+  }
+]

@@ -1,0 +1,2 @@
+assets/runtime/** -whitespace linguist-generated=true
+lib/l10n/generated/** linguist-generated=true

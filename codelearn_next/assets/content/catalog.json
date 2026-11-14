@@ -1,0 +1,200 @@
+[
+  {
+    "id": "algorithms-basics",
+    "titles": {
+      "en": "Algorithms",
+      "uk": "Алгоритми"
+    },
+    "icon": "🧩",
+    "difficulty": "beginner",
+    "order": 2,
+    "lessonCount": 10
+  },
+  {
+    "id": "internet-basics",
+    "titles": {
+      "en": "How the internet works",
+      "uk": "Як працює інтернет"
+    },
+    "icon": "🌐",
+    "difficulty": "beginner",
+    "order": 11,
+    "lessonCount": 10
+  },
+  {
+    "id": "python-intermediate",
+    "titles": {
+      "en": "Python · Intermediate",
+      "uk": "Python · Поглиблений"
+    },
+    "icon": "🐍",
+    "difficulty": "intermediate",
+    "order": 12,
+    "lessonCount": 5
+  },
+  {
+    "id": "react-intermediate",
+    "titles": {
+      "en": "React · Intermediate",
+      "uk": "React · Поглиблений"
+    },
+    "icon": "⚛",
+    "difficulty": "intermediate",
+    "order": 16,
+    "lessonCount": 5
+  },
+  {
+    "id": "cplusplus-intermediate",
+    "titles": {
+      "en": "C++ · Intermediate",
+      "uk": "C++ · Поглиблений"
+    },
+    "icon": "⚙",
+    "difficulty": "intermediate",
+    "order": 14,
+    "lessonCount": 8
+  },
+  {
+    "id": "htmlcss",
+    "titles": {
+      "en": "HTML & CSS",
+      "uk": "HTML та CSS"
+    },
+    "icon": "🎨",
+    "difficulty": "beginner",
+    "order": 6,
+    "lessonCount": 10
+  },
+  {
+    "id": "programming-fundamentals",
+    "titles": {
+      "en": "Programming foundations",
+      "uk": "Основи програмування"
+    },
+    "icon": "🧠",
+    "difficulty": "beginner",
+    "order": 0,
+    "lessonCount": 10
+  },
+  {
+    "id": "react",
+    "titles": {
+      "en": "React",
+      "uk": "React"
+    },
+    "icon": "⚛",
+    "difficulty": "beginner",
+    "order": 7,
+    "lessonCount": 8
+  },
+  {
+    "id": "sql",
+    "titles": {
+      "en": "SQL",
+      "uk": "SQL"
+    },
+    "icon": "🗃",
+    "difficulty": "beginner",
+    "order": 8,
+    "lessonCount": 10
+  },
+  {
+    "id": "sql-intermediate",
+    "titles": {
+      "en": "SQL · Intermediate",
+      "uk": "SQL · Поглиблений"
+    },
+    "icon": "🗃",
+    "difficulty": "intermediate",
+    "order": 17,
+    "lessonCount": 5
+  },
+  {
+    "id": "cplusplus",
+    "titles": {
+      "en": "C++",
+      "uk": "C++"
+    },
+    "icon": "⚙",
+    "difficulty": "beginner",
+    "order": 5,
+    "lessonCount": 10
+  },
+  {
+    "id": "javascript",
+    "titles": {
+      "en": "JavaScript",
+      "uk": "JavaScript"
+    },
+    "icon": "⚡",
+    "difficulty": "beginner",
+    "order": 4,
+    "lessonCount": 10
+  },
+  {
+    "id": "cli-basics",
+    "titles": {
+      "en": "Command line",
+      "uk": "Командний рядок"
+    },
+    "icon": "⌘",
+    "difficulty": "beginner",
+    "order": 10,
+    "lessonCount": 10
+  },
+  {
+    "id": "logic-basics",
+    "titles": {
+      "en": "Programming logic",
+      "uk": "Логіка програмування"
+    },
+    "icon": "🔁",
+    "difficulty": "beginner",
+    "order": 1,
+    "lessonCount": 10
+  },
+  {
+    "id": "htmlcss-intermediate",
+    "titles": {
+      "en": "HTML & CSS · Intermediate",
+      "uk": "HTML та CSS · Поглиблений"
+    },
+    "icon": "🎨",
+    "difficulty": "intermediate",
+    "order": 15,
+    "lessonCount": 5
+  },
+  {
+    "id": "javascript-intermediate",
+    "titles": {
+      "en": "JavaScript · Intermediate",
+      "uk": "JavaScript · Поглиблений"
+    },
+    "icon": "⚡",
+    "difficulty": "intermediate",
+    "order": 13,
+    "lessonCount": 5
+  },
+  {
+    "id": "git",
+    "titles": {
+      "en": "Git & GitHub",
+      "uk": "Git та GitHub"
+    },
+    "icon": "🌿",
+    "difficulty": "beginner",
+    "order": 9,
+    "lessonCount": 4
+  },
+  {
+    "id": "python",
+    "titles": {
+      "en": "Python",
+      "uk": "Python"
+    },
+    "icon": "🐍",
+    "difficulty": "beginner",
+    "order": 3,
+    "lessonCount": 10
+  }
+]

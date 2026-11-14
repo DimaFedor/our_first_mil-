@@ -1,0 +1,32 @@
+name: Validate CodeLearn
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.38.9'
+          channel: stable
+          cache: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: flutter pub get
+      - run: flutter analyze --fatal-infos
+      - run: flutter test
+      - run: dart run tool/validate_content.dart
+      - run: dart run tool/check_content.dart
+      - run: npm ci --prefix tool/runtime --ignore-scripts
+      - run: npm test --prefix tool/runtime
+      - run: npm ci --prefix backend/functions --ignore-scripts
+      - run: npm test --prefix backend/functions
+      - run: ./tool/build_runtime.sh
+      - run: flutter build web --release --no-web-resources-cdn
+      - run: flutter pub get && flutter analyze --fatal-infos
+        working-directory: integrations/firebase

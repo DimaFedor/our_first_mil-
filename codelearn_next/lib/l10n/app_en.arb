@@ -1,0 +1,272 @@
+{
+  "@@locale": "en",
+  "appTitle": "CodeLearn",
+  "home": "Today",
+  "courses": "Explore",
+  "journey": "Your journey",
+  "rewards": "Rewards",
+  "profile": "Profile",
+  "settings": "Settings",
+  "continueLearning": "Continue learning",
+  "startLearning": "Start learning",
+  "welcomeTitle": "Small steps. Real skills.",
+  "welcomeBody": "Learn by doing. Build your coding habit, one lesson at a time.",
+  "dailyGoal": "Today’s goal",
+  "lessonGoal": "Complete one lesson",
+  "goalComplete": "Daily goal complete",
+  "level": "Level",
+  "streak": "Day streak",
+  "completed": "Completed",
+  "lessons": "Lessons",
+  "all": "All",
+  "inProgress": "In progress",
+  "beginner": "Foundations",
+  "intermediate": "Next level",
+  "searchCourses": "Find your next skill",
+  "noResults": "No matching courses",
+  "trySearch": "Try another search or filter.",
+  "back": "Back",
+  "next": "Continue",
+  "theory": "Learn",
+  "quiz": "Check",
+  "practice": "Practice",
+  "checkAnswer": "Check answer",
+  "correct": "That’s right!",
+  "incorrect": "Not quite. Let’s learn from it.",
+  "retryQuiz": "Try the quiz again",
+  "quizPassed": "Ready to put it into practice",
+  "quizFailed": "A little more practice",
+  "runCode": "Run & check",
+  "running": "Checking…",
+  "output": "Output",
+  "testPassed": "All checks passed",
+  "testFailed": "Keep going — check the feedback",
+  "completeLesson": "Complete lesson",
+  "lessonComplete": "Another step forward!",
+  "alreadyCompleted": "Practice complete. Your progress is saved.",
+  "nextLesson": "Next lesson",
+  "returnCourse": "Back to course",
+  "locked": "Complete the previous lesson first",
+  "quizRequired": "Pass the quiz to unlock practice.",
+  "hint": "Use a hint",
+  "hintEmpty": "Get hint tokens in Rewards.",
+  "draftSaved": "Your draft is saved on this device",
+  "resetCode": "Reset code",
+  "savePortfolio": "Save to portfolio",
+  "portfolio": "Code portfolio",
+  "portfolioEmpty": "Your solutions belong here",
+  "portfolioEmptyBody": "Save code from a lesson or add a snippet of your own.",
+  "addSnippet": "Add a snippet",
+  "title": "Title",
+  "code": "Code",
+  "notes": "Notes",
+  "save": "Save",
+  "cancel": "Cancel",
+  "delete": "Delete",
+  "deleteConfirm": "Delete this saved snippet?",
+  "achievements": "Milestones",
+  "firstLesson": "First step",
+  "fiveLessons": "Building momentum",
+  "tenLessons": "Learning habit",
+  "firstCourse": "Pathfinder",
+  "weekStreak": "Seven days stronger",
+  "xpMilestone": "Experience collector",
+  "skillMap": "Skill map",
+  "missions": "Daily missions",
+  "missionLesson": "Complete a lesson today",
+  "missionPortfolio": "Save a solution today",
+  "insights": "Learning insights",
+  "noInsights": "Complete a lesson to see your progress.",
+  "practiceAgain": "Revisit this skill",
+  "wallet": "Your credits",
+  "dailyReward": "Daily check-in",
+  "claim": "Claim reward",
+  "claimed": "See you tomorrow",
+  "shop": "Make progress your own",
+  "buy": "Get it",
+  "owned": "Owned",
+  "insufficientCredits": "Not enough credits yet",
+  "booster": "XP boost",
+  "boosterBody": "25% extra XP for your next 3 lessons",
+  "shield": "Streak shield",
+  "shieldBody": "Protect one missed day",
+  "hints": "Hint pack",
+  "hintsBody": "5 hints for tricky challenges",
+  "frame": "Aurora frame",
+  "frameBody": "A little personality for your profile",
+  "transactions": "Recent activity",
+  "noTransactions": "Your rewards will appear here.",
+  "purchaseComplete": "Added to your inventory",
+  "uiLanguage": "App language",
+  "learningLanguage": "Lesson language",
+  "theme": "Appearance",
+  "system": "System",
+  "light": "Light",
+  "dark": "Dark",
+  "sound": "Sound effects",
+  "volume": "Volume",
+  "haptics": "Haptic feedback",
+  "previewSound": "Preview sound",
+  "reminders": "Learning reminders",
+  "reminderBody": "A gentle reminder at 19:00",
+  "guest": "Curious coder",
+  "guestMode": "Guest profile",
+  "localBody": "Your learning is saved on this device.",
+  "displayName": "Your name",
+  "bio": "About you",
+  "editProfile": "Edit profile",
+  "signIn": "Sign in",
+  "signUp": "Create account",
+  "email": "Email",
+  "password": "Password",
+  "signOut": "Sign out",
+  "google": "Continue with Google",
+  "magicLink": "Email a sign-in link",
+  "resetPassword": "Reset password",
+  "authUnavailable": "Cloud accounts are not configured in this build. You can keep learning as a guest.",
+  "authError": "Could not sign in. Check your details and connection.",
+  "emailSent": "Check your email",
+  "support": "Help & feedback",
+  "supportBody": "Tell us what happened or what you would improve.",
+  "message": "Message",
+  "send": "Send",
+  "queued": "Saved. Waiting to sync.",
+  "sync": "Sync now",
+  "synced": "Up to date",
+  "syncPending": "Waiting to sync",
+  "syncError": "Could not sync. Your changes are safe on this device.",
+  "errorTitle": "Something needs attention",
+  "retry": "Try again",
+  "notFound": "This page could not be found.",
+  "sourceFallback": "This lesson is shown in English while its translation is being updated.",
+  "simulatorNotice": "Learning sandbox: supports the syntax used in this course.",
+  "testLabel": "Test",
+  "unsupportedCode": "This syntax is not supported by the learning sandbox yet.",
+  "saved": "Saved",
+  "requiredField": "Please complete this field",
+  "invalidEmail": "Enter a valid email address",
+  "exportData": "Export my learning data",
+  "importData": "Import learning data",
+  "importHelp": "Paste a CodeLearn export. Existing completions will be preserved.",
+  "exportHelp": "Copy this backup and keep it somewhere safe.",
+  "importFailed": "This backup is invalid or incompatible.",
+  "welcomeAction": "Let’s build something",
+  "onboardingStep1": "Understand it",
+  "onboardingStep2": "Try it",
+  "onboardingStep3": "Make it a habit",
+  "onboardingBody1": "Short lessons that make complex ideas feel clear.",
+  "onboardingBody2": "Write code, explore branches, and learn from feedback.",
+  "onboardingBody3": "Keep your progress and grow a little every day.",
+  "skip": "Skip",
+  "newAchievement": "Milestone unlocked",
+  "correctCount": "{count} of {total} correct",
+  "@correctCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "courseProgress": "{completed} of {total} lessons",
+  "@courseProgress": {
+    "placeholders": {
+      "completed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "dayCount": "{count, plural, =0{No streak yet} one{1 day} other{{count} days}}",
+  "@dayCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "lessonCount": "{count, plural, one{1 lesson} other{{count} lessons}}",
+  "@lessonCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "completionReward": "+{xp} XP · +{credits} credits",
+  "@completionReward": {
+    "placeholders": {
+      "xp": {
+        "type": "int"
+      },
+      "credits": {
+        "type": "int"
+      }
+    }
+  },
+  "nextLevel": "{xp} XP to your next level",
+  "@nextLevel": {
+    "placeholders": {
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "accountMerge": "Your guest progress will be merged into your account.",
+  "practiceChecks": "{passed} of {total} checks passed",
+  "@practiceChecks": {
+    "placeholders": {
+      "passed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "cancelRun": "Stop",
+  "permissionDenied": "Permission was not granted. You can enable it in system settings.",
+  "learningFocus": "Your focus",
+  "dailyMinutes": "Daily learning goal (minutes)",
+  "codeChallenge": "Coding warm-up",
+  "challengePrompt": "What does print(3 * 2 + 1) output?",
+  "challengeAnswer": "Your answer",
+  "challengeSuccess": "Nice! Now sign in to your account.",
+  "sessionRestore": "Pick up where you left off",
+  "minutesLabel": "minutes",
+  "pendingRewards": "Cloud rewards are confirmed after sync.",
+  "statusActive": "Active",
+  "loadMore": "Load more",
+  "achievementLessons": "Complete {count} lessons",
+  "achievementStreak": "Build a {count}-day streak",
+  "achievementCourses": "Complete {count} courses",
+  "@achievementLessons": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@achievementStreak": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@achievementCourses": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "outputMismatch": "The output does not match the expected result.",
+  "executionTimeout": "This run took too long. Try a smaller example.",
+  "executionStopped": "The run was stopped.",
+  "practiceUnavailable": "Could not start practice. Reload and try again."
+}
