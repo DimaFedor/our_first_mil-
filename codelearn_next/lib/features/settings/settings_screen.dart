@@ -28,162 +28,151 @@ class SettingsScreen extends ConsumerWidget {
         final l = context.l10n;
         final settings = data.preferences;
         return PageBody(
-          maxWidth: 780,
+          maxWidth: 760,
           children: [
-            Panel(
-              child: Column(
-                children: [
-                  ListTile(
-                    contentPadding: EdgeInsets.zero,
-                    title: Text(l.uiLanguage),
-                    trailing: DropdownButton<String>(
-                      value: settings.uiLocale,
-                      items: const [
-                        DropdownMenuItem(
-                          value: 'uk',
-                          child: Text('Українська'),
-                        ),
-                        DropdownMenuItem(value: 'en', child: Text('English')),
-                      ],
-                      onChanged: (value) {
-                        if (value != null) {
-                          update(context, ref, {'uiLocale': value});
-                        }
-                      },
-                    ),
-                  ),
-                  const Divider(),
-                  AsyncContent(
-                    value: ref.watch(languagesProvider),
-                    builder: (languages) => ListTile(
-                      contentPadding: EdgeInsets.zero,
-                      title: Text(l.learningLanguage),
-                      trailing: DropdownButton<String>(
-                        value: settings.learningLocale,
-                        items: languages
-                            .map(
-                              (language) => DropdownMenuItem(
-                                value: language.code,
-                                child: Text(language.name),
-                              ),
-                            )
-                            .toList(),
-                        onChanged: (value) {
-                          if (value != null) {
-                            update(context, ref, {'learningLocale': value});
-                          }
-                        },
-                      ),
-                    ),
-                  ),
-                  const Divider(),
-                  ListTile(
-                    contentPadding: EdgeInsets.zero,
-                    title: Text(l.theme),
-                    trailing: DropdownButton<String>(
-                      value: settings.theme,
-                      items: [
-                        DropdownMenuItem(
-                          value: 'system',
-                          child: Text(l.system),
-                        ),
-                        DropdownMenuItem(value: 'light', child: Text(l.light)),
-                        DropdownMenuItem(value: 'dark', child: Text(l.dark)),
-                      ],
-                      onChanged: (value) {
-                        if (value != null) {
-                          update(context, ref, {'theme': value});
-                        }
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SectionHeading(l.sound),
-            Panel(
-              child: Column(
-                children: [
-                  SwitchListTile(
-                    contentPadding: EdgeInsets.zero,
-                    value: settings.sound,
-                    title: Text(l.sound),
-                    onChanged: (value) =>
-                        update(context, ref, {'sound': value}),
-                  ),
-                  SwitchListTile(
-                    contentPadding: EdgeInsets.zero,
-                    value: settings.haptics,
-                    title: Text(l.haptics),
-                    onChanged: (value) =>
-                        update(context, ref, {'haptics': value}),
-                  ),
-                  Row(
-                    children: [
-                      Text(l.volume),
-                      Expanded(
-                        child: Slider(
-                          value: settings.volume,
-                          onChanged: (value) =>
-                              update(context, ref, {'volume': value}),
-                          divisions: 10,
-                        ),
-                      ),
-                      IconButton(
-                        tooltip: l.previewSound,
-                        onPressed: () => ref
-                            .read(feedbackProvider)
-                            .play(FeedbackCue.complete, settings),
-                        icon: const Icon(Icons.volume_up_outlined),
-                      ),
+            GroupedSection(
+              children: [
+                ListTile(
+                  leading: const Icon(Icons.translate_rounded),
+                  title: Text(l.uiLanguage),
+                  trailing: DropdownButton<String>(
+                    value: settings.uiLocale,
+                    underline: const SizedBox.shrink(),
+                    items: const [
+                      DropdownMenuItem(value: 'uk', child: Text('Українська')),
+                      DropdownMenuItem(value: 'en', child: Text('English')),
                     ],
+                    onChanged: (value) {
+                      if (value != null) {
+                        update(context, ref, {'uiLocale': value});
+                      }
+                    },
                   ),
-                ],
-              ),
-            ),
-            SectionHeading(l.reminders),
-            Panel(
-              child: SwitchListTile(
-                contentPadding: EdgeInsets.zero,
-                value: settings.reminders,
-                title: Text(l.reminders),
-                subtitle: Text(l.reminderBody),
-                onChanged: kIsWeb
-                    ? null
-                    : (enabled) => runAction(context, () async {
-                        final allowed = await ReminderService().configure(
-                          enabled,
-                          l.appTitle,
-                          l.continueLearning,
-                        );
-                        if (!allowed && enabled) {
-                          throw const AppFailure('permissionDenied');
+                ),
+                AsyncContent(
+                  value: ref.watch(languagesProvider),
+                  builder: (languages) => ListTile(
+                    leading: const Icon(Icons.menu_book_outlined),
+                    title: Text(l.learningLanguage),
+                    trailing: DropdownButton<String>(
+                      value: settings.learningLocale,
+                      underline: const SizedBox.shrink(),
+                      items: languages
+                          .map(
+                            (language) => DropdownMenuItem(
+                              value: language.code,
+                              child: Text(language.name),
+                            ),
+                          )
+                          .toList(),
+                      onChanged: (value) {
+                        if (value != null) {
+                          update(context, ref, {'learningLocale': value});
                         }
-                        await ref
-                            .read(dataProvider.notifier)
-                            .perform(
-                              (repository, account) => repository
-                                  .updatePreferences({'reminders': enabled}),
-                            );
-                      }),
-              ),
+                      },
+                    ),
+                  ),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.contrast_rounded),
+                  title: Text(l.theme),
+                  trailing: DropdownButton<String>(
+                    value: settings.theme,
+                    underline: const SizedBox.shrink(),
+                    items: [
+                      DropdownMenuItem(value: 'system', child: Text(l.system)),
+                      DropdownMenuItem(value: 'light', child: Text(l.light)),
+                      DropdownMenuItem(value: 'dark', child: Text(l.dark)),
+                    ],
+                    onChanged: (value) {
+                      if (value != null) {
+                        update(context, ref, {'theme': value});
+                      }
+                    },
+                  ),
+                ),
+              ],
             ),
-            SectionHeading(l.exportData),
-            Panel(
-              child: Column(
-                children: [
-                  ListTile(
-                    leading: const Icon(Icons.download_outlined),
-                    title: Text(l.exportData),
-                    onTap: () => backupDialog(context, ref, false),
+            GroupedSection(
+              title: l.sound,
+              children: [
+                SwitchListTile(
+                  secondary: const Icon(Icons.volume_up_outlined),
+                  value: settings.sound,
+                  title: Text(l.sound),
+                  onChanged: (value) => update(context, ref, {'sound': value}),
+                ),
+                SwitchListTile(
+                  secondary: const Icon(Icons.vibration_rounded),
+                  value: settings.haptics,
+                  title: Text(l.haptics),
+                  onChanged: (value) =>
+                      update(context, ref, {'haptics': value}),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.graphic_eq_rounded),
+                  title: Text(l.volume),
+                  subtitle: Slider(
+                    value: settings.volume,
+                    divisions: 10,
+                    onChanged: (value) =>
+                        update(context, ref, {'volume': value}),
                   ),
-                  ListTile(
-                    leading: const Icon(Icons.upload_outlined),
-                    title: Text(l.importData),
-                    onTap: () => backupDialog(context, ref, true),
+                  trailing: IconButton(
+                    tooltip: l.previewSound,
+                    onPressed: () => ref
+                        .read(feedbackProvider)
+                        .play(FeedbackCue.complete, settings),
+                    icon: const Icon(Icons.play_arrow_rounded),
                   ),
-                ],
-              ),
+                ),
+              ],
+            ),
+            GroupedSection(
+              title: l.reminders,
+              children: [
+                SwitchListTile(
+                  secondary: const Icon(Icons.notifications_none_rounded),
+                  value: settings.reminders,
+                  title: Text(l.reminders),
+                  subtitle: Text(l.reminderBody),
+                  onChanged: kIsWeb
+                      ? null
+                      : (enabled) => runAction(context, () async {
+                          final allowed = await ReminderService().configure(
+                            enabled,
+                            l.appTitle,
+                            l.continueLearning,
+                          );
+                          if (!allowed && enabled) {
+                            throw const AppFailure('permissionDenied');
+                          }
+                          await ref
+                              .read(dataProvider.notifier)
+                              .perform(
+                                (repository, account) => repository
+                                    .updatePreferences({'reminders': enabled}),
+                              );
+                        }),
+                ),
+              ],
+            ),
+            GroupedSection(
+              title: l.exportData,
+              children: [
+                ListTile(
+                  leading: const Icon(Icons.download_outlined),
+                  title: Text(l.exportData),
+                  trailing: const Icon(Icons.chevron_right_rounded),
+                  onTap: () => backupDialog(context, ref, false),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.upload_outlined),
+                  title: Text(l.importData),
+                  trailing: const Icon(Icons.chevron_right_rounded),
+                  onTap: () => backupDialog(context, ref, true),
+                ),
+              ],
             ),
           ],
         );

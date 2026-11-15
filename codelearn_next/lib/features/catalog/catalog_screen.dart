@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../app/providers.dart';
 import '../../design_system/components.dart';
+import '../../design_system/course_glyph.dart';
+import 'domain/content.dart';
 import '../home/home_screen.dart';
 
 class CatalogScreen extends ConsumerStatefulWidget {
@@ -29,9 +31,7 @@ class CatalogScreenState extends ConsumerState<CatalogScreen> {
                   .contains(query.toLowerCase()) &&
               switch (filter) {
                 'inProgress' => progress > 0 && progress < course.lessonCount,
-                'completed' => progress == course.lessonCount,
-                'beginner' => course.difficulty == 'beginner',
-                'intermediate' => course.difficulty == 'intermediate',
+                'completed' => progress >= course.lessonCount,
                 _ => true,
               };
         }).toList();
@@ -60,8 +60,6 @@ class CatalogScreenState extends ConsumerState<CatalogScreen> {
                         'all': context.l10n.all,
                         'inProgress': context.l10n.inProgress,
                         'completed': context.l10n.completed,
-                        'beginner': context.l10n.beginner,
-                        'intermediate': context.l10n.intermediate,
                       }.entries
                       .map(
                         (entry) => ChoiceChip(
@@ -73,32 +71,26 @@ class CatalogScreenState extends ConsumerState<CatalogScreen> {
                       )
                       .toList(),
             ),
-            const SizedBox(height: 24),
             if (filtered.isEmpty)
               EmptyState(
                 icon: Icons.search_off_rounded,
                 title: context.l10n.noResults,
                 body: context.l10n.trySearch,
-              )
-            else
-              LayoutBuilder(
-                builder: (context, constraints) => Wrap(
-                  spacing: 16,
-                  runSpacing: 16,
-                  children: filtered
-                      .map(
-                        (course) => SizedBox(
-                          width: constraints.maxWidth > 800
-                              ? (constraints.maxWidth - 32) / 3
-                              : constraints.maxWidth > 500
-                              ? (constraints.maxWidth - 16) / 2
-                              : constraints.maxWidth,
-                          child: CourseTile(course: course, data: data),
-                        ),
-                      )
-                      .toList(),
-                ),
               ),
+            for (final (difficulty, label) in [
+              ('beginner', context.l10n.beginner),
+              ('intermediate', context.l10n.intermediate),
+            ])
+              if (filtered.any((course) => course.difficulty == difficulty))
+                GroupedSection(
+                  title: label,
+                  children: [
+                    for (final course in filtered.where(
+                      (course) => course.difficulty == difficulty,
+                    ))
+                      CourseRow(course: course, data: data),
+                  ],
+                ),
           ],
         );
       },
@@ -123,83 +115,107 @@ class CourseScreen extends ConsumerWidget {
               .value
               ?.where((item) => item.id == courseId)
               .firstOrNull;
+          final completed = data.completedIn(courseId);
           return PageBody(
-            maxWidth: 850,
+            maxWidth: 760,
             children: [
+              CourseGlyph(courseId, size: 52),
+              const SizedBox(height: 18),
               Text(
                 course?.title(data.preferences.uiLocale) ?? courseId,
                 style: Theme.of(context).textTheme.headlineLarge,
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 8),
               Text(
-                context.l10n.courseProgress(
-                  data.completedIn(courseId),
-                  lessons.length,
-                ),
+                context.l10n.courseProgress(completed, lessons.length),
+                style: Theme.of(context).textTheme.bodySmall,
               ),
-              const SizedBox(height: 26),
-              for (var index = 0; index < lessons.length; index++) ...[
-                if (index == 0 ||
-                    lessons[index].moduleId != lessons[index - 1].moduleId)
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 12),
-                    child: Text(
-                      '${index + 1}'.padLeft(2, '0'),
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
-                        letterSpacing: 2,
-                      ),
+              const SizedBox(height: 14),
+              LinearProgressIndicator(
+                value: lessons.isEmpty ? 0 : completed / lessons.length,
+                color: courseColor(courseId),
+                minHeight: 6,
+                borderRadius: BorderRadius.circular(3),
+              ),
+              const SizedBox(height: 12),
+              GroupedSection(
+                children: [
+                  for (var index = 0; index < lessons.length; index++)
+                    LessonRow(
+                      lesson: lessons[index],
+                      position: index + 1,
+                      isDone: data.completions.containsKey(lessons[index].id),
+                      isOpen:
+                          index == 0 ||
+                          data.completions.containsKey(lessons[index - 1].id),
                     ),
-                  ),
-                Card(
-                  child: ListTile(
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 12,
-                    ),
-                    leading: CircleAvatar(
-                      child: Icon(
-                        data.completions.containsKey(lessons[index].id)
-                            ? Icons.check_rounded
-                            : index == 0 ||
-                                  data.completions.containsKey(
-                                    lessons[index - 1].id,
-                                  )
-                            ? Icons.play_arrow_rounded
-                            : Icons.lock_outline_rounded,
-                      ),
-                    ),
-                    title: Text(
-                      lessons[index].title,
-                      style: const TextStyle(fontWeight: FontWeight.w600),
-                    ),
-                    subtitle: Text(
-                      lessons[index].description,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    trailing: Text('${lessons[index].xp} XP'),
-                    onTap: () {
-                      if (index > 0 &&
-                          !data.completions.containsKey(
-                            lessons[index - 1].id,
-                          ) &&
-                          !data.completions.containsKey(lessons[index].id)) {
-                        showMessage(context, context.l10n.locked);
-                        return;
-                      }
-                      context.push(
-                        '/course/$courseId/lesson/${lessons[index].id}',
-                      );
-                    },
-                  ),
-                ),
-                const SizedBox(height: 10),
-              ],
+                ],
+              ),
             ],
           );
         },
       ),
     ),
   );
+}
+
+class LessonRow extends StatelessWidget {
+  final Lesson lesson;
+  final int position;
+  final bool isDone;
+  final bool isOpen;
+  const LessonRow({
+    super.key,
+    required this.lesson,
+    required this.position,
+    required this.isDone,
+    required this.isOpen,
+  });
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return ListTile(
+      leading: Container(
+        width: 36,
+        height: 36,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: isDone
+              ? courseColor(lesson.courseId)
+              : isOpen
+              ? scheme.primary
+              : scheme.surfaceContainerHighest,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: isDone
+            ? Icon(
+                Icons.check_rounded,
+                size: 20,
+                color: courseColor(lesson.courseId).computeLuminance() > .5
+                    ? const Color(0xFF1A1A18)
+                    : Colors.white,
+              )
+            : isOpen
+            ? Icon(Icons.play_arrow_rounded, size: 20, color: scheme.onPrimary)
+            : Text('$position', style: Theme.of(context).textTheme.labelLarge),
+      ),
+      title: Text(lesson.title),
+      subtitle: Text(
+        lesson.description,
+        maxLines: 2,
+        overflow: TextOverflow.ellipsis,
+      ),
+      trailing: Text(
+        '${lesson.xp} XP',
+        style: Theme.of(context).textTheme.bodySmall,
+      ),
+      onTap: () {
+        if (!isOpen && !isDone) {
+          showMessage(context, context.l10n.locked);
+          return;
+        }
+        context.push('/course/${lesson.courseId}/lesson/${lesson.id}');
+      },
+    );
+  }
 }

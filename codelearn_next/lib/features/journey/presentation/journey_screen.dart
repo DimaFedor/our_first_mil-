@@ -6,6 +6,7 @@ import '../../../app/providers.dart';
 import '../../../design_system/components.dart';
 import '../../../design_system/course_glyph.dart';
 import '../../../foundation/json.dart';
+import '../../home/home_screen.dart';
 import '../../rewards/domain/reward_policy.dart';
 import '../../progress/domain/achievement.dart';
 
@@ -56,126 +57,80 @@ class JourneyScreen extends ConsumerWidget {
         return PageBody(
           children: [
             Text(l.journey, style: Theme.of(context).textTheme.headlineLarge),
-            const SizedBox(height: 20),
-            Wrap(
-              spacing: 12,
-              runSpacing: 10,
+            const SizedBox(height: 8),
+            Text(
+              [
+                '${data.xp} XP',
+                l.dayCount(data.streak),
+                l.lessonCount(data.completions.length),
+              ].join('  ·  '),
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+            GroupedSection(
+              title: l.missions,
               children: [
-                StatPill(Icons.bolt_rounded, '${data.xp} XP'),
-                StatPill(
-                  Icons.local_fire_department_rounded,
-                  l.dayCount(data.streak),
-                ),
-                StatPill(
-                  Icons.school_outlined,
-                  l.lessonCount(data.completions.length),
-                ),
+                for (final (isDone, label) in [
+                  (didLesson, l.missionLesson),
+                  (didPortfolio, l.missionPortfolio),
+                ])
+                  ListTile(
+                    leading: Icon(
+                      isDone
+                          ? Icons.check_circle_rounded
+                          : Icons.radio_button_unchecked_rounded,
+                      color: isDone ? const Color(0xFF30D158) : null,
+                    ),
+                    title: Text(label),
+                  ),
               ],
             ),
-            SectionHeading(l.missions),
-            Panel(
-              child: Column(
-                children: [
-                  CheckboxListTile(
-                    value: didLesson,
-                    onChanged: null,
-                    title: Text(l.missionLesson),
-                    secondary: const Icon(Icons.school_outlined),
-                  ),
-                  CheckboxListTile(
-                    value: didPortfolio,
-                    onChanged: null,
-                    title: Text(l.missionPortfolio),
-                    secondary: const Icon(Icons.bookmark_border_rounded),
-                  ),
-                ],
-              ),
+            GroupedSection(
+              title: l.skillMap,
+              children: [
+                for (final course in courses)
+                  CourseRow(course: course, data: data),
+              ],
             ),
-            SectionHeading(l.skillMap),
-            Panel(
-              child: Column(
-                children: [
-                  for (var index = 0; index < courses.length; index++) ...[
-                    ListTile(
-                      contentPadding: EdgeInsets.zero,
-                      leading: CircleAvatar(
-                        child:
-                            data.completedIn(courses[index].id) ==
-                                courses[index].lessonCount
-                            ? const Icon(Icons.check_rounded)
-                            : Icon(courseIcon(courses[index].id)),
-                      ),
-                      title: Text(
-                        courses[index].title(data.preferences.uiLocale),
-                      ),
-                      subtitle: Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: LinearProgressIndicator(
-                          value:
-                              data.completedIn(courses[index].id) /
-                              courses[index].lessonCount,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                      trailing: const Icon(Icons.arrow_forward_rounded),
-                      onTap: () => context.push('/course/${courses[index].id}'),
+            GroupedSection(
+              title: l.insights,
+              children: [
+                if (weakCourses.isEmpty)
+                  ListTile(
+                    title: Text(
+                      data.completions.isEmpty ? l.noInsights : l.goalComplete,
                     ),
-                    if (index < courses.length - 1)
-                      const Padding(
-                        padding: EdgeInsetsDirectional.only(start: 19),
-                        child: Align(
-                          alignment: AlignmentDirectional.centerStart,
-                          child: SizedBox(
-                            height: 20,
-                            child: VerticalDivider(width: 1),
-                          ),
-                        ),
-                      ),
-                  ],
-                ],
-              ),
-            ),
-            SectionHeading(l.insights),
-            if (weakCourses.isEmpty)
-              Panel(
-                child: Text(
-                  data.completions.isEmpty ? l.noInsights : l.goalComplete,
-                ),
-              )
-            else
-              for (final weak in weakCourses.take(3))
-                ListTile(
-                  leading: const Icon(Icons.psychology_outlined),
-                  title: Text(
-                    courses
-                            .where((item) => item.id == weak.key)
-                            .firstOrNull
-                            ?.title(data.preferences.uiLocale) ??
-                        weak.key,
                   ),
-                  subtitle: Text(l.practiceAgain),
-                  onTap: () => context.push('/course/${weak.key}'),
-                ),
-            SectionHeading(
-              l.portfolio,
-              trailing: TextButton(
-                onPressed: () => context.push('/portfolio'),
-                child: Text(l.all),
-              ),
+                for (final weak in weakCourses.take(3))
+                  ListTile(
+                    leading: CourseGlyph(weak.key),
+                    title: Text(
+                      courses
+                              .where((item) => item.id == weak.key)
+                              .firstOrNull
+                              ?.title(data.preferences.uiLocale) ??
+                          weak.key,
+                    ),
+                    subtitle: Text(l.practiceAgain),
+                    trailing: const Icon(Icons.chevron_right_rounded),
+                    onTap: () => context.push('/course/${weak.key}'),
+                  ),
+              ],
             ),
-            Panel(
-              child: ListTile(
-                contentPadding: EdgeInsets.zero,
-                leading: const Icon(Icons.code_rounded),
-                title: Text(l.portfolio),
-                subtitle: Text(
-                  data.portfolio.isEmpty
-                      ? l.portfolioEmptyBody
-                      : '${data.portfolio.length}',
+            GroupedSection(
+              title: l.portfolio,
+              children: [
+                ListTile(
+                  leading: const Icon(Icons.code_rounded),
+                  title: Text(l.portfolio),
+                  subtitle: Text(
+                    data.portfolio.isEmpty
+                        ? l.portfolioEmptyBody
+                        : '${data.portfolio.length}',
+                  ),
+                  trailing: const Icon(Icons.chevron_right_rounded),
+                  onTap: () => context.push('/portfolio'),
                 ),
-                trailing: const Icon(Icons.arrow_forward_rounded),
-                onTap: () => context.push('/portfolio'),
-              ),
+              ],
             ),
             SectionHeading(l.achievements),
             Wrap(

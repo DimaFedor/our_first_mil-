@@ -47,6 +47,33 @@ void main() {
       expect(data.pending, 1);
     },
   );
+  test(
+    'completion reports level up only when the level threshold is crossed',
+    () async {
+      final first = await repository.complete(
+        'guest',
+        lesson,
+        LearningSession(lessonId: lesson.id, contentVersion: 1),
+        10,
+      );
+      final second = await repository.complete(
+        'guest',
+        Lesson.fromJson({
+          'id': 'second',
+          'courseId': 'python',
+          'version': 1,
+          'xpReward': 20,
+          'theorySlides': [],
+          'quiz': null,
+        }),
+        LearningSession(lessonId: 'second', contentVersion: 1),
+        10,
+      );
+      expect(first.levelUp, isFalse);
+      expect(second.levelUp, isTrue);
+      expect(RewardPolicy.level((await repository.load('guest')).xp), 2);
+    },
+  );
   test('completion is isolated by account', () async {
     await repository.complete(
       'one',

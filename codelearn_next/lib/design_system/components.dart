@@ -49,6 +49,57 @@ class SectionHeading extends StatelessWidget {
   );
 }
 
+class GroupedSection extends StatelessWidget {
+  final String? title;
+  final Widget? trailing;
+  final List<Widget> children;
+  const GroupedSection({
+    super.key,
+    this.title,
+    this.trailing,
+    required this.children,
+  });
+  @override
+  Widget build(BuildContext context) => Column(
+    crossAxisAlignment: CrossAxisAlignment.stretch,
+    children: [
+      if (title != null)
+        Padding(
+          padding: const EdgeInsetsDirectional.fromSTEB(16, 28, 4, 8),
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  title!,
+                  style: Theme.of(context).textTheme.labelLarge,
+                ),
+              ),
+              ?trailing,
+            ],
+          ),
+        )
+      else
+        const SizedBox(height: 16),
+      Material(
+        color: Theme.of(context).colorScheme.surface,
+        borderRadius: BorderRadius.circular(16),
+        clipBehavior: Clip.antiAlias,
+        child: ListTileTheme.merge(
+          shape: const RoundedRectangleBorder(),
+          child: Column(
+            children: [
+              for (var index = 0; index < children.length; index++) ...[
+                if (index > 0) const Divider(indent: 66),
+                children[index],
+              ],
+            ],
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
 class Panel extends StatelessWidget {
   final Widget child;
   final EdgeInsetsGeometry padding;

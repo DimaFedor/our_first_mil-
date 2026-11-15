@@ -27,13 +27,23 @@ List<Widget> buildTheory(
   return [
     LinearProgressIndicator(
       value: (index + 1) / slides.length,
-      minHeight: 5,
-      borderRadius: BorderRadius.circular(8),
+      minHeight: 3,
+      borderRadius: BorderRadius.circular(2),
     ),
-    const SizedBox(height: 30),
+    const SizedBox(height: 10),
+    Text(
+      '${index + 1} / ${slides.length}',
+      style: Theme.of(context).textTheme.labelLarge,
+    ),
+    const SizedBox(height: 26),
     Text(slide.title, style: Theme.of(context).textTheme.headlineMedium),
-    const SizedBox(height: 24),
-    SelectableText(slide.content, style: Theme.of(context).textTheme.bodyLarge),
+    const SizedBox(height: 20),
+    SelectableText(
+      slide.content,
+      style: Theme.of(
+        context,
+      ).textTheme.bodyLarge?.copyWith(fontSize: 17, height: 1.7),
+    ),
     if (slide.code.isNotEmpty) ...[
       const SizedBox(height: 24),
       CodePanel(code: slide.code, language: slide.language),

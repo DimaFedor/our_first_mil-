@@ -130,10 +130,12 @@ class CompletionResult {
   final int xp;
   final int credits;
   final List<String> achievements;
+  final bool levelUp;
   const CompletionResult({
     required this.applied,
     this.xp = 0,
     this.credits = 0,
     this.achievements = const [],
+    this.levelUp = false,
   });
 }

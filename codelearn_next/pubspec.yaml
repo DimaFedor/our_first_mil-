@@ -35,4 +35,19 @@ flutter:
     - assets/audio/
     - assets/runtime/
     - assets/runtime/pyodide/
-    - assets/avatars/
+  fonts:
+    - family: Onest
+      fonts:
+        - asset: assets/fonts/Onest-Regular.ttf
+        - asset: assets/fonts/Onest-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Onest-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Onest-Bold.ttf
+          weight: 700
+    - family: Source Serif 4
+      fonts:
+        - asset: assets/fonts/SourceSerif4-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/SourceSerif4-SemiBold.ttf
+          weight: 600

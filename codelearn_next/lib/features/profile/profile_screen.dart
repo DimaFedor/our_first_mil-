@@ -6,7 +6,21 @@ import '../../app/providers.dart';
 import '../../design_system/components.dart';
 import '../../foundation/json.dart';
 import '../journey/presentation/journey_screen.dart';
+import '../progress/domain/achievement.dart';
 import '../rewards/domain/reward_policy.dart';
+
+const avatarColors = [
+  Color(0xFF0A84FF),
+  Color(0xFF30D158),
+  Color(0xFFFF9F0A),
+  Color(0xFFBF5AF2),
+  Color(0xFF40C8E0),
+  Color(0xFFFF453A),
+  Color(0xFF5E5CE6),
+  Color(0xFF63E6BE),
+  Color(0xFFFF375F),
+  Color(0xFF8E8E93),
+];
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
@@ -15,160 +29,219 @@ class ProfileScreen extends ConsumerWidget {
     value: ref.watch(dataProvider),
     builder: (data) {
       final l = context.l10n;
-      final avatar = jsonInt(
-        data.profile['avatar'],
-        1,
-      ).clamp(1, 10).toString().padLeft(2, '0');
+      final theme = Theme.of(context);
+      final isGuest = ref.watch(accountProvider) == 'guest';
+      final name = data.name.isEmpty ? l.guest : data.name;
       return PageBody(
-        maxWidth: 900,
+        maxWidth: 760,
         children: [
           Row(
             children: [
-              Container(
-                padding: const EdgeInsets.all(4),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: data.wallet.hasFrame
-                        ? Theme.of(context).colorScheme.primary
-                        : Colors.transparent,
-                    width: 4,
-                  ),
-                ),
-                child: CircleAvatar(
-                  radius: 42,
-                  backgroundImage: AssetImage(
-                    'assets/avatars/avatar_$avatar.png',
-                  ),
-                ),
+              ProfileAvatar(
+                name: name,
+                colorIndex: jsonInt(data.profile['avatar'], 1),
+                size: 76,
+                hasFrame: data.wallet.hasFrame,
               ),
-              const SizedBox(width: 20),
+              const SizedBox(width: 18),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Text(name, style: theme.textTheme.headlineMedium),
+                    const SizedBox(height: 4),
                     Text(
-                      data.name.isEmpty ? l.guest : data.name,
-                      style: Theme.of(context).textTheme.headlineMedium,
+                      [
+                        isGuest
+                            ? l.guestMode
+                            : ref.watch(authUserProvider).value?.email ?? '',
+                        '${l.level} ${RewardPolicy.level(data.xp)}',
+                      ].where((part) => part.isNotEmpty).join('  ·  '),
+                      style: theme.textTheme.bodySmall,
                     ),
-                    Text(
-                      ref.watch(accountProvider) == 'guest'
-                          ? l.guestMode
-                          : ref.watch(authUserProvider).value?.email ?? '',
-                    ),
-                    Text('${l.level} ${RewardPolicy.level(data.xp)}'),
                   ],
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 20),
-          if (jsonString(data.profile['bio']).isNotEmpty)
+          if (jsonString(data.profile['bio']).isNotEmpty) ...[
+            const SizedBox(height: 18),
             Text(jsonString(data.profile['bio'])),
-          const SizedBox(height: 22),
-          Wrap(
-            spacing: 12,
-            runSpacing: 12,
+          ],
+          const SizedBox(height: 12),
+          GroupedSection(
             children: [
-              OutlinedButton.icon(
-                onPressed: () => editProfile(context, ref),
-                icon: const Icon(Icons.edit_outlined),
-                label: Text(l.editProfile),
+              ListTile(
+                leading: const Icon(Icons.edit_outlined),
+                title: Text(l.editProfile),
+                trailing: const Icon(Icons.chevron_right_rounded),
+                onTap: () => editProfile(context, ref),
               ),
-              OutlinedButton.icon(
-                onPressed: () => context.push('/settings'),
-                icon: const Icon(Icons.tune_rounded),
-                label: Text(l.settings),
+              ListTile(
+                leading: const Icon(Icons.tune_rounded),
+                title: Text(l.settings),
+                trailing: const Icon(Icons.chevron_right_rounded),
+                onTap: () => context.push('/settings'),
               ),
             ],
           ),
-          const SizedBox(height: 24),
-          Panel(
-            child: Column(
-              children: [
+          GroupedSection(
+            children: [
+              ListTile(
+                leading: const Icon(Icons.route_outlined),
+                title: Text(l.journey),
+                trailing: const Icon(Icons.chevron_right_rounded),
+                onTap: () => context.go('/journey'),
+              ),
+              ListTile(
+                leading: const Icon(Icons.code_rounded),
+                title: Text(l.portfolio),
+                trailing: const Icon(Icons.chevron_right_rounded),
+                onTap: () => context.push('/portfolio'),
+              ),
+              ListTile(
+                leading: const Icon(Icons.support_agent_rounded),
+                title: Text(l.support),
+                trailing: const Icon(Icons.chevron_right_rounded),
+                onTap: () => context.push('/support'),
+              ),
+            ],
+          ),
+          GroupedSection(
+            title:
+                '${l.achievements}  ·  ${data.achievements.length} / ${achievementDefinitions.length}',
+            children: [
+              for (final id in data.achievements)
                 ListTile(
-                  leading: const Icon(Icons.route_outlined),
-                  title: Text(l.journey),
+                  leading: const Icon(
+                    Icons.workspace_premium_rounded,
+                    color: Color(0xFFFF9F0A),
+                  ),
+                  title: Text(achievementLabel(context, id)),
+                ),
+              if (achievementDefinitions
+                      .where((item) => !data.achievements.contains(item.id))
+                      .firstOrNull
+                  case final next?)
+                ListTile(
+                  leading: const Icon(Icons.lock_outline_rounded),
+                  title: Text(achievementLabel(context, next.id)),
                   trailing: const Icon(Icons.chevron_right_rounded),
                   onTap: () => context.go('/journey'),
                 ),
-                ListTile(
-                  leading: const Icon(Icons.code_rounded),
-                  title: Text(l.portfolio),
-                  trailing: const Icon(Icons.chevron_right_rounded),
-                  onTap: () => context.push('/portfolio'),
+            ],
+          ),
+          GroupedSection(
+            title: isGuest ? l.signIn : l.sync,
+            children: [
+              ListTile(
+                leading: Icon(
+                  isGuest
+                      ? Icons.phone_iphone_rounded
+                      : data.pending == 0
+                      ? Icons.cloud_done_outlined
+                      : Icons.cloud_upload_outlined,
                 ),
-                ListTile(
-                  leading: const Icon(Icons.support_agent_rounded),
-                  title: Text(l.support),
-                  trailing: const Icon(Icons.chevron_right_rounded),
-                  onTap: () => context.push('/support'),
-                ),
-              ],
-            ),
-          ),
-          SectionHeading(l.achievements),
-          Wrap(
-            spacing: 10,
-            runSpacing: 10,
-            children: data.achievements
-                .map(
-                  (id) => Chip(
-                    avatar: const Icon(Icons.workspace_premium_rounded),
-                    label: Text(achievementLabel(context, id)),
-                  ),
-                )
-                .toList(),
-          ),
-          SectionHeading(
-            ref.watch(accountProvider) == 'guest' ? l.signIn : l.sync,
-          ),
-          Panel(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  ref.watch(accountProvider) == 'guest'
+                title: Text(
+                  isGuest
                       ? l.localBody
                       : data.pending == 0
                       ? l.synced
                       : l.syncPending,
                 ),
-                const SizedBox(height: 16),
-                if (ref.watch(accountProvider) == 'guest')
-                  FilledButton(
-                    onPressed: () => context.push('/auth'),
-                    child: Text(l.signIn),
-                  )
-                else
-                  Wrap(
-                    spacing: 12,
-                    children: [
-                      FilledButton(
-                        onPressed: () => runAction(context, () async {
-                          await ref
-                              .read(syncProvider)
-                              .synchronize(ref.read(accountProvider));
-                          await ref.read(dataProvider.notifier).reload();
-                        }, success: l.synced),
-                        child: Text(l.sync),
-                      ),
-                      TextButton(
-                        onPressed: () => runAction(
-                          context,
-                          () => ref.read(authServiceProvider).signOut(),
-                        ),
-                        child: Text(l.signOut),
-                      ),
-                    ],
+              ),
+              if (!isGuest)
+                ListTile(
+                  leading: const Icon(Icons.sync_rounded),
+                  title: Text(l.sync),
+                  onTap: () => runAction(context, () async {
+                    await ref
+                        .read(syncProvider)
+                        .synchronize(ref.read(accountProvider));
+                    await ref.read(dataProvider.notifier).reload();
+                  }, success: l.synced),
+                ),
+              if (!isGuest)
+                ListTile(
+                  leading: Icon(
+                    Icons.logout_rounded,
+                    color: theme.colorScheme.error,
                   ),
-              ],
-            ),
+                  title: Text(
+                    l.signOut,
+                    style: TextStyle(color: theme.colorScheme.error),
+                  ),
+                  onTap: () => runAction(
+                    context,
+                    () => ref.read(authServiceProvider).signOut(),
+                  ),
+                ),
+            ],
           ),
+          if (isGuest) ...[
+            const SizedBox(height: 12),
+            SizedBox(
+              width: double.infinity,
+              child: FilledButton(
+                onPressed: () => context.push('/auth'),
+                child: Text(l.signIn),
+              ),
+            ),
+          ],
         ],
       );
     },
   );
+}
+
+class ProfileAvatar extends StatelessWidget {
+  final String name;
+  final int colorIndex;
+  final double size;
+  final bool hasFrame;
+  const ProfileAvatar({
+    super.key,
+    required this.name,
+    required this.colorIndex,
+    this.size = 48,
+    this.hasFrame = false,
+  });
+  @override
+  Widget build(BuildContext context) {
+    final color = avatarColors[(colorIndex - 1) % avatarColors.length];
+    final initials = name
+        .trim()
+        .split(RegExp(r'\s+'))
+        .where((word) => word.isNotEmpty)
+        .take(2)
+        .map((word) => word.characters.first.toUpperCase())
+        .join();
+    return Container(
+      width: size,
+      height: size,
+      padding: EdgeInsets.all(hasFrame ? 3 : 0),
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        border: hasFrame
+            ? Border.all(color: const Color(0xFFFF9F0A), width: 2.5)
+            : null,
+      ),
+      child: Container(
+        alignment: Alignment.center,
+        decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+        child: Text(
+          initials,
+          style: TextStyle(
+            fontSize: size * .36,
+            fontWeight: FontWeight.w600,
+            color: color.computeLuminance() > .5
+                ? const Color(0xFF1A1A18)
+                : Colors.white,
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 Future<void> editProfile(BuildContext context, WidgetRef ref) async {
@@ -198,7 +271,7 @@ Future<void> editProfile(BuildContext context, WidgetRef ref) async {
                     spacing: 10,
                     runSpacing: 10,
                     children: List.generate(
-                      10,
+                      avatarColors.length,
                       (index) => InkResponse(
                         onTap: () => setState(() => avatar = index + 1),
                         child: Container(
@@ -206,16 +279,18 @@ Future<void> editProfile(BuildContext context, WidgetRef ref) async {
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(
-                              width: 3,
+                              width: 2,
                               color: avatar == index + 1
                                   ? Theme.of(context).colorScheme.primary
                                   : Colors.transparent,
                             ),
                           ),
-                          child: CircleAvatar(
-                            backgroundImage: AssetImage(
-                              'assets/avatars/avatar_${(index + 1).toString().padLeft(2, '0')}.png',
-                            ),
+                          child: ProfileAvatar(
+                            name: name.text.isEmpty
+                                ? context.l10n.guest
+                                : name.text,
+                            colorIndex: index + 1,
+                            size: 40,
                           ),
                         ),
                       ),

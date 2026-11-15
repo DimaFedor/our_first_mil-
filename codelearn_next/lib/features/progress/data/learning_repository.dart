@@ -273,6 +273,9 @@ class LearningRepository {
       xp: totalEarned,
       credits: credits,
       achievements: unlocked,
+      levelUp:
+          RewardPolicy.level(jsonInt(profile['xp']) + totalEarned) >
+          RewardPolicy.level(jsonInt(profile['xp'])),
     );
   });
 

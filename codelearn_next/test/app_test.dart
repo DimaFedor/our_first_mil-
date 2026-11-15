@@ -23,7 +23,15 @@ class FixtureLearningController extends LearningController {
 
 void main() {
   for (final locale in ['uk', 'en']) {
-    for (final size in [const Size(360, 740), const Size(1280, 900)]) {
+    for (final size in [
+      const Size(320, 640),
+      const Size(360, 740),
+      const Size(430, 932),
+      const Size(768, 1024),
+      const Size(1024, 768),
+      const Size(1280, 900),
+      const Size(1920, 1080),
+    ]) {
       testWidgets('all main pages render in $locale at ${size.width}', (
         tester,
       ) async {

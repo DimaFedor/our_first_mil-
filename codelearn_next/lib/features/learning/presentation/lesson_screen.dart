@@ -6,15 +6,16 @@ import 'package:go_router/go_router.dart';
 
 import '../../../app/providers.dart';
 import '../../../design_system/components.dart';
+import '../../../design_system/course_glyph.dart';
 import '../../../design_system/theme.dart';
 import '../../../infrastructure/audio/feedback_service.dart';
 import '../../catalog/domain/content.dart';
+import '../../journey/presentation/journey_screen.dart';
 import '../../practice/data/practice_runner.dart';
 import '../../practice/domain/practice_result.dart';
 import '../../practice/presentation/code_editor.dart';
 import '../../practice/presentation/practice_views.dart';
 import '../../progress/domain/learning_data.dart';
-import '../../rewards/domain/reward_policy.dart';
 import '../domain/learning_session.dart';
 import '../application/lesson_application.dart';
 import 'theory_content.dart';
@@ -168,7 +169,7 @@ class LessonWorkspaceState extends ConsumerState<LessonWorkspace> {
     await ref
         .read(feedbackProvider)
         .play(
-          next.passed ? FeedbackCue.correct : FeedbackCue.incorrect,
+          next.passed ? FeedbackCue.codePassed : FeedbackCue.incorrect,
           widget.preferences,
         );
   }
@@ -177,7 +178,6 @@ class LessonWorkspaceState extends ConsumerState<LessonWorkspace> {
     if (completing) return;
     setState(() => completing = true);
     try {
-      final oldXp = ref.read(dataProvider).value?.xp ?? 0;
       final outcome = await application.complete(
         widget.lesson,
         session,
@@ -189,12 +189,13 @@ class LessonWorkspaceState extends ConsumerState<LessonWorkspace> {
         completion = outcome;
         session = session.copyWith(stage: LearningStage.complete);
       });
-      final newXp = ref.read(dataProvider).value?.xp ?? oldXp;
       await ref
           .read(feedbackProvider)
           .play(
-            RewardPolicy.level(newXp) > RewardPolicy.level(oldXp)
+            outcome.levelUp
                 ? FeedbackCue.level
+                : outcome.achievements.isNotEmpty
+                ? FeedbackCue.achievement
                 : FeedbackCue.complete,
             widget.preferences,
           );
@@ -234,8 +235,13 @@ class LessonWorkspaceState extends ConsumerState<LessonWorkspace> {
         title: Text(lesson.title, maxLines: 1, overflow: TextOverflow.ellipsis),
         actions: [
           Padding(
-            padding: const EdgeInsetsDirectional.only(end: 16),
-            child: StatPill(Icons.bolt_rounded, '${lesson.xp} XP'),
+            padding: const EdgeInsetsDirectional.only(end: 20),
+            child: Center(
+              child: Text(
+                '${lesson.xp} XP',
+                style: Theme.of(context).textTheme.labelLarge,
+              ),
+            ),
           ),
         ],
       ),
@@ -275,7 +281,7 @@ class LessonWorkspaceState extends ConsumerState<LessonWorkspace> {
             ),
           Expanded(
             child: PageBody(
-              maxWidth: session.stage == LearningStage.practice ? 1160 : 820,
+              maxWidth: session.stage == LearningStage.practice ? 1160 : 720,
               children: switch (session.stage) {
                 LearningStage.theory => buildTheory(
                   context,
@@ -434,6 +440,9 @@ class LessonWorkspaceState extends ConsumerState<LessonWorkspace> {
                         .revealHint(account, session);
                     update(session.copyWith(hintRevealed: true));
                     await ref.read(dataProvider.notifier).reload();
+                    await ref
+                        .read(feedbackProvider)
+                        .play(FeedbackCue.hint, widget.preferences);
                   }),
             icon: const Icon(Icons.lightbulb_outline_rounded),
             label: Text(l.hint),
@@ -455,9 +464,9 @@ class LessonWorkspaceState extends ConsumerState<LessonWorkspace> {
       children: [
         Container(
           decoration: BoxDecoration(
-            color: const Color(0xFF090D19),
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: const Color(0xFF333A59)),
+            color: const Color(0xFF111113),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: const Color(0xFF2C2C30)),
           ),
           padding: const EdgeInsets.all(16),
           child: Column(
@@ -468,7 +477,7 @@ class LessonWorkspaceState extends ConsumerState<LessonWorkspace> {
                   const SizedBox(width: 8),
                   Text(
                     challenge.language,
-                    style: const TextStyle(color: Color(0xFFAFB7D7)),
+                    style: const TextStyle(color: Color(0xFF98979F)),
                   ),
                   const Spacer(),
                   IconButton(
@@ -485,7 +494,7 @@ class LessonWorkspaceState extends ConsumerState<LessonWorkspace> {
                     },
                     icon: const Icon(
                       Icons.restart_alt_rounded,
-                      color: Color(0xFFAFB7D7),
+                      color: Color(0xFF98979F),
                     ),
                   ),
                 ],
@@ -620,15 +629,19 @@ class LessonWorkspaceState extends ConsumerState<LessonWorkspace> {
           children: [
             const SizedBox(height: 30),
             Container(
-              padding: const EdgeInsets.all(30),
+              width: 72,
+              height: 72,
               decoration: BoxDecoration(
-                color: brandMint.withValues(alpha: .12),
-                shape: BoxShape.circle,
+                color: courseColor(widget.lesson.courseId),
+                borderRadius: BorderRadius.circular(20),
               ),
-              child: const Icon(
-                Icons.auto_awesome_rounded,
-                color: brandMint,
-                size: 64,
+              child: Icon(
+                Icons.check_rounded,
+                size: 40,
+                color:
+                    courseColor(widget.lesson.courseId).computeLuminance() > .5
+                    ? const Color(0xFF1A1A18)
+                    : Colors.white,
               ),
             ),
             const SizedBox(height: 26),
@@ -644,10 +657,25 @@ class LessonWorkspaceState extends ConsumerState<LessonWorkspace> {
                   : l.alreadyCompleted,
               textAlign: TextAlign.center,
             ),
-            if (completion?.achievements.isNotEmpty ?? false)
+            for (final id in completion?.achievements ?? const <String>[])
               Padding(
-                padding: const EdgeInsets.only(top: 16),
-                child: Text(l.newAchievement),
+                padding: const EdgeInsets.only(top: 12),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(
+                      Icons.workspace_premium_rounded,
+                      color: Color(0xFFFF9F0A),
+                      size: 20,
+                    ),
+                    const SizedBox(width: 8),
+                    Flexible(
+                      child: Text(
+                        '${l.newAchievement}: ${achievementLabel(context, id)}',
+                      ),
+                    ),
+                  ],
+                ),
               ),
             const SizedBox(height: 32),
             if (index + 1 < widget.lessons.length)

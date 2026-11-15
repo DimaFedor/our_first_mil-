@@ -4,42 +4,81 @@ import 'package:flutter/services.dart';
 
 import '../../features/progress/domain/learning_data.dart';
 
-enum FeedbackCue { correct, incorrect, complete, level, reward }
+enum FeedbackCue {
+  correct(HapticFeedback.selectionClick),
+  incorrect(HapticFeedback.mediumImpact),
+  hint(HapticFeedback.selectionClick),
+  codePassed(HapticFeedback.lightImpact),
+  complete(HapticFeedback.mediumImpact),
+  reward(HapticFeedback.lightImpact),
+  purchase(HapticFeedback.lightImpact),
+  achievement(HapticFeedback.heavyImpact),
+  level(HapticFeedback.heavyImpact);
+
+  final Future<void> Function() haptic;
+  const FeedbackCue(this.haptic);
+}
 
 class FeedbackService {
-  final AudioPlayer player = AudioPlayer();
-  DateTime lastPlayed = DateTime.fromMillisecondsSinceEpoch(0);
+  final Map<FeedbackCue, Future<AudioPlayer>> players = {};
   bool disposed = false;
 
   Future<void> play(FeedbackCue cue, Preferences preferences) async {
-    if (disposed ||
-        DateTime.now().difference(lastPlayed).inMilliseconds < 120) {
-      return;
-    }
-    lastPlayed = DateTime.now();
+    if (disposed) return;
     try {
-      if (preferences.haptics) await HapticFeedback.lightImpact();
-      if (!preferences.sound) return;
-      await player.setAudioContext(
-        AudioContext(
-          iOS: AudioContextIOS(category: AVAudioSessionCategory.ambient),
-          android: const AudioContextAndroid(
-            audioFocus: AndroidAudioFocus.gainTransientMayDuck,
-          ),
-        ),
-      );
+      if (preferences.haptics) await cue.haptic();
+      if (!preferences.sound || preferences.volume == 0) return;
+      final player = await players.putIfAbsent(cue, () => load(cue));
       if (disposed) return;
-      await player.stop();
       await player.setVolume(preferences.volume);
-      await player.play(AssetSource('audio/${cue.name}.wav'));
+      await player.seek(Duration.zero);
+      await player.resume();
     } on Exception catch (error) {
       debugPrint('Audio feedback unavailable: $error');
     }
   }
 
-  Future<void> stop() => player.stop();
+  Future<AudioPlayer> load(FeedbackCue cue) async {
+    final player = AudioPlayer();
+    try {
+      await player.setAudioContext(
+        AudioContext(
+          iOS: AudioContextIOS(category: AVAudioSessionCategory.ambient),
+          android: const AudioContextAndroid(
+            contentType: AndroidContentType.sonification,
+            usageType: AndroidUsageType.assistanceSonification,
+            audioFocus: AndroidAudioFocus.none,
+          ),
+        ),
+      );
+      await player.setReleaseMode(ReleaseMode.stop);
+      await player.setSource(AssetSource('audio/${cue.name}.wav'));
+      return player;
+    } on Exception {
+      players.remove(cue);
+      await player.dispose();
+      rethrow;
+    }
+  }
+
+  Future<List<AudioPlayer>> loaded() async => [
+    for (final pending in players.values.toList())
+      ?await pending.then<AudioPlayer?>(
+        (player) => player,
+        onError: (Object error) => null,
+      ),
+  ];
+
+  Future<void> stop() async {
+    for (final player in await loaded()) {
+      await player.stop();
+    }
+  }
+
   Future<void> dispose() async {
     disposed = true;
-    await player.dispose();
+    final active = await loaded();
+    players.clear();
+    await Future.wait(active.map((player) => player.dispose()));
   }
 }

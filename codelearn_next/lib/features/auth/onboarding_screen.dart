@@ -49,27 +49,22 @@ class OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 TextButton(onPressed: finish, child: Text(l.skip)),
               ],
             ),
-            const SizedBox(height: 50),
-            Center(
-              child: Container(
-                padding: const EdgeInsets.all(40),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  gradient: LinearGradient(
-                    colors: [
-                      brandBlue.withValues(alpha: .35),
-                      brandMint.withValues(alpha: .12),
-                    ],
-                  ),
-                ),
-                child: Icon(
-                  icons[step],
-                  size: 100,
-                  color: Theme.of(context).colorScheme.primary,
-                ),
+            const SizedBox(height: 56),
+            Container(
+              width: 88,
+              height: 88,
+              decoration: BoxDecoration(
+                color: const [
+                  Color(0xFF0A84FF),
+                  Color(0xFF30D158),
+                  Color(0xFF5E5CE6),
+                  Color(0xFFFF9F0A),
+                ][step % 4],
+                borderRadius: BorderRadius.circular(24),
               ),
+              child: Icon(icons[step], size: 48, color: Colors.white),
             ),
-            const SizedBox(height: 42),
+            const SizedBox(height: 36),
             Text(
               titles[step],
               style: Theme.of(context).textTheme.headlineLarge,
