@@ -617,4 +617,72 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get practiceUnavailable =>
       'Could not start practice. Reload and try again.';
+
+  @override
+  String get codeWorkspace => 'Code';
+
+  @override
+  String get codeWorkspaceBody =>
+      'Your space to experiment. Write code and see what happens.';
+
+  @override
+  String get workspaceFiles => 'Files';
+
+  @override
+  String get workspaceRun => 'Run';
+
+  @override
+  String get workspaceStop => 'Stop';
+
+  @override
+  String get workspaceConsole => 'Console';
+
+  @override
+  String get workspaceInput => 'Program input';
+
+  @override
+  String get workspaceInputHint =>
+      'Python: one input() value per line. JavaScript: the input string.';
+
+  @override
+  String get workspaceReady => 'Run your code to see the output here.';
+
+  @override
+  String get workspaceRunning => 'Running…';
+
+  @override
+  String get workspaceDone => 'Finished';
+
+  @override
+  String get workspaceStopped => 'Stopped';
+
+  @override
+  String get workspaceNoOutput =>
+      'Finished without output. Use print() or console.log().';
+
+  @override
+  String get workspaceTimeout => 'Time limit reached (20 seconds).';
+
+  @override
+  String get workspaceUnavailable => 'Could not start the runtime. Try again.';
+
+  @override
+  String get workspaceClear => 'Clear console';
+
+  @override
+  String get workspaceSaved => 'Saved on this device';
+
+  @override
+  String get workspaceSaving => 'Saving…';
+
+  @override
+  String get workspaceSaveError =>
+      'Could not save. Keep this page open and try editing again.';
+
+  @override
+  String get workspaceLoadError =>
+      'Could not load saved code. Reopen this page to try again.';
+
+  @override
+  String get workspaceShortcut => 'Run: Ctrl/⌘ + Enter · Indent: Tab';
 }

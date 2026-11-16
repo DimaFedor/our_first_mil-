@@ -7,7 +7,8 @@ export function formatValue(value) {
 }
 export async function evaluateLanguage(request, pythonLoader) {
   const {code, challenge} = request;
-  const tests = challenge.tests ?? [];
+  const playground = request.mode === 'playground';
+  const tests = playground ? [{input: request.input ?? ''}] : challenge.tests ?? [];
   const language = challenge.language;
   if (typeof code !== 'string' || code.length > 20000 || !code.trim()) return {passed: false, diagnostic: 'unsupportedCode'};
   try {
@@ -25,6 +26,7 @@ export async function evaluateLanguage(request, pythonLoader) {
         outputs.push(output);
         if (normalize(output) === normalize(test.expectedOutput)) passedCount++;
       }
+      if (playground) return {passed: true, output: outputs.join('\n')};
       return {passed: tests.length > 0 && passedCount === tests.length, output: [...new Set(outputs)].join('\n'), passedCount, totalCount: tests.length, diagnostic: passedCount === tests.length ? '' : 'resultMismatch'};
     }
     if (['javascript', 'js', 'react', 'jsx'].includes(language)) {
@@ -59,6 +61,7 @@ export async function evaluateLanguage(request, pythonLoader) {
         outputs.push(output);
         if (normalize(output) === normalize(test.expectedOutput)) passedCount++;
       }
+      if (playground) return {passed: true, output: outputs.join('\n')};
       return {passed: tests.length > 0 && passedCount === tests.length, output: [...new Set(outputs)].join('\n'), passedCount, totalCount: tests.length, diagnostic: passedCount === tests.length ? '' : 'resultMismatch'};
     }
     return {passed: false, diagnostic: 'unsupportedCode'};

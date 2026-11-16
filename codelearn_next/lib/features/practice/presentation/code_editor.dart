@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CodeEditingController extends TextEditingController {
   final String language;
@@ -159,27 +160,53 @@ class LearningCodeEditorState extends State<LearningCodeEditor> {
                 ),
                 const SizedBox(width: 16),
                 Expanded(
-                  child: TextField(
-                    key: const ValueKey('code-editor'),
-                    controller: widget.controller,
-                    scrollController: vertical,
-                    readOnly: widget.readOnly,
-                    minLines: 10,
-                    maxLines: 22,
-                    autocorrect: false,
-                    enableSuggestions: false,
-                    smartDashesType: SmartDashesType.disabled,
-                    smartQuotesType: SmartQuotesType.disabled,
-                    keyboardType: TextInputType.multiline,
-                    style: style,
-                    decoration: const InputDecoration(
-                      filled: false,
-                      border: InputBorder.none,
-                      focusedBorder: InputBorder.none,
-                      enabledBorder: InputBorder.none,
-                      contentPadding: EdgeInsets.zero,
+                  child: Focus(
+                    onKeyEvent: (node, event) {
+                      if (!widget.readOnly &&
+                          event is KeyDownEvent &&
+                          event.logicalKey == LogicalKeyboardKey.tab &&
+                          !HardwareKeyboard.instance.isShiftPressed) {
+                        final value = widget.controller.value;
+                        final selection = value.selection;
+                        if (!selection.isValid) return KeyEventResult.ignored;
+                        widget.controller.value = TextEditingValue(
+                          text: value.text.replaceRange(
+                            selection.start,
+                            selection.end,
+                            '    ',
+                          ),
+                          selection: TextSelection.collapsed(
+                            offset: selection.start + 4,
+                          ),
+                        );
+                        previousText = widget.controller.text;
+                        widget.onChanged(previousText);
+                        return KeyEventResult.handled;
+                      }
+                      return KeyEventResult.ignored;
+                    },
+                    child: TextField(
+                      key: const ValueKey('code-editor'),
+                      controller: widget.controller,
+                      scrollController: vertical,
+                      readOnly: widget.readOnly,
+                      minLines: 10,
+                      maxLines: 22,
+                      autocorrect: false,
+                      enableSuggestions: false,
+                      smartDashesType: SmartDashesType.disabled,
+                      smartQuotesType: SmartQuotesType.disabled,
+                      keyboardType: TextInputType.multiline,
+                      style: style,
+                      decoration: const InputDecoration(
+                        filled: false,
+                        border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        contentPadding: EdgeInsets.zero,
+                      ),
+                      onChanged: changed,
                     ),
-                    onChanged: changed,
                   ),
                 ),
               ],

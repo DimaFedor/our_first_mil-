@@ -1219,6 +1219,132 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Could not start practice. Reload and try again.'**
   String get practiceUnavailable;
+
+  /// No description provided for @codeWorkspace.
+  ///
+  /// In en, this message translates to:
+  /// **'Code'**
+  String get codeWorkspace;
+
+  /// No description provided for @codeWorkspaceBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your space to experiment. Write code and see what happens.'**
+  String get codeWorkspaceBody;
+
+  /// No description provided for @workspaceFiles.
+  ///
+  /// In en, this message translates to:
+  /// **'Files'**
+  String get workspaceFiles;
+
+  /// No description provided for @workspaceRun.
+  ///
+  /// In en, this message translates to:
+  /// **'Run'**
+  String get workspaceRun;
+
+  /// No description provided for @workspaceStop.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop'**
+  String get workspaceStop;
+
+  /// No description provided for @workspaceConsole.
+  ///
+  /// In en, this message translates to:
+  /// **'Console'**
+  String get workspaceConsole;
+
+  /// No description provided for @workspaceInput.
+  ///
+  /// In en, this message translates to:
+  /// **'Program input'**
+  String get workspaceInput;
+
+  /// No description provided for @workspaceInputHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Python: one input() value per line. JavaScript: the input string.'**
+  String get workspaceInputHint;
+
+  /// No description provided for @workspaceReady.
+  ///
+  /// In en, this message translates to:
+  /// **'Run your code to see the output here.'**
+  String get workspaceReady;
+
+  /// No description provided for @workspaceRunning.
+  ///
+  /// In en, this message translates to:
+  /// **'Running…'**
+  String get workspaceRunning;
+
+  /// No description provided for @workspaceDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Finished'**
+  String get workspaceDone;
+
+  /// No description provided for @workspaceStopped.
+  ///
+  /// In en, this message translates to:
+  /// **'Stopped'**
+  String get workspaceStopped;
+
+  /// No description provided for @workspaceNoOutput.
+  ///
+  /// In en, this message translates to:
+  /// **'Finished without output. Use print() or console.log().'**
+  String get workspaceNoOutput;
+
+  /// No description provided for @workspaceTimeout.
+  ///
+  /// In en, this message translates to:
+  /// **'Time limit reached (20 seconds).'**
+  String get workspaceTimeout;
+
+  /// No description provided for @workspaceUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not start the runtime. Try again.'**
+  String get workspaceUnavailable;
+
+  /// No description provided for @workspaceClear.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear console'**
+  String get workspaceClear;
+
+  /// No description provided for @workspaceSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved on this device'**
+  String get workspaceSaved;
+
+  /// No description provided for @workspaceSaving.
+  ///
+  /// In en, this message translates to:
+  /// **'Saving…'**
+  String get workspaceSaving;
+
+  /// No description provided for @workspaceSaveError.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not save. Keep this page open and try editing again.'**
+  String get workspaceSaveError;
+
+  /// No description provided for @workspaceLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load saved code. Reopen this page to try again.'**
+  String get workspaceLoadError;
+
+  /// No description provided for @workspaceShortcut.
+  ///
+  /// In en, this message translates to:
+  /// **'Run: Ctrl/⌘ + Enter · Indent: Tab'**
+  String get workspaceShortcut;
 }
 
 class _AppLocalizationsDelegate

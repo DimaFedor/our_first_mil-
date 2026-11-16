@@ -103,6 +103,7 @@ void main() {
           '/journey',
           '/rewards',
           '/profile',
+          '/code',
           '/settings',
           '/portfolio',
           '/support',

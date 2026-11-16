@@ -12,6 +12,7 @@ import '../features/journey/presentation/journey_screen.dart';
 import '../features/learning/presentation/lesson_screen.dart';
 import '../features/portfolio/presentation/portfolio_screen.dart';
 import '../features/profile/profile_screen.dart';
+import '../features/playground/playground_screen.dart';
 import '../features/rewards/presentation/rewards_screen.dart';
 import '../features/settings/settings_screen.dart';
 import '../features/settings/support_screen.dart';
@@ -83,6 +84,14 @@ final routerProvider = Provider<GoRouter>((ref) {
           StatefulShellBranch(
             routes: [
               GoRoute(
+                path: '/code',
+                builder: (context, state) => const PlaygroundScreen(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
                 path: '/profile',
                 builder: (context, state) => const ProfileScreen(),
               ),
@@ -130,16 +139,31 @@ class AppShell extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l = context.l10n;
-    final routes = ['/', '/courses', '/journey', '/rewards', '/profile'];
-    final labels = [l.home, l.courses, l.journey, l.rewards, l.profile];
+    final routes = [
+      '/',
+      '/courses',
+      '/journey',
+      '/rewards',
+      '/code',
+      '/profile',
+    ];
+    final labels = [
+      l.home,
+      l.courses,
+      l.journey,
+      l.rewards,
+      l.codeWorkspace,
+      l.profile,
+    ];
     final icons = [
       Icons.space_dashboard_outlined,
       Icons.explore_outlined,
       Icons.route_outlined,
       Icons.auto_awesome_outlined,
+      Icons.code_rounded,
       Icons.person_outline_rounded,
     ];
-    final index = routes.indexOf(location).clamp(0, 4);
+    final index = routes.indexOf(location).clamp(0, routes.length - 1);
     final wide = MediaQuery.sizeOf(context).width >= 900;
     return Scaffold(
       appBar: wide

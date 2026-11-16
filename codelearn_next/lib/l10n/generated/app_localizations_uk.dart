@@ -621,4 +621,73 @@ class AppLocalizationsUk extends AppLocalizations {
   @override
   String get practiceUnavailable =>
       'Не вдалося запустити практику. Онови сторінку та спробуй знову.';
+
+  @override
+  String get codeWorkspace => 'Код';
+
+  @override
+  String get codeWorkspaceBody =>
+      'Твій простір для експериментів. Пиши код і дивись, що вийде.';
+
+  @override
+  String get workspaceFiles => 'Файли';
+
+  @override
+  String get workspaceRun => 'Запустити';
+
+  @override
+  String get workspaceStop => 'Зупинити';
+
+  @override
+  String get workspaceConsole => 'Консоль';
+
+  @override
+  String get workspaceInput => 'Вхідні дані';
+
+  @override
+  String get workspaceInputHint =>
+      'Python: кожне значення input() з нового рядка. JavaScript: рядок input.';
+
+  @override
+  String get workspaceReady => 'Запусти код — тут з’явиться результат.';
+
+  @override
+  String get workspaceRunning => 'Виконується…';
+
+  @override
+  String get workspaceDone => 'Виконано';
+
+  @override
+  String get workspaceStopped => 'Зупинено';
+
+  @override
+  String get workspaceNoOutput =>
+      'Виконано без виводу. Використай print() або console.log().';
+
+  @override
+  String get workspaceTimeout => 'Досягнуто ліміт часу (20 секунд).';
+
+  @override
+  String get workspaceUnavailable =>
+      'Не вдалося запустити рушій. Спробуй ще раз.';
+
+  @override
+  String get workspaceClear => 'Очистити консоль';
+
+  @override
+  String get workspaceSaved => 'Збережено на цьому пристрої';
+
+  @override
+  String get workspaceSaving => 'Зберігається…';
+
+  @override
+  String get workspaceSaveError =>
+      'Не вдалося зберегти. Залиш сторінку відкритою та спробуй відредагувати ще раз.';
+
+  @override
+  String get workspaceLoadError =>
+      'Не вдалося завантажити збережений код. Відкрий сторінку ще раз.';
+
+  @override
+  String get workspaceShortcut => 'Запуск: Ctrl/⌘ + Enter · Відступ: Tab';
 }
